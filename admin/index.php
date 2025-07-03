@@ -10,7 +10,42 @@
 
 <body>
 
-    afoo
+
+    <div class="page-container">
+        <div class="login-card-div">
+            <div class="logo-div">
+                <img src="images/logo.png" alt="International Exams Logo">
+            </div>
+
+            <div class="form-section">
+                <h1>International Exams<span>Admin Log-in</span></h1>
+
+                <div class="text_field_container" id="emailAddress_container">
+                    <script>
+                        textField({
+                            id: 'emailAddress',
+                            title: 'Enter Your Email Address',
+                            type: 'email'
+                        });
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="password_container">
+                    <script>
+                        textField({
+                            id: 'password',
+                            title: 'Enter Your Password',
+                            type: 'password'
+                        });
+                    </script>
+                </div>
+
+                <div class="form-button-div">
+                    <button class="btn">Log-in</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

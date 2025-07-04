@@ -32,8 +32,34 @@ Best place to register ACT exam in Nigeria, where to register international exam
 </head>
 
 <body>
+    <?php include 'header.php' ?>
+
+    <div class="slide-section">
+        <div class="slide-inner-div">
+            <div class="slide-card">
+                <div class="text-move-div">
+                    <h1>INTERNATIONAL EXAMINATION CENTERS IN NIGERIA</h1>
+                </div>
+
+                <div class="text-button-div">
+                    <p>Welcome to Leaders Tutors – where education meets innovation! Our cutting-edge application redefines the learning experience with a dynamic Education Video Learning system.</p>
+                    <div class="slide-btn-div">
+                        <button class="btn" title="learn">Learn</button>
+                        <button class="btn no-bg" title="More">More</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
+
+    <div class="body-div">
+        <div class="body-div-in">
+            fghjk
+        </div>
+    </div>
 </body>
 
 </html>

@@ -12,11 +12,11 @@
 
     <div class="page-container">
         <div class="login-card-div">
-            <div class="logo-div">
+            <div class="logo-div animated fadeInDown">
                 <img src="images/logo.png" alt="International Exams Logo" title="International Exams Logo">
             </div>
 
-            <div class="form-section">
+            <div class="form-section animated fadeInLeft">
                 <h1>
                     International Exams <br>
                     <span>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="alert alert-success form-alert">
-                    Forget Password? <span>RESET PASSWORD</span>
+                    Forget Password? <span title="RESET PASSWORD">RESET PASSWORD</span>
                 </div>
             </div>
         </div>

@@ -121,7 +121,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
         <div class="body-div-in">
             <div class="unique-back-div">
                 <div class="unique-div">
-                    <i class=" bi-piggy-bank"></i>
+                    <i class=" bi-cash-coin"></i>
                     <div class="text-div">
                         <h2>Affordable Test Registration Fee</h2>
                         <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!</p>
@@ -132,15 +132,17 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     <i class=" bi-person-video3 secondary"></i>
                     <div class="text-div">
                         <h2>Physical and Online Lectures</h2>
-                        <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably, anywhere!</p>
+                        <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably,
+                            anywhere!</p>
                     </div>
                 </div>
 
                 <div class="unique-div">
-                    <i class=" bi-gift nuetral"></i>
+                    <i class=" bi-file-pdf nuetral"></i>
                     <div class="text-div">
                         <h2>FREE E-books and Study Packs</h2>
-                        <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice tests after signup!</p>
+                        <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice
+                            tests after signup!</p>
                     </div>
                 </div>
 

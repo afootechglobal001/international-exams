@@ -42,7 +42,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
 
                 <div class="text-button-div">
-                    <p>Welcome to Leaders Tutors – where education meets innovation! Our cutting-edge application redefines the learning experience with a dynamic Education Video Learning system.</p>
+                    <p>Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success.</p>
                     <div class="slide-btn-div">
                         <button class="btn" title="learn">Learn</button>
                         <button class="btn no-bg" title="More">More</button>
@@ -55,11 +55,22 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
 
 
-    <div class="body-div">
-        <div class="body-div-in">
-            fghjk
-        </div>
-    </div>
+    <section class="index-div">
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="intro-div">
+                    <div class="icon-div">
+                        <i class=" bi-piggy-bank"></i>
+                    </div>
+
+                    <div class="text-div">
+                        <h2>Affordable Test Registration Fee</h2>
+                        <p>Enjoy discounted test fees when you register for any of our international programs! Promo now on for TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Don’t miss out!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 </body>
 
 </html>

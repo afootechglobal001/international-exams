@@ -248,17 +248,35 @@ header .main-header .main-header-inner .button-div .btn{
 
 
 .body-div{
-    position: absolute;
-    top: calc(100% - 80px );
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 50px 0px;
 }
 
 .body-div .body-div-in{
     width: 85%;
+    display: flex;
+    justify-content: space-between;
     max-width: 1200px;
+}
+
+.intro-div{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.intro-div .icon-div{
+    width: 100px;
+    height: 100px;
+    border: #9D043C 1px solid;
+    font-size: px;
+
+    display: flex;
+    justify-content: center;
 }
 
 

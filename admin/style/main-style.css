@@ -48,11 +48,14 @@ body{
     position: absolute;
     top: -30px;
     left: 8%;
-    width: 200px;
+    width: 190px;
+    padding: 2px 8px;
     display: flex;
     align-items: center;
     overflow: hidden;
     cursor: pointer;  
+    background: #000;
+    border-radius: 5px;
 
 }
 
@@ -77,7 +80,7 @@ body{
 .page-container .login-card-div .form-section h1 {
     margin: 0px;
     padding: 0px;
-    font-size: 35px;
+    font-size: 30x;
     font-family: sub-title-font;
     color: #000;
    
@@ -93,14 +96,14 @@ body{
 
 .page-container .login-card-div .form-section h1 span .underline {
     border-bottom: 2px solid #9D043C;
-    padding-bottom: 7px;
+    padding-bottom: 5px;
 }
 
 
 .page-container .login-card-div .form-section .label-outer-div {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
   
 
@@ -131,7 +134,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #9D043C, #c71f5c);
+    background:  #9D043C;
     color: #fff;
     border: none;
     font-family: body-font;
@@ -148,12 +151,17 @@ body{
 }
 
 .page-container .login-card-div .form-section .form-button-div .btn:hover {
-    background: linear-gradient(135deg, #7a032f, #a61748);
+    background: #a61748;
 }
 
 
 .form-alert{
     margin: 0px;
+}
+
+
+.form-alert span:hover{
+    color: #9D043C;
 }
 
 

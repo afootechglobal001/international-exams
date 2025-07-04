@@ -32,8 +32,51 @@ Best place to register ACT exam in Nigeria, where to register international exam
 </head>
 
 <body>
+    <?php include 'header.php' ?>
+
+    <div class="slide-section animated fadeInDown">
+        <div class="slide-div">
+            <div class="slide-inner-div">
+                <div class="slide-card">
+                    <h1>INTERNATIONAL EXAMINATION CENTERS IN NIGERIA</h1>
+
+                    <div class="text-div">
+                        <p>Register for <a href="#" title="TOEFL">TOEFL</a>, <a href="#" title="TOEFL">GRE</a>, <a
+                                href="#" title="TOEFL">GMAT</a>, <a href="#" title="TOEFL">SAT</a>, <a href="#"
+                                title="TOEFL">ACT</a>, <a href="#" title="TOEFL">PTE</a>, and <a href="#"
+                                title="TOEFL">IELTS</a> exams in Nigeria with EduGrade Services. Trusted support, fast
+                            processing, and expert guidance for success.</p>
+                        <div class="btn-div">
+                            <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
+                            <button class="btn no-bg"><span>Download E-Books</span> <span class="span">It's
+                                    Free</span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+
+    <section class="index-div">
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="intro-div">
+                    <div class="icon-div">
+                        <i class=" bi-piggy-bank"></i>
+                    </div>
+
+                    <div class="text-div">
+                        <h2>Affordable Test Registration Fee</h2>
+                        <p>Enjoy discounted test fees when you register for any of our international programs! Promo now
+                            on for TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Don’t miss out!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 </body>
 
 </html>

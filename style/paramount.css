@@ -26,14 +26,11 @@
 }
 
 :root {
-  --primary-color: #07418d;
+  --primary-color: #9d043c;
   --secondary-color: #f7a025;
   --body-color: #000;
   --sub-body-color: #444;
-  --text-color: #7c7c7c;
-  --text-color2: #2daae1;
-  --body-bg-color: #f8f8f8;
-  --bg-color: #eeeeee;
+  --link-color: #328ab3;
   --sub-white-color: #eeeeee;
   --white-color: #fff;
   --close-color: #f00;
@@ -56,6 +53,7 @@ body {
   padding: 0px;
   font-family: body-font;
   font-size: 15px;
+  color: var(--body-color);
 }
 
 a {

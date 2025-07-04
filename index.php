@@ -38,7 +38,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
         <div class="slide-div">
             <div class="slide-inner-div">
                 <div class="slide-card">
-                    <h1>INTERNATIONAL EXAMINATION CENTERS IN NIGERIA</h1>
+                    <h1 id="pageTitle"></h1>
 
                     <div class="text-div">
                         <p>Register for <a href="#" title="TOEFL">TOEFL</a>, <a href="#" title="TOEFL">GRE</a>, <a
@@ -60,27 +60,96 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+        // List of sentences
+        var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN NIGERIA", "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
+            "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
+            "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
+        ];
+        // Current sentence being processed
+        var _PART = 0;
+        // Character number of the current sentence being processed 
+        var _PART_INDEX = 0;
+        // Element that holds the text
+        var _ELEMENT = document.querySelector("#pageTitle");
+        // Implements typing effect
+        function Type() {
+            var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX++;
+
+            // If full sentence has been displayed then start to delete the sentence after some time
+            if (text === _CONTENT[_PART]) {
+                clearInterval(_INTERVAL_VAL);
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Delete, 2);
+                }, 5000);
+            }
+        }
+        // Implements deleting effect
+        function Delete() {
+            var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX--;
+
+            // If sentence has been deleted then start to display the next sentence
+            if (text === '') {
+                clearInterval(_INTERVAL_VAL);
+
+                // If last sentence then display the first one, else move to the next
+                if (_PART == (_CONTENT.length - 1))
+                    _PART = 0;
+                else
+                    _PART++;
+                _PART_INDEX = 0;
+
+                // Start to display the next sentence after some time
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Type, 50);
+                }, 200);
+            }
+        }
+        // Start the typing effect on load
+        _INTERVAL_VAL = setInterval(Type, 50);
+        </script>
     </div>
 
 
 
-    <section class="index-div">
-        <section class="body-div">
-            <div class="body-div-in">
-                <div class="intro-div">
-                    <div class="icon-div">
-                        <i class=" bi-piggy-bank"></i>
-                    </div>
-
+    <section class="body-div">
+        <div class="body-div-in">
+            <div class="unique-back-div">
+                <div class="unique-div">
+                    <i class=" bi-cash-coin"></i>
                     <div class="text-div">
                         <h2>Affordable Test Registration Fee</h2>
-                        <p>Enjoy discounted test fees when you register for any of our international programs! Promo now
-                            on for TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Don’t miss out!</p>
+                        <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!</p>
                     </div>
                 </div>
+
+                <div class="unique-div">
+                    <i class=" bi-person-video3 secondary"></i>
+                    <div class="text-div">
+                        <h2>Physical and Online Lectures</h2>
+                        <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably,
+                            anywhere!</p>
+                    </div>
+                </div>
+
+                <div class="unique-div">
+                    <i class=" bi-file-pdf nuetral"></i>
+                    <div class="text-div">
+                        <h2>FREE E-books and Study Packs</h2>
+                        <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice
+                            tests after signup!</p>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
     </section>
+
 </body>
 
 </html>

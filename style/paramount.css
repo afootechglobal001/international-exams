@@ -46,6 +46,12 @@ h4,
 h5,
 h6 {
   font-family: title-font;
+  margin: 0px;
+  padding: 0px;
+}
+p{
+  margin: 0px;
+  padding: 0px;
 }
 
 body {

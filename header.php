@@ -1,87 +1,85 @@
-<header>
+<header class="animated fadeInDown">
     <div class="top-header">
         <div class="top-header-inner">
-            <div class="left-div">
-                <div class="left-inner">
+            <div class="link-div">
+                <a href="#" title="Contact Us">
                     <i class="bi-clock"></i>
-                    <p>Mon - Fri (8am - 4pm)</p>
-                    <hr>
-                </div>
+                    <span>Mon - Fri (8am - 4pm)</span>
+                </a>
+                <span> |</span>
 
-                <div class="left-inner">
+                <a href="#" title="Mail Us">
                     <i class="bi-envelope"></i>
-                    <p>Customer@internationalexam.com</p>
-                    <hr>
-                </div>
+                    <span>Customer@internationalexam.com</span>
+                </a>
+                <span> |</span>
 
-                <div class="left-inner">
+                <a href="#" title=" Call Us">
                     <i class="bi-telephone"></i>
-                    <p>+234(0)703-841-1794</p>
-                    <hr>
-                </div>
+                    <span>+234(0)703-841-1794</span>
+                </a>
+                <span> |</span>
 
-                <div class="left-inner">
+                <a href="#" title="FAQ">
                     <i class="bi-question-circle"></i>
-                    <a href="#"><button>FAQ</button></a>
-                    <hr>
-                </div>
+                    <span>FAQ</span>
+                </a>
+                <span> |</span>
 
-                <div class="left-inner">
-                    <i class="bi-book"></i>
-                    <a href="#"><button>E Book</button></a>
-                    <hr>
-                </div>
+                <a href="#" title="Free E-Books">
+                    <i class="bi-file-pdf"></i>
+                    <span> E-Books</span>
+                </a>
+                <span> |</span>
 
-                <div class="left-inner" title="Training">
+                <a href="#" title="Training">
                     <i class="bi-mortarboard"></i>
-                    <a href="#"><button>Training</button></a>
-                    <hr>
-                </div>
+                    <span>Training</span>
+                </a>
             </div>
 
-            <div class="right-div">
-                <h2>Follow Us</h2>
-                <div class="social-icon">
-                    <a href="#"><i class="bi-whatsapp" title="Whatsapp"></i></a>
-                    <a href="#"><i class="bi-facebook" title="facebook"></i></a>
-                    <a href="#"><i class="bi-twitter" title="twitter/X"></i></a>
-                    <a href="#"><i class="bi-instagram" title="instagram"></i></a>
-                </div>
+
+            <div class="social-icon-div">
+                <a href="#" title="" href="#"><i class="bi-whatsapp" title="Whatsapp"></i></a>
+                <a href="#" title="" href="#"><i class="bi-facebook" title="facebook"></i></a>
+                <a href="#" title="" href="#"><i class="bi-twitter" title="twitter/X"></i></a>
+                <a href="#" title="" href="#"><i class="bi-instagram" title="instagram"></i></a>
             </div>
         </div>
-
-
     </div>
 
 
     <div class="main-header">
         <div class="main-header-inner">
-            <div class="logo-nav">
+            <div class="link-div">
+
                 <div class="logo-div">
-                    <img src="all-images/images/logo.png" alt="Logo">
+                    <div class="div-in">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="Logo">
+                    </div>
                 </div>
 
                 <nav>
                     <ul>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>About Us</li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Study Abroad <i class="bi-plus"></i></li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>International Exam <i class="bi-plus"></i></li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Other Exams <i class="bi-plus"></i></li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Payment plans</li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Blog</li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/index">
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Contact us</li>
                         </a>
                     </ul>
@@ -89,7 +87,7 @@
             </div>
 
             <div class="button-div">
-                <button class="btn" title="Get started"> <i class="bi-person"></i> Get Started</button>
+                <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button>
             </div>
         </div>
     </div>

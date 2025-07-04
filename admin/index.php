@@ -9,65 +9,56 @@
 </head>
 
 <body>
+    <section class="login-div">
 
-    <div class="page-container">
-        <div class="login-card-div">
-            <div class="logo-div animated fadeInDown">
-                <img src="images/logo.png" alt="International Exams Logo" title="International Exams Logo">
-            </div>
+        <div class="page-container">
+            <div class="login-card-div">
+                <div class="logo-div">
+                    <img src="images/logo.png" alt="International Exams Logo" title="International Exams Logo">
+                </div>
 
-            <div class="form-section animated fadeInLeft">
-                <h1>
-                    International Exams <br>
-                    <span>
-                        <span class="underline">Admin Log</span> in
-                    </span>
-                </h1>
+                <div class="form-section">
+                    <h1>
+                        International Exams <br>
+                        <span>
+                            <span class="underline">Admin Log</span> in
+                        </span>
+                    </h1>
 
-                <div class="label-outer-div">
-                    <div class="label-div" title="Enter Your Email Address">
-                        <i class="bi bi-envelope-paper-fill"></i> Email Address:
-                    </div>
                     <div class="text_field_container" id="emailAddress_container">
                         <script>
-                            textField({
-                                id: 'emailAddress',
-                                title: 'Enter Your Email Address',
-                                type: 'email'
-                            });
+                        textField({
+                            id: 'emailAddress',
+                            title: 'Enter Your Email Address',
+                            type: 'email'
+                        });
                         </script>
                     </div>
-                </div>
 
-                <div class="label-outer-div">
-                    <div class="label-div" title="Enter Your Password">
-                        <i class="bi bi-shield-lock-fill"></i> Password:
-                    </div>
                     <div class="text_field_container" id="password_container">
                         <script>
-                            textField({
-                                id: 'password',
-                                title: 'Enter Your Password',
-                                type: 'password'
-                            });
+                        textField({
+                            id: 'password',
+                            title: 'Enter Your Password',
+                            type: 'password'
+                        });
                         </script>
                     </div>
-                </div>
 
-                <div class="form-button-div">
-                    <button class="btn" title="Click to Login">
-                        <i class="bi bi-check-all"></i>LOG-IN
-                    </button>
-                </div>
+                    <div class="form-button-div">
+                        <button class="btn" title="Click to Login">
+                            <i class="bi bi-check-all"></i>LOG-IN
+                        </button>
+                    </div>
 
-                <div class="alert alert-success form-alert">
-                    Forget Password? <span title="RESET PASSWORD">RESET PASSWORD</span>
+                    <div class="alert alert-success form-alert">
+                        Forget Password? <span>RESET PASSWORD</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-
+    </section>
 </body>
 
 </html>

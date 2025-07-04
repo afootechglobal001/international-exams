@@ -32,8 +32,45 @@ Best place to register ACT exam in Nigeria, where to register international exam
 </head>
 
 <body>
+    <?php include 'header.php' ?>
+
+    <div class="slide-section">
+        <div class="slide-inner-div">
+            <div class="slide-card">
+                <div class="text-move-div">
+                    <h1>INTERNATIONAL EXAMINATION CENTERS IN NIGERIA</h1>
+                </div>
+
+                <div class="text-button-div">
+                    <p>Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success.</p>
+                    <div class="slide-btn-div">
+                        <button class="btn" title="learn">Learn</button>
+                        <button class="btn no-bg" title="More">More</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
+
+    <section class="index-div">
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="intro-div">
+                    <div class="icon-div">
+                        <i class=" bi-piggy-bank"></i>
+                    </div>
+
+                    <div class="text-div">
+                        <h2>Affordable Test Registration Fee</h2>
+                        <p>Enjoy discounted test fees when you register for any of our international programs! Promo now on for TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Don’t miss out!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 </body>
 
 </html>

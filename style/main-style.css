@@ -392,10 +392,14 @@ header .main-header .main-header-inner .button-div .btn:hover {
 .body-div .body-div-in {
   width: 85%;
   min-height: 200px;
-  padding:50px 0px ;
+  padding:50px 0px 3px 0px ;
   max-width: 1200px;
 }
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.body-div .below-height{
+    min-height: 130px;
+}
 .unique-back-div {
   width:  100%;
   display: flex;
@@ -536,13 +540,12 @@ opacity: .6;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
 .our-exam-back-div .int-exam-back-div .int-exam-div{
-    width: 23.5%;
+    width: 23%;
     min-height: 200px;
     border: #b1b0b0 1px solid;
     border-radius: 5px;
@@ -660,8 +663,9 @@ opacity: .6;
 .our-exam-back-div .buttons-div .reg-btn i{
     background: #74002b;
     color: var(--white-color) ;
+    font-size: 20px;
     border-radius: 100%;
-    padding: 12px;
+    padding: 10px;
 }
 
 .our-exam-back-div .buttons-div .reg-btn:hover{

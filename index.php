@@ -118,7 +118,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
 
     <section class="body-div">
-        <div class="body-div-in">
+        <div class="body-div-in below-height">
             <div class="unique-back-div">
                 <div class="unique-div">
                     <div class="icon-div">
@@ -191,8 +191,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>GRE</h3>
+                            <p>Graduate Record Examination.</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
@@ -206,8 +206,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>IELTS</h3>
+                            <p>International English Language Testing System.</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
@@ -221,8 +221,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>GMAT</h3>
+                            <p>Graduate Management Admission Test.</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
@@ -236,8 +236,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>PTE</h3>
+                            <p>Pearson Test of English.</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
@@ -251,8 +251,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>SAT</h3>
+                            <p>Scholastic Assessment Test</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
@@ -266,8 +266,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>MCAT</h3>
+                            <p>Medical College Admission Test</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
@@ -281,8 +281,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="all-images/images/student1.avif" alt="TOELF">
                         </div>
                         <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
+                            <h3>NCLEX</h3>
+                            <p>National Concil Licensure Examination</p>
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>

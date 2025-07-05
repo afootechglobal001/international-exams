@@ -410,13 +410,11 @@ display: flex;
   gap: 10px;
 }
 
-.unique-back-div .unique-div i{
+.unique-back-div .unique-div .icon-div{
   width: 60px;
   height: 60px;
   border: var(--primary-color) 1px solid;
   border-radius: 10px;
-  color: var(--primary-color);
-  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -426,11 +424,16 @@ display: flex;
   -o-border-radius: 10px;
 }
 
+.unique-back-div .unique-div .icon-div i{
+  color: var(--primary-color);
+  font-size: 30px;
+}
+
 
 .unique-back-div .unique-div .text-div{
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: calc(100% - 60px);
   gap: 3px;
 }
 
@@ -448,10 +451,219 @@ display: flex;
 
 .unique-back-div .unique-div .secondary{
   border: var(--secondary-color) 1px solid;
+}
+
+.unique-back-div .unique-div .secondary i{
   color: var(--secondary-color);
 }
 
 .unique-back-div .unique-div .nuetral{
 border: var(--sub-body-color) 1px solid;
+}
+
+.unique-back-div .unique-div .nuetral i{
 color: var(--sub-body-color);
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.our-exam-back-div{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+.our-exam-back-div .mini-title-div{
+    width: 150px;
+    background: #ff80af6c;
+    padding: 5px 20px;
+}
+
+.our-exam-back-div .mini-title-div span{
+    color: var(--primary-color);
+    font-size: 13px;
+}
+
+.our-exam-back-div .title-div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.our-exam-back-div .title-div h2{
+    font-family: sub-title-font;
+    width: 350px;
+}
+
+.our-exam-back-div .title-div h2 span{
+    color: var(--primary-color);
+}
+
+.our-exam-back-div .title-div .reg-btn{
+    height: 40px;
+  padding: 0px 0px 0px 40px;
+  color: var(--white-color);
+  background: var(--primary-color);
+  border: none;
+  font-family: sub-title-font;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+
+.our-exam-back-div .title-div .reg-btn:hover{
+opacity: .6;
+}
+
+.our-exam-back-div .title-div .reg-btn i{
+    background: #74002b;
+    color: var(--white-color) ;
+    border-radius: 100%;
+    padding: 12px;
+}
+
+.our-exam-back-div .int-exam-back-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div{
+    width: 23.5%;
+    min-height: 200px;
+    border: #b1b0b0 1px solid;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .image-div{
+    width: 100%;
+    height: 150px;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    -ms-border-radius: 5px 5px 0px 0px;
+    -o-border-radius: 5px 5px 0px 0px;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .image-div img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div{
+    width: calc(100% - 20px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div h3{
+    font-family: sub-title-font;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div p{
+    font-family: body-font;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div span{
+    font-family: sub-title-font;
+    color: var(--primary-color);
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div .count-button-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div .count-button-div span{
+    color: var(--body-color);
+    font-family: body-font;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div .count-button-div span i{
+    color: var(--primary-color);
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div .count-button-div .apply-btn{
+       height: 40px;
+  padding:  0px 20px;
+  color: var(--white-color);
+  background: var(--primary-color);
+  border: none;
+  font-family: sub-title-font;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+
+.our-exam-back-div .int-exam-back-div .int-exam-div .text-div .count-button-div .apply-btn:hover{
+    opacity: .6;
+}
+
+.our-exam-back-div .buttons-div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.our-exam-back-div .buttons-div .reg-btn{
+    width: 200px;
+    height: 40px;
+  padding: 0px 0px 0px 40px;
+  color: var(--white-color);
+  background: var(--primary-color);
+  border: none;
+  font-family: sub-title-font;
+  cursor: pointer;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+  float: right;
+}
+
+
+.our-exam-back-div .buttons-div .reg-btn i{
+    background: #74002b;
+    color: var(--white-color) ;
+    border-radius: 100%;
+    padding: 12px;
+}
+
+.our-exam-back-div .buttons-div .reg-btn:hover{
+    opacity: .6;
 }

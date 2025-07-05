@@ -62,56 +62,56 @@ Best place to register ACT exam in Nigeria, where to register international exam
         </div>
 
         <script type="text/javascript">
-        // List of sentences
-        var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN NIGERIA", "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
-            "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
-            "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
-        ];
-        // Current sentence being processed
-        var _PART = 0;
-        // Character number of the current sentence being processed 
-        var _PART_INDEX = 0;
-        // Element that holds the text
-        var _ELEMENT = document.querySelector("#pageTitle");
-        // Implements typing effect
-        function Type() {
-            var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-            _ELEMENT.innerHTML = text;
-            _PART_INDEX++;
+            // List of sentences
+            var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN NIGERIA", "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
+                "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
+                "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
+            ];
+            // Current sentence being processed
+            var _PART = 0;
+            // Character number of the current sentence being processed 
+            var _PART_INDEX = 0;
+            // Element that holds the text
+            var _ELEMENT = document.querySelector("#pageTitle");
+            // Implements typing effect
+            function Type() {
+                var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+                _ELEMENT.innerHTML = text;
+                _PART_INDEX++;
 
-            // If full sentence has been displayed then start to delete the sentence after some time
-            if (text === _CONTENT[_PART]) {
-                clearInterval(_INTERVAL_VAL);
-                setTimeout(function() {
-                    _INTERVAL_VAL = setInterval(Delete, 2);
-                }, 5000);
+                // If full sentence has been displayed then start to delete the sentence after some time
+                if (text === _CONTENT[_PART]) {
+                    clearInterval(_INTERVAL_VAL);
+                    setTimeout(function() {
+                        _INTERVAL_VAL = setInterval(Delete, 2);
+                    }, 5000);
+                }
             }
-        }
-        // Implements deleting effect
-        function Delete() {
-            var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-            _ELEMENT.innerHTML = text;
-            _PART_INDEX--;
+            // Implements deleting effect
+            function Delete() {
+                var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+                _ELEMENT.innerHTML = text;
+                _PART_INDEX--;
 
-            // If sentence has been deleted then start to display the next sentence
-            if (text === '') {
-                clearInterval(_INTERVAL_VAL);
+                // If sentence has been deleted then start to display the next sentence
+                if (text === '') {
+                    clearInterval(_INTERVAL_VAL);
 
-                // If last sentence then display the first one, else move to the next
-                if (_PART == (_CONTENT.length - 1))
-                    _PART = 0;
-                else
-                    _PART++;
-                _PART_INDEX = 0;
+                    // If last sentence then display the first one, else move to the next
+                    if (_PART == (_CONTENT.length - 1))
+                        _PART = 0;
+                    else
+                        _PART++;
+                    _PART_INDEX = 0;
 
-                // Start to display the next sentence after some time
-                setTimeout(function() {
-                    _INTERVAL_VAL = setInterval(Type, 50);
-                }, 200);
+                    // Start to display the next sentence after some time
+                    setTimeout(function() {
+                        _INTERVAL_VAL = setInterval(Type, 50);
+                    }, 200);
+                }
             }
-        }
-        // Start the typing effect on load
-        _INTERVAL_VAL = setInterval(Type, 50);
+            // Start the typing effect on load
+            _INTERVAL_VAL = setInterval(Type, 50);
         </script>
     </div>
 
@@ -121,7 +121,10 @@ Best place to register ACT exam in Nigeria, where to register international exam
         <div class="body-div-in">
             <div class="unique-back-div">
                 <div class="unique-div">
-                    <i class=" bi-cash-coin"></i>
+                    <div class="icon-div">
+                        <i class=" bi-cash-coin"></i>
+                    </div>
+
                     <div class="text-div">
                         <h2>Affordable Test Registration Fee</h2>
                         <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!</p>
@@ -129,7 +132,10 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
 
                 <div class="unique-div">
-                    <i class=" bi-person-video3 secondary"></i>
+                    <div class="icon-div secondary">
+                        <i class=" bi-person-video3"></i>
+                    </div>
+
                     <div class="text-div">
                         <h2>Physical and Online Lectures</h2>
                         <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably,
@@ -138,12 +144,157 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
 
                 <div class="unique-div">
-                    <i class=" bi-file-pdf nuetral"></i>
+                    <div class="icon-div nuetral">
+                        <i class=" bi-file-pdf"></i>
+                    </div>
+
                     <div class="text-div">
                         <h2>FREE E-books and Study Packs</h2>
                         <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice
                             tests after signup!</p>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="body-div">
+        <div class="body-div-in">
+            <div class="our-exam-back-div">
+                <div class="mini-title-div">
+                    <span>INTERNATIONAL EXAMS</span>
+                </div>
+                <div class="title-div">
+                    <h2>Take a look at our available <span>#exams</span></h2>
+                    <button class="reg-btn">Register now <i class="bi-chevron-right"></i></button>
+                </div>
+                <div class="int-exam-back-div">
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="int-exam-div">
+                        <div class="image-div">
+                            <img src="all-images/images/student1.avif" alt="TOELF">
+                        </div>
+                        <div class="text-div">
+                            <h3>TOEFL</h3>
+                            <p>Test of English as a Foreign Language</p>
+                            <span>₦ 190,000</span>
+                            <div class="count-button-div">
+                                <span><i class="bi-person"></i> 500+</span>
+                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="buttons-div">
+                    <button class="reg-btn">View all exam <i class="bi-chevron-right"></i></button>
                 </div>
 
             </div>

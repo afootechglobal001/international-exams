@@ -23,7 +23,6 @@
 
 <div class="sidenavdiv">
     <div class="live-chat-back-div">
-
     <a href="tel:1-800-658-5679" title="Call Customer Care">
         <div class="chat-div">
             <div class="icon-div" style="background:#008040;"><i class="bi-telephone-outbound"></i></div>
@@ -62,7 +61,6 @@
           <br clear="all" />
         </div>
     </a>
-  
 </div>
 
 
@@ -126,8 +124,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="sidenavdiv-in" onclick="_close_side_nav()"></div>
 </div>

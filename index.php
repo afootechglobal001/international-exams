@@ -116,191 +116,412 @@ Best place to register ACT exam in Nigeria, where to register international exam
     </div>
 
 
+    <section class="main-section">
+        <section class="body-div">
+            <div class="body-div-in below-height">
+                <div class="unique-back-div animated fadeInUp">
+                    <div class="unique-div">
+                        <div class="icon-div">
+                            <i class=" bi-cash-coin"></i>
+                        </div>
 
-    <section class="body-div">
-        <div class="body-div-in below-height">
-            <div class="unique-back-div">
-                <div class="unique-div">
-                    <div class="icon-div">
-                        <i class=" bi-cash-coin"></i>
+                        <div class="text-div">
+                            <h2>Affordable Test Registration Fee</h2>
+                            <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!</p>
+                        </div>
                     </div>
 
-                    <div class="text-div">
-                        <h2>Affordable Test Registration Fee</h2>
-                        <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!</p>
+                    <div class="unique-div">
+                        <div class="icon-div secondary">
+                            <i class=" bi-person-video3"></i>
+                        </div>
+
+                        <div class="text-div">
+                            <h2>Physical and Online Lectures</h2>
+                            <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably,
+                                anywhere!</p>
+                        </div>
+                    </div>
+
+                    <div class="unique-div">
+                        <div class="icon-div nuetral">
+                            <i class=" bi-file-pdf"></i>
+                        </div>
+
+                        <div class="text-div">
+                            <h2>FREE E-books and Study Packs</h2>
+                            <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice
+                                tests after signup!</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="unique-div">
-                    <div class="icon-div secondary">
-                        <i class=" bi-person-video3"></i>
-                    </div>
-
-                    <div class="text-div">
-                        <h2>Physical and Online Lectures</h2>
-                        <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably,
-                            anywhere!</p>
-                    </div>
-                </div>
-
-                <div class="unique-div">
-                    <div class="icon-div nuetral">
-                        <i class=" bi-file-pdf"></i>
-                    </div>
-
-                    <div class="text-div">
-                        <h2>FREE E-books and Study Packs</h2>
-                        <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice
-                            tests after signup!</p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="inner-body-div-in">
+                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
+                        <div class="left-div">
+                            <div class="top-title">
+                                <h2>INTERNATIONAL EXAMS</h2>
+                            </div>
+                            <h3>Take a Look At Our Available <span>#Exams</span></h3>
+                        </div>
 
-    <section class="body-div">
-        <div class="body-div-in">
-            <div class="our-exam-back-div">
-                <div class="mini-title-div">
-                    <span>INTERNATIONAL EXAMS</span>
+                        <div class="btn-div">
+                            <a href="#">
+                                <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
+                        </div>
+                    </div>
+
+                    <div class="our-exam-back-div">
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/body-pix/TOEL.jpg" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>TOEFL</h3>
+                                        <p>Test of English as a Foreign Language</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦210,000</span>
+                                            <span><i class="bi-person"></i> 320+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/body-pix/GRE.jpg" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/gre-exam-nigeria.jpg" alt="GRE Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>GRE</h3>
+                                        <p>Graduate Record Examination.</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦270,000</span>
+                                            <span><i class="bi-person"></i> 290+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/images/student1.avif" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="IELTS Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>IELTS</h3>
+                                        <p>International English Language Testing System.</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦160,000</span>
+                                            <span><i class="bi-person"></i> 400+</span>
+                                        </div>
+
+                                        <button class="btn">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/images/student1.avif" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/gmat-exam-nigeria.jpg" alt="GMAT Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>GMAT</h3>
+                                        <p>Graduate Management Admission Test.</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦400,000</span>
+                                            <span><i class="bi-person"></i> 200+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/images/student1.avif" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/pte-exam-nigeria.jpg" alt="PTE Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>PTE</h3>
+                                        <p>Pearson Test of English.</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦260,000</span>
+                                            <span><i class="bi-person"></i> 240+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/images/student1.avif" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/sat-exam-nigeria.jpg" alt="SAT Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>SAT</h3>
+                                        <p>Scholastic Assessment Test</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦160,000</span>
+                                            <span><i class="bi-person"></i> 500+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/images/student1.avif" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/mcat-exam-nigeria.jpg" alt="MCAT Exam"/>
+                            </div>
+
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>MCAT</h3>
+                                        <p>Medical College Admission Test</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦190,000</span>
+                                            <span><i class="bi-person"></i> 140+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-div" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="image-div">
+                                <img src="all-images/images/student1.avif" alt="TOELF">
+                            </div>
+
+                            <div class="icon-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/nclex-exam-nigeria.jpg" alt="NCLEX Exam"/>
+                            </div>
+                            
+                            <div class="text-div">
+                                <div class="inner-div">
+                                    <div class="top-text">
+                                        <h3>NCLEX</h3>
+                                        <p>National Concil Licensure Examination</p>
+                                    </div>
+
+                                    <div class="bottom-div">
+                                        <div class="left-div">
+                                            <span class="price">₦190,000</span>
+                                            <span><i class="bi-person"></i> 830+</span>
+                                        </div>
+
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-btn-div">
+                        <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button>
+                    </div>
                 </div>
-                <div class="title-div">
-                    <h2>Take a look at our available <span>#exams</span></h2>
-                    <button class="reg-btn">Register now <i class="bi-chevron-right"></i></button>
-                </div>
-                <div class="int-exam-back-div">
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>GRE</h3>
-                            <p>Graduate Record Examination.</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>IELTS</h3>
-                            <p>International English Language Testing System.</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>GMAT</h3>
-                            <p>Graduate Management Admission Test.</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>PTE</h3>
-                            <p>Pearson Test of English.</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>SAT</h3>
-                            <p>Scholastic Assessment Test</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>MCAT</h3>
-                            <p>Medical College Admission Test</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="int-exam-div">
-                        <div class="image-div">
-                            <img src="all-images/images/student1.avif" alt="TOELF">
-                        </div>
-                        <div class="text-div">
-                            <h3>NCLEX</h3>
-                            <p>National Concil Licensure Examination</p>
-                            <span>₦ 190,000</span>
-                            <div class="count-button-div">
-                                <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="buttons-div">
-                    <button class="reg-btn">View all exam <i class="bi-chevron-right"></i></button>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="about-back-div">
+                    <div class="image-div" data-aos="fade-up" data-aos-duration="1400">
+                        <img src="<?php echo $websiteUrl?>/all-images/body-pix/about.jpg" alt="About International Exams"/>
+                    </div>
+
+                    <div class="content-div" data-aos="flip-right" data-aos-duration="1400">
+                        <div class="icon-div">
+                            <img src="<?php echo $websiteUrl?>/all-images/images/zigzag-line.svg" alt="About Us icon"/>
+                        </div>
+
+                        <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
+                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of students for admissions into foreign universities.</p>
+                        
+                        <div class="check-div">
+                            <div class="check">
+                                <i class="bi-check-lg"></i>
+                                <h5>Lowest Test Registration Fee</h5>
+                            </div>
+
+                            <div class="check">
+                                <i class="bi-check-lg"></i>
+                                <h5>Physical and Online Lectures</h5>
+                            </div>
+
+                            <div class="check">
+                                <i class="bi-check-lg"></i>
+                                <h5>FREE E-books</h5>
+                            </div>
+
+                            <div class="check">
+                                <i class="bi-check-lg"></i>
+                                <h5>Free Study Packs</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="inner-body-div-in">
+                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
+                        <div class="left-div">
+                            <div class="top-title">
+                                <h2>LATEST INSIGHTS</h2>
+                            </div>
+                            <h3>Our Latest News And <span>#Articles</span></h3>
+                        </div>
+
+                        <div class="btn-div">
+                            <a href="#">
+                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-back-div">
+                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
+                            <div class="blog-inner-div">
+                                <div class="image-div">
+                                    <img src="all-images/blogs/blog1.png" alt="How International Exams Open Doors to Global Education Opportunities">
+                                </div>
+
+                                <div class="text-div">                            
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025  <span>|</span> <i class="bi-eye-fill"></i> 250 VIEWS</div>
+                                    <h3>How International Exams Open Doors to Global Education Opportunities</h3>
+                                    
+                                    <a href="<?php echo $website_url?>" title="Read More">
+                                    <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>                                    
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
+                            <div class="blog-inner-div">
+                                <div class="image-div">
+                                    <img src="all-images/blogs/blog2.png" alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
+                                </div>
+
+                                <div class="text-div">                    
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025  <span>|</span> <i class="bi-eye-fill"></i> 50 VIEWS</div>        
+                                    <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>  
+
+                                    <a href="<?php echo $website_url?>" title="Read More">
+                                    <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
+                            <div class="blog-inner-div">
+                                <div class="image-div">
+                                    <img src="all-images/blogs/blog3.png" alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
+                                </div>
+
+                                <div class="text-div">  
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025  <span>|</span> <i class="bi-eye-fill"></i> 200 VIEWS</div>                           
+                                    <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
+
+                                    <a href="<?php echo $website_url?>" title="Read More">
+                                    <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <?php include 'bottom-scripts.php' ?>
+    </section>
 </body>
 
 </html>

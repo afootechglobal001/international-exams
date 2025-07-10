@@ -473,7 +473,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 .body-div .body-div-in .inner-body-div-in .title-div .btn-div .btn{
 	border:none;
 	height:45px;
-	min-width: 200px;
+	min-width: 170px;
 	border-radius: 50px;
 	padding: 0px 20px;
 	color:var(--white-color);
@@ -761,7 +761,7 @@ color: var(--sub-body-color);
 .bottom-btn-div .btn{
 	border:none;
 	height:40px;
-	min-width: 200px;
+	min-width: 170px;
 	border-radius: 50px;
 	padding: 0px 20px;
 	color:var(--primary-color);

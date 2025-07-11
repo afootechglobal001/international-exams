@@ -191,3 +191,31 @@ function _collapse(div_id) {
     $currentIcon.html(isActive ? '&nbsp;<i class="bi-dash"></i>&nbsp;' : '&nbsp;<i class="bi-plus"></i>&nbsp;');
     $currentAnswer.slideToggle('slow');
 }
+
+function _progressBar(){
+	document.addEventListener('DOMContentLoaded', () => {
+		const progressBars = document.querySelectorAll('.progress-per');
+	
+		const animateProgressBar = (entry) => {
+			const progressBar = entry.target;
+			if (!progressBar.classList.contains('animated')) {
+				const value = progressBar.dataset.text;
+				progressBar.style.width = `${value}%`; // Animate width
+				progressBar.classList.add('animated');
+			}
+		};
+	
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					animateProgressBar(entry);
+				}
+			});
+		}, { threshold: 0.5 }); // Adjust threshold as needed
+	
+		progressBars.forEach(bar => {
+			observer.observe(bar);
+		});
+	});
+	
+}

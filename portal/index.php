@@ -1,25 +1,75 @@
-<?php include 'config/constants.php'; ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php include '../config/constants.php'; ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | <?php echo $clientName ?></title>
-    <meta name="keywords" content="<?php echo $appName ?> School portal, <?php echo $appName ?> Student login, <?php echo $appName ?> Parent portal, <?php echo $appName ?> Online school system, <?php echo $appName ?> Staff dashboard, <?php echo $appName ?> School management software, <?php echo $appName ?> Student records access, <?php echo $appName ?> Fee payment system, Academic results portal, <?php echo $appName ?> Secure school login" />
-    <meta name="description" content="Access your school's portal for student records, fees, results, and communication. Secure login for administrators, staff, parents, and students. Stay connected easily! - <?php echo $appName ?>" />
-
-    <meta property="og:title" content="<?php echo $appName ?> | <?php echo $clientName ?>" />
-    <meta property="og:image" content="<?php echo $websiteUrl ?>/images/seo/schoolbolt.jpg" />
-    <meta property="og:description" content="Access your school's portal for student records, fees, results, and communication. Secure login for administrators, staff, parents, and students. Stay connected easily!." />
-
-    <meta name="twitter:title" content="<?php echo $appName ?> | <?php echo $clientName ?>" />
-    <meta name="twitter:card" content="<?php echo $appName ?>" />
-    <meta name="twitter:image" content="<?php echo $websiteUrl ?>/images/seo/schoolbolt.jpg" />
-    <meta name="twitter:description" content="Access your school's portal for student records, fees, results, and communication. Secure login for administrators, staff, parents, and students. Stay connected easily!" />
+    <title><?php echo $appName ?> | Admin Portal</title>
 </head>
 
 <body>
-    
+    <section class="main-login-container">
+
+        <div class="left-graphic-div" title="International Exams">
+            <!-- <img src="../images/bg.jpg" alt="International Exams background image" title="International Exams"> -->
+        </div>
+
+        <div class="right-login-div">
+            <div class="form-box">
+
+                <h1 title="Welcome Message">👋 Hi Welcome Back!</h1>
+
+                <div class="alert alert-success form-alert">
+                    Kindly, provide your <span title=" Enter Email Address To login">Email Address</span> to Login
+                </div>
+
+                <div class="text_field_container" id="emailAddress_container">
+                    <script>
+                        textField({
+                            id: 'emailAddress',
+                            title: 'Enter Your Email Address',
+                            type: 'email'
+                        });
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="password_container">
+                    <script>
+                        textField({
+                            id: 'password',
+                            title: 'Enter Your Password',
+                            type: 'password'
+                        });
+                    </script>
+                </div>
+
+                <div class="form-button-div">
+                    <button class="btn" title="Click to log In">
+                        Log In <i class="bi bi-check"></i>
+                    </button>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#" title="Recover your password">Forgot Password?</a>
+                </div>
+
+                <p class="signup-message">
+                    Don’t have an account?
+                    <a href="#" title="Create an account">Sign-Up</a>
+                </p>
+
+                <p class="policy-message">
+                    Google reCAPTCHA used.
+                    <a href="#" title="View Privacy Policy">Privacy Policy</a> and
+                    <a href="#" title="View Terms of Service">Terms of Service</a> apply.
+                </p>
+
+            </div>
+        </div>
+
+    </section>
 </body>
+
 
 </html>

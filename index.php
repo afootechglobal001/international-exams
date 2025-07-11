@@ -168,7 +168,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
                 <div class="title-div">
                     <h2>Take a look at our available <span>#exams</span></h2>
-                    <button class="reg-btn">Register now <i class="bi-chevron-right"></i></button>
+                    <button class="reg-btn" title="Registration">Register now <i class="bi-chevron-right"></i></button>
                 </div>
                 <div class="int-exam-back-div">
                     <div class="int-exam-div">
@@ -181,7 +181,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -241,7 +241,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -256,7 +256,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -271,7 +271,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -286,7 +286,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <span>₦ 190,000</span>
                             <div class="count-button-div">
                                 <span><i class="bi-person"></i> 500+</span>
-                                <button class="apply-btn">Apply now <i class="bi-arrow-right"></i></button>
+                                <button class="apply-btn" title="apply now">Apply now <i class="bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -294,9 +294,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
 
                 <div class="buttons-div">
-                    <button class="reg-btn">View all exam <i class="bi-chevron-right"></i></button>
+                    <button class="reg-btn" title="view all exams">View all exam <i class="bi-chevron-right"></i></button>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+
+    <section class="body-div">
+        <div class="body-div-in below-height">
+            <div class="about-us-div">
+                hdhdhd
             </div>
         </div>
     </section>

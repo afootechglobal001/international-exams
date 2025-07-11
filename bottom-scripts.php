@@ -1,4 +1,4 @@
-<div class="live-help-div" title="Chat With Us Now" onclick="_open_live_chat()">
+<div class="live-help-div" title="Chat With Us Now" onclick="_openLiveChat()">
   <div class="pix-div">
     <img src="<?php echo $websiteUrl ?>/all-images/images/cutomercare.jpg" alt="Customer Care" />
   </div>
@@ -30,3 +30,4 @@
     <li style="background:#25D366;"><i class="bi-whatsapp"></i></li>
   </a>
 </div>
+

@@ -1,3 +1,4 @@
+<?php include 'alert.php' ?>
 <header class="animated fadeInDown">
     <div class="top-header">
         <div class="top-header-inner">
@@ -87,7 +88,8 @@
             </div>
 
             <div class="button-div">
-                <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button>
+                <a href="<?php echo $websiteUrl ?>/portal" title="Get Started">
+                <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button></a>
             </div>
         </div>
     </div>

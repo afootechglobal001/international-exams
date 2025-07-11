@@ -100,45 +100,45 @@ function _call_carousel(cnt) {
 }
 
 $(window).scroll(function () {
-	const scrollHeight = $(window).scrollTop();
-	const windowWidth = $(window).width();
-  
-	if (scrollHeight >= 100) {
-		$("#back2Top").fadeIn(1000);
-	} else {
-		$("#back2Top").fadeOut(1000);
-	}
-  
-	if (scrollHeight >= 400) {
-		$("header").addClass("scrolled");
-	} else {
-		$("header").removeClass("scrolled");
-	}
+  const scrollHeight = $(window).scrollTop();
+  const windowWidth = $(window).width();
 
-	if (windowWidth <= 870) {
-		$(".sticky-div").css({
-			"position": "relative",
-			"top": "0",
-			"height": "auto", 
-			"overflow": "visible" 
-		});
-	} else {
-		if (scrollHeight >= 700) {
-			$(".sticky-div").css({
-				"position": "sticky",
-				"top": "140px",
-				"min-height": "280px",
-				"overflow": "auto" 
-			});
-		} else {
-			$(".sticky-div").css({
-				"position": "relative",
-				"top": "0",
-				"height": "auto",
-				"overflow": "auto" 
-			});
-		}
-	}
+  if (scrollHeight >= 100) {
+    $("#back2Top").fadeIn(1000);
+  } else {
+    $("#back2Top").fadeOut(1000);
+  }
+
+  if (scrollHeight >= 400) {
+    $("header").addClass("scrolled");
+  } else {
+    $("header").removeClass("scrolled");
+  }
+
+  if (windowWidth <= 870) {
+    $(".sticky-div").css({
+      position: "relative",
+      top: "0",
+      height: "auto",
+      overflow: "visible",
+    });
+  } else {
+    if (scrollHeight >= 700) {
+      $(".sticky-div").css({
+        position: "sticky",
+        top: "140px",
+        "min-height": "280px",
+        overflow: "auto",
+      });
+    } else {
+      $(".sticky-div").css({
+        position: "relative",
+        top: "0",
+        height: "auto",
+        overflow: "auto",
+      });
+    }
+  }
 });
   
 function _back_to_top(){
@@ -153,7 +153,7 @@ function _open_menu(){
 	$('.index-menu-back-div').animate({'margin-left':'0'},400);
 }
 
-function _open_live_chat(){
+function _openLiveChat(){
 	$('.sidenavdiv, .sidenavdiv-in').animate({'margin-left':'0'},200);
 	$('.index-menu-back-div').animate({'margin-left':'-100%'},400);
 	$('.live-chat-back-div').animate({'margin-left':'0'},400);
@@ -161,7 +161,7 @@ function _open_live_chat(){
 
 function _close_side_nav(){
 	$('.sidenavdiv, .sidenavdiv-in').animate({'margin-left':'-100%'},200);
-	$('.index-menu-back-div,.live-chat-back-div').animate({'margin-left':'-100%'},400);
+	$('.index-menu-back-div, .live-chat-back-div').animate({'margin-left':'-100%'},400);
 }
 
 function _open_li(ids){
@@ -190,4 +190,32 @@ function _collapse(div_id) {
     const isActive = $currentFaq.toggleClass('active-faq').hasClass('active-faq');
     $currentIcon.html(isActive ? '&nbsp;<i class="bi-dash"></i>&nbsp;' : '&nbsp;<i class="bi-plus"></i>&nbsp;');
     $currentAnswer.slideToggle('slow');
+}
+
+function _progressBar(){
+	document.addEventListener('DOMContentLoaded', () => {
+		const progressBars = document.querySelectorAll('.progress-per');
+	
+		const animateProgressBar = (entry) => {
+			const progressBar = entry.target;
+			if (!progressBar.classList.contains('animated')) {
+				const value = progressBar.dataset.text;
+				progressBar.style.width = `${value}%`; // Animate width
+				progressBar.classList.add('animated');
+			}
+		};
+	
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					animateProgressBar(entry);
+				}
+			});
+		}, { threshold: 0.5 }); // Adjust threshold as needed
+	
+		progressBars.forEach(bar => {
+			observer.observe(bar);
+		});
+	});
+	
 }

@@ -1,17 +1,29 @@
-<?php include '../../config/constants.php'; ?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php include '../../config/constants.php';?>
+<?php include 'config/welcome_profile.php'?>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-    <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | Admin Portal</title>
+<?php include 'meta.php'?>
+<title>Administrative Portal | <?php echo $appName;?></title>
 </head>
-
 <body>
 
-    afoo
+    <?php include 'header.php'?>
+    <?php include 'side-bar.php'?>
 
+    <div class="content-div">
+        <div class="inner-content">
+            <?php $callclass->_UserWelcomeProfile($websiteUrl);?>
+            
+            <div id="page-content">
+               <script>
+                    _getActivePage({page:'dashboard', divid:'dashboard'});
+                </script>		
+            </div> 
+        </div>
+    </div>
+    <?php include 'bottom-scripts.php'?>
 </body>
-
 </html>
+
+

@@ -191,7 +191,7 @@ header .header-div-in .header-nav-div .right-nav .right-icon-div .profile-div .i
 	overflow:hidden;
     font-size: 15px;
 	font-family: body-font;
-	color: var(--sub-body-color);
+	color: var(--sub-body-color2);
 }
 
 header .header-div-in .header-nav-div .right-nav .right-icon-div .profile-div .info-div .role{
@@ -371,7 +371,7 @@ header .header-div-in .header-nav-div .right-nav .toggle-profile-div .toggle-div
 	min-height: 60px;
     font-size: 14px;
     padding: 5px 0px;
-	color: var(--sub-body-color);
+	color: var(--sub-body-color2);
 	 border-left:var(--white-color) 3px solid;
     cursor: pointer;
     display: flex;

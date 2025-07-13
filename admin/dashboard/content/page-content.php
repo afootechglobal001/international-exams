@@ -1,4 +1,9 @@
 <?php if ($page == 'dashboard') { ?>
+    <div class="dash-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title"><span id="page-title"><i class="bi-speedometer2"></i> Admin Dashboard Overview</span></div>
+        <h2>👋 Hi, <span id="login_fullname">Hon. Paul Emmanuel</span></h2>
+    </div>
+
     <div class="dashboard-wrapper" data-aos="fade-in" data-aos-duration="1500">
         <div class="statistics-back-div" data-aos="fade-in" data-aos-duration="1500">
             <div class="statistics-div" onClick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
@@ -11,11 +16,11 @@
                 </div>
             </div>
 
-            <div class="statistics-div" onClick="" id="event" title="Students">
+            <div class="statistics-div" onClick="_getActivePage({page:'viewStudents', divid:'students'});" id="students" title="Students">
                 <div class="inner-div">
                     <div class="number-div">
                         Students
-                        <span id="total_active_event_count">0</span>
+                        <span id="total_active_event_count">30</span>
                     </div>
                     <div class="icon"><i class="bi-people"></i></div>
                 </div>
@@ -25,7 +30,7 @@
                 <div class="inner-div">
                     <div class="number-div">
                         Gallery
-                        <span id="total_active_gallery_count">0</span>
+                        <span id="total_active_gallery_count">5</span>
                     </div>
                     <div class="icon"><i class="bi-images"></i></div>
                 </div>
@@ -35,7 +40,7 @@
                 <div class="inner-div">
                     <div class="number-div">
                         Blog
-                        <span id="total_active_blog_count">0</span>
+                        <span id="total_active_blog_count">10</span>
                     </div>
                     <div class="icon"><i class="bi-file-post"></i></div>
                 </div>
@@ -45,7 +50,7 @@
                 <div class="inner-div">
                     <div class="number-div">
                         FAQ
-                        <span id="total_active_faq_count">0</span>
+                        <span id="total_active_faq_count">3</span>
                     </div>
                     <div class="icon"><i class="bi-patch-question"></i></div>
                 </div>
@@ -55,7 +60,7 @@
                 <div class="inner-div">
                     <div class="number-div">
                         Testimony
-                        <span id="total_active_testimony_count">0</span>
+                        <span id="total_active_testimony_count">10</span>
                     </div>
                     <div class="icon"><i class="bi-chat-quote-fill"></i></div>
                 </div>
@@ -535,30 +540,35 @@
 <?php } ?>
 
 <?php if ($page == 'viewStaff') { ?>
-    <div class="top-content-div" data-aos="fade-in" data-aos-duration="1000">
-        <div class="search-div">
-            <!--------------------------------network search select------------------------->
-            <select id="status_id" class="text_field select" onchange="_fetchAllStaff();">
-                <option value=""> SELECT STATUS</option>
-                <script>
-                    _getSelectStataus('status_id', '1,2');
-                </script>
-            </select>
-            <!--------------------------------all search select------------------------->
-            <input id="search_keywords" onkeyup="_fetchAllStaff();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-people"></i> <strong>Administrators</strong></div>
+            <div class="bottom-title">
+                Active: <span id="active-staff">10</span> |
+                Suspended: <span>5</span>
+            </div>
         </div>
 
-        <div class="alert alert-success top-alert-div animated fadeIn">
-            <span><i class="bi-people-fill"></i> ADMINISTRATOR'S LIST</span>
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to serach staff..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search staff...</div>
+                </div>
+            </div>
 
-            <div class="btn-container">
-                <button class="btn" title="CREATE NEW STAFF" onclick=""><i class="bi-plus-square"></i> CREATE NEW STAFF</button>
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW STAFF"
+                    onclick="_getForm({page: 'staffReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW STAFF
+                </button>
             </div>
         </div>
     </div>
 
 
-    <div class="fetch-div">
+    <div class="pages-back-div">
         <div class="table-div animated fadeIn">
             <table class="table" cellspacing="0" style="width:100%" id="pageContent">
                 <thead>
@@ -719,209 +729,180 @@
     </div>
 <?php } ?>
 
-
-<?php if ($page == 'event_category') {
-    $page_category_id = $page;
-?>
-    <div class="top-content-div" data-aos="fade-in" data-aos-duration="1000">
-        <div class="search-div">
-            <!--------------------------------network search select------------------------->
-            <select id="status_id" class="text_field select" onchange="_fetchAllEvent('<?php echo $page_category_id; ?>');">
-                <option value=""> SELECT STATUS</option>
-                <script>
-                    _getSelectStataus('status_id', '1,2');
-                </script>
-            </select>
-            <!--------------------------------all search select------------------------->
-            <input id="search_keywords" onkeyup="_fetchAllEvent('<?php echo $page_category_id; ?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
-        </div>
-        <div class="alert alert-success page-alert"> <span><i class="bi-people-fill"></i> EVENT LIST</span> <button class="btn" onClick="_get_form('event_reg')"><i class="bi-plus-square"></i> CREATE A NEW EVENT</button></div>
-    </div>
-
-    <div class="fetch-div animated fadeIn" id="fetchAllEvent">
-        <script>
-            _fetchAllEvent('<?php echo $page_category_id; ?>');
-        </script>
-
-        <!-- <div class="grid-div">
-            <div class="btn-div">
-                <button class="btn active-btn" onclick="_get_form_with_id('update_sermon')">EDIT</button>
-                <button class="btn" onclick="_edit_page('<?php //echo $page_category_id;
-                                                            ?>','')">EDIT PAGE DETAILS</button>
+<?php if ($page == 'viewStudents') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-people"></i> <strong>Students</strong></div>
+            <div class="bottom-title">
+                Active: <span id="active-staff">10</span> |
+                Suspended: <span>5</span>
             </div>
+        </div>
 
-            <div class="status-div">ACTIVATED</div>
-            <div class="img-div"><img src="<?php //echo $website_url
-                                            ?>/all-images/body-pix/event_1.webp" alt="Sermon"></div>
-            <div class="text-div">
-                <div class="top-text"><span><i class="bi-calendar-check"></i> </span><em>08:00 AM - 11:00 AM</em> </div>  
-                <h2>The Christian Community in America</h2>
-                <div class="text-in">
-                    <div class="text">UPDATED ON: <span>27 Jul 2024</span> | <span>486</span> VIEWS </div>
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to serach staff..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search students...</div>
                 </div>
             </div>
-        </div> -->
-    </div>
-<?php } ?>
-
-<?php if ($page == 'gallery_category') {
-    $page_category_id = $page;
-?>
-    <div class="top-content-div" data-aos="fade-in" data-aos-duration="1000">
-        <div class="search-div">
-            <!--------------------------------network search select------------------------->
-            <select id="status_id" class="text_field select" onchange="_fetchAllGallery('<?php echo $page_category_id; ?>');">
-                <option value=""> SELECT STATUS</option>
-                <script>
-                    _getSelectStataus('status_id', '1,2');
-                </script>
-            </select>
-            <!--------------------------------all search select------------------------->
-            <input id="search_keywords" onkeyup="_fetchAllGallery('<?php echo $page_category_id; ?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
         </div>
-        <div class="alert alert-success page-alert"> <span><i class="bi-people-fill"></i> GALLERY LIST</span> <button class="btn" onClick="_get_form('gallery_reg')"><i class="bi-plus-square"></i> CREATE A NEW GALLERY</button></div>
     </div>
 
-    <div class="fetch-div animated fadeIn" id="fetchAllGallery">
-        <script>
-            _fetchAllGallery('<?php echo $page_category_id; ?>');
-        </script>
-        <!-- <div class="grid-div">
-            <div class="btn-div">
-                <button class="btn active-btn" onclick="_get_form_with_id('')">EDIT</button>
-                <button class="btn" onclick="_edit_page('<?php //echo $page_category_id;
-                                                            ?>','')">EDIT PAGE DETAILS</button>
-            </div>
 
-            <div class="status-div">ACTIVATED</div>
-            <div class="img-div"><img src="<?php //echo $website_url
-                                            ?>/all-images/body-pix/gallery_12.jpg" alt="Gallery"></div>
-            <div class="text-div">
-                <div class="top-text"><span>Birthday</span></div>
-                <h2>Celebrating the 70th Birthday of Dr. Kayode...</h2>
-                <div class="text-in">
-                    <div class="text">UPDATED ON: <span>27 Jul 2024</span> | <span>486</span> VIEWS </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
-<?php } ?>
+    <div class="pages-back-div">
+        <div class="table-div animated fadeIn">
+            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                <thead>
+                    <tr class="tb-col">
+                        <th>sn</th>
+                        <th>User Name</th>
+                        <th>Contact</th>
+                        <th>Last Login</th>
+                        <th>Status</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
 
-<?php if ($page == 'blog_category') {
-    $page_category_id = $page;
-?>
-    <div class="top-content-div" data-aos="fade-in" data-aos-duration="1000">
-        <div class="search-div">
-            <!--------------------------------network search select------------------------->
-            <select id="status_id" class="text_field select" onchange="_fetchAllBlog('<?php echo $page_category_id; ?>');">
-                <option value=""> SELECT STATUS</option>
-                <script>
-                    _getSelectStataus('status_id', '1,2');
-                </script>
-            </select>
-            <!--------------------------------all search select------------------------->
-            <input id="search_keywords" onkeyup="_fetchAllBlog('<?php echo $page_category_id; ?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+                <tbody>
+                    <tr class="tb-row">
+                        <td>1</td>
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                            <div class="text-back-div">
+                                <div class="image-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                </div>
+
+                                <div class="text-div">
+                                    <div class="first-class">Paul Emmanuel</div>
+                                    <div class="second-class">STUDENT001239485959</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-div">
+                                <div>seunemmanuel107@gmail.com</div>
+                                <div>07050903886</div>
+                            </div>
+                        </td>
+                        <td>00-00-00 00:00:00</td>
+                        <td>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+                        </td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                    </tr>
+
+                    <tr class="tb-row">
+                        <td>2</td>
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                            <div class="text-back-div">
+                                <div class="image-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                </div>
+
+                                <div class="text-div">
+                                    <div class="first-class">Paul Emmanuel</div>
+                                    <div class="second-class">STUDENT001239485959</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-div">
+                                <div>seunemmanuel107@gmail.com</div>
+                                <div>07050903886</div>
+                            </div>
+                        </td>
+                        <td>00-00-00 00:00:00</td>
+                        <td>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+                        </td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                    </tr>
+
+                    <tr class="tb-row">
+                        <td>3</td>
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                            <div class="text-back-div">
+                                <div class="image-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                </div>
+
+                                <div class="text-div">
+                                    <div class="first-class">Paul Emmanuel</div>
+                                    <div class="second-class">STUDENT001239485959</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-div">
+                                <div>seunemmanuel107@gmail.com</div>
+                                <div>07050903886</div>
+                            </div>
+                        </td>
+                        <td>00-00-00 00:00:00</td>
+                        <td>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+                        </td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                    </tr>
+
+                    <tr class="tb-row">
+                        <td>4</td>
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                            <div class="text-back-div">
+                                <div class="image-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                </div>
+
+                                <div class="text-div">
+                                    <div class="first-class">Paul Emmanuel</div>
+                                    <div class="second-class">STUDENT001239485959</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-div">
+                                <div>seunemmanuel107@gmail.com</div>
+                                <div>07050903886</div>
+                            </div>
+                        </td>
+                        <td>00-00-00 00:00:00</td>
+                        <td>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+                        </td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                    </tr>
+
+                    <tr class="tb-row">
+                        <td>5</td>
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                            <div class="text-back-div">
+                                <div class="image-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                </div>
+
+                                <div class="text-div">
+                                    <div class="first-class">Paul Emmanuel</div>
+                                    <div class="second-class">STUDENT001239485959</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-div">
+                                <div>seunemmanuel107@gmail.com</div>
+                                <div>07050903886</div>
+                            </div>
+                        </td>
+                        <td>00-00-00 00:00:00</td>
+                        <td>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+                        </td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="alert alert-success page-alert"> <span><i class="bi-people-fill"></i> BLOG LIST</span> <button class="btn" onClick="_get_form('blog_reg')"><i class="bi-plus-square"></i> CREATE A NEW BLOG</button></div>
-    </div>
-
-    <div class="fetch-div" id="fetchAllBlog">
-        <script>
-            _fetchAllBlog('<?php echo $page_category_id; ?>');
-        </script>
-
-        <!-- <div class="grid-div">
-            <div class="btn-div">
-                <button class="btn active-btn" onclick="_get_form_with_id('')">EDIT</button>
-                <button class="btn" onclick="_edit_page('<?php //echo $page_category_id;
-                                                            ?>','')">EDIT PAGE DETAILS</button>
-            </div>
-
-            <div class="status-div">ACTIVATED</div>
-            <div class="img-div"><img src="<?php //echo $website_url
-                                            ?>/all-images/body-pix/blog2.webp" alt="Blog"></div>
-            <div class="text-div">
-                <div class="top-text"><span>Announcement</span></div>
-                <h2>Strengthening Your Faith Through Spiritual Disciplines...</h2>
-                <div class="text-in">
-                    <div class="text">UPDATED ON: <span>27 Jul 2024</span> | <span>486</span> VIEWS </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
-<?php } ?>
-
-<?php if ($page == 'faq_category') {
-    $page_category_id = $page;
-?>
-    <div class="top-content-div" data-aos="fade-in" data-aos-duration="1000">
-        <div class="search-div">
-            <!--------------------------------network search select------------------------->
-            <select id="status_id" class="text_field select" onchange="_fetchAllFaq('<?php echo $page_category_id; ?>');">
-                <option value=""> SELECT STATUS</option>
-                <script>
-                    _getSelectStataus('status_id', '1,2');
-                </script>
-            </select>
-            <!--------------------------------all search select------------------------->
-            <input id="search_keywords" onkeyup="_fetchAllFaq('<?php echo $page_category_id; ?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
-        </div>
-        <div class="alert alert-success page-alert"> <span><i class="bi-people-fill"></i> FAQ LIST</span> <button class="btn" onClick="_get_form('faq_reg')"><i class="bi-plus-square"></i> CREATE A NEW FAQ</button></div>
-    </div>
-
-    <div class="fetch-div" id="fetchAllFaq">
-        <script>
-            _fetchAllFaq('<?php echo $page_category_id; ?>');
-        </script>
-
-        <!-- <div class="faq-back-div">
-            <div class="title-div">
-                <div class="num">2</div>
-                <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>Where is your church located?</span></button>
-            </div>
-            <div class="answer-div">We are located at San Fransisco, USA. If you need directions, you can find a map on our Contact Page!</div>
-        </div> -->
-    </div>
-<?php } ?>
-
-<?php if ($page == 'testimony_category') { ?>
-    <div class="top-content-div" data-aos="fade-in" data-aos-duration="1000">
-        <div class="search-div">
-            <!--------------------------------network search select------------------------->
-            <select id="status_id" class="text_field select" onchange="_fetchAllTestimony();">
-                <option value=""> SELECT STATUS</option>
-                <script>
-                    _getSelectStataus('status_id', '1,2,3');
-                </script>
-            </select>
-            <!--------------------------------all search select------------------------->
-            <input id="search_keywords" onkeyup="_fetchAllTestimony();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
-        </div>
-        <div class="alert alert-success page-alert"> <span><i class="bi-people-fill"></i> TESTIMONY LIST</span> </div>
-    </div>
-
-    <div class="fetch-div" id="fetchAllTestimony">
-        <script>
-            _fetchAllTestimony();
-        </script>
-
-        <!-- <div class="list">
-            <div class="student-profile">
-                <div class="details">
-                    <div class="text">
-                        <h3>Paul Emmanuel</h3>
-                        <div class="info">
-                            <div>
-                                <p>Email: <span>seunemmanuel107@gmail.com</span></p>
-                                <p>Phone: <span>07050903886</span></p>
-                            </div>                               
-                            <button class="status-btn ACTIVE">ACTIVE</button>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn" onClick="_get_form_with_id('update_testimony')">VIEW DETAILS</button>
-            </div> 
-        </div> -->
     </div>
 <?php } ?>
 

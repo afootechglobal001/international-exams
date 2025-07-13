@@ -1755,15 +1755,14 @@ color: var(--sub-body-color);
 
 .footer-div .top-footer-contact .top-inner-div .contact-back-div .contact-div{
 	width: 31%;
-	max-width: 320px;
+	max-width: 350px;
 	min-height: 180px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
-	padding: 0px 15px;
+	padding: 0px 13px;
 	border-right: rgba(255, 255, 255, 0.2) 1px solid;
-
 }
 
 .footer-div .top-footer-contact .top-inner-div .contact-back-div .no-right-border{

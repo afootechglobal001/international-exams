@@ -16,7 +16,7 @@ switch ($action){
 		$page=$_POST['page'];
 		$id=$_POST['id'];
 		$modalLayer=$_POST['modalLayer'];
-		require_once('dashboard-content.php');
+		require_once('../content/form.php');
 	break;	
 }
 ?>

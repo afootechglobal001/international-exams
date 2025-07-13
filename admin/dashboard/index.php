@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php include '../../config/constants.php';?>
-<?php include 'config/welcome_profile.php'?>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include 'meta.php'?>
@@ -13,12 +12,8 @@
 
     <div class="content-div">
         <div class="inner-content">
-            <?php $callclass->_UserWelcomeProfile($websiteUrl);?>
-            
             <div id="page-content">
-               <script>
-                    _getActivePage({page:'dashboard', divid:'dashboard'});
-                </script>		
+               <script>_getActivePage({page:'dashboard', divid:'dashboard'});</script>		
             </div> 
         </div>
     </div>

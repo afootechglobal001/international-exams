@@ -16,7 +16,7 @@
         `);
 
         document.write(`
-            <div class="nav-div" title="Staff" onclick="_getActivePage({page:'students', divid:'students'});" id="${navId}-students">
+            <div class="nav-div" title="Students" onclick="_getActivePage({page:'viewStudents', divid:'students'});" id="${navId}-students">
                 <div class="icon"><i class="bi-people"></i> Students</div> 
                 <div class="hidden" id="_staff"><i class="bi-people"></i> Active Students</div>
             </div>

@@ -4,7 +4,7 @@
 	$appName='EDUGRADE SERVICES'; 
 
 	//$websiteUrl='https://www.internationalexam.com'; /// For Live Server Url //
-	$websiteUrl='http://localhost/projects/international-exams'; /// For Localhost Url //
+	$websiteUrl = 'http://localhost/projects/international-exams'; /// Local Url
 	//$websitePath = $_SERVER['DOCUMENT_ROOT'];
 	$websitePath = $_SERVER['DOCUMENT_ROOT'].'/projects/international-exams'; //dirname(__FILE__);
 	$codeVersion= date('Ymdhis');

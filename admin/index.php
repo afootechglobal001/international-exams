@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="form-button-div">
-                        <button class="btn" title="Click to Login">
+                        <button class="btn" title="Click to Login" onclick="location.href='<?php echo $websiteUrl?>/admin/dashboard'">
                             <i class="bi bi-check-all"></i>LOG-IN
                         </button>
                     </div>

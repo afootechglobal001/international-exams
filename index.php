@@ -116,7 +116,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
     </div>
 
     <section class="main-section">
-        <section class="body-div">
+        <section class="body-div bg-harsh">
             <div class="body-div-in below-height">
                 <div class="unique-back-div animated fadeInUp">
                     <div class="unique-div">
@@ -606,6 +606,73 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
         <section class="body-div net-bg-br">
             <div class="body-div-in">
+                <div class="faq-back-div">              
+                    <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
+                        <img src="<?php echo $websiteUrl?>/all-images/body-pix/faq.webp" alt="<?php echo $appName?> Frequently Asked Question"/>
+                    </div>
+
+                    <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
+                        <div class="faq-title">
+                            <div><span class="top-title">FAQ</span></div>
+                            <h2>Frequently Asked <span>#Questions</span></h2>
+                        </div>    
+
+                        <div class="faq-toggle-back">
+                            <div class="faq-toggle" id="faq1">
+								<div class="title-text" onclick="_collapse('faq1')">
+									<div class="quest-text-div">
+										<div class="icon-div"><i class="bi-question"></i></div>
+										<h3>What is the TOEFL exam used for?</h3>
+									</div>
+									<div class="expand-div" id="faq1num">
+										<i class="bi-plus"></i>
+									</div>
+								</div>
+								<div class="answer-div" id="faq1answer" style="display: none;">
+									<p>The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</p>
+								</div>
+							</div>
+
+                            <div class="faq-toggle" id="faq2">
+								<div class="title-text" onclick="_collapse('faq2')">
+									<div class="quest-text-div">
+										<div class="icon-div"><i class="bi-question"></i></div>
+										<h3>How is the IELTS scored?</h3>
+									</div>
+									<div class="expand-div" id="faq2num">
+										<i class="bi-plus"></i>
+									</div>
+								</div>
+								<div class="answer-div" id="faq2answer" style="display: none;">
+									<p>The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</p>
+								</div>
+							</div>
+
+                            <div class="faq-toggle" id="faq3">
+								<div class="title-text" onclick="_collapse('faq3')">
+									<div class="quest-text-div">
+										<div class="icon-div"><i class="bi-question"></i></div>
+										<h3>What is the purpose of the PTE?</h3>
+									</div>
+									<div class="expand-div" id="faq1num">
+										<i class="bi-plus"></i>
+									</div>
+								</div>
+								<div class="answer-div" id="faq3answer" style="display: none;">
+									<p>The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</p>
+								</div>
+							</div>
+                        </div> 
+
+                        <a href="<?php echo $websiteUrl?>" title="Read More FAQ">
+                        <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>            
+                    </div>                     
+                </div>
+            </div>
+        </section>
+
+        <section class="body-div net-bg-tr">
+            <div class="body-div-in">
                 <div class="testimonial">
                     <div class="content" data-aos="fade-up" data-aos-duration="1400">
                         <div class="icon-div">
@@ -614,7 +681,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="text-div">
                             <h2>What Our Students Say <span>#About Us</span></h2>
-                            <p>Discover a diverse range of online tutor in Nigeria, connecting you to expert educators and valuable resources. Join the digital education revolution and unlock new possibilities with convenient and flexible online learning experiences right at your fingertips.</p>
+                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their success in international exams through expert guidance, timely assistance, and a seamless registration process.</p>
                         </div>
 
                         <div>
@@ -641,7 +708,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“SchoolBolt”</strong> has improved our communication and made school management effortless. Highly recommended!</p>
+                                            <p><strong>“EDUGRADE SERVICES”</strong> made my TOEFL registration process smooth and stress-free. Their team was so helpful every step of the way!</p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -652,7 +719,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                     <i class="bi-star-fill"></i>
                                                 </div>
 
-                                                <h5>Ar-Rahman Montessori School</h5>
+                                                <h5>Solomon Mercy</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -671,7 +738,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“SchoolBolt”</strong> has simplified our processes and improved communication across the board. Highly recommended!</p>
+                                            <p><strong>“Thanks to EDUGRADE”</strong>, I got all the resources I needed to prepare for my IELTS exam. Their guidance truly made a difference.</p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -682,7 +749,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                     <i class="bi-star-fill"></i>
                                                 </div>
 
-                                                <h5>Advanced Breed Group Of Schools</h5>
+                                                <h5>Jefry James</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -702,7 +769,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“SchoolBolt”</strong> has enhanced our online class experience with seamless management and communication tools. Highly recommended</p>
+                                            <p><strong>“I registered for SAT through EDUGRADE”</strong> and everything went perfectly. They answered all my questions and kept me updated at every stage.</p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -713,7 +780,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                     <i class="bi-star-fill"></i>
                                                 </div>
 
-                                                <h5>Leaders Tutor</h5>
+                                                <h5>Clement Godwin</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -732,7 +799,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p>SchoolBolt has made managing our online classes smooth and efficient. Highly recommended</p>
+                                            <p><strong>“From Nigeria to Ghana”</strong>, EDUGRADE has been a trusted name among my classmates. Their international support is fast and reliable.</p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -743,7 +810,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                     <i class="bi-star-fill"></i>
                                                 </div>
 
-                                                <h5>Always Online Classes</h5>
+                                                <h5>Smith James</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -780,7 +847,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </script>
         </section>
 
-        <section class="body-div net-bg-tr">
+        <section class="body-div">
             <div class="body-div-in">
                 <div class="inner-body-div-in">
                     <div class="title-div" data-aos="fade-in" data-aos-duration="1200">

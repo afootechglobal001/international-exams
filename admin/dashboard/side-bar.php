@@ -76,11 +76,8 @@
         <div class="link" title="Publish International Exam" onclick="">- International Exams <div class="num" id="">0</div></div>
         <div class="hidden" id="_publish_exam"><i class="bi-calendar-event"></i> International Exams</div>
 
-        <div class="link" title="Publish Event" onclick="">- Event <div class="num" id="">0</div></div>
-        <div class="hidden" id="_publish_event"><i class="bi-calendar-event"></i> Publish Event</div>
-
-        <div class="link" title="Publish Gallery" onclick="">- Gallery <div class="num" id="">0</div></div>
-        <div class="hidden" id="_publish_gallery"><i class="bi-images"></i> Publish Gallery</div>
+        <div class="link" title="Study Abroad" onclick="">- Study Abroad <div class="num" id="">0</div></div>
+        <div class="hidden" id="_publish_study_abroad"><i class="bi-calendar-event"></i> Study Abroad</div>
 
         <div class="link" title="Publish Blog" onclick="">- Blog <div class="num" id="">0</div></div>
         <div class="hidden" id="_publish_blog"><i class="bi-journal-text"></i> Publish Blog</div>
@@ -90,6 +87,9 @@
 
         <div class="link" title="Publish Testimony" onclick="">- Testimony <div class="num" id="">0</div></div>
         <div class="hidden" id="_publish_testimony"><i class="bi-chat-left-text"></i> Publish Testimony</div>
+
+        <div class="link" title="Publish Gallery" onclick="">- Gallery <div class="num" id="">0</div></div>
+        <div class="hidden" id="_publish_gallery"><i class="bi-images"></i> Publish Gallery</div>
     </div>
 
     <div class="nav-back-container" onclick="_closeNav();"></div>

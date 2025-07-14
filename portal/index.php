@@ -55,7 +55,7 @@
 
                 <p class="signup-message">
                     Don’t have an account?
-                    <a href="#" title="Create an account">Sign-Up</a>
+                    <a href="<?php echo $websiteUrl?>/portal/sign-up" title="Create an account">Sign-Up</a>
                 </p>
 
                 <p class="policy-message">

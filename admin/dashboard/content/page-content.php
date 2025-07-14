@@ -533,7 +533,7 @@
             </table>
 
             <div class="bottom-div">
-                <span title="View All Students" onclick="">View All</span>
+                <span title="View All Students" onclick="_getActivePage({page:'viewStudents', divid:'students'});">View All</span>
             </div>
         </div>
     </div>

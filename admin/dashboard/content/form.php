@@ -58,17 +58,12 @@
                 </div>
             </div>
 
-            <div class="cam-pix" onClick="takeSnapShot()" id="cam-pix">
-                <img src="<?php echo $websiteUrl ?>/images/sample.jpg" />
-            </div>
-
             <div class="text_field_container" id="titleId_container">
                 <script>
                 selectField({
                     id: 'titleId',
                     title: 'Select Title'
                 });
-                _getSelectTitle('titleId');
                 </script>
             </div>
 
@@ -126,7 +121,6 @@
                     id: 'genderId',
                     title: 'Select Gender'
                 });
-                _getSelectGender('genderId');
                 </script>
             </div>
 
@@ -146,7 +140,6 @@
                     id: 'stateId',
                     title: 'Select Branch State',
                 });
-                _getSelectGeneralState('stateId');
                 </script>
             </div>
 
@@ -178,7 +171,6 @@
                             id: 'branchId',
                             title: 'Select Branch'
                         });
-                        _getSelectBranch('branchId');
                         </script>
                     </div>
 
@@ -188,7 +180,6 @@
                             id: 'roleId',
                             title: 'Select Role'
                         });
-                        _getSelectRole('roleId');
                         </script>
                     </div>
 
@@ -198,14 +189,13 @@
                             id: 'statusId',
                             title: 'Select Status'
                         });
-                        _getSelectStatusId('statusId', '1,2');
                         </script>
                     </div>
                 </div>
             </div>
 
             <div>
-                <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createStaff();"> <i class="bi-check"></i>
+                <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>
                     SUBMIT </button>
             </div>
         </div>

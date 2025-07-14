@@ -183,7 +183,7 @@
 
                 <p class="login-message">
                     Have you already have an account? 
-                    <a href="#" title="Click to login">Log-In</a>
+                    <a href="<?php echo $websiteUrl?>/portal/" title="Click to login">Log-In</a>
                 </p>
 
             </div>

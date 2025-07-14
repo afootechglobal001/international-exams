@@ -72,13 +72,13 @@
                             <li>International Exam <i class="bi-plus"></i></li>
                         </a>
                         <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
-                            <li>Other Exams <i class="bi-plus"></i></li>
-                        </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Payment plans</li>
                         </a>
                         <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Blog</li>
+                        </a>
+                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                            <li>Gallery</li>
                         </a>
                         <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Contact us</li>

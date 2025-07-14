@@ -1,4 +1,5 @@
 <?php include '../config/constants.php'; ?>
+<?php include "config/function.php"; ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -11,9 +12,7 @@
 <body>
     <section class="main-login-container">
 
-        <div class="left-graphic-div" title="International Exams">
-            <!-- <img src="../images/bg.jpg" alt="International Exams background image" title="International Exams"> -->
-        </div>
+        <?php $callclass->_pagesImage(); ?>
 
         <div class="right-login-div">
             <div class="form-box">

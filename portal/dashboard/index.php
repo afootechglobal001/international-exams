@@ -9,8 +9,95 @@
 </head>
 
 <body>
+    <section class="main-container">
 
-    afoo
+        <div class="sidebar-div">
+            <div class="sidebar-div-in">
+                <div class="logo-div">
+                    <img src="images/logo.png" alt="international exam Logo">
+                </div>
+                <div class="menu">
+                    <a href="#" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    <a href="#"><i class="bi bi-journal-text"></i> Exam</a>
+                    <a href="#"><i class="bi bi-list-check"></i> Transactions History</a>
+                    <a href="#"><i class="bi bi-list-check"></i> Subscription History</a>
+                </div>
+
+            </div>
+
+            <div class="bottom-icons">
+                <a href="#"><i class="bi bi-gear"></i> Settings</a>
+                <a href="#"><i class="bi bi-power"></i> Log-Out</a>
+            </div>
+        </div>
+
+        <div class="main-content-div">
+            <header class="top-header-div">
+                <div class="header-tabs-div">
+                    <div class="header-tabs-div-in">
+                        <h1>USER PORTAL</h1>
+                        <a href="#" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a href="#"><i class="bi bi-person-square"></i> My Profile</a>
+                    </div>
+
+                    <div class="header-right-icon-div">
+                        <i class="bi bi-bell"></i>
+                        <img src="images/loading.gif" alt="User pic" class="profile-picture">
+                    </div>
+                </div>
+            </header>
+
+            <div class="user-box-div">
+                <div class="user-info-div">
+                    <img src="images/spinner.gif" alt="User Profile">
+                    <div class="user-profile-div">
+                        <h4>Mike Afolabi</h4>
+                        <p><i class="bi bi-clock"></i> Last Login Date: 2025-07-14 19:07:12</p>
+                    </div>
+                </div>
+
+                <div class="sub-div">
+                    <div class="sub-div-in">
+                        <p>Subscription expires in</p>
+                        <h4>30 Day(s)</h4>
+                    </div>
+
+                    <div class="wallet-div">
+                        <h4>₦5,000.00 <i class="bi bi-eye"></i></h4>
+                        <button><i class="bi bi-wallet2"></i> Load Wallet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-subjects-div">
+                <h4><i class="bi bi-bar-chart"></i> List of Exams</h4>
+
+                <div class="user-subjects-div-in">
+                    <div class="subject-item">
+                        <h4>BASIC SCIENCE</h4> <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="subject-item">
+                        <h4>BASIC TECHNOLOGY</h4> <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="subject-item">
+                        <h4>CIVIC EDUCATION</h4> <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="subject-item">
+                        <h4>COMPUTER SCIENCE</h4> <i class="bi bi-chevron-down"></i>
+                    </div>
+                    <div class="subject-item">
+                        <h4>MATHEMATICS</h4> <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+
+               
+            </div>
+
+
+
+        </div>
+
+    </section>
 
 </body>
 

@@ -2185,3 +2185,31 @@ color: var(--sub-body-color);
 		gap: 10px;
 	}
 }
+
+
+
+/* //////////////////////About///////////////////////////// */
+
+.slide-section .slide-div .slide-inner-div .about-slide-card{
+	min-height: 200px;
+}
+ .slide-section .slide-div .slide-inner-div .about-slide-card h1{
+	height: 80px;
+}
+
+.slide-section .slide-div .slide-inner-div .image-div{
+	width: 50%;
+	border-radius: 30px;
+	overflow: hidden;
+}
+
+.slide-section .slide-div .slide-inner-div .image-div img{
+	width: 100%;
+	object-fit: contain;
+}
+
+.slide-section .about-bg{
+	background: 
+	linear-gradient(to bottom, rgba(129, 127, 127, 0.6), rgba(255, 255, 255, 0.863)),
+    url(../all-images/images/photoslider1.jpg);
+}

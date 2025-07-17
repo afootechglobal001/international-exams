@@ -44,24 +44,19 @@ body {
 
 
 .main-container .sidebar-div .sidebar-div-in .logo-div {
-  width: 170px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 5px;
+  width: 150px;
   padding: 5px;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 15px;
+}
+.main-container .sidebar-div .sidebar-div-in .logo-div .div-in {
   background: var(--body-color);
-  /* background: none;
-  border: #CCC 1px solid; */
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-
-.main-container .sidebar-div .sidebar-div-in .logo-div img {
+.main-container .sidebar-div .sidebar-div-in .logo-div .div-in img {
   width: 100%;
-  border-radius: 5px;
-  object-fit: cover;
 }
 
 
@@ -240,14 +235,20 @@ body {
 }
 
 
-.main-container .main-content-div .top-header-div .header-right-icon-div .profile-picture {
+.main-container .main-content-div .top-header-div .header-right-icon-div .profile-pic-div {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   cursor: pointer;
   border: 1px solid var(--primary-color);
- 
+}
+
+
+
+.main-container .main-content-div .top-header-div .header-right-icon-div .profile-pic-div img{
+  width: 100%;
+  object-fit: cover;
 }
 
 
@@ -270,12 +271,18 @@ body {
 }
 
 
-.main-container .main-content-div .user-box-div .user-info-div img {
+.main-container .main-content-div .user-box-div .user-info-div .profile-image {
   width: 50px;
   height: 50px;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 10%;
   border: #CCC 1px solid; 
+}
+
+.main-container .main-content-div .user-box-div .user-info-div .profile-image img {
+  width: 100%;
+  object-fit: cover;
+  
 }
 
 

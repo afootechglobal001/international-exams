@@ -14,7 +14,9 @@
         <div class="sidebar-div">
             <div class="sidebar-div-in">
                 <div class="logo-div">
-                    <img src="images/logo.png" alt="international exam Logo">
+                    <div class="div-in">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="Logo">
+                    </div>
                 </div>
                 <div class="menu">
                     <a href="#" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
@@ -42,14 +44,20 @@
 
                     <div class="header-right-icon-div">
                         <i class="bi bi-bell"></i>
-                        <img src="images/loading.gif" alt="User pic" class="profile-picture">
+                        <div class="profile-pic-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="profile picture">
+                        </div>
+
                     </div>
                 </div>
             </header>
 
             <div class="user-box-div">
                 <div class="user-info-div">
-                    <img src="images/spinner.gif" alt="User Profile">
+                    <div class="profile-image">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="profile picture">
+                    </div>
+
                     <div class="user-profile-div">
                         <h4>Mike Afolabi</h4>
                         <p><i class="bi bi-clock"></i> Last Login Date: 2025-07-14 19:07:12</p>
@@ -90,7 +98,7 @@
                     </div>
                 </div>
 
-               
+
             </div>
 
 

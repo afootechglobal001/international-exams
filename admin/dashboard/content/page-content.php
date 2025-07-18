@@ -6,7 +6,7 @@
 
     <div class="dashboard-wrapper" data-aos="fade-in" data-aos-duration="1500">
         <div class="statistics-back-div" data-aos="fade-in" data-aos-duration="1500">
-            <div class="statistics-div" onClick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
+            <div class="statistics-div" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
                 <div class="inner-div">
                     <div class="number-div">
                         Administrators
@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <div class="statistics-div" onClick="_getActivePage({page:'viewStudents', divid:'students'});" id="students" title="Students">
+            <div class="statistics-div" onclick="_getActivePage({page:'viewStudents', divid:'students'});" id="students" title="Students">
                 <div class="inner-div">
                     <div class="number-div">
                         Students
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="statistics-div" onClick="" id="gallery" title="Gallery">
+            <div class="statistics-div" onclick="_getActivePage({page:'galleryCategory', divid:'publish'});" id="gallery" title="Gallery">
                 <div class="inner-div">
                     <div class="number-div">
                         Gallery
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="statistics-div" onClick="" id="blog" title="Blog">
+            <div class="statistics-div" onclick="_getActivePage({page:'blogCategory', divid:'publish'});" id="blog" title="Blog">
                 <div class="inner-div">
                     <div class="number-div">
                         Blog
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="statistics-div" onClick="" id="faq" title="FAQ">
+            <div class="statistics-div" onclick="_getActivePage({page:'faqCategory', divid:'publish'});" id="faq" title="FAQ">
                 <div class="inner-div">
                     <div class="number-div">
                         FAQ
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="statistics-div" onClick="" id="test" title="Testimony">
+            <div class="statistics-div" onclick="_getActivePage({page:'testimonyCategory', divid:'publish'});" id="test" title="Testimony">
                 <div class="inner-div">
                     <div class="number-div">
                         Testimony
@@ -553,7 +553,7 @@
             <div class="text-field-wrapper">
                 <div class="text_field_container search_field_container">
                     <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to serach staff..." />
+                        placeholder="" title="Type here to search staff..." />
                     <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search staff...</div>
                 </div>
             </div>
@@ -586,7 +586,7 @@
                 <tbody>
                     <tr class="tb-row">
                         <td>1</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_getForm({page: 'staffProfile', url: adminPortalLocalUrl});">
                             <div class="text-back-div">
                                 <div class="image-div">
                                     <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
@@ -609,7 +609,7 @@
                         <td>
                             <div class="status-div ACTIVE">ACTIVE</div>
                         </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_getForm({page: 'staffProfile', url: adminPortalLocalUrl});">VIEW</button></td>
                     </tr>
 
                     <tr class="tb-row">
@@ -743,13 +743,12 @@
             <div class="text-field-wrapper">
                 <div class="text_field_container search_field_container">
                     <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to serach staff..." />
+                        placeholder="" title="Type here to search students..." />
                     <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search students...</div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="pages-back-div">
         <div class="table-div animated fadeIn">
@@ -906,7 +905,829 @@
     </div>
 <?php } ?>
 
-<?php if ($page == 'system_alert') { ?>
+<?php if ($page == 'internationalExamCategory') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-book-half"></i> <strong>International Exams</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to search exams..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search exams...</div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW INTERNATION EXAM"
+                    onclick="_getForm({page: 'internationalExamReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW INTERNATIONAL EXAM
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>TOEFL</h2>
+                    <div class="top-text"><span> Test of English as a Foreign Language </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>GRE</h2>
+                    <div class="top-text"><span> Graduate Record Examination </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>IELTS</h2>
+                    <div class="top-text"><span>International English Language Testing System</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>GMAT</h2>
+                    <div class="top-text"><span> Graduate Management Admission Test </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>PTE</h2>
+                    <div class="top-text"><span> Pearson Test of English</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>SAT</h2>
+                    <div class="top-text"><span> Scholastic Assessment Test </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>MCAT</h2>
+                    <div class="top-text"><span>Medical College Admission Test</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="text-div">
+                    <h2>NCLEX</h2>
+                    <div class="top-text"><span> National Concil Licensure Examination </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'studyAbroadCategory') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-book-half"></i> <strong>Study Abroad</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper study-abroad-text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to search study abroad..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search study abroad...</div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW TUDY ABROAD"
+                    onclick="_getForm({page: 'studyAbroadReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW STUDY ABROAD
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'studyAbroadCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="STUDY IN CANADA" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN CANADA</h2>
+                    <div class="top-text"><span> Canada plays host to more than 180,000 International students in any given year... </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-australia.jpg" alt="STUDY IN AUSTRALIA" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN AUSTRALIA</h2>
+                    <div class="top-text"><span> Australia plays host to more than 180,000 International students in any given year... </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-usa.png" alt="STUDY IN UNITED STATE" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN UNITED STATE</h2>
+                    <div class="top-text"><span>U.S plays host to more than 180,000 International students in any given year...</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-frnace.jpg" alt="STUDY IN FRANCE" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN FRANCE</h2>
+                    <div class="top-text"><span> Graduate Management Admission TestStudying abroad in France provides...</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-dubai.jpg" alt="STUDY IN DUBAI" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN DUBAI</h2>
+                    <div class="top-text"><span> Dubai is one of the seven emirates of the United Arab Emirates...</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-china.jpg" alt="STUDY IN CHINA" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN CHINA</h2>
+                    <div class="top-text"><span> The People's Republic of China has been a center of international attention... </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-ghana.jpg" alt="STUDY IN GHANA" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN GHANA</h2>
+                    <div class="top-text"><span>The People's Republic of China has been a center of international attention...</span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-qatar.jpg" alt="STUDY IN QATAR" />
+                </div>
+
+                <div class="text-div">
+                    <h2>STUDY IN QATAR</h2>
+                    <div class="top-text"><span> Qatar is a small peninsular nation about the size of Connecticut. </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'blogCategory') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-journals"></i> <strong>Blog And Articles</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to serach blog..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search blog...</div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW BLOG"
+                    onclick="_getForm({page: 'blogReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW BLOG
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'blogCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION" />
+                </div>
+
+                <div class="text-div">
+                    <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
+                    <h2>HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION...</h2>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png" alt="TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE & MORE" />
+                </div>
+
+                <div class="text-div">
+                    <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
+                    <h2>TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE...</h2>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog3.png" alt="FROM NIGERIA TO THE WORLD: HOW EDUGRADE HELPS YOU ACE INTERNATIONAL EXAMS" />
+                </div>
+
+                <div class="text-div">
+                    <div class="top-text blog-top-text"><span> GENERAL</span></div>
+                    <h2>FROM NIGERIA TO THE WORLD: HOW EDUGRADE HELPS YOU ACE...</h2>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'galleryCategory') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-images"></i> <strong>Gallery</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to serach gallery..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search gallery...</div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW GALLERY"
+                    onclick="_getForm({page: 'galleryReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW GALLERY
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'galleryCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="Students preparing for international exams like IELTS and SAT" />
+                </div>
+
+                <div class="text-div">
+                    <div class="top-text blog-top-text"><span> GLOBAL READINESS</span></div>
+                    <h2>INSIDE THE EXAM HALL: FOCUSED & DETERMINED</h2>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>350</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/gallery/study-group.webp" alt="Students taking an international standardized test" />
+                </div>
+
+                <div class="text-div">
+                    <div class="top-text blog-top-text"><span> PREP SESSIONS</span></div>
+                    <h2>COLLABORATIVE LEARNING: DIVERSE STUDY GROUPS</h2>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>410</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="status-div ACTIVE">ACTIVE</div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/gallery/result-celebration.jpg" alt="EDUGRADE students celebrating international exam success" />
+                </div>
+
+                <div class="text-div">
+                    <div class="top-text blog-top-text"><span> SUCCESS STORIES</span></div>
+                    <h2>GLOBAL ACHIEVEMENTS: EXAM SUCCESS CELEBRATED</h2>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>500</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'faqCategory') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-patch-question"></i> <strong>Frequently Asked Questions</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to serach faq..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search faq...</div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW FAQ"
+                    onclick="_getForm({page: 'faqReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW FAQ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="faq-back-div">
+                <div class="title-div">
+                    <div class="num">1</div>
+                    <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>What is the TOEFL exam used for?</span></button>
+                </div>
+                <div class="answer-div">The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</div>
+            </div>
+
+            <div class="faq-back-div">
+                <div class="title-div">
+                    <div class="num">2</div>
+                    <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>How is the IELTS scored?</span></button>
+                </div>
+                <div class="answer-div">The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</div>
+            </div>
+
+            <div class="faq-back-div">
+                <div class="title-div">
+                    <div class="num">3</div>
+                    <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>What is the purpose of the PTE?</span></button>
+                </div>
+                <div class="answer-div">The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'testimonyCategory') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-quote"></i> <strong>Testimonies</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to search testimony..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search testimony...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="testimony-back-div">
+                <div class="testimony-div">
+                    <div class="details">
+                        <div class="text">
+                            <h3>Paul Emmanuel</h3>
+                            <div class="info">
+                                <div>
+                                    <p>Email: <span>seunemmanuel107@gmail.com</span></p>
+                                    <p>Phone: <span>07050903886</span></p>
+                                </div>
+                                <button class="status-btn ACTIVE">ACTIVE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="_getForm({page: 'updateTestimony', url: adminPortalLocalUrl});">VIEW DETAILS</button>
+                </div>
+
+                <div class="testimony-div">
+                    <div class="details">
+                        <div class="text">
+                            <h3>Gideo Smith</h3>
+                            <div class="info">
+                                <div>
+                                    <p>Email: <span>gideo200@gmail.com</span></p>
+                                    <p>Phone: <span>07050903886</span></p>
+                                </div>
+                                <button class="status-btn ACTIVE">ACTIVE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="">VIEW DETAILS</button>
+                </div>
+
+                <div class="testimony-div">
+                    <div class="details">
+                        <div class="text">
+                            <h3>Solomon James</h3>
+                            <div class="info">
+                                <div>
+                                    <p>Email: <span>solomon12@gmail.com</span></p>
+                                    <p>Phone: <span>07050903886</span></p>
+                                </div>
+                                <button class="status-btn ACTIVE">ACTIVE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" onClick="">VIEW DETAILS</button>
+                </div>
+
+                <div class="testimony-div">
+                    <div class="details">
+                        <div class="text">
+                            <h3>Cynthia Morgan</h3>
+                            <div class="info">
+                                <div>
+                                    <p>Email: <span>cynthia123@gmail.com</span></p>
+                                    <p>Phone: <span>07050903886</span></p>
+                                </div>
+                                <button class="status-btn ACTIVE">ACTIVE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" onClick="">VIEW DETAILS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if($page=='settings'){?>
+    <div class="page-title-back-div other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="main-title title"><i class="bi-gear"></i> <strong>Global Configurations</strong></div>
+            <span class="settings-span">Manage and configure dashboard settings, global settings and manage users </span>
+        </div>
+        <button class="btn" title="LEARN MORE">LEARN MORE</button>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="user-managment-back-div" data-aos="fade-in" data-aos-duration="1500">
+            <div class="user-managment-list" onclick="_getForm({page: 'accountSettings', url: adminPortalLocalUrl});">
+                <div class="inner-div">
+                    <div class="icon-div"><img src="<?php echo $websiteUrl?>/all-images/images/gear.png" alt="Account Management"/></div>
+                    <div class="text-div">
+                        <h3>Account Management</h3>
+                        <p>User can Manage account informations, ensuring secure and efficient access to features.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-managment-list" onclick="_getForm({page: 'changePassword', url: adminPortalLocalUrl});">
+                <div class="inner-div">
+                    <div class="icon-div"><img src="<?php echo $websiteUrl?>/all-images/images/status.png" alt="Change Password"/></div>
+                    <div class="text-div">
+                        <h3>Change Password</h3>
+                        <p>Users can change and upadate their password</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }?>
+
+<?php if ($page == 'systemAlert') { ?>
     <div class="search-div">
         <!--------------------------------all search select------------------------->
         <input id="search_keywords" onkeyup="_fetchAlertByKeywords();" type="text" class="text_field full" placeholder="Type here to search..." title="Type here to search" />

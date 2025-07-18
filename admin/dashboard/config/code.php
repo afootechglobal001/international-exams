@@ -1,5 +1,4 @@
 <?php include '../../../config/constants.php';?>
-<script src="js/session_validation.js"></script>
 
 <?php
 $action=$_POST['action'];
@@ -10,10 +9,12 @@ switch ($action){
 		$page=$_POST['page'];
 		$ids=$_POST['ids'];
 		require_once('../content/page-content.php');
+		require_once('../content/page-details.php');
 	break;
 
 	case 'get_form':
 		$page=$_POST['page'];
+		$pageCatId=$_POST['pageCatId'];
 		$id=$_POST['id'];
 		$modalLayer=$_POST['modalLayer'];
 		require_once('../content/form.php');

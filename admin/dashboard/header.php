@@ -19,11 +19,11 @@
 
             <div class="right-nav">
                 <div class="right-icon-div left-icon-div">
-                    <div class="icon-div" onclick="_getActivePage({page:'settings'});" title="System Settings">
+                    <div class="icon-div" onclick="_getActivePage({page:'settings', divid:'settings'});" title="System Settings">
                         <i class="bi-gear"></i>
                     </div>
                         
-                    <div class="icon-div bell_notification" onClick="_get_page('system_alert');" title="System Alert">
+                    <div class="icon-div bell_notification" onClick="" title="System Alert">
                         <i class="bi-bell"></i>
                         <div>20</div>
                     </div>
@@ -52,7 +52,7 @@
                             <div class="toggle-profile-others"><span id="loginProfileStaffId">STF00001</span></div>
                             <div class="header-btn-div">
                                 <button class="btn" title="View Profile" type="button" onclick=""><i class="bi-person"></i> Profile</button>
-                                <button class="btn" title="Log-Out" type="button" onclick="_getForm({page: 'logout_confirm_form', url: adminPortalLocalUrl});"><i class="bi-box-arrow-in-right"></i> Log-Out</button>
+                                <button class="btn" title="Log-Out" type="button" onclick="_getForm({page: 'logoutConfirmForm', url: adminPortalLocalUrl});"><i class="bi-box-arrow-in-right"></i> Log-Out</button>
                             </div>                    
                         </div>
                     </div>

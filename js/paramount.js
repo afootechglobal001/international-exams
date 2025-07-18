@@ -23,12 +23,13 @@ function _getForm(options) {
 	const {
         page = '',
         id = '',
+		pageCatId='',
 		layer=1,
 		action='get_form',
 		url=''
     } = options;
 $(layer===1 ? '#get-form-more-div':'#get-more-div-secondary').css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
-const dataString = "action=" + action + "&page=" + page + "&id=" + id + "&modalLayer=" + layer;
+const dataString = "action=" + action + "&page=" + page + "&id=" + id + "&pageCatId=" + pageCatId + "&modalLayer=" + layer;
 	$.ajax({
 		type: "POST",
 		url: url,

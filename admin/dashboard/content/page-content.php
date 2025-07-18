@@ -767,7 +767,7 @@
                 <tbody>
                     <tr class="tb-row">
                         <td>1</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                        <td class="clickable-td" title="Click to view staff profile" onclick="_getForm({page: 'studentProfile', url: adminPortalLocalUrl});">
                             <div class="text-back-div">
                                 <div class="image-div">
                                     <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
@@ -789,7 +789,7 @@
                         <td>
                             <div class="status-div ACTIVE">ACTIVE</div>
                         </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_getForm({page: 'studentProfile', url: adminPortalLocalUrl});">VIEW</button></td>
                     </tr>
 
                     <tr class="tb-row">
@@ -1166,7 +1166,7 @@
 
                 <div class="text-div">
                     <h2>STUDY IN CANADA</h2>
-                    <div class="top-text"><span> Canada plays host to more than 180,000 International students in any given year... </span></div>
+                    <div class="top-text"><span> Canada plays host to more than 180,000 International students in any given... </span></div>
                     <div class="text-in">
                         <div class="text">
                             UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
@@ -1189,7 +1189,7 @@
 
                 <div class="text-div">
                     <h2>STUDY IN AUSTRALIA</h2>
-                    <div class="top-text"><span> Australia plays host to more than 180,000 International students in any given year... </span></div>
+                    <div class="top-text"><span> Australia plays host to more than 180,000 International students in any... </span></div>
                     <div class="text-in">
                         <div class="text">
                             UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
@@ -1212,7 +1212,7 @@
 
                 <div class="text-div">
                     <h2>STUDY IN UNITED STATE</h2>
-                    <div class="top-text"><span>U.S plays host to more than 180,000 International students in any given year...</span></div>
+                    <div class="top-text"><span>U.S plays host to more than 180,000 International students in any given...</span></div>
                     <div class="text-in">
                         <div class="text">
                             UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
@@ -1235,7 +1235,7 @@
 
                 <div class="text-div">
                     <h2>STUDY IN FRANCE</h2>
-                    <div class="top-text"><span> Graduate Management Admission TestStudying abroad in France provides...</span></div>
+                    <div class="top-text"><span> Graduate Management Admission TestStudying abroad in France...</span></div>
                     <div class="text-in">
                         <div class="text">
                             UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS

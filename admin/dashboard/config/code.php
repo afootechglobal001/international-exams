@@ -10,6 +10,7 @@ switch ($action){
 		$ids=$_POST['ids'];
 		require_once('../content/page-content.php');
 		require_once('../content/page-details.php');
+		require_once('../content/form.php');
 	break;
 
 	case 'get_form':

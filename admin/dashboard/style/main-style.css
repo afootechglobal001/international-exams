@@ -2582,7 +2582,8 @@
 	width: 32%;
 	min-height: 100px;
 	background: var(--white-color);
-	border: 1px solid rgba(215, 215, 215, .6);
+	border: 1px solid rgba(215, 215, 215, .4);
+	box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.02);
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
@@ -2835,7 +2836,101 @@
 
 
 
+.alert-chart-back-div{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
 
+.main-alert-div{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 15px;
+	width: 100%;
+}
+
+.system-alert{
+	max-width:270px;
+	width:25%;
+	border-radius:8px;
+	font-size:12px;
+	flex-grow: 1;
+	color:var(--text-color);
+	cursor:pointer;
+	background:var(--white-color);
+	-moz-transition:all 0.3s ease-in 0.3s;
+	transition:all 0.3s ease-in 0.3s;
+	-webkit-transition:all 0.3s ease-in 0.3s;
+	-ms-transition:all 0.3s ease-in 0.3s;
+	-o-transition:all 0.3s ease-in 0.3s;
+	border: #f2f2f2 1px solid;
+	box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.02);
+}
+
+.system-alert:hover{
+	-moz-transform:scale(1.03) translate(1px,0px);
+	-webkit-transform:scale(1.03) translate(1px,0px);
+}
+
+.system-alert .alert-name{
+	padding:10px;
+	font-size:12px;
+	color:var(--sub-body-color);
+	line-height:15px;
+	height:15px;
+	overflow:hidden;
+}
+
+.alert-seen .alert-name{
+	color:var(--sub-body-color);
+}
+
+.system-alert .alert-name span{
+	float:right;
+	color:var(--text-color);
+	font-family: body-font;
+}
+
+.system-alert .alert-text{
+	padding:0px 10px 5px 10px;
+	line-height:18px;
+	height:36px;
+	overflow:hidden;
+}
+
+.system-alert .alert-time{
+	text-align:right;
+	padding:0px 10px 5px 0px;
+	font-size:10px;
+	color:var(--secondary-color);
+	line-height:15px;
+	height:15px;
+	overflow:hidden;
+}
+
+.alert-seen .alert-time{
+	color:#999;
+}
+
+.bottom-btn-div{
+	display: flex;
+	flex-direction: row;
+	align-self: flex-end;
+	justify-content: flex-end;
+	min-height: 60px;
+	line-height: 60px;
+	padding: 0px 20px;
+	font-size: 13px;
+	color: #999;
+}
+
+.bottom-btn-div .btn{
+	background: none;
+	border: none;
+	padding: 10px 15px;
+	cursor: pointer;
+}
 
 
 

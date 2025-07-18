@@ -1693,10 +1693,10 @@
     </div>
 <?php } ?>
 
-<?php if($page=='settings'){?>
+<?php if ($page == 'settings') { ?>
     <div class="page-title-back-div other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="page-title-div">
-            <div class="main-title title"><i class="bi-gear"></i> <strong>Global Configurations</strong></div>
+            <div class="title"><i class="bi-gear"></i> <strong>Global Configurations</strong></div>
             <span class="settings-span">Manage and configure dashboard settings, global settings and manage users </span>
         </div>
         <button class="btn" title="LEARN MORE">LEARN MORE</button>
@@ -1706,7 +1706,7 @@
         <div class="user-managment-back-div" data-aos="fade-in" data-aos-duration="1500">
             <div class="user-managment-list" onclick="_getForm({page: 'accountSettings', url: adminPortalLocalUrl});">
                 <div class="inner-div">
-                    <div class="icon-div"><img src="<?php echo $websiteUrl?>/all-images/images/gear.png" alt="Account Management"/></div>
+                    <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/gear.png" alt="Account Management" /></div>
                     <div class="text-div">
                         <h3>Account Management</h3>
                         <p>User can Manage account informations, ensuring secure and efficient access to features.</p>
@@ -1716,7 +1716,7 @@
 
             <div class="user-managment-list" onclick="_getForm({page: 'changePassword', url: adminPortalLocalUrl});">
                 <div class="inner-div">
-                    <div class="icon-div"><img src="<?php echo $websiteUrl?>/all-images/images/status.png" alt="Change Password"/></div>
+                    <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/status.png" alt="Change Password" /></div>
                     <div class="text-div">
                         <h3>Change Password</h3>
                         <p>Users can change and upadate their password</p>
@@ -1725,25 +1725,29 @@
             </div>
         </div>
     </div>
-<?php }?>
+<?php } ?>
 
 <?php if ($page == 'systemAlert') { ?>
-    <div class="search-div">
-        <!--------------------------------all search select------------------------->
-        <input id="search_keywords" onkeyup="_fetchAlertByKeywords();" type="text" class="text_field full" placeholder="Type here to search..." title="Type here to search" />
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-bell-fill"></i> <strong>System Alert</strong></div>
+            <span class="settings-span">View system alerts and notifications that require your attention.</span>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to search..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search...</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="alert-chart-back-div">
         <div class="chart-div-notifications alert-chart-div-notifications">
-            <div class="text"><i class="bi-graph-up-arrow"></i> Showing Matrix for</div>
-
-            <div class="text">
-                <div class="custom-srch-div">
-                    <input id="datepicker-from" type="text" class="srchtxt" placeholder="From" title="Select Date From" />
-                    <input id="datepicker-to" type="text" class="srchtxt" placeholder="To" title="Select Date To" />
-                    <button type="button" class="btn" onclick="_getCustomReport('','','custom_search')">Apply</button>
-                </div>
-            </div>
+            <div class="text"><i class="bi-graph-up-arrow"></i> Showing Notofication for</div>
 
             <div class="text text-right" onclick="select_search()">
                 <span id="srch-text">Last 30 Days</span>
@@ -1761,23 +1765,63 @@
                     <div onclick="srch_custom('Custom Search')">Custom Search</div>
                 </div>
             </div>
+
+            <div class="text">
+                <div class="custom-srch-div">
+                    <div class="custom-srch-div-in">
+                        <div class="text_field_container dash_field_container">
+                            <input class="text_field dash_text_field bar_cust_text_field" type="text" id="datepickers-from" placeholder="" />
+                            <div class="placeholder dash_placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From</div>
+                        </div>
+
+                        <div class="text_field_container dash_field_container">
+                            <input class="text_field dash_text_field bar_cust_text_field" type="text" id="datepickers-to" placeholder="" />
+                            <div class="placeholder dash_placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To</div>
+                        </div>
+                        <button type="button" class="btn">Apply</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="alert alert-success form-alert"> <span><i class="bi-bell"></i></span> Notification Between <span id="date_from">July 19 2025</span> - <span id="date_to">August 19 2025</span></div>
     </div>
 
-    <div class="alert alert-success"> <span><i class="bi-bell"></i></span> Notification Between <span id="date_from">Loading...</span> - <span id="date_to">Loading...</span></div>
-
     <div class="main-alert-div" id="fetchAllSystemAlert">
-        <script>
-            _getAlertReport('srch-30', 'view_30days_search');
-        </script>
-        <!-- <div class="system-alert main-system-alert" id="<?php //echo $alert_id; 
-                                                                ?>" onClick="_get_form_with_id('alert-read')">
-            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php //echo $alert_id; 
-                                                                                        ?>viewed"><i class="bi-check"></i></span></div>
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'readLart', url: adminPortalLocalUrl});">
+            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
-        </div> -->
+        </div>
 
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+            <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+            <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+        </div>
+
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+            <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+            <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+        </div>
+
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+            <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+            <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+        </div>
+
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+            <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+            <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+        </div>
+
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+            <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+            <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+            <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+        </div>
 
     </div>
 

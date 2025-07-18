@@ -23,7 +23,7 @@
                         <i class="bi-gear"></i>
                     </div>
                         
-                    <div class="icon-div bell_notification" onClick="" title="System Alert">
+                    <div class="icon-div bell_notification" onclick="_getActivePage({page:'systemAlert', divid:'systemAlert'});" title="System Alert">
                         <i class="bi-bell"></i>
                         <div>20</div>
                     </div>

@@ -11,48 +11,10 @@
 <body>
     <section class="main-container">
 
-        <div class="sidebar-div">
-            <div class="sidebar-div-in">
-
-                <div class="logo-div">
-                    <div class="div-in">
-                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exams Logo">
-                    </div>
-                </div>
-
-                <nav class="menu">
-                    <a href="#" class="active" title="Dashboard" id="dashboard" onclick="_getActivePage({page:'dashboard', divid:'dashboard'});"><i class="bi bi-speedometer2"></i> Dashboard</a>
-                    <a href="#" title="Exam" id="exam" onclick="_getActivePage({page:'exam', divid:'exam'});"><i class="bi bi-journal-text"></i> Exam</a>
-                    <a href="#" title="Transactions History"><i class="bi bi-list-check"></i> Transactions History</a>
-                    <a href="#" title="Subscription History"><i class="bi bi-list-check"></i> Subscription History</a>
-                </nav>
-            </div>
-
-            <div class="bottom-icons">
-                <a href="#" title="Settings"><i class="bi bi-gear"></i> Settings</a>
-                <a href="#" title="Log-Out"><i class="bi bi-power"></i> Log-Out</a>
-            </div>
-        </div>
-
+        <?php include 'side-bar.php' ?>
 
         <div class="main-content-div">
-            <header class="top-header-div">
-                <div class="header-tabs-div">
-                    <div class="header-tabs-div-in">
-                        <h1>USER PORTAL</h1>
-                        <a href="#" class="active" title="Dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
-                        <a href="#" title="My Profile"><i class="bi bi-person-square"></i> My Profile</a>
-                    </div>
-
-                    <div class="header-right-icon-div">
-                        <i class="bi bi-bell" title="Notifications"></i>
-                        <div class="profile-pic-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="User Profile Picture">
-                        </div>
-                    </div>
-                </div>
-            </header>
-
+            <?php include 'header.php' ?>
 
             <div class="active-page-div">
                 <i class="bi bi-speedometer2" title="Dashboard"></i> Dashboard
@@ -62,7 +24,7 @@
                 <div class="user-box-div-in">
 
                     <div class="user-info-div">
-                        <div class="profile-image">
+                        <div class="profile-image" title="Profile Picture">
                             <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="User Profile Picture">
                         </div>
 

@@ -2,6 +2,7 @@
     <div class="dash-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title"><span id="page-title"><i class="bi-speedometer2"></i> Admin Dashboard Overview</span></div>
         <h2>👋 Hi, <span id="login_fullname">Hon. Paul Emmanuel</span></h2>
+        <div class="bottom-title"><i class="bi-clock"></i> Last Login Date | <span id="">2025-07-21 09:12:16</span></div>
     </div>
 
     <div class="dashboard-wrapper" data-aos="fade-in" data-aos-duration="1500">

@@ -34,107 +34,106 @@ Best place to register ACT exam in Nigeria, where to register international exam
 <body>
     <?php include 'header.php' ?>
 
-    <div class="slide-section animated fadeInDown">
-        <div class="slide-div about-bg">
-            <div class="slide-inner-div ">
+    <div class="other-pages-slide-section animated fadeInDown">
+        <div class="other-pages-slide-div">
+            <div class="other-pages-slide-card">
+                <h1>Blog</h1>
 
-                <div class="slide-card about-slide-card">
-                    <h1>Blog</h1>
-
-                    <div class="text-div">
-                        <p>Welcome to International Exam - where education meets excellence!
-                            Our cutting-edge application redefines exam preparation with a dynamic
-                            Education Video Learning system tailored for top international assessments.
-                        </p>
-                        <div class="btn-div">
-                            <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                            <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                    It's Free</span>
-                            </button>
-                        </div>
+                <div class="text-div">
+                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
+                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
+                        into foreign universities.
+                    </p>
+                    <div class="btn-div">
+                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
+                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
+                                It's Free</span>
+                        </button>
                     </div>
-                </div>
-
-                <div class="image-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="image">
                 </div>
             </div>
+
+            <div class="image-div">
+                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about-img.png" alt="image">
+            </div>
+
         </div>
+    </div>
+    <section class="other-pages-main-section">
 
-        <section class="main-section">
-
-            <section class="body-div">
-                <div class="body-div-in">
-                    <div class="inner-body-div-in">
-                        <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
-                            <div class="left-div">
-                                <div class="top-title">
-                                    <h2>LATEST INSIGHTS</h2>
-                                </div>
-                                <h3>Our Latest News And <span>#Articles</span></h3>
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="inner-body-div-in">
+                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
+                        <div class="left-div">
+                            <div class="top-title">
+                                <h2>LATEST INSIGHTS</h2>
                             </div>
+                            <h3>Our Latest News And <span>#Articles</span></h3>
+                        </div>
 
-                            <div class="btn-div">
-                                <a href="#">
-                                    <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
+                        <div class="btn-div">
+                            <a href="#">
+                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-back-div">
+                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
+                            <div class="blog-inner-div">
+                                <div class="image-div">
+                                    <img src="all-images/blogs/blog1.png" alt="How International Exams Open Doors to Global Education Opportunities">
+                                </div>
+
+                                <div class="text-div">
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 250 VIEWS</div>
+                                    <h3>How International Exams Open Doors to Global Education Opportunities</h3>
+
+                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="blog-back-div">
-                            <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                                <div class="blog-inner-div">
-                                    <div class="image-div">
-                                        <img src="all-images/blogs/blog1.png" alt="How International Exams Open Doors to Global Education Opportunities">
-                                    </div>
+                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
+                            <div class="blog-inner-div">
+                                <div class="image-div">
+                                    <img src="all-images/blogs/blog2.png" alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
+                                </div>
 
-                                    <div class="text-div">
-                                        <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 250 VIEWS</div>
-                                        <h3>How International Exams Open Doors to Global Education Opportunities</h3>
+                                <div class="text-div">
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 50 VIEWS</div>
+                                    <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
 
-                                        <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                            <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
-                                    </div>
+                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                                <div class="blog-inner-div">
-                                    <div class="image-div">
-                                        <img src="all-images/blogs/blog2.png" alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
-                                    </div>
-
-                                    <div class="text-div">
-                                        <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 50 VIEWS</div>
-                                        <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
-
-                                        <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                            <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
-                                    </div>
+                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
+                            <div class="blog-inner-div">
+                                <div class="image-div">
+                                    <img src="all-images/blogs/blog3.png" alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
                                 </div>
-                            </div>
 
-                            <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                                <div class="blog-inner-div">
-                                    <div class="image-div">
-                                        <img src="all-images/blogs/blog3.png" alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
-                                    </div>
+                                <div class="text-div">
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 200 VIEWS</div>
+                                    <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
 
-                                    <div class="text-div">
-                                        <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 200 VIEWS</div>
-                                        <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
-
-                                        <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                            <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
-                                    </div>
+                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
+                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <?php include 'footer.php' ?>
+            </div>
         </section>
+
+        <?php include 'footer.php' ?>
+    </section>
+
 </body>
 
 </html>

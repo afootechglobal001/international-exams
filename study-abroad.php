@@ -34,35 +34,34 @@ Best place to register ACT exam in Nigeria, where to register international exam
 <body>
     <?php include 'header.php' ?>
 
-    <div class="slide-section animated fadeInDown">
-        <div class="slide-div about-bg">
-            <div class="slide-inner-div ">
+    <div class="other-pages-slide-section animated fadeInDown">
+        <div class="other-pages-slide-div">
+            <div class="other-pages-slide-card">
+                <h1>International Exams</h1>
 
-                <div class="slide-card about-slide-card">
-                    <h1>Study Abroad</h1>
-
-                    <div class="text-div">
-                        <p>Welcome to International Exam - where education meets excellence!
-                            Our cutting-edge application redefines exam preparation with a dynamic
-                            Education Video Learning system tailored for top international assessments.
-                        </p>
-                        <div class="btn-div">
-                            <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                            <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                    It's Free</span>
-                            </button>
-                        </div>
+                <div class="text-div">
+                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
+                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
+                        into foreign universities.
+                    </p>
+                    <div class="btn-div">
+                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
+                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
+                                It's Free</span>
+                        </button>
                     </div>
                 </div>
-
-                <div class="image-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="image">
-                </div>
             </div>
-        </div>
 
-        <section class="main-section">
-            <section class="body-div net-bg-tr">
+            <div class="image-div">
+                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about-img.png" alt="image">
+            </div>
+
+        </div>
+    </div>
+    <section class="other-pages-main-section">
+
+        <section class="body-div net-bg-tr">
             <div class="body-div-in">
                 <div class="about-back-div">
                     <div class="image-div" data-aos="fade-up" data-aos-duration="1400">
@@ -102,10 +101,10 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
         </section>
+        
+        <?php include 'footer.php' ?>
+    </section>
 
-
-            <?php include 'footer.php' ?>
-        </section>
 </body>
 
 </html>

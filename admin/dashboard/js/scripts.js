@@ -1,10 +1,3 @@
-$(document).ready(function() {
-	window.setInterval(function(){
-		getNotificationNumber();
-	}, 180000);
-});
-
-
 function _getActivePage(props) {
 	const {
         page = '',
@@ -16,7 +9,6 @@ function _getActivePage(props) {
 		_getPage({page: page, url: adminPortalLocalUrl});
 	}
 }
-	
 
 function _getActiveLink(divid, nav) {
 	_removeClass()
@@ -26,6 +18,7 @@ function _getActiveLink(divid, nav) {
 	$("#page-title").html($("#_" + divid).html());
 	_getNav(nav);
 }
+
 function _removeClass(){
 	$('#side-dashboard, #side-staff, #side-publish, #side-reports, #side-students, #top-dashboard, #top-staff').removeClass('active-li');
 	$('#mobile-dashboard,#mobile-branches,#mobile-staff,#mobile-reports').removeClass('active-li');
@@ -47,6 +40,7 @@ function _closeNav(){
 	x.innerHTML = '<i class="bi-text-right"></i>';
     $('#side-nav-div').animate({'left':'-150px'},200);
 }
+
 function _closeAllNav(){
 	_closeNav();
 	_removeClass();
@@ -103,17 +97,13 @@ function _prev_page(next_id) {
 
 
 function capitalizeFirstLetterOfEachWord(inputText) {
-	// Split the input text into an array of words
 	const words = inputText.toLowerCase().split(' ');
-	// Capitalize the first letter of each word
 	for (let i = 0; i < words.length; i++) {
 		words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
 	}
-	// Join the words back into a sentence
 	const result = words.join(' ');
 	return result;
 }
-
 
 function isNumber_Check(e) {
     var key = e.keyCode || e.which;
@@ -126,4 +116,45 @@ function isNumber_Check(e) {
         }
     }
 }
- 
+
+function filters(selectBoxId) {
+	var valThis = $('#search'+selectBoxId).val();
+		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div').each(function() {
+		var text = $(this).text();
+		(text.toLowerCase().indexOf(valThis.toLowerCase()) > -1) ? $(this).show(): $(this).hide();
+	});
+};
+
+function _getActivePagesTab(props) {
+	const {
+        page = '',
+        divid = '',
+		pageContainer='getPagesDetails'
+    } = props;
+	_getActivePagesTabLink(divid);
+	if(page){
+		_getPage({page: page, pageContainer: pageContainer,  url: adminPortalLocalUrl});
+	}
+}
+function _getActivePagesTabLink(divid){
+	$('#pageContent, #picturePage').removeClass('active-li');
+	$("#"+divid).addClass('active-li');
+}
+
+
+function _getActiveStudentPage(props) {
+	const {
+        page = '',
+        divid = '',
+		pageContainer='getStudentDetails'
+    } = props;
+	__getActiveStudentPageLink(divid);
+	if(page){
+		_getPage({page: page, pageContainer: pageContainer,  url: adminPortalLocalUrl});
+	}
+}
+
+function __getActiveStudentPageLink(divid){
+	$('#studentDashboard, #studentProfileDetails, #paymentHistory, #walletHistory').removeClass('active');
+	$("#"+divid).addClass('active');
+}

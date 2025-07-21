@@ -1,36 +1,54 @@
-<?php if ($page=='page-content'){ ?>
+<?php if ($page=='pageContent'){ ?>
     <div class="page-form-div animated fadeIn">
         <div class="page-title">SEO CONTENT</div>
         <div class="form-div">
             <div class="form-input-div">
                 <div class="title">PAGE URL</div>
-                <div class="text_field_container">
-                    <input class="text_field" type="text" id="page_url" placeholder=""/>
-                    <div class="placeholder">page-url:</div>
+                <div class="text_field_container" id="pageUrl_container">
+                    <script>
+                        textField({
+                            id: 'pageUrl',
+                            title: 'page-url'
+                        });
+                    </script>
                 </div>
 
                 <div class="title">PAGE TITLE <span><em>(Not more than 100 words)</em></span></div>
-                <div class="text_field_container">
-                    <input class="text_field" type="text" maxlength="100" id="page_title" placeholder=""/>
-                    <div class="placeholder">Page Title:</div>
+                <div class="text_field_container" id="pageTitle_container">
+                    <script>
+                        textField({
+                            id: 'pageTitle',
+                            title: 'Page Title'
+                        });
+                    </script>
                 </div>
 
                 <div class="title">SEO KEYWORDS</div>
-                <div class="text_field_container text_area_container">
-                    <textarea class="text_field text_area" type="text" id="seo_keywords" placeholder=""></textarea>
-                    <div class="placeholder">Seo Keywords:</div>
+                <div class="text_area_container" id="seoKeywords_container">
+                    <script>
+                        textField({
+                            id: 'seoKeywords',
+                            title: 'Seo Keywords',
+                            type : 'textarea'
+                        });
+                    </script>
                 </div>
                 
                 <div class="title">SEO DESCRIPTION <span><em>(Not more than 167 words)</em></span></div>
-                <div class="text_field_container text_area_container">
-                    <textarea class="text_field text_area" type="text" maxlength="167" id="seo_description" placeholder=""></textarea>
-                    <div class="placeholder">Seo Description:</div>
-                </div>                        
+                <div class="text_area_container" id="seoDescription_container">
+                    <script>
+                        textField({
+                            id: 'seoDescription',
+                            title: 'Seo Descriptions',
+                            type : 'textarea'
+                        });
+                    </script>
+                </div>                       
             </div>
             
             <div class="picture-div">
                 <label>
-                    <div class="pix-div"><img id="seo_flyer_preview_pix" src="<?php echo $website_url?>/all-images/images/sample.jpg"  id="seo-flyer" /></div>
+                    <div class="pix-div"><img id="seo_flyer_preview_pix" src="<?php echo $websiteUrl?>/all-images/images/sample.jpg"  id="seo-flyer" /></div>
                     <input type="file" id="seo_flyer" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif"  onchange="seoFlyer.UpdatePreview(this);" />
                 </label>
             </div>                        			
@@ -53,30 +71,36 @@
             </div>
         </div>
     </div>     
-    <script>_fetchPageContent('<?php echo $publish_id?>');</script>    
 <?php }?>
 
-
-<?php if ($page=='picture-page'){ ?>    
+<?php if ($page=='picturePage'){ ?>    
     <div class="page-form-div animated fadeIn">
         <div class="page-title">UPLOAD MORE PICTURES</div>
-        <div class="form-div content-form video-content-form">
-            <div class="video-back-div" >
+        <div class="form-div form-picture-div">
+            <div class="picture-back-div">
                 <div id="fetchPagePicture"></div>
-                
-                <!-- <div class="video-div picture-div">
-                    <div class="icon-div" onclick=""><i class="bi-trash"></i></div>
-                    <img src="<?php //echo $website_url?>/all-images/body-pix/gallery_16.jpg" alt="Gallery">
-                </div>  -->
+                <div class="picture-div">
+                    <div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                </div> 
 
-                <div class="video-div select-video-div select-pix-div">
+                <div class="picture-div">
+                    <div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="picture-div">
+                    <div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                </div>
+
+                <div class="picture-div select-pix-div">
                     <label>
-                        <div class="pix-div"><img src="<?php echo $website_url?>/all-images/images/default.png"/></div>
+                        <div class="pix-div"><img src="<?php echo $websiteUrl?>/all-images/images/default.png"/></div>
                         <input type="file" id="pictures" name="pictures[]" multiple accept=".jpg, .JPG, .png, .PNG, .jpeg, .JPEG"  onchange="_save_page_other_pictures('<?php echo $publish_id;?>')" style="display:none;"/>
                     </label>
                 </div>
             </div>  
         </div>
     </div>  
-    <script>_fetchPagePicture('<?php echo $publish_id?>');</script>
 <?php }?>

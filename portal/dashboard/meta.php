@@ -10,11 +10,12 @@
 <link href="<?php echo $websiteUrl?>/style/aos.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $websiteUrl?>/style/paramount.css?v=<?php echo $codeVersion?>" type="text/css"
     rel="stylesheet" />
-<link href="<?php echo $websiteUrl?>/admin/dashboard/style/main-style.css?v=<?php echo $codeVersion?>" type="text/css"
+<link href="<?php echo $websiteUrl?>/portal/dashboard/style/main-style.css?v=<?php echo $codeVersion?>" type="text/css"
     rel="stylesheet" />
 
 <script src="<?php echo $websiteUrl?>/js/jquery-v3.6.1.min.js"></script>
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
+<script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
 
-<script src="<?php echo $websiteUrl?>/admin/dashboard/js/scripts.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/portal/dashboard/js/scripts.js?v=<?php echo $codeVersion?>"></script>

@@ -17,4 +17,6 @@
 	var adminPortalLocalUrl=websiteUrl+'/admin/dashboard/config/code'; 
 	var adminPortalUrl=websiteUrl+'/admin'; /// For Portal Url //
 	var adminUrl=websiteUrl+'/admin/login'; /// For Admin Url //
+	
+	var portalLocalUrl=websiteUrl+'/portal/dashboard/config/code';
 </script>

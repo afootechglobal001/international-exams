@@ -1745,7 +1745,7 @@
         </div>
     </div>
 
-    <div class="alert-chart-back-div">
+    <div class="alert-chart-back-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="chart-div-notifications alert-chart-div-notifications">
             <div class="text"><i class="bi-graph-up-arrow"></i> Showing Notofication for</div>
 
@@ -1786,8 +1786,8 @@
         <div class="alert alert-success form-alert"> <span><i class="bi-bell"></i></span> Notification Between <span id="date_from">July 19 2025</span> - <span id="date_to">August 19 2025</span></div>
     </div>
 
-    <div class="main-alert-div" id="fetchAllSystemAlert">
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'readLart', url: adminPortalLocalUrl});">
+    <div class="main-alert-div" id="fetchAllSystemAlert" data-aos="fade-in" data-aos-duration="1500">
+        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'alertRead', url: adminPortalLocalUrl});">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
@@ -1826,8 +1826,8 @@
     </div>
 
     <div class="bottom-btn-div">
-        <button id="fetch_previous_alerts" title="Older" class="btn" onclick="_fetchPreviousAlerts()"><i class="bi-chevron-left"></i></button>
-        <div><span id="view_from">0</span>-<span id="view_to">0</span> of <span id="all_record_count">0</span></div>
-        <button id="fetch_next_alerts" title="Newer" class="btn" onclick="_fetchNextAlerts()"><i class="bi-chevron-right"></i></button>
+        <button id="" title="Older" class="btn" onclick=""><i class="bi-chevron-left"></i></button>
+        <div><span id="">0</span>-<span id="">0</span> of <span id="">0</span></div>
+        <button id="" title="Newer" class="btn" onclick=""><i class="bi-chevron-right"></i></button>
     </div>
 <?php } ?>

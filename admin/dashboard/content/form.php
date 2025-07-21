@@ -447,7 +447,7 @@
                         <li class="active" title="Dashboard" id="studentDashboard" onclick="_getActiveStudentPage({divid:'studentDashboard', page: 'studentDashboard', url: adminPortalLocalUrl});"><i class="bi-speedometer2"></i> Dashboard</li>
                         <li title="Payment History" id="paymentHistory" onclick="_getActiveStudentPage({divid:'paymentHistory', page: 'paymentHistory', url: adminPortalLocalUrl});"><i class="bi-clock"></i> Payment History</li>
                         <li title="Wallet History" id="walletHistory" onclick="_getActiveStudentPage({divid:'walletHistory', page: 'walletHistory', url: adminPortalLocalUrl});"><i class="bi-credit-card"></i> Wallet History</li>
-                        <li title="Student Profile" id="studentProfileDetails" onclick="_getActiveStudentPage({divid:'studentProfileDetails', page: 'studentProfileDetails', url: adminPortalLocalUrl});"><i class="bi-person-bounding-box"></i> Customer Profile</li>
+                        <li title="Student Profile" id="studentProfileDetails" onclick="_getActiveStudentPage({divid:'studentProfileDetails', page: 'studentProfileDetails', url: adminPortalLocalUrl});"><i class="bi-person-bounding-box"></i> Student Profile</li>
                     </ul>
                 </div>
             </div>
@@ -1435,6 +1435,63 @@
 
                 <div>
                     <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'alertRead') { ?>
+    <div class="slide-form-div animated fadeInRight">
+        <div class="title-panel-div">
+            <div class="inner-top">
+                <span id="panel-title"><i class="bi-bell"></i> Notification Details</span>
+                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+            </div>
+        </div>
+
+        <div class="container-back-div">
+            <div class="inner-container">
+                <div class="alert alert-success form-alert">
+                    <div class="alert-list-div">
+                        <div class="alert-list">
+                            <div>User ID:</div>
+                            <div><span id="read_user_id">STF0001</span></div>
+                        </div>
+                        <div class="alert-list">
+                            <div>Action Performed By:</div>
+                            <div><span id="user_name">Hon Emmanuel Paul</span></div>
+                        </div>
+                        <div class="alert-list">
+                            <div>IP Address Used:</div>
+                            <div><span id="ip_address">::1</span></div>
+                        </div>
+                        <div class="alert-list">
+                            <div>Computer Used:</div>
+                            <div><span id="system_name">DESKTOP-GFL284C</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success form-alert">
+                    <div class="alert-list-div">
+                        <div class="alert-list">
+                            <div>Alert ID:</div>
+                            <div><span id="alert_id">ALT10520250612070125</span></div>
+                        </div>
+                        <div class="alert-list">
+                            <div>Date:</div>
+                            <div><span id="created_time">2025-06-12 13:01:25</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title">Alert Details:</div>
+                <div class="alert alert-success form-alert">
+                    <div class="alert-details" id="alert_detail">PASSWORD UPDATED SUCCESSFULLY: A staff whose name is HON EMMANUEL PAUL with ID: STF0001 have successfully reset his/her password.</div>
+                </div>
+                <div>
+                    <button class="btn" onclick="_alertClose(<?php echo $modalLayer ?>);"> <i class="bi-check"></i> OK </button>
                 </div>
             </div>
         </div>

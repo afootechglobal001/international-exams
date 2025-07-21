@@ -11,6 +11,6 @@ function _getActivePage(props) {
 }
 
 function _getActivePageLink(divid){
-	$('#dashboard, #exam, #transactionHistory').removeClass('active');
+	$('#dashboard, #exam, #transactionHistory, #subscriptionHistory, #settings').removeClass('active');
 	$("#"+divid).addClass('active');
 }

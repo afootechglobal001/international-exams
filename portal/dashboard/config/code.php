@@ -14,8 +14,8 @@ switch ($action){
 	case 'get_form':
 		$page=$_POST['page'];
 		$id=$_POST['id'];
-		$modalLayer=$_POST['modalLayer'];
-		require_once('content/form.php');
+		// $modalLayer=$_POST['modalLayer'];
+		require_once('form-content.php');
 	break;	
 }
 ?>

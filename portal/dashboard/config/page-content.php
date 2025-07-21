@@ -97,7 +97,7 @@
                         <td>DIRECT ONLINE PAYMENT</td>
                         <td><span class="status success">SUCCESSFUL</span></td>
                         <td>2025-07-14 18:53:50</td>
-                        <td><button class="view-btn"><i class="bi bi-eye"></i> View Details</button></td>
+                        <td><button class="view-details-btn"><i class="bi bi-eye"></i> View Details</button></td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -107,7 +107,7 @@
                         <td>DIRECT ONLINE PAYMENT</td>
                         <td><span class="status success">SUCCESSFUL</span></td>
                         <td>2025-05-17 17:00:55</td>
-                        <td><button class="view-btn"><i class="bi bi-eye"></i> View Details</button></td>
+                        <td><button class="view-details-btn"><i class="bi bi-eye"></i> View Details</button></td>
                     </tr>
                     <tr>
                         <td>3</td>
@@ -117,7 +117,7 @@
                         <td>DIRECT ONLINE PAYMENT</td>
                         <td><span class="status success">SUCCESSFUL</span></td>
                         <td>2025-05-17 17:00:55</td>
-                        <td><button class="view-btn"><i class="bi bi-eye"></i> View Details</button></td>
+                        <td><button class="view-details-btn"><i class="bi bi-eye"></i> View Details</button></td>
                     </tr>
                     <tr>
                         <td>4</td>
@@ -127,11 +127,86 @@
                         <td>DIRECT ONLINE PAYMENT</td>
                         <td><span class="status success">SUCCESSFUL</span></td>
                         <td>2025-05-17 17:00:55</td>
-                        <td><button class="view-btn"><i class="bi bi-eye"></i> View Details</button></td>
+                        <td><button class="view-details-btn"><i class="bi bi-eye"></i> View Details</button></td>
                     </tr>
-                    <!-- More rows as needed -->
+                  
                 </tbody>
             </table>
         </div>
     </div>
+<?php } ?>
+
+
+<?php if ($page == 'subscriptionHistory') { ?>
+    <div class="user-subjects-title-div">
+        <div class="subscription-header">
+            <h4><i class="bi bi-bar-chart"></i> Subscription History</h4>
+            <button class="download-btn"><i class="bi bi-download"></i> Download</button>
+        </div>
+
+        <div class="table-container">
+            <table class="subscription-table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>SUBSCRIPTION ID</th>
+                        <th>DEPARTMENT</th>
+                        <th>CLASS</th>
+                        <th>SUBSCRIPTION DATE</th>
+                        <th>DUE DATE</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>SUB01820250714045350</td>
+                        <td>BASIC</td>
+                        <td>BASIC 1</td>
+                        <td>2025-07-14 18:53:58</td>
+                        <td>2025-08-13 18:53:58</td>
+                        <td><span class="status active">ACTIVE</span></td>
+                        <td><button class="view-details-button"><i class="bi bi-eye"></i> VIEW DETAILS</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>SUB01720250517090055</td>
+                        <td>BASIC</td>
+                        <td>BASIC 1</td>
+                        <td>2025-05-17 17:00:55</td>
+                        <td>2025-06-16 17:01:13</td>
+                        <td><span class="status expired">EXPIRED</span></td>
+                        <td><button class="view-details-button"><i class="bi bi-eye"></i> VIEW DETAILS</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>SUB01720250517090055</td>
+                        <td>BASIC</td>
+                        <td>BASIC 1</td>
+                        <td>2025-05-17 17:00:55</td>
+                        <td>2025-06-16 17:01:13</td>
+                        <td><span class="status expired">EXPIRED</span></td>
+                        <td><button class="view-details-button"><i class="bi bi-eye"></i> VIEW DETAILS</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>SUB01720250517090055</td>
+                        <td>BASIC</td>
+                        <td>BASIC 1</td>
+                        <td>2025-05-17 17:00:55</td>
+                        <td>2025-06-16 17:01:13</td>
+                        <td><span class="status expired">EXPIRED</span></td>
+                        <td><button class="view-details-button"><i class="bi bi-eye"></i> VIEW DETAILS</button></td>
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php } ?>
+
+
+<?php if ($page == 'settings') { ?>
+   ffghgjhkjhkhhiiuiio
 <?php } ?>

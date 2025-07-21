@@ -21,7 +21,7 @@
                 </a>
                 <span> |</span>
 
-                <a href="#" title="FAQ">
+                <a href="<?php echo $websiteUrl ?>/faq" title="FAQ">
                     <i class="bi-question-circle"></i>
                     <span>FAQ</span>
                 </a>
@@ -56,31 +56,33 @@
 
                 <div class="logo-div">
                     <div class="div-in">
-                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="Logo">
+                        <a href="<?php echo $websiteUrl ?>/index" title="Home">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="Logo">
+                        </a>
                     </div>
                 </div>
 
                 <nav>
                     <ul>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a href="<?php echo $websiteUrl ?>/about" title="About Us">
                             <li>About Us</li>
                         </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a href="<?php echo $websiteUrl ?>/study-abroad" title="" >
                             <li>Study Abroad <i class="bi-plus"></i></li>
                         </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a href="<?php echo $websiteUrl ?>/international-exams" title="" >
                             <li>International Exam <i class="bi-plus"></i></li>
                         </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a  href="<?php echo $websiteUrl ?>/index">
                             <li>Payment plans</li>
                         </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a title="" href="<?php echo $websiteUrl ?>/blog">
                             <li>Blog</li>
                         </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a href="<?php echo $websiteUrl ?>/index">
                             <li>Gallery</li>
                         </a>
-                        <a href="#" title="" href="<?php echo $websiteUrl ?>/index">
+                        <a title="" href="<?php echo $websiteUrl ?>/index">
                             <li>Contact us</li>
                         </a>
                     </ul>

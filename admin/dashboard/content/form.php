@@ -14,8 +14,8 @@
                         <li title="UPLOAD PICTURE" id="picturePage" onclick="_getActivePagesTab({divid:'picturePage', page: 'picturePage', url: adminPortalLocalUrl});">UPLOAD PICTURE</li>
                         <li title="ADD EXAM KEY INFO" id="picturePage" onclick="">ADD EXAM KEY INFO</li>
                         <li title="ADD SCORE RANGE" id="picturePage" onclick="">ADD SCORE RANGE</li>
+                        <li title="CENTERS LOCATION" id="picturePage" onclick="">CENTERS LOCATION</li>
                         <li title="FAQS" id="picturePage" onclick="">FAQS</li>
-                        <li title="PAYMENT & PRICING" id="picturePage" onclick="">PAYMENT & PRICING</li>
                     <?php } ?>
 
                     <?php if ($pageCatId == 'studyAbroadCategory') { ?>
@@ -30,6 +30,10 @@
 
                     <?php if ($pageCatId == 'galleryCategory') { ?>
                         <li class="active-li" title="UPLOAD PICTURE" id="picturePage" onclick="_getActivePagesTab({divid:'picturePage', page: 'picturePage', url: adminPortalLocalUrl});">UPLOAD PICTURE</li>
+                    <?php } ?>
+
+                    <?php if ($pageCatId == 'examRelatedLinks') { ?>
+                        <li class="active-li" title="PAGE CONTENT" id="pageContent" onclick="_getActivePagesTab({divid:'pageContent', page: 'pageContent', url: adminPortalLocalUrl});">PAGE CONTENT</li>
                     <?php } ?>
 
                 </ul>
@@ -983,6 +987,73 @@
                         textField({
                             id: 'examtTitle',
                             title: 'Exam Title'
+                        });
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="pricing_container">
+                    <script>
+                        selectField({
+                            id: 'pricing',
+                            title: 'Select Payment & Pricing'
+                        });
+                    </script>
+                </div>
+
+                <div class="title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                <label>
+                    <div class="pix-div">
+                        <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                        <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+                    </div>
+                </label>
+
+                <div class="text_field_container" id="statusId_container">
+                    <script>
+                        selectField({
+                            id: 'statusId',
+                            title: 'Select Status'
+                        });
+                    </script>
+                </div>
+
+                <div>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'relatedLinksReg') { ?>
+    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="title-panel-div">
+            <div class="inner-top">
+                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW RELATED LINK</span>
+                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+            </div>
+        </div>
+
+        <div class="container-back-div">
+            <div class="inner-container">
+                <div>
+                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD NEW RELATED LINK</span></div>
+                </div>
+
+                <div class="text_field_container" id="abbreviation_container">
+                    <script>
+                        textField({
+                            id: 'abbreviation',
+                            title: 'Related Link Title',
+                        });
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="examtTitle_container">
+                    <script>
+                        textField({
+                            id: 'examtTitle',
+                            title: 'Related Link'
                         });
                     </script>
                 </div>

@@ -9,7 +9,9 @@
 </head>
 
 <body>
+    <?php include 'alert.php' ?>
     <section class="login-div">
+
         <div class="page-container">
             <div class="login-card-div">
                 <div class="logo-div">
@@ -17,11 +19,13 @@
                 </div>
 
                 <div id="page-content">
-                    <?php $page='login';?>
+                    <?php $page='completeResetPassword';?>
                     <?php include $websitePath.'/admin/config/page-content.php';?>
                 </div>
             </div>
         </div>
+
     </section>
 </body>
+
 </html>

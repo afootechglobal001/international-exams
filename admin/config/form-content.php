@@ -1,4 +1,4 @@
-<?php if($page=='password_reset_successful'){?>
+<?php if($page=='passwordResetSuccessful'){?>
     <div class="successful-div animated bounceInDown">
         <div class="success-in">
             <div class="gif">

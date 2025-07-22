@@ -13,7 +13,7 @@
 	var websiteUrl = "<?php echo $websiteUrl;?>";
 	var apiKey = 'a7c37b6289b9dd879b2c005118d3ef14'; /// For API Key //
 
-	var adminLocalUrl=websiteUrl+'/config/admin/code';
+	var adminLocalUrl=websiteUrl+'/admin/config/code';
 	var adminPortalLocalUrl=websiteUrl+'/admin/dashboard/config/code'; 
 	var adminPortalUrl=websiteUrl+'/admin'; /// For Portal Url //
 	var adminUrl=websiteUrl+'/admin/login'; /// For Admin Url //

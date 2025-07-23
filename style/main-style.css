@@ -2326,23 +2326,17 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 /* //////////////////////About///////////////////////////// */
-.other-pages-main-section{
-	position: absolute;
-	top: 100%;
-	right: 0px;
-	left: 0px;
-}
 
 .other-pages-slide-section {
   position: absolute;
   width: 100%;
   padding-top: 105px;
-  height: calc(100% - 105px);
+  height: 80%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, rgba(77, 76, 76, 0.749), rgba(242, 237, 237, 0.963)),
-    url(../all-images/images/photoslider1.jpg) center no-repeat;
+  background: url(../all-images/images/photoslider1.jpg);
 	background-size: cover;
 }
 
@@ -2351,13 +2345,12 @@ header .main-header .main-header-inner .button-div .btn:hover {
 	max-width: 1200px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	gap: 40px;
 }
 
 .other-pages-slide-section .other-pages-slide-div .other-pages-slide-card {
    	width: 550px;
-	min-height: 300px;
+	min-height: 200px;
 	background: rgba(255, 255, 255, 0.7);
 	backdrop-filter: blur(30px);
 	border-radius: 30px;
@@ -2370,7 +2363,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 .other-pages-slide-section .other-pages-slide-div .other-pages-slide-card h1{
    font-size: 40px;
   line-height: 45px;
-  height: 80px;
+  min-height: 40px;
   border-left: #9d043c 3px solid;
   padding: 0px 30px;
   margin: 0px;
@@ -2439,13 +2432,128 @@ header .main-header .main-header-inner .button-div .btn:hover {
   color: var(--link-color);
 }
 
-.other-pages-slide-section .other-pages-slide-div .image-div{
-  width: 50%;
+
+.other-pages-main-section{
+	position: absolute;
+	top: 90%;
+	right: 0px;
+	left: 0px;
+}
+
+
+/* blog */
+.blog-bg{
+  background: #e9dfe2e0;
+}
+
+.blog-div{
+  width: 100%;
+  display: flex;
+  gap: 30px;
+}
+
+.blog-div .blog-div-inner{
+  width: 70%;
+  background: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+
+
+}
+
+.blog-div .blog-div-inner .image-div{
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.other-pages-slide-section .other-pages-slide-div .image-div img{
+.blog-div .blog-div-inner .image-div img{
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
+.blog-div .blog-div-inner .blog-text-div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blog-div .blog-div-inner .blog-text-div h2{
+  font-family: sub-title-font;
+  color: var(--sub-body-color);
+}
+
+.blog-div .blog-div-inner .blog-text-div span{
+  color: var(--text-color);
+  font-size: 13px;
+}
+
+.blog-div .blog-div-inner .blog-text-div span i{
+  color: var(--secondary-color);
+}
+
+.blog-div .blog-div-inner .blog-text-div p{
+  color: var(--text-color);
+}
+
+.blog-div .blog-div-inner .blog-text-div a{
+  width: 100px;
+  color: var(--secondary-color);
+  transition: all 0.6s ease-in-out;
+}
+
+.blog-div .blog-div-inner .blog-text-div a:hover{
+  color: var(--primary-color);
+}
+
+.blog-div .blog-search {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+}
+
+.blog-div .blog-search .search-inner{
+  background: var(--white-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blog-div .blog-search .search-inner h2{
+  font-family: sub-title-font;
+  color: var(--sub-body-color);
+  font-size: 16px;
+}
+
+.blog-div .blog-search .search-inner .tag-list{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.blog-div .blog-search .search-inner .tag-list .btn{
+  border: none;
+  border-radius: 6px;
+  font-family: body-font;
+  color: var(--sub-body-color);
+  font-size: 13px;
+  padding: 10px;
+  -webkit-border-radius: 6px;
+  cursor: pointer;
+  transition: all .6s ease-in-out;
+}
+
+.blog-div .blog-search .search-inner .tag-list .btn:hover{
+  background: var(--primary-color);
+  color: var(--white-color);
+}

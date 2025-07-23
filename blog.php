@@ -53,13 +53,99 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
 
-            <div class="image-div">
-                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about-img.png" alt="image">
-            </div>
-
         </div>
     </div>
     <section class="other-pages-main-section">
+        <section class="body-div blog-bg">
+            <div class="body-div-in">
+                <div class="blog-div">
+                    <div class="blog-div-inner">
+                        <div class="image-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                        </div>
+                        <div class="blog-text-div">
+                            <h2>Study Abroad with Interantional Exams</h2>
+                            <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
+                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school administration for basic and secondary schools in Nigeria.
+                                From staff management to academic performance tracking, learn how this innovative
+                                platform is simplifying school operations and improving efficiency.
+                            </p>
+                            <a href="#">read more <i class="bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-search">
+                        <div class="search-inner">
+                            <h2>SEARCH</h2>
+
+                            <div class="text_field_container" id="search_container" title="Search Blog">
+                                <script>
+                                    textField({
+                                        id: 'search',
+                                        title: 'Type Here To Search'
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="search-inner">
+                            <h2>TAG LIST</h2>
+                            <div class="tag-list">
+                                <button class="btn">International Exam</button>
+                                <button class="btn">TOEFL</button>
+                                <button class="btn">MIVA</button>
+                                <button class="btn">Exam</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="body-div blog-bg">
+            <div class="body-div-in">
+                <div class="blog-div">
+                    <div class="blog-div-inner">
+                        <div class="image-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                        </div>
+                        <div class="blog-text-div">
+                            <h2>Study Abroad with Interantional Exams</h2>
+                            <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
+                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school administration for basic and secondary schools in Nigeria.
+                                From staff management to academic performance tracking, learn how this innovative
+                                platform is simplifying school operations and improving efficiency.
+                            </p>
+                            <a href="#">read more <i class="bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="body-div blog-bg">
+            <div class="body-div-in">
+                <div class="blog-div">
+                    <div class="blog-div-inner">
+                        <div class="image-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                        </div>
+                        <div class="blog-text-div">
+                            <h2>Study Abroad with Interantional Exams</h2>
+                            <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
+                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school administration for basic and secondary schools in Nigeria.
+                                From staff management to academic performance tracking, learn how this innovative
+                                platform is simplifying school operations and improving efficiency.
+                            </p>
+                            <a href="#">read more <i class="bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
 
         <section class="body-div">
             <div class="body-div-in">

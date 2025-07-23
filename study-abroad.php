@@ -37,7 +37,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
             <div class="other-pages-slide-card">
-                <h1>International Exams</h1>
+                <h1>Study Abroad</h1>
 
                 <div class="text-div">
                     <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,

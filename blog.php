@@ -57,11 +57,14 @@ Best place to register ACT exam in Nigeria, where to register international exam
     </div>
     <section class="other-pages-main-section">
         <section class="body-div blog-bg">
-            <div class="body-div-in">
+            <div class="body-div-in column">
                 <div class="blog-div">
                     <div class="blog-div-inner">
                         <div class="image-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                        </div>
+                        <div class="trade-mark">
+                            <span>INTERNATIONAL EXAMS</span>
                         </div>
                         <div class="blog-text-div">
                             <h2>Study Abroad with Interantional Exams</h2>
@@ -99,15 +102,13 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
                 </div>
 
-            </div>
-        </section>
-
-        <section class="body-div blog-bg">
-            <div class="body-div-in">
                 <div class="blog-div">
                     <div class="blog-div-inner">
                         <div class="image-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                        </div>
+                        <div class="trade-mark">
+                            <span>INTERNATIONAL EXAMS</span>
                         </div>
                         <div class="blog-text-div">
                             <h2>Study Abroad with Interantional Exams</h2>
@@ -121,15 +122,13 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
                 </div>
 
-            </div>
-        </section>
-
-        <section class="body-div blog-bg">
-            <div class="body-div-in">
                 <div class="blog-div">
                     <div class="blog-div-inner">
                         <div class="image-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                        </div>
+                        <div class="trade-mark">
+                            <span>INTERNATIONAL EXAMS</span>
                         </div>
                         <div class="blog-text-div">
                             <h2>Study Abroad with Interantional Exams</h2>

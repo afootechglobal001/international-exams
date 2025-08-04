@@ -770,7 +770,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
   color: var(--white-color);
   font-size: 12px;
   font-family: body-font;
-  background: var(--primary-color);
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   transition: 0.3s ease-in;
   cursor: pointer;
   display: flex;
@@ -780,7 +784,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .our-exam-back-div .exam-div .text-div .inner-div .bottom-div .btn:hover {
-  background: var(--secondary-color);
+  opacity: .6;
 }
 
 .bottom-btn-div {
@@ -1058,7 +1062,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
   color: var(--white-color);
   font-size: 12px;
   font-family: body-font;
-  background: var(--primary-color);
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   transition: 0.3s ease-in;
   cursor: pointer;
   display: flex;
@@ -1072,7 +1080,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .blog-back-div .blog-div .blog-inner-div .text-div .btn:hover {
-  background: var(--secondary-color);
+  opacity: .6;
 }
 
 @media all and (max-width: 920px) {
@@ -1243,7 +1251,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
   color: var(--white-color);
   font-size: 15px;
   font-family: sub-title-font;
-  background: var(--primary-color);
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   transition: 0.3s ease-in;
   cursor: pointer;
   display: flex;
@@ -1257,7 +1269,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .testimonial .content .btn:hover {
-  background: var(--secondary-color);
+  opacity: .6;
 }
 
 .testimonial .right-back-div {
@@ -1711,7 +1723,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
   color: var(--white-color);
   font-size: 14px;
   font-family: sub-title-font;
-  background: var(--primary-color);
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   transition: 0.3s ease-in;
   cursor: pointer;
   display: flex;
@@ -1725,7 +1741,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .faq-back-div .right-container .btn:hover {
-  background: var(--secondary-color);
+  opacity: .6;
 }
 
 @media all and (max-width: 850px) {
@@ -2542,7 +2558,6 @@ header .main-header .main-header-inner .button-div .btn:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: sticky;
 }
 
 .blog-div .blog-search .search-inner{

@@ -41,8 +41,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                 <div class="text-div">
                     <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                         Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                          into foreign universities.
+                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
+                        into foreign universities.
                     </p>
                     <div class="btn-div">
                         <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
@@ -52,7 +52,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -97,6 +97,57 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div style="width:100%; height: 350px;">
+                <div class="map" style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:100%;height:100%;">
+                    <div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;" alt="Map"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Ode+remo&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="googl-ehtml" href="https://www.bootstrapskins.com/themes" id="get-map-data"></a>
+                    <style>
+                        #google-maps-canvas img {
+                            max-width: none !important;
+                            background: none !important;
+                            font-size: inherit;
+                            font-weight: inherit;
+                        }
+                    </style>
+                </div>
+            </div>
+        </section>
+
+        <section class="body-div">
+            <div class="body-div-in message-contact">
+                <div class="contact-input-div">
+                    <div class="text_field_container" id="fullName_container" title="full name">
+                        <script>
+                            textField({
+                                id: 'fullName',
+                                title: 'Enter full name'
+                            });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="emailAddress_container" title="email address">
+                        <script>
+                            textField({
+                                id: 'emailAddress',
+                                title: 'Enter email address'
+                            });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="subject_container" title="subject">
+                        <script>
+                            textField({
+                                id: 'subject',
+                                title: 'Type subject here'
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div class="contact-input-div">
+                    <textarea name="message" id="message" class="message" placeholder="message"></textarea>
+                    <button class="btn">Send Mail <i class="bi-send-fill"></i></button>
                 </div>
             </div>
         </section>

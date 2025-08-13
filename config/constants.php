@@ -52,4 +52,5 @@ $userDeviceId=getBrowserId();
 	var adminUrl=websiteUrl+'/admin/login'; /// For Admin Url //
 	
 	var portalLocalUrl=websiteUrl+'/portal/dashboard/config/code';
+	var portalUrl=websiteUrl+'/portal/config/code';
 </script>

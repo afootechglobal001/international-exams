@@ -96,6 +96,20 @@
 	color: var(--secondary-color);
 }
 
+.other-pages-title-back-div .back-div{
+	display: flex;
+	gap: 10px;
+	font-family: body-font;
+	color: var(--sub-body-color);
+	font-size: 12px;
+}
+
+.other-pages-title-back-div .back-div span{
+	font-family: body-font;
+	color: var(--text-color);
+	cursor: pointer;
+}
+
 .other-pages-title-back-div .page-title-div .bottom-title{
 	font-size: 11px;
 	font-family: body-font;
@@ -901,7 +915,7 @@
 }
 
 .table-div .table .PENDING,
-.table-div .table .SUSPEND{
+.table-div .table .SUSPENDED{
 	background:rgb(252, 164, 57,.1);
 	color:rgba(218, 90, 31, 0.87);
 }
@@ -1310,7 +1324,7 @@
 	color: var(--white-color);
 }
 
-.user-profile-div .profile-content-div .bg-img .mini-profile .text-back-div .inner-text .text-div .SUSPEND{
+.user-profile-div .profile-content-div .bg-img .mini-profile .text-back-div .inner-text .text-div .SUSPENDED{
 	background: var(--secondary-color);
 	color: var(--white-color);
 }
@@ -1678,12 +1692,14 @@
 }
 
 .grid-div{
+	position: relative;
 	background:var(--white-color);
 	width:23.7%;
 	min-width: 200px;
 	border:rgba(204,204,204,.4) 1px solid;
 	cursor:pointer;
 	border-radius:8px;
+	flex-direction: column;
 	-moz-transition:all 0.2s ease-in 02s;
 	transition:all 0.2s ease-in 0.2s;
 	-webkit-transition:all 0.2s ease-in 0.2s;
@@ -1692,10 +1708,11 @@
 }
 
 .grid-div .btn-div{
-	padding:8px;
+	padding:8px 5px;
 	background:#f8f8f8;
 	display: flex;
-	gap: 5px;
+	gap: 4px;
+	border-radius:8px 8px 0px 0px;
 }
 
 .grid-div .btn-div .btn{
@@ -1720,11 +1737,17 @@
 	color: var(--white-color);
 }
 
+.grid-div .btn-div .link-btn{
+	background: #2DAAE1;
+	color: var(--white-color);
+}
+
 .grid-div .status-div{
 	position:absolute;
 	padding:5px 10px;
 	margin:10px;
 	height:15px;
+	top: 40px;
 	color: var(--white-color);
 	font-size:10px;
 	font-family:body-font;
@@ -1738,13 +1761,14 @@
 	border: none;
 }
 
-.grid-div .SUSPEND{
+.grid-div .SUSPENDED{
 	color: var(--white-color);
 	background: var(--sub-body-color);
 	border: none;
 }
 
 .grid-div .img-div{
+	position: relative;
 	width:100%;
 	height:140px;
 	overflow:hidden;
@@ -1809,9 +1833,9 @@
 }
 
 .grid-div:hover{
-	-moz-transform:scale(1.02) translate(1px,0px);
-	-webkit-transform:scale(1.02) translate(1px,0px);
-	box-shadow:0px 0px 10px 1px rgba(0,0,0,.1);
+	-moz-transform:scale(1.01) translate(1px,0px);
+	-webkit-transform:scale(1.01) translate(1px,0px);
+	box-shadow:0px 0px 10px 1px rgba(0,0,0,.0.1);
 }
 
 
@@ -2394,7 +2418,7 @@
 	color: var(--white-color);
 }
 
-.testimony-back-div .testimony-div .details .text .info .SUSPEND{
+.testimony-back-div .testimony-div .details .text .info .SUSPENDED{
 	background: var(--secondary-color);
 	color: var(--white-color);
 }

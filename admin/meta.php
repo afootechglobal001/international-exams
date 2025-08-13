@@ -8,14 +8,21 @@
 <link href="<?php echo $websiteUrl?>/style/icons-1.11.3/font/bootstrap-icons.css" type="text/css" rel="stylesheet">
 <link href="<?php echo $websiteUrl?>/style/animate.css" type="text/css" rel="stylesheet" media="all">
 <link href="<?php echo $websiteUrl?>/style/aos.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo $websiteUrl?>/style/paramount.css?v=<?php echo $codeVersion?>" type="text/css"
-    rel="stylesheet" />
-<link href="<?php echo $websiteUrl?>/admin/style/main-style.css?v=<?php echo $codeVersion?>" type="text/css"
-    rel="stylesheet" />
-
+<link href="<?php echo $websiteUrl?>/style/paramount.css?v=<?php echo $codeVersion?>" type="text/css"rel="stylesheet" />
+<link href="<?php echo $websiteUrl?>/admin/style/main-style.css?v=<?php echo $codeVersion?>" type="text/css" rel="stylesheet" />
 
 <script src="<?php echo $websiteUrl?>/js/jquery-v3.6.1.min.js"></script>
+<script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
 
 <script src="<?php echo $websiteUrl?>/admin/js/scripts.js?v=<?php echo $codeVersion?>"></script>
+
+<script>
+    let staffLoginData = JSON.parse(sessionStorage.getItem("staffLoginData"));
+    if (staffLoginData){
+        window.parent.location.href = adminDashboardUrl;
+    } else {
+        sessionStorage.setItem("staffLoginData", JSON.stringify(''));
+    }
+</script>

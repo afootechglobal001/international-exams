@@ -14,8 +14,8 @@
                         <li title="UPLOAD PICTURE" id="picturePage" onclick="_getActivePagesTab({divid:'picturePage', page: 'picturePage', url: adminPortalLocalUrl});">UPLOAD PICTURE</li>
                         <li title="ADD EXAM KEY INFO" id="picturePage" onclick="">ADD EXAM KEY INFO</li>
                         <li title="ADD SCORE RANGE" id="picturePage" onclick="">ADD SCORE RANGE</li>
+                        <li title="CENTERS LOCATION" id="picturePage" onclick="">CENTERS LOCATION</li>
                         <li title="FAQS" id="picturePage" onclick="">FAQS</li>
-                        <li title="PAYMENT & PRICING" id="picturePage" onclick="">PAYMENT & PRICING</li>
                     <?php } ?>
 
                     <?php if ($pageCatId == 'studyAbroadCategory') { ?>
@@ -30,6 +30,10 @@
 
                     <?php if ($pageCatId == 'galleryCategory') { ?>
                         <li class="active-li" title="UPLOAD PICTURE" id="picturePage" onclick="_getActivePagesTab({divid:'picturePage', page: 'picturePage', url: adminPortalLocalUrl});">UPLOAD PICTURE</li>
+                    <?php } ?>
+
+                    <?php if ($pageCatId == 'examRelatedLinks') { ?>
+                        <li class="active-li" title="PAGE CONTENT" id="pageContent" onclick="_getActivePagesTab({divid:'pageContent', page: 'pageContent', url: adminPortalLocalUrl});">PAGE CONTENT</li>
                     <?php } ?>
 
                 </ul>
@@ -75,6 +79,7 @@
                             id: 'titleId',
                             title: 'Select Title'
                         });
+                        _getSelectTitle('titleId');
                     </script>
                 </div>
 
@@ -115,10 +120,10 @@
                     </script>
                 </div>
 
-                <div class="text_field_container" id="mobileNumber_container">
+                <div class="text_field_container" id="phoneNumber_container">
                     <script>
                         textField({
-                            id: 'mobileNumber',
+                            id: 'phoneNumber',
                             title: 'Phone Number',
                             type: 'tel',
                             onKeyPressFunction: 'isNumberCheck(event);'
@@ -132,6 +137,7 @@
                             id: 'genderId',
                             title: 'Select Gender'
                         });
+                        _getSelectGender('genderId');
                     </script>
                 </div>
 
@@ -141,6 +147,25 @@
                             id: 'dateOfBirth',
                             title: 'Date Of Birth',
                             type: 'date'
+                        });
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="stateId_container">
+                    <script>
+                        selectField({
+                            id: 'stateId',
+                            title: 'Select State',
+                        });
+                        _getSelectGeneralState('stateId');
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="lgaId_container">
+                    <script>
+                        selectField({
+                            id: 'lgaId',
+                            title: 'Select Local Govt Area'
                         });
                     </script>
                 </div>
@@ -163,6 +188,7 @@
                                     id: 'roleId',
                                     title: 'Select Role'
                                 });
+                                _getSelectRoleId('roleId');
                             </script>
                         </div>
 
@@ -172,13 +198,14 @@
                                     id: 'statusId',
                                     title: 'Select Status'
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createStaff();"> <i class="bi-check"></i>
                         SUBMIT </button>
                 </div>
             </div>
@@ -187,6 +214,8 @@
 <?php } ?>
 
 <?php if ($page == 'staffProfile') { ?>
+    <script> getEachStaffDetailsSession = JSON.parse(sessionStorage.getItem("getEachStaffDetailsSession")); </script>
+
     <div class="user-profile-div" data-aos="fade-left" data-aos-duration="900">
         <div class="top-panel-div">
             <div class="inner-top">
@@ -199,23 +228,52 @@
             <div class="bg-img">
                 <div class="mini-profile">
                     <label>
-                        <div class="img-div" onClick="" id="cam-pix">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Profile Image">
+                        <div class="img-div">
+                            <img id="staffProfilePix" src="<?php echo $websiteUrl ?>/uploaded_files/staffPix/default.jpg" alt="Profile Image">
+                            <input type="file" id="profilePix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="staffProfilePixPreview.UpdatePreview(this);" />
                         </div>
+
+                        <script>
+                            $(document).ready(function () {
+                                const staffProfilePix = getEachStaffDetailsSession.profilePix;
+                                const profilePixUrl = staffProfilePix ? "<?php echo $websiteUrl ?>/uploaded_files/staffPix/" + staffProfilePix : "<?php echo $websiteUrl ?>/uploaded_files/staffPix/default.jpg";
+
+                                $("#staffProfilePix").attr("src", profilePixUrl).attr("alt", getEachStaffDetailsSession.lastName + " Logo");
+                            });
+                        </script>
                     </label>
 
                     <div class="text-back-div">
                         <div class="inner-text">
                             <div class="text-div">
-                                <div class="name" id="fullName">Hon. Paul Emmanuel</div>
+                                <div class="name" id="fullName">
+                                    <script>
+                                        $("#fullName").html(getEachStaffDetailsSession.titleName + ' ' +
+                                            getEachStaffDetailsSession.firstName + ' ' + getEachStaffDetailsSession.lastName
+                                        );
+                                    </script>
+                                </div>
 
                                 <div class="text">
                                     <div>
-                                        <div id="statusBtn" class="status-btn ACTIVE"><span>ACTIVE</span></div>
+                                        <div id="statusBtn" class="status-btn"><span id="statusName"></span></div>
                                     </div>
                                     | LAST LOGIN DATE:
-                                    <strong id="lastLoginTime">00-00-00 00:00:00</strong>
+                                    <strong id="lastLoginTime">
+                                        <script>
+                                            $("#lastLoginTime").html(getEachStaffDetailsSession.lastLoginTime ?
+                                                getEachStaffDetailsSession.lastLoginTime : "00-00-00 00:00:00");
+                                        </script>
+                                    </strong>
                                 </div>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        const statusName = getEachStaffDetailsSession.statusName;
+                                        $("#statusName").html(statusName);
+                                        $("#statusBtn").addClass(statusName);
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -232,8 +290,11 @@
                                 <script>
                                     selectField({
                                         id: 'updateTitleId',
-                                        title: 'Select Title'
+                                        title: 'Select Title',
+                                        fieldValue: getEachStaffDetailsSession?.titleId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.titleName ?? ''
                                     });
+                                    _getSelectTitle('updateTitleId');
                                 </script>
                             </div>
 
@@ -241,7 +302,8 @@
                                 <script>
                                     textField({
                                         id: 'updateFirstName',
-                                        title: 'First Name'
+                                        title: 'First Name',
+                                        value: getEachStaffDetailsSession?.firstName ?? ''
                                     });
                                 </script>
                             </div>
@@ -250,7 +312,8 @@
                                 <script>
                                     textField({
                                         id: 'updateMiddleName',
-                                        title: 'Middle Name'
+                                        title: 'Middle Name',
+                                        value: getEachStaffDetailsSession?.middleName ?? ''
                                     });
                                 </script>
                             </div>
@@ -259,17 +322,19 @@
                                 <script>
                                     textField({
                                         id: 'updateLastName',
-                                        title: 'Last Name'
+                                        title: 'Last Name',
+                                        value: getEachStaffDetailsSession?.lastName ?? ''
                                     });
                                 </script>
                             </div>
 
-                            <div class="text_field_container col-1" id="updateMobileNumber_container">
+                            <div class="text_field_container col-1" id="updatePhoneNumber_container">
                                 <script>
                                     textField({
-                                        id: 'updateMobileNumber',
+                                        id: 'updatePhoneNumber',
                                         title: 'Phone Number',
-                                        type: 'tel'
+                                        type: 'tel',
+                                        value: getEachStaffDetailsSession?.phoneNumber ?? ''
                                     });
                                 </script>
                             </div>
@@ -279,7 +344,8 @@
                                     textField({
                                         id: 'updateEmailAddress',
                                         title: 'Email Address',
-                                        type: 'email'
+                                        type: 'email',
+                                        value: getEachStaffDetailsSession?.emailAddress ?? ''
                                     });
                                 </script>
                             </div>
@@ -288,17 +354,36 @@
                                 <script>
                                     selectField({
                                         id: 'updateGenderId',
-                                        title: 'Select Gender'
+                                        title: 'Select Gender',
+                                        fieldValue: getEachStaffDetailsSession?.genderId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.genderName ?? ''
                                     });
+                                    _getSelectGender('updateGenderId');
                                 </script>
                             </div>
 
                             <div class="text_field_container col-1" id="updateDateOfBirth_container">
                                 <script>
-                                    textField({
-                                        id: 'updateDateOfBirth',
-                                        title: 'Date Of Birth',
-                                        type: 'date',
+                                    $(document).ready(function() {
+                                        const bdate = getEachStaffDetailsSession?.dateOfBirth || '';
+
+                                        function formatDateForInput(date) {
+                                            if (!date) return "";
+                                            // If the date is in DD/MM/YYYY format
+                                            if (date.includes("/")) {
+                                                const [day, month, year] = date.split("/");
+                                                return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+                                            }
+                                            // Already in YYYY-MM-DD format
+                                            return date;
+                                        }
+
+                                        textField({
+                                            id: 'updateDateOfBirth',
+                                            title: 'Date Of Birth',
+                                            type: 'date',
+                                            value: formatDateForInput(bdate)
+                                        });
                                     });
                                 </script>
                             </div>
@@ -313,8 +398,11 @@
                                 <script>
                                     selectField({
                                         id: 'stateId',
-                                        title: 'Select Branch State'
+                                        title: 'Select State',
+                                        fieldValue: getEachStaffDetailsSession?.stateId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.stateName ?? ''
                                     });
+                                    _getSelectGeneralState('stateId');
                                 </script>
                             </div>
 
@@ -322,7 +410,9 @@
                                 <script>
                                     selectField({
                                         id: 'lgaId',
-                                        title: 'Select Branch Local Govt Area'
+                                        title: 'Select Local Govt Area',
+                                        fieldValue: getEachStaffDetailsSession?.lgaId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.lgaName ?? ''
                                     });
                                 </script>
                             </div>
@@ -331,7 +421,8 @@
                                 <script>
                                     textField({
                                         id: 'updateAddress',
-                                        title: 'Home Address'
+                                        title: 'Home Address',
+                                        value: getEachStaffDetailsSession?.address ?? ''
                                     });
                                 </script>
                             </div>
@@ -347,7 +438,8 @@
                                     textField({
                                         id: 'staffId',
                                         title: 'Staff ID',
-                                        readonly: true
+                                        readonly: true,
+                                        value: getEachStaffDetailsSession?.staffId ?? ''
                                     });
                                 </script>
                             </div>
@@ -357,17 +449,19 @@
                                     textField({
                                         id: 'createdTime',
                                         title: 'Date Of Registration',
-                                        readonly: true
+                                        readonly: true,
+                                        value: getEachStaffDetailsSession?.createdTime ?? ''
                                     });
                                 </script>
                             </div>
 
-                            <div class="text_field_container col-3" id="lastLogin_container">
+                            <div class="text_field_container col-3" id="lastLoginTime_container">
                                 <script>
                                     textField({
-                                        id: 'lastLogin',
+                                        id: 'lastLoginTime',
                                         title: 'Last Login Date',
-                                        readonly: true
+                                        readonly: true,
+                                        value: getEachStaffDetailsSession?.lastLoginTime ?? ''
                                     });
                                 </script>
                             </div>
@@ -382,8 +476,11 @@
                                 <script>
                                     selectField({
                                         id: 'updateRoleId',
-                                        title: 'Select Role'
+                                        title: 'Select Role',
+                                        fieldValue: getEachStaffDetailsSession?.roleId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.roleName ?? ''
                                     });
+                                    _getSelectRoleId('updateRoleId');
                                 </script>
                             </div>
 
@@ -391,13 +488,16 @@
                                 <script>
                                     selectField({
                                         id: 'updateStatusId',
-                                        title: 'Select Status'
+                                        title: 'Select Status',
+                                        fieldValue: getEachStaffDetailsSession?.statusId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.statusName ?? ''
                                     });
+                                    _getSelectStatusId('updateStatusId', '1,2');
                                 </script>
                             </div>
                         </div>
 
-                        <div class="btn-div" id="staffBtn">
+                        <div class="btn-div">
                             <button class="btn" title="UPDATE PROFILE" id="updateBtn" onclick="_updateStaff();"> UPDATE PROFILE <i class="bi-check"></i></button>
                         </div>
                     </div>
@@ -987,6 +1087,73 @@
                     </script>
                 </div>
 
+                <div class="text_field_container" id="pricing_container">
+                    <script>
+                        selectField({
+                            id: 'pricing',
+                            title: 'Select Payment & Pricing'
+                        });
+                    </script>
+                </div>
+
+                <div class="title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                <label>
+                    <div class="pix-div">
+                        <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                        <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+                    </div>
+                </label>
+
+                <div class="text_field_container" id="statusId_container">
+                    <script>
+                        selectField({
+                            id: 'statusId',
+                            title: 'Select Status'
+                        });
+                    </script>
+                </div>
+
+                <div>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'relatedLinksReg') { ?>
+    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="title-panel-div">
+            <div class="inner-top">
+                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW RELATED LINK</span>
+                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+            </div>
+        </div>
+
+        <div class="container-back-div">
+            <div class="inner-container">
+                <div>
+                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD NEW RELATED LINK</span></div>
+                </div>
+
+                <div class="text_field_container" id="abbreviation_container">
+                    <script>
+                        textField({
+                            id: 'abbreviation',
+                            title: 'Related Link Title',
+                        });
+                    </script>
+                </div>
+
+                <div class="text_field_container" id="examtTitle_container">
+                    <script>
+                        textField({
+                            id: 'examtTitle',
+                            title: 'Related Link'
+                        });
+                    </script>
+                </div>
+
                 <div class="title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                 <label>
                     <div class="pix-div">
@@ -1505,7 +1672,7 @@
             <h2>Are you sure to log-out?</h2>
             Please, confirm your log-out action.
             <div class="btn-div">
-                <button class="btn" onclick="location.href='<?php echo $websiteUrl ?>/admin'">YES</button>
+                <button class="btn" onclick="_logOut();">YES</button>
                 <button class="btn no-btn" onclick="_alertClose(<?php echo $modalLayer ?>);">NO</button>
             </div>
         </div>

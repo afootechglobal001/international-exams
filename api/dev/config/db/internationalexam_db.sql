@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2025 at 05:09 PM
+-- Generation Time: Aug 13, 2025 at 06:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -1341,53 +1341,6 @@ INSERT INTO `staff_tab` (`sn`, `accessKey`, `staffId`, `titleId`, `firstName`, `
 (15, NULL, 'STAFF00720250810015616', 'PROF', 'MIKE', 'OLUWAGBENGA', 'AFOLABI', 'sunaf4real@gmail.com', '08131252996', 'M', '1990-05-20', 'OG', 'OG-19', '121, KOTCO ROAD,ODE REMO, OGUN STATE', 'default.jpg', '1', 3, 'c50f061085d695dde5773039032267f6', 'STF0001', 'STF0001', '2025-08-10 00:56:16', '2025-08-10 00:01:40', NULL),
 (16, NULL, 'STAFF00820250812021703', 'MRS', 'BOLA', 'TINUBU', 'AHMED', 'tinubu@gmail.com', '07050903886', 'M', '1989-05-05', 'LA', 'LA-11', '120, KOTCO ROAD,ODE REMO, OGUN STATE', 'default.jpg', '1', 1, '15934e0d3a3bb81ca5c8495e14e6915e', 'STAFF00120250808033535', 'STF0001', '2025-08-12 13:17:03', '2025-08-13 01:58:05', NULL),
 (17, NULL, 'STAFF00920250813035030', 'PROF', 'KOLAWOLE', 'AJAO', 'OLOTU', 'olotu200@gmail.com', '08160701918', 'M', '1980-03-05', 'OG', 'OG-09', '121, KOTCO ROAD,ODE REMO, OGUN STATE', 'default.jpg', '1', 2, 'a25943ab98b4b074e39d8a7ddef93f0c', 'STF0001', NULL, '2025-08-13 02:50:30', '2025-08-13 01:50:30', NULL);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `staff_view`
--- (See below for the actual view)
---
-CREATE TABLE `staff_view` (
-`sn` int(11)
-,`accessKey` varchar(255)
-,`staffId` varchar(100)
-,`titleId` varchar(50)
-,`firstName` varchar(255)
-,`middleName` varchar(255)
-,`lastName` varchar(255)
-,`emailAddress` varchar(255)
-,`phoneNumber` varchar(20)
-,`genderId` varchar(50)
-,`dateOfBirth` date
-,`stateId` varchar(100)
-,`lgaId` varchar(100)
-,`address` varchar(255)
-,`profilePix` varchar(100)
-,`statusId` varchar(50)
-,`roleId` int(11)
-,`password` varchar(255)
-,`createdBy` varchar(100)
-,`updatedBy` varchar(100)
-,`createdTime` datetime
-,`updatedTime` timestamp
-,`lastLoginTime` datetime
-,`titleName` varchar(50)
-,`genderName` varchar(100)
-,`roleName` varchar(50)
-,`statusName` varchar(100)
-,`stateName` varchar(100)
-,`lgaName` varchar(100)
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `staff_view`
---
-DROP TABLE IF EXISTS `staff_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `staff_view`  AS SELECT `a`.`sn` AS `sn`, `a`.`accessKey` AS `accessKey`, `a`.`staffId` AS `staffId`, `a`.`titleId` AS `titleId`, `a`.`firstName` AS `firstName`, `a`.`middleName` AS `middleName`, `a`.`lastName` AS `lastName`, `a`.`emailAddress` AS `emailAddress`, `a`.`phoneNumber` AS `phoneNumber`, `a`.`genderId` AS `genderId`, `a`.`dateOfBirth` AS `dateOfBirth`, `a`.`stateId` AS `stateId`, `a`.`lgaId` AS `lgaId`, `a`.`address` AS `address`, `a`.`profilePix` AS `profilePix`, `a`.`statusId` AS `statusId`, `a`.`roleId` AS `roleId`, `a`.`password` AS `password`, `a`.`createdBy` AS `createdBy`, `a`.`updatedBy` AS `updatedBy`, `a`.`createdTime` AS `createdTime`, `a`.`updatedTime` AS `updatedTime`, `a`.`lastLoginTime` AS `lastLoginTime`, `b`.`titleName` AS `titleName`, `c`.`genderName` AS `genderName`, `d`.`roleName` AS `roleName`, `e`.`statusName` AS `statusName`, `f`.`stateName` AS `stateName`, `g`.`lgaName` AS `lgaName` FROM ((((((`staff_tab` `a` join `setup_title_tab` `b`) join `setup_gender_tab` `c`) join `setup_role_tab` `d`) join `setup_status_tab` `e`) join `setup_states_tab` `f`) join `setup_state_lga_tab` `g`) WHERE `a`.`titleId` = `b`.`titleId` AND `a`.`genderId` = `c`.`genderId` AND `a`.`roleId` = `d`.`roleId` AND `a`.`statusId` = `e`.`statusId` AND `a`.`stateId` = `f`.`stateId` AND `a`.`lgaId` = `g`.`lgaId` ;
 
 --
 -- Indexes for dumped tables

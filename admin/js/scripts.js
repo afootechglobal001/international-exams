@@ -76,7 +76,8 @@ function _confirmLogin() {
 				}
 				$("#submitBtn").html(btnText).prop("disabled", false);
 			},
-			error: function () {
+			error: function (error) {
+				console.error("Error during login:", error);
 				_actionAlert("Unable to reach the server. Please check your connection.", false);
 				$("#submitBtn").html(btnText).prop("disabled", false);
 			}

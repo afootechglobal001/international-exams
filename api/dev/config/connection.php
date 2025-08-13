@@ -16,7 +16,7 @@ $_DB_PASSWORD ="AfooTECH@2023";
 // $_DB_PASSWORD ="";
 
 $conn = mysqli_connect($_HOST_NAME, $_DB_USERNAME, $_DB_PASSWORD)or die("Unable to connect to MySQL1");
-mysqli_select_db($conn,"internationalexam_db");
+mysqli_select_db($conn,"afootec1_int_exam");
 /////////////////////////////////////////////////////////////////
 ?>
 

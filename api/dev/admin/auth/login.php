@@ -6,7 +6,6 @@
 	$userName=trim($data['userName']);
 	$p_password=$data['password'];
 	$password=md5($p_password);
-	////////////////////////////////////////////////////////////////////////////////
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($userName, 'USERNAME');
@@ -47,8 +46,6 @@
                     'success'=> false,
                     'message'=> "ACCOUNT SUSPENDED! Contact the administrator for more info.",
                 ];
-
-                $alertDetail="LOGIN ALERT: A Staff whose name $fullName with ID: $staffId was denied from logging in for account suspension";
                 goto end;
             }
 
@@ -70,12 +67,6 @@
 
                     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
                     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-                        $staffId=$fetchQuery['staffId'];
-                        $roleId=$fetchQuery['roleId'];
-                        $titleId=$fetchQuery['titleId'];
-                        $firstName=$fetchQuery['firstName'];
-                        $lastName=$fetchQuery['lastName'];
-                        $fullName="$titleId $firstName $lastName";
                         $fetchQuery['fullName']=$fullName;
                         $response['data'][] = $fetchQuery;
                     }
@@ -87,13 +78,10 @@
                         'success'=> false,
                         'message'=> "ACCOUNT UNDER REVIEW! Contact the administrator for more info.",
                     ];
-                    
                     $alertDetail="LOGIN ALERT: A Staff whose name $fullName with ID: $staffId was denied from logging in for account is under review";
-                    goto end;
                 }
-                
+                $callclass->_alertSequenceAndUpdate($conn,$staffId,$fullName,$roleId,$alertDetail,$ipAddress,$systemName);
 //////////////////////////////////////////////////////////////////////////////////////////////
 end:
-$callclass->_alertSequenceAndUpdate($conn,$staffId,$fullName,$roleId,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

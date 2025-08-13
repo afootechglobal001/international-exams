@@ -70,16 +70,12 @@
 }
 
 .page-container .login-card-div .form-section h1 {
-  margin: 0px;
-  padding: 0px;
   font-size: 30x;
   font-family: sub-title-font;
   color: #000;
 }
 
 .page-container .login-card-div .form-section h1 span {
-  margin: 0px;
-  padding: 0px;
   font-family: sub-title-font;
   font-size: 25px;
   color: #555;

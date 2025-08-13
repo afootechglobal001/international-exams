@@ -7,10 +7,10 @@
             </span>
         </h1>
 
-        <div class="text_field_container" id="emailAddress_container">
+        <div class="text_field_container" id="userName_container">
             <script>
                 textField({
-                    id: 'emailAddress',
+                    id: 'userName',
                     title: 'Enter Your Email Address',
                     type: 'email'
                 });
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-button-div">
-            <button class="btn" title="Click to Login" onclick="location.href='<?php echo $websiteUrl ?>/admin/dashboard'">
+            <button class="btn" title="Click to Login" id="submitBtn" onclick="_confirmLogin();">
                 <i class="bi bi-check-all"></i>LOG-IN
             </button>
         </div>

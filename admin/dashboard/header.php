@@ -32,26 +32,32 @@
                 <div class="right-icon-div no-border" title="Click To View Profile" onclick="_toggleProfileDiv()">
                     <div class="profile-div">
                         <div class="info-div">
-                            <div class="name" id="loginHeaderName"><strong>Hon. Paul Emmanuel</script></strong></div>
-                            <div class="role" id="loginRoleName">SUPER ADMIN</div>
+                            <div class="name"><strong id="loginHeaderName"><script>$("#loginHeaderName").html(capitalizeFirstLetterOfEachWord(staffLoginData.fullName));</script></strong></div>
+                            <div class="role" id="loginRoleName"><script>$("#loginRoleName").html(staffLoginData.roleName);</script></div>
                         </div>
-                        <div class="img-div" id="profile_pix">
-                            <img src="<?php echo $websiteUrl; ?>/all-images/images/avatar.jpg" alt="Profile Image">
+
+                        <div class="img-div" id="profilePix">
+                            <script>
+                                $("#profilePix").html('<img src="<?php echo $websiteUrl; ?>/uploaded_files/staffPix/' + staffLoginData.profilePix + '" alt="Profile Image">');
+                            </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="toggle-profile-div">
                     <div class="toggle-div-in">
-                        <div class="toggle-profile-pix-div" id="profile_pix2">
-                            <img src="<?php echo $websiteUrl; ?>/all-images/images/avatar.jpg" alt="Profile Image">
+                        <div class="toggle-profile-pix-div">
+                            <img id="profilePix2" src="<?php echo $websiteUrl; ?>/all-images/images/avatar.jpg" alt="Profile Image">
+                            <script>
+                                $("#profilePix2").prop("src", "<?php echo $websiteUrl; ?>/uploaded_files/staffPix/" + staffLoginData.profilePix);
+                            </script>
                         </div>
 
                         <div class="header-content">
-                            <div class="toggle-profile-name"><span id="loginProfileName">Hon. Paul Emmanuel</span></div>
-                            <div class="toggle-profile-others"><span id="loginProfileStaffId">STF00001</span></div>
+                            <div class="toggle-profile-name"><span id="loginProfileName"><script>$("#loginProfileName").html(capitalizeFirstLetterOfEachWord(staffLoginData.fullName));</script></span></div>
+                            <div class="toggle-profile-others"><span id="loginProfileStaffId"><script>$("#loginProfileStaffId").html(staffLoginData.staffId);</script></span></div>
                             <div class="header-btn-div">
-                                <button class="btn" title="View Profile" type="button" onclick=""><i class="bi-person"></i> Profile</button>
+                                <button class="btn" title="View Profile" type="button" onclick="_fetchEachStaff(`${staffLoginData.staffId}`);"><i class="bi-person"></i> Profile</button>
                                 <button class="btn" title="Log-Out" type="button" onclick="_getForm({page: 'logoutConfirmForm', url: adminPortalLocalUrl});"><i class="bi-box-arrow-in-right"></i> Log-Out</button>
                             </div>                    
                         </div>

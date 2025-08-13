@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <?php include 'alert.php' ?>
     <section class="login-div">
         <div class="page-container">
             <div class="login-card-div">

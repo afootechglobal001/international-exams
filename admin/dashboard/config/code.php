@@ -1,4 +1,5 @@
 <?php include '../../../config/constants.php';?>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/session_validation.js"></script>
 
 <?php
 $action=$_POST['action'];
@@ -20,5 +21,21 @@ switch ($action){
 		$modalLayer=$_POST['modalLayer'];
 		require_once('../content/form.php');
 	break;	
+
+	case 'uploadStaffPix':
+		$oldProfilePix = $_POST['oldProfilePix'] ?? '';
+		$newProfilePix = $_POST['newProfilePix'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/staffPix/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldProfilePix) && $oldProfilePix !== 'default.jpg' && file_exists($uploadDir . $oldProfilePix)) {
+			unlink($uploadDir . $oldProfilePix);
+		}
+
+		if (!empty($newProfilePix) && isset($_FILES['profilePix']) && $_FILES['profilePix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['profilePix']['tmp_name'], $uploadDir . $newProfilePix);
+		}
+    break;
 }
 ?>

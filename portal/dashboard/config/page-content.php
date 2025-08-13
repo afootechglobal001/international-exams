@@ -71,7 +71,7 @@
     <div class="user-subjects-title-div">
         <div class="transactions-header">
             <h4><i class="bi bi-list-check"></i> Transactions History</h4>
-            <button class="download-btn"><i class="bi bi-download"></i> Download</button>
+            <button class="download-btn" title="Download"><i class="bi bi-download"></i> Download</button>
         </div>
 
         <div class="table-container">
@@ -141,7 +141,7 @@
     <div class="user-subjects-title-div">
         <div class="subscription-header">
             <h4><i class="bi bi-bar-chart"></i> Subscription History</h4>
-            <button class="download-btn"><i class="bi bi-download"></i> Download</button>
+            <button class="download-btn" title="Download"><i class="bi bi-download"></i> Download</button>
         </div>
 
         <div class="table-container">

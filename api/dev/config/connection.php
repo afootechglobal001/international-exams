@@ -5,15 +5,15 @@ header("Access-Control-Allow-Headers: Authorization, Origin, X-Requested-With, C
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header('Content-Type: application/json; charset=UTF-8');
 
-////////////for live connect  
-// $_HOST_NAME = "";  
-// $_DB_USERNAME ="";
-// $_DB_PASSWORD ="";
+//////////for live connect  
+$_HOST_NAME = "131.153.147.42";  
+$_DB_USERNAME ="afootec1_admin";
+$_DB_PASSWORD ="AfooTECH@2023";
 
-////////////for local connect  
-$_HOST_NAME = "localhost";  
-$_DB_USERNAME ="root";
-$_DB_PASSWORD ="";
+// ////////////for local connect  
+// $_HOST_NAME = "localhost";  
+// $_DB_USERNAME ="root";
+// $_DB_PASSWORD ="";
 
 $conn = mysqli_connect($_HOST_NAME, $_DB_USERNAME, $_DB_PASSWORD)or die("Unable to connect to MySQL1");
 mysqli_select_db($conn,"internationalexam_db");

@@ -1,12 +1,30 @@
 <?php if ($page == 'dashboard') { ?>
     <div class="dash-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title"><span id="page-title"><i class="bi-speedometer2"></i> Admin Dashboard Overview</span></div>
-        <h2>👋 Hi, <span id="DashFullname"><script>$("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.fullName));</script></span></h2>
-        <div class="bottom-title"><i class="bi-clock"></i> Last Login Date | <span id="lastLoginTime"><script>$("#lastLoginTime").html(staffLoginData.lastLoginTime);</script></span></div>
+        <h2>👋 Hi, <span id="DashFullname">
+                <script>
+                    $("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.fullName));
+                </script>
+            </span></h2>
+        <div class="bottom-title"><i class="bi-clock"></i> Last Login Date | <span id="lastLoginTime">
+                <script>
+                    $("#lastLoginTime").html(staffLoginData.lastLoginTime);
+                </script>
+            </span></div>
     </div>
 
     <div class="dashboard-wrapper" data-aos="fade-in" data-aos-duration="1500">
         <div class="statistics-back-div" data-aos="fade-in" data-aos-duration="1500">
+            <div class="statistics-div" onclick="_getActivePage({page:'viewBranch', divid:'branch'});" id="branch" title="Branches">
+                <div class="inner-div">
+                    <div class="number-div">
+                        Branches
+                        <span id="">3</span>
+                    </div>
+                    <div class="icon"><i class="bi-diagram-3"></i></div>
+                </div>
+            </div>
+            
             <div class="statistics-div" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
                 <div class="inner-div">
                     <div class="number-div">
@@ -340,39 +358,35 @@
                 <div class="matrix-div">
                     <div class="inner-div">
                         <div class="title">
-                            <h3>Payment Channel Matrix</h3>
+                            <h3>Recent Activities</h3>
+                            <span title="Click to view all activities">View All</span>
                         </div>
-                        <div id="chartContainer2" style="width:100%; height:200px; margin:auto;"></div>
 
-                        <script type="text/javascript">
-                            var options = {
-                                title: {
-                                    text: "" /*My Performance*/
-                                },
-                                data: [{
-                                    type: "pie",
-                                    startAngle: 45,
-                                    showInLegend: "False",
-                                    legendText: "{label}",
-                                    indexLabel: "{label} ({y})",
-                                    yValueFormatString: "#,##0.#" % "",
-                                    dataPoints: [{
-                                            label: "Debit/Credit Card",
-                                            y: 3
-                                        },
-                                        {
-                                            label: "Wallet",
-                                            y: 2
-                                        },
-                                        {
-                                            label: "Bank Transfer",
-                                            y: 11
-                                        },
-                                    ]
-                                }]
-                            };
-                            $("#chartContainer2").CanvasJSChart(options);
-                        </script>
+                        <div class="main-alert-div dash-alert-back-div" id="" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'alertRead', url: adminPortalLocalUrl});">
+                                <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+                                <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+                                <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+                            </div>
+
+                            <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+                                <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+                                <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+                                <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+                            </div>
+
+                            <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+                                <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+                                <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+                                <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+                            </div>
+
+                            <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+                                <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
+                                <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
+                                <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -540,6 +554,36 @@
     </div>
 <?php } ?>
 
+<?php if ($page == 'viewBranch') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="title"><i class="bi-diagram-3"></i> <strong>BRANCHES</strong></div>
+            <div class="bottom-title">
+                Active: <span id="active-country">10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to search country..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search country...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div">
+        <div class="table-div animated fadeIn">
+            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                <script>_fetchCountryData();</script>
+            </table>
+        </div>
+    </div>
+<?php } ?>
+
 <?php if ($page == 'viewStaff') { ?>
     <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="page-title-div">
@@ -572,7 +616,9 @@
     <div class="pages-back-div">
         <div class="table-div animated fadeIn">
             <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                <script>_fetchStaffs();</script>
+                <script>
+                    _fetchStaffs();
+                </script>
             </table>
         </div>
     </div>
@@ -1292,7 +1338,7 @@
                 </div>
             </div>
 
-           
+
         </div>
     </div>
 <?php } ?>
@@ -1640,37 +1686,37 @@
     </div>
 
     <div class="main-alert-div" id="fetchAllSystemAlert" data-aos="fade-in" data-aos-duration="1500">
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'alertRead', url: adminPortalLocalUrl});">
+        <div class="system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'alertRead', url: adminPortalLocalUrl});">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
         </div>
 
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+        <div class="system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
         </div>
 
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+        <div class="system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
         </div>
 
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+        <div class="system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
         </div>
 
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+        <div class="system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
         </div>
 
-        <div class="system-alert main-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
+        <div class="system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
             <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
             <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
             <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>

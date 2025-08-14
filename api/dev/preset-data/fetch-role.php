@@ -21,7 +21,7 @@
 	$loginRoleId = $_GET['loginRoleId'];
 	$roleId=trim(strtoupper($_POST['roleId']));
 
-	$select="SELECT * FROM setup_role_tab WHERE (roleName LIKE '%$q%' AND roleId<='$loginRoleId')";
+	$select="SELECT * FROM SETUP_ROLE_TAB WHERE (roleName LIKE '%$q%' AND roleId<='$loginRoleId')";
 
 	$query=mysqli_query($conn,$select)or die (mysqli_error($conn));
 	$allRecordCount=mysqli_num_rows($query);

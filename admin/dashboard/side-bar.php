@@ -9,16 +9,16 @@
         `);
 
         document.write(`
-            <div class="nav-div" title="Staff" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="${navId}-staff">
-                <div class="icon"><i class="bi-person-bounding-box"></i> Staffs</div> 
-                <div class="hidden" id="_staff"><i class="bi-person-bounding-box"></i> Active Staff</div>
+            <div class="nav-div" title="Branch" onclick="_getActivePage({page:'viewBranch', divid:'branch'});" id="${navId}-branch">
+                <div class="icon"><i class="bi-diagram-3"></i> Branches</div> 
+                <div class="hidden" id="_branch"><i class="bi-diagram-3"></i> Active Branches</div>
             </div>
         `);
 
         document.write(`
-            <div class="nav-div" title="Students" onclick="_getActivePage({page:'viewStudents', divid:'students'});" id="${navId}-students">
-                <div class="icon"><i class="bi-people"></i> Students</div> 
-                <div class="hidden" id="_staff"><i class="bi-people"></i> Active Students</div>
+            <div class="nav-div" title="Staff" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="${navId}-staff">
+                <div class="icon"><i class="bi-person-bounding-box"></i> Staffs</div> 
+                <div class="hidden" id="_staff"><i class="bi-person-bounding-box"></i> Active Staffs</div>
             </div>
         `);
 
@@ -35,7 +35,7 @@
         `);
 
         document.write(`
-            <div class="nav-div" title="Log-Out" onclick="" id="${navId}-reports">
+            <div class="nav-div" title="Log-Out" onclick="_getForm({page: 'logoutConfirmForm', url: adminPortalLocalUrl});" id="${navId}-logout">
                 <div class="icon"><i class="bi-power"></i> Log-Out</div> 
             </div>
         `);

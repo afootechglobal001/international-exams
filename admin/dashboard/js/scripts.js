@@ -20,7 +20,7 @@ function _getActiveLink(divid, nav) {
 }
 
 function _removeClass(){
-	$('#side-dashboard, #side-staff, #side-publish, #side-reports, #side-students, #top-dashboard, #top-staff').removeClass('active-li');
+	$('#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-students, #top-dashboard, #top-staff').removeClass('active-li');
 	$('#mobile-dashboard,#mobile-branches,#mobile-staff,#mobile-reports').removeClass('active-li');
 }
 
@@ -56,74 +56,23 @@ function _openMenu(){
 	_closeAllNav()
 	}
 }
-  
-function _open_li(ids){
-	$('#'+ids+'-sub-li').toggle('slow');
-}
-
-function _toggleProfileDiv() {
-    $(".toggle-profile-div").toggle("slow");
-}
-
-function _closeProfileDiv(event) {
-    if (!$(event.target).closest(".toggle-profile-div, .right-icon-div").length) {
-        $(".toggle-profile-div").hide("slow");
-    }
-}
-$(document).on("click", _closeProfileDiv);
-
-function select_search() {
-	$(".srch-select").toggle("fast");
-}
-  
-function srch_custom(text){
-	$('#srch-text').html(text);
-	$('.custom-srch-div').fadeIn(500);
-};
-
-function _next_page(next_id, icon, divid) {
-	$("#account_settings_id,#account_detail,#channge_password").hide();
-	$("#" + next_id).fadeIn(1000);
-	$("#panel-title").html($("#" + icon).html() + $("#" + divid).html());
-}
-  
-function _prev_page(next_id) {
-	$("#account_settings_id,#account_detail,#channge_password").hide();
-	$("#" + next_id).fadeIn(1000);
-	$("#panel-title").html(
-	  '<i class="bi-gear"></i> </span id="app_text"> APP SETTINGS'
-	);
-}
 
 
-function capitalizeFirstLetterOfEachWord(inputText) {
-	const words = inputText.toLowerCase().split(' ');
-	for (let i = 0; i < words.length; i++) {
-		words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+function _getActiveBranchPage(props) {
+	const {
+        page = '',
+        divid = '',
+		pageContainer='getBranchDetails'
+    } = props;
+	_getBranchPagesActiveLink(divid);
+	if(page){
+		_getPage({page: page, pageContainer: pageContainer,  url: adminPortalLocalUrl});
 	}
-	const result = words.join(' ');
-	return result;
 }
-
-function isNumber_Check(e) {
-    var key = e.keyCode || e.which;
-
-    if (!((key >= 48 && key <= 57))) {
-        if (e.preventDefault) {
-            e.preventDefault();
-        } else {
-            e.returnValue = false;
-        }
-    }
+function _getBranchPagesActiveLink(divid){
+	$('#countryBranchDashboard, #branchesPage').removeClass('active');
+	$("#"+divid).addClass('active');
 }
-
-function filters(selectBoxId) {
-	var valThis = $('#search'+selectBoxId).val();
-		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div').each(function() {
-		var text = $(this).text();
-		(text.toLowerCase().indexOf(valThis.toLowerCase()) > -1) ? $(this).show(): $(this).hide();
-	});
-};
 
 function _getActivePagesTab(props) {
 	const {
@@ -158,6 +107,59 @@ function __getActiveStudentPageLink(divid){
 	$('#studentDashboard, #studentProfileDetails, #paymentHistory, #walletHistory').removeClass('active');
 	$("#"+divid).addClass('active');
 }
+  
+function _open_li(ids){
+	$('#'+ids+'-sub-li').toggle('slow');
+}
+
+function _toggleProfileDiv() {
+    $(".toggle-profile-div").toggle("slow");
+}
+
+function _closeProfileDiv(event) {
+    if (!$(event.target).closest(".toggle-profile-div, .right-icon-div").length) {
+        $(".toggle-profile-div").hide("slow");
+    }
+}
+$(document).on("click", _closeProfileDiv);
+
+function select_search() {
+	$(".srch-select").toggle("fast");
+}
+  
+function srch_custom(text){
+	$('#srch-text').html(text);
+	$('.custom-srch-div').fadeIn(500);
+};
+
+function capitalizeFirstLetterOfEachWord(inputText) {
+	const words = inputText.toLowerCase().split(' ');
+	for (let i = 0; i < words.length; i++) {
+		words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+	}
+	const result = words.join(' ');
+	return result;
+}
+
+function isNumber_Check(e) {
+    var key = e.keyCode || e.which;
+
+    if (!((key >= 48 && key <= 57))) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
+    }
+}
+
+function filters(selectBoxId) {
+	var valThis = $('#search'+selectBoxId).val();
+		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div').each(function() {
+		var text = $(this).text();
+		(text.toLowerCase().indexOf(valThis.toLowerCase()) > -1) ? $(this).show(): $(this).hide();
+	});
+};
 
 function _logOut(){
 	sessionStorage.clear();
@@ -240,34 +242,6 @@ function _getSelectRoleId(fieldId) {
 	}
 }
 
-function _getSelectGender(fieldId){
-	try {
-		$.ajax({
-			type: "GET",
-			url: endPoint+"/preset-data/fetch-gender",
-			dataType: "json",
-			cache: false,
-			headers: getAuthHeaders(),
-			success: function(info) {
-				const data = info.data;
-				const success = info.success;
-				
-				if (success === true) {
-					for (let i = 0; i < data.length; i++) {
-						const id = data[i].genderId;
-						const value = data[i].genderName;
-						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\');">'+ value +'</li>');
-					}	
-				} else {
-					_actionAlert(info.message, false); 
-				}
-			}
-		});
-	} catch (error) {
-		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
-	}
-}
 
 function _getSelectTitle(fieldId){
 	try {
@@ -299,87 +273,236 @@ function _getSelectTitle(fieldId){
 }
 
 
-function _getSelectGeneralState(fieldId){
-	try {
-		$.ajax({
-			type: "GET",
-			url: endPoint+"/preset-data/fetch-states",
-			dataType: "json",
-			cache: false,
-			headers: getAuthHeaders(),
-			success: function(info) {
-				const data = info.data;
-				const success = info.success;
-
-				if (success === true) {
-					for (let i = 0; i < data.length; i++) {
-						const id = data[i].stateId;
-						const value = data[i].stateName;
-						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\'); _fetchGeneralStateLga()">'+ value +'</li>');
-					}	
-				} else {
-					_actionAlert(info.message, false); 
-				}
-			}
-		});
-	} catch (error) {
-		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
-	}
-}
-
-function _fetchGeneralStateLga(){
-	_getSelectGeneralLga('lgaId');
-}
-function _getSelectGeneralLga(fieldId){
-	const stateId = $('#stateId').val();
-	try {
-		$.ajax({
-			type: "GET",
-			url: endPoint+"/preset-data/fetch-lga?stateId="+stateId,
-			dataType: "json",
-			cache: false,
-			headers: getAuthHeaders(),
-			success: function(info) {
-				const data = info.data;
-				const success = info.success;
-
-				if (success === true) {
-					$('#searchList_'+ fieldId).html('');
-					for (let i = 0; i < data.length; i++) {
-						const id = data[i].lgaId;
-						const value = data[i].lgaName;
-						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\')">'+ value +'</li>');
-					}	
-				} else {
-					_actionAlert(info.message, false); 
-				}
-			}
-		});
-	} catch (error) {
-		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
-	}
-	
-}
-
-
 function formatDate(date) {
     if (!date) return ""; 
-
     // If input comes in as YYYY-MM-DD (from <input type="date">)
     if (date.includes('-')) {
         const [year, month, day] = date.split('-');
         return `${year}/${month}/${day}`;
     }
-
     // If input comes in as DD/MM/YYYY
     if (date.includes('/')) {
         const [day, month, year] = date.split('/');
         return `${year}/${month}/${day}`;
     }
-
     return date; // fallback
+}
+
+
+function _fetchCountryData() {
+    $('#pageContent').html('<div class="ajax-loader pages-ajax-loader"><img src="' + websiteUrl + '/all-images/images/spinner.gif" alt="Loading"/></div>').fadeIn("fast");        
+	try {
+		$.ajax({
+			type: "GET",
+			url: endPoint + '/admin/country/fetch-country',
+			dataType: "json", 
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				const fetch = info.data;
+
+				let text = '';
+				let no=0;
+
+				text =`
+				<thead>
+                    <tr class="tb-col">
+                        <th>sn</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Number of branches</th>
+                        <th>Status</th>
+                        <th>View</th>
+                    </tr>
+                </thead>`;
+
+				if (info.success) {
+					for (let i = 0; i < fetch.length; i++) {
+						no++;
+						const countryId = fetch[i].countryId;
+						const countryName = fetch[i].countryName;
+						const email = fetch[i].email;
+						const phoneNumber = fetch[i].phoneNumber;
+						const statusName = fetch[i].statusName;
+						const totalNumberOfBranches = fetch[i].totalNumberOfBranches;
+
+						text +=`
+						<tbody>
+							 <tr class="tb-row">
+								<td>${no}</td>
+								<td class="clickable-td" title="CLICK TO VIEW ${countryName} PROFILE" onclick="_fetchEachCountry('${countryId}');">${countryName}<br /><span>${email}</span></td>
+								<td>${phoneNumber}</td>
+								<td>${totalNumberOfBranches}</td>
+								<td>
+									<div class="status-div ${statusName}">${statusName}</div>
+								</td>
+								<td><button class="btn view-btn" title="CLICK TO VIEW ${countryName} PROFILE" onclick="_fetchEachCountry('${countryId}');">VIEW</button></td>
+							</tr>
+						</tbody>`;
+					}
+					$('#pageContent').html(text);
+				} else {
+					_actionAlert(info.message, false);
+
+					text += `
+						tbody>
+							<tr>
+								<td colspan="11">
+									<div class="false-notification-div">
+										<p>${info.message}</p>
+									</div>
+								</td>
+							</tr>
+						</tbody>`;
+					$('#pageContent').html(text);
+
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
+				}
+			},
+			error: function(textStatus, errorThrown) {
+				console.error("AJAX Error: ", textStatus, errorThrown);
+				_actionAlert('An error occurred while fetching data! Please try again.', false);
+			}
+		});
+	} catch (error) {
+		console.error("Error: ", error);
+		_actionAlert('An unexpected error occurred! Please try again.', false);
+	}
+
+}
+
+function _fetchEachCountry(countryId) {
+	$("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/admin/country/fetch-country?countryId=${countryId}`,
+			dataType: "json", 
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				if (info.success && info.data.length > 0) {
+					sessionStorage.setItem("getEachCountrySession", JSON.stringify(info.data[0]));
+					_getForm({page: 'branchCountry', url: adminPortalLocalUrl});
+				} else {
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
+				}
+			},
+			error: function(textStatus, errorThrown) {
+				_alertClose();
+				console.error("AJAX Error: ", textStatus, errorThrown);
+				_actionAlert('An error occurred while fetching data! Please try again.', false);
+			}
+		});
+	} catch (error) {
+		_alertClose();
+		console.error("Error: ", error);
+		_actionAlert('An unexpected error occurred! Please try again.', false);
+	}
+}
+
+
+function _fetchCountryBranchData() {
+	let getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
+    $('#pageContent').html('<div class="ajax-loader pages-ajax-loader"><img src="' + websiteUrl + '/all-images/images/spinner.gif" alt="Loading"/></div>').fadeIn("fast");        
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/admin/branch/fetch-branch?countryId=${getEachCountrySession.countryId}`,
+			dataType: "json", 
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				const fetch = info.data;
+
+				let text = '';
+				let no=0;
+
+				text =`
+				<thead>
+					<tr class="tb-col">
+						<th>sn</th>
+						<th>Name</th>
+						<th>Phone Number</th>
+						<th>Address</th>
+						<th>Branch Manager</th>
+						<th>Number of staff</th>
+						<th>Date of Reg.</th>
+						<th>Status</th>
+						<th>View</th>
+					</tr>
+				</thead>`;
+
+				if (info.success) {
+					for (let i = 0; i < fetch.length; i++) {
+						no++;
+						const branchId = fetch[i].branchId;
+						const branchName = fetch[i].branchName;
+						const email = fetch[i].email;
+						const phoneNumber = fetch[i].phoneNumber;
+						const address = fetch[i].address;
+						const managerName = fetch[i].managerName;
+						const statusName = fetch[i].statusName;
+						const totalNumberOfStaff = fetch[i].totalNumberOfStaff;
+						const createdTime = fetch[i].createdTime;
+
+						text +=`
+						<tbody>
+							<tr class="tb-row">
+							<td>${no}</td>
+							<td class="clickable-td" title="Click to view ${branchName} PROFILE" onclick="_getForm({page: 'branchCountryProfile', layer:2, url: adminPortalLocalUrl});">${branchName}<br /><span>${email}</span></td>
+							<td>${phoneNumber}</td>
+							<td>${address}</td>
+							<td>${managerName}</td>
+							<td>${totalNumberOfStaff}</td>
+							<td>${createdTime}</td>
+							<td>
+								<div class="status-div ${statusName}">${statusName}</div>
+							</td>
+							<td><button class="btn view-btn" title="CLICK TO VIEW ${branchName} PROFILE" onclick="">VIEW</button></td>
+							</tr>
+						</tbody>`;
+					}
+					$('#pageContent').html(text);
+				} else {
+					_actionAlert(info.message, false);
+
+					text += `
+						tbody>
+							<tr>
+								<td colspan="11">
+									<div class="false-notification-div">
+										<p>${info.message}</p>
+										<div>
+											<button class="btn" onclick="_getForm({page: 'branchReg', layer:2, url: adminPortalLocalUrl});">ADD NEW BRANCH</button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>`;
+					$('#pageContent').html(text);
+
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
+				}
+			},
+			error: function(textStatus, errorThrown) {
+				console.error("AJAX Error: ", textStatus, errorThrown);
+				_actionAlert('An error occurred while fetching data! Please try again.', false);
+			}
+		});
+	} catch (error) {
+		console.error("Error: ", error);
+		_actionAlert('An unexpected error occurred! Please try again.', false);
+	}
 }
 
 
@@ -539,7 +662,7 @@ function _createStaff() {
 
 
 function _fetchStaffs() {
-    $('#pageContent').html('<div class="ajax-loader pages-ajax-loader"><img src="' + websiteUrl + '/iall-images/images/loading.gif" alt="Loading"/></div>').fadeIn("fast");        
+    $('#pageContent').html('<div class="ajax-loader pages-ajax-loader"><img src="' + websiteUrl + '/all-images/images/loading.gif" alt="Loading"/></div>').fadeIn("fast");        
 	try {
 		$.ajax({
 			type: "GET",
@@ -639,7 +762,6 @@ function _fetchStaffs() {
 		_actionAlert('An unexpected error occurred! Please try again.', false);
 	}
 }
-
 
 function _fetchEachStaff(staffId) {
 	$("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
@@ -826,7 +948,6 @@ function _updateStaff() {
 	}
 }
 
-
 $(function () {
 	staffProfilePixPreview = {
 	UpdatePreview: function (obj) {
@@ -894,7 +1015,6 @@ function _uploadStaffProfilepix() {
 		_actionAlert('An unexpected error occurred! Please Try Again', false);
 	}
 }
-
 
 function _uploadStaffPix(oldProfilePix, newProfilePix, message) {
     const uploadedFile = $("#profilePix").prop("files")[0];

@@ -258,13 +258,13 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: body-font;
   color: var(--text-color);
 }
 
 .main-container .main-content-div .active-page-div i {
-  font-size: 18px;
+  font-size: 13px;
   margin: 0px;
   padding: 0px;
   color: var(--primary-color);
@@ -306,7 +306,7 @@ body {
 }
 
 .main-container .main-content-div .user-box-div .title-div .date-row i {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--primary-color);
 }
 

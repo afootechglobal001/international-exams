@@ -3,12 +3,6 @@
 <div class="sidebar-div">
     <div class="sidebar-div-in">
 
-        <div class="logo-div">
-            <div class="div-in">
-                <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exams Logo">
-            </div>
-        </div>
-
         <nav class="menu">
             <ul>
                 <li class="active" title="Dashboard" id="dashboard" onclick="_getActivePage({page:'dashboard', divid:'dashboard'});"><i class="bi bi-speedometer2"></i> Dashboard</li></li>
@@ -17,13 +11,13 @@
                 <li title="Subscription History" id="subscriptionHistory" onclick="_getActivePage({page:'subscriptionHistory', divid:'subscriptionHistory'});"><i class="bi bi-list-check"></i> Subscription History</li>
             </ul>
         </nav>
-    </div>
 
-    <nav class="bottom-menu">
-        <ul>
-            <li title="Settings"><i class="bi bi-gear"></i> Settings</li>
-            <li title="Log-Out"><i class="bi bi-power"></i> Log-Out</li>
-        </ul>
+        <nav class="bottom-menu">
+            <ul>
+                <li title="Settings"><i class="bi bi-gear"></i> Settings</li>
+                <li title="Log-Out"><i class="bi bi-power"></i> Log-Out</li>
+            </ul>
+        </div>
        
     </nav>
 </div>

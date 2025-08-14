@@ -1,21 +1,24 @@
 <?php include 'alert.php' ?>
 
 <!-- Header -->
-<header class="top-header-div">
-    <div class="header-tabs-div">
-        <div class="header-tabs-div-in">
-            <h1>USER PORTAL</h1>
-            <nav>
-                <ul>
-                    <li class="active" title="Dashboard"><i class="bi bi-speedometer2"></i> Dashboard</li>
-                    <li title="My Profile"><i class="bi bi-person-square"></i> My Profile</li>
-                </ul>
-            </nav>
 
+<header class="header-div">
+    <div class="header-div-in">
+        <div class="header-left-div">
+            <div class="logo-div">
+                <img src="<?php echo $websiteUrl ?>/admin/images/logo.png" alt="International Exam Logo" />
+            </div>
+            <p>Hi, Mike Candy</p>
+            <div class="search-div">
+                <input type="text" placeholder="Search...">
+                <i class="bi bi-search"></i>
+            </div>
         </div>
 
-        <div class="header-right-icon-div">
-            <i class="bi bi-bell" title="Notifications"></i>
+        <div class="header-right-div">
+            <div class="notification-div">
+                <i class="bi bi-bell icons" title="Notifications"></i>
+            </div>
             <div class="profile-pic-div" title="Profile Picture">
                 <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="User Profile Picture">
             </div>

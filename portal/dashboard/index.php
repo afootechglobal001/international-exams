@@ -13,13 +13,25 @@
     <?php include 'side-bar.php' ?>
 
 
-    <div class="content-div">
-        <div class="inner-content">
-            <div id="page-content">
-                <script>_getActivePage({page:'dashboard', divid:'dashboard'});</script>	
+    <section class="main-container">
+        <div class="main-content-div">
+
+            <div class="active-page-div">
+                <i class="bi bi-speedometer2"></i>
+                <h3>Dashboard</h3>
             </div>
+
+            <div id="page-content">
+                <script>
+                _getActivePage({
+                    page: 'dashboard',
+                    divid: 'dashboard'
+                });
+                </script>
+            </div>
+
         </div>
-    </div>
+    </section>
 </body>
 
 </html>

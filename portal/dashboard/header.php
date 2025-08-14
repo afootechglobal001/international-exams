@@ -8,19 +8,15 @@
             <div class="logo-div">
                 <img src="<?php echo $websiteUrl ?>/admin/images/logo.png" alt="International Exam Logo" />
             </div>
-            <div class="greet-text-div">
-                <h2>Hi, Mike Candy</h2>
+            <p>Hi, Mike Candy</p>
+            <div class="search-div">
+                <input type="text" placeholder="Search...">
+                <i class="bi bi-search"></i>
             </div>
         </div>
 
         <div class="header-right-div">
-            <div class="search-div">
-                <div class="search-container">
-                    <input type="text" placeholder="Search...">
-                    <i class="bi bi-search"></i>
-                </div>
-            </div>
-            <div class="icon-div">
+            <div class="notification-div">
                 <i class="bi bi-bell icons" title="Notifications"></i>
             </div>
             <div class="profile-pic-div" title="Profile Picture">

@@ -1,8 +1,8 @@
 <?php if ($page == 'dashboard') { ?>
     <div class="dash-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title"><span id="page-title"><i class="bi-speedometer2"></i> Admin Dashboard Overview</span></div>
-        <h2>👋 Hi, <span id="login_fullname">Hon. Paul Emmanuel</span></h2>
-        <div class="bottom-title"><i class="bi-clock"></i> Last Login Date | <span id="">2025-07-21 09:12:16</span></div>
+        <h2>👋 Hi, <span id="DashFullname"><script>$("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.fullName));</script></span></h2>
+        <div class="bottom-title"><i class="bi-clock"></i> Last Login Date | <span id="lastLoginTime"><script>$("#lastLoginTime").html(staffLoginData.lastLoginTime);</script></span></div>
     </div>
 
     <div class="dashboard-wrapper" data-aos="fade-in" data-aos-duration="1500">
@@ -572,159 +572,7 @@
     <div class="pages-back-div">
         <div class="table-div animated fadeIn">
             <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                <thead>
-                    <tr class="tb-col">
-                        <th>sn</th>
-                        <th>User Name</th>
-                        <th>Contact</th>
-                        <th>Role</th>
-                        <th>Last Login</th>
-                        <th>Status</th>
-                        <th>View</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr class="tb-row">
-                        <td>1</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_getForm({page: 'staffProfile', url: adminPortalLocalUrl});">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>SUPER ADMIN</td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_getForm({page: 'staffProfile', url: adminPortalLocalUrl});">VIEW</button></td>
-                    </tr>
-
-                    <tr class="tb-row">
-                        <td>2</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>ADMIN</td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
-
-                    <tr class="tb-row">
-                        <td>3</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>STAFF</td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
-
-                    <tr class="tb-row">
-                        <td>4</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>STAFF</td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
-
-                    <tr class="tb-row">
-                        <td>5</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>STAFF</td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
-                </tbody>
+                <script>_fetchStaffs();</script>
             </table>
         </div>
     </div>
@@ -940,14 +788,13 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="_getActivePage({page:'examRelatedLinks', divid:'publish'});">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>TOEFL</h2>
                     <div class="top-text"><span> Test of English as a Foreign Language </span></div>
@@ -963,14 +810,13 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>GRE</h2>
                     <div class="top-text"><span> Graduate Record Examination </span></div>
@@ -986,14 +832,13 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>IELTS</h2>
                     <div class="top-text"><span>International English Language Testing System</span></div>
@@ -1009,14 +854,12 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>GMAT</h2>
                     <div class="top-text"><span> Graduate Management Admission Test </span></div>
@@ -1032,14 +875,13 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>PTE</h2>
                     <div class="top-text"><span> Pearson Test of English</span></div>
@@ -1055,14 +897,13 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>SAT</h2>
                     <div class="top-text"><span> Scholastic Assessment Test </span></div>
@@ -1078,14 +919,13 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>MCAT</h2>
                     <div class="top-text"><span>Medical College Admission Test</span></div>
@@ -1101,17 +941,71 @@
                 <div class="btn-div">
                     <button class="btn active-btn" onclick="">EDIT</button>
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
                 </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>NCLEX</h2>
                     <div class="top-text"><span> National Concil Licensure Examination </span></div>
+                    <div class="text-in">
+                        <div class="text">
+                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examRelatedLinks') { ?>
+    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="page-title-div">
+            <div class="back-div"><span title="Click and navigate back to International Exams" onclick="_getActivePage({page:'internationalExamCategory', divid:'publish'});"><i class="bi-arrow-left"></i> International Exams</span> Related Links</div>
+            <div class="title"><i class="bi-book-half"></i> <strong>Related Links</strong></div>
+            <div class="bottom-title">
+                Active: <span>10</span> |
+                Suspended: <span>5</span>
+            </div>
+        </div>
+
+        <div class="other-pages-filter-div">
+            <div class="text-field-wrapper">
+                <div class="text_field_container search_field_container">
+                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
+                        placeholder="" title="Type here to search link..." />
+                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search link...</div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" type="button" title="ADD NEW RELATED LINK"
+                    onclick="_getForm({page: 'relatedLinksReg', url: adminPortalLocalUrl});">
+                    <i class="bi-plus-square"></i> ADD NEW RELATED LINK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="other-pg-back-div">
+            <div class="grid-div">
+                <div class="btn-div">
+                    <button class="btn active-btn" onclick="">EDIT</button>
+                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'examRelatedLinks', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                </div>
+
+                <div class="img-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                </div>
+                <div class="status-div ACTIVE">ACTIVE</div>
+                <div class="text-div">
+                    <h2>TOEFL ELIGIBILTY IN NIGERIA</h2>
+                    <div class="top-text"><span> Test of English as a Foreign Language </span></div>
                     <div class="text-in">
                         <div class="text">
                             UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
@@ -1159,12 +1053,10 @@
                     <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'studyAbroadCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="STUDY IN CANADA" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN CANADA</h2>
                     <div class="top-text"><span> Canada plays host to more than 180,000 International students in any given... </span></div>
@@ -1182,12 +1074,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-australia.jpg" alt="STUDY IN AUSTRALIA" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN AUSTRALIA</h2>
                     <div class="top-text"><span> Australia plays host to more than 180,000 International students in any... </span></div>
@@ -1205,12 +1095,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-usa.png" alt="STUDY IN UNITED STATE" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN UNITED STATE</h2>
                     <div class="top-text"><span>U.S plays host to more than 180,000 International students in any given...</span></div>
@@ -1228,12 +1116,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-frnace.jpg" alt="STUDY IN FRANCE" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN FRANCE</h2>
                     <div class="top-text"><span> Graduate Management Admission TestStudying abroad in France...</span></div>
@@ -1251,12 +1137,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-dubai.jpg" alt="STUDY IN DUBAI" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN DUBAI</h2>
                     <div class="top-text"><span> Dubai is one of the seven emirates of the United Arab Emirates...</span></div>
@@ -1274,12 +1158,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-china.jpg" alt="STUDY IN CHINA" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN CHINA</h2>
                     <div class="top-text"><span> The People's Republic of China has been a center of international attention... </span></div>
@@ -1297,12 +1179,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-ghana.jpg" alt="STUDY IN GHANA" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN GHANA</h2>
                     <div class="top-text"><span>The People's Republic of China has been a center of international attention...</span></div>
@@ -1320,12 +1200,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-qatar.jpg" alt="STUDY IN QATAR" />
                 </div>
-
+                <div class="status-div ACTIVE">ACTIVE</div>
                 <div class="text-div">
                     <h2>STUDY IN QATAR</h2>
                     <div class="top-text"><span> Qatar is a small peninsular nation about the size of Connecticut. </span></div>
@@ -1376,11 +1254,10 @@
                     <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'blogCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION" />
                 </div>
+                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="text-div">
                     <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
@@ -1399,11 +1276,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png" alt="TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE & MORE" />
                 </div>
+                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="text-div">
                     <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
@@ -1416,28 +1292,7 @@
                 </div>
             </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                </div>
-
-                <div class="status-div ACTIVE">ACTIVE</div>
-
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog3.png" alt="FROM NIGERIA TO THE WORLD: HOW EDUGRADE HELPS YOU ACE INTERNATIONAL EXAMS" />
-                </div>
-
-                <div class="text-div">
-                    <div class="top-text blog-top-text"><span> GENERAL</span></div>
-                    <h2>FROM NIGERIA TO THE WORLD: HOW EDUGRADE HELPS YOU ACE...</h2>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 <?php } ?>
@@ -1478,11 +1333,10 @@
                     <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'galleryCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="Students preparing for international exams like IELTS and SAT" />
                 </div>
+                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="text-div">
                     <div class="top-text blog-top-text"><span> GLOBAL READINESS</span></div>
@@ -1501,11 +1355,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/gallery/study-group.webp" alt="Students taking an international standardized test" />
                 </div>
+                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="text-div">
                     <div class="top-text blog-top-text"><span> PREP SESSIONS</span></div>
@@ -1524,11 +1377,10 @@
                     <button class="btn" onclick="">EDIT PAGE DETAILS</button>
                 </div>
 
-                <div class="status-div ACTIVE">ACTIVE</div>
-
                 <div class="img-div">
                     <img src="<?php echo $websiteUrl ?>/all-images/gallery/result-celebration.jpg" alt="EDUGRADE students celebrating international exam success" />
                 </div>
+                <div class="status-div ACTIVE">ACTIVE</div>
 
                 <div class="text-div">
                     <div class="top-text blog-top-text"><span> SUCCESS STORIES</span></div>

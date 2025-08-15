@@ -46,7 +46,7 @@
 
 
                <div class="image-div">
-                  <img src="<?php echo $websiteUrl ?>/admin/images/bgg.png" />
+                  <img src="<?php echo $websiteUrl ?>/admin/images/images.jpg" />
                </div>
 
             </div>

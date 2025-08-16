@@ -2936,7 +2936,7 @@
 	min-width: 170px;
 	padding: 10px 20px;
 	height: 48px;
-	border-radius: 5px;
+	border-radius: 25px;
 	margin-top: 5px;
 	font-family: sub-title-font;
 	color: var(--sub-body-color2);
@@ -2960,13 +2960,23 @@
 }
 
 .modal-buttons .btn-primary {
-	background: linear-gradient(150deg, #eedeaf,#0069d923,#f0e4e496);
-	color: var(--sub-body-color2);
+	  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .modal-buttons .btn-primary:hover {
-  	background: linear-gradient(-150deg, #eedeaf,#0069d923,#f0e4e496);
+  	background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
 }
+
 
 
 

@@ -246,7 +246,8 @@ function _createStaff() {
 
 		if (issueCount > 0) return;
 		
-		if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
+		_showCustomConfirm({
+			callback: () => {
 			const btnText = $("#submitBtn").html();
 			$("#submitBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
 			$("#submitBtn").prop("disabled", true);
@@ -289,7 +290,12 @@ function _createStaff() {
 					$("#submitBtn").html(btnText).prop("disabled", false);
 				}
 			});
-		}
+		},
+			title: 'Are you sure?',
+			message: 'You are about to create a new staff. This action cannot be undone.',
+			icon: 'bi-exclamation-octagon',
+			iconBg: 'bg-warning'
+		});
 	} catch (error) {
 		_actionAlert('An unexpected error occurred! Please Try Again', false);
 		$("#submitBtn").prop("disabled", false);
@@ -376,7 +382,8 @@ function _updateStaff() {
 
 		if (issueCount > 0) return;
 
-		if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
+		_showCustomConfirm({
+			callback: () => {
 			const btnText = $("#updateBtn").html();
 			$("#updateBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
 			$("#updateBtn").prop("disabled", true);
@@ -421,7 +428,12 @@ function _updateStaff() {
 					$("#updateBtn").html(btnText).prop("disabled", false);
 				}
 			});
-		}
+		},
+			title: 'Are you sure?',
+			message: 'You are about to update this staff profile. This action cannot be undone.',
+			icon: 'bi-exclamation-octagon',
+			iconBg: 'bg-warning'
+		});
 	} catch (error) {
 		_actionAlert('An unexpected error occurred! Please Try Again', false);
 		$("#updateBtn").prop("disabled", false);

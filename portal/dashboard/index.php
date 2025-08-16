@@ -17,8 +17,19 @@
         <div class="main-content-div">
 
             <div class="active-page-div">
-                <i class="bi bi-speedometer2"></i>
-                <h3>Dashboard</h3>
+                <div class="title">
+                    <i class="bi bi-speedometer2"></i>
+                    <h3>Dashboard</h3>
+                </div>
+                <div class="btn-div">
+                    <button class="btn" title="Refresh Page">
+                        <i class="bi bi-filetype-pdf"></i> Download E-books
+                    </button>
+                    <button class="btn apply-btn" title="Apply for Exam">
+                        <i class="bi bi-journal-text"></i>  Apply for Exam
+                    </button>
+                </div>
+
             </div>
 
             <div id="page-content">

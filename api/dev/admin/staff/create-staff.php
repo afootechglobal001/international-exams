@@ -23,11 +23,8 @@
     $lastName=trim(strtoupper($data['lastName']));
     $emailAddress=trim(strtolower($data['emailAddress']));
     $phoneNumber=trim($data['phoneNumber']);
-    $genderId=trim($data['genderId']);
-    $dateOfBirth=trim($data['dateOfBirth']);
-    $stateId=trim($data['stateId']);
-    $lgaId=trim($data['lgaId']);
     $address =trim(strtoupper(str_replace("'", "\'", $data['address'])));
+    $branchId=trim($data['branchId']);
     $roleId=trim($data['roleId']);
     $statusId=trim($data['statusId']);
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,11 +36,8 @@
     validateEmptyField($lastName, 'LAST NAME');
     validateEmptyField($emailAddress, 'EMAIL ADDRESS');
     validateEmptyField($phoneNumber, 'MOBILE NUMBER');
-    validateEmptyField($genderId, 'GENDER');
-    validateEmptyField($dateOfBirth, 'DATE OF BIRTH');
-    validateEmptyField($stateId, 'STATE');
-    validateEmptyField($lgaId, 'LOCAL GOVT AREA');
     validateEmptyField($address, 'ADDRESS');
+    validateEmptyField($branchId, 'BRANCH');
     validateEmptyField($roleId, 'ROLE');
     validateEmptyField($statusId, 'STATUS');
 
@@ -74,7 +68,7 @@
         goto end;
     }
 
-    $query=mysqli_query($conn,"SELECT emailAddress FROM staff_tab WHERE emailAddress='$emailAddress'") or die (mysqli_error($conn));
+    $query=mysqli_query($conn,"SELECT emailAddress FROM STAFF_TAB WHERE emailAddress='$emailAddress'") or die (mysqli_error($conn));
     $countUser=mysqli_num_rows($query);
 
     if ($countUser>0){ /// start if 5
@@ -96,9 +90,9 @@
         $staffId=$countId.$no.date("Ymdhis");
         $password=md5($staffId);
 
-        mysqli_query($conn,"INSERT INTO `staff_tab`
-        (`staffId`, `titleId`, `firstName`, `middleName`, `lastName`, `emailAddress`, `phoneNumber`, `genderId`, `dateOfBirth`, `stateId`, `lgaId`, `address`, `profilePix`, `statusId`, `roleId`, `password`, `createdBy`, `createdTime`) VALUES
-        ('$staffId', '$titleId', '$firstName', '$middleName', '$lastName', '$emailAddress', '$phoneNumber', '$genderId', '$dateOfBirth', '$stateId', '$lgaId', '$address', 'default.jpg', '$statusId', '$roleId', '$password', '$loginStaffId', NOW())")or die (mysqli_error($conn));
+        mysqli_query($conn,"INSERT INTO `STAFF_TAB`
+        (`branchId`, `staffId`, `titleId`, `firstName`, `middleName`, `lastName`, `emailAddress`, `phoneNumber`, `address`, `profilePix`, `statusId`, `roleId`, `password`, `createdBy`, `createdTime`) VALUES
+        ('$branchId', '$staffId', '$titleId', '$firstName', '$middleName', '$lastName', '$emailAddress', '$phoneNumber', '$address', 'default.jpg', '$statusId', '$roleId', '$password', '$loginStaffId', NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
@@ -119,7 +113,7 @@
 
             /////////////////// for  CreatedBy /////////
             $createdByData=array();
-            $getCreatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM staff_tab WHERE staffId='$createdBy'");
+            $getCreatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$createdBy'");
             while ($getCreatedByfetch = mysqli_fetch_assoc($getCreatedByQuery)) {
                 $createdByData[] = $getCreatedByfetch;
             }
@@ -127,7 +121,7 @@
 
             /////////////////// for  UpdatedBy /////////
             $updatedByData=array();
-            $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM staff_tab WHERE staffId='$updatedBy'");
+            $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$updatedBy'");
             while ($getUpdatedByfetch = mysqli_fetch_assoc($getUpdatedByQuery)) {
                 $updatedByData[] = $getUpdatedByfetch;
             }
@@ -136,7 +130,8 @@
             $response['data'][] = $fetchQuery;
         }
 
+        $callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
+//////////////////////////////////////////////////////////////////////////////////////////////
 end:
-$callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

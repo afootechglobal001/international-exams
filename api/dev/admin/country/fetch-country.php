@@ -46,6 +46,7 @@
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
+        $countryId=$fetchQuery['countryId'];
 
         //// get number of branches
         $branchCountQuery = mysqli_query($conn, "SELECT COUNT(*) AS count FROM BRANCH_COUNTRY_TAB WHERE countryId='$countryId'");

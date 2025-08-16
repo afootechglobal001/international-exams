@@ -61,7 +61,7 @@
         $lastName=$userFetchedArray[0]['lastName'];
         $fullName="$titleId $firstName $lastName";
 		
-		mysqli_query($conn,"UPDATE `staff_tab` SET profilePix='$profilePix' WHERE staffId='$staffId'")or die (mysqli_error($conn));
+		mysqli_query($conn,"UPDATE `STAFF_TAB` SET profilePix='$profilePix' WHERE staffId='$staffId'")or die (mysqli_error($conn));
 
 		$response = [
 			'response'=> 200,
@@ -71,6 +71,8 @@
 			'message'=> 'SUCCESS! Staff picture updated successfully!',
 			'data' => array() // Initialize the data array
 		];  
+
+		$alertDetail="STAFF PICTURE UPDATED SUCCESSFUL:A staff whose name - $loginStaffFullname, successfully uploaded his/her profile picture. DETAILS: - Full Name: $fullName, ID: $staffId";	
 
 		// Fetch staff details
         $select="SELECT * FROM STAFF_VIEW WHERE staffId='$staffId'";
@@ -82,7 +84,7 @@
 
             /////////////////// for  CreatedBy /////////
             $createdByData=array();
-            $getCreatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM staff_tab WHERE staffId='$createdBy'");
+            $getCreatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$createdBy'");
             while ($getCreatedByfetch = mysqli_fetch_assoc($getCreatedByQuery)) {
                 $createdByData[] = $getCreatedByfetch;
             }
@@ -90,7 +92,7 @@
 
             /////////////////// for  UpdatedBy /////////
             $updatedByData=array();
-            $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM staff_tab WHERE staffId='$updatedBy'");
+            $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$updatedBy'");
             while ($getUpdatedByfetch = mysqli_fetch_assoc($getUpdatedByQuery)) {
                 $updatedByData[] = $getUpdatedByfetch;
             }
@@ -99,9 +101,8 @@
             $response['data'][] = $fetchQuery;
         }
 
-		$alertDetail="STAFF PICTURE UPDATED SUCCESSFUL:A staff whose name - $loginStaffFullname, successfully uploaded his/her profile picture. DETAILS: - Full Name: $fullName, ID: $staffId";	
-
-end:
 $callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
+//////////////////////////////////////////////////////////////////////////////////////////////
+end:
 echo json_encode($response);
 ?>

@@ -22,17 +22,12 @@
     $branchId = $_GET['branchId'];
     $statusId = $_GET['statusId'];
 
-    if (!$countryId){ /// start if 1
-        $response = [
-            'response'=> 100,
-            'success'=> false,
-            'message'=> "COUNTRY ID REQUIRED! Provide valid country ID and try again",
-        ]; 
-        goto end;
-    }
-
     if (!empty($branchId)) {
         $branchIds = "AND branchId ='$branchId'";
+    }
+
+    if (!empty($countryId)) {
+        $countryIds = "AND countryId='$countryId'";
     }
 
     if (!empty($statusId)) {
@@ -41,7 +36,7 @@
 
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
-    $select = "SELECT * FROM BRANCH_VIEW WHERE countryId='$countryId' AND (branchName LIKE '%$q%' OR email LIKE '%$q%' OR phoneNumber LIKE '%$q%') $branchIds $statusIds ORDER BY branchName ASC";
+    $select = "SELECT * FROM BRANCH_VIEW WHERE (branchName LIKE '%$q%' OR email LIKE '%$q%' OR phoneNumber LIKE '%$q%') $branchIds $countryIds $statusIds ORDER BY branchName ASC";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);
@@ -61,6 +56,7 @@
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
+        $branchId=$fetchQuery['branchId'];
 
         //// get number of staff
         $staffCountQuery = mysqli_query($conn, "SELECT COUNT(*) AS count FROM STAFF_TAB WHERE branchId='$branchId'");

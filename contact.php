@@ -37,7 +37,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
             <div class="other-pages-slide-card">
-                <h1>Frequently Asked Questions</h1>
+                <h1>Contact Us</h1>
 
                 <div class="text-div">
                     <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
@@ -52,78 +52,106 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
     <section class="other-pages-main-section">
 
-        <section class="body-div net-bg-br">
+        <section class="body-div contactBg">
             <div class="body-div-in">
-                <div class="faq-back-div">              
-                    <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <img src="<?php echo $websiteUrl?>/all-images/body-pix/faq.webp" alt="<?php echo $appName?> Frequently Asked Question"/>
+                <div class="location-phone">
+                    <div class="address-name-button">
+                        <button class="btn">LAGOS BRANCH</button>
+                        <button class="btn">OGUN BRANCH</button>
+                        <button class="btn">OYO BRANCH</button>
                     </div>
+                    <div class="location-details-div">
+                        <div class="location-details">
+                            <div class="image-div">
+                                <img src="all-images/images/email.png" alt="">
+                            </div>
+                            <div class="text-div">
+                                <h2>MAIL US</h2>
+                                <span>info@schoolbolt.com</span>
+                            </div>
+                        </div>
 
-                    <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="faq-title">
-                            <div><span class="top-title">FAQ</span></div>
-                            <h2>Frequently Asked <span>#Questions</span></h2>
-                        </div>    
+                        <div class="location-details">
+                            <div class="image-div">
+                                <img src="all-images/images/phone.png" alt="">
+                            </div>
+                            <div class="text-div">
+                                <h2>CALL US</h2>
+                                <span>(+234) 812 700 0262</span>
+                            </div>
+                        </div>
 
-                        <div class="faq-toggle-back">
-                            <div class="faq-toggle" id="faq1">
-								<div class="title-text" onclick="_collapse('faq1')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>What is the TOEFL exam used for?</h3>
-									</div>
-									<div class="expand-div" id="faq1num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq1answer" style="display: none;">
-									<p>The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</p>
-								</div>
-							</div>
-
-                            <div class="faq-toggle" id="faq2">
-								<div class="title-text" onclick="_collapse('faq2')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>How is the IELTS scored?</h3>
-									</div>
-									<div class="expand-div" id="faq2num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq2answer" style="display: none;">
-									<p>The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</p>
-								</div>
-							</div>
-
-                            <div class="faq-toggle" id="faq3">
-								<div class="title-text" onclick="_collapse('faq3')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>What is the purpose of the PTE?</h3>
-									</div>
-									<div class="expand-div" id="faq1num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq3answer" style="display: none;">
-									<p>The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</p>
-								</div>
-							</div>
-                        </div> 
-
-                        <a href="<?php echo $websiteUrl?>" title="Read More FAQ">
-                        <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>            
-                    </div>                     
+                        <div class="location-details">
+                            <div class="image-div">
+                                <img src="all-images/images/location.png" alt="">
+                            </div>
+                            <div class="text-div">
+                                <h2>LOCATION</h2>
+                                <span>Lagos, Nigeria</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width:100%; height: 350px;">
+                <div class="map" style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:100%;height:100%;">
+                    <div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;" alt="Map"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Ode+remo&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="googl-ehtml" href="https://www.bootstrapskins.com/themes" id="get-map-data"></a>
+                    <style>
+                        #google-maps-canvas img {
+                            max-width: none !important;
+                            background: none !important;
+                            font-size: inherit;
+                            font-weight: inherit;
+                        }
+                    </style>
                 </div>
             </div>
         </section>
-        
+
+        <section class="body-div">
+            <div class="body-div-in message-contact">
+                <div class="contact-input-div">
+                    <div class="text_field_container" id="fullName_container" title="full name">
+                        <script>
+                            textField({
+                                id: 'fullName',
+                                title: 'Enter full name'
+                            });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="emailAddress_container" title="email address">
+                        <script>
+                            textField({
+                                id: 'emailAddress',
+                                title: 'Enter email address'
+                            });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="subject_container" title="subject">
+                        <script>
+                            textField({
+                                id: 'subject',
+                                title: 'Type subject here'
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div class="contact-input-div">
+                    <textarea name="message" id="message" class="message" placeholder="message"></textarea>
+                    <button class="btn">Send Mail <i class="bi-send-fill"></i></button>
+                </div>
+            </div>
+        </section>
+
         <?php include 'footer.php' ?>
     </section>
 </body>

@@ -9,13 +9,12 @@
                     Dashboard</li>
                 </li>
                 <li title="Exam" id="exam" onclick="_getActivePage({page:'exam', divid:'exam'});"><i
-                        class="bi bi-journal-text"></i> Exam</li>
+                        class="bi bi-filetype-pdf"></i> Download E-books</li>
+                <li title="Exam" id="exam" onclick="_getActivePage({page:'exam', divid:'exam'});"><i
+                        class="bi bi-journal-text"></i> My Exams</li>
                 <li title="Transactions History" id="transactionHistory"
                     onclick="_getActivePage({page:'transactionHistory', divid:'transactionHistory'});"><i
-                        class="bi bi-list-check"></i> Transactions History</li>
-                <li title="Subscription History" id="subscriptionHistory"
-                    onclick="_getActivePage({page:'subscriptionHistory', divid:'subscriptionHistory'});"><i
-                        class="bi bi-list-check"></i> Subscription History</li>
+                        class="bi bi-credit-card-2-back"></i> Transactions</li>
             </ul>
         </nav>
 

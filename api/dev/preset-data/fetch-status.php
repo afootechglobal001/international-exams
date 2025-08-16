@@ -22,7 +22,7 @@
     if ($statusIds !=''){
         $whareClause= "AND statusId IN ($statusIds)";
     }
-    $select="SELECT * FROM setup_status_tab WHERE (statusName LIKE '%$q%' $whareClause)";
+    $select="SELECT * FROM SETUP_STATUS_TAB WHERE (statusName LIKE '%$q%' $whareClause)";
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
 
     $allRecordCount=mysqli_num_rows($query);

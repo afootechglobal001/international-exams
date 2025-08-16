@@ -1,19 +1,16 @@
 <?php require_once '../config/connection.php';?>
-<?php
-if (!$checkBasicSecurity){/// start if 1
-    goto end;
-}
+<?php if (!$checkBasicSecurity) {goto end;}?>
 
-    $select="SELECT * FROM setup_states_tab";
+<?php
+    $select="SELECT * FROM COUNTRY_TAB";
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
 
     $response=[
-        'response'=>200,
-        'success'=>true,
-        'message'=>"STATE FETCH SUCCESFFULY!",
+        'response' => 200,
+        'success' => true,
+        'message' => 'COUNTRY FETCH SUCCESSFULLY!',
         'data' => array() // Initialize the data array
     ];
-    
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $response['data'][] = $fetchQuery;
     }

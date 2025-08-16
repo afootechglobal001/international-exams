@@ -2,7 +2,7 @@
 <?php if (!$checkBasicSecurity) {goto end;}?>
 
 <?php
-    $select="SELECT * FROM setup_title_tab";
+    $select="SELECT * FROM SETUP_TITLE_TAB";
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
 
     $response=[

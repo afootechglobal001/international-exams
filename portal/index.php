@@ -6,24 +6,20 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | Admin Portal</title>
+    <title><?php echo $appName ?> | Student Portal | Log-In</title>
 </head>
 
 <body>
-    <section class="main-login-container">
+    <main>
+        <div class="picture-div"></div>
 
-        <?php $callclass->_pagesImage(); ?>
-
-        <div class="right-login-div">
+        <div class="form-div">
             <div class="form-box">
                 <div class="form-box-content">
-
                     <h1>👋 Hi, Welcome Back!</h1>
-
                     <div class="alert alert-success">
                         Kindly, provide your <span>Email Address</span> and <span>Password</span> to Login.
                     </div>
-
                     <div class="text_field_container" id="emailAddress_container">
                         <script>
                         textField({
@@ -43,13 +39,11 @@
                         });
                         </script>
                     </div>
-
-                    <button class="btn" title="Click to log In"
-                        onclick="window.location.href='<?php echo $websiteUrl?>/portal/dashboard'">
-                        Log In <i class="bi bi-check"></i>
-                    </button>
-
-                    <div class="forgot-password">
+                    <div class="btn-div">
+                        <button class="btn" title="Click to log In"
+                            onclick="window.location.href='<?php echo $websiteUrl?>/portal/dashboard'">
+                            Log In <i class="bi bi-check"></i>
+                        </button>
                         <a href="#" title="Recover your password">Forgot Password?</a>
                     </div>
                 </div>
@@ -59,7 +53,7 @@
                         <a href="<?php echo $websiteUrl?>/portal/sign-up" title="Create an account">Sign-Up</a>
                     </p>
                     <p>
-                        By logging in to this portal, you agree to our<br/>   
+                        By logging in to this portal, you agree to our<br />
                         <a href="#" title="View Privacy Policy">Privacy Policy</a> and
                         <a href="#" title="View Terms of Service">Terms of Service</a>.
                     </p>
@@ -68,7 +62,7 @@
             </div>
         </div>
 
-    </section>
+    </main>
 </body>
 
 

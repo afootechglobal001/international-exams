@@ -1,228 +1,121 @@
 /* CSS Document */
 /* Developed by Mike Candy @ 04-07-2025 */
 
-
-.main-login-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
-  
-
-.main-login-container .left-graphic-div {
-    position: fixed;
-    left: 0px;
-    height: 100%;
-    width: 50%;
-    background:url(../../all-images/images/portal-login-bg.jpg) center no-repeat;
-    background-size: cover;
-}
-  
-
-.main-login-container .right-login-div {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    right: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: var(--white-color);
-    overflow: auto;
+main {
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
-
-.main-login-container .right-login-div .form-box {
-    width: 450px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
+main .picture-div {
+  position: fixed;
+  left: 0px;
+  height: 100%;
+  width: 50%;
+  background: url(../../all-images/images/portal-login-bg.jpg) center no-repeat;
+  background-size: cover;
 }
 
-.main-login-container .right-login-div .form-box .form-box-content{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-    border-bottom: 1px solid #ccc;
+main .form-div {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--white-color);
+  overflow: auto;
 }
 
-
-.main-login-container .right-login-div .form-box  .form-box-content h1 {
-    margin: 0px;
-    padding: 0px;
-    font-size: 30px;
-    font-family: sub-title-font;
-    color: var(--primary-color);
+main .form-div .form-box {
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
-
-  
-.main-login-container .right-login-div .form-box .form-box-content .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    font-family: body-font;
-    font-size: 15px;
-    cursor: pointer;
-    width: 100%;
-    height: 50px;
-    border-radius: 5px;
-    transition: all 0.1s ease-in 0.1s;
+main .form-div .form-box .form-box-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
- 
-.main-login-container .right-login-div .form-box .form-box-content .btn:hover {
-    opacity: 0.7;
+main .form-div .form-box .form-box-content h1 {
+  margin: 0px;
+  padding: 0px;
+  font-size: 30px;
+  font-family: sub-title-font;
+  color: var(--primary-color);
 }
-  
-
-.main-login-container .right-login-div .form-box .forgot-password {
-    font-family: body-font;
-    color: var(--link-color);
-    text-align: right;   
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 25px;
-}
-.main-login-container .right-login-div .form-box .forgot-password a:hover {
-    text-decoration: underline;
+main .form-div .form-box .form-box-content .btn-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
 }
 
-
-.main-login-container .right-login-div .form-box .signup-message {
-    font-family: body-font;
-    text-align: center;
-    color: var(--sub-body-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+main .form-div .form-box .form-box-content .btn-div .btn {
+  border: none;
+  height: 50px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: body-font;
+  align-self: self-start;
+  padding: 0px 25px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.main-login-container .right-login-div .form-box  .signup-message a {
-    color: var(--link-color);
-    cursor: pointer;
+main .form-div .form-box .form-box-content .btn-div .btn:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
 }
-.main-login-container .right-login-div .form-box  .signup-message a:hover {
-    text-decoration: underline;
+main .form-div .form-box .form-box-content .btn-div a {
+  color: var(--link-color);
 }
-
-
-
-
-
-/* Sign-Up */
-
-.sign-up-form-box h1{
-    text-align: center;
-    font-size: 52px;
+main .form-div .form-box .form-box-content .btn-div a:hover {
+  text-decoration: underline;
 }
 
-.sign-up-form-btn {
-    width: 100%;
-    font-family: body-font;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 25px;
-    display: flex;
-    justify-content: flex-end; 
-    gap: 2px; 
-    
+main .form-div .form-box .signup-message {
+  font-family: body-font;
+  text-align: center;
+  color: var(--sub-body-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-
-.sign-up-form-btn .back-btn {
-    min-width: 130px;
-    height: 40px;
-    border: none;
-    font-family: sub-title-font;
-    background: var(--text-color);
-    color: var(--white-color);
-    cursor: pointer;
-    transition: all 0.2s ease-in 0.2s;
-    border-radius: 3px 0px 0px 3px;
-    font-size: 13px;
+main .form-div .form-box .signup-message a {
+  color: var(--link-color);
+  cursor: pointer;
+}
+main .form-div .form-box .signup-message a:hover {
+  text-decoration: underline;
 }
 
-
-.sign-up-form-btn .next-btn, .proceed-btn {
-    min-width: 130px;
-    height: 40px;
-    border: none;
-    font-family: sub-title-font;
-    background: var(--primary-color);
-    color: var(--white-color);
-    cursor: pointer;
-    transition: all 0.2s ease-in 0.2s;
-    border-radius: 0px 3px 3px 0px;
-    font-size: 13px;
-}
-
-
-.login-message {
-    font-family: body-font;
-    font-size: 16px;
-    text-align: center;
-    color: var(--sub-body-color);
-   
-}
-
-
-.login-message a {
-    margin: 0px;
-    padding: 0px;
-    color: var(--link-color);
-    text-decoration: none;
-    cursor: pointer;
-   
-}
-
-
-
-.company-logo-upload {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-family: body-font;
-}
-
-.company-logo-upload .logo-label {
-    font-size: 13px;
-    color: var(--text-color);
-
-}
-
-.company-logo-upload .logo-label em {
-    font-style: italic;
-    color: var(--text-color);
-}
-
-
-.logo-upload-box {
-    width: 100%;
-    max-width: 500px;
-    height: 250px;
-    border-radius: 5px;
-    background: var(--bg-color);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    overflow: hidden; 
-}
-
-
-.logo-upload-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    
+main .form-div .form-box .form-box-content .fullName-div {
+  display: flex;
+  gap: 20px;
 }

@@ -54,7 +54,6 @@
   font-family: sub-title-font;
 }
 
-
 .header-div .header-div-in .header-left-div .search-div {
   display: flex;
   align-items: center;
@@ -83,8 +82,6 @@
   align-items: center;
   gap: 25px;
 }
-
-
 
 .header-div .header-div-in .header-right-div .notification-div {
   display: flex;
@@ -121,16 +118,7 @@
   object-fit: cover;
 }
 
-
-
-
-
-
-
-
-
-
-/* SIDEBAR */
+/* /////////////////////////////////////////////////////////////*/
 .sidebar-div {
   position: absolute;
   width: 250px;
@@ -176,12 +164,17 @@
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  border:transparent 1px solid;
+  border: transparent 1px solid;
 }
 
 .sidebar-div .sidebar-div-in nav ul li.active,
 .sidebar-div .sidebar-div-in nav ul li:hover {
-  background: linear-gradient(90deg, var(--white-color),#faf5e5, var(--white-color));
+  background: linear-gradient(
+    90deg,
+    var(--white-color),
+    #faf5e5,
+    var(--white-color)
+  );
   border: #fff4d4 1px solid;
   color: var(--secondary-color);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -191,14 +184,8 @@
   color: var(--primary-color);
 }
 
-
-
-
-
-
-
-/* MAIN CONTENT */
-.main-container {
+/* /////////////////////////////////////////////////////////////*/
+main {
   position: absolute;
   width: calc(100% - 250px);
   height: calc(100% - 80px);
@@ -206,80 +193,124 @@
   right: 0px;
   background: var(--bg-color);
   overflow: auto;
-}
-
-.main-container .main-content-div {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 40px;
 }
+/* /////////////////////////////////////////////////////////////*/
 
-.main-container .main-content-div .active-page-div {
-  width: 100%;
+.page-title-div {
+  width: calc(100% - 40px);
+  padding: 0px 20px;
+  min-height: 120px;
+  background: rgba(250, 245, 229, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
-.main-container .main-content-div .active-page-div .title {
-  width: 100%;
+
+.page-title-div .title-div {
+  width: 600px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: start;
+  justify-content: center;
+  gap: 15px;
   font-family: body-font;
   color: var(--text-color);
 }
-
-.main-container .main-content-div .active-page-div .title i {
-  color: var(--primary-color);
-  font-size: 20px;
+.page-title-div .title-div .icon-div {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    120deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  border-radius: 15px;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
 }
-.main-container .main-content-div .active-page-div .btn-div {
+.page-title-div .title-div .icon-div i {
+  color: var(--white-color);
+  font-size: 35px;
+}
+.page-title-div .title-div .text-div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.page-title-div .title-div .text-div h3 {
+  background: linear-gradient(
+    120deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* for WebKit browsers */
+  background-clip: text;
+  color: transparent;
+}
+
+.page-title-div .btn-div {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.main-container .main-content-div .active-page-div .btn-div .btn {
+
+.page-title-div .btn-div .btn {
+  border: none;
+  height: 50px;
+  font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  white-space: nowrap;
-  background:  linear-gradient(90deg, #faf5e5, #FFF);
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: body-font;
+  padding: 0px 25px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+}
+
+.page-title-div .btn-div .btn:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
+}
+.page-title-div .btn-div .donwload-btn {
+  background: linear-gradient(90deg, #faf5e5, #fff);
   color: var(--body-color);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  height: 40px;
-  padding: 0px 15px;
-  border-radius: 20px;
-  transition: 0.2s ease-in;
-  font-family: body-font;
 }
-.main-container .main-content-div .active-page-div .btn-div .btn:hover {
-  background: var(--white-color);
-  color: var(--body-color);
-  transition: 0.2s ease-in;
+/* /////////////////////////////////////////////////////////////*/
+.main-content-div {
+  width: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  padding-top: 0px;
 }
-.main-container .main-content-div .active-page-div .btn-div .apply-btn {
-  background: linear-gradient(90deg,var(--primary-color), var(--secondary-color));
-  color: var(--white-color);
-}
-
-
-
-
-
-
-
-
-
-
+/* /////////////////////////////////////////////////////////////*/
 .content-div {
   background-color: var(--white-color);
   border-radius: 7px;
   width: 100%;
   height: auto;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .content-div .content-title {
@@ -303,7 +334,6 @@
 .content-div .content-title .title i {
   color: var(--primary-color);
 }
-
 .content-div .content-title .btn {
   display: flex;
   justify-content: center;
@@ -320,20 +350,21 @@
   transition: 0.2s ease-in;
   font-family: body-font;
 }
-
-
-
-
-
-
-
+.content-div .content-inner {
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+/* /////////////////////////////////////////////////////////////*/
 .bg-secondary {
-  background:
-    #faf5e5 url('../../../all-images/images/dashboard-bg.png') no-repeat right ;
+  background: url("../../../all-images/images/dashboard-bg.png"),
+    linear-gradient(165deg, #fffdf5, #fff, #fffdf5);
+
+  background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
 }
 
+/* /////////////////////////////////////////////////////////////*/
 .greetings-div {
   padding: 30px;
   display: flex;
@@ -360,7 +391,6 @@
   color: var(--text-color);
 }
 
-
 .greetings-div .wallet-div {
   width: 400px;
   display: flex;
@@ -371,6 +401,7 @@
   border-radius: 10px;
   color: var(--body-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
 
 .greetings-div .wallet-div h2 {
@@ -378,31 +409,35 @@
 }
 
 .greetings-div .wallet-div .btn {
+  border: none;
+  height: 40px;
+  font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background: linear-gradient(90deg,var(--primary-color), var(--secondary-color));
-  color: var(--white-color);
-  border: none;
   cursor: pointer;
-  height: 40px;
-  padding: 0px 15px;
   border-radius: 20px;
-  transition: 0.2s ease-in;
   font-family: body-font;
+  padding: 0px 15px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
+
 .greetings-div .wallet-div .btn:hover {
-  background:  var(--secondary-color);
-  transition: 0.2s ease-in;
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
 }
-
-
-
-
-
+/* /////////////////////////////////////////////////////////////*/
 .exams-back-div {
-  width: 100%;
   display: flex;
   justify-content: start;
   gap: 15px;
@@ -414,7 +449,8 @@
 .exams-back-div .exam-div {
   width: 19%;
   min-width: 170px;
-  background: linear-gradient(-180deg, #FFF, #faf5e5, #FFF);
+  max-width: 300px;
+  background: linear-gradient(-180deg, #fff, #fffdf5, #fff);
   border-radius: 10px;
   padding: 20px;
   padding-top: 0px;
@@ -424,15 +460,15 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
+  flex-grow: 1;
 }
 .exams-back-div .exam-div:hover {
   border: 1px solid var(--primary-color);
-  background: linear-gradient(-180deg, #faf5e5, #FFF);
+  background: linear-gradient(-180deg, #fffdf5, #fff);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transform: scale(1.02);
   transition: 0.2s ease-in;
 }
-
 
 .exams-back-div .exam-div .exam-image {
   width: 70px;
@@ -449,33 +485,33 @@
   height: 100%;
   object-fit: cover;
 }
-.exams-back-div .exam-div .exam-status, .exams-back-div .exam-div .draft{
+.exams-back-div .exam-div .exam-status,
+.exams-back-div .exam-div .draft {
   font-size: 10px;
   padding: 3px 10px;
-  align-self:self-end;
+  align-self: self-end;
   border-radius: 15px;
-  color:var(--text-color);
+  color: var(--text-color);
   border: 1px solid var(--text-color);
   background: rgba(124, 124, 124, 0.1);
 }
 
-.exams-back-div .exam-div .pending, .exams-back-div .exam-div .inprogress{
-  color:var(--secondary-color);
+.exams-back-div .exam-div .pending,
+.exams-back-div .exam-div .inprogress {
+  color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   background: rgba(247, 160, 37, 0.1);
 }
-.exams-back-div .exam-div .upcoming{
-  color:var(--link-color);
+.exams-back-div .exam-div .upcoming {
+  color: var(--link-color);
   border: 1px solid var(--link-color);
   background: rgba(50, 138, 179, 0.1);
 }
-.exams-back-div .exam-div .done{
-  color:var(--active-color);
+.exams-back-div .exam-div .done {
+  color: var(--active-color);
   border: 1px solid var(--active-color);
   background: rgba(0, 153, 0, 0.1);
 }
-
-
 
 .exams-back-div .exam-div .exam-info {
   display: flex;
@@ -490,37 +526,45 @@
   gap: 10px;
   font-size: 10px;
 }
-.exams-back-div .exam-div .exam-info .exam-time p{
+.exams-back-div .exam-div .exam-info .exam-time p {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
-.exams-back-div .exam-div .exam-info .exam-time p i{
+.exams-back-div .exam-div .exam-info .exam-time p i {
   color: var(--primary-color);
 }
 
 .exams-back-div .exam-div .btn {
+  border: none;
   height: 30px;
   font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background: linear-gradient(90deg,var(--primary-color), var(--secondary-color));
-  color: var(--white-color);
-  border: none;
   cursor: pointer;
   border-radius: 15px;
-  transition: 0.2s ease-in;
   font-family: body-font;
   align-self: self-start;
   padding: 0px 15px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
 
-
-
-
+.exams-back-div .exam-div .btn:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .book-back-div {
@@ -535,25 +579,27 @@
   position: relative;
   width: 19%;
   min-width: 170px;
+  max-width: 250px;
   border-radius: 10px;
   border: #e6e6e6 1px solid;
   background: var(--white-color);
   min-height: 200px;
   display: flex;
   align-items: center;
-  justify-content:start;
+  justify-content: start;
   flex-direction: column;
   cursor: pointer;
+  flex-grow: 1;
 }
 .book-back-div .book-div:hover {
   border: 1px solid var(--primary-color);
-  background: linear-gradient(-180deg, #faf5e5, #FFF);
+  background: linear-gradient(-180deg, #faf5e5, #fff);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .book-back-div .book-div .image-div {
   position: relative;
-  width:  calc(100%  - 20px);
+  width: calc(100% - 20px);
   height: 200px;
   border-radius: 7px;
   overflow: hidden;
@@ -563,7 +609,7 @@
 .book-back-div .book-div .image-div img {
   width: 100%;
   height: auto;
-   transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
 }
 
 .book-back-div .book-div:hover .image-div img {
@@ -617,34 +663,173 @@
   gap: 10px;
   font-size: 12px;
 }
-.book-back-div .book-div .text-div .details .book-sum p{
+.book-back-div .book-div .text-div .details .book-sum p {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
-.book-back-div .book-div .text-div .details .book-sum p i{
+.book-back-div .book-div .text-div .details .book-sum p i {
   color: var(--primary-color);
 }
 
 .book-back-div .book-div .text-div .btn {
+  border: none;
   height: 30px;
   font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  background: linear-gradient(90deg,var(--primary-color), var(--secondary-color));
-  color: var(--white-color);
-  border: none;
   cursor: pointer;
   border-radius: 15px;
-  transition: 0.2s ease-in;
   font-family: body-font;
   align-self: self-start;
   padding: 0px 15px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .book-back-div .book-div .text-div .btn:hover {
-  background: var(--secondary-color);
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
+}
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*-----------table component---------------------------------------------------------------------------------------*/
+.table-div {
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  background: var(--white-color);
+  overflow: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-div .table {
+  width: 100%;
+  font-size: 12px;
+  min-width: 500px;
+  border-collapse: collapse;
+}
+
+.table-div .table .tb-col {
+  background: #f8f8f8;
+  height: 40px;
+  text-align: left;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.6);
+  color: var(--sub-body-color);
+}
+
+.table-div .table .tb-col th {
+  padding: 10px 20px;
+  font-family: sub-title-font;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.table-div .table .tb-row {
+  height: 60px;
+  font-size: 11px;
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.6);
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+
+.table-div .table .tb-row:hover {
+  background: rgba(215, 215, 215, 0.3);
+}
+.table-div .table td {
+  padding: 10px 20px;
+  font-family: body-font;
+}
+
+.table-div .table .tb-row .clickable-td {
+  font-family: sub-title-font;
+  font-size: 11px;
+  color: var(--sub-body-color);
+  cursor: pointer;
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+.table-div .table .tb-row .clickable-td:hover {
+  color: var(--secondary-color);
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+.table-div .table .status-div {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 0px 10px;
+  font-size: 10px;
+  font-family: body-font;
+  float: left;
+}
+
+.table-div .table .SUCCESS,
+.table-div .table .ACTIVE {
+  background: rgba(46, 204, 113, 0.1);
+  color: rgba(9, 172, 77, 0.9);
+}
+
+.table-div .table .PENDING,
+.table-div .table .SUSPENDED {
+  background: rgb(252, 164, 57, 0.1);
+  color: rgba(218, 90, 31, 0.87);
+}
+
+.table-div .table .CANCELLED {
+  background: rgba(255, 0, 0, 0.1);
+  color: rgba(255, 0, 0);
+}
+
+.table-div .table .tb-row .btn {
+  border: none;
+  height: 30px;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-family: body-font;
+  align-self: self-start;
+  padding: 0px 15px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.table-div .table .tb-row .btn:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
 }

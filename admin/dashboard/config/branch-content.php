@@ -19,7 +19,14 @@
         </div>
     </div>
 
-    <div class="pages-back-div">
+    <div class="tables-content-div">
+        <div class="content-title">
+            <div class="title">
+                <i class="bi bi-clipboard2"></i>
+                <p>My International Exams</p>
+            </div>
+        </div>
+
         <div class="table-div animated fadeIn">
             <table class="table" cellspacing="0" style="width:100%" id="pageContent">
                 <script>_fetchCountryData();</script>

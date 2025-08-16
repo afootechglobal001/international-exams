@@ -24,6 +24,7 @@
     $emailAddress=trim(strtolower($data['emailAddress']));
     $phoneNumber=trim($data['phoneNumber']);
     $address =trim(strtoupper(str_replace("'", "\'", $data['address'])));
+    $countryId=trim($data['countryId']);
     $branchId=trim($data['branchId']);
     $roleId=trim($data['roleId']);
     $statusId=trim($data['statusId']);
@@ -37,6 +38,7 @@
     validateEmptyField($emailAddress, 'EMAIL ADDRESS');
     validateEmptyField($phoneNumber, 'MOBILE NUMBER');
     validateEmptyField($address, 'ADDRESS');
+    validateEmptyField($countryId, 'COUNTRY');
     validateEmptyField($branchId, 'BRANCH');
     validateEmptyField($roleId, 'ROLE');
     validateEmptyField($statusId, 'STATUS');
@@ -91,8 +93,8 @@
         $password=md5($staffId);
 
         mysqli_query($conn,"INSERT INTO `STAFF_TAB`
-        (`branchId`, `staffId`, `titleId`, `firstName`, `middleName`, `lastName`, `emailAddress`, `phoneNumber`, `address`, `profilePix`, `statusId`, `roleId`, `password`, `createdBy`, `createdTime`) VALUES
-        ('$branchId', '$staffId', '$titleId', '$firstName', '$middleName', '$lastName', '$emailAddress', '$phoneNumber', '$address', 'default.jpg', '$statusId', '$roleId', '$password', '$loginStaffId', NOW())")or die (mysqli_error($conn));
+        (`countryId`, `branchId`, `staffId`, `titleId`, `firstName`, `middleName`, `lastName`, `emailAddress`, `phoneNumber`, `address`, `profilePix`, `statusId`, `roleId`, `password`, `createdBy`, `createdTime`) VALUES
+        ('$countryId', '$branchId', '$staffId', '$titleId', '$firstName', '$middleName', '$lastName', '$emailAddress', '$phoneNumber', '$address', 'default.jpg', '$statusId', '$roleId', '$password', '$loginStaffId', NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
@@ -129,9 +131,8 @@
 
             $response['data'][] = $fetchQuery;
         }
-
-        $callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
-//////////////////////////////////////////////////////////////////////////////////////////////
 end:
+//////////////////////////////////////////////////////////////////////////////////////////////
+$callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

@@ -124,13 +124,23 @@
                 <div class="alert alert-success form-alert">
                     <span>ADMINISTRATIVE INFORMATION</span>
                         <div class="text_field_back_container">
+                            <div class="text_field_container" id="countryId_container">
+                            <script>
+                                selectField({
+                                    id: 'countryId',
+                                    title: 'Select Country'
+                                });
+                                _getSelectCountry('countryId');
+                            </script>
+                        </div>
+
+                        <div class="text_field_back_container">
                             <div class="text_field_container" id="branchId_container">
                             <script>
-                            selectField({
-                                id: 'branchId',
-                                title: 'Select Branch'
-                            });
-                            _getSelectBranch('branchId');
+                                selectField({
+                                    id: 'branchId',
+                                    title: 'Select Branch'
+                                });
                             </script>
                         </div>
 
@@ -306,8 +316,30 @@
 
                     <div class="user-in">
                         <div class="title">STAFF RESIDENT INFORMATION</div>
-
                         <div class="profile-segment-div">
+                            <div class="text_field_container col-1" id="countryId_container">
+                                <script>
+                                    selectField({
+                                        id: 'countryId',
+                                        title: 'Select Country',
+                                        fieldValue: getEachStaffDetailsSession?.countryId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.countryName ?? ''
+                                    });
+                                    _getSelectCountry('countryId');
+                                </script>
+                            </div>
+
+                            <div class="text_field_container col-1" id="branchId_container">
+                                <script>
+                                    selectField({
+                                        id: 'branchId',
+                                        title: 'Select Branch',
+                                        fieldValue: getEachStaffDetailsSession?.branchId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.branchName ?? ''
+                                    });
+                                </script>
+                            </div>
+
                             <div class="text_field_container col-2" id="updateAddress_container">
                                 <script>
                                     textField({
@@ -363,19 +395,7 @@
                         <div class="title">ADMINISTRATIVE INFORMATION</div>
 
                         <div class="profile-segment-div">
-                            <div class="text_field_container col-3" id="updateBranchId_container">
-                                <script>
-                                    selectField({
-                                        id: 'updateBranchId',
-                                        title: 'Select Branch',
-                                        fieldValue: getEachStaffDetailsSession?.branchId ?? '',
-                                        fieldLabel: getEachStaffDetailsSession?.branchName ?? ''
-                                    });
-                                    _getSelectBranch('updateBranchId');
-                                </script>
-                            </div>
-
-                            <div class="text_field_container col-3" id="updateRoleId_container">
+                            <div class="text_field_container col-1" id="updateRoleId_container">
                                 <script>
                                     selectField({
                                         id: 'updateRoleId',
@@ -387,7 +407,7 @@
                                 </script>
                             </div>
 
-                            <div class="text_field_container col-3" id="updateStatusId_container">
+                            <div class="text_field_container col-1" id="updateStatusId_container">
                                 <script>
                                     selectField({
                                         id: 'updateStatusId',

@@ -562,8 +562,7 @@
 
 .book-back-div .book-div .image-div img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
    transition: 0.2s ease-in;
 }
 
@@ -573,8 +572,8 @@
 
 .book-back-div .book-div .icon-div {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background: var(--white-color);
   border-radius: 5px;
   border: rgba(0, 0, 0, 0.2) 1px solid;
@@ -601,6 +600,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 5px;
   align-items: start;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -611,6 +611,20 @@
   font-size: 18px;
   line-height: 20px;
   color: var(--body-color);
+}
+.book-back-div .book-div .text-div .details .book-sum {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+.book-back-div .book-div .text-div .details .book-sum p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.book-back-div .book-div .text-div .details .book-sum p i{
+  color: var(--primary-color);
 }
 
 .book-back-div .book-div .text-div .btn {

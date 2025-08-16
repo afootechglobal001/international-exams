@@ -21,6 +21,7 @@
 	overflow: auto;
 }
 
+
 .content-div .inner-content .dash-title-div{
 	width: calc(100% - 40px);
 	min-height: 50px;
@@ -3223,37 +3224,37 @@
     background: none;
 }
 
-.table-div .table .tb-row .btn{
-	border: none;
-	color: var(--white-color);
-    background: var(--primary-color);
-	font-size: 11px;
-	font-family: body-font;
-	min-width: 30px;
-	padding: 5px 8px;
-	border-radius: 4px;
-	cursor: pointer;
-	-moz-transition:all 0.2s ease-in 02s;
-	transition:all 0.2s ease-in 0.2s;
-	-webkit-transition:all 0.2s ease-in 0.2s;
-	-ms-transition:all 0.2s ease-in 0.2s;
-	-o-transition:all 0.2s ease-in 0.2s;
+.table-div .table .tb-row .btn {
+  border: none;
+  height: 30px;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-family: body-font;
+  align-self: self-start;
+  padding: 0px 15px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.table-div .table .tb-row .view-btn{
-	min-width: 28px;
-	padding: 5px 8px;
-	font-size: 9px;
+.table-div .table .tb-row .btn:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
 }
 
-.table-div .table .tb-row .edit-btn{
-	min-width: 25px;
-	padding: 6px 8px;
-}
 
-.table-div .table .tb-row .btn:hover{
-	background: var(--secondary-color);
-}
 
 .table-div .table .tb-row .btn-div{
 	display: flex;

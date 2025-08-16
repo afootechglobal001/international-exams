@@ -19,11 +19,20 @@
         </div>
     </div>
 
-    <div class="pages-back-div">
-        <div class="table-div animated fadeIn">
-            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                <script>_fetchCountryData();</script>
-            </table>
+    <div class="tables-content-div">
+        <div class="content-title">
+            <div class="title">
+                <i class="bi bi-diagram-3"></i>
+                <p>Branches</p>
+            </div>
+        </div>
+
+        <div class="inner-table-content">
+            <div class="table-div animated fadeIn">
+                <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                    <script>_fetchCountryData();</script>
+                </table>
+            </div>
         </div>
     </div>
 <?php } ?>

@@ -21,6 +21,7 @@
 	overflow: auto;
 }
 
+
 .content-div .inner-content .dash-title-div{
 	width: calc(100% - 40px);
 	min-height: 50px;
@@ -31,6 +32,7 @@
 	background: #fff url(../../../all-images/images/title.png) center no-repeat;
 	background-size: cover;
 	box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.01);
+	border: 1px solid rgba(0, 0, 0, 0.055);
 }
 
 .content-div .inner-content .dash-title-div .title{
@@ -77,6 +79,7 @@
 	justify-content: space-between;
 	background: #fff url(../../../all-images/images/title.png) center no-repeat;
 	background-size: cover;
+	border: 1px solid rgba(0, 0, 0, 0.068);
 }
 
 .other-pages-title-back-div .page-title-div{
@@ -442,6 +445,7 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.03);
 }
 
 .statistics-chart-back-div .modal-statistics-back-div{
@@ -460,7 +464,7 @@
 	text-align: left;
 	flex-direction: column;
 	border:#f0f0f0 1px solid;
-	background: var(--white-color);
+	background: linear-gradient(-120deg, #f8f5ec, #FFF);
 	cursor: pointer;
 }
 
@@ -501,6 +505,10 @@
 	border-radius: 0px;
 }
 
+.statistics-chart-back-div .modal-statistics-back-div .statistics-div:hover{
+	background: linear-gradient(-100deg,  #FFF,#faf5e5);
+  	transition: 0.2s ease-in;
+}
 
 @media all and (max-width:1048px) {
 	.statistics-chart-back-div .modal-statistics-back-div .statistics-div h2{
@@ -559,6 +567,7 @@
 	min-height: 300px;
 	background: var(--white-color);
 	border-radius: 10px;
+	box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.03);
 }
 
 .modal-dashboard-statistics-wrapper .right-dashbaord-container .matrix-div .inner-div{
@@ -610,7 +619,7 @@
 	width: 100%;
     display: flex;
     flex-direction: column;
-	border-radius: 8px;
+	border-radius: 10px;
 	background: var(--white-color);
 }
 
@@ -2963,9 +2972,302 @@
 
 
 
+/*-----------table component---------------------------------------------------------------------------------------*/
+.tables-content-div {
+	background-color: var(--white-color);
+	border-radius: 7px;
+	width: 100%;
+	height: auto;
+	border: 1px solid rgba(215, 215, 215, .6);
+}
+
+.tables-content-div .content-title {
+	height: 50px;
+	padding: 0px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(215, 215, 215, .6);
+}
+
+.tables-content-div .content-title .title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-family: sub-title-font;
+	font-size: 13px;
+}
+
+.tables-content-div .content-title .title i {
+  color: var(--primary-color);
+}
+
+.tables-content-div .content-title .btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	background: var(--sub-body-color);
+	color: var(--white-color);
+	font-size: 10px;
+	border: none;
+	cursor: pointer;
+	height: 30px;
+	padding: 0px 18px;
+	border-radius: 15px;
+	transition: 0.2s ease-in;
+	font-family: body-font;
+}
+
+.tables-content-div .inner-table-content {
+	width: calc(100% - 40px);
+	padding: 20px;
+}
+
+
+.table-div{
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	background: var(--white-color);
+	overflow: auto;
+	border: #e7ecec 1px solid;
+	border-radius: 10px;
+}
+
+
+.table-div .table {
+	width: 100%;
+	font-size: 12px;
+	min-width: 500px;
+	border-collapse: collapse;
+}
+
+.table-div .table .tb-col{
+	background: #f8f8f8;
+	height: 40px;
+    text-align: left;
+    border-bottom: 1px solid rgba(215, 215, 215, .6);
+	color: var(--sub-body-color);
+}
+
+.table-div .table .tb-col th {
+    padding: 10px 20px;
+	font-family: sub-title-font;
+	font-size: 12px;
+	font-weight: 100;
+}
+
+.table-div .table .tb-row {
+    height: 60px;
+	font-size: 11px;
+	color: var(--text-color);
+    border-bottom: 1px solid rgba(215, 215, 215, .6);
+	-moz-transition:all 0.2s ease-in 02s;
+	transition:all 0.2s ease-in 0.2s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
+}
+
+.table-div .table .tb-row:hover {
+	background: rgba(215, 215, 215, .3);
+}
+
+.table-div .table td {
+    padding: 10px 20px; 
+	font-family: body-font;
+}
+
+
+.table-div .table .tb-row .clickable-td{
+	font-family: sub-title-font;
+	font-size: 11px;
+	color: var(--sub-body-color);
+	cursor: pointer;
+	-moz-transition:all 0.2s ease-in 02s;
+	transition:all 0.2s ease-in 0.2s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
+}
+
+
+.table-div .table .tb-row .text-back-div{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.table-div .table .tb-row .text-back-div .text-div{
+	width: calc(100% - 33px);
+	display: flex;
+	flex-direction: column;
+}
+
+.table-div .table .tb-row .text-back-div .image-div{
+	width: 25px;
+	height: 25px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.table-div .table .tb-row .image-div img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.table-div .table .tb-row .text-back-div .text-div .first-class{
+	font-family: sub-title-font;
+	font-size: 11px;
+	color: var(--sub-body-color);
+}
+
+.table-div .table .tb-row .text-back-div .text-div .second-class{
+	font-size: 10px;
+	color: var(--text-color);
+}
+
+.table-div .table .tb-row .clickable-td:hover,
+.table-div .table .tb-row .clickable-td:hover .text-div .first-class,
+.table-div .table .tb-row .clickable-td:hover .text-div .second-class {
+    color: var(--secondary-color);
+	-moz-transition:all 0.2s ease-in 02s;
+	transition:all 0.2s ease-in 0.2s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
+}
+
+
+.table-div .table .status-div{
+	height: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+	padding: 0px 10px;
+	font-size:10px;
+	font-family: body-font;
+	float: left;
+}
+
+.table-div .table .SUCCESS,
+.table-div .table .ACTIVE{
+	background:rgba(46,204,113,.1);
+	color:rgba(9, 172, 77, 0.9);
+}
+
+.table-div .table .PENDING,
+.table-div .table .SUSPENDED{
+	background:rgb(252, 164, 57,.1);
+	color:rgba(218, 90, 31, 0.87);
+}
+
+.table-div .table .CANCELLED{
+	background:rgba(255, 0, 0,.1);
+	color:rgba(255, 0, 0);
+}
+
+.table-div .table .green-color{
+	color:rgba(9, 172, 77, 0.9);
+}
+
+.table-div .table .orange-color{
+	color:rgba(218, 90, 31, 0.87);
+}
+
+.table-div .table .tb-row span{
+	cursor: pointer;
+    color: var(--text-color);
+    -moz-transition:all 0.2s ease-in 02s;
+	transition:all 0.2s ease-in 0.2s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
+}
+
+.table-div .table .tb-row span.CANCELLED{
+	color:rgba(255, 0, 0);
+    background: none;
+}
+
+.table-div .table .tb-row span:hover{
+	color: var(--secondary-color);
+}
+
+.table-div .table .tb-row .order-status{
+	color: var(--sub-body-color)
+}
+
+.table-div .table .tb-row .DELIVERED{
+	color: var(--primary-color);
+}
+
+.table-div .table .tb-row .READY{
+	color: rgba(19, 141, 117)
+}
+
+.table-div .table .tb-row .PROCESSING{
+	color:rgba(238, 139, 19);
+}
+
+.table-div .table .tb-row .order-status.PENDING{
+	color:rgba(238, 139, 19);
+    background: none;
+}
+
+.table-div .table .tb-row .unpaid-status.PENDING{
+	color: rgba(19, 141, 117);
+    background: none;
+}
+
+.table-div .table .tb-row .btn {
+  border: none;
+  height: 30px;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-family: body-font;
+  align-self: self-start;
+  padding: 0px 15px;
+  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.table-div .table .tb-row .btn:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
+}
 
 
 
+.table-div .table .tb-row .btn-div{
+	display: flex;
+	justify-content: flex-start;
+	gap: 5px;
+	background: none;
+}
+
+.table-div .table .tb-row .btn-div .view-btn{
+	min-width: 80px;
+	padding: 8px 8px;
+	font-size: 9px;
+}
 
 
 

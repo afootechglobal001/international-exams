@@ -49,35 +49,6 @@ function _getSelectBranchManagerId(fieldId){
 	}
 }
 
-function _getSelectCountry(fieldId){
-	try {
-		$.ajax({
-			type: "GET",
-			url: endPoint+'/preset-data/fetch-country',
-			dataType: "json",
-			cache: false,
-			headers: getAuthHeaders(),
-			success: function(info) {
-				const data = info.data;
-				const success = info.success;
-				
-				if (success === true) {
-					for (let i = 0; i < data.length; i++) {
-						const id = data[i].countryId;
-						const value = data[i].countryName;
-						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\');">'+ value +'</li>');
-					}	
-				} else {
-					_actionAlert(info.message, false); 
-				}
-			}
-		});
-	} catch (error) {
-		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
-	}
-}
-
 
 function _fetchCountryData() {
     $('#pageContent').html('<div class="ajax-loader pages-ajax-loader"><img src="' + websiteUrl + '/all-images/images/spinner.gif" alt="Loading"/></div>').fadeIn("fast");        
@@ -99,7 +70,7 @@ function _fetchCountryData() {
                     <tr class="tb-col">
                         <th>sn</th>
                         <th>Name</th>
-                        <th>Phone Number</th>
+                        <th>Contact Info</th>
                         <th>Number of branches</th>
                         <th>Status</th>
                         <th>View</th>
@@ -109,19 +80,20 @@ function _fetchCountryData() {
 				if (info.success) {
 					for (let i = 0; i < fetch.length; i++) {
 						no++;
-						const countryId = fetch[i].countryId;
-						const countryName = fetch[i].countryName;
-						const email = fetch[i].email;
-						const phoneNumber = fetch[i].phoneNumber;
-						const statusName = fetch[i].statusName;
-						const totalNumberOfBranches = fetch[i].totalNumberOfBranches;
+						const countryInfo = fetch[i];
+						const countryId = countryInfo.countryId;
+						const countryName = countryInfo.countryName;
+						const email = countryInfo.email;
+						const phoneNumber = countryInfo.phoneNumber;
+						const statusName = countryInfo.statusName;
+						const totalNumberOfBranches = countryInfo.totalNumberOfBranches;
 
 						text +=`
 						<tbody>
 							 <tr class="tb-row">
 								<td>${no}</td>
-								<td class="clickable-td" title="CLICK TO VIEW ${countryName} PROFILE" onclick="_fetchEachCountry('${countryId}');">${countryName}<br /><span>${email}</span></td>
-								<td>${phoneNumber}</td>
+								<td class="clickable-td" title="CLICK TO VIEW ${countryName} PROFILE" onclick="_fetchEachCountry('${countryId}');">${countryName}</td>
+								<td>${phoneNumber}<br/><span>${email}</span></td>
 								<td>${totalNumberOfBranches}</td>
 								<td>
 									<div class="status-div ${statusName}">${statusName}</div>

@@ -25,6 +25,7 @@
     $emailAddress=trim(strtolower($data['emailAddress']));
     $phoneNumber=trim($data['phoneNumber']);
     $address=trim(strtoupper(str_replace("'", "\'", $data['address'])));
+    $countryId=trim($data['countryId']);
     $branchId=trim($data['branchId']);
     $roleId=trim($data['roleId']);
     $statusId=trim($data['statusId']);
@@ -37,6 +38,7 @@
     validateEmptyField($emailAddress, 'EMAIL ADDRESS');
     validateEmptyField($phoneNumber, 'MOBILE NUMBER');
     validateEmptyField($address, 'ADDRESS');
+    validateEmptyField($countryId, 'COUNTRY');
     validateEmptyField($branchId, 'BRANCH');
     validateEmptyField($roleId, 'ROLE');
     validateEmptyField($statusId, 'STATUS');
@@ -106,7 +108,7 @@
     }
 
         mysqli_query($conn,"UPDATE `STAFF_TAB` SET
-        `branchId`='$branchId', `titleId`='$titleId', `firstName`='$firstName', `middleName`='$middleName', `lastName`='$lastName', `emailAddress`='$emailAddress', `phoneNumber`='$phoneNumber',
+        `countryId`='$countryId', `branchId`='$branchId', `titleId`='$titleId', `firstName`='$firstName', `middleName`='$middleName', `lastName`='$lastName', `emailAddress`='$emailAddress', `phoneNumber`='$phoneNumber',
         `address`='$address', `statusId`='$statusId', `roleId`='$roleId', `updatedBy`='$loginStaffId', `updatedTime`=NOW() WHERE staffId='$staffId'")or die (mysqli_error($conn));
 
         $response = [
@@ -144,9 +146,8 @@
 
             $response['data'][] = $fetchQuery;
         }
-        
-        $callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
-//////////////////////////////////////////////////////////////////////////////////////////////
 end:
+//////////////////////////////////////////////////////////////////////////////////////////////
+$callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

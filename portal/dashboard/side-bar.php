@@ -22,10 +22,10 @@
 
         <nav>
             <ul>
-                <li title="Settings" onclick="_getForm({page: 'resetPassword', url: portalLocalUrl});">
+                <li title="Settings" onclick="_getForm({page: 'resetPassword', url: portalOperationMiddlewareUrl});">
                     <i class="bi bi-gear"></i> Settings
                 </li>
-                <li title="Log-Out" onclick="_getForm({page: 'logoutConfirmForm', url: portalLocalUrl});">
+                <li title="Log-Out" onclick="_confirmLogOut();">
                     <i class="bi bi-power"></i> Log-Out
                 </li>
             </ul>

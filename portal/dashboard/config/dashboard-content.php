@@ -37,7 +37,8 @@
                     <p>Wallet Balance (₦)</p>
                     <h2>3,000.00</h2>
                 </div>
-                <button class="btn" title="Load wallet" onclick="_getForm({page: 'loadWallet', url: portalLocalUrl});">
+                <button class="btn" title="Load wallet"
+                    onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
                     <i class="bi bi-wallet"></i> Load Wallet
                 </button>
             </div>

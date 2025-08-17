@@ -1,100 +1,108 @@
 <?php if ($page == 'galleryCategory') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-images"></i> <strong>Gallery</strong></div>
-            <div class="bottom-title">
-                Active: <span>10</span> |
-                Suspended: <span>5</span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi-images"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Gallery</h3>
+                <p>Upload and manage photos or videos to showcase events, activities, and highlights. Keep your gallery organized and visually engaging for your audience.</p>
             </div>
         </div>
 
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to serach gallery..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search gallery...</div>
-                </div>
+        <div class="btn-div">
+            <div class="search-div">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Gallery Here...">
+                <i class="bi bi-search"></i>
             </div>
-
-            <div class="btn-div">
-                <button class="btn" type="button" title="ADD NEW GALLERY"
-                    onclick="_getForm({page: 'galleryReg', url: adminPortalLocalUrl});">
-                    <i class="bi-plus-square"></i> ADD NEW GALLERY
-                </button>
-            </div>
+            <button class="btn" title="ADD NEW GALLERY" onclick="_getForm({page: 'galleryReg', url: adminPortalLocalUrl});">
+                <i class="bi-plus-square"></i> ADD NEW GALLERY
+            </button>
         </div>
     </div>
 
-    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="other-pg-back-div">
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'galleryCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                </div>
-
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="Students preparing for international exams like IELTS and SAT" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-
-                <div class="text-div">
-                    <div class="top-text blog-top-text"><span> GLOBAL READINESS</span></div>
-                    <h2>INSIDE THE EXAM HALL: FOCUSED & DETERMINED</h2>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>350</span> VIEWS
-                        </div>
-                    </div>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-images"></i>
+                    <p>Gallery</p>
                 </div>
             </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                </div>
+            <div class="inner-table-content">
+                <div class="other-pg-back-div">
+                    <div class="other-pg-back-div">
+                        <div class="grid-div">
+                            <div class="btn-div">
+                                <button class="btn active-btn" onclick="">EDIT</button>
+                                <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'galleryCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                            </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/gallery/study-group.webp" alt="Students taking an international standardized test" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
+                            <div class="img-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="Students preparing for international exams like IELTS and SAT" />
+                            </div>
+                            <div class="status-div ACTIVE">ACTIVE</div>
 
-                <div class="text-div">
-                    <div class="top-text blog-top-text"><span> PREP SESSIONS</span></div>
-                    <h2>COLLABORATIVE LEARNING: DIVERSE STUDY GROUPS</h2>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>410</span> VIEWS
+                            <div class="text-div">
+                                <div class="top-text blog-top-text"><span> GLOBAL READINESS</span></div>
+                                <h2>INSIDE THE EXAM HALL: FOCUSED & DETERMINED</h2>
+                                <div class="text-in">
+                                    <div class="text">
+                                        UPDATED ON: <span>25 Jan 2025</span> | <span>350</span> VIEWS
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="grid-div">
+                            <div class="btn-div">
+                                <button class="btn active-btn" onclick="">EDIT</button>
+                                <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                            </div>
+
+                            <div class="img-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/gallery/study-group.webp" alt="Students taking an international standardized test" />
+                            </div>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+
+                            <div class="text-div">
+                                <div class="top-text blog-top-text"><span> PREP SESSIONS</span></div>
+                                <h2>COLLABORATIVE LEARNING: DIVERSE STUDY GROUPS</h2>
+                                <div class="text-in">
+                                    <div class="text">
+                                        UPDATED ON: <span>25 Jan 2025</span> | <span>410</span> VIEWS
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-div">
+                            <div class="btn-div">
+                                <button class="btn active-btn" onclick="">EDIT</button>
+                                <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                            </div>
+
+                            <div class="img-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/gallery/result-celebration.jpg" alt="EDUGRADE students celebrating international exam success" />
+                            </div>
+                            <div class="status-div ACTIVE">ACTIVE</div>
+
+                            <div class="text-div">
+                                <div class="top-text blog-top-text"><span> SUCCESS STORIES</span></div>
+                                <h2>GLOBAL ACHIEVEMENTS: EXAM SUCCESS CELEBRATED</h2>
+                                <div class="text-in">
+                                    <div class="text">
+                                        UPDATED ON: <span>25 Jan 2025</span> | <span>500</span> VIEWS
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                </div>
-
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/gallery/result-celebration.jpg" alt="EDUGRADE students celebrating international exam success" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-
-                <div class="text-div">
-                    <div class="top-text blog-top-text"><span> SUCCESS STORIES</span></div>
-                    <h2>GLOBAL ACHIEVEMENTS: EXAM SUCCESS CELEBRATED</h2>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>500</span> VIEWS
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+            </div>  
+        </div>       
     </div>
 <?php } ?>
 
@@ -122,7 +130,7 @@
                     </script>
                 </div>
 
-                <div class="title">UPLOAD GALLERY PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                <div class="form-title">UPLOAD GALLERY PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                 <label>
                     <div class="pix-div">
                         <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">

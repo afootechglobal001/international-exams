@@ -1,78 +1,82 @@
 <?php if ($page == 'blogCategory') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-journals"></i> <strong>Blog And Articles</strong></div>
-            <div class="bottom-title">
-                Active: <span>10</span> |
-                Suspended: <span>5</span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi-book-half"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Blogs & Articles</h3>
+                <p>Write, publish, and manage blogs and articles to share updates, insights, and resources. Keep your audience informed with well-organized and regularly updated content.</p>
             </div>
         </div>
 
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to serach blog..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search blog...</div>
-                </div>
+        <div class="btn-div">
+            <div class="search-div">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Blog Here...">
+                <i class="bi bi-search"></i>
             </div>
-
-            <div class="btn-div">
-                <button class="btn" type="button" title="ADD NEW BLOG"
-                    onclick="_getForm({page: 'blogReg', url: adminPortalLocalUrl});">
-                    <i class="bi-plus-square"></i> ADD NEW BLOG
-                </button>
-            </div>
+            <button class="btn" title="ADD NEW BLOG" onclick="_getForm({page: 'blogReg', url: adminPortalLocalUrl});">
+                <i class="bi-plus-square"></i> ADD NEW BLOG
+            </button>
         </div>
     </div>
 
-    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="other-pg-back-div">
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'blogCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-book-half"></i>
+                    <p>Blogs & Articles</p>
                 </div>
+            </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
+            <div class="inner-table-content">
+                <div class="other-pg-back-div">
+                    <div class="grid-div">
+                        <div class="btn-div">
+                            <button class="btn active-btn" onclick="">EDIT</button>
+                            <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'blogCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                        </div>
 
-                <div class="text-div">
-                    <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
-                    <h2>HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION...</h2>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                        <div class="img-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION" />
+                        </div>
+                        <div class="status-div ACTIVE">ACTIVE</div>
+
+                        <div class="text-div">
+                            <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
+                            <h2>HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION...</h2>
+                            <div class="text-in">
+                                <div class="text">
+                                    UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-div">
+                        <div class="btn-div">
+                            <button class="btn active-btn" onclick="">EDIT</button>
+                            <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        </div>
+
+                        <div class="img-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png" alt="TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE & MORE" />
+                        </div>
+                        <div class="status-div ACTIVE">ACTIVE</div>
+
+                        <div class="text-div">
+                            <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
+                            <h2>TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE...</h2>
+                            <div class="text-in">
+                                <div class="text">
+                                    UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                </div>
-
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png" alt="TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE & MORE" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-
-                <div class="text-div">
-                    <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
-                    <h2>TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE...</h2>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
     </div>
 <?php } ?>
@@ -110,7 +114,7 @@
                     </script>
                 </div>
 
-                <div class="title">UPLOAD BLOG PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                <div class="form-title">UPLOAD BLOG PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                 <label>
                     <div class="pix-div">
                         <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">

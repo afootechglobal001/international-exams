@@ -91,17 +91,18 @@
                 </div>
             </div>
 
-            <div class="btn-div branch-btn-div">
+            <div class="btn-div">
                 <div class="div-in">
                     <ul>
                         <li class="active" title="Dashboard" id="countryBranchDashboard" onclick="_getActiveBranchPage({divid: 'countryBranchDashboard', page: 'countryBranchDashboard', url: adminPortalLocalUrl});"><i class="bi-speedometer2"></i> Dashboard</li>
                         <li title="Branches" id="branchesPage" onclick="_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});"><i class="bi-diagram-3"></i> Branches</li>
-                        <li class="hide-li" id="dotted" title="Branch Student"><i class="bi-mortarboard"></i> Student</li>
+                        <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
+                        <li id="examPricing" title="Exam Pricing"><i class="bi-credit-card-fill"></i> Exam Pricing</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="field-back-div background-color">
+            <div class="field-back-div">
                 <div class="field-inner-div branch-field-inner-div" id="getBranchDetails">
                     <script>
                         _getActiveBranchPage({
@@ -446,18 +447,29 @@
 <?php } ?>
 
 <?php if ($page == 'branchesPage') { ?>
-    <div class="alert alert-success top-alert-div animated fadeIn">
-        <span><i class="bi-diagram-3"></i> BRANCHES</span>
+    <div class="main-content-div student-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-diagram-3"></i>
+                    <p>BRANCHES</p>
+                </div>
 
-        <div class="btn-container">
-            <button class="btn" title="ADD BRANCH" onclick="_getForm({page: 'branchReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW BRANCH</button>
+                <div>
+                    <button class="btn" title="ADD NEW BRANCH" onclick="_getForm({page: 'branchReg', layer:2, url: adminPortalLocalUrl});">
+                        <i class="bi bi-plus-square"></i> ADD NEW BRANCH
+                    </button>
+                </div>
+            </div>
+
+            <div class="inner-table-content">
+                <div class="table-div animated fadeIn">
+                    <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                        <script>_fetchCountryBranchData()</script>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="table-div animated fadeIn">
-        <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-            <script>_fetchCountryBranchData()</script>
-        </table>
     </div>
 <?php } ?>
 
@@ -711,5 +723,19 @@
                 </div>
             </div>
         </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examPricing') { ?>
+    <div class="alert alert-success top-alert-div animated fadeIn">
+        <span><i class="bi-credit-card-fill"></i> EXAM PRICING</span>
+        <div class="btn-container">
+            <button class="btn" title="ADD EXAM PRICING" onclick="_getForm({page: 'examPricingReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM PRICING</button>
+        </div>
+    </div>
+
+    <div class="table-div animated fadeIn">
+        <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+        </table>
     </div>
 <?php } ?>

@@ -1,30 +1,53 @@
 <?php if ($page == 'settings') { ?>
-    <div class="page-title-back-div other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-gear"></i> <strong>Global Configurations</strong></div>
-            <span class="settings-span">Manage and configure dashboard settings, global settings and manage users </span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi-gear"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Global Configurations</h3>
+                <p>Manage and configure dashboard settings, global settings and manage users</p>
+            </div>
         </div>
-        <button class="btn" title="LEARN MORE">LEARN MORE</button>
+
+        <div class="btn-div">
+            <button class="btn" title="LEARN MORE">
+                <i class="bi-plus-square"></i> LEARN MORE
+            </button>
+        </div>
     </div>
 
-    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="user-managment-back-div" data-aos="fade-in" data-aos-duration="1500">
-            <div class="user-managment-list" onclick="_getForm({page: 'accountSettings', url: adminPortalLocalUrl});">
-                <div class="inner-div">
-                    <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/gear.png" alt="Account Management" /></div>
-                    <div class="text-div">
-                        <h3>Account Management</h3>
-                        <p>User can Manage account informations, ensuring secure and efficient access to features.</p>
-                    </div>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-gear"></i>
+                    <p>Global Configurations</p>
                 </div>
             </div>
 
-            <div class="user-managment-list" onclick="_getForm({page: 'changePassword', url: adminPortalLocalUrl});">
-                <div class="inner-div">
-                    <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/status.png" alt="Change Password" /></div>
-                    <div class="text-div">
-                        <h3>Change Password</h3>
-                        <p>Users can change and upadate their password</p>
+            <div class="inner-table-content">
+                <div class="other-pg-back-div">
+                    <div class="user-managment-back-div" data-aos="fade-in" data-aos-duration="1500">
+                        <div class="user-managment-list" title="Account Management" onclick="_getForm({page: 'accountSettings', url: adminPortalLocalUrl});">
+                            <div class="inner-div">
+                                <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/gear.png" alt="Account Management" /></div>
+                                <div class="text-div">
+                                    <h3>Account Management</h3>
+                                    <p>User can Manage account informations, ensuring secure and efficient access to features.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="user-managment-list" title="Change Password" onclick="_getForm({page: 'changePassword', url: adminPortalLocalUrl});">
+                            <div class="inner-div">
+                                <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/status.png" alt="Change Password" /></div>
+                                <div class="text-div">
+                                    <h3>Change Password</h3>
+                                    <p>Users can change and upadate their password</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

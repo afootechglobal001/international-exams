@@ -28,7 +28,6 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/jquery.datetimepicker.js"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/chart.min.js"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/canvasjs.min.js" type="text/javascript"></script>
-<script src="<?php echo $websiteUrl?>/admin/dashboard/js/scripts.js?v=<?php echo $codeVersion?>"></script>
 
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useDashboard.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useBranch.js?v=<?php echo $codeVersion?>"></script>

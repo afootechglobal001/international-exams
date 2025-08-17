@@ -82,6 +82,14 @@ function srch_custom(text){
 	$('.custom-srch-div').fadeIn(500);
 };
 
+
+function _closeSearchDiv(event) {
+    if (!$(event.target).closest(".srch-select, .text-right").length) {
+        $(".srch-select").hide("slow");
+    }
+}
+$(document).on("click", _closeSearchDiv);
+
 function capitalizeFirstLetterOfEachWord(inputText) {
 	const words = inputText.toLowerCase().split(' ');
 	for (let i = 0; i < words.length; i++) {

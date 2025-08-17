@@ -404,9 +404,6 @@ function _createCountryBranch() {
 }
 
 function _updateCountryBranch() {
-	let getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
-	let getEachBranchSession = JSON.parse(sessionStorage.getItem("getEachBranchSession"));
-
 	try {
 		let issueCount = 0;
 		const branchName = $('#updateBranchName').val();
@@ -456,55 +453,71 @@ function _updateCountryBranch() {
 		}
 
 		if (issueCount > 0) return;
-		
+		const form ={branchName, email, phoneNumber, address, managerId, statusId}
 		_showCustomConfirm({
 			callback: () => {
-			const btnText = $("#updateBtn").html();
-			$("#updateBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
-			$("#updateBtn").prop("disabled", true);
-
-			const formData = {
-				"branchName": branchName,
-				"email": email,
-				"phoneNumber": phoneNumber,
-				"address": address,
-				"managerId": managerId,
-				"statusId": statusId,
-			};
-
-			$.ajax({
-				type: "POST",
-				url: `${endPoint}/admin/branch/update-branch?countryId=${getEachCountrySession?.countryId}&branchId=${getEachBranchSession?.branchId}`,
-				data: JSON.stringify(formData),
-				dataType: "json", 
-				cache: false,
-				headers: getAuthHeaders(true),
-				success: function (info) {
-					const success = info.success;
-					const message = info.message;
-
-					if (success=== true) {
-						_actionAlert(message, true);
-						_fetchEachCountryBranch(getEachBranchSession?.branchId);
-						_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});
-					} else {
-						_actionAlert(message, false);
-					}
-					$("#updateBtn").html(btnText).prop("disabled", false);
+				_updateCountryBranchCallback(form);
 			},
-				error: function (error) {
-					_actionAlert('An error occurred while processing your request! Please Try Again', false);
-					$("#updateBtn").html(btnText).prop("disabled", false);
-				}
-			});
-		},
 			title: 'Are you sure?',
 			message: 'You are about to update this branch. This action cannot be undone.',
-			icon: 'bi-exclamation-octagon',
-			iconBg: 'bg-warning'
+			alertType: 'warning',
+			falseActionBtn: true,
 		});
 	} catch (error) {
 		_actionAlert('An unexpected error occurred! Please Try Again', false);
 		$("#updateBtn").prop("disabled", false);
 	}
+}
+
+
+
+function _updateCountryBranchCallback(form){
+	let getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
+	let getEachBranchSession = JSON.parse(sessionStorage.getItem("getEachBranchSession"));
+
+	const btnText = $("#updateBtn").html();
+	$("#updateBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
+	$("#updateBtn").prop("disabled", true);
+
+	const formData = {
+		"branchName": form.branchName,
+		"email": form.email,
+		"phoneNumber": form.phoneNumber,
+		"address": form.address,
+		"managerId": form.managerId,
+		"statusId": form.statusId,
+	};
+
+	$.ajax({
+		type: "POST",
+		url: `${endPoint}/admin/branch/update-branch?countryId=${getEachCountrySession?.countryId}&branchId=${getEachBranchSession?.branchId}`,
+		data: JSON.stringify(formData),
+		dataType: "json", 
+		cache: false,
+		headers: getAuthHeaders(true),
+		success: function (info) {
+			const success = info.success;
+			const message = info.message;
+
+			if (success=== true) {
+				_showCustomConfirm({
+					callback: () => {
+						_fetchEachCountryBranch(getEachBranchSession?.branchId);
+						_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});
+					},
+					title: 'Success!',
+					message: message,
+					alertType: 'success',
+					trueActionBtnText: 'OK, Thanks.',
+				});
+			} else {
+				_actionAlert(message, false);
+			}
+			$("#updateBtn").html(btnText).prop("disabled", false);
+	},
+		error: function (error) {
+			_actionAlert('An error occurred while processing your request! Please Try Again', false);
+			$("#updateBtn").html(btnText).prop("disabled", false);
+		}
+	});
 }

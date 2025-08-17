@@ -10,13 +10,11 @@
     <?php include 'header.php'?>
     <?php include 'side-bar.php'?>
 
-    <div class="content-div">
-        <div class="inner-content">
-            <div id="page-content">
-               <script>_getActivePage({page:'dashboard', divid:'dashboard'});</script>		
-            </div> 
-        </div>
-    </div>
+    <main id="page-content">
+        <div id="page-content">
+            <script>_getActivePage({page:'dashboard', divid:'dashboard'});</script>		
+        </div> 
+    </main>
     <?php include 'bottom-scripts.php'?>
 </body>
 </html>

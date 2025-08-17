@@ -220,3 +220,59 @@ function _progressBar(){
 	});
 	
 }
+
+
+
+
+function _showCustomConfirm(options) {
+	const {
+		callback = () => {},
+		alertType = 'info',
+		title = 'Are you sure?',
+		message = 'This action can\'t be undone. Please confirm if you want to proceed.',
+		trueActionBtnText = 'YES',
+		falseActionBtn = false,
+		falseActionBtnText = 'NO'
+	} = options;
+
+	// Show modal
+	$('#customConfirmModal').html('').fadeIn(200);
+	let icon = 'bi-info-circle-fill';
+	let iconBg = 'bg-info';
+
+	if (alertType === 'success') {
+		icon = 'bi-check-circle-fill';
+		iconBg = 'bg-success';
+	} else if (alertType === 'error') {
+		icon = 'bi-x-circle-fill';
+		iconBg = 'bg-danger';
+	}else if (alertType === 'warning') {
+		icon = 'bi-exclamation-octagon-fill';
+		iconBg = 'bg-warning';
+	}
+
+	const content = `
+		<div class="modal-box">
+			<div class="modal-icon ${iconBg}">
+				<i class="bi ${icon} text-white"></i>
+			</div>
+			<h3>${title}</h3>
+			<p>${message}</p>
+			<div class="modal-buttons">
+				${falseActionBtn ? `<button id="confirmCancelBtn" class="btn btn-outline">${falseActionBtnText}</button>` : ''}
+				<button id="confirmOkBtn" class="btn btn-primary">${trueActionBtnText}</button>
+			</div>
+		</div>
+	`;
+	$('#customConfirmModal').html(content);
+	// Attach button events
+	$('#confirmOkBtn').off('click').on('click', function() {
+		callback();
+		$('#customConfirmModal').html('').fadeOut(200);
+	});
+	if (falseActionBtn) {
+		$('#confirmCancelBtn').off('click').on('click', function() {
+			$('#customConfirmModal').html('').fadeOut(200);
+		});
+	}
+}

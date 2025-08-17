@@ -1,29 +1,29 @@
 <?php if ($page == 'viewBranch') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-diagram-3"></i> <strong>BRANCHES</strong></div>
-            <div class="bottom-title">
-                Active: <span id="active-country">10</span> |
-                Suspended: <span>5</span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-diagram-3"></i></div>
             </div>
-        </div>
+            <div class="text-div">
+                <h3>Branches</h3>
+                <p>View and manage all your branches from one dashboard. Keep track of activities, monitor updates, and ensure everything runs smoothly across locations.</p>
+            </div>
 
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to search country..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search country...</div>
-                </div>
+        </div>
+        <div class="btn-div">
+            <div class="search-div">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Branch Here...">
+                <i class="bi bi-search"></i>
             </div>
         </div>
     </div>
 
-    <div class="tables-content-div">
-        <div class="content-title">
-            <div class="title">
-                <i class="bi bi-diagram-3"></i>
-                <p>Branches</p>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-diagram-3"></i>
+                    <p>Branches</p>
             </div>
         </div>
 

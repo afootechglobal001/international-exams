@@ -365,7 +365,8 @@
 main {
   position: fixed;
   width: calc(100% - 250px);
-  height: calc(100% - 80px);
+  height: calc(100% - 120px);
+  padding-bottom: 40px;
   bottom: 0px;
   right: 0px;
   background: var(--bg-color);

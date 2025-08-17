@@ -721,6 +721,92 @@ main {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.statistics-back-div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.statistics-back-div .statistics-div {
+  min-height: 100px;
+  flex: 1 1 30%; /* grow:1 shrink:1 basis:19% */
+  min-width: 300px;
+  max-width: 100%;
+  cursor: pointer;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(-120deg, #f8f5ec, #fff);
+  transition: all 0.3s ease-in 0.3s;
+}
+
+.statistics-back-div .statistics-inner-div {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statistics-back-div .statistics-inner-div .statistics-text {
+  display: flex;
+  flex-direction: column;
+  font-family: sub-title-font;
+  color: var(--body-color);
+}
+.statistics-back-div .statistics-inner-div .statistics-text span {
+  font-size: 13px;
+  font-family: body-font;
+  color: var(--sub-body-color2);
+  font-style: italic;
+}
+
+.statistics-back-div .statistics-inner-div .statistics-text h2 {
+  font-size: 30px;
+  font-family: title-font;
+  background: linear-gradient(
+    120deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* for WebKit browsers */
+  background-clip: text;
+  color: transparent;
+}
+
+.statistics-back-div .statistics-inner-div .statistics-icon {
+  color: var(--secondary-color);
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  background: var(--white-color);
+  border-radius: 15px;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+}
+
+.statistics-back-div .statistics-inner-div .upcoming {
+  color: var(--link-color);
+  border: 1px solid var(--link-color);
+}
+.statistics-back-div .statistics-inner-div .completed {
+  color: var(--active-color);
+  border: 1px solid var(--active-color);
+}
+.statistics-back-div .statistics-div:hover {
+  background: linear-gradient(-100deg, #fff, #faf5e5);
+  transform: scale(1.02);
+  transition: 0.2s ease-in;
+  border: 1px solid rgba(157, 4, 60, 0.096);
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .exams-back-div {
   display: flex;
   justify-content: start;
@@ -736,7 +822,6 @@ main {
   padding: 20px;
   padding-top: 0px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  max-width: 250px;
   display: flex;
   flex-direction: column;
   gap: 10px;

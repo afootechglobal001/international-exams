@@ -39,6 +39,7 @@
             $firstName=$fetchQuery['firstName'];
             $lastName=$fetchQuery['lastName'];
             $fullName="$titleId $firstName $lastName";
+            $loginFullName="$titleId $lastName";
 
             if($statusId==2){ /// start if 3 (check if the user is suspended)
                 $response = [
@@ -67,6 +68,7 @@
 
                     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
                     while ($fetchQuery = mysqli_fetch_assoc($query)) {
+                        $fetchQuery['loginFullName']=$loginFullName;
                         $fetchQuery['fullName']=$fullName;
                         $response['data'][] = $fetchQuery;
                     }

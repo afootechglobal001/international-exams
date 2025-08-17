@@ -1,46 +1,41 @@
 <?php if ($page == 'viewStaff') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-people"></i> <strong>Administrators</strong></div>
-            <div class="bottom-title">
-                Active: <span id="active-staff">10</span> |
-                Suspended: <span>5</span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-people"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Administrators</h3>
+                <p>Manage administrator accounts with ease. Assign roles, control access, and oversee activities to keep operations secure and well-organized.</p>
             </div>
         </div>
 
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to search staff..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search staff...</div>
-                </div>
+        <div class="btn-div">
+            <div class="search-div">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Staff Here...">
+                <i class="bi bi-search"></i>
             </div>
-
-            <div class="btn-div">
-                <button class="btn" type="button" title="ADD NEW STAFF"
-                    onclick="_getForm({page: 'staffReg', url: adminPortalLocalUrl});">
-                    <i class="bi-plus-square"></i> ADD NEW STAFF
-                </button>
-            </div>
+            <button class="btn" title="ADD NEW STAFF" onclick="_getForm({page: 'staffReg', url: adminPortalLocalUrl});">
+                <i class="bi-plus-square"></i> ADD NEW STAFF
+            </button>
         </div>
     </div>
 
-
-   
-    <div class="tables-content-div">
-        <div class="content-title">
-            <div class="title">
-                <i class="bi bi-people"></i>
-                <p>Administrators</p>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-people"></i>
+                    <p>Administrators</p>
+                </div>
             </div>
-        </div>
 
-        <div class="inner-table-content">
-            <div class="table-div animated fadeIn">
-                <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                    <script>_fetchStaffs(); </script>
-                </table>
+            <div class="inner-table-content">
+                <div class="table-div animated fadeIn">
+                    <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                        <script>_fetchStaffs(); </script>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

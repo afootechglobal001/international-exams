@@ -129,37 +129,6 @@ function formatDate(date) {
     return date; // fallback
 }
 
-function _showCustomConfirm(options) {
-	const {
-		callback = () => {},
-		title = 'Are you sure?',
-		message = 'This action can’t be undone. Please confirm if you want to proceed.',
-		icon = 'bi-exclamation-triangle-fill',
-		iconBg = 'bg-warning'
-	} = options;
-
-	// Set icon, title, message
-	$('#customConfirmTitle').text(title);
-	$('#customConfirmMessage').text(message);
-	$('#customConfirmIcon')
-		.attr('class', 'modal-icon ' + iconBg)
-		.html('<i class="bi ' + icon + ' text-white"></i>');
-
-	// Show modal
-	$('#customConfirmModal').fadeIn(200);
-
-	// Button handlers
-	$('#confirmYesBtn').off('click').on('click', function () {
-		$('#customConfirmModal').fadeOut(200);
-		callback(); // continue action
-	});
-
-	$('#confirmNoBtn').off('click').on('click', function () {
-		$('#customConfirmModal').fadeOut(200);
-	});
-}
-
-
 
 function _getSelectStatusId(fieldId, statusIds){
 	try {

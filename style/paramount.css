@@ -932,3 +932,124 @@ a {
 .index-menu-back-div .div-in .div .student-li i {
   color: var(--text-white);
 }
+
+
+
+/* Modal Layout */
+.modal-overlay {
+  	position: fixed;
+  	inset: 0;
+	background: rgba(0, 0, 0, .4);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px) brightness(0.8) contrast(1.2);
+	-webkit-backdrop-filter: blur(5px) brightness(0.8) contrast(1.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.modal-box {
+	background: var(--white-color);
+	border-radius: 10px;
+	padding: 35px 40px;
+	max-width: 350px;
+	width:calc(100% - 80px);
+	text-align: center;
+	position: relative;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 15px;
+}
+
+/* Icon Circle */
+.modal-box .modal-icon {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+}
+
+.modal-box .bg-warning {
+  	background-color: #ffc107;
+}
+
+.modal-box .bg-success {
+  	background-color: #28a745;
+}
+
+.modal-box .text-white {
+  	color: var(--white-color);
+}
+
+.modal-box h3 {
+	font-size: 25px;
+	font-family: sub-title-font;
+	color: var(--sub-body-color2);
+}
+
+.modal-box p {
+	font-size: 14px;
+	color: var(--text-color);
+	font-family: body-font;
+}
+
+/* Buttons */
+.modal-box .modal-buttons {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.modal-box .modal-buttons .btn {
+	min-width: 170px;
+	padding: 10px 20px;
+	height: 48px;
+	border-radius: 25px;
+	margin-top: 5px;
+	font-family: sub-title-font;
+	color: var(--sub-body-color2);
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	-moz-transition:all 0.3s ease-in 0.3s;
+	transition:all 0.3s ease-in 0.3s;
+	-webkit-transition:all 0.3s ease-in 0.3s;
+	-ms-transition:all 0.3s ease-in 0.3s;
+	-o-transition:all 0.3s ease-in 0.3s;
+}
+
+.modal-box .modal-buttons .btn-outline {
+	border: 1px solid #dfdfdf;
+	background: #f0f0f0;
+}
+
+.modal-box .modal-buttons .btn-outline:hover {
+	background: #f0f0f0;
+}
+
+.modal-box .modal-buttons .btn-primary {
+	  color: var(--white-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  background-size: 100%;
+  background-position: left;
+  transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.modal-box .modal-buttons .btn-primary:hover {
+  background-size: 200% 100%;
+  background-position: right;
+  transform: scale(1.05); /* subtle hover grow */
+}

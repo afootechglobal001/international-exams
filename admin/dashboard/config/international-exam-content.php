@@ -1,209 +1,206 @@
 <?php if ($page == 'internationalExamCategory') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-book-half"></i> <strong>International Exams</strong></div>
-            <div class="bottom-title">
-                Active: <span>10</span> |
-                Suspended: <span>5</span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi-book-half"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>International Exams</h3>
+                <p>Create and manage dedicated pages for international exams. Customize details, organize categories, and keep information up to date for easy access by students and staff.</p>
             </div>
         </div>
 
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to search exams..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search exams...</div>
-                </div>
+        <div class="btn-div">
+            <div class="search-div">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Exam Here...">
+                <i class="bi bi-search"></i>
             </div>
-
-            <div class="btn-div">
-                <button class="btn" type="button" title="ADD NEW INTERNATION EXAM"
-                    onclick="_getForm({page: 'internationalExamReg', url: adminPortalLocalUrl});">
-                    <i class="bi-plus-square"></i> ADD NEW INTERNATIONAL EXAM
-                </button>
-            </div>
+            <button class="btn" title="ADD NEW INTERNATIONAL EXAM" onclick="_getForm({page: 'internationalExamReg', url: adminPortalLocalUrl});">
+                <i class="bi-plus-square"></i> ADD NEW INTERNATIONAL EXAM
+            </button>
         </div>
     </div>
 
-    <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="other-pg-back-div">
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="_getActivePage({page:'examRelatedLinks', divid:'publish'});">RELATED LINKS</button>
-                </div>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">   
+        <div class="pages-back-div" data-aos="fade-in" data-aos-duration="1500">
+            <div class="other-pg-back-div">
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="_getActivePage({page:'examRelatedLinks', divid:'publish'});">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>TOEFL</h2>
-                    <div class="top-text"><span> Test of English as a Foreign Language </span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>TOEFL</h2>
+                        <div class="top-text"><span> Test of English as a Foreign Language </span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>GRE</h2>
-                    <div class="top-text"><span> Graduate Record Examination </span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>GRE</h2>
+                        <div class="top-text"><span> Graduate Record Examination </span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>IELTS</h2>
-                    <div class="top-text"><span>International English Language Testing System</span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>IELTS</h2>
+                        <div class="top-text"><span>International English Language Testing System</span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>GMAT</h2>
-                    <div class="top-text"><span> Graduate Management Admission Test </span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>GMAT</h2>
+                        <div class="top-text"><span> Graduate Management Admission Test </span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>PTE</h2>
-                    <div class="top-text"><span> Pearson Test of English</span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>PTE</h2>
+                        <div class="top-text"><span> Pearson Test of English</span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>SAT</h2>
-                    <div class="top-text"><span> Scholastic Assessment Test </span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GRE.jpg" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>SAT</h2>
+                        <div class="top-text"><span> Scholastic Assessment Test </span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>MCAT</h2>
-                    <div class="top-text"><span>Medical College Admission Test</span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/student1.avif" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>MCAT</h2>
+                        <div class="top-text"><span>Medical College Admission Test</span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="grid-div">
-                <div class="btn-div">
-                    <button class="btn active-btn" onclick="">EDIT</button>
-                    <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                    <button class="btn link-btn" onclick="">RELATED LINKS</button>
-                </div>
+                <div class="grid-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="">EDIT</button>
+                        <button class="btn" onclick="">EDIT PAGE DETAILS</button>
+                        <button class="btn link-btn" onclick="">RELATED LINKS</button>
+                    </div>
 
-                <div class="img-div">
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
-                </div>
-                <div class="status-div ACTIVE">ACTIVE</div>
-                <div class="text-div">
-                    <h2>NCLEX</h2>
-                    <div class="top-text"><span> National Concil Licensure Examination </span></div>
-                    <div class="text-in">
-                        <div class="text">
-                            UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                    <div class="img-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/GMAT.jpg" alt="TOEFL" />
+                    </div>
+                    <div class="status-div ACTIVE">ACTIVE</div>
+                    <div class="text-div">
+                        <h2>NCLEX</h2>
+                        <div class="top-text"><span> National Concil Licensure Examination </span></div>
+                        <div class="text-in">
+                            <div class="text">
+                                UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 <?php } ?>
 
 <?php if ($page == 'examRelatedLinks') { ?>
@@ -260,8 +257,6 @@
         </div>
     </div>
 <?php } ?>
-
-
 
 <?php if ($page == 'internationalExamReg') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">

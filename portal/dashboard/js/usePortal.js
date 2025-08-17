@@ -32,3 +32,13 @@ function _confirmLogOut() {
     falseActionBtn: true,
   });
 }
+
+function _toggleProfileDiv() {
+  $(".toggle").toggle("slow");
+}
+function _closeProfileDiv(event) {
+  if (!$(event.target).closest(".toggle, .profile-pic-div").length) {
+    $(".toggle").hide("slow");
+  }
+}
+$(document).on("click", _closeProfileDiv);

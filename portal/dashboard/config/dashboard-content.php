@@ -1,24 +1,26 @@
 <?php if ($page == 'dashboard') { ?>
 <!-- /////////// Title ////////////////////////////// -->
 <section class="page-title-div">
-    <div class="title-div">
-        <div>
-            <div class="icon-div"><i class="bi bi-speedometer2"></i></div>
-        </div>
-        <div class="text-div">
-            <h3>Dashboard</h3>
-            <p>Manage your international exam applications in one place. Stay updated with
-                real-time notifications, schedules, and exam insights.</p>
-        </div>
+    <div class="div-in">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-speedometer2"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Dashboard</h3>
+                <p>Manage your international exam applications in one place. Stay updated with
+                    real-time notifications, schedules, and exam insights.</p>
+            </div>
 
-    </div>
-    <div class="btn-div">
-        <button class="btn donwload-btn" title="Refresh Page">
-            <i class="bi bi-filetype-pdf"></i> Download E-books
-        </button>
-        <button class="btn" title="Apply for Exam">
-            <i class="bi bi-journal-text"></i> Apply for Exam
-        </button>
+        </div>
+        <div class="btn-div">
+            <button class="btn donwload-btn" title="Refresh Page">
+                <i class="bi bi-filetype-pdf"></i> Download E-books
+            </button>
+            <button class="btn" title="Apply for Exam">
+                <i class="bi bi-journal-text"></i> Apply for Exam
+            </button>
+        </div>
     </div>
 </section>
 <!-- /////////// Title ////////////////////////////// -->
@@ -29,18 +31,54 @@
         <div class="greetings-div">
             <div class="title-div">
                 <p>August 13, 2025 </p>
-                <h1>Welcome Back, Candy!</h1>
+                <h1>Welcome Back, Oluwagbenga!</h1>
                 <p><span>Last login date: <strong>31-05-2025 11:03:45</strong></span></p>
             </div>
             <div class="wallet-div">
                 <div class="wallet-info">
                     <p>Wallet Balance (₦)</p>
-                    <h2>3,000.00</h2>
+                    <h2>500,000.00</h2>
                 </div>
                 <button class="btn" title="Load wallet"
                     onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
                     <i class="bi bi-wallet"></i> Load Wallet
                 </button>
+            </div>
+        </div>
+    </section>
+    <!--  ////////////////////////////////////////////////////////////////////////////////-->
+    <section class="statistics-back-div">
+        <div class="statistics-div" id="branch" title="Branches">
+            <div class="statistics-inner-div">
+                <div class="statistics-text">
+                    <p>PENDING EXAM</p>
+                    <span>Statistics of unpaid exam registrations</span>
+                    <h2>2</h2>
+
+                </div>
+                <div class="statistics-icon pending"><i class="bi-credit-card-2-back"></i></div>
+            </div>
+        </div>
+
+        <div class="statistics-div" id="branch" title="Branches">
+            <div class="statistics-inner-div">
+                <div class="statistics-text">
+                    <p>UPCOMING EXAM</p>
+                    <span>Statistics of scheduled exams</span>
+                    <h2>1</h2>
+                </div>
+                <div class="statistics-icon upcoming"><i class="bi-calendar3"></i></div>
+            </div>
+        </div>
+
+        <div class="statistics-div" id="branch" title="Branches">
+            <div class="statistics-inner-div">
+                <div class="statistics-text">
+                    <p>COMPLETED EXAM</p>
+                    <span>Statistics of completed exams</span>
+                    <h2>1</h2>
+                </div>
+                <div class="statistics-icon completed"><i class="bi-card-checklist"></i></div>
             </div>
         </div>
     </section>
@@ -77,45 +115,12 @@
                     <i class="bi bi-eye"></i> View Details
                 </button>
             </div>
+
             <div class="exam-div">
                 <div class="exam-image">
                     <img src="<?php echo $websiteUrl?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
                 </div>
                 <div class="exam-status pending">PENDING</div>
-                <div class="exam-info">
-                    <h3>IELTS</h3>
-                    <p>International English Language Testing System</p>
-                    <div class="exam-time">
-                        <p><i class="bi bi-calendar"></i> <strong>31-05-2025</strong></p>
-                        <p><i class="bi bi-clock"></i> <strong>10:00 AM </strong></p>
-                    </div>
-                </div>
-                <button class="btn" title="View Details">
-                    <i class="bi bi-eye"></i> View Details
-                </button>
-            </div>
-            <div class="exam-div">
-                <div class="exam-image">
-                    <img src="<?php echo $websiteUrl?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                </div>
-                <div class="exam-status upcoming">UPCOMING</div>
-                <div class="exam-info">
-                    <h3>IELTS</h3>
-                    <p>International English Language Testing System</p>
-                    <div class="exam-time">
-                        <p><i class="bi bi-calendar"></i> <strong>31-05-2025</strong></p>
-                        <p><i class="bi bi-clock"></i> <strong>10:00 AM </strong></p>
-                    </div>
-                </div>
-                <button class="btn" title="View Details">
-                    <i class="bi bi-eye"></i> View Details
-                </button>
-            </div>
-            <div class="exam-div">
-                <div class="exam-image">
-                    <img src="<?php echo $websiteUrl?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                </div>
-                <div class="exam-status done">DONE</div>
                 <div class="exam-info">
                     <h3>IELTS</h3>
                     <p>International English Language Testing System</p>
@@ -315,40 +320,4 @@
         </div>
     </section>
 </sction>
-<?php } ?>
-
-
-
-<?php if ($page == 'loadWallet') { ?>
-<div class="caption-success-div animated zoomIn">
-    <div class="caption-title-div">
-        <div class="title-div">
-            <div class="icon-div"><i class="bi bi-shield-shaded"></i></div>
-            <h3>LOAD WALLET</h3>
-        </div>
-        <div class="btn-div">
-            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
-                <i class="bi bi-x-lg"></i> Close
-            </button>
-        </div>
-    </div>
-    <!-- /////////// Title ////////////////////////////// -->
-    <div class="caption-notification">
-        <p>Easily fund your exam wallet to make swift and secure payments for registrations, study materials, and other
-            exam-related services.</p>
-    </div>
-    <div class="caption-body">
-        <div class="text_field_container" id="walletAmount_container">
-            <script>
-            textField({
-                id: 'walletAmount',
-                title: 'Enter The Amount',
-            });
-            </script>
-        </div>
-        <div class="btn-div">
-            <button class="btn" onclick="_logOut();">LOAD WALLET</button>
-        </div>
-    </div>
-</div>
 <?php } ?>

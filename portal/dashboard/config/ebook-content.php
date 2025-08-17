@@ -1,25 +1,23 @@
 <?php if ($page == 'ebook') { ?>
 <!-- /////////// Title ////////////////////////////// -->
 <section class="page-title-div">
-    <div class="title-div">
-        <div>
-            <div class="icon-div"><i class="bi bi-filetype-pdf"></i></div>
-        </div>
-        <div class="text-div">
-            <h3>Download E-Books</h3>
-            <p>Access study resources and prepare for your international exams with ease. Stay on top of your
-                applications, schedules, and real-time updates—all in one place.</p>
-        </div>
+    <div class="div-in">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-filetype-pdf"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Download E-Books</h3>
+                <p>Access study resources and prepare for your international exams with ease. Stay on top of your
+                    applications, schedules, and real-time updates—all in one place.</p>
+            </div>
 
-    </div>
-    <div class="btn-div">
+        </div>
         <div class="search-div">
             <input type="text" placeholder="Search E-Books Here...">
             <i class="bi bi-search"></i>
         </div>
-        <button class="btn" title="Apply for Exam">
-            <i class="bi bi-journal-text"></i> Apply for Exam
-        </button>
+
     </div>
 </section>
 <!-- /////////// Title ////////////////////////////// -->

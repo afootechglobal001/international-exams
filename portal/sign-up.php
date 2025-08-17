@@ -11,11 +11,14 @@
 
 <body>
     <main>
-        <div class="picture-div"></div>
+        <div class="picture-div animated fadeIn"></div>
 
-        <div class="form-div">
+        <div class="form-div animated fadeIn">
             <div class="form-box">
                 <div class="form-box-content">
+                    <div class="logo-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" />
+                    </div>
                     <h1>Sign-Up</h1>
                     <div class="alert alert-success">
                         Kindly, provide the required information to sign-up on this platform.

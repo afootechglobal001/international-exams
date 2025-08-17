@@ -13,7 +13,7 @@
     <?php include 'side-bar.php' ?>
 
 
-    <main id="page-content">
+    <main id="page-content" class="animated fadeIn">
         <script>
         _getActivePage({
             page: 'dashboard',

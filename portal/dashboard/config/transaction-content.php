@@ -32,11 +32,6 @@
                 <i class="bi bi-credit-card-2-back"></i>
                 <p>My Transactions</p>
             </div>
-            <div>
-                <button class="btn" title="View all">
-                    <i class="bi bi-eye"></i> View All
-                </button>
-            </div>
         </div>
         <div class="content-inner">
             <div class="table-div">

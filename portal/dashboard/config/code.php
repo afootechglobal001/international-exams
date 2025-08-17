@@ -18,6 +18,7 @@ switch ($action){
 	case 'get_form':
 		$page=$_POST['page'];
 		$id=$_POST['id'];
+		$modalLayer=$_POST['modalLayer'];
 		require_once('dashboard-content.php');
 		require_once('ebook-content.php');
 		require_once('exam-content.php');

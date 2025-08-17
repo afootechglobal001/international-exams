@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div class="sidebar-div">
+<div class="sidebar-div animated fadeInLeft">
     <div class="sidebar-div-in">
         <nav>
             <ul>

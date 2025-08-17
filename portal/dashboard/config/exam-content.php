@@ -1,25 +1,23 @@
 <?php if ($page == 'exam') { ?>
 <!-- /////////// Title ////////////////////////////// -->
 <section class="page-title-div">
-    <div class="title-div">
-        <div>
-            <div class="icon-div"><i class="bi bi-journal-text"></i></div>
-        </div>
-        <div class="text-div">
-            <h3>My Registered Exams</h3>
-            <p>View and manage all your registered international exams in one place. Track schedules and stay informed
-                with important exam updates.</p>
-        </div>
+    <div class="div-in">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-journal-text"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>My Registered Exams</h3>
+                <p>View and manage all your registered international exams in one place. Track schedules and stay
+                    informed
+                    with important exam updates.</p>
+            </div>
 
-    </div>
-    <div class="btn-div">
+        </div>
         <div class="search-div">
             <input type="text" placeholder="Search Exams Here...">
             <i class="bi bi-search"></i>
         </div>
-        <button class="btn" title="Apply for Exam">
-            <i class="bi bi-journal-text"></i> Apply for Exam
-        </button>
     </div>
 </section>
 <!-- /////////// Title ////////////////////////////// -->

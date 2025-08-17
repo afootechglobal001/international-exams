@@ -1,25 +1,24 @@
 <?php if ($page == 'transactions') { ?>
 <!-- /////////// Title ////////////////////////////// -->
 <section class="page-title-div">
-    <div class="title-div">
-        <div>
-            <div class="icon-div"><i class="bi bi-credit-card-2-back"></i></div>
-        </div>
-        <div class="text-div">
-            <h3>Transactions History</h3>
-            <p>Keep track of all your exam registration payments in one place. View receipts, monitor payment status,
-                and transaction records.</p>
-        </div>
+    <div class="div-in">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-credit-card-2-back"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Transactions History</h3>
+                <p>Keep track of all your exam registration payments in one place. View receipts, monitor payment
+                    status,
+                    and transaction records.</p>
+            </div>
 
-    </div>
-    <div class="btn-div">
+        </div>
         <div class="search-div">
             <input type="text" placeholder="Search Here...">
             <i class="bi bi-search"></i>
         </div>
-        <button class="btn" title="Apply for Exam">
-            <i class="bi bi-journal-text"></i> Apply for Exam
-        </button>
+
     </div>
 </section>
 <!-- /////////// Title ////////////////////////////// -->
@@ -102,4 +101,40 @@
         </div>
     </section>
 </sction>
+<?php } ?>
+
+
+
+<?php if ($page == 'loadWallet') { ?>
+<div class="caption-div animated fadeIn">
+    <div class="caption-title-div">
+        <div class="title-div">
+            <div class="icon-div"><i class="bi bi-credit-card-2-back"></i></div>
+            <h3>LOAD WALLET</h3>
+        </div>
+        <div class="btn-div">
+            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                <i class="bi bi-x-lg"></i> Close
+            </button>
+        </div>
+    </div>
+    <!-- /////////// Title ////////////////////////////// -->
+    <div class="caption-notification">
+        <p>Easily fund your exam wallet to make swift and secure payments for registrations, study materials, and other
+            exam-related services.</p>
+    </div>
+    <div class="caption-body">
+        <div class="text_field_container" id="walletAmount_container">
+            <script>
+            textField({
+                id: 'walletAmount',
+                title: 'Enter The Amount',
+            });
+            </script>
+        </div>
+        <div class="btn-div">
+            <button class="btn" onclick="_logOut();">LOAD WALLET</button>
+        </div>
+    </div>
+</div>
 <?php } ?>

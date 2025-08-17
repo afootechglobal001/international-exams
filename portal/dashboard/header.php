@@ -2,13 +2,16 @@
 
 <!-- Header -->
 
-<header class="header-div">
+<header class="header-div animated fadeInDown">
     <div class="header-div-in">
         <div class="header-left-div">
             <div class="logo-div">
-                <img src="<?php echo $websiteUrl ?>/admin/images/logo.png" alt="International Exam Logo" />
+                <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" />
             </div>
-            <p>Hi, Mike Candy</p>
+            <div class="country-logo">
+                <img src="<?php echo $websiteUrl ?>/all-images/country/NIGERIA.jpg" alt="Nigeria" />
+            </div>
+            <p>Hi, Oluwagbenga</p>
             <div class="search-div">
                 <input type="text" placeholder="Search...">
                 <i class="bi bi-search"></i>

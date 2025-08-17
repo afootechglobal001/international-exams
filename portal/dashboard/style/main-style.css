@@ -37,13 +37,26 @@
   align-items: center;
   overflow: hidden;
   cursor: pointer;
-  margin-right: 50px;
 }
 
 .header-div .header-div-in .header-left-div .logo-div img {
   width: 100%;
   object-fit: cover;
   border-radius: 15px;
+}
+.header-div .header-div-in .header-left-div .country-logo {
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  margin-right: 25px;
+}
+
+.header-div .header-div-in .header-left-div .country-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .header-div .header-div-in .header-left-div p {
@@ -52,6 +65,7 @@
   padding: 0px;
   color: var(--primary-color);
   font-family: sub-title-font;
+  white-space: nowrap;
 }
 
 .header-div .header-div-in .header-left-div .search-div {
@@ -117,7 +131,29 @@
   height: 100%;
   object-fit: cover;
 }
-
+@media all and (max-width: 1135px) {
+  .header-div .header-div-in .header-left-div .search-div input {
+    width: auto;
+  }
+}
+@media all and (max-width: 900px) {
+  .header-div .header-div-in .header-left-div .search-div {
+    display: none;
+  }
+}
+@media all and (max-width: 560px) {
+  .header-div .header-div-in .header-left-div {
+    gap: 10px;
+  }
+  .header-div .header-div-in .header-left-div .country-logo {
+    margin-right: 0px;
+  }
+}
+@media all and (max-width: 500px) {
+  .header-div .header-div-in .header-left-div p {
+    display: none;
+  }
+}
 /* /////////////////////////////////////////////////////////////*/
 .sidebar-div {
   position: absolute;
@@ -183,10 +219,15 @@
 .sidebar-div .sidebar-div-in nav ul li i {
   color: var(--primary-color);
 }
+@media all and (max-width: 1150px) {
+  .sidebar-div {
+    display: none;
+  }
+}
 
 /* /////////////////////////////////////////////////////////////*/
 main {
-  position: absolute;
+  position: fixed;
   width: calc(100% - 250px);
   height: calc(100% - 80px);
   bottom: 0px;
@@ -197,12 +238,21 @@ main {
   flex-direction: column;
   gap: 20px;
 }
+@media all and (max-width: 1150px) {
+  main {
+    width: 100%;
+  }
+}
 /* /////////////////////////////////////////////////////////////*/
 
 .page-title-div {
+  width: 100%;
+  background: rgba(250, 245, 229, 0.5);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+}
+.page-title-div .div-in {
   width: calc(100% - 40px);
-  padding: 0px 20px;
-  min-height: 120px;
+  padding: 20px;
   background: rgba(250, 245, 229, 0.5);
   display: flex;
   align-items: center;
@@ -210,7 +260,7 @@ main {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
 
-.page-title-div .title-div {
+.page-title-div .div-in .title-div {
   width: 50%;
   display: flex;
   align-items: start;
@@ -219,7 +269,7 @@ main {
   font-family: body-font;
   color: var(--text-color);
 }
-.page-title-div .title-div .icon-div {
+.page-title-div .div-in .title-div .icon-div {
   width: 50px;
   height: 50px;
   display: flex;
@@ -233,17 +283,17 @@ main {
   border-radius: 15px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
 }
-.page-title-div .title-div .icon-div i {
+.page-title-div .div-in .title-div .icon-div i {
   color: var(--white-color);
   font-size: 35px;
 }
-.page-title-div .title-div .text-div {
+.page-title-div .div-in .title-div .text-div {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
 }
-.page-title-div .title-div .text-div h3 {
+.page-title-div .div-in .title-div .text-div h3 {
   background: linear-gradient(
     120deg,
     var(--secondary-color),
@@ -255,23 +305,23 @@ main {
   color: transparent;
 }
 
-.page-title-div .btn-div {
+.page-title-div .div-in .btn-div {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.page-title-div .btn-div .btn {
+.page-title-div .div-in .btn-div .btn {
   border: none;
   height: 50px;
-  font-size: 11px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
   border-radius: 25px;
-  font-family: body-font;
+  font-family: sub-title-font;
   padding: 0px 25px;
   color: var(--white-color);
   background: linear-gradient(
@@ -283,21 +333,23 @@ main {
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
-.page-title-div .btn-div .btn:hover {
+.page-title-div .div-in .btn-div .btn:hover {
   background-size: 200% 100%;
   background-position: right;
   transform: scale(1.05); /* subtle hover grow */
 }
-.page-title-div .btn-div .donwload-btn {
+.page-title-div .div-in .btn-div .donwload-btn {
   background: linear-gradient(90deg, #faf5e5, #fff);
   color: var(--body-color);
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.page-title-div .btn-div .search-div {
+.page-title-div .div-in .search-div {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: var(--white-color);
   padding: 0px 15px;
   border-radius: 25px;
@@ -305,27 +357,55 @@ main {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
 
-.page-title-div .btn-div .search-div input {
+.page-title-div .div-in .search-div input {
   border: none;
   background: none;
   outline: none;
   font-size: 15px;
-
   font-family: body-font;
+  width: 100%;
 }
 
-.page-title-div .btn-div .search-div i {
+.page-title-div .div-in .search-div i {
   color: var(--text-color);
   font-size: 15px;
 }
+@media all and (max-width: 900px) {
+  .page-title-div .div-in {
+    padding: 20px;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+  }
+  .page-title-div .div-in .title-div {
+    width: 100%;
+  }
+  .page-title-div .div-in .btn-div {
+    width: 100%;
+  }
+  .page-title-div .div-in .btn-div .btn {
+    padding: 0px 18px;
+  }
+  .page-title-div .div-in .search-div {
+    width: calc(100% - 30px);
+  }
+}
+
 /* /////////////////////////////////////////////////////////////*/
 .main-content-div {
   width: calc(100% - 80px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   padding: 40px;
   padding-top: 0px;
+}
+@media all and (max-width: 1150px) {
+  .main-content-div {
+    width: 96%;
+    padding: 0px;
+  }
 }
 /* /////////////////////////////////////////////////////////////*/
 .content-div {
@@ -334,6 +414,7 @@ main {
   width: 100%;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
 .content-div .content-title {
@@ -372,20 +453,44 @@ main {
   border-radius: 15px;
   transition: 0.2s ease-in;
   font-family: body-font;
+  white-space: nowrap;
 }
 .content-div .content-inner {
   width: calc(100% - 40px);
   padding: 20px;
 }
+@media all and (max-width: 400px) {
+  .content-div .content-title .title {
+    font-size: 13px;
+  }
+}
+
 /* /////////////////////////////////////////////////////////////*/
 .bg-secondary {
   background: url("../../../all-images/images/dashboard-bg.png"),
     linear-gradient(165deg, #fffdf5, #fff, #fffdf5);
-
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
 }
+@media all and (max-width: 1400px) {
+  .bg-secondary {
+    background-image: url("../../../all-images/images/dashboard-bg-1.png"),
+      linear-gradient(165deg, #fffdf5, #fff, #fffdf5);
+  }
+}
+@media all and (max-width: 800px) {
+  .bg-secondary {
+    background-size: cover;
+    background-position: center;
+  }
+}
+@media all and (max-width: 670px) {
+  .bg-secondary {
+    background: linear-gradient(165deg, #fffdf5, #fff, #fffdf5);
+  }
+}
+/* or overlay, lighten, darken, etc. */
 
 /* /////////////////////////////////////////////////////////////*/
 .greetings-div {
@@ -393,6 +498,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  width: 50%;
+  max-width: 600px;
 }
 
 .greetings-div .title-div {
@@ -404,7 +511,7 @@ main {
 
 .greetings-div .title-div h1 {
   font-size: 35px;
-  margin-bottom: -5px;
+  line-height: 40px;
   padding: 0px;
   color: var(--primary-color);
 }
@@ -415,7 +522,8 @@ main {
 }
 
 .greetings-div .wallet-div {
-  width: 400px;
+  width: 70%;
+  min-width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -434,14 +542,14 @@ main {
 .greetings-div .wallet-div .btn {
   border: none;
   height: 40px;
-  font-size: 11px;
+  font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
   border-radius: 20px;
-  font-family: body-font;
+  font-family: sub-title-font;
   padding: 0px 15px;
   color: var(--white-color);
   background: linear-gradient(
@@ -452,6 +560,7 @@ main {
   background-size: 100%;
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .greetings-div .wallet-div .btn:hover {
@@ -459,7 +568,22 @@ main {
   background-position: right;
   transform: scale(1.05); /* subtle hover grow */
 }
-/* /////////////////////////////////////////////////////////////*/
+@media all and (max-width: 670px) {
+  .greetings-div {
+    padding: 10px;
+    width: calc(100% - 20px);
+  }
+  .greetings-div .wallet-div {
+    width: calc(100% - 30px);
+  }
+  .greetings-div .title-div h1 {
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 5px;
+  }
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .exams-back-div {
   display: flex;
   justify-content: start;
@@ -560,15 +684,15 @@ main {
 
 .exams-back-div .exam-div .btn {
   border: none;
-  height: 30px;
-  font-size: 11px;
+  height: 40px;
+  font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  border-radius: 15px;
-  font-family: body-font;
+  border-radius: 20px;
+  font-family: sub-title-font;
   align-self: self-start;
   padding: 0px 15px;
   color: var(--white-color);
@@ -580,6 +704,7 @@ main {
   background-size: 100%;
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .exams-back-div .exam-div .btn:hover {
@@ -609,7 +734,7 @@ main {
   flex-direction: column;
   cursor: pointer;
   flex: 1 1 19%; /* grow:1 shrink:1 basis:19% */
-  min-width: 170px;
+  min-width: 150px;
   max-width: 300px;
 }
 .book-back-div .book-div:hover {
@@ -696,15 +821,15 @@ main {
 
 .book-back-div .book-div .text-div .btn {
   border: none;
-  height: 30px;
-  font-size: 11px;
+  height: 40px;
+  font-size: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  border-radius: 15px;
-  font-family: body-font;
+  border-radius: 20px;
+  font-family: sub-title-font;
   align-self: self-start;
   padding: 0px 15px;
   color: var(--white-color);
@@ -716,6 +841,7 @@ main {
   background-size: 100%;
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .book-back-div .book-div .text-div .btn:hover {
@@ -847,6 +973,7 @@ main {
   background-size: 100%;
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .table-div .table .tb-row .btn:hover {
@@ -858,7 +985,8 @@ main {
 .slide-form-div {
   position: fixed;
   height: 100%;
-  width: 600px;
+  width: 100%;
+  max-width: 500px;
   right: 0px;
   top: 0px;
   background-color: var(--white-color);
@@ -941,6 +1069,7 @@ main {
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
 .slide-form-div .form-title-div .btn-div .btn:hover {
@@ -1016,6 +1145,7 @@ main {
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
 .slide-form-div .container-back-div .btn-div .btn:hover {
@@ -1026,17 +1156,19 @@ main {
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.caption-success-div {
-  width: 600px;
+.caption-div {
+  width: 90%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--white-color);
   border-radius: 15px;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.4);
 }
 
-.caption-success-div .caption-title-div {
+.caption-div .caption-title-div {
   width: calc(100% - 40px);
   padding: 0px 20px;
   min-height: 65px;
@@ -1048,7 +1180,7 @@ main {
   border-radius: 15px 15px 0px 0px;
 }
 
-.caption-success-div .caption-title-div .title-div {
+.caption-div .caption-title-div .title-div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1056,7 +1188,7 @@ main {
   font-family: body-font;
   color: var(--text-color);
 }
-.caption-success-div .caption-title-div .icon-div {
+.caption-div .caption-title-div .icon-div {
   width: 30px;
   height: 30px;
   display: flex;
@@ -1070,11 +1202,11 @@ main {
   border-radius: 8px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
 }
-.caption-success-div .caption-title-div .title-div .icon-div i {
+.caption-div .caption-title-div .title-div .icon-div i {
   color: var(--white-color);
   font-size: 20px;
 }
-.caption-success-div .caption-title-div .title-div h3 {
+.caption-div .caption-title-div .title-div h3 {
   background: linear-gradient(
     120deg,
     var(--secondary-color),
@@ -1085,13 +1217,13 @@ main {
   background-clip: text;
   color: transparent;
 }
-.caption-success-div .caption-title-div .btn-div {
+.caption-div .caption-title-div .btn-div {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.caption-success-div .caption-title-div .btn-div .btn {
+.caption-div .caption-title-div .btn-div .btn {
   border: none;
   height: 30px;
   font-size: 11px;
@@ -1113,22 +1245,23 @@ main {
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
-.caption-success-div .caption-title-div .btn-div .btn:hover {
+.caption-div .caption-title-div .btn-div .btn:hover {
   background-size: 200% 100%;
   background-position: right;
   transform: scale(1.05); /* subtle hover grow */
 }
 
-.caption-success-div .caption-notification {
+.caption-div .caption-notification {
   width: calc(100% - 60px);
   padding: 20px 30px;
   background: rgba(250, 245, 229, 0.5);
   color: var(--link-color);
 }
 
-.caption-success-div .caption-body {
+.caption-div .caption-body {
   width: calc(100% - 60px);
   padding: 20px 30px;
   display: flex;
@@ -1136,13 +1269,13 @@ main {
   justify-content: center;
   gap: 20px;
 }
-.caption-success-div .caption-body .btn-div {
+.caption-div .caption-body .btn-div {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
-.caption-success-div .caption-body .btn-div .btn {
+.caption-div .caption-body .btn-div .btn {
   border: none;
   width: 100%;
   height: 60px;
@@ -1164,33 +1297,16 @@ main {
   background-position: left;
   transition: background-position 0.4s ease-in-out, transform 0.2s ease-in-out;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
-.caption-success-div .caption-body .btn-div .btn:hover {
+.caption-div .caption-body .btn-div .btn:hover {
   background-size: 200% 100%;
   background-position: right;
   transform: scale(1.05); /* subtle hover grow */
 }
-.caption-success-div .caption-body .btn-div .false-btn {
+.caption-div .caption-body .btn-div .false-btn {
   background: linear-gradient(90deg, #faf5e5, #fff);
   color: var(--body-color);
   border: 1px solid rgba(0, 0, 0, 0.2);
-}
-/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
-.logout-caption {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.logout-caption .img {
-  width: 150px;
-  height: 150px;
-}
-
-.logout-caption .img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }

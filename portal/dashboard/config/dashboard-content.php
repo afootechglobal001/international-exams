@@ -1,24 +1,26 @@
 <?php if ($page == 'dashboard') { ?>
 <!-- /////////// Title ////////////////////////////// -->
 <section class="page-title-div">
-    <div class="title-div">
-        <div>
-            <div class="icon-div"><i class="bi bi-speedometer2"></i></div>
-        </div>
-        <div class="text-div">
-            <h3>Dashboard</h3>
-            <p>Manage your international exam applications in one place. Stay updated with
-                real-time notifications, schedules, and exam insights.</p>
-        </div>
+    <div class="div-in">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-speedometer2"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Dashboard</h3>
+                <p>Manage your international exam applications in one place. Stay updated with
+                    real-time notifications, schedules, and exam insights.</p>
+            </div>
 
-    </div>
-    <div class="btn-div">
-        <button class="btn donwload-btn" title="Refresh Page">
-            <i class="bi bi-filetype-pdf"></i> Download E-books
-        </button>
-        <button class="btn" title="Apply for Exam">
-            <i class="bi bi-journal-text"></i> Apply for Exam
-        </button>
+        </div>
+        <div class="btn-div">
+            <button class="btn donwload-btn" title="Refresh Page">
+                <i class="bi bi-filetype-pdf"></i> Download E-books
+            </button>
+            <button class="btn" title="Apply for Exam">
+                <i class="bi bi-journal-text"></i> Apply for Exam
+            </button>
+        </div>
     </div>
 </section>
 <!-- /////////// Title ////////////////////////////// -->
@@ -29,13 +31,13 @@
         <div class="greetings-div">
             <div class="title-div">
                 <p>August 13, 2025 </p>
-                <h1>Welcome Back, Candy!</h1>
+                <h1>Welcome Back, Oluwagbenga!</h1>
                 <p><span>Last login date: <strong>31-05-2025 11:03:45</strong></span></p>
             </div>
             <div class="wallet-div">
                 <div class="wallet-info">
                     <p>Wallet Balance (₦)</p>
-                    <h2>3,000.00</h2>
+                    <h2>500,000.00</h2>
                 </div>
                 <button class="btn" title="Load wallet"
                     onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
@@ -315,40 +317,4 @@
         </div>
     </section>
 </sction>
-<?php } ?>
-
-
-
-<?php if ($page == 'loadWallet') { ?>
-<div class="caption-success-div animated zoomIn">
-    <div class="caption-title-div">
-        <div class="title-div">
-            <div class="icon-div"><i class="bi bi-shield-shaded"></i></div>
-            <h3>LOAD WALLET</h3>
-        </div>
-        <div class="btn-div">
-            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
-                <i class="bi bi-x-lg"></i> Close
-            </button>
-        </div>
-    </div>
-    <!-- /////////// Title ////////////////////////////// -->
-    <div class="caption-notification">
-        <p>Easily fund your exam wallet to make swift and secure payments for registrations, study materials, and other
-            exam-related services.</p>
-    </div>
-    <div class="caption-body">
-        <div class="text_field_container" id="walletAmount_container">
-            <script>
-            textField({
-                id: 'walletAmount',
-                title: 'Enter The Amount',
-            });
-            </script>
-        </div>
-        <div class="btn-div">
-            <button class="btn" onclick="_logOut();">LOAD WALLET</button>
-        </div>
-    </div>
-</div>
 <?php } ?>

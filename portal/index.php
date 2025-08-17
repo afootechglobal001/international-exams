@@ -11,13 +11,15 @@
 
 <body>
     <main>
-        <div class="picture-div"></div>
+        <div class="picture-div animated fadeIn"></div>
 
-        <div class="form-div">
+        <div class="form-div animated fadeIn">
             <div class="form-box">
                 <div class="form-box-content">
+                    <div class="logo-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" />
+                    </div>
                     <h1>👋 Hi, Welcome Back!</h1>
-
                     <div class="alert alert-success">
                         Kindly, provide your <span>Email Address</span> and <span>Password</span> to Login.
                     </div>

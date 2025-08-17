@@ -1,110 +1,87 @@
-<?php if ($page == 'transactions') { ?>
+<?php if ($page == 'resetPassword') { ?>
 <!-- /////////// Title ////////////////////////////// -->
-<section class="page-title-div">
-    <div class="title-div">
-        <div>
-            <div class="icon-div"><i class="bi bi-credit-card-2-back"></i></div>
+<section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+    <div class="form-title-div">
+        <div class="title-div">
+            <div class="icon-div"><i class="bi bi-shield-shaded"></i></div>
+            <h3>RESET PASSWORD</h3>
         </div>
-        <div class="text-div">
-            <h3>Transactions History</h3>
-            <p>Keep track of all your exam registration payments in one place. View receipts, monitor payment status,
-                and transaction records.</p>
+        <div class="btn-div">
+            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                <i class="bi bi-x-lg"></i> Close
+            </button>
+        </div>
+    </div>
+    <!-- /////////// Title ////////////////////////////// -->
+    <div class="container-back-div">
+        <div class="form-notification">
+            <p>Secure your account by creating a new password. Follow the steps to update your login details and regain
+                access to your exam portal.</p>
         </div>
 
-    </div>
-    <div class="btn-div">
-        <div class="search-div">
-            <input type="text" placeholder="Search Here...">
-            <i class="bi bi-search"></i>
+        <div class="form-container">
+
+            <div class="text_field_container" id="oldPassword_container">
+                <script>
+                textField({
+                    id: 'oldPassword',
+                    title: 'Enter Your Old Password',
+                    type: 'password'
+                });
+                </script>
+            </div>
+
+            <div class="form-note">
+                <p>At least 8 charaters required including upper & lower cases
+                    and special characters and numbers.</p>
+            </div>
+
+            <div class="text_field_container" id="newPassword_container">
+                <script>
+                textField({
+                    id: 'newPassword',
+                    title: 'Create New Password',
+                    type: 'password'
+                });
+                </script>
+            </div>
+
+            <div class="text_field_container" id="cnewPassword_container">
+                <script>
+                textField({
+                    id: 'cnewPassword',
+                    title: 'Confirm New Password',
+                    type: 'password'
+                });
+                </script>
+            </div>
+
+
         </div>
-        <button class="btn" title="Apply for Exam">
-            <i class="bi bi-journal-text"></i> Apply for Exam
-        </button>
+        <div class="btn-div">
+            <button class="btn" title="CHANGE PASSWORD" id="submitBtn" onclick="_changePassword();"> <i
+                    class="bi-check"></i> CHANGE PASSWORD </button>
+        </div>
     </div>
 </section>
-<!-- /////////// Title ////////////////////////////// -->
+<?php } ?>
 
-<sction class="main-content-div">
-    <!--  ////////////////////////////////////////////////////////////////////////////////-->
-    <section class="content-div">
-        <div class="content-title">
-            <div class="title">
-                <i class="bi bi-credit-card-2-back"></i>
-                <p>My Transactions</p>
-            </div>
-            <div>
-                <button class="btn" title="View all">
-                    <i class="bi bi-eye"></i> View All
-                </button>
-            </div>
+
+<?php if ($page == 'logoutConfirmForm') { ?>
+
+
+<div class="caption-success-div animated zoomIn">
+    <div class="caption-body">
+        <div class="logout-caption">
+            <div class="img"><img src="<?php echo $websiteUrl ?>/all-images/images/warning.gif" /></div>
+            <h2>Are you sure to log-out?</h2>
+            <p>Please, confirm your log-out action.</p>
         </div>
-        <div class="content-inner">
-            <div class="table-div">
-                <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                    <thead>
-                        <tr class="tb-col">
-                            <th>sn</th>
-                            <th>Date</th>
-                            <th>Transaction ID</th>
-                            <th>Amount (N)</th>
-                            <th>Transaction Type</th>
-                            <th>Method</th>
-                            <th>Status</th>
-                            <th>View</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr class="tb-row">
-                            <td>1</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>ONLINE</td>
-                            <td>
-                                <div class="status-div ACTIVE">ACTIVE</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-                        <tr class="tb-row">
-                            <td>2</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>BANK TRANSFER</td>
-                            <td>
-                                <div class="status-div PENDING">PENDING</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-                        <tr class="tb-row">
-                            <td>3</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>BANK TRANSFER</td>
-                            <td>
-                                <div class="status-div CANCELLED">CANCELLED</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
+        <div class="btn-div">
+            <button class="btn false-btn" onclick="_alertClose(<?php echo $modalLayer ?>);">NO</button>
+            <button class="btn" onclick="_logOut();">YES</button>
         </div>
-    </section>
-</sction>
+    </div>
+</div>
+
 <?php } ?>

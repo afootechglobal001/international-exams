@@ -1,4 +1,4 @@
-<?php include 'alert.php' ?>
+<?php include '../alert.php' ?>
 
 <!-- Header -->
 

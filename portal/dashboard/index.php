@@ -23,5 +23,6 @@
 
     </main>
 </body>
+<?php include 'bottom-scripts.php'?>
 
 </html>

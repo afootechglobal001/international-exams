@@ -18,4 +18,4 @@
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
 <script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
 
-<script src="<?php echo $websiteUrl?>/portal/dashboard/js/scripts.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePortal.js?v=<?php echo $codeVersion?>"></script>

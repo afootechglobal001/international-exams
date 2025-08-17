@@ -22,8 +22,12 @@
 
         <nav>
             <ul>
-                <li title="Settings"><i class="bi bi-gear"></i> Settings</li>
-                <li title="Log-Out"><i class="bi bi-power"></i> Log-Out</li>
+                <li title="Settings" onclick="_getForm({page: 'resetPassword', url: portalOperationMiddlewareUrl});">
+                    <i class="bi bi-gear"></i> Settings
+                </li>
+                <li title="Log-Out" onclick="_confirmLogOut();">
+                    <i class="bi bi-power"></i> Log-Out
+                </li>
             </ul>
         </nav>
     </div>

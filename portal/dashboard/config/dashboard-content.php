@@ -37,7 +37,8 @@
                     <p>Wallet Balance (₦)</p>
                     <h2>3,000.00</h2>
                 </div>
-                <button class="btn" title="Load wallet">
+                <button class="btn" title="Load wallet"
+                    onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
                     <i class="bi bi-wallet"></i> Load Wallet
                 </button>
             </div>
@@ -314,4 +315,40 @@
         </div>
     </section>
 </sction>
+<?php } ?>
+
+
+
+<?php if ($page == 'loadWallet') { ?>
+<div class="caption-success-div animated zoomIn">
+    <div class="caption-title-div">
+        <div class="title-div">
+            <div class="icon-div"><i class="bi bi-shield-shaded"></i></div>
+            <h3>LOAD WALLET</h3>
+        </div>
+        <div class="btn-div">
+            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                <i class="bi bi-x-lg"></i> Close
+            </button>
+        </div>
+    </div>
+    <!-- /////////// Title ////////////////////////////// -->
+    <div class="caption-notification">
+        <p>Easily fund your exam wallet to make swift and secure payments for registrations, study materials, and other
+            exam-related services.</p>
+    </div>
+    <div class="caption-body">
+        <div class="text_field_container" id="walletAmount_container">
+            <script>
+            textField({
+                id: 'walletAmount',
+                title: 'Enter The Amount',
+            });
+            </script>
+        </div>
+        <div class="btn-div">
+            <button class="btn" onclick="_logOut();">LOAD WALLET</button>
+        </div>
+    </div>
+</div>
 <?php } ?>

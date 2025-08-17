@@ -17,6 +17,7 @@
             <div class="form-box">
                 <div class="form-box-content">
                     <h1>👋 Hi, Welcome Back!</h1>
+
                     <div class="alert alert-success">
                         Kindly, provide your <span>Email Address</span> and <span>Password</span> to Login.
                     </div>

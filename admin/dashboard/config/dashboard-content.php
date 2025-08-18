@@ -6,100 +6,117 @@
             </div>
             <div class="text-div">
                 <h2>👋 Welcome Back, <span id="DashFullname">
-                    <script> $("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.loginFullName)); </script>
-                </span>!</h2>
+                        <script>
+                            $("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.loginFullName));
+                        </script>
+                    </span>!</h2>
                 <p>Welcome to your dashboard, where you can oversee all your activities, tasks, progress, and updates—helping you stay organized and on track</p>
             </div>
         </div>
 
         <div class="dashboard-right-wrapper">
-            <div><p><span><i class="bi-clock"></i> Last Login Date </span></p></div>
-            <div><strong id="lastLoginTime"><script>$("#lastLoginTime").html(staffLoginData.lastLoginTime);</script></strong></div>
+            <div>
+                <p><span><i class="bi-clock"></i> Last Login Date </span></p>
+            </div>
+            <div><strong id="lastLoginTime">
+                    <script>
+                        $("#lastLoginTime").html(staffLoginData.lastLoginTime);
+                    </script>
+                </strong></div>
         </div>
     </div>
 
     <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="dashboard-wrapper">
-            <div class="statistics-back-div">
-                <div class="statistics-div" onclick="_getActivePage({page:'viewBranch', divid:'branch'});" id="branch" title="Branches">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Branches
-                            <span id="">3</span>
+            <section class="statistics-back-div">
+                <div class="statistics-div" id="branch" title="Branches" onclick="_getActivePage({page:'viewBranch', divid:'branch'});">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Branches</p>
+                            <span>Statistics of unpaid exam registrations</span>
+                            <h2>3</h2>
+
                         </div>
-                        <div class="icon"><i class="bi-diagram-3"></i></div>
+                        <div class="statistics-icon pending"><i class="bi-diagram-3"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Administrators
-                            <span id="total_active_event_count">10</span>
+                <div class="statistics-div" id="branch" title="Branches" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Administrators</p>
+                            <span>Administrators</span>
+                            <h2>10</h2>
                         </div>
-                        <div class="icon"><i class="bi-person-bounding-box"></i></div>
+                        <div class="statistics-icon upcoming"><i class="bi-person-bounding-box"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'viewStudents', divid:'students'});" id="students" title="Students">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Students
-                            <span id="total_active_event_count">30</span>
+                <div class="statistics-div" id="branch" title="Branches"> 
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Students</p>
+                            <span>Statistics of completed exams</span>
+                            <h2>30</h2>
                         </div>
-                        <div class="icon"><i class="bi-people"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-people"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'galleryCategory', divid:'publish'});" id="gallery" title="Gallery">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Gallery
-                            <span id="total_active_gallery_count">5</span>
+                <div class="statistics-div" onclick="_getActivePage({page:'galleryCategory', divid:'publish'});" id="gallery" title="Gallery"> 
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Gallery</p>
+                            <span>Statistics of completed exams</span>
+                            <h2>5</h2>
                         </div>
-                        <div class="icon"><i class="bi-images"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-images"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'blogCategory', divid:'publish'});" id="blog" title="Blog">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Blog
-                            <span id="total_active_blog_count">10</span>
+                <div class="statistics-div" onclick="_getActivePage({page:'blogCategory', divid:'publish'});" id="blog" title="Blog"> 
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Blog</p>
+                            <span>Statistics of completed exams</span>
+                            <h2>10</h2>
                         </div>
-                        <div class="icon"><i class="bi-file-post"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-file-post"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'faqCategory', divid:'publish'});" id="faq" title="FAQ">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            FAQ
-                            <span id="total_active_faq_count">3</span>
+                <div class="statistics-div" onclick="_getActivePage({page:'faqCategory', divid:'publish'});" id="faq" title="FAQ"> 
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>FAQ</p>
+                            <span>Statistics of completed exams</span>
+                            <h2>3</h2>
                         </div>
-                        <div class="icon"><i class="bi-patch-question"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-patch-question"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'testimonyCategory', divid:'publish'});" id="test" title="Testimony">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Testimony
-                            <span id="total_active_testimony_count">10</span>
+                <div class="statistics-div" onclick="_getActivePage({page:'testimonyCategory', divid:'publish'});" id="test" title="Testimony"> 
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Testimony</p>
+                            <span>Statistics of completed exams</span>
+                            <h2>10</h2>
                         </div>
-                        <div class="icon"><i class="bi-chat-quote-fill"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-people"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div round">
-                    <div class="inner-div text-centre">
-                        View All Activities
-                        <div class="icon-div">
-                            <i class="bi-arrow-up-right"> </i>
+                <div class="statistics-div round" id="branch" title="Branches" onclick="_getActivePage({page:'viewStudents', divid:'students'});"> 
+                    <div class="statistics-inner-div text-centre">
+                        <div class="statistics-text">
+                            <p>View All Activities</p>
+                            <span>Statistics of completed exams</span>
                         </div>
+                        <div class="statistics-icon completed"><i class="bi-arrow-up-right"></i></div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div class="dashboard-statistics-wrapper">
                 <div class="left-contaioner">

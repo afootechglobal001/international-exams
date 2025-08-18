@@ -19,7 +19,8 @@
         </div>
 
         <div class="header-right-div">
-            <div class="notification-div">
+            <div class="notification-div"
+                onclick="_getForm({page: 'notifications', url: portalOperationMiddlewareUrl});">
                 <i class="bi bi-bell icons" title="Notifications"></i>
             </div>
             <div class="profile-pic-div" title="Profile Picture" onclick="_toggleProfileDiv()">

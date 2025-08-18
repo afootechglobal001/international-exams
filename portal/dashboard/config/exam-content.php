@@ -24,11 +24,52 @@
 
 <sction class="main-content-div">
     <!--  ////////////////////////////////////////////////////////////////////////////////-->
+    <section class="statistics-back-div">
+        <div class="statistics-div" id="branch" title="Branches">
+            <div class="statistics-inner-div">
+                <div class="statistics-text">
+                    <p>PENDING EXAM</p>
+                    <span>Statistics of unpaid exam registrations</span>
+                    <h2>2</h2>
+
+                </div>
+                <div class="statistics-icon pending"><i class="bi-credit-card-2-back"></i></div>
+            </div>
+        </div>
+
+        <div class="statistics-div" id="branch" title="Branches">
+            <div class="statistics-inner-div">
+                <div class="statistics-text">
+                    <p>UPCOMING EXAM</p>
+                    <span>Statistics of scheduled exams</span>
+                    <h2>1</h2>
+                </div>
+                <div class="statistics-icon upcoming"><i class="bi-calendar3"></i></div>
+            </div>
+        </div>
+
+        <div class="statistics-div" id="branch" title="Branches">
+            <div class="statistics-inner-div">
+                <div class="statistics-text">
+                    <p>COMPLETED EXAM</p>
+                    <span>Statistics of completed exams</span>
+                    <h2>1</h2>
+                </div>
+                <div class="statistics-icon completed"><i class="bi-card-checklist"></i></div>
+            </div>
+        </div>
+    </section>
+    <!--  ////////////////////////////////////////////////////////////////////////////////-->
     <section class="content-div">
         <div class="content-title">
             <div class="title">
                 <i class="bi bi-journal-text"></i>
                 <p>My International Exams</p>
+            </div>
+            <div>
+                <button class="btn" title="Apply for Exam">
+                    <i class="bi bi-eye"></i> Apply for Exam
+                </button>
             </div>
         </div>
 

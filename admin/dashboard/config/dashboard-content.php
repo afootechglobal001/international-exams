@@ -70,7 +70,7 @@
                             <span>Statistics of completed exams</span>
                             <h2>5</h2>
                         </div>
-                        <div class="statistics-icon completed"><i class="bi-images"></i></div>
+                        <div class="statistics-icon pending"><i class="bi-images"></i></div>
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@
                             <span>Statistics of completed exams</span>
                             <h2>10</h2>
                         </div>
-                        <div class="statistics-icon completed"><i class="bi-file-post"></i></div>
+                        <div class="statistics-icon upcoming"><i class="bi-file-post"></i></div>
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                             <span>Statistics of completed exams</span>
                             <h2>10</h2>
                         </div>
-                        <div class="statistics-icon completed"><i class="bi-people"></i></div>
+                        <div class="statistics-icon pending"><i class="bi-people"></i></div>
                     </div>
                 </div>
 

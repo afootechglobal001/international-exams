@@ -35,7 +35,7 @@
         `);
 
         document.write(`
-            <div class="nav-div" title="Log-Out" onclick="_getForm({page: 'logoutConfirmForm', url: adminPortalLocalUrl});" id="${navId}-logout">
+            <div class="nav-div" title="Log-Out" onclick="_confirmLogOut();" id="${navId}-logout">
                 <div class="icon"><i class="bi-power"></i> Log-Out</div> 
             </div>
         `);

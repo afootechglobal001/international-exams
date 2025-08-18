@@ -112,6 +112,19 @@ function _logOut(){
 	window.parent.location.href = adminPortalUrl;
 }
 
+function _confirmLogOut() {
+  _showCustomConfirm({
+    callback: () => {
+      _logOut();
+    },
+    title: "Confirm Logout Action!",
+    message:
+      "Are you sure you want to log out? You may miss important notifications or updates until you sign in again.",
+    alertType: "warning",
+    falseActionBtn: true,
+  });
+}
+
 function getAuthHeaders(includeAuth = false) {
     return {
         'apiKey': apiKey,

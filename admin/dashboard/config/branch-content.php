@@ -96,8 +96,10 @@
                     <ul>
                         <li class="active" title="Dashboard" id="countryBranchDashboard" onclick="_getActiveBranchPage({divid: 'countryBranchDashboard', page: 'countryBranchDashboard', url: adminPortalLocalUrl});"><i class="bi-speedometer2"></i> Dashboard</li>
                         <li title="Branches" id="branchesPage" onclick="_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});"><i class="bi-diagram-3"></i> Branches</li>
-                        <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
                         <li id="examPricing" title="Exam Pricing"><i class="bi-credit-card-fill"></i> Exam Pricing</li>
+                        <li id="examPricing" title="Exam Pricing"><i class="bi-credit-card-fill"></i> Exam Location</li>
+                        <li id="examPricing" title="Exam Pricing"><i class="bi-credit-card-fill"></i> Agent</li>
+                        <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
                     </ul>
                 </div>
             </div>

@@ -5,3 +5,4 @@
     </div>
 </div>
 
+<div id="customConfirmModal" class="modal-overlay" style="display:none;"></div>

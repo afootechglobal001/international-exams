@@ -29,13 +29,13 @@ function _confirmLogin() {
 
 		if (!userName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userName)) {
 			$('#userName').addClass('issue');
-			$('#issue_userName').html('USER ERROR! Kindy provide correct email address to continue');
+			$('#issue_userName').html('USER ERROR! Kindly provide correct email address to continue');
 			issueCount++;
 		} 	
 
 		if (!password) {
 			$('#password').addClass('issue');
-			$('#issue_password').html('USER ERROR! Kindy provide a correct password to continue');
+			$('#issue_password').html('USER ERROR! Kindly provide a correct password to continue');
 			issueCount++;
 		} 
 
@@ -67,26 +67,37 @@ function _confirmLogin() {
 			success: function (data) {
 				if (data.success) {
 					const staffLoginData = data.data[0];
-					// Store in sessionStorage
 					sessionStorage.setItem("staffLoginData", JSON.stringify(staffLoginData));
-					_actionAlert(data.message, true);
 					window.location.href = adminDashboardUrl;
 				} else {
-					_actionAlert(data.message, false);
+					_showCustomConfirm({
+						title: 'Login Failed!',
+						message: data.message,
+						alertType: 'error',
+						trueActionBtnText: 'OK, Retry'
+					});
 				}
 				$("#submitBtn").html(btnText).prop("disabled", false);
 			},
 			error: function (error) {
 				console.error("Error during login:", error);
-				_actionAlert("Unable to reach the server. Please check your connection.", false);
+				_showCustomConfirm({
+					title: 'Connection Error!',
+					message: "Unable to reach the server. Please check your connection.",
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
 				$("#submitBtn").html(btnText).prop("disabled", false);
 			}
 		});
 	} catch (error) {
 		console.error("Unexpected error:", error);
-		_actionAlert("An unexpected error occurred. Please try again.", false);
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: "An unexpected error occurred. Please try again.",
+			alertType: 'error',
+			trueActionBtnText: 'OK'
+		});
 		$("#submitBtn").prop("disabled", false);
 	}
 }
-
-

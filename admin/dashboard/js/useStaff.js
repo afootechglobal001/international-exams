@@ -3,17 +3,17 @@ function _fetchStaffs() {
 	try {
 		$.ajax({
 			type: "GET",
-			url: endPoint + '/admin/staff/fetch-staff',
+			url: `${endPoint}/admin/staff/fetch-staff`,
 			dataType: "json", 
 			cache: false,
 			headers: getAuthHeaders(true),
 			success: function(info) {
 				const fetch = info.data;
 
-				let text = '';
+				let content = '';
 				let no=0;
 
-				text =`
+				content =`
 				<thead>
                     <tr class="tb-col">
                         <th>sn</th>
@@ -45,7 +45,7 @@ function _fetchStaffs() {
 						const lastLoginTime = staffInfo.lastLoginTime;
 						const statusName = staffInfo.statusName;
 
-						text +=`
+						content +=`
 						<tbody>
 							<tr class="tb-row">
 								<td>${no}</td>
@@ -80,24 +80,29 @@ function _fetchStaffs() {
 							</tr>
 						</tbody>`;
 					}
-					$('#pageContent').html(text);
+					$('#pageContent').html(content);
 				} else {
-					_actionAlert(info.message, false);
+					_showCustomConfirm({
+						title: 'Fetch Staff',
+						message: info.message,
+						alertType: 'warning',
+						trueActionBtnText: 'OK'
+					});
 
-					text +=`
-						tbody>
-							<tr>
-								<td colspan="11">
-									<div class="false-notification-div">
-										<p>${info.message}</p>
-										<div>
-											<button class="btn" onclick="_getForm({page: 'staff_reg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW STAFF</button>
-										</div>
+					$('#pageContent').html(`
+					<tbody>
+						<tr>
+							<td colspan="11">
+								<div class="false-notification-div">
+					 				<p>${info.message}</p>
+									<div>
+										<button class="btn" onclick="_getForm({page: 'staffReg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW STAFF</button>
 									</div>
-								</td>
-							</tr>
-						</tbody>`;
-						$('#pageContent').html(text);
+								</div>
+							</td>
+						</tr>
+					</tbody>`);
+					
 					const response = info.response;
 					if (response < 100) {
 						_logOut();
@@ -106,14 +111,36 @@ function _fetchStaffs() {
 			},
 			error: function(textStatus, errorThrown) {
 				console.error("AJAX Error: ", textStatus, errorThrown);
-				_actionAlert('An error occurred while fetching data! Please try again.', false);
+				_showCustomConfirm({
+					title: 'Connection Error!',
+					message: 'An error occurred while fetching data! Please try again.',
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
+
+				$('#pageContent').html(`
+				<tbody>
+					<tr>
+						<td colspan="11">
+							<div class="false-notification-div">
+								<p>An error occurred while fetching data! Please try again.</p>
+							</div>
+						</td>
+					</tr>
+				</tbody>`);
 			}
 		});
 	} catch (error) {
 		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred! Please try again.', false);
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
 	}
 }
+
 
 function _fetchEachStaff(staffId) {
 	$("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
@@ -136,46 +163,27 @@ function _fetchEachStaff(staffId) {
 				}
 			},
 			error: function(textStatus, errorThrown) {
+				_alertClose();
 				console.error("AJAX Error: ", textStatus, errorThrown);
-				_actionAlert('An error occurred while fetching data! Please try again.', false);
+				_showCustomConfirm({
+					title: 'Connection Error!',
+					message: 'An error occurred while fetching staff details! Please try again.',
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
 			}
 		});
 	} catch (error) {
 		_alertClose();
 		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred! Please try again.', false);
-	}
-}
-
-function _getSelectBranch(fieldId){
-	try {
-		$.ajax({
-			type: "GET",
-			url: endPoint +'/admin/branch/fetch-branch?statusId=1',
-			dataType: "json",
-			cache: false,
-			headers: getAuthHeaders(true),
-			success: function(info) {
-				const data = info.data;
-				const success = info.success;
-				
-				if (success === true) {
-					for (let i = 0; i < data.length; i++) {
-						const id = data[i].branchId;
-						const value = data[i].branchName;
-						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\');">'+ value +'</li>');
-					}	
-				} else {
-					_actionAlert(info.message, false); 
-				}
-			}
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: 'An unexpected error occurred while fetching staff details! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
 		});
-	} catch (error) {
-		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
 	}
 }
-
 
 function _getSelectCountry(fieldId){
 	try {
@@ -196,13 +204,21 @@ function _getSelectCountry(fieldId){
 						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\'); _fetchSelectedBranch()">'+ value +'</li>');
 					}	
 				} else {
-					_actionAlert(info.message, false); 
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}  
 				}
 			}
 		});
 	} catch (error) {
 		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: 'An unexpected error occurred while fetching countries! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
 	}
 }
 
@@ -210,6 +226,9 @@ function _fetchSelectedBranch(){
 	_getSelectCountryBranch('branchId');
 }
 function _getSelectCountryBranch(fieldId){
+	let $searchList = $('#searchList_' + fieldId);
+    $searchList.html('<li>Loading data...</li>');
+
 	const countryId = $('#countryId').val();
 	try {
 		$.ajax({
@@ -230,17 +249,24 @@ function _getSelectCountryBranch(fieldId){
 						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\')">'+ value +'</li>');
 					}	
 				} else {
-					_actionAlert(info.message, false); 
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
 				}
 			}
 		});
 	} catch (error) {
 		console.error("Error: ", error);
-		_actionAlert('An unexpected error occurred. Please try again.', false);
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: 'An unexpected error occurred while fetching branches! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
 	}
 	
 }
-
 
 function _createStaff() {
 	try {
@@ -328,65 +354,91 @@ function _createStaff() {
 
 		if (issueCount > 0) return;
 		
+		const form ={titleId, firstName, middleName, lastName, emailAddress, phoneNumber, address, countryId, branchId, roleId, statusId};
 		_showCustomConfirm({
 			callback: () => {
-			const btnText = $("#submitBtn").html();
-			$("#submitBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
-			$("#submitBtn").prop("disabled", true);
-
-			const formData = {
-				"titleId": titleId,
-				"firstName": firstName,
-				"middleName": middleName,
-				"lastName": lastName,
-				"emailAddress": emailAddress,
-				"phoneNumber": phoneNumber,
-				"address": address,
-				"countryId": countryId,
-				"branchId": branchId,
-				"roleId": roleId,
-				"statusId": statusId,
-			};
-
-			$.ajax({
-				type: "POST",
-				url: `${endPoint}/admin/staff/create-staff`,
-				data: JSON.stringify(formData),
-				dataType: "json", 
-				cache: false,
-				headers: getAuthHeaders(true),
-				success: function (info) {
-					const success = info.success;
-					const message = info.message;
-
-					if (success=== true) {
-						_actionAlert(message, true);
-						_getActivePage({page:'viewStaff', divid:'staff'});
-						_alertClose();
-					} else {
-						_actionAlert(message, false);
-					}
-					$("#submitBtn").html(btnText).prop("disabled", false);
+				_createStaffCallback(form);
 			},
-				error: function (error) {
-					_actionAlert('An error occurred while processing your request! Please Try Again', false);
-					$("#submitBtn").html(btnText).prop("disabled", false);
-				}
-			});
-		},
 			title: 'Are you sure?',
-			message: 'You are about to create a new staff. This action cannot be undone.',
-			icon: 'bi-exclamation-octagon',
-			iconBg: 'bg-warning'
+			message: 'Are you sure you want to create a new staff? This action is irreversible.',
+			alertType: 'warning',
+			falseActionBtn: true,
 		});
 	} catch (error) {
-		_actionAlert('An unexpected error occurred! Please Try Again', false);
+		_showCustomConfirm({
+			title: 'Unexpected Error',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
 		$("#submitBtn").prop("disabled", false);
 	}
 }
 
+function _createStaffCallback(form){
+	const btnText = $("#submitBtn").html();
+	$("#submitBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
+	$("#submitBtn").prop("disabled", true);
+
+	const formData = {
+		"titleId": form.titleId,
+		"firstName": form.firstName,
+		"middleName": form.middleName,
+		"lastName": form.lastName,
+		"emailAddress": form.emailAddress,
+		"phoneNumber": form.phoneNumber,
+		"address": form.address,
+		"countryId": form.countryId,
+		"branchId": form.branchId,
+		"roleId": form.roleId,
+		"statusId": form.statusId,
+	};
+
+	$.ajax({
+		type: "POST",
+		url: `${endPoint}/admin/staff/create-staff`,
+		data: JSON.stringify(formData),
+		dataType: "json", 
+		cache: false,
+		headers: getAuthHeaders(true),
+		success: function (info) {
+			const success = info.success;
+			const message = info.message;
+
+			if (success=== true) {
+				_showCustomConfirm({
+					callback: () => {
+						_getActivePage({page:'viewStaff', divid:'staff'});
+						_alertClose();
+					},
+					title: 'Success!',
+					message: message,
+					alertType: 'success',
+					trueActionBtnText: 'OK, Thanks.',
+				});
+			} else {
+				_showCustomConfirm({
+					title: 'Create Staff Error',
+					message: message,
+					alertType: 'warning',
+					trueActionBtnText: 'OK'
+				});
+			}
+			$("#submitBtn").html(btnText).prop("disabled", false);
+	},
+		error: function (error) {
+			_showCustomConfirm({
+				title: 'Unexpected Error',
+				message: 'An unexpected error occurred! Please try again.',
+				alertType: 'error',
+				trueActionBtnText: 'OK, Retry'
+			});
+			$("#submitBtn").html(btnText).prop("disabled", false);
+		}
+	});
+}
+
 function _updateStaff() {
-	let getEachStaffDetailsSession = JSON.parse(sessionStorage.getItem("getEachStaffDetailsSession"));
 	try {
 		let issueCount = 0;
 		const titleId = $('#updateTitleId').val();
@@ -472,63 +524,93 @@ function _updateStaff() {
 
 		if (issueCount > 0) return;
 
+		const form ={titleId, firstName, middleName, lastName, emailAddress, phoneNumber, address, countryId, branchId, roleId, statusId};
 		_showCustomConfirm({
 			callback: () => {
-			const btnText = $("#updateBtn").html();
-			$("#updateBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
-			$("#updateBtn").prop("disabled", true);
-
-			const formData = {
-				"titleId": titleId,
-				"firstName": firstName,
-				"middleName": middleName,
-				"lastName": lastName,
-				"emailAddress": emailAddress,
-				"phoneNumber": phoneNumber,
-				"address": address,
-				"countryId": countryId,
-				"branchId": branchId,
-				"roleId": roleId,
-				"statusId": statusId
-			};
-
-			$.ajax({
-				type: "POST",
-				url: `${endPoint}/admin/staff/update-staff?staffId=${getEachStaffDetailsSession.staffId}`,
-				data: JSON.stringify(formData),
-				dataType: "json", 
-				cache: false,
-				headers: getAuthHeaders(true),
-				processData: false,
-				success: function (data) {
-					if (data.success) {
-						
-						let getEachStaffDetailsSession =data.data[0];
-						sessionStorage.setItem("getEachStaffDetailsSession", JSON.stringify(getEachStaffDetailsSession));
-
-						_actionAlert(data.message, true);
-						_getForm({page: 'staffProfile', url: adminPortalLocalUrl});
-						_getActivePage({page:'viewStaff', divid:'staff'});
-					} else {
-						_actionAlert(data.message, false);
-					}
-					$("#updateBtn").html(btnText).prop("disabled", false);
-				},
-				error: function (error) {
-					_actionAlert('An error occurred while processing your request! Please Try Again', false);
-					$("#updateBtn").html(btnText).prop("disabled", false);
-				}
-			});
-		},
+				_updateStaffCallback(form);
+			},
 			title: 'Are you sure?',
-			message: 'You are about to update this staff profile. This action cannot be undone.',
-			icon: 'bi-exclamation-octagon',
-			iconBg: 'bg-warning'
+			message: 'Are you sure you want to update a new staff? This action is irreversible.',
+			alertType: 'warning',
+			falseActionBtn: true,
 		});
 	} catch (error) {
-		_actionAlert('An unexpected error occurred! Please Try Again', false);
+		_showCustomConfirm({
+			title: 'Unexpected Error',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
 		$("#updateBtn").prop("disabled", false);
 	}
+}
+
+function _updateStaffCallback(form){
+	let getEachStaffDetailsSession = JSON.parse(sessionStorage.getItem("getEachStaffDetailsSession"));
+
+	const btnText = $("#updateBtn").html();
+	$("#updateBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
+	$("#updateBtn").prop("disabled", true);
+
+	const formData = {
+		"titleId": form.titleId,
+		"firstName": form.firstName,
+		"middleName": form.middleName,
+		"lastName": form.lastName,
+		"emailAddress": form.emailAddress,
+		"phoneNumber": form.phoneNumber,
+		"address": form.address,
+		"countryId": form.countryId,
+		"branchId": form.branchId,
+		"roleId": form.roleId,
+		"statusId": form.statusId,
+	};
+
+	$.ajax({
+		type: "POST",
+		url: `${endPoint}/admin/staff/update-staff?staffId=${getEachStaffDetailsSession.staffId}`,
+		data: JSON.stringify(formData),
+		dataType: "json", 
+		cache: false,
+		headers: getAuthHeaders(true),
+		success: function (info) {
+			const success = info.success;
+			const message = info.message;
+
+			if (success=== true) {
+				_showCustomConfirm({
+					callback: () => {
+						let getEachStaffDetailsSession =info.data[0];
+						sessionStorage.setItem("getEachStaffDetailsSession", JSON.stringify(getEachStaffDetailsSession));
+
+						_getForm({page: 'staffProfile', url: adminPortalLocalUrl});
+						_getActivePage({page:'viewStaff', divid:'staff'});
+					},
+					title: 'Success!',
+					message: message,
+					alertType: 'success',
+					trueActionBtnText: 'OK, Thanks.',
+				});
+			} else {
+				_showCustomConfirm({
+					title: 'Update Staff Error',
+					message: message,
+					alertType: 'warning',
+					trueActionBtnText: 'OK'
+				});
+			}
+			$("#updateBtn").html(btnText).prop("disabled", false);
+	},
+		error: function (error) {
+			_showCustomConfirm({
+				title: 'Unexpected Error',
+				message: 'An unexpected error occurred! Please try again.',
+				alertType: 'error',
+				trueActionBtnText: 'OK, Retry'
+			});
+			$("#updateBtn").html(btnText).prop("disabled", false);
+		}
+	});
 }
 
 $(function () {
@@ -586,16 +668,31 @@ function _uploadStaffProfilepix() {
 
 					_uploadStaffPix(info.oldProfilePix, info.profilePix, info.message);
 				} else {
-					_actionAlert(message, false);
+					_showCustomConfirm({
+						title: 'Update Staff Picture Error',
+						message: message,
+						alertType: 'warning',
+						trueActionBtnText: 'OK'
+					});
 				}
 			},
 			error: function (error) {
-				_actionAlert('An error occurred while processing your request! Please Try Again', false);
+				_showCustomConfirm({
+					title: 'Unexpected Error',
+					message: 'An unexpected error occurred while uploading the profile picture! Please try again.',
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
 			}
 		});
 		
 	} catch (error) {
-		_actionAlert('An unexpected error occurred! Please Try Again', false);
+		_showCustomConfirm({
+			title: 'Unexpected Error',
+			message: 'An unexpected error occurred while uploading the profile picture! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
 	}
 }
 
@@ -616,14 +713,27 @@ function _uploadStaffPix(oldProfilePix, newProfilePix, message) {
         cache: false,
         processData: false,
         success: function () {
-			_actionAlert(message, true);
-			
-			_fetchEachStaff(getEachStaffDetailsSession.staffId);
+			_showCustomConfirm({
+				callback: () => {
+						_fetchEachStaff(getEachStaffDetailsSession.staffId);
 			_getActivePage({page:'viewStaff', divid:'staff'});
 			window.location.reload();
+					},
+				title: 'Success!',
+				message: message,
+				alertType: 'success',
+				trueActionBtnText: 'OK, Thanks.',
+			});
+			
+			
         },
         error: function () {
-            _actionAlert('Upload failed! Please try again.', false);
+			_showCustomConfirm({
+				title: 'Upload Error',
+				message: 'An error occurred while uploading the profile picture! Please try again.',
+				alertType: 'error',
+				trueActionBtnText: 'OK, Retry'
+			});
         }
     });
 }

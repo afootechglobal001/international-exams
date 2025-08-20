@@ -10,7 +10,7 @@ function _getActiveBranchPage(props) {
 	}
 }
 function _getBranchPagesActiveLink(divid){
-	$('#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricing').removeClass('active');
+	$('#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricingPage').removeClass('active');
 	$("#"+divid).addClass('active');
 }
 

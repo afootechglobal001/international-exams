@@ -2,7 +2,7 @@
     <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title-div">
             <div>
-                <div class="icon-div"><i class="bi-quote"></i></div>
+                <div class="icon-div"><i class="bi-chat-left-text"></i></div>
             </div>
             <div class="text-div">
                 <h3>Testimonies</h3>
@@ -22,7 +22,7 @@
         <div class="tables-content-div">
             <div class="content-title">
                 <div class="title">
-                    <i class="bi bi-quote"></i>
+                    <i class="bi bi-chat-left-text"></i>
                     <p>Testimonies</p>
                 </div>
             </div>
@@ -102,90 +102,93 @@
 
 <?php if ($page == 'updateTestimony') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> UPDATE TESTIMONY</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-chat-left-text"></i></div>
+                <h3>UPDATE TESTIMONY</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
             </div>
         </div>
 
+        <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> UPDATE TESTIMONY</span></div>
-                </div>
+            <div class="form-notification">
+                <p>You are about to update this testimony. Please confirm the form below with accurate details to successfully update testimony.
+                </p>
+            </div>
 
-                <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
-                    <div class="tables-content-div form-content-div">
-                        <div class="content-title">
-                            <div class="title">
-                                <i class="bi bi-type"></i>
-                                <p>Full Name</p>
+            <div class="main-content-div">
+                <div class="tables-content-div form-content-div">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-chat-left-text"></i>
+                            <p>update testimony here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">                     
+                        <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="tables-content-div form-content-div">
+                                <div class="content-title">
+                                    <div class="title">
+                                        <i class="bi bi-envelope"></i>
+                                        <p>Email Address</p>
+                                    </div>
+                                </div>
+
+                                <div class="inner-table-content">
+                                    <span>seunemmanuel107@gmail.com</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="inner-table-content">
-                            <span>Paul Emmanuel</span>
+                        <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="tables-content-div form-content-div">
+                                <div class="content-title">
+                                    <div class="title">
+                                        <i class="bi bi-telephone"></i>
+                                        <p>Phone Number</p>
+                                    </div>
+                                </div>
+
+                                <div class="inner-table-content">
+                                    <span>07050903886</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="tables-content-div form-content-div">
+                                <div class="content-title">
+                                    <div class="title">
+                                        <i class="bi bi-chat-left-quote"></i>
+                                        <p>Testimony</p>
+                                    </div>
+                                </div>
+
+                                <div class="inner-table-content">
+                                <span>“From Nigeria to Ghana”, EDUGRADE has been a trusted name among my classmates. Their international support is fast and reliable.</span> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status'
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
 
-                <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
-                    <div class="tables-content-div form-content-div">
-                        <div class="content-title">
-                            <div class="title">
-                                <i class="bi bi-envelope"></i>
-                                <p>Email Address</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-table-content">
-                            <span>seunemmanuel107@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
-                    <div class="tables-content-div form-content-div">
-                        <div class="content-title">
-                            <div class="title">
-                                <i class="bi bi-telephone"></i>
-                                <p>Phone Number</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-table-content">
-                            <span>07050903886</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
-                    <div class="tables-content-div form-content-div">
-                        <div class="content-title">
-                            <div class="title">
-                                <i class="bi bi-chat-left-quote"></i>
-                                <p>Testimony</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-table-content">
-                           <span>“From Nigeria to Ghana”, EDUGRADE has been a trusted name among my classmates. Their international support is fast and reliable.</span> 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text_field_container" id="statusId_container">
-                    <script>
-                        selectField({
-                            id: 'statusId',
-                            title: 'Select Status'
-                        });
-                    </script>
-                </div>
-
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

@@ -43,135 +43,151 @@
 
 <?php if ($page == 'staffReg') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW STAFF</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-person-bounding-box"></i></div>
+                <h3>CREATE NEW STAFF</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
             </div>
         </div>
 
+        <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD A NEW STAFF</span>
+            <div class="form-notification">
+                <p>You are about to create a new staff. Please complete the form below with accurate details to successfully create new staff.</p>
+            </div>
+
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-person-bounding-box"></i>
+                            <p>Create new staff here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="text_field_container" id="titleId_container">
+                            <script>
+                                selectField({
+                                    id: 'titleId',
+                                    title: 'Select Title'
+                                });
+                                _getSelectTitle('titleId');
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="firstName_container">
+                            <script>
+                                textField({
+                                    id: 'firstName',
+                                    title: 'First Name'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="middleName_container">
+                            <script>
+                                textField({
+                                    id: 'middleName',
+                                    title: 'Middle Name'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="lastName_container">
+                            <script>
+                                textField({
+                                    id: 'lastName',
+                                    title: 'Last Name'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="emailAddress_container">
+                            <script>
+                                textField({
+                                    id: 'emailAddress',
+                                    title: 'Email Address',
+                                    type: 'email'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="phoneNumber_container">
+                            <script>
+                                textField({
+                                    id: 'phoneNumber',
+                                    title: 'Phone Number',
+                                    type: 'tel',
+                                    onKeyPressFunction: 'isNumberCheck(event);'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="address_container">
+                            <script>
+                                textField({
+                                    id: 'address',
+                                    title: 'Home Address'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="alert alert-success form-alert">
+                            <span>ADMINISTRATIVE INFORMATION</span>
+                                <div class="text_field_back_container">
+                                    <div class="text_field_container" id="countryId_container">
+                                        <script>
+                                            selectField({
+                                                id: 'countryId',
+                                                title: 'Select Country'
+                                            });
+                                            _getSelectCountry('countryId');
+                                        </script>
+                                    </div>
+
+                                    <div class="text_field_back_container">
+                                        <div class="text_field_container" id="branchId_container">
+                                        <script>
+                                            selectField({
+                                                id: 'branchId',
+                                                title: 'Select Branch'
+                                            });
+                                        </script>
+                                    </div>
+
+                                    <div class="text_field_container" id="roleId_container">
+                                        <script>
+                                            selectField({
+                                                id: 'roleId',
+                                                title: 'Select Role'
+                                            });
+                                            _getSelectRoleId('roleId');
+                                        </script>
+                                    </div>
+
+                                    <div class="text_field_container" id="statusId_container">
+                                        <script>
+                                            selectField({
+                                                id: 'statusId',
+                                                title: 'Select Status'
+                                            });
+                                            _getSelectStatusId('statusId', '1,2');
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="text_field_container" id="titleId_container">
-                    <script>
-                        selectField({
-                            id: 'titleId',
-                            title: 'Select Title'
-                        });
-                        _getSelectTitle('titleId');
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="firstName_container">
-                    <script>
-                        textField({
-                            id: 'firstName',
-                            title: 'First Name'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="middleName_container">
-                    <script>
-                        textField({
-                            id: 'middleName',
-                            title: 'Middle Name'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="lastName_container">
-                    <script>
-                        textField({
-                            id: 'lastName',
-                            title: 'Last Name'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="emailAddress_container">
-                    <script>
-                        textField({
-                            id: 'emailAddress',
-                            title: 'Email Address',
-                            type: 'email'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="phoneNumber_container">
-                    <script>
-                        textField({
-                            id: 'phoneNumber',
-                            title: 'Phone Number',
-                            type: 'tel',
-                            onKeyPressFunction: 'isNumberCheck(event);'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="address_container">
-                    <script>
-                        textField({
-                            id: 'address',
-                            title: 'Home Address'
-                        });
-                    </script>
-                </div>
-
-                <div class="alert alert-success form-alert">
-                    <span>ADMINISTRATIVE INFORMATION</span>
-                        <div class="text_field_back_container">
-                            <div class="text_field_container" id="countryId_container">
-                            <script>
-                                selectField({
-                                    id: 'countryId',
-                                    title: 'Select Country'
-                                });
-                                _getSelectCountry('countryId');
-                            </script>
-                        </div>
-
-                        <div class="text_field_back_container">
-                            <div class="text_field_container" id="branchId_container">
-                            <script>
-                                selectField({
-                                    id: 'branchId',
-                                    title: 'Select Branch'
-                                });
-                            </script>
-                        </div>
-
-                        <div class="text_field_container" id="roleId_container">
-                            <script>
-                                selectField({
-                                    id: 'roleId',
-                                    title: 'Select Role'
-                                });
-                                _getSelectRoleId('roleId');
-                            </script>
-                        </div>
-
-                        <div class="text_field_container" id="statusId_container">
-                            <script>
-                                selectField({
-                                    id: 'statusId',
-                                    title: 'Select Status'
-                                });
-                                _getSelectStatusId('statusId', '1,2');
-                            </script>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createStaff();"> <i class="bi-check"></i>
-                        SUBMIT </button>
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createStaff();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

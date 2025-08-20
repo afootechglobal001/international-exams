@@ -62,7 +62,7 @@
 <?php } ?>
 
 <?php if ($page == 'faqReg') { ?>
-    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+    <!-- <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="title-panel-div">
             <div class="inner-top">
                 <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW FAQ</span>
@@ -108,6 +108,74 @@
 
                 <div>
                     <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-patch-question"></i></div>
+                <h3>CREATE NEW FAQ</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
+            </div>
+        </div>
+
+        <!-- /////////// Title ////////////////////////////// -->
+        <div class="container-back-div">
+            <div class="form-notification">
+                <p>You are about to create a new faq. Please complete the form below with accurate details to successfully create new faq</p>
+            </div>
+
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-patch-question"></i>
+                            <p>Create new faq here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="text_field_container" id="faqCat_container">
+                            <script>
+                                selectField({
+                                    id: 'faqCat',
+                                    title: 'Slect Faq Category'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="form-title">FAQ ANSWER</div>
+                        <script src="js/TextEditor.js" referrerpolicy="origin"></script>
+                        <script>
+                            tinymce.init({
+                                selector: '#faq_answer', // change this value according to your HTML
+                                plugins: "link, image, table"
+                            });
+                        </script>
+                        <div style="margin-bottom: 10px;">
+                            <textarea class="text_field" style="width:100%;" rows="5" id="faq_answer" title="TYPE FULL PAGE CONTENT HERE" type="text" maxlength="167" id="" placeholder=""></textarea>
+                        </div>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status'
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

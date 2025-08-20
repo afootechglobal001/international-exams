@@ -20,7 +20,7 @@ function _getActiveLink(divid, nav) {
 }
 
 function _removeClass(){
-	$('#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-students, #top-dashboard, #top-staff').removeClass('active-li');
+	$('#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-ebook, #top-dashboard, #top-staff').removeClass('active-li');
 	$('#mobile-dashboard,#mobile-branches,#mobile-staff,#mobile-reports').removeClass('active-li');
 }
 

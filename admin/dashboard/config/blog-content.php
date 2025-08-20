@@ -2,7 +2,7 @@
     <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title-div">
             <div>
-                <div class="icon-div"><i class="bi-book-half"></i></div>
+                <div class="icon-div"><i class="bi-journals"></i></div>
             </div>
             <div class="text-div">
                 <h3>Blogs & Articles</h3>
@@ -25,7 +25,7 @@
         <div class="tables-content-div">
             <div class="content-title">
                 <div class="title">
-                    <i class="bi bi-book-half"></i>
+                    <i class="bi bi-journals"></i>
                     <p>Blogs & Articles</p>
                 </div>
             </div>
@@ -83,56 +83,73 @@
 
 <?php if ($page == 'blogReg') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW BLOG</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-journals"></i></div>
+                <h3>CREATE NEW BLOG</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
             </div>
         </div>
 
+        <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD NEW BLOG</span></div>
-                </div>
+            <div class="form-notification">
+                <p>You are about to create a new blog. Please complete the form below with accurate details to successfully create new blog</p>
+            </div>
 
-                <div class="text_field_container" id="blogCat_container">
-                    <script>
-                        selectField({
-                            id: 'blogCat',
-                            title: 'Select Blog Category'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="blogTitle_container">
-                    <script>
-                        textField({
-                            id: 'blogTitle',
-                            title: 'Blog Title'
-                        });
-                    </script>
-                </div>
-
-                <div class="form-title">UPLOAD BLOG PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
-                <label>
-                    <div class="pix-div">
-                        <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                        <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-journals"></i>
+                            <p>Create new study abroad here</p>
+                        </div>
                     </div>
-                </label>
 
-                <div class="text_field_container" id="statusId_container">
-                    <script>
-                        selectField({
-                            id: 'statusId',
-                            title: 'Select Status'
-                        });
-                    </script>
+                    <div class="form-container">
+                        <div class="text_field_container" id="blogCat_container">
+                            <script>
+                                selectField({
+                                    id: 'blogCat',
+                                    title: 'Select Blog Category'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="blogTitle_container">
+                            <script>
+                                textField({
+                                    id: 'blogTitle',
+                                    title: 'Blog Title'
+                                });
+                            </script>
+                        </div>
+
+                       <div class="form-title">UPLOAD BLOG PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <label>
+                            <div class="pix-div">
+                                <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+                            </div>
+                        </label>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status'
+                                });
+                            </script>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

@@ -108,47 +108,64 @@
 
 <?php if ($page == 'galleryReg') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW GALLERY</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-images"></i></div>
+                <h3>CREATE NEW GALLERY</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
             </div>
         </div>
 
+        <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD NEW GALLERY</span></div>
-                </div>
+            <div class="form-notification">
+                <p>You are about to create a new gallery. Please complete the form below with accurate details to successfully create new gallery</p>
+            </div>
 
-                <div class="text_field_container" id="blogCat_container">
-                    <script>
-                        textField({
-                            id: 'blogCat',
-                            title: 'Gallery Title'
-                        });
-                    </script>
-                </div>
-
-                <div class="form-title">UPLOAD GALLERY PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
-                <label>
-                    <div class="pix-div">
-                        <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                        <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-images"></i>
+                            <p>Create new gallery here</p>
+                        </div>
                     </div>
-                </label>
 
-                <div class="text_field_container" id="statusId_container">
-                    <script>
-                        selectField({
-                            id: 'statusId',
-                            title: 'Select Status'
-                        });
-                    </script>
+                    <div class="form-container">
+                        <div class="text_field_container" id="blogCat_container">
+                            <script>
+                                textField({
+                                    id: 'blogCat',
+                                    title: 'Gallery Title'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="form-title">UPLOAD GALLERY PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <label>
+                            <div class="pix-div">
+                                <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+                            </div>
+                        </label>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status'
+                                });
+                            </script>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

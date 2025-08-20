@@ -23,6 +23,7 @@ switch ($action){
 		require_once('system-alert-content.php');
 		require_once('pages-content.php');
 		require_once('page-details.php');
+		require_once('ebook-content.php');
 	break;
 
 	case 'get_form':
@@ -44,7 +45,7 @@ switch ($action){
 		require_once('system-alert-content.php');
 		require_once('pages-content.php');
 		require_once('page-details.php');
-	
+		require_once('ebook-content.php');
 	break;	
 
 	case 'uploadStaffPix':

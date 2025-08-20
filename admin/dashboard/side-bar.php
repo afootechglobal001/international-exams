@@ -29,6 +29,13 @@
         `);
 
         document.write(`
+            <div class="nav-div" title="E-Books" onclick="_getActivePage({page:'viewEbook', divid:'ebook'});" id="${navId}-ebook">
+                <div class="icon"><i class="bi bi-filetype-pdf"></i> E-Books</div> 
+                <div class="hidden" id="_ebooks"><i class="bi bi-filetype-pdf"></i> E-Books</div>
+            </div>
+        `);
+
+        document.write(`
             <div class="nav-div" title="Report" onclick="_getActivePage({nav:'reports', divid:'reports'});" id="${navId}-reports">
                 <div class="icon"><i class="bi-graph-up-arrow"></i> Report</div> 
             </div>

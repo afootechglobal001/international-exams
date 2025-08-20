@@ -36,68 +36,146 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-            <div class="other-pages-slide-card">
-                <h1>About Us</h1>
 
-                <div class="text-div">
-                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                         Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                          into foreign universities.
-                    </p>
-                    <div class="btn-div">
-                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                It's Free</span>
-                        </button>
+           
+            <div class="top-title">
+                <nav>
+                    <ul>
+                        <li title="Home">Home <i class="bi bi-caret-right-fill"></i></li>
+                        <li title="About Us">About Us</li>
+                    </ul>
+                </nav>
+            </div>
+
+            
+            <div class="other-pages-back-div">
+                <div class="main-content-back-div">
+
+                    <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
+                        <h1>About Us</h1>
+                        <p>
+                            Web hosting made easy &amp; affordable, choose a fine-tuned web hosting
+                            services solution for successful personal and business websites.
+                        </p>
+
+                        <div class="btn-div">
+                            <a href="#" title="Get Started">
+                                <button class="btn" title="Get Started">
+                                    Get Started <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </a>
+                            <a href="#" title="Contact Us">
+                                <button class="btn right-btn" title="Contact Us">
+                                    Contact Us <span>+1(408)8783199</span>
+                                </button>
+                            </a>
+                        </div>
                     </div>
+
+                    <div class="image-div">
+                        <img src="https://webliststudio.com/all-images/body-pix/about.svg" alt="Weblist Studio Company">
+                    </div>
+
                 </div>
             </div>
-            
+
         </div>
     </div>
 
-    <section class="other-pages-main-section">
 
+
+    <section class="other-pages-main-section">
         <section class="body-div net-bg-bl">
             <div class="body-div-in">
                 <div class="about-back-div">
-                    <div class="image-div">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg" alt="About International Exams" />
-                    </div>
 
                     <div class="content-div">
-                        <div class="icon-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg" alt="About Us icon" />
+                        <h2>99% Cloud Hosting High-speed Cutting-edge Platform</h2>
+                        <p>
+                            Quickly reconceptualize cross-unit e-markets without superior products. Appropriately foster
+                            timely and idea-sharing rather than magnetic potentialities. Authoritatively restore high
+                            standards in outsourcing whereas vertical meta-services. Compellingly reconceptualize
+                            out-of-the-box outsourcing through plug-and-play synergy.
+                        </p>
+                        <p>
+                            Authoritatively transform functionalized information without cross-platform convergence.
+                            Quickly superior products. Appropriately foster timely collaboration and idea-sharing rather
+                            than magnetic potentialities. Authoritatively restore high standards in outsourcing whereas
+                            vertical meta-services. Compellingly reconceptualize out-of-the-box outsourcing through
+                            plug-and-play synergy.
+                        </p>
+
+                        <div class="box-div vision" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="label-div secondary">OUR VISION</div>
+                            <p>
+                                Weblist Studio simplifies daily operations through technology, making them accessible to
+                                all. We develop teams based on skill levels and business needs, aiming to build ICT
+                                capacity for individuals and organizations.
+                            </p>
                         </div>
 
-                        <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
-                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of students for admissions into foreign universities.</p>
 
-                        <div class="check-div">
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>Lowest Test Registration Fee</h5>
+                        <div class="box-div mission" data-aos="fade-in" data-aos-duration="1200">
+                            <div class="label-div primary">
+                                <h4>OUR MISSION</h4>
                             </div>
-
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>Physical and Online Lectures</h5>
-                            </div>
-
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>FREE E-books</h5>
-                            </div>
-
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>Free Study Packs</h5>
-                            </div>
+                            <p>
+                                Our mission at Weblist Studio is to deliver innovative technology solutions, empower
+                                individuals with ICT skills, and simplify business operations through software
+                                development and expert training programs.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
+        <section class="body-div net-bg-tl">
+            <div class="body-div-in">
+                <div class="about-back-div">
+
+                    <div class="image-div" data-aos="fade-in" data-aos-duration="1200">
+
+                        <div class="values-image" data-aos="fade-in" data-aos-duration="1200">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/values.svg" alt="Team working">
+                        </div>
+                    </div>
+
+
+                    <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
+
+                        <h2>We Share the Same Values which Makes our Team Stronger</h2>
+                        <p>
+                            Objectively deliver professional value with diverse web-readiness.
+                            Collaboratively transition wireless customer service without goal-oriented catalysts for
+                            change.
+                            Collaboratively.
+                        </p>
+
+                        <div class="values-list">
+                            <ul>
+                                <li><i class="bi bi-check"></i> Data driven quality review</li>
+                                <li><i class="bi bi-check"></i> 24x7 coverage</li>
+                                <li><i class="bi bi-check"></i> Management team</li>
+                                <li><i class="bi bi-check"></i> Integration ready</li>
+                                <li><i class="bi bi-check"></i> Compliance driven process</li>
+                            </ul>
+
+                            <ul>
+                                <li><i class="bi bi-check"></i> Data driven quality review</li>
+                                <li><i class="bi bi-check"></i> 24x7 coverage</li>
+                                <li><i class="bi bi-check"></i> Management team</li>
+                                <li><i class="bi bi-check"></i> Integration ready</li>
+                                <li><i class="bi bi-check"></i>Compliance driven process</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
 
         <section class="body-div net-bg-tl">
             <div class="body-div-in">
@@ -105,7 +183,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
                         <div><span class="top-title">OUR STATUS VALUES</span></div>
                         <h2>Exploring Our Status <span class="text">#Values</span></h2>
-                        <p>Explore our status values to learn about the guiding principles that shape our approach to tech education and community.</p>
+                        <p>Explore our status values to learn about the guiding principles that shape our approach to
+                            tech education and community.</p>
 
                         <div class="progress-back-div">
                             <div class="progress-container">
@@ -152,7 +231,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 </div>
                                 <div class="img-back-div">
                                     <div class="img-div">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/multiple_img.png" alt="Slide Image" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/multiple_img.png"
+                                            alt="Slide Image" />
                                     </div>
                                 </div>
                             </div>
@@ -171,75 +251,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
             <script>
-                _progressBar();
+            _progressBar();
             </script>
-        </section>
-
-        <section class="body-div net-bg-br">
-            <div class="body-div-in">
-                <div class="faq-back-div">
-                    <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="<?php echo $appName ?> Frequently Asked Question" />
-                    </div>
-
-                    <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="faq-title">
-                            <div><span class="top-title">FAQ</span></div>
-                            <h2>Frequently Asked <span>#Questions</span></h2>
-                        </div>
-
-                        <div class="faq-toggle-back">
-                            <div class="faq-toggle" id="faq1">
-                                <div class="title-text" onclick="_collapse('faq1')">
-                                    <div class="quest-text-div">
-                                        <div class="icon-div"><i class="bi-question"></i></div>
-                                        <h3>What is the TOEFL exam used for?</h3>
-                                    </div>
-                                    <div class="expand-div" id="faq1num">
-                                        <i class="bi-plus"></i>
-                                    </div>
-                                </div>
-                                <div class="answer-div" id="faq1answer" style="display: none;">
-                                    <p>The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</p>
-                                </div>
-                            </div>
-
-                            <div class="faq-toggle" id="faq2">
-                                <div class="title-text" onclick="_collapse('faq2')">
-                                    <div class="quest-text-div">
-                                        <div class="icon-div"><i class="bi-question"></i></div>
-                                        <h3>How is the IELTS scored?</h3>
-                                    </div>
-                                    <div class="expand-div" id="faq2num">
-                                        <i class="bi-plus"></i>
-                                    </div>
-                                </div>
-                                <div class="answer-div" id="faq2answer" style="display: none;">
-                                    <p>The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</p>
-                                </div>
-                            </div>
-
-                            <div class="faq-toggle" id="faq3">
-                                <div class="title-text" onclick="_collapse('faq3')">
-                                    <div class="quest-text-div">
-                                        <div class="icon-div"><i class="bi-question"></i></div>
-                                        <h3>What is the purpose of the PTE?</h3>
-                                    </div>
-                                    <div class="expand-div" id="faq1num">
-                                        <i class="bi-plus"></i>
-                                    </div>
-                                </div>
-                                <div class="answer-div" id="faq3answer" style="display: none;">
-                                    <p>The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="<?php echo $websiteUrl ?>" title="Read More FAQ">
-                            <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section class="body-div net-bg-tr">
@@ -252,7 +265,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="text-div">
                             <h2>What Our Students Say <span>#About Us</span></h2>
-                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their success in international exams through expert guidance, timely assistance, and a seamless registration process.</p>
+                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their
+                                success in international exams through expert guidance, timely assistance, and a
+                                seamless registration process.</p>
                         </div>
 
                         <div>
@@ -279,7 +294,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“EDUGRADE SERVICES”</strong> made my TOEFL registration process smooth and stress-free. Their team was so helpful every step of the way!</p>
+                                            <p><strong>“EDUGRADE SERVICES”</strong> made my TOEFL registration process
+                                                smooth and stress-free. Their team was so helpful every step of the way!
+                                            </p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -309,7 +326,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“Thanks to EDUGRADE”</strong>, I got all the resources I needed to prepare for my IELTS exam. Their guidance truly made a difference.</p>
+                                            <p><strong>“Thanks to EDUGRADE”</strong>, I got all the resources I needed
+                                                to prepare for my IELTS exam. Their guidance truly made a difference.
+                                            </p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -340,7 +359,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“I registered for SAT through EDUGRADE”</strong> and everything went perfectly. They answered all my questions and kept me updated at every stage.</p>
+                                            <p><strong>“I registered for SAT through EDUGRADE”</strong> and everything
+                                                went perfectly. They answered all my questions and kept me updated at
+                                                every stage.</p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -370,7 +391,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                                 </div>
                                             </div>
 
-                                            <p><strong>“From Nigeria to Ghana”</strong>, EDUGRADE has been a trusted name among my classmates. Their international support is fast and reliable.</p>
+                                            <p><strong>“From Nigeria to Ghana”</strong>, EDUGRADE has been a trusted
+                                                name among my classmates. Their international support is fast and
+                                                reliable.</p>
 
                                             <div class="bottom-div">
                                                 <div class="star-div">
@@ -393,28 +416,28 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
             <script>
-                window['carousel_options_1'] = ({
-                    items: 4,
-                    margin: 30,
-                    loop: true,
-                    dots: true,
-                    autoplayHoverPause: true,
-                    smartSpeed: 650,
-                    autoplay: true,
-                    breakpoints: {
-                        700: {
-                            slidesPerView: 1,
-                        },
-                        1100: {
-                            slidesPerView: 1,
-                        },
-                        1300: {
-                            slidesPerView: 2,
-                        }
-
+            window['carousel_options_1'] = ({
+                items: 4,
+                margin: 30,
+                loop: true,
+                dots: true,
+                autoplayHoverPause: true,
+                smartSpeed: 650,
+                autoplay: true,
+                breakpoints: {
+                    700: {
+                        slidesPerView: 1,
+                    },
+                    1100: {
+                        slidesPerView: 1,
+                    },
+                    1300: {
+                        slidesPerView: 2,
                     }
-                });
-                _call_carousel(1);
+
+                }
+            });
+            _call_carousel(1);
             </script>
         </section>
 
@@ -431,7 +454,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
@@ -439,15 +463,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog1.png" alt="How International Exams Open Doors to Global Education Opportunities">
+                                    <img src="all-images/blogs/blog1.png"
+                                        alt="How International Exams Open Doors to Global Education Opportunities">
                                 </div>
 
                                 <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 250 VIEWS</div>
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
+                                            class="bi-eye-fill"></i> 250 VIEWS</div>
                                     <h3>How International Exams Open Doors to Global Education Opportunities</h3>
 
                                     <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -455,15 +482,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog2.png" alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
+                                    <img src="all-images/blogs/blog2.png"
+                                        alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
                                 </div>
 
                                 <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 50 VIEWS</div>
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
+                                            class="bi-eye-fill"></i> 50 VIEWS</div>
                                     <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
 
                                     <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -471,15 +501,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog3.png" alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
+                                    <img src="all-images/blogs/blog3.png"
+                                        alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
                                 </div>
 
                                 <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 200 VIEWS</div>
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
+                                            class="bi-eye-fill"></i> 200 VIEWS</div>
                                     <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
 
                                     <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>

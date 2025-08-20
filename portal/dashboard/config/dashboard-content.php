@@ -122,63 +122,87 @@
     <div class="book-back-div">
 
         <div class="book-div">
-            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/body-pix/TOEL.jpg" alt="TOELF"> </div>
+            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/e-books/toefl-1.jpg" alt="TOELF">
+            </div>
             <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg"
                     alt="TOEFL Exam" /> </div>
             <div class="text-div">
                 <div class="details">
                     <h3>TOEFL</h3>
                     <p>Test of English as a Foreign Language</p>
+                    <div class="book-sum">
+                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
+                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
+                    </div>
                 </div>
-                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download</button>
+                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
             </div>
         </div>
         <div class="book-div">
-            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/body-pix/TOEL.jpg" alt="TOELF"> </div>
+            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/e-books/act-1.jpg" alt="TOELF"> </div>
             <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg"
                     alt="TOEFL Exam" /> </div>
             <div class="text-div">
                 <div class="details">
-                    <h3>TOEFL</h3>
+                    <h3>ACT</h3>
                     <p>Test of English as a Foreign Language</p>
+                    <div class="book-sum">
+                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
+                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
+                    </div>
                 </div>
-                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download</button>
+                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
             </div>
         </div>
         <div class="book-div">
-            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/body-pix/TOEL.jpg" alt="TOELF"> </div>
+            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/e-books/ielts-1.jpg" alt="TOELF">
+            </div>
             <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg"
                     alt="TOEFL Exam" /> </div>
             <div class="text-div">
                 <div class="details">
-                    <h3>TOEFL</h3>
+                    <h3>IELTS</h3>
                     <p>Test of English as a Foreign Language</p>
+                    <div class="book-sum">
+                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
+                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
+                    </div>
                 </div>
-                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download</button>
+                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
             </div>
         </div>
         <div class="book-div">
-            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/body-pix/TOEL.jpg" alt="TOELF"> </div>
+            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/e-books/toefl-2.jpg" alt="TOELF">
+            </div>
             <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg"
                     alt="TOEFL Exam" /> </div>
             <div class="text-div">
                 <div class="details">
                     <h3>TOEFL</h3>
                     <p>Test of English as a Foreign Language</p>
+                    <div class="book-sum">
+                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
+                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
+                    </div>
                 </div>
-                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download</button>
+                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
             </div>
         </div>
         <div class="book-div">
-            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/body-pix/TOEL.jpg" alt="TOELF"> </div>
+            <div class="image-div"> <img src="<?php echo $websiteUrl?>/all-images/e-books/gmat-1.jpg" alt="TOELF">
+            </div>
             <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg"
                     alt="TOEFL Exam" /> </div>
             <div class="text-div">
                 <div class="details">
-                    <h3>TOEFL</h3>
+                    <h3>GMAT</h3>
                     <p>Test of English as a Foreign Language</p>
+                    <div class="book-sum">
+                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
+                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
+                    </div>
                 </div>
-                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download</button>
+                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
             </div>
         </div>
 
@@ -198,7 +222,7 @@
             </button>
         </div>
     </div>
-    
+
 </section>
 
 

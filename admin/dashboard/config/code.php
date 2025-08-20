@@ -9,9 +9,20 @@ switch ($action){
 	case 'get_page':
 		$page=$_POST['page'];
 		$ids=$_POST['ids'];
-		require_once('../content/page-content.php');
-		require_once('../content/page-details.php');
-		require_once('../content/form.php');
+		require_once('dashboard-content.php');
+		require_once('branch-content.php');
+		require_once('staff-content.php');
+		require_once('student-content.php');
+		require_once('international-exam-content.php');
+		require_once('study-abroad-content.php');
+		require_once('blog-content.php');
+		require_once('gallery-content.php');
+		require_once('faq-content.php');
+		require_once('testimony-content.php');
+		require_once('settings-content.php');
+		require_once('system-alert-content.php');
+		require_once('pages-content.php');
+		require_once('page-details.php');
 	break;
 
 	case 'get_form':
@@ -19,7 +30,21 @@ switch ($action){
 		$pageCatId=$_POST['pageCatId'];
 		$id=$_POST['id'];
 		$modalLayer=$_POST['modalLayer'];
-		require_once('../content/form.php');
+		require_once('dashboard-content.php');
+		require_once('branch-content.php');
+		require_once('staff-content.php');
+		require_once('student-content.php');
+		require_once('international-exam-content.php');
+		require_once('study-abroad-content.php');
+		require_once('blog-content.php');
+		require_once('gallery-content.php');
+		require_once('faq-content.php');
+		require_once('testimony-content.php');
+		require_once('settings-content.php');
+		require_once('system-alert-content.php');
+		require_once('pages-content.php');
+		require_once('page-details.php');
+	
 	break;	
 
 	case 'uploadStaffPix':

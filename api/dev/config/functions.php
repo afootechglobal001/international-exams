@@ -50,13 +50,13 @@ function _alertSequenceAndUpdate($conn,$userId,$userName,$roleId,$alertDetail,$i
 	$no= $array[0]['no'];
 	$alertId='ALT'.$no.date("Ymdhis");
 	
-	mysqli_query($conn,"INSERT INTO `0_alert_tab`
+	mysqli_query($conn,"INSERT INTO `0_ALERT_TAB`
 	(`alertId`, `userId`, `userName`, `roleId`, `alertDetail`, `seenStatus`, `ipAddress`, `systemName`) VALUES
 	('$alertId', '$userId', '$userName', '$roleId', '$alertDetail', 0, '$ipAddress', '$systemName')")or die (mysqli_error($conn));
 }
 
 function _getAlertDetails($conn,$alertId){
-	$query=mysqli_query($conn,"SELECT * FROM 0_alert_tab WHERE alertId='$alertId'")or die (mysqli_error($conn));
+	$query=mysqli_query($conn,"SELECT * FROM 0_ALERT_TAB WHERE alertId='$alertId'")or die (mysqli_error($conn));
 	$fetch_query=mysqli_fetch_array($query);
 		$seenStatus=$fetch_query['seenStatus'];
 		return '[{"seenStatus":"'.$seenStatus.'"}]';
@@ -64,7 +64,7 @@ function _getAlertDetails($conn,$alertId){
 
 
 function _getStaffDetails($conn,$staffId){
-	$query=mysqli_query($conn,"SELECT * FROM staff_tab WHERE staffId='$staffId'")or die (mysqli_error($conn));
+	$query=mysqli_query($conn,"SELECT * FROM STAFF_TAB WHERE staffId='$staffId'")or die (mysqli_error($conn));
 	$fetchQuery=mysqli_fetch_array($query);
         $response = [
             "staffId" => $fetchQuery['staffId'],

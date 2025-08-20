@@ -29,3 +29,8 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/chart.min.js"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/canvasjs.min.js" type="text/javascript"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/scripts.js?v=<?php echo $codeVersion?>"></script>
+
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useDashboard.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useBranch.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useStaff.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useStudent.js?v=<?php echo $codeVersion?>"></script>

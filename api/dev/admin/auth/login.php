@@ -20,7 +20,7 @@
         goto end;
 	}
 
-        $query=mysqli_query($conn,"SELECT * FROM staff_tab WHERE emailAddress='$userName' AND `password`='$password'") or die (mysqli_error($conn));
+        $query=mysqli_query($conn,"SELECT * FROM STAFF_TAB WHERE emailAddress='$userName' AND `password`='$password'") or die (mysqli_error($conn));
         $countUser=mysqli_num_rows($query);
         if ($countUser==0){ /// start if 2
             $response = [
@@ -52,8 +52,8 @@
                 if($statusId==1){ /// start if 4 (check if the user is active)
                     /// Generate login access key ///
                     $accessKey=trim(md5($staffId.date("Ymdhis")));
-                    /// update user on staff_tab
-                    mysqli_query($conn,"UPDATE staff_tab SET accessKey='$accessKey', lastLoginTime=NOW() WHERE staffId='$staffId'")or die (mysqli_error($conn));
+                    /// update user on STAFF_TAB
+                    mysqli_query($conn,"UPDATE STAFF_TAB SET accessKey='$accessKey', lastLoginTime=NOW() WHERE staffId='$staffId'")or die (mysqli_error($conn));
 
                     $response = [
                         'response'=> 200,

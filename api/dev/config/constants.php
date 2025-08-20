@@ -12,7 +12,6 @@ $backEndApiKey='a883a517-bc6c-4d8b-a544-ec743c88354a'; //InternationalExamApiKey
 
 $ipAddress=$_SERVER['REMOTE_ADDR']; //ip used
 $systemName=gethostname();//computer used
-
 ////////////////////////////////////////////////////////////////////////
 
 $checkBasicSecurity=true;

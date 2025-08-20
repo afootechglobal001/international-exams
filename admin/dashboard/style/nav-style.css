@@ -372,7 +372,7 @@ header .header-div-in .header-nav-div .right-nav .toggle-profile-div .toggle-div
     font-size: 14px;
     padding: 5px 0px;
 	color: var(--sub-body-color2);
-	 border-left:var(--white-color) 3px solid;
+	border-left:var(--white-color) 3px solid;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -399,7 +399,7 @@ header .header-div-in .header-nav-div .right-nav .toggle-profile-div .toggle-div
 
 .side-nav-div .nav-back-div .nav-div:hover, .side-nav-div .nav-back-div .active-li {
     color: var(--primary-color);
-	background: rgba(204,204,204,.2);
+	background: linear-gradient(-120deg, #f8f5ec, #FFF);
 	border-radius: 8px;
 	border-left:var(--secondary-color) 3px solid;
 }

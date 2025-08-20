@@ -17,31 +17,42 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
-	$titleId=trim(strtoupper($data['titleId']));
-	$firstName=trim(strtoupper($data['firstName']));
-    $middleName=trim(strtoupper($data['middleName']));
-    $lastName=trim(strtoupper($data['lastName']));
-    $emailAddress=trim(strtolower($data['emailAddress']));
+    $countryId = $_GET['countryId'];
+    $branchId = $_GET['branchId'];
+	$branchName=trim(strtoupper($data['branchName']));
+    $email=trim(strtolower($data['email']));
     $phoneNumber=trim($data['phoneNumber']);
     $address =trim(strtoupper(str_replace("'", "\'", $data['address'])));
-    $branchId=trim($data['branchId']);
-    $roleId=trim($data['roleId']);
+    $managerId=trim(strtoupper($data['managerId']));
     $statusId=trim($data['statusId']);
-    //////////////////////////////////////////////////////////////////////////////////////////////
+
+    if (!$countryId){ /// start if 1
+        $response = [
+            'response'=> 100,
+            'success'=> false,
+            'message'=> "COUNTRY ID REQUIRED! Provide valid country ID and try again",
+        ]; 
+        goto end;
+    }
+
+    if (!$branchId){ /// start if 2
+        $response = [
+            'response'=> 100,
+            'success'=> false,
+            'message'=> "BRANCH ID REQUIRED! Provide valid branch ID and try again",
+        ]; 
+        goto end;
+    }
 
     //////////////////check for empty fields//////////////////////////////////////
-    validateEmptyField($titleId, 'TITLE');
-    validateEmptyField($firstName, 'FIRST NAME');
-    validateEmptyField($middleName, 'MIDDLE NAME');
-    validateEmptyField($lastName, 'LAST NAME');
-    validateEmptyField($emailAddress, 'EMAIL ADDRESS');
+    validateEmptyField($branchName, 'BRANCH NAME');
+    validateEmptyField($email, 'EMAIL ADDRESS');
     validateEmptyField($phoneNumber, 'MOBILE NUMBER');
     validateEmptyField($address, 'ADDRESS');
-    validateEmptyField($branchId, 'BRANCH');
-    validateEmptyField($roleId, 'ROLE');
+    // validateEmptyField($managerId, 'BRANCH MANAGER');
     validateEmptyField($statusId, 'STATUS');
 
-    if(!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)){ /// start if 2
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){ /// start if 4
         $response = [
             'response'=> 102,
             'success'=> false,
@@ -50,7 +61,7 @@
         goto end;
     }
 
-    if(!preg_match('/^[0-9]{10,15}$/', $phoneNumber)){ /// start if 3
+    if (!preg_match('/^[0-9]{10,15}$/', $phoneNumber)){ /// start if 3
         $response = [
             'response'=> 103,
             'success'=> false,
@@ -68,43 +79,49 @@
         goto end;
     }
 
-    $query=mysqli_query($conn,"SELECT emailAddress FROM STAFF_TAB WHERE emailAddress='$emailAddress'") or die (mysqli_error($conn));
-    $countUser=mysqli_num_rows($query);
+    $nameQuery=mysqli_query($conn,"SELECT branchName FROM BRANCH_COUNTRY_TAB WHERE branchName='$branchName' AND branchId!='$branchId'") or die (mysqli_error($conn));
+    $nameCountQuery=mysqli_num_rows($nameQuery);
 
-    if ($countUser>0){ /// start if 5
+    if ($nameCountQuery>0){ /// start if 5
         $response = [
             'response'=> 105,
             'success'=> false,
-            'message' => "This email ('$emailAddress') is already in use. Please try another Email Address."
+            'message' => "This branch with name ('$branchName') is already in use. Please try another Name."
         ];
 
-        $alertDetail="STAFF REGISTRATION ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to register a staff with an email address ($emailAddress) that is already in use.";	
+        $alertDetail="BRANCH UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to update a branch with a name ($branchName) that is already in use.";	
         goto end;
     }
 
-        ///////////////////////geting sequence//////////////////////////
-        $countId='STAFF';
-        $sequence=$callclass->_getSequenceCount($conn, $countId);
-        $array = json_decode($sequence, true);
-        $no= $array[0]['no'];
-        $staffId=$countId.$no.date("Ymdhis");
-        $password=md5($staffId);
+    $emailQuery=mysqli_query($conn,"SELECT email FROM BRANCH_COUNTRY_TAB WHERE email='$email' AND branchId!='$branchId'") or die (mysqli_error($conn));
+    $emailCountQuery=mysqli_num_rows($emailQuery);
 
-        mysqli_query($conn,"INSERT INTO `STAFF_TAB`
-        (`branchId`, `staffId`, `titleId`, `firstName`, `middleName`, `lastName`, `emailAddress`, `phoneNumber`, `address`, `profilePix`, `statusId`, `roleId`, `password`, `createdBy`, `createdTime`) VALUES
-        ('$branchId', '$staffId', '$titleId', '$firstName', '$middleName', '$lastName', '$emailAddress', '$phoneNumber', '$address', 'default.jpg', '$statusId', '$roleId', '$password', '$loginStaffId', NOW())")or die (mysqli_error($conn));
+    if ($emailCountQuery>0){ /// start if 5
+        $response = [
+            'response'=> 105,
+            'success'=> false,
+            'message' => "This branch with email ('$email') is already in use. Please try another Email Address."
+        ];
+
+        $alertDetail="BRANCH UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to update a branch with an email address ($email) that is already in use.";	
+        goto end;
+    }
+
+        mysqli_query($conn,"UPDATE `BRANCH_COUNTRY_TAB`
+        SET `countryId`='$countryId', `branchName`='$branchName', `email`='$email', `phoneNumber`='$phoneNumber', `address`='$address', `managerId`='$managerId', `statusId`='$statusId', `updatedBy`='$loginStaffId', `updatedTime`=NOW()
+        WHERE `branchId`='$branchId' AND `countryId`='$countryId'")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
             'success'=> true,
-            'message'=> "STAFF CREATED SUCCESFFULLY!",
+            'message'=> "BRANCH UPDATED SUCCESFFULLY!",
             'data' => array() // Initialize the data array
         ];
 
-        $alertDetail = "STAFF CREATED SUCCESSFULLY: A staff whose name - $loginStaffFullname (ID: $loginStaffId) successfully registered a new staff with the email address ($emailAddress) - (ID: $staffId).";
+        $alertDetail = "BRANCH UPDATED SUCCESSFULLY: A staff whose name - $loginStaffFullname (ID: $loginStaffId) successfully updated the branch with the email address ($email) - (ID: $branchId).";
 
-        // Fetch staff details
-        $select="SELECT * FROM STAFF_VIEW WHERE roleId < '$loginRoleId'";
+        // Fetch branch details ///
+        $select="SELECT * FROM BRANCH_VIEW WHERE countryId='$countryId'";
 
         $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
         while ($fetchQuery = mysqli_fetch_assoc($query)) {

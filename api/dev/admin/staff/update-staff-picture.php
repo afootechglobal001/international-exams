@@ -101,8 +101,8 @@
             $response['data'][] = $fetchQuery;
         }
 
-$callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
-//////////////////////////////////////////////////////////////////////////////////////////////
 end:
+//////////////////////////////////////////////////////////////////////////////////////////////
+$callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

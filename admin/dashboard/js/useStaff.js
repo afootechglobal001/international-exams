@@ -19,6 +19,7 @@ function _fetchStaffs() {
                         <th>sn</th>
                         <th>User Name</th>
                         <th>Contact</th>
+						<th>Staff Branch</th>
                         <th>Role</th>
                         <th>Last Login</th>
                         <th>Status</th>
@@ -29,17 +30,20 @@ function _fetchStaffs() {
 				if (info.success) {
 					for (let i = 0; i < fetch.length; i++) {
 						no++;
-						const staffId = fetch[i].staffId;
-						const firstName = fetch[i].firstName;
-						const lastName = fetch[i].lastName;
-						const titleName = fetch[i].titleName;
+						const staffInfo = fetch[i];
+						const staffId = staffInfo.staffId;
+						const firstName = staffInfo.firstName;
+						const lastName = staffInfo.lastName;
+						const titleName = staffInfo.titleName;
 						const staffNames = titleName + ' ' + firstName + ' ' + lastName;
-						const emailAddress = fetch[i].emailAddress;
-						const phoneNumber = fetch[i].phoneNumber;
-						const roleName = fetch[i].roleName;
-						const profilePix = fetch[i].profilePix;
-						const lastLoginTime = fetch[i].lastLoginTime;
-						const statusName = fetch[i].statusName;
+						const emailAddress = staffInfo.emailAddress;
+						const phoneNumber = staffInfo.phoneNumber;
+						const roleName = staffInfo.roleName;
+						const countryName = staffInfo.countryName;
+						const branchName = staffInfo.branchName;
+						const profilePix = staffInfo.profilePix;
+						const lastLoginTime = staffInfo.lastLoginTime;
+						const statusName = staffInfo.statusName;
 
 						text +=`
 						<tbody>
@@ -61,6 +65,12 @@ function _fetchStaffs() {
 									<div class="text-div">
 										<div>${emailAddress}</div> 
 										<div>${phoneNumber}</div>
+									</div>
+								</td>
+								<td>
+									<div class="text-div">
+										<div>${countryName}</div> 
+										<div>${branchName}</div>
 									</div>
 								</td>
 								<td>${roleName}</td>
@@ -166,6 +176,72 @@ function _getSelectBranch(fieldId){
 	}
 }
 
+
+function _getSelectCountry(fieldId){
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/preset-data/fetch-country`,
+			dataType: "json",
+			cache: false,
+			headers: getAuthHeaders(),
+			success: function(info) {
+				const data = info.data;
+				const success = info.success;
+				
+				if (success === true) {
+					for (let i = 0; i < data.length; i++) {
+						const id = data[i].countryId;
+						const value = data[i].countryName;
+						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\'); _fetchSelectedBranch()">'+ value +'</li>');
+					}	
+				} else {
+					_actionAlert(info.message, false); 
+				}
+			}
+		});
+	} catch (error) {
+		console.error("Error: ", error);
+		_actionAlert('An unexpected error occurred. Please try again.', false);
+	}
+}
+
+function _fetchSelectedBranch(){
+	_getSelectCountryBranch('branchId');
+}
+function _getSelectCountryBranch(fieldId){
+	const countryId = $('#countryId').val();
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/admin/branch/fetch-branch?countryId=${countryId}`,
+			dataType: "json",
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				const data = info.data;
+				const success = info.success;
+
+				if (success === true) {
+					$('#searchList_'+ fieldId).html('');
+					for (let i = 0; i < data.length; i++) {
+						const id = data[i].branchId;
+						const value = data[i].branchName;
+						$('#searchList_'+ fieldId).append('<li onclick="_clickOption(\'searchList_' + fieldId + '\', \'' + id + '\', \'' + value + '\')">'+ value +'</li>');
+					}	
+				} else {
+					_actionAlert(info.message, false); 
+				}
+			}
+		});
+	} catch (error) {
+		console.error("Error: ", error);
+		_actionAlert('An unexpected error occurred. Please try again.', false);
+	}
+	
+}
+
+
 function _createStaff() {
 	try {
 		let issueCount = 0;
@@ -176,12 +252,13 @@ function _createStaff() {
 		const emailAddress = $('#emailAddress').val();
 		const phoneNumber = $('#phoneNumber').val();
 		const address = $('#address').val();
+		const countryId = $('#countryId').val();
 		const branchId = $('#branchId').val();
 		const roleId = $('#roleId').val();
 		const statusId = $('#statusId').val();
 
-		$('#titleId, #firstName, #middleName, #lastName, #emailAddress, #phoneNumber, #address, #branchId, #roleId, #statusId').removeClass('issue');
-		$('#issue_titleId, #issue_firstName, #issue_middleName, #issue_lastName, #issue_emailAddress, #issue_phoneNumber, #issue_address, #issue_branchId, #issue_roleId, #issue_statusId').html('');
+		$('#titleId, #firstName, #middleName, #lastName, #emailAddress, #phoneNumber, #address, #countryId, #branchId, #roleId, #statusId').removeClass('issue');
+		$('#issue_titleId, #issue_firstName, #issue_middleName, #issue_lastName, #issue_emailAddress, #issue_phoneNumber, #issue_address, #issue_countryId, #issue_branchId, #issue_roleId, #issue_statusId').html('');
 
 		if (!titleId) {
 			$('#titleId').addClass('issue');
@@ -225,7 +302,12 @@ function _createStaff() {
 			issueCount++;
 		}
 
-		
+		if (!countryId) {
+			$('#countryId').addClass("issue");
+			$('#issue_countryId').html('USER ERROR! Kindly Select country to continue');
+			issueCount++;
+		}
+
 		if (!branchId) {
 			$('#branchId').addClass("issue");
 			$('#issue_branchId').html('USER ERROR! Kindly Select branch to continue');
@@ -260,6 +342,7 @@ function _createStaff() {
 				"emailAddress": emailAddress,
 				"phoneNumber": phoneNumber,
 				"address": address,
+				"countryId": countryId,
 				"branchId": branchId,
 				"roleId": roleId,
 				"statusId": statusId,
@@ -313,12 +396,13 @@ function _updateStaff() {
 		const emailAddress = $('#updateEmailAddress').val();
 		const phoneNumber = $('#updatePhoneNumber').val();
 		const address = $('#updateAddress').val();
-		const branchId = $('#updateBranchId').val();
+		const countryId = $('#countryId').val();
+		const branchId = $('#branchId').val();
 		const roleId = $('#updateRoleId').val();
 		const statusId = $('#updateStatusId').val();
 
-		$('#updateTitleId, #updateFirstName, #updateMiddleName, #updateLastName, #updateEmailAddress, #updatePhoneNumber, #updateAddress, #updateBranchId, #updateRoleId, #updateStatusId').removeClass('issue');
-		$('#issue_updateTitleId, #issue_updateFirstName, #issue_updateMiddleName, #issue_updateLastName, #issue_updateEmailAddress, #issue_updatePhoneNumber, #issue_updateAddress, #issue_updateBranchId, #issue_updateRoleId, #issue_updateStatusId').html('');
+		$('#updateTitleId, #updateFirstName, #updateMiddleName, #updateLastName, #updateEmailAddress, #updatePhoneNumber, #updateAddress, #countryId, #branchId, #updateRoleId, #updateStatusId').removeClass('issue');
+		$('#issue_updateTitleId, #issue_updateFirstName, #issue_updateMiddleName, #issue_updateLastName, #issue_updateEmailAddress, #issue_updatePhoneNumber, #issue_updateAddress, #issue_countryId, #issue_branchId, #issue_updateRoleId, #issue_updateStatusId').html('');
 
 		if (!titleId) {
 			$('#updateTitleId').addClass('issue');
@@ -362,9 +446,15 @@ function _updateStaff() {
 			issueCount++;
 		}
 
+		if (!countryId) {
+			$('#countryId').addClass("issue");
+			$('#issue_countryId').html('USER ERROR! Kindly select country to continue');
+			issueCount++;
+		}
+
 		if (!branchId) {
-			$('#updateBranchId').addClass("issue");
-			$('#issue_updateBranchId').html('USER ERROR! Kindly select branch to continue');
+			$('#branchId').addClass("issue");
+			$('#issue_branchId').html('USER ERROR! Kindly select branch to continue');
 			issueCount++;
 		}
 
@@ -396,6 +486,7 @@ function _updateStaff() {
 				"emailAddress": emailAddress,
 				"phoneNumber": phoneNumber,
 				"address": address,
+				"countryId": countryId,
 				"branchId": branchId,
 				"roleId": roleId,
 				"statusId": statusId

@@ -82,7 +82,7 @@
                         <a href="<?php echo $websiteUrl ?>/index">
                             <li>Gallery</li>
                         </a>
-                        <a title="" href="<?php echo $websiteUrl ?>/index">
+                        <a title="" href="<?php echo $websiteUrl ?>/contact">
                             <li>Contact us</li>
                         </a>
                     </ul>

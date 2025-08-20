@@ -13,36 +13,16 @@
     <?php include 'side-bar.php' ?>
 
 
-    <section class="main-container">
-        <div class="main-content-div">
+    <main id="page-content" class="animated fadeIn">
+        <script>
+        _getActivePage({
+            page: 'dashboard',
+            divid: 'dashboard'
+        });
+        </script>
 
-            <div class="active-page-div">
-                <div class="title">
-                    <i class="bi bi-speedometer2"></i>
-                    <h3>Dashboard</h3>
-                </div>
-                <div class="btn-div">
-                    <button class="btn" title="Refresh Page">
-                        <i class="bi bi-filetype-pdf"></i> Download E-books
-                    </button>
-                    <button class="btn apply-btn" title="Apply for Exam">
-                        <i class="bi bi-journal-text"></i>  Apply for Exam
-                    </button>
-                </div>
-
-            </div>
-
-            <div id="page-content">
-                <script>
-                _getActivePage({
-                    page: 'dashboard',
-                    divid: 'dashboard'
-                });
-                </script>
-            </div>
-
-        </div>
-    </section>
+    </main>
 </body>
+<?php include 'bottom-scripts.php'?>
 
 </html>

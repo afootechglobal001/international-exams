@@ -1,39 +1,42 @@
 <?php if ($page == 'viewStaff') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-people"></i> <strong>Administrators</strong></div>
-            <div class="bottom-title">
-                Active: <span id="active-staff">10</span> |
-                Suspended: <span>5</span>
+    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="title-div">
+            <div>
+                <div class="icon-div"><i class="bi bi-people"></i></div>
+            </div>
+            <div class="text-div">
+                <h3>Administrators</h3>
+                <p>Manage administrator accounts with ease. Assign roles, control access, and oversee activities to keep operations secure and well-organized.</p>
             </div>
         </div>
 
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to search staff..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search staff...</div>
-                </div>
+        <div class="btn-div">
+            <div class="search-div">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Staff Here...">
+                <i class="bi bi-search"></i>
             </div>
-
-            <div class="btn-div">
-                <button class="btn" type="button" title="ADD NEW STAFF"
-                    onclick="_getForm({page: 'staffReg', url: adminPortalLocalUrl});">
-                    <i class="bi-plus-square"></i> ADD NEW STAFF
-                </button>
-            </div>
+            <button class="btn" title="ADD NEW STAFF" onclick="_getForm({page: 'staffReg', url: adminPortalLocalUrl});">
+                <i class="bi-plus-square"></i> ADD NEW STAFF
+            </button>
         </div>
     </div>
 
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-people"></i>
+                    <p>Administrators</p>
+                </div>
+            </div>
 
-    <div class="pages-back-div">
-        <div class="table-div animated fadeIn">
-            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                <script>
-                    _fetchStaffs();
-                </script>
-            </table>
+            <div class="inner-table-content">
+                <div class="table-div animated fadeIn">
+                    <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                        <script>_fetchStaffs(); </script>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 <?php } ?>
@@ -124,13 +127,23 @@
                 <div class="alert alert-success form-alert">
                     <span>ADMINISTRATIVE INFORMATION</span>
                         <div class="text_field_back_container">
+                            <div class="text_field_container" id="countryId_container">
+                            <script>
+                                selectField({
+                                    id: 'countryId',
+                                    title: 'Select Country'
+                                });
+                                _getSelectCountry('countryId');
+                            </script>
+                        </div>
+
+                        <div class="text_field_back_container">
                             <div class="text_field_container" id="branchId_container">
                             <script>
-                            selectField({
-                                id: 'branchId',
-                                title: 'Select Branch'
-                            });
-                            _getSelectBranch('branchId');
+                                selectField({
+                                    id: 'branchId',
+                                    title: 'Select Branch'
+                                });
                             </script>
                         </div>
 
@@ -306,8 +319,30 @@
 
                     <div class="user-in">
                         <div class="title">STAFF RESIDENT INFORMATION</div>
-
                         <div class="profile-segment-div">
+                            <div class="text_field_container col-1" id="countryId_container">
+                                <script>
+                                    selectField({
+                                        id: 'countryId',
+                                        title: 'Select Country',
+                                        fieldValue: getEachStaffDetailsSession?.countryId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.countryName ?? ''
+                                    });
+                                    _getSelectCountry('countryId');
+                                </script>
+                            </div>
+
+                            <div class="text_field_container col-1" id="branchId_container">
+                                <script>
+                                    selectField({
+                                        id: 'branchId',
+                                        title: 'Select Branch',
+                                        fieldValue: getEachStaffDetailsSession?.branchId ?? '',
+                                        fieldLabel: getEachStaffDetailsSession?.branchName ?? ''
+                                    });
+                                </script>
+                            </div>
+
                             <div class="text_field_container col-2" id="updateAddress_container">
                                 <script>
                                     textField({
@@ -363,19 +398,7 @@
                         <div class="title">ADMINISTRATIVE INFORMATION</div>
 
                         <div class="profile-segment-div">
-                            <div class="text_field_container col-3" id="updateBranchId_container">
-                                <script>
-                                    selectField({
-                                        id: 'updateBranchId',
-                                        title: 'Select Branch',
-                                        fieldValue: getEachStaffDetailsSession?.branchId ?? '',
-                                        fieldLabel: getEachStaffDetailsSession?.branchName ?? ''
-                                    });
-                                    _getSelectBranch('updateBranchId');
-                                </script>
-                            </div>
-
-                            <div class="text_field_container col-3" id="updateRoleId_container">
+                            <div class="text_field_container col-1" id="updateRoleId_container">
                                 <script>
                                     selectField({
                                         id: 'updateRoleId',
@@ -387,7 +410,7 @@
                                 </script>
                             </div>
 
-                            <div class="text_field_container col-3" id="updateStatusId_container">
+                            <div class="text_field_container col-1" id="updateStatusId_container">
                                 <script>
                                     selectField({
                                         id: 'updateStatusId',

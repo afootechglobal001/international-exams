@@ -25,21 +25,6 @@
     </div>
 </div>
 
-<div id="customConfirmModal" class="modal-overlay" style="display:none;">
-    <div class="modal-box">
-        <div id="customConfirmIcon" class="modal-icon bg-warning">
-            <i class="bi bi-exclamation-octagon text-white"></i>
-        </div>
-
-        <h3 id="customConfirmTitle">Are you sure?</h3>
-        <p id="customConfirmMessage">This action can’t be undone. Please confirm if you want to proceed.</p>
-
-        <div class="modal-buttons">
-            <button id="confirmNoBtn" class="btn btn-outline">Cancel</button>
-            <button id="confirmYesBtn" class="btn btn-primary">Confirm</button>
-        </div>
-    </div>
-</div>
-
+<div id="customConfirmModal" class="modal-overlay" style="display:none;"></div>
 
 <div class="sidenavdiv-in" onclick="_close_side_nav()"></div>

@@ -790,63 +790,8 @@
             </div>
 
             <div class="inner-table-content">
-                <div class="exams-back-div">
-                    <div class="exam-div">
-                        <div class="exam-image">
-                            <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                        </div>
-
-                        <div class="top-div">
-                            <button class="delete-btn" title="DELETE">DELETE</button>
-                        </div>
-
-                        <div class="exam-info">
-                            <h3>IELTS</h3>
-                            <p>International English Language Testing System</p>
-                            <div class="exam-time">
-                                <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                            </div>
-                        </div>
-                        <div class="price">#270,000.00</div>
-                    </div>
-
-                    <div class="exam-div">
-                        <div class="exam-image">
-                            <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                        </div>
-
-                        <div class="top-div">
-                            <button class="delete-btn" title="DELETE">DELETE</button>
-                        </div>
-
-                        <div class="exam-info">
-                            <h3>IELTS</h3>
-                            <p>International English Language Testing System</p>
-                            <div class="exam-time">
-                                <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                            </div>
-                        </div>
-                        <div class="price">#270,000.00</div>
-                    </div>
-
-                    <div class="exam-div">
-                        <div class="exam-image">
-                            <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                        </div>
-
-                        <div class="top-div">
-                            <button class="delete-btn" title="DELETE">DELETE</button>
-                        </div>
-
-                        <div class="exam-info">
-                            <h3>IELTS</h3>
-                            <p>International English Language Testing System</p>
-                            <div class="exam-time">
-                                <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                            </div>
-                        </div>
-                        <div class="price">#270,000.00</div>
-                    </div>
+                <div class="exams-back-div" id="pageContent">
+                    <script>fetchCountryExamData();</script>
                 </div>
             </div>
         </div>
@@ -889,42 +834,26 @@
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="examId_container">
+                        <div class="text_field_container" id="publishId_container">
                             <script>
                                 selectField({
-                                    id: 'examId',
+                                    id: 'publishId',
                                     title: 'Select Exam'
                                 });
+                                _getSelectExams('publishId');
                             </script>
                         </div>
                          
-                        <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
+                        <div class="main-content-div form-main-content form-exam-content" id="examPreviewContainer" data-aos="fade-in" data-aos-duration="1500" style="display:none;">
                             <div class="tables-content-div form-content-div">
                                 <div class="content-title">
                                     <div class="title">
                                         <i class="bi bi-journal-text"></i>
-                                        <p>Registered Exam</p>
+                                        <p>Preview Exam</p>
                                     </div>
                                 </div>
 
-                                <div class="inner-table-content">
-                                    <div class="exams-back-div">
-                                        <div class="exam-div form-exam-div">
-                                            <div class="exam-image">
-                                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                                            </div>
-
-                                            <div class="top-div">
-                                                <div class="exam-status ACTIVE">ACTIVE</div>
-                                            </div>
-
-                                            <div class="exam-info">
-                                                <h3>IELTS</h3>
-                                                <p>International English Language Testing System</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="inner-table-content" id="pageContent2"></div>
                             </div>
                         </div>  
                         
@@ -962,7 +891,7 @@
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_addExamPricing();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

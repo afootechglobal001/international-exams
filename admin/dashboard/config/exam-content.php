@@ -1,4 +1,4 @@
-<?php if ($page == 'internationalExamCategory') { ?>
+<?php if ($page == 'examCategory') { ?>
     <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title-div">
             <div>
@@ -15,7 +15,7 @@
                 <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Exam Here...">
                 <i class="bi bi-search"></i>
             </div>
-            <button class="btn" title="ADD NEW INTERNATIONAL EXAM" onclick="_getForm({page: 'internationalExamReg', url: adminPortalLocalUrl});">
+            <button class="btn" title="ADD NEW INTERNATIONAL EXAM" onclick="sessionStorage.removeItem('getEachExamSession'); _getForm({page: 'examReg', url: adminPortalLocalUrl});">
                 <i class="bi-plus-square"></i> ADD NEW INTERNATIONAL EXAM
             </button>
         </div>
@@ -32,110 +32,8 @@
 
             <div class="inner-table-content">
                 <div class="other-pg-back-div">
-                    <div class="exams-back-div">
-                        <div class="exam-div">
-                            <div class="exam-image">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                            </div>
-                            
-                            <div class="top-div">
-                               <div class="btn-div">
-                                    <button class="btn active-btn" title="EDIT" onclick="">EDIT</button>
-                                    <button class="btn" title="EDIT PAGE DETAILS" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                                </div>
-                                <div class="exam-status ACTIVE">ACTIVE</div>
-                            </div>
-
-                            <div class="exam-info">
-                                <h3>IELTS</h3>
-                                <p>International English Language Testing System</p>
-                                <div class="exam-time">
-                                    <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                                    <p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
-                                </div>
-                            </div>
-                            <button class="btn" title="Related Links" onclick="_getActivePage({page:'examRelatedLinks', divid:'publish'});">
-                                Related Links <span>5</span>
-                            </button>
-                        </div>
-
-                        <div class="exam-div">
-                            <div class="exam-image">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                            </div>
-
-                            <div class="top-div">
-                               <div class="btn-div">
-                                    <button class="btn active-btn" title="EDIT" onclick="">EDIT</button>
-                                    <button class="btn" title="EDIT PAGE DETAILS" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                                </div>
-                                <div class="exam-status SUSPENDED">SUSPENDED</div>
-                            </div>
-
-                            <div class="exam-info">
-                                <h3>IELTS</h3>
-                                <p>International English Language Testing System</p>
-                                <div class="exam-time">
-                                    <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                                    <p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
-                                </div>
-                            </div>
-                            <button class="btn" title="Related Links">
-                                Related Links <span>5</span>
-                            </button>
-                        </div>
-
-                        <div class="exam-div">
-                            <div class="exam-image">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                            </div>
-
-                            <div class="top-div">
-                               <div class="btn-div">
-                                    <button class="btn active-btn" title="EDIT" onclick="">EDIT</button>
-                                    <button class="btn" title="EDIT PAGE DETAILS" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                                </div>
-                                <div class="exam-status ACTIVE">ACTIVE</div>
-                            </div>
-
-                            <div class="exam-info">
-                                <h3>IELTS</h3>
-                                <p>International English Language Testing System</p>
-                                <div class="exam-time">
-                                    <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                                    <p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
-                                </div>
-                            </div>
-                            <button class="btn" title="Related Links">
-                                Related Links <span>5</span>
-                            </button>
-                        </div>
-
-                        <div class="exam-div">
-                            <div class="exam-image">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                            </div>
-
-                            <div class="top-div">
-                               <div class="btn-div">
-                                    <button class="btn active-btn" title="EDIT" onclick="">EDIT</button>
-                                    <button class="btn" title="EDIT PAGE DETAILS" onclick="_getForm({page: 'editPageForm', pageCatId: 'internationalExamCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                                </div>
-                                <div class="exam-status ACTIVE">ACTIVE</div>
-                            </div>
-
-                            <div class="exam-info">
-                                <h3>IELTS</h3>
-                                <p>International English Language Testing System</p>
-                                <div class="exam-time">
-                                    <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
-                                    <p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
-                                </div>
-                            </div>
-                            <button class="btn" title="Related Links">
-                                Related Links <span>5</span>
-                            </button>
-                        </div>
+                    <div class="exams-back-div" id="pageContent">
+                        <script>_fetchExamData();</script>
                     </div>
                 </div>
             </div>
@@ -143,12 +41,18 @@
     </div>
 <?php } ?>
 
-<?php if ($page == 'internationalExamReg') { ?>
+<?php if ($page == 'examReg') { ?>
+    <script> 
+        getEachExamSession = JSON.parse(sessionStorage.getItem("getEachExamSession"));
+        $('#pageTitle').html(getEachExamSession?.publishId ? 'UPDATE EXAM':'CREATE NEW EXAM');
+        $('#subTitle, #subTitle2, #subTitle3').html(getEachExamSession?.publishId ? 'update this exam':'create new exam');
+    </script>
+
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-book-half"></i></div>
-                <h3>CRETAE NEW EXAM</h3>
+                <h3 id="pageTitle">CRETAE NEW EXAM</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -160,7 +64,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to create a new international exam. Please complete the form below with accurate details to successfully create new exam.</p>
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
             <div class="main-content-div">
@@ -168,25 +72,27 @@
                     <div class="content-title">
                         <div class="title">
                             <i class="bi bi-book-half"></i>
-                            <p>Create new exam here</p>
+                            <p>Exam Registration</p>
                         </div>
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="name_container">
+                        <div class="text_field_container" id="regTitle_container">
                             <script>
                                 textField({
-                                    id: 'name',
-                                    title: 'Exam Name'
+                                    id: 'regTitle',
+                                    title: 'Exam Name',
+                                    value: getEachExamSession?.regTitle ?? ''
                                 });
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="abbreviation_container">
+                        <div class="text_field_container" id="examAbbr_container">
                             <script>
                                 textField({
-                                    id: 'abbreviation',
+                                    id: 'examAbbr',
                                     title: 'Exam Abbreviation',
+                                    value: getEachExamSession?.examAbbr ?? ''
                                 });
                             </script>
                         </div>
@@ -195,16 +101,33 @@
                         <label>
                             <div class="pix-div">
                                 <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
                             </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    const examPix = getEachExamSession.regPix;
+                                    const examPixUrl = examPix ? "<?php echo $websiteUrl ?>/uploaded_files/examLogo/" + examPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+
+                                    $("#examPixPreview").attr("src", examPixUrl).attr("alt", getEachExamSession.regPix + " Logo");
+                                });
+                            </script>
                         </label>
 
                         <div class="text_area_container" id="incentives_container">
                             <script>
-                                textField({
-                                    id: 'incentives',
-                                    title: 'Incentives',
-                                    type: 'textarea',
+                                $(document).ready(function () {
+                                    const incentivesList = getEachExamSession?.incentivesData?.map(item => item.incentives) || [];
+
+                                    // Join them with comma and space
+                                    const incentivesValue = incentivesList.join(", ");  
+
+                                    textField({
+                                        id: 'incentives',
+                                        title: 'Incentives',
+                                        type: 'textarea',
+                                        value: incentivesValue
+                                    });
                                 });
                             </script>
                         </div>
@@ -213,15 +136,18 @@
                             <script>
                                 selectField({
                                     id: 'statusId',
-                                    title: 'Select Status'
+                                    title: 'Select Status',
+                                    fieldValue: getEachExamSession?.statusId ?? '',
+                                    fieldLabel: getEachExamSession?.statusName ?? ''
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createStaff();"> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createExam();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

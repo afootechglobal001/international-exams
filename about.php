@@ -37,7 +37,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
 
-           
+
             <div class="top-title">
                 <nav>
                     <ul>
@@ -47,7 +47,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </nav>
             </div>
 
-            
+
             <div class="other-pages-back-div">
                 <div class="main-content-back-div">
 
@@ -73,7 +73,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
 
                     <div class="image-div">
-                        <img src="https://webliststudio.com/all-images/body-pix/about.svg" alt="Weblist Studio Company">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
                     </div>
 
                 </div>
@@ -138,7 +138,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     <div class="image-div" data-aos="fade-in" data-aos-duration="1200">
 
                         <div class="values-image" data-aos="fade-in" data-aos-duration="1200">
-                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/values.svg" alt="Team working">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/bg2.png" alt="Team working">
                         </div>
                     </div>
 
@@ -441,82 +441,35 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </script>
         </section>
 
+
         <section class="body-div">
             <div class="body-div-in">
                 <div class="inner-body-div-in">
-                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
-                        <div class="left-div">
-                            <div class="top-title">
-                                <h2>LATEST INSIGHTS</h2>
-                            </div>
-                            <h3>Our Latest News And <span>#Articles</span></h3>
-                        </div>
+                   
+                    <div class="left-container">
+                        <h2>Best Cloud Hosting With Trusted Service</h2>
+                        <p>
+                            Objectively innovate high standards in methodologies vis-a-vis sustainable compellingly
+                            architect front-end methods maintain multidisciplinary process proactively streamline
+                            mission-critical information via quality imperatives.
+                        </p>
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i
-                                        class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Get Started Now">Get Started Now</button>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="blog-back-div">
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog1.png"
-                                        alt="How International Exams Open Doors to Global Education Opportunities">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 250 VIEWS</div>
-                                    <h3>How International Exams Open Doors to Global Education Opportunities</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog2.png"
-                                        alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 50 VIEWS</div>
-                                    <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog3.png"
-                                        alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 200 VIEWS</div>
-                                    <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
+                   
+                    <div class="right-container">
+                        <div class="image-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/company.png"
+                                alt="International Exam">
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </section>

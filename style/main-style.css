@@ -406,6 +406,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
   justify-content: center;
   align-items: center;
   padding: 50px 0px;
+  background: var(--primary-color);
 }
 
 .body-div .body-div-in {
@@ -426,74 +427,64 @@ header .main-header .main-header-inner .button-div .btn:hover {
 .body-div .body-div-in .inner-body-div-in {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
-.body-div .body-div-in .inner-body-div-in .title-div {
-  width: 100%;
-  display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 
-.body-div .body-div-in .inner-body-div-in .title-div .left-div {
+
+.body-div .body-div-in .inner-body-div-in .left-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
+  width: 50%;
+ 
 }
 
-.body-div .body-div-in .inner-body-div-in .title-div .left-div .top-title {
-  display: flex;
-  align-items: center;
-  padding: 5px 12px;
-  font-size: 13px;
-  font-family: body-font;
-  border-radius: 3px;
-  color: var(--secondary-color);
-  background: rgb(215, 53, 58, 0.1);
-  width: fit-content;
-}
-
-.body-div .body-div-in .inner-body-div-in .title-div .left-div .top-title h2 {
-  font-family: body-font;
-  font-size: 14px;
-}
-
-.body-div .body-div-in .inner-body-div-in .title-div .left-div h3 {
-  font-size: 30px;
-  line-height: 40px;
-  width: 500px;
-  color: var(--body-color);
-}
-
-.body-div .body-div-in .inner-body-div-in .title-div .btn-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.body-div .body-div-in .inner-body-div-in .title-div .btn-div .btn {
-  border: none;
-  height: 45px;
-  min-width: 170px;
-  border-radius: 50px;
-  padding: 0px 20px;
+.body-div .body-div-in .inner-body-div-in .left-container h2 {
+  font-size: 55px;
+  font-family: title-font;
   color: var(--white-color);
-  font-size: 15px;
-  font-family: sub-title-font;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
-  cursor: pointer;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.body-div .body-div-in .inner-body-div-in .left-container p {
+  font-size: 19px;
+  font-family: body-font;
+  color: var(--white-color);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+
+
+.body-div .body-div-in .inner-body-div-in .right-container .image-div {
+  width: 80%;
+  overflow: hidden;
+}
+
+
+.body-div .body-div-in .inner-body-div-in .right-container .image-div img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.body-div .body-div-in .inner-body-div-in .left-container .btn-div {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+ }
+
+.body-div .body-div-in .inner-body-div-in .btn {
+  background: var(--secondary-color);
+  border: none;
+  height: 50px;
+  padding: 0px 25px;
+  border-radius: 25px;
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 15px;
+  font-family: body-font;
   -moz-transition: all 0.2s ease-in 02s;
   transition: all 0.2s ease-in 0.2s;
   -webkit-transition: all 0.2s ease-in 0.2s;
@@ -501,25 +492,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
   -o-transition: all 0.2s ease-in 0.2s;
 }
 
-.body-div .body-div-in .inner-body-div-in .title-div .btn-div .btn i {
-  font-size: 13px;
-}
 
-.body-div .body-div-in .inner-body-div-in .title-div .btn-div .btn:hover {
-  opacity: 0.8;
-}
-
-.body-div .body-div-in .inner-body-div-in .title-div .left-div h3 span {
-  background: linear-gradient(
-    90deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
 
 @media all and (max-width: 740px) {
   .body-div .body-div-in .inner-body-div-in .title-div .left-div h3 {
@@ -1001,12 +974,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
   width: 22px;
   height: 22px;
   border-radius: 50%;   
-  background: var(--link-color);  
+  background: var(--primary-color);  
   color: var(--white-color); ;          
   font-size: 12px;
   font-family: body-font;
   margin-right: 12px;
-    
 }
 
 
@@ -1048,7 +1020,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
-.blog-back-div {
+/* .blog-back-div {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1157,7 +1129,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 
 .blog-back-div .blog-div .blog-inner-div .text-div .btn:hover {
   opacity: 0.6;
-}
+} */
 
 @media all and (max-width: 920px) {
   .blog-back-div {
@@ -2460,6 +2432,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
 
 .other-pages-slide-div .top-title nav ul li:hover {
   color: var(--secondary-color);
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
 }
 
 .other-pages-slide-div .top-title nav ul li i {
@@ -2483,7 +2460,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .other-pages-slide-div .other-pages-back-div .main-content-back-div .text-content-div {
-  width: 50%;
+  width: 60%;
 }
 
 
@@ -2506,7 +2483,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .other-pages-slide-div .other-pages-back-div .main-content-back-div .text-content-div p {
-  font-size: 16px;
+  font-size: 17px;
   font-family: body-font;
   color: var(--white-color);
   margin-bottom: 25px; 
@@ -2522,8 +2499,8 @@ header .main-header .main-header-inner .button-div .btn:hover {
   background: var(--secondary-color);
   height: 50px;
   border: none;
-  padding: 10px 25px;
-  border-radius: 4px;
+  padding: 0px 25px;
+  border-radius: 25px;
   color: var(--white-color);
   cursor: pointer;
   font-size: 14px;
@@ -2531,6 +2508,12 @@ header .main-header .main-header-inner .button-div .btn:hover {
   display: flex;
   align-items: center;
   gap: 6px;
+  -moz-transition: all 0.2s ease-in 02s;
+  transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+
 }
 
 .other-pages-slide-div .other-pages-back-div .main-content-back-div .btn.right-btn {

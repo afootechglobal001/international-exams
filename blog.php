@@ -36,21 +36,55 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-            <div class="other-pages-slide-card">
-                <h1>Blog</h1>
 
-                <div class="text-div">
-                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                        into foreign universities.
-                    </p>
-                    <div class="btn-div">
-                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                It's Free</span>
-                        </button>
+            <div class="top-title">
+                <nav>
+                    <ul>
+                        <li title="Home">
+                            <a href="<?php echo $websiteUrl ?>/index">
+                                Home <i class="bi bi-caret-right-fill"></i>
+                            </a>
+                        </li>
+                        <li title="Blog">
+                            <a href="<?php echo $websiteUrl ?>/blog">
+                                Blog & Article
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="other-pages-back-div">
+                <div class="main-content-back-div">
+
+                    <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
+                        <h1>Latest Insight</h1>
+                        <p>
+                            Edugrade Services is a leading international educational consultancy with centers across
+                            Nigeria and countries like Ghana, Kenya, Ethiopia, and Uganda. With over 9 years of
+                            experience, we have successfully guided thousands of students into top universities abroad.
+                        </p>
+
+                        <div class="btn-div">
+                            <a href="#" title="Register For Exam">
+                                <button class="btn" title="Register For Exam">
+                                    Register For Exam <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </a>
+                            <a href="#" title="Download E-Books">
+                                <button class="btn right-btn" title="Download E-Books">
+                                    <i class="bi bi-download"></i> Download E-Books <span class="span">
+                                        It's Free</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="image-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -69,7 +103,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-text-div">
                             <h2>Study Abroad with Interantional Exams</h2>
                             <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
-                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school administration for basic and secondary schools in Nigeria.
+                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school
+                                administration for basic and secondary schools in Nigeria.
                                 From staff management to academic performance tracking, learn how this innovative
                                 platform is simplifying school operations and improving efficiency.
                             </p>
@@ -84,10 +119,10 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                             <div class="text_field_container" id="search_container" title="Search Blog">
                                 <script>
-                                    textField({
-                                        id: 'search',
-                                        title: 'Type Here To Search'
-                                    });
+                                textField({
+                                    id: 'search',
+                                    title: 'Type Here To Search'
+                                });
                                 </script>
                             </div>
                         </div>
@@ -110,14 +145,14 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
                         </div>
                         <div class="trade-mark">
-                            <span>INTERNATIONAL EXAMS</span>
+                            <span>TOEFL & IELTS Prep</span>
                         </div>
                         <div class="blog-text-div">
-                            <h2>Study Abroad with Interantional Exams</h2>
+                            <h2>Your Guide to Excelling in English Proficiency Tests</h2>
                             <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
-                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school administration for basic and secondary schools in Nigeria.
-                                From staff management to academic performance tracking, learn how this innovative
-                                platform is simplifying school operations and improving efficiency.
+                            <p> Master <strong>"TOEFL and IELTS"</strong> with tips, strategies, and resources that
+                                boost your confidence and scores. Find out how Edugrade Services helps you prepare for
+                                success
                             </p>
                             <a href="#">read more <i class="bi-arrow-right"></i></a>
                         </div>
@@ -130,14 +165,14 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
                         </div>
                         <div class="trade-mark">
-                            <span>INTERNATIONAL EXAMS</span>
+                            <span>Study Abroad</span>
                         </div>
                         <div class="blog-text-div">
-                            <h2>Study Abroad with Interantional Exams</h2>
+                            <h2>Top 3 Countries for International Students in 2025</h2>
                             <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
-                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school administration for basic and secondary schools in Nigeria.
-                                From staff management to academic performance tracking, learn how this innovative
-                                platform is simplifying school operations and improving efficiency.
+                            <p> Explore the most <strong>"popular destinations"</strong> or students seeking quality
+                                education abroad. From Canada to the UK, discover opportunities that shape global
+                                careers.
                             </p>
                             <a href="#">read more <i class="bi-arrow-right"></i></a>
                         </div>
@@ -161,7 +196,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
@@ -169,15 +205,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog1.png" alt="How International Exams Open Doors to Global Education Opportunities">
+                                    <img src="all-images/blogs/blog1.png"
+                                        alt="How International Exams Open Doors to Global Education Opportunities">
                                 </div>
 
                                 <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 250 VIEWS</div>
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
+                                            class="bi-eye-fill"></i> 250 VIEWS</div>
                                     <h3>How International Exams Open Doors to Global Education Opportunities</h3>
 
                                     <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -185,15 +224,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog2.png" alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
+                                    <img src="all-images/blogs/blog2.png"
+                                        alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
                                 </div>
 
                                 <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 50 VIEWS</div>
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
+                                            class="bi-eye-fill"></i> 50 VIEWS</div>
                                     <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
 
                                     <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -201,15 +243,18 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog3.png" alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
+                                    <img src="all-images/blogs/blog3.png"
+                                        alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
                                 </div>
 
                                 <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 200 VIEWS</div>
+                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
+                                            class="bi-eye-fill"></i> 200 VIEWS</div>
                                     <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
 
                                     <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button></a>
                                 </div>
                             </div>
                         </div>

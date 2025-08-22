@@ -67,22 +67,22 @@
                         <a href="<?php echo $websiteUrl ?>/about" title="About Us">
                             <li>About Us</li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/study-abroad" title="" >
+                        <a href="<?php echo $websiteUrl ?>/study-abroad" title="study-abroad" >
                             <li>Study Abroad <i class="bi-plus"></i></li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/international-exams" title="" >
+                        <a href="<?php echo $websiteUrl ?>/international-exams" title="international-exams" >
                             <li>International Exam <i class="bi-plus"></i></li>
                         </a>
                         <a  href="<?php echo $websiteUrl ?>/index">
                             <li>Payment plans</li>
                         </a>
-                        <a title="" href="<?php echo $websiteUrl ?>/blog">
+                        <a title="blog" href="<?php echo $websiteUrl ?>/blog">
                             <li>Blog</li>
                         </a>
                         <a href="<?php echo $websiteUrl ?>/index">
                             <li>Gallery</li>
                         </a>
-                        <a title="" href="<?php echo $websiteUrl ?>/contact">
+                        <a title="contact" href="<?php echo $websiteUrl ?>/contact">
                             <li>Contact us</li>
                         </a>
                     </ul>

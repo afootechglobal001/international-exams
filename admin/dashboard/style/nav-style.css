@@ -89,7 +89,7 @@ header .header-div-in .header-nav-div .left-nav	ul li{
 	gap: 5px;
 	list-style: none;
 	font-family: body-font;
-	color: var(--text-color);
+	color: var(--sub-body-color);
 	padding: 10px 15px;
 	font-size: 12px;
 	border-radius: 5px;
@@ -459,9 +459,10 @@ header .header-div-in .header-nav-div .right-nav .toggle-profile-div .toggle-div
 	color:var(--white-color);
 	font-size:12px;
 	border-radius:3px;
+	 transition: all 0.2s ease-in 0.2s;
 }
 .side-nav-bg-sub-div .nav-div .link:hover{
-	background:rgba(215, 215, 215, .6);
+	background: linear-gradient(-50deg, #f5f0e2, #FFF);
 }
 
 .side-nav-bg-sub-div .nav-back-container{

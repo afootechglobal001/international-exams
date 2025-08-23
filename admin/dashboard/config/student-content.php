@@ -1,176 +1,167 @@
-<?php if ($page == 'viewStudents') { ?>
-    <div class="other-pages-title-back-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="page-title-div">
-            <div class="title"><i class="bi-people"></i> <strong>Students</strong></div>
-            <div class="bottom-title">
-                Active: <span id="active-staff">10</span> |
-                Suspended: <span>5</span>
-            </div>
-        </div>
-
-        <div class="other-pages-filter-div">
-            <div class="text-field-wrapper">
-                <div class="text_field_container search_field_container">
-                    <input class="text_field dash_text_field" type="text" id="searchContent" onkeyup="filters('Content')"
-                        placeholder="" title="Type here to search students..." />
-                    <div class="placeholder dash_placeholder"><i class="bi-search"></i> Type here to search students...</div>
+<?php if ($page == 'branchCountryStudent') { ?>
+    <div class="main-content-div student-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-mortarboard"></i>
+                    <p>Students</p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="pages-back-div">
-        <div class="table-div animated fadeIn">
-            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                <thead>
-                    <tr class="tb-col">
-                        <th>sn</th>
-                        <th>User Name</th>
-                        <th>Contact</th>
-                        <th>Last Login</th>
-                        <th>Status</th>
-                        <th>View</th>
-                    </tr>
-                </thead>
+            <div class="inner-table-content">
+                <div class="table-div animated fadeIn">
+                    <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                        <thead>
+                            <tr class="tb-col">
+                                <th>sn</th>
+                                <th>User Name</th>
+                                <th>Contact</th>
+                                <th>Last Login</th>
+                                <th>Status</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
 
-                <tbody>
-                    <tr class="tb-row">
-                        <td>1</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_getForm({page: 'studentProfile', url: adminPortalLocalUrl});">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
+                        <tbody>
+                            <tr class="tb-row">
+                                <td>1</td>
+                                <td class="clickable-td" title="Click to view staff profile" onclick="_getForm({page: 'studentProfile', layer: 2, url: adminPortalLocalUrl});">
+                                    <div class="text-back-div">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                        </div>
 
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_getForm({page: 'studentProfile', url: adminPortalLocalUrl});">VIEW</button></td>
-                    </tr>
+                                        <div class="text-div">
+                                            <div class="first-class">Paul Emmanuel</div>
+                                            <div class="second-class">STUDENT001239485959</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-div">
+                                        <div>seunemmanuel107@gmail.com</div>
+                                        <div>07050903886</div>
+                                    </div>
+                                </td>
+                                <td>00-00-00 00:00:00</td>
+                                <td>
+                                    <div class="status-div ACTIVE">ACTIVE</div>
+                                </td>
+                                <td><button class="btn view-btn" title="Click to view staff profile" onclick="_getForm({page: 'studentProfile', url: adminPortalLocalUrl});">VIEW</button></td>
+                            </tr>
 
-                    <tr class="tb-row">
-                        <td>2</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
+                            <tr class="tb-row">
+                                <td>2</td>
+                                <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                                    <div class="text-back-div">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                        </div>
 
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
+                                        <div class="text-div">
+                                            <div class="first-class">Paul Emmanuel</div>
+                                            <div class="second-class">STUDENT001239485959</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-div">
+                                        <div>seunemmanuel107@gmail.com</div>
+                                        <div>07050903886</div>
+                                    </div>
+                                </td>
+                                <td>00-00-00 00:00:00</td>
+                                <td>
+                                    <div class="status-div ACTIVE">ACTIVE</div>
+                                </td>
+                                <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                            </tr>
 
-                    <tr class="tb-row">
-                        <td>3</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
+                            <tr class="tb-row">
+                                <td>3</td>
+                                <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                                    <div class="text-back-div">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                        </div>
 
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
+                                        <div class="text-div">
+                                            <div class="first-class">Paul Emmanuel</div>
+                                            <div class="second-class">STUDENT001239485959</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-div">
+                                        <div>seunemmanuel107@gmail.com</div>
+                                        <div>07050903886</div>
+                                    </div>
+                                </td>
+                                <td>00-00-00 00:00:00</td>
+                                <td>
+                                    <div class="status-div ACTIVE">ACTIVE</div>
+                                </td>
+                                <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                            </tr>
 
-                    <tr class="tb-row">
-                        <td>4</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
+                            <tr class="tb-row">
+                                <td>4</td>
+                                <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                                    <div class="text-back-div">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                        </div>
 
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
+                                        <div class="text-div">
+                                            <div class="first-class">Paul Emmanuel</div>
+                                            <div class="second-class">STUDENT001239485959</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-div">
+                                        <div>seunemmanuel107@gmail.com</div>
+                                        <div>07050903886</div>
+                                    </div>
+                                </td>
+                                <td>00-00-00 00:00:00</td>
+                                <td>
+                                    <div class="status-div ACTIVE">ACTIVE</div>
+                                </td>
+                                <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                            </tr>
 
-                    <tr class="tb-row">
-                        <td>5</td>
-                        <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                            <div class="text-back-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                </div>
+                            <tr class="tb-row">
+                                <td>5</td>
+                                <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
+                                    <div class="text-back-div">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
+                                        </div>
 
-                                <div class="text-div">
-                                    <div class="first-class">Paul Emmanuel</div>
-                                    <div class="second-class">STUDENT001239485959</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-div">
-                                <div>seunemmanuel107@gmail.com</div>
-                                <div>07050903886</div>
-                            </div>
-                        </td>
-                        <td>00-00-00 00:00:00</td>
-                        <td>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                        </td>
-                        <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                                        <div class="text-div">
+                                            <div class="first-class">Paul Emmanuel</div>
+                                            <div class="second-class">STUDENT001239485959</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-div">
+                                        <div>seunemmanuel107@gmail.com</div>
+                                        <div>07050903886</div>
+                                    </div>
+                                </td>
+                                <td>00-00-00 00:00:00</td>
+                                <td>
+                                    <div class="status-div ACTIVE">ACTIVE</div>
+                                </td>
+                                <td><button class="btn view-btn" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">VIEW</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
     </div>
 <?php } ?>
 
@@ -179,7 +170,7 @@
         <div class="top-panel-div">
             <div class="inner-top">
                 <span><i class="bi-person-check-fill"></i> USER PROFILE</span>
-                <div class="close" title="Close" onclick="_alertClose();">X</div>
+                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
             </div>
         </div>
 

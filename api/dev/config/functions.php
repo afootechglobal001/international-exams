@@ -80,6 +80,29 @@ function _getStaffDetails($conn,$staffId){
 }
 
 
+function _getSetupPageCategoryDetails($conn,$pageCategoryId){
+	$query=mysqli_query($conn,"SELECT * FROM SETUP_PAGE_CATEGORIES_TAB WHERE pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
+	$fetchQuery=mysqli_fetch_array($query);
+        $response = [
+            "pageCategoryId" => $fetchQuery['pageCategoryId'],
+            "pageCategoryName" => $fetchQuery['pageCategoryName']
+        ];
+		return json_encode([$response]);
+}
+
+function _getPublishDetails($conn,$publishId, $pageCategoryId){
+	$query=mysqli_query($conn,"SELECT * FROM PUBLISH_TAB WHERE publishId='$publishId' AND pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
+	$fetchQuery=mysqli_fetch_array($query);
+        $response = [
+            "pageCategoryId" => $fetchQuery['pageCategoryId'],
+            "publishId" => $fetchQuery['publishId'],
+            "regTitle" => $fetchQuery['regTitle'],
+            "examAbbr" => $fetchQuery['examAbbr'],
+            "regPix" => $fetchQuery['regPix']
+        ];
+		return json_encode([$response]);
+}
+
 }//end of class
 $callclass=new allClass();
 

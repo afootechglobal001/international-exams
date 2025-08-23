@@ -20,7 +20,7 @@ function _getActiveLink(divid, nav) {
 }
 
 function _removeClass(){
-	$('#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-students, #top-dashboard, #top-staff').removeClass('active-li');
+	$('#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-ebook, #top-dashboard, #top-staff').removeClass('active-li');
 	$('#mobile-dashboard,#mobile-branches,#mobile-staff,#mobile-reports').removeClass('active-li');
 }
 
@@ -82,6 +82,14 @@ function srch_custom(text){
 	$('.custom-srch-div').fadeIn(500);
 };
 
+
+function _closeSearchDiv(event) {
+    if (!$(event.target).closest(".srch-select, .text-right").length) {
+        $(".srch-select").hide("slow");
+    }
+}
+$(document).on("click", _closeSearchDiv);
+
 function capitalizeFirstLetterOfEachWord(inputText) {
 	const words = inputText.toLowerCase().split(' ');
 	for (let i = 0; i < words.length; i++) {
@@ -93,15 +101,39 @@ function capitalizeFirstLetterOfEachWord(inputText) {
 
 function filters(selectBoxId) {
 	var valThis = $('#search'+selectBoxId).val();
-		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div').each(function() {
+		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div, .exam-div').each(function() {
 		var text = $(this).text();
 		(text.toLowerCase().indexOf(valThis.toLowerCase()) > -1) ? $(this).show(): $(this).hide();
 	});
 };
 
+function thousandSeperator(val) {
+	let dp=2;
+  const formatter = new Intl.NumberFormat('ng-NG', {
+    style: 'decimal',
+    maximumFractionDigits: dp,
+    minimumFractionDigits: dp,
+  });
+  //   return formatter.format(val);
+  return isNaN(parseFloat(formatter.format(val))) ? '-' : formatter.format(val);
+};
+
 function _logOut(){
 	sessionStorage.clear();
 	window.parent.location.href = adminPortalUrl;
+}
+
+function _confirmLogOut() {
+  _showCustomConfirm({
+    callback: () => {
+      _logOut();
+    },
+    title: "Confirm Logout Action!",
+    message:
+      "Are you sure you want to log out? You may miss important notifications or updates until you sign in again.",
+    alertType: "warning",
+    falseActionBtn: true,
+  });
 }
 
 function getAuthHeaders(includeAuth = false) {

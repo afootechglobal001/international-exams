@@ -24,21 +24,25 @@
                 <div class="title">
                     <i class="bi bi-diagram-3"></i>
                     <p>Branches</p>
+                </div>
             </div>
-        </div>
 
-        <div class="inner-table-content">
-            <div class="table-div animated fadeIn">
-                <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                    <script>_fetchCountryData();</script>
-                </table>
+            <div class="inner-table-content">
+                <div class="table-div animated fadeIn">
+                    <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                        <script>
+                            _fetchCountryData();
+                        </script>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-<?php } ?>
+    <?php } ?>
 
 <?php if ($page == 'branchCountry') { ?>
-    <script> getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));</script>
+    <script>
+        getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
+    </script>
     <div class="user-profile-div" data-aos="fade-left" data-aos-duration="900">
         <div class="top-panel-div">
             <div class="inner-top">
@@ -69,14 +73,18 @@
                                         <div id="statusBtn" class="status-btn"><span id="statusName"></span></div>
                                     </div>
                                     | OFFICIAL EMAIL:
-                                    <strong id="officialEmailAddress"><script>
-                                        $("#officialEmailAddress").html(getEachCountrySession?.email);
-                                    </script></strong>
+                                    <strong id="officialEmailAddress">
+                                        <script>
+                                            $("#officialEmailAddress").html(getEachCountrySession?.email);
+                                        </script>
+                                    </strong>
 
                                     | OFFICIAL NUMBER:
-                                    <strong id="officialPhoneNumber"><script>
-                                        $("#officialPhoneNumber").html(getEachCountrySession?.phoneNumber);
-                                    </script></strong>
+                                    <strong id="officialPhoneNumber">
+                                        <script>
+                                            $("#officialPhoneNumber").html(getEachCountrySession?.phoneNumber);
+                                        </script>
+                                    </strong>
                                 </div>
                                 <script>
                                     $(document).ready(function() {
@@ -91,17 +99,20 @@
                 </div>
             </div>
 
-            <div class="btn-div branch-btn-div">
+            <div class="btn-div">
                 <div class="div-in">
                     <ul>
                         <li class="active" title="Dashboard" id="countryBranchDashboard" onclick="_getActiveBranchPage({divid: 'countryBranchDashboard', page: 'countryBranchDashboard', url: adminPortalLocalUrl});"><i class="bi-speedometer2"></i> Dashboard</li>
                         <li title="Branches" id="branchesPage" onclick="_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});"><i class="bi-diagram-3"></i> Branches</li>
-                        <li class="hide-li" id="dotted" title="Branch Student"><i class="bi-mortarboard"></i> Student</li>
+                        <li id="examPricingPage" title="Exam Pricing" onclick="_getActiveBranchPage({divid: 'examPricingPage', page: 'examPricingPage', url: adminPortalLocalUrl});"><i class="bi-credit-card-fill"></i> Exam Pricing</li>
+                        <li id="examPricing" title="Exam Pricing"><i class="bi-geo-alt"></i> Exam Location</li>
+                        <li id="examPricing" title="Exam Pricing"><i class="bi-person-vcard"></i> Agent</li>
+                        <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="field-back-div background-color">
+            <div class="field-back-div">
                 <div class="field-inner-div branch-field-inner-div" id="getBranchDetails">
                     <script>
                         _getActiveBranchPage({
@@ -446,103 +457,137 @@
 <?php } ?>
 
 <?php if ($page == 'branchesPage') { ?>
-    <div class="alert alert-success top-alert-div animated fadeIn">
-        <span><i class="bi-diagram-3"></i> BRANCHES</span>
+    <div class="main-content-div student-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-diagram-3"></i>
+                    <p>BRANCHES</p>
+                </div>
 
-        <div class="btn-container">
-            <button class="btn" title="ADD BRANCH" onclick="_getForm({page: 'branchReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW BRANCH</button>
+                <div>
+                    <button class="btn" title="ADD NEW BRANCH" onclick="_getForm({page: 'branchReg', layer:2, url: adminPortalLocalUrl});">
+                        <i class="bi bi-plus-square"></i> ADD NEW BRANCH
+                    </button>
+                </div>
+            </div>
+
+            <div class="inner-table-content">
+                <div class="table-div animated fadeIn">
+                    <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                        <script>
+                            _fetchCountryBranchData()
+                        </script>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="table-div animated fadeIn">
-        <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-            <script>_fetchCountryBranchData()</script>
-        </table>
     </div>
 <?php } ?>
 
 <?php if ($page == 'branchReg') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW BRANCH</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-diagram-3"></i></div>
+                <h3>CREATE NEW BRANCH</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
             </div>
         </div>
 
+        <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD A NEW BRANCH TO </span><span id="branchCountryName"><script>$("#branchCountryName").html(getEachCountrySession?.countryName);</script></span></div>
-                </div>
+            <div class="form-notification">
+                <p>You are about to create a new branch for 
+                    (<strong id="branchCountryName">
+                        <script> $("#branchCountryName").html(getEachCountrySession?.countryName);</script>
+                    </strong>). 
+                    Please complete the form below with accurate details to successfully add and register the branch under this country.
+                </p>
+            </div>
 
-                <div class="text_field_container" id="branchName_container">
-                    <script>
-                        textField({
-                            id: 'branchName',
-                            title: 'Branch Name'
-                        });
-                    </script>
-                </div>
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-shield-shaded"></i>
+                            <p>Create new branch here</p>
+                        </div>
+                    </div>
 
-                <div class="text_field_container" id="email_container">
-                    <script>
-                        textField({
-                            id: 'email',
-                            title: 'Email Address',
-                            type: 'email'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="phoneNumber_container">
-                    <script>
-                        textField({
-                            id: 'phoneNumber',
-                            title: 'Phone Number',
-                            type: 'tel',
-                            onKeyPressFunction: 'isNumberCheck(event);'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="address_container">
-                    <script>
-                        textField({
-                            id: 'address',
-                            title: 'Branch Address'
-                        });
-                    </script>
-                </div>
-
-                <div class="alert alert-success form-alert">
-                    <span>ADMINISTRATIVE INFORMATION</span>
-                    <div class="text_field_back_container">
-                        <div class="text_field_container" id="staffId_container">
+                    <div class="form-container">
+                        <div class="text_field_container" id="branchName_container">
                             <script>
-                                selectField({
-                                    id: 'staffId',
-                                    title: 'Select Branch Manager'
+                                textField({
+                                    id: 'branchName',
+                                    title: 'Branch Name'
                                 });
-                                _getSelectBranchManagerId('staffId');
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="statusId_container">
+                        <div class="text_field_container" id="email_container">
                             <script>
-                                selectField({
-                                    id: 'statusId',
-                                    title: 'Select Status'
+                                textField({
+                                    id: 'email',
+                                    title: 'Email Address',
+                                    type: 'email'
                                 });
-                                _getSelectStatusId('statusId', '1,2');
                             </script>
+                        </div>
+
+                        <div class="text_field_container" id="phoneNumber_container">
+                            <script>
+                                textField({
+                                    id: 'phoneNumber',
+                                    title: 'Phone Number',
+                                    type: 'tel',
+                                    onKeyPressFunction: 'isNumberCheck(event);'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="address_container">
+                            <script>
+                                textField({
+                                    id: 'address',
+                                    title: 'Branch Address'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="alert alert-success form-alert">
+                            <span>ADMINISTRATIVE INFORMATION</span>
+                            <div class="text_field_back_container">
+                                <div class="text_field_container" id="staffId_container">
+                                    <script>
+                                        selectField({
+                                            id: 'staffId',
+                                            title: 'Select Branch Manager'
+                                        });
+                                        _getSelectBranchManagerId('staffId');
+                                    </script>
+                                </div>
+
+                                <div class="text_field_container" id="statusId_container">
+                                    <script>
+                                        selectField({
+                                            id: 'statusId',
+                                            title: 'Select Status'
+                                        });
+                                        _getSelectStatusId('statusId', '1,2');
+                                    </script>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createCountryBranch();"> <i class="bi-check"></i>
-                        SUBMIT </button>
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createCountryBranch();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>
@@ -550,7 +595,9 @@
 <?php } ?>
 
 <?php if ($page == 'branchCountryProfile') { ?>
-     <script> getEachBranchSession = JSON.parse(sessionStorage.getItem("getEachBranchSession"));</script>
+    <script>
+        getEachBranchSession = JSON.parse(sessionStorage.getItem("getEachBranchSession"));
+    </script>
     <div class="user-profile-div" data-aos="fade-left" data-aos-duration="900">
         <div class="top-panel-div">
             <div class="inner-top">
@@ -572,17 +619,29 @@
                     <div class="text-back-div">
                         <div class="inner-text">
                             <div class="text-div">
-                                <div class="name" id="ProbranchName"><script>$("#ProbranchName").html(getEachBranchSession?.branchName);</script></div>
+                                <div class="name" id="ProbranchName">
+                                    <script>
+                                        $("#ProbranchName").html(getEachBranchSession?.branchName);
+                                    </script>
+                                </div>
 
                                 <div class="text">
                                     <div>
                                         <div id="branchStatusBtn" class="status-btn"><span id="branchStatusName"></span></div>
                                     </div>
                                     | OFFICIAL EMAIL:
-                                    <strong id="ProbranchEmail"><script>$("#ProbranchEmail").html(getEachBranchSession?.email);</script></strong>
+                                    <strong id="ProbranchEmail">
+                                        <script>
+                                            $("#ProbranchEmail").html(getEachBranchSession?.email);
+                                        </script>
+                                    </strong>
 
                                     | OFFICIAL NUMBER:
-                                    <strong id="ProbranchPhoneNumber"><script>$("#ProbranchPhoneNumber").html(getEachBranchSession?.phoneNumber);</script></strong>
+                                    <strong id="ProbranchPhoneNumber">
+                                        <script>
+                                            $("#ProbranchPhoneNumber").html(getEachBranchSession?.phoneNumber);
+                                        </script>
+                                    </strong>
                                 </div>
 
                                 <script>
@@ -708,6 +767,131 @@
                             <button class="btn" title="UPDATE PROFILE" id="updateBtn" onclick="_updateCountryBranch();"> UPDATE PROFILE <i class="bi-check"></i></button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examPricingPage') { ?>
+    <div class="main-content-div student-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-credit-card-fill"></i>
+                    <p>Exam Pricing</p>
+                </div>
+
+                <div>
+                    <button class="btn" title="ADD NEW EXAM PRICING" onclick="_getForm({page: 'examPricingReg', layer:2, url: adminPortalLocalUrl});">
+                        <i class="bi bi-plus-square"></i> ADD NEW EXAM PRICING
+                    </button>
+                </div>
+            </div>
+
+            <div class="inner-table-content">
+                <div class="exams-back-div" id="pageContent">
+                    <script>fetchCountryExamData();</script>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examPricingReg') { ?>
+    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-journal-text"></i></div>
+                <h3>ADD NEW EXAM PRICING</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
+            </div>
+        </div>
+
+        <!-- /////////// Title ////////////////////////////// -->
+        <div class="container-back-div">
+            <div class="form-notification">
+                <p>You are about to add a new exam pricing for 
+                    (<strong id="branchPricingCountryName">
+                        <script> $("#branchPricingCountryName").html(getEachCountrySession?.countryName);</script>
+                    </strong>). 
+                    Please complete the form below with accurate details to successfully add exam pricing under this country.
+                </p>
+            </div>
+
+
+            <div class="main-content-div">
+                <div class="tables-content-div form-content-div">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-journal-text"></i>
+                            <p>Add new exam pricing here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="text_field_container" id="publishId_container">
+                            <script>
+                                selectField({
+                                    id: 'publishId',
+                                    title: 'Select Exam'
+                                });
+                                _getSelectExams('publishId');
+                            </script>
+                        </div>
+                         
+                        <div class="main-content-div form-main-content form-exam-content" id="examPreviewContainer" data-aos="fade-in" data-aos-duration="1500" style="display:none;">
+                            <div class="tables-content-div form-content-div">
+                                <div class="content-title">
+                                    <div class="title">
+                                        <i class="bi bi-journal-text"></i>
+                                        <p>Preview Exam</p>
+                                    </div>
+                                </div>
+
+                                <div class="inner-table-content" id="pageContent2"></div>
+                            </div>
+                        </div>  
+                        
+                        <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="tables-content-div form-content-div">
+                                <div class="content-title">
+                                    <div class="title">
+                                        <i class="bi bi-cash-stack"></i>
+                                        <p>Currency</p>
+                                    </div>
+                                </div>
+
+                                <div class="inner-table-content">
+                                    <span id="currency">
+                                        <script>
+                                            $("#currency").html(getEachCountrySession?.currency);
+                                        </script>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text_field_container" id="amount_container">
+                            <script>
+                                textField({
+                                    id: 'amount',
+                                    title: 'Exam Price',
+                                    type: 'number',
+                                    onKeyPressFunction: 'isNumberCheck(event);'
+                                });
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_addExamPricing();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

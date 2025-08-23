@@ -366,7 +366,7 @@ CREATE TABLE `setup_page_categories_tab` (
 --
 
 INSERT INTO `setup_page_categories_tab` (`sn`, `pageCategoryId`, `pageCategoryName`) VALUES
-(1, 'internationalExamCategory', 'INTERNATIONAL EXAM'),
+(1, 'examCategory', 'INTERNATIONAL EXAM'),
 (2, 'studyAbroadCategory', 'STUDY ABROAD'),
 (3, 'galleryCategory', 'GALLERY'),
 (4, 'blogCategory', 'BLOG'),

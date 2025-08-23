@@ -6,100 +6,117 @@
             </div>
             <div class="text-div">
                 <h2>👋 Welcome Back, <span id="DashFullname">
-                    <script> $("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.loginFullName)); </script>
-                </span>!</h2>
+                        <script>
+                            $("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.loginFullName));
+                        </script>
+                    </span>!</h2>
                 <p>Welcome to your dashboard, where you can oversee all your activities, tasks, progress, and updates—helping you stay organized and on track</p>
             </div>
         </div>
 
         <div class="dashboard-right-wrapper">
-            <div><p><span><i class="bi-clock"></i> Last Login Date </span></p></div>
-            <div><strong id="lastLoginTime"><script>$("#lastLoginTime").html(staffLoginData.lastLoginTime);</script></strong></div>
+            <div>
+                <p><span><i class="bi-clock"></i> Last Login Date </span></p>
+            </div>
+            <div><strong id="lastLoginTime">
+                    <script>
+                        $("#lastLoginTime").html(staffLoginData.lastLoginTime);
+                    </script>
+                </strong></div>
         </div>
     </div>
 
     <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="dashboard-wrapper">
             <div class="statistics-back-div">
-                <div class="statistics-div" onclick="_getActivePage({page:'viewBranch', divid:'branch'});" id="branch" title="Branches">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Branches
-                            <span id="">3</span>
+                <div class="statistics-div" id="branch" title="Branches" onclick="_getActivePage({page:'viewBranch', divid:'branch'});">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Branches</p>
+                            <span>Statistics of Branches</span>
+                            <h2>3</h2>
                         </div>
-                        <div class="icon"><i class="bi-diagram-3"></i></div>
+                        <div class="statistics-icon pending"><i class="bi-diagram-3"></i></div>
                     </div>
                 </div>
 
                 <div class="statistics-div" onclick="_getActivePage({page:'viewStaff', divid:'staff'});" id="staff" title="Administrators">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Administrators
-                            <span id="total_active_event_count">10</span>
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Administrators</p>
+                            <span>Statistics of Administrators</span>
+                            <h2>10</h2>
                         </div>
-                        <div class="icon"><i class="bi-person-bounding-box"></i></div>
+                        <div class="statistics-icon upcoming"><i class="bi-person-bounding-box"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div" onclick="_getActivePage({page:'viewStudents', divid:'students'});" id="students" title="Students">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Students
-                            <span id="total_active_event_count">30</span>
+                <div class="statistics-div" id="students" title="Students">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Students</p>
+                            <span>Statistics of Students</span>
+                            <h2>30</h2>
                         </div>
-                        <div class="icon"><i class="bi-people"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-people"></i></div>
                     </div>
                 </div>
 
                 <div class="statistics-div" onclick="_getActivePage({page:'galleryCategory', divid:'publish'});" id="gallery" title="Gallery">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Gallery
-                            <span id="total_active_gallery_count">5</span>
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Gallery</p>
+                            <span>Statistics of Gallery</span>
+                            <h2>5</h2>
                         </div>
-                        <div class="icon"><i class="bi-images"></i></div>
+                        <div class="statistics-icon pending"><i class="bi-images"></i></div>
                     </div>
                 </div>
 
                 <div class="statistics-div" onclick="_getActivePage({page:'blogCategory', divid:'publish'});" id="blog" title="Blog">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Blog
-                            <span id="total_active_blog_count">10</span>
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Blog</p>
+                            <span>Statistics of Blog</span>
+                            <h2>10</h2>
                         </div>
-                        <div class="icon"><i class="bi-file-post"></i></div>
+                        <div class="statistics-icon upcoming"><i class="bi-file-post"></i></div>
                     </div>
                 </div>
 
                 <div class="statistics-div" onclick="_getActivePage({page:'faqCategory', divid:'publish'});" id="faq" title="FAQ">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            FAQ
-                            <span id="total_active_faq_count">3</span>
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>FAQ</p>
+                            <span>Statistics of FAQ</span>
+                            <h2>3</h2>
                         </div>
-                        <div class="icon"><i class="bi-patch-question"></i></div>
+                        <div class="statistics-icon completed"><i class="bi-patch-question"></i></div>
                     </div>
                 </div>
 
                 <div class="statistics-div" onclick="_getActivePage({page:'testimonyCategory', divid:'publish'});" id="test" title="Testimony">
-                    <div class="inner-div">
-                        <div class="number-div">
-                            Testimony
-                            <span id="total_active_testimony_count">10</span>
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Testimony</p>
+                            <span>Statistics of Testimonies</span>
+                            <h2>10</h2>
                         </div>
-                        <div class="icon"><i class="bi-chat-quote-fill"></i></div>
+                        <div class="statistics-icon pending"><i class="bi-people"></i></div>
                     </div>
                 </div>
 
-                <div class="statistics-div round">
-                    <div class="inner-div text-centre">
-                        View All Activities
-                        <div class="icon-div">
-                            <i class="bi-arrow-up-right"> </i>
+                <div class="statistics-div round" id="activities" title="All Activities" onclick="_getActivePage({page:'viewStudents', divid:'students'});">
+                    <div class="statistics-inner-div text-centre">
+                        <div class="statistics-text">
+                            <p>View All Activities</p>
+                            <span>View system notifications and activities</span>
                         </div>
+                        <div class="statistics-icon completed"><i class="bi-arrow-up-right"></i></div>
                     </div>
                 </div>
             </div>
+
 
             <div class="dashboard-statistics-wrapper">
                 <div class="left-contaioner">
@@ -394,175 +411,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tables-content-div">
-                <div class="content-title">
-                    <div class="title">
-                        <i class="bi bi-person-check"></i>
-                        <p>Recent Enrolled Students</p>
-                    </div>
-
-                    <div>
-                        <button class="btn" title="View All" onclick="_getActivePage({page:'viewStudents', divid:'students'});">
-                            <i class="bi bi-eye"></i> View All
-                        </button>
-                    </div>
-                </div>
-
-                <div class="inner-table-content">
-                    <div class="table-div animated fadeIn">
-                        <table class="table" cellspacing="0" style="width:100%" id="pageContent">
-                            <thead>
-                                <tr class="tb-col">
-                                    <th>sn</th>
-                                    <th>Student Name</th>
-                                    <th>Contact</th>
-                                    <th>Last Login</th>
-                                    <th>Status</th>
-                                    <th>View</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr class="tb-row">
-                                    <td>1</td>
-                                    <td class="clickable-td" title="Click to view staff profile" onclick="_fetchEachStaff('${staffId}');">
-                                        <div class="text-back-div">
-                                            <div class="image-div">
-                                                <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                            </div>
-
-                                            <div class="text-div">
-                                                <div class="first-class">Paul Emmanuel</div>
-                                                <div class="second-class">STUDENT001239485959</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-div">
-                                            <div>seunemmanuel107@gmail.com</div>
-                                            <div>07050903886</div>
-                                        </div>
-                                    </td>
-                                    <td>00-00-00 00:00:00</td>
-                                    <td>
-                                        <div class="status-div ACTIVE">ACTIVE</div>
-                                    </td>
-                                    <td><button class="btn view-btn" title="Click to view staff profile" onclick="">VIEW</button></td>
-                                </tr>
-
-                                <tr class="tb-row">
-                                    <td>2</td>
-                                    <td class="clickable-td" title="Click to view staff profile" onclick="">
-                                        <div class="text-back-div">
-                                            <div class="image-div">
-                                                <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                            </div>
-
-                                            <div class="text-div">
-                                                <div class="first-class">Paul Emmanuel</div>
-                                                <div class="second-class">STUDENT001239485959</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-div">
-                                            <div>seunemmanuel107@gmail.com</div>
-                                            <div>07050903886</div>
-                                        </div>
-                                    </td>
-                                    <td>00-00-00 00:00:00</td>
-                                    <td>
-                                        <div class="status-div ACTIVE">ACTIVE</div>
-                                    </td>
-                                    <td><button class="btn view-btn" title="Click to view staff profile" onclick="">VIEW</button></td>
-                                </tr>
-
-                                <tr class="tb-row">
-                                    <td>3</td>
-                                    <td class="clickable-td" title="Click to view staff profile" onclick="">
-                                        <div class="text-back-div">
-                                            <div class="image-div">
-                                                <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                            </div>
-
-                                            <div class="text-div">
-                                                <div class="first-class">Paul Emmanuel</div>
-                                                <div class="second-class">STUDENT001239485959</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-div">
-                                            <div>seunemmanuel107@gmail.com</div>
-                                            <div>07050903886</div>
-                                        </div>
-                                    </td>
-                                    <td>00-00-00 00:00:00</td>
-                                    <td>
-                                        <div class="status-div ACTIVE">ACTIVE</div>
-                                    </td>
-                                    <td><button class="btn view-btn" title="Click to view staff profile" onclick="">VIEW</button></td>
-                                </tr>
-
-                                <tr class="tb-row">
-                                    <td>4</td>
-                                    <td class="clickable-td" title="Click to view staff profile" onclick="">
-                                        <div class="text-back-div">
-                                            <div class="image-div">
-                                                <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                            </div>
-
-                                            <div class="text-div">
-                                                <div class="first-class">Paul Emmanuel</div>
-                                                <div class="second-class">STUDENT001239485959</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-div">
-                                            <div>seunemmanuel107@gmail.com</div>
-                                            <div>07050903886</div>
-                                        </div>
-                                    </td>
-                                    <td>00-00-00 00:00:00</td>
-                                    <td>
-                                        <div class="status-div ACTIVE">ACTIVE</div>
-                                    </td>
-                                    <td><button class="btn view-btn" title="Click to view staff profile" onclick="">VIEW</button></td>
-                                </tr>
-
-                                <tr class="tb-row">
-                                    <td>5</td>
-                                    <td class="clickable-td" title="Click to view staff profile" onclick="">
-                                        <div class="text-back-div">
-                                            <div class="image-div">
-                                                <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.jpg" alt="Paul Emmanuel" />
-                                            </div>
-
-                                            <div class="text-div">
-                                                <div class="first-class">Paul Emmanuel</div>
-                                                <div class="second-class">STUDENT001239485959</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-div">
-                                            <div>seunemmanuel107@gmail.com</div>
-                                            <div>07050903886</div>
-                                        </div>
-                                    </td>
-                                    <td>00-00-00 00:00:00</td>
-                                    <td>
-                                        <div class="status-div ACTIVE">ACTIVE</div>
-                                    </td>
-                                    <td><button class="btn view-btn" title="Click to view staff profile" onclick="">VIEW</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

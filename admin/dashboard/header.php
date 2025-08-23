@@ -58,7 +58,7 @@
                             <div class="toggle-profile-others"><span id="loginProfileStaffId"><script>$("#loginProfileStaffId").html(staffLoginData.staffId);</script></span></div>
                             <div class="header-btn-div">
                                 <button class="btn" title="View Profile" onclick="_fetchEachStaff(`${staffLoginData.staffId}`);"><i class="bi-person"></i> Profile</button>
-                                <button class="btn" title="Log-Out" onclick="_getForm({page: 'logoutConfirmForm', url: adminPortalLocalUrl});"><i class="bi-box-arrow-in-right"></i> Log-Out</button>
+                                <button class="btn" title="Log-Out" onclick="_confirmLogOut();"><i class="bi-box-arrow-in-right"></i> Log-Out</button>
                             </div>                    
                         </div>
                     </div>

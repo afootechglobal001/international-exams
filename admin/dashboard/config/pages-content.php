@@ -9,7 +9,7 @@
         <div class="pages-content-div">
             <div class="title-div">
                 <ul>
-                    <?php if ($pageCatId == 'internationalExamCategory') { ?>
+                    <?php if ($pageCatId == 'examCategory') { ?>
                         <li class="active-li" title="PAGE CONTENT" id="pageContent" onclick="_getActivePagesTab({divid:'pageContent', page: 'pageContent', url: adminPortalLocalUrl});">PAGE CONTENT</li>
                         <li title="UPLOAD PICTURE" id="picturePage" onclick="_getActivePagesTab({divid:'picturePage', page: 'picturePage', url: adminPortalLocalUrl});">UPLOAD PICTURE</li>
                         <li title="ADD EXAM KEY INFO" id="picturePage" onclick="">ADD EXAM KEY INFO</li>

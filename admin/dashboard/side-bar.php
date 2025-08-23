@@ -29,13 +29,20 @@
         `);
 
         document.write(`
+            <div class="nav-div" title="E-Books" onclick="_getActivePage({page:'viewEbook', divid:'ebook'});" id="${navId}-ebook">
+                <div class="icon"><i class="bi bi-filetype-pdf"></i> E-Books</div> 
+                <div class="hidden" id="_ebooks"><i class="bi bi-filetype-pdf"></i> E-Books</div>
+            </div>
+        `);
+
+        document.write(`
             <div class="nav-div" title="Report" onclick="_getActivePage({nav:'reports', divid:'reports'});" id="${navId}-reports">
                 <div class="icon"><i class="bi-graph-up-arrow"></i> Report</div> 
             </div>
         `);
 
         document.write(`
-            <div class="nav-div" title="Log-Out" onclick="_getForm({page: 'logoutConfirmForm', url: adminPortalLocalUrl});" id="${navId}-logout">
+            <div class="nav-div" title="Log-Out" onclick="_confirmLogOut();" id="${navId}-logout">
                 <div class="icon"><i class="bi-power"></i> Log-Out</div> 
             </div>
         `);
@@ -61,7 +68,7 @@
 
 <div class="side-nav-bg-sub-div">
     <div class="nav-div animated fadeInLeft" id="link-publish">
-        <div class="link" title="Publish International Exam" onclick="_getActivePage({page:'internationalExamCategory', divid:'publish'});">- International Exams <div class="num" id="">8</div></div>
+        <div class="link" title="Publish International Exam" onclick="_getActivePage({page:'examCategory', divid:'publish'});">- International Exams <div class="num" id="">8</div></div>
         <div class="hidden" id="_publish_exam"><i class="bi-calendar-event"></i> International Exams</div>
 
         <div class="link" title="Study Abroad" onclick="_getActivePage({page:'studyAbroadCategory', divid:'publish'});">- Study Abroad <div class="num" id="">8</div></div>

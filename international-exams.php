@@ -36,21 +36,56 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-            <div class="other-pages-slide-card">
-                <h1>International Exams</h1>
 
-                <div class="text-div">
-                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                        into foreign universities.
-                    </p>
-                    <div class="btn-div">
-                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                It's Free</span>
-                        </button>
+            <div class="top-title">
+                <nav>
+                    <ul>
+                        <li title="Home">
+                            <a href="<?php echo $websiteUrl ?>/index">
+                                Home <i class="bi bi-caret-right-fill"></i>
+                            </a>
+                        </li>
+                        <li title="Internatiomal Exams">
+                            <a href="<?php echo $websiteUrl ?>/international-exams">
+                                Internatiomal Exams
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="other-pages-back-div">
+                <div class="main-content-back-div">
+
+                    <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
+                        <h1>International Exams</h1>
+                        <p>
+                            Edugrade Services is a top international educational consultancy with centers across Nigeria
+                            and presence in Ghana, Kenya, Ethiopia, and Uganda. With over 9 years of expertise, we have
+                            successfully prepared and placed thousands of students into prestigious universities around
+                            the world.
+                        </p>
+
+                        <div class="btn-div">
+                            <a href="#" title="Register For Exam">
+                                <button class="btn" title="Register For Exam">
+                                    Register For Exam <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </a>
+                            <a href="#" title="Download E-Books">
+                                <button class="btn right-btn" title="Download E-Books">
+                                    <i class="bi bi-download"></i> Download E-Books <span class="span">
+                                        It's Free</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="image-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -69,7 +104,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Register now">Register now <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
@@ -80,7 +116,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg"
+                                    alt="TOEFL Exam" />
                             </div>
 
                             <div class="text-div">
@@ -96,7 +133,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 320+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +146,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/gre-exam-nigeria.jpg" alt="GRE Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/gre-exam-nigeria.jpg"
+                                    alt="GRE Exam" />
                             </div>
 
                             <div class="text-div">
@@ -124,7 +163,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 290+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +176,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="IELTS Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg"
+                                    alt="IELTS Exam" />
                             </div>
 
                             <div class="text-div">
@@ -164,7 +205,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/gmat-exam-nigeria.jpg" alt="GMAT Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/gmat-exam-nigeria.jpg"
+                                    alt="GMAT Exam" />
                             </div>
 
                             <div class="text-div">
@@ -180,7 +222,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 200+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +235,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/pte-exam-nigeria.jpg" alt="PTE Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/pte-exam-nigeria.jpg"
+                                    alt="PTE Exam" />
                             </div>
 
                             <div class="text-div">
@@ -208,7 +252,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 240+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +265,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/sat-exam-nigeria.jpg" alt="SAT Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/sat-exam-nigeria.jpg"
+                                    alt="SAT Exam" />
                             </div>
 
                             <div class="text-div">
@@ -236,7 +282,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 500+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +295,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/mcat-exam-nigeria.jpg" alt="MCAT Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/mcat-exam-nigeria.jpg"
+                                    alt="MCAT Exam" />
                             </div>
 
                             <div class="text-div">
@@ -264,7 +312,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 140+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +325,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
 
                             <div class="icon-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/nclex-exam-nigeria.jpg" alt="NCLEX Exam" />
+                                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/nclex-exam-nigeria.jpg"
+                                    alt="NCLEX Exam" />
                             </div>
 
                             <div class="text-div">
@@ -292,7 +342,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                             <span><i class="bi-person"></i> 830+</span>
                                         </div>
 
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button>
+                                        <button class="btn" title="Read More">Read More <i
+                                                class="bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -300,7 +351,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
 
                     <div class="bottom-btn-div">
-                        <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button>
+                        <button class="btn" title="View All Exams">View All Exams <i
+                                class="bi-chevron-right"></i></button>
                     </div>
                 </div>
             </div>

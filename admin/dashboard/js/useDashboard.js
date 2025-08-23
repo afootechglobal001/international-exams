@@ -101,10 +101,21 @@ function capitalizeFirstLetterOfEachWord(inputText) {
 
 function filters(selectBoxId) {
 	var valThis = $('#search'+selectBoxId).val();
-		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div').each(function() {
+		$('#page'+selectBoxId+' > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div, .exam-div').each(function() {
 		var text = $(this).text();
 		(text.toLowerCase().indexOf(valThis.toLowerCase()) > -1) ? $(this).show(): $(this).hide();
 	});
+};
+
+function thousandSeperator(val) {
+	let dp=2;
+  const formatter = new Intl.NumberFormat('ng-NG', {
+    style: 'decimal',
+    maximumFractionDigits: dp,
+    minimumFractionDigits: dp,
+  });
+  //   return formatter.format(val);
+  return isNaN(parseFloat(formatter.format(val))) ? '-' : formatter.format(val);
 };
 
 function _logOut(){

@@ -36,21 +36,56 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-            <div class="other-pages-slide-card">
-                <h1>Study Abroad</h1>
 
-                <div class="text-div">
-                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                        into foreign universities.
-                    </p>
-                    <div class="btn-div">
-                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                It's Free</span>
-                        </button>
+            <div class="top-title">
+                <nav>
+                    <ul>
+                        <li title="Home">
+                            <a href="<?php echo $websiteUrl ?>/index">
+                                Home <i class="bi bi-caret-right-fill"></i>
+                            </a>
+                        </li>
+                        <li title="Study Abroad">
+                            <a href="<?php echo $websiteUrl ?>/study-abroad">
+                                Study Abroad
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="other-pages-back-div">
+                <div class="main-content-back-div">
+
+                    <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
+                        <h1>Study Abroad</h1>
+                        <p>
+                            EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries
+                            like Ghana, Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully
+                            placed thousands of students
+                            into foreign universities.
+                        </p>
+
+                        <div class="btn-div">
+                            <a href="#" title="Register For Exam">
+                                <button class="btn" title="Register For Exam">
+                                    Register For Exam <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </a>
+                            <a href="#" title="Download E-Books">
+                                <button class="btn right-btn" title="Download E-Books">
+                                    <i class="bi bi-download"></i> Download E-Books <span class="span">
+                                        It's Free</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="image-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -60,16 +95,21 @@ Best place to register ACT exam in Nigeria, where to register international exam
             <div class="body-div-in">
                 <div class="about-back-div">
                     <div class="image-div" data-aos="fade-up" data-aos-duration="1400">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg" alt="About International Exams" />
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg"
+                            alt="About International Exams" />
                     </div>
 
                     <div class="content-div" data-aos="flip-right" data-aos-duration="1400">
                         <div class="icon-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg" alt="About Us icon" />
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg"
+                                alt="About Us icon" />
                         </div>
 
                         <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
-                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of students for admissions into foreign universities.</p>
+                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in
+                            almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and
+                            many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of
+                            students for admissions into foreign universities.</p>
 
                         <div class="check-div">
                             <div class="check">
@@ -96,7 +136,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
         </section>
-        
+
         <?php include 'footer.php' ?>
     </section>
 

@@ -37,25 +37,35 @@ Best place to register ACT exam in Nigeria, where to register international exam
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
 
-           
+
             <div class="top-title">
                 <nav>
                     <ul>
-                        <li title="Home">Home <i class="bi bi-caret-right-fill"></i></li>
-                        <li title="About Us">About Us</li>
+                        <li title="Home">
+                            <a href="<?php echo $websiteUrl ?>/index">
+                                Home <i class="bi bi-caret-right-fill"></i>
+                            </a>
+                        </li>
+                        <li title="About Us">
+                            <a href="<?php echo $websiteUrl ?>/about">
+                                About Us
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
 
-            
+
+
             <div class="other-pages-back-div">
                 <div class="main-content-back-div">
 
                     <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
                         <h1>About Us</h1>
                         <p>
-                            Web hosting made easy &amp; affordable, choose a fine-tuned web hosting
-                            services solution for successful personal and business websites.
+                            Edugrade Services is a trusted international educational consultancy with 9+ years of
+                            excellence,
+                            helping thousands of students secure admissions and succeed in top global universities.
                         </p>
 
                         <div class="btn-div">
@@ -66,14 +76,14 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </a>
                             <a href="#" title="Contact Us">
                                 <button class="btn right-btn" title="Contact Us">
-                                    Contact Us <span>+1(408)8783199</span>
+                                    Contact Us <span>+234-703-841-1794</span>
                                 </button>
                             </a>
                         </div>
                     </div>
 
                     <div class="image-div">
-                        <img src="https://webliststudio.com/all-images/body-pix/about.svg" alt="Weblist Studio Company">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
                     </div>
 
                 </div>
@@ -90,27 +100,45 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 <div class="about-back-div">
 
                     <div class="content-div">
-                        <h2>99% Cloud Hosting High-speed Cutting-edge Platform</h2>
+                        <h2>Why Choose Edugrade Services – Shaping Global Scholars</h2>
                         <p>
-                            Quickly reconceptualize cross-unit e-markets without superior products. Appropriately foster
-                            timely and idea-sharing rather than magnetic potentialities. Authoritatively restore high
-                            standards in outsourcing whereas vertical meta-services. Compellingly reconceptualize
-                            out-of-the-box outsourcing through plug-and-play synergy.
+                            Edugrade Services is a premier educational consultancy with offices across Nigeria and
+                            presence in countries such as Ghana, Kenya, Ethiopia, and Uganda. With nearly a decade of
+                            experience, we have successfully guided and placed thousands of students into prestigious
+                            universities across the USA, UK, Canada, Europe, and beyond.
+
+                            We specialize in preparing students for major standardized examinations including TOEFL,
+                            IELTS, SAT, GRE, GMAT, LSAT, MCAT, NCLEX, PTE, ACT, OET, Duolingo, and more. Our services
+                            also extend to visa processing, admissions placement, and international testing services.
+
+                            Our team of highly professional and courteous staff ensures every student receives
+                            personalized support on their journey to academic excellence. With an unrivaled track record
+                            built on referrals and proven results, Edugrade Services has established itself as a leader
+                            in global education consultancy.
                         </p>
                         <p>
-                            Authoritatively transform functionalized information without cross-platform convergence.
-                            Quickly superior products. Appropriately foster timely collaboration and idea-sharing rather
-                            than magnetic potentialities. Authoritatively restore high standards in outsourcing whereas
-                            vertical meta-services. Compellingly reconceptualize out-of-the-box outsourcing through
-                            plug-and-play synergy.
+                            For over nine years, Edugrade Services has stood as a bridge between ambition and
+                            achievement for students seeking international education. Our expertise covers every stage
+                            of the academic journey—from career counseling and exam preparation to university
+                            applications, scholarship guidance, and visa support.
+
+                            We pride ourselves on not just placing students into institutions, but ensuring they are
+                            well-prepared to succeed in a competitive global environment. Through our extensive network
+                            of partner universities and our deep understanding of admission processes worldwide, we
+                            offer opportunities that transform lives.
+
+                            At Edugrade, we believe every student deserves access to quality education, and we are
+                            committed to removing barriers, simplifying processes, and providing the professional
+                            guidance needed to make global study dreams a reality.
                         </p>
 
                         <div class="box-div vision" data-aos="fade-in" data-aos-duration="1200">
                             <div class="label-div secondary">OUR VISION</div>
                             <p>
-                                Weblist Studio simplifies daily operations through technology, making them accessible to
-                                all. We develop teams based on skill levels and business needs, aiming to build ICT
-                                capacity for individuals and organizations.
+                                Our vision is to become the leading educational consultancy across Africa and
+                                beyond—recognized for integrity, professionalism, and innovation. We aim to open doors
+                                of opportunity for students, empowering them to compete globally and become
+                                transformative leaders who impact societies worldwide.
                             </p>
                         </div>
 
@@ -120,9 +148,12 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 <h4>OUR MISSION</h4>
                             </div>
                             <p>
-                                Our mission at Weblist Studio is to deliver innovative technology solutions, empower
-                                individuals with ICT skills, and simplify business operations through software
-                                development and expert training programs.
+                                Our mission is to provide students with world-class educational guidance, comprehensive
+                                exam preparation, and seamless admission support,
+                                enabling them to gain access to prestigious institutions across the globe. We are
+                                committed to equipping every learner with the tools,
+                                knowledge, and confidence they need to excel academically and thrive in their chosen
+                                career paths.
                             </p>
                         </div>
                     </div>
@@ -138,36 +169,34 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     <div class="image-div" data-aos="fade-in" data-aos-duration="1200">
 
                         <div class="values-image" data-aos="fade-in" data-aos-duration="1200">
-                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/values.svg" alt="Team working">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/bg2.png" alt="Team working">
                         </div>
                     </div>
 
 
                     <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
 
-                        <h2>We Share the Same Values which Makes our Team Stronger</h2>
+                        <h2>We Build Futures Through Shared Values</h2>
                         <p>
-                            Objectively deliver professional value with diverse web-readiness.
-                            Collaboratively transition wireless customer service without goal-oriented catalysts for
-                            change.
-                            Collaboratively.
+                            Our strength lies in a commitment to integrity, excellence, and innovation—values that
+                            drive us to guide every student with care and professionalism.
                         </p>
 
                         <div class="values-list">
                             <ul>
-                                <li><i class="bi bi-check"></i> Data driven quality review</li>
-                                <li><i class="bi bi-check"></i> 24x7 coverage</li>
-                                <li><i class="bi bi-check"></i> Management team</li>
-                                <li><i class="bi bi-check"></i> Integration ready</li>
-                                <li><i class="bi bi-check"></i> Compliance driven process</li>
+                                <li><i class="bi bi-check"></i> Student-Centered Approach</li>
+                                <li><i class="bi bi-check"></i> Global Reach</li>
+                                <li><i class="bi bi-check"></i> Expert Guidance</li>
+                                <li><i class="bi bi-check"></i> Integrity & Trust</li>
+                                <li><i class="bi bi-check"></i> Comprehensive Support</li>
                             </ul>
 
                             <ul>
-                                <li><i class="bi bi-check"></i> Data driven quality review</li>
-                                <li><i class="bi bi-check"></i> 24x7 coverage</li>
-                                <li><i class="bi bi-check"></i> Management team</li>
-                                <li><i class="bi bi-check"></i> Integration ready</li>
-                                <li><i class="bi bi-check"></i>Compliance driven process</li>
+                                <li><i class="bi bi-check"></i> Excellence Driven</li>
+                                <li><i class="bi bi-check"></i> Innovation in Learning</li>
+                                <li><i class="bi bi-check"></i> Lifelong Impact</li>
+                                <li><i class="bi bi-check"></i> Accessibility & Inclusion</li>
+                                <li><i class="bi bi-check"></i>Proven Partnerships</li>
                             </ul>
                         </div>
                     </div>
@@ -441,82 +470,35 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </script>
         </section>
 
+
         <section class="body-div">
             <div class="body-div-in">
-                <div class="inner-body-div-in">
-                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
-                        <div class="left-div">
-                            <div class="top-title">
-                                <h2>LATEST INSIGHTS</h2>
-                            </div>
-                            <h3>Our Latest News And <span>#Articles</span></h3>
-                        </div>
+                <div class="company-body-div-in">
+
+                    <div class="left-container">
+                        <h2>Your Gateway to World-Class Education</h2>
+                        <p>
+                            Strategically connecting students to global opportunities with expert-driven counseling,
+                            data-backed exam readiness, and uncompromising integrity. We simplify complex processes into
+                            clear, achievable pathways for academic excellence.
+                        </p>
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i
-                                        class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Get Started Now">Get Started Now</button>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="blog-back-div">
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog1.png"
-                                        alt="How International Exams Open Doors to Global Education Opportunities">
-                                </div>
 
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 250 VIEWS</div>
-                                    <h3>How International Exams Open Doors to Global Education Opportunities</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog2.png"
-                                        alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 50 VIEWS</div>
-                                    <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog3.png"
-                                        alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 200 VIEWS</div>
-                                    <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
+                    <div class="right-container">
+                        <div class="image-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/company.png"
+                                alt="International Exam">
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </section>

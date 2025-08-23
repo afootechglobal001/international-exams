@@ -1,4 +1,4 @@
-<?php if ($pageCatId == 'internationalExamCategory') { ?>
+<?php if ($pageCatId == 'examCategory') { ?>
     <div class="exams-back-div page-summ-exam-div">
         <div class="exam-div pg-summ-exam-div">
             <div class="exam-image">

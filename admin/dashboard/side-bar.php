@@ -68,7 +68,7 @@
 
 <div class="side-nav-bg-sub-div">
     <div class="nav-div animated fadeInLeft" id="link-publish">
-        <div class="link" title="Publish International Exam" onclick="_getActivePage({page:'internationalExamCategory', divid:'publish'});">- International Exams <div class="num" id="">8</div></div>
+        <div class="link" title="Publish International Exam" onclick="_getActivePage({page:'examCategory', divid:'publish'});">- International Exams <div class="num" id="">8</div></div>
         <div class="hidden" id="_publish_exam"><i class="bi-calendar-event"></i> International Exams</div>
 
         <div class="link" title="Study Abroad" onclick="_getActivePage({page:'studyAbroadCategory', divid:'publish'});">- Study Abroad <div class="num" id="">8</div></div>

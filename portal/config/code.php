@@ -7,7 +7,7 @@ switch ($action){
 
 	case 'get_page':
 		$page=$_POST['page'];
-		$ids=$_POST['ids'];
+		$id=$_POST['id'];
 		require_once('page-content.php');
 	break;
 
@@ -15,7 +15,7 @@ switch ($action){
 		$page=$_POST['page'];
 		$id=$_POST['id'];
 		// $modalLayer=$_POST['modalLayer'];
-		require_once('form-content.php');
+		require_once('page-content.php');
 	break;	
 }
 ?>

@@ -1,9 +1,9 @@
 function _getPage(options) {
   const {
-    page = "",
-    action = "get_page",
-    url = "",
-    pageContainer = "page-content",
+    page = "", /// compulsory
+    action = "get_page", /// compulsory
+    url = "", /// compulsory
+    pageContainer = "page-content", /// compulsory
   } = options;
 
   $("#" + pageContainer)
@@ -34,12 +34,12 @@ function _getPage(options) {
 
 function _getForm(options) {
   const {
-    page = "",
-    id = "",
-    pageCatId = "",
-    layer = 1,
-    action = "get_form",
-    url = "",
+    page = "", /// compulsory
+    layer = 1, /// compulsory
+    action = "get_form", /// compulsory
+    url = "", /// compulsory
+    id = "", /// optional
+    pageCatId = "", /// optional
   } = options;
   $(layer === 1 ? "#get-form-more-div" : "#get-more-div-secondary")
     .css({
@@ -317,16 +317,53 @@ function _showCustomConfirm(options) {
     .off("click")
     .on("click", function () {
       callback();
-      $("#customConfirmModal").html("").fadeOut(200);
+      _modalClose();
     });
   if (falseActionBtn) {
     $("#confirmCancelBtn")
       .off("click")
       .on("click", function () {
-        $("#customConfirmModal").html("").fadeOut(200);
+        _modalClose();
       });
   }
 }
+function _modalClose() {
+  $("#customConfirmModal").html("").fadeOut(200);
+}
+
+function _validateEmptyValue(fieldId, fieldName) {
+  const fieldValue = $("#" + fieldId)
+    .val()
+    .trim();
+  $("#" + fieldId).removeClass("issue");
+  $("#issue_" + fieldId).html("");
+
+  if (!fieldValue) {
+    $("#" + fieldId).addClass("issue");
+    $("#issue_" + fieldId).html(fieldName + " IS REQUIRED");
+    return 1;
+  }
+  return 0;
+}
+function _validateEmail(fieldId, email) {
+  if (!email) return 0;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    $("#" + fieldId).addClass("issue");
+    $("#issue_" + fieldId).html("PROVIDE A VALID EMAIL ADDRESS");
+    return 1;
+  }
+  return 0;
+}
+function _validateNumber(fieldId, number) {
+  if (!number) return 0;
+  if (!/^\d+$/.test(number)) {
+    $("#" + fieldId).addClass("issue");
+    $("#issue_" + fieldId).html("PHONE NUMBER MUST CONTAIN ONLY DIGITS");
+    return 1;
+  }
+  return 0;
+}
+
 function getAuthHeaders(includeAuth = false) {
   return {
     apiKey: apiKey,
@@ -335,4 +372,100 @@ function getAuthHeaders(includeAuth = false) {
     userDeviceId: userDeviceId,
     Authorization: includeAuth ? "Bearer " + (loginAccessKey ?? "") : undefined,
   };
+}
+function _callRawEndPoints(payLoadProps) {
+  const {
+    type = "POST",
+    url = "",
+    formData = null,
+    accessKey = false,
+  } = payLoadProps;
+  // Auto-flatten if formData has only one key called "formData"
+  const payload = formData && formData.formData ? formData.formData : formData;
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: type,
+      url: `${endPoint}/${url}`,
+      data: JSON.stringify(payload),
+      dataType: "json",
+      contentType: "application/json", // important for JSON
+      cache: false,
+      headers: getAuthHeaders(accessKey),
+      success: function (data) {
+        resolve(data); // ✅ resolve promise
+      },
+      error: function (error) {
+        reject(error); // ✅ reject promise
+      },
+    });
+  });
+}
+
+function _callFileEndPoints(payLoadProps) {
+  const {
+    type = "POST",
+    url = "",
+    formData = null,
+    accessKey = false,
+  } = payLoadProps;
+  // Auto-flatten if formData has only one key called "formData"
+  const payload = formData && formData.formData ? formData.formData : formData;
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: type,
+      url: `${endPoint}/${url}`,
+      data: formData,
+      dataType: "json",
+      contentType: false, // important for JSON
+      cache: false,
+      processData: false,
+      headers: getAuthHeaders(accessKey),
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (error) {
+        reject(error);
+      },
+    });
+  });
+}
+
+function _callAjaxError(callback) {
+  _showCustomConfirm({
+    callback: () => {
+      callback();
+    },
+    title: "Connection Error!",
+    message: "Check your internet connection and try again.",
+    alertType: "error",
+    trueActionBtnText: "OK, Retry",
+  });
+}
+function _callCatchError(callback) {
+  _showCustomConfirm({
+    callback: () => {
+      callback();
+    },
+    title: "Unexpected Error",
+    message: "An unexpected error occurred! Please try again.",
+    alertType: "error",
+    trueActionBtnText: "OK, Retry",
+  });
+}
+
+function _btnDisable(btnId, btnText = "SUBMIT", action = true) {
+  //////////////// get btn text ////////////////
+  if (action) {
+    $("#" + btnId).html(
+      '<img src="' +
+        websiteUrl +
+        '/all-images/images/loading.gif" style="width:12px;" alt="Loading"/>'
+    );
+    $("#" + btnId).prop("disabled", action);
+  } else {
+    $("#" + btnId)
+      .html(btnText)
+      .prop("disabled", false);
+  }
+  ////////////////////////////////////////////////
 }

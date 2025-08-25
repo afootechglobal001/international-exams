@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <?php include 'alert.php' ?>
     <main>
         <div class="picture-div animated fadeIn"></div>
 
@@ -71,10 +72,35 @@
                         _getSelectCountry('countryId');
                         </script>
                     </div>
+
+                    <div class="text_field_container" id="userTypeId_container">
+                        <script>
+                        selectField({
+                            id: 'userTypeId',
+                            title: 'Select User Type'
+                        });
+                        _getSelectUserType('userTypeId');
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="createPassword_container">
+                        <script>
+                        textField({
+                            id: 'createPassword',
+                            title: 'Create Password'
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="confirmPassword_container">
+                        <script>
+                        textField({
+                            id: 'confirmPassword',
+                            title: 'Confirm Password'
+                        });
+                        </script>
+                    </div>
                     <div class="btn-div">
-                        <button class="btn" title="Click to log In"
-                            onclick="window.location.href='<?php echo $websiteUrl?>/portal/dashboard'">
-                            Log In <i class="bi bi-check"></i>
+                        <button class="btn" id="submitBtn" title="Click to log In" onclick="_logUserEmail()">
+                            Sign-Up <i class="bi bi-check"></i>
                         </button>
                     </div>
                 </div>

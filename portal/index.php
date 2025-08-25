@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <?php include 'alert.php' ?>
     <main>
         <div class="picture-div animated fadeIn"></div>
 

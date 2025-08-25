@@ -38,25 +38,26 @@ $userDeviceId=getBrowserId();
 ?>
 
 <script>
-    var websiteUrl = "<?php echo $websiteUrl;?>";
-    var apiKey = 'a883a517-bc6c-4d8b-a544-ec743c88354a'; /// For API Key //
-    var endPoint = 'http://localhost/projects/international-exams/api/dev'; /// Server End Point url
-    //var endPoint='https://schoolbolt.com/api/production'; /// Server End Point url
-    var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
-    var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
-    var userDeviceId = "<?php echo $userDeviceId;?>"; /// For User Device Id //
+var websiteUrl = "<?php echo $websiteUrl;?>";
+var apiKey = 'a883a517-bc6c-4d8b-a544-ec743c88354a'; /// For API Key //
+var endPoint = 'http://localhost/projects/international-exams/api/dev'; /// Server End Point url
+//var endPoint='https://schoolbolt.com/api/production'; /// Server End Point url
+var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
+var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
+var userDeviceId = "<?php echo $userDeviceId;?>"; /// For User Device Id //
 
-    var adminLocalUrl = websiteUrl + '/admin/config/code';
-    var adminPortalLocalUrl = websiteUrl + '/admin/dashboard/config/code';
-    var adminDashboardUrl = websiteUrl + '/admin/dashboard'; /// For Dashboard Url //
-    var adminPortalUrl = websiteUrl + '/admin'; /// For Portal Url //
-    var adminUrl = websiteUrl + '/admin/login'; /// For Admin Url //
+var adminLocalUrl = websiteUrl + '/admin/config/code';
+var adminPortalLocalUrl = websiteUrl + '/admin/dashboard/config/code';
+var adminDashboardUrl = websiteUrl + '/admin/dashboard'; /// For Dashboard Url //
+var adminPortalUrl = websiteUrl + '/admin'; /// For Portal Url //
+var adminUrl = websiteUrl + '/admin/login'; /// For Admin Url //
 
-    var portalUrl = websiteUrl + '/portal/'; /// For Admin Url //
-    var portalAuthMiddlewareUrl = websiteUrl + '/portal/config/code';
-    var portalOperationMiddlewareUrl = websiteUrl + '/portal/dashboard/config/code';
+var portalUrl = websiteUrl + '/portal/'; /// For Admin Url //
+var portalDashboardUrl = websiteUrl + '/portal/dashboard'; /// For Admin Url //
+var portalAuthMiddlewareUrl = websiteUrl + '/portal/config/code';
+var portalOperationMiddlewareUrl = websiteUrl + '/portal/dashboard/config/code';
 
-    var pageCategory={
-		examCategory: 'examCategory',
-	}
+var pageCategory = {
+    examCategory: 'examCategory',
+}
 </script>

@@ -141,6 +141,7 @@ main .form-div .form-box .form-box-content .fullName-div {
     width: 400px;
     background: url(../../all-images/images/portal-login-bg.jpg) left no-repeat;
     background-position: right calc(100% + 250px) top;
+    background-size: cover;
   }
   main .form-div {
     width: calc(100% - 400px);
@@ -168,5 +169,15 @@ main .form-div .form-box .form-box-content .fullName-div {
 @media all and (max-width: 400px) {
   main .form-div .form-box .form-box-content h1 {
     font-size: 24px;
+  }
+}
+
+@media all and (max-height: 700px) {
+  main .form-div {
+    display: block;
+  }
+  main .form-div .form-box {
+    margin: auto;
+    padding: 40px 0px;
   }
 }

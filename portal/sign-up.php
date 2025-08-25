@@ -61,12 +61,14 @@
                         });
                         </script>
                     </div>
-                    <div class="text_field_container" id="selectCountry_container">
+
+                    <div class="text_field_container" id="countryId_container">
                         <script>
                         selectField({
-                            id: 'selectCountry',
-                            title: '--Select Your Country--'
+                            id: 'countryId',
+                            title: 'Select Your Country'
                         });
+                        _getSelectCountry('countryId');
                         </script>
                     </div>
                     <div class="btn-div">

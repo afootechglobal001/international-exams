@@ -17,5 +17,7 @@
 <script src="<?php echo $websiteUrl?>/js/jquery-v3.6.1.min.js"></script>
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
+<script src="<?php echo $websiteUrl?>/js/paramount.js"></script>
 
 <script src="<?php echo $websiteUrl?>/portal/js/scripts.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useCountry.js?v=<?php echo $codeVersion?>"></script>

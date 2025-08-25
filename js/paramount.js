@@ -327,3 +327,12 @@ function _showCustomConfirm(options) {
       });
   }
 }
+function getAuthHeaders(includeAuth = false) {
+  return {
+    apiKey: apiKey,
+    userOsBrowser: userOsBrowser,
+    userIpAddress: userIpAddress,
+    userDeviceId: userDeviceId,
+    Authorization: includeAuth ? "Bearer " + (loginAccessKey ?? "") : undefined,
+  };
+}

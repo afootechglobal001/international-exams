@@ -34,126 +34,160 @@ Best place to register ACT exam in Nigeria, where to register international exam
 <body>
     <?php include 'header.php' ?>
 
-    <div class="other-pages-slide-section animated fadeInDown">
+    <div class="other-pages-slide-section other-pages-slide-section-outer animated fadeInDown">
         <div class="other-pages-slide-div">
-            <div class="other-pages-slide-card">
-                <h1>Contact Us</h1>
 
-                <div class="text-div">
-                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                        into foreign universities.
-                    </p>
-                    <div class="btn-div">
-                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                It's Free</span>
-                        </button>
-                    </div>
-                </div>
+            <div class="top-title">
+                <nav>
+                    <ul>
+                        <li title="Home">
+                            <a href="<?php echo $websiteUrl ?>/index">
+                                Home <i class="bi bi-caret-right-fill"></i>
+                            </a>
+                        </li>
+                        <li title="Contact Us">
+                            <a href="<?php echo $websiteUrl ?>/contact">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
+            <div class="other-pages-back-div">
+                <div class="main-content-back-div">
+
+                    <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
+                        <h1>Contact Us</h1>
+                        <p>
+                            We’d love to hear from you! Whether you’re seeking guidance on exams, admissions, or
+                            international study opportunities, our team is ready to assist you every step of the way.
+                        </p>
+
+                        <div class="btn-div">
+                            <a href="#" title="Register For Exam">
+                                <button class="btn" title="Register For Exam">
+                                    <i class="bi bi-envelope"></i> Get in Touch
+                                </button>
+                            </a>
+                            <a href="#" title="Download E-Books">
+                                <button class="btn right-btn" title="Download E-Books">
+                                    <i class="bi bi-calendar-check"></i> Book a Consultation
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="image-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
 
-    <section class="other-pages-main-section">
+        <section class="other-pages-main-section">
 
-        <section class="body-div contactBg">
-            <div class="body-div-in">
-                <div class="location-phone">
-                    <div class="address-name-button">
-                        <button class="btn">LAGOS BRANCH</button>
-                        <button class="btn">OGUN BRANCH</button>
-                        <button class="btn">OYO BRANCH</button>
-                    </div>
-                    <div class="location-details-div">
-                        <div class="location-details">
-                            <div class="image-div">
-                                <img src="all-images/images/email.png" alt="">
-                            </div>
-                            <div class="text-div">
-                                <h2>MAIL US</h2>
-                                <span>info@schoolbolt.com</span>
-                            </div>
+            <section class="body-div contactBg">
+                <div class="body-div-in">
+                    <div class="location-phone">
+                        <div class="address-name-button">
+                            <button class="btn">LAGOS BRANCH</button>
+                            <button class="btn">OGUN BRANCH</button>
+                            <button class="btn">OYO BRANCH</button>
                         </div>
+                        <div class="location-details-div">
+                            <div class="location-details">
+                                <div class="image-div">
+                                    <img src="all-images/images/email.png" alt="">
+                                </div>
+                                <div class="text-div">
+                                    <h2>MAIL US</h2>
+                                    <span>info@schoolbolt.com</span>
+                                </div>
+                            </div>
 
-                        <div class="location-details">
-                            <div class="image-div">
-                                <img src="all-images/images/phone.png" alt="">
+                            <div class="location-details">
+                                <div class="image-div">
+                                    <img src="all-images/images/phone.png" alt="">
+                                </div>
+                                <div class="text-div">
+                                    <h2>CALL US</h2>
+                                    <span>(+234) 812 700 0262</span>
+                                </div>
                             </div>
-                            <div class="text-div">
-                                <h2>CALL US</h2>
-                                <span>(+234) 812 700 0262</span>
-                            </div>
-                        </div>
 
-                        <div class="location-details">
-                            <div class="image-div">
-                                <img src="all-images/images/location.png" alt="">
-                            </div>
-                            <div class="text-div">
-                                <h2>LOCATION</h2>
-                                <span>Lagos, Nigeria</span>
+                            <div class="location-details">
+                                <div class="image-div">
+                                    <img src="all-images/images/location.png" alt="">
+                                </div>
+                                <div class="text-div">
+                                    <h2>LOCATION</h2>
+                                    <span>Lagos, Nigeria</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div style="width:100%; height: 350px;">
-                <div class="map" style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:100%;height:100%;">
-                    <div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;" alt="Map"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Ode+remo&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="googl-ehtml" href="https://www.bootstrapskins.com/themes" id="get-map-data"></a>
-                    <style>
+                <div style="width:100%; height: 350px;">
+                    <div class="map"
+                        style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:100%;height:100%;">
+                        <div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;" alt="Map"><iframe
+                                style="height:100%;width:100%;border:0;" frameborder="0"
+                                src="https://www.google.com/maps/embed/v1/place?q=Ode+remo&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                        </div><a class="googl-ehtml" href="https://www.bootstrapskins.com/themes" id="get-map-data"></a>
+                        <style>
                         #google-maps-canvas img {
                             max-width: none !important;
                             background: none !important;
                             font-size: inherit;
                             font-weight: inherit;
                         }
-                    </style>
+                        </style>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="body-div">
-            <div class="body-div-in message-contact">
-                <div class="contact-input-div">
-                    <div class="text_field_container" id="fullName_container" title="full name">
-                        <script>
+            <section class="body-div">
+                <div class="body-div-in message-contact">
+                    <div class="contact-input-div">
+                        <div class="text_field_container" id="fullName_container" title="full name">
+                            <script>
                             textField({
                                 id: 'fullName',
                                 title: 'Enter full name'
                             });
-                        </script>
-                    </div>
+                            </script>
+                        </div>
 
-                    <div class="text_field_container" id="emailAddress_container" title="email address">
-                        <script>
+                        <div class="text_field_container" id="emailAddress_container" title="email address">
+                            <script>
                             textField({
                                 id: 'emailAddress',
                                 title: 'Enter email address'
                             });
-                        </script>
-                    </div>
+                            </script>
+                        </div>
 
-                    <div class="text_field_container" id="subject_container" title="subject">
-                        <script>
+                        <div class="text_field_container" id="subject_container" title="subject">
+                            <script>
                             textField({
                                 id: 'subject',
                                 title: 'Type subject here'
                             });
-                        </script>
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="contact-input-div">
+                        <textarea name="message" id="message" class="message" placeholder="message"></textarea>
+                        <button class="btn">Send Mail <i class="bi-send-fill"></i></button>
                     </div>
                 </div>
+            </section>
 
-                <div class="contact-input-div">
-                    <textarea name="message" id="message" class="message" placeholder="message"></textarea>
-                    <button class="btn">Send Mail <i class="bi-send-fill"></i></button>
-                </div>
-            </div>
+            <?php include 'footer.php' ?>
         </section>
-
-        <?php include 'footer.php' ?>
-    </section>
 </body>
 
 </html>

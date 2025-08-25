@@ -471,7 +471,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
         </section>
 
 
-        <section class="body-div">
+        <section class="body-div body-div-inner">
             <div class="body-div-in">
                 <div class="company-body-div-in">
 

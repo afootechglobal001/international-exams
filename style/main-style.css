@@ -406,7 +406,6 @@ header .main-header .main-header-inner .button-div .btn:hover {
   justify-content: center;
   align-items: center;
   padding: 50px 0px;
-  background: var(--primary-color);
 }
 
 .body-div .body-div-in {
@@ -425,6 +424,12 @@ header .main-header .main-header-inner .button-div .btn:hover {
   flex-direction: column;
   gap: 30px;
   
+}
+
+
+.body-div-inner{
+  background: var(--primary-color);
+
 }
 
 
@@ -968,6 +973,32 @@ header .main-header .main-header-inner .button-div .btn:hover {
   line-height: 25px;
   text-align: justify;
 }
+
+
+
+.about-back-div .content-div .check-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-back-div .content-div .check-div .check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.about-back-div .content-div .check-div .check h5 {
+  font-size: 15px;
+  color: var(--sub-body-color);
+  font-family: sub-title-font;
+}
+
+.about-back-div .content-div .check-div .check i {
+  color: var(--secondary-color);
+  font-size: 20px;
+}
+
 
 
 .about-back-div .content-div .box-div {

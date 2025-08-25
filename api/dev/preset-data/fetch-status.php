@@ -1,18 +1,6 @@
 <?php require_once '../config/connection.php';?>
 
-<?php
-    if (!$checkBasicSecurity){/// start if 1
-        goto end;
-    }
-    if(!$checkSession){
-        $response=[
-            'response' => 99,
-            'success' => false,
-            'message' => "SESSION EXPIRED! Please LogIn Again.",
-        ];
-        goto end;
-    }
-?>
+<?php if (!$checkBasicSecurity) {goto end;}?>
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////

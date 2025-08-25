@@ -106,7 +106,7 @@ function _getSelectStatusId(fieldId, statusIds) {
       url: `${endPoint}/preset-data/fetch-status?statusId=${statusIds}`,
       dataType: "json",
       cache: false,
-      headers: getAuthHeaders(true),
+      headers: getAuthHeaders(),
       success: function (info) {
         const data = info.data;
         const success = info.success;

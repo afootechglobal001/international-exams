@@ -97,3 +97,5 @@ function _clickOption(selectedOption, id, value) {
 	$('#'+selectBoxId).html(`<option selected="selected" value="${id}">${value}</option>`);
 	_selectOption(selectBoxId);
 };
+
+

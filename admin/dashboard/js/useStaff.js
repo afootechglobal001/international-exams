@@ -185,7 +185,7 @@ function _fetchEachStaff(staffId) {
 	}
 }
 
-function _getSelectCountry(fieldId){
+function _getSelectCountryStaff(fieldId){
 	try {
 		$.ajax({
 			type: "GET",
@@ -207,7 +207,7 @@ function _getSelectCountry(fieldId){
 					const response = info.response;
 					if (response < 100) {
 						_logOut();
-					}  
+					}
 				}
 			}
 		});

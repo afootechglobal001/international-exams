@@ -24,26 +24,10 @@
     $regPix=$_FILES['regPix']['name'];
     $incentives=trim(strtoupper($_POST['incentives']));
     $statusId=trim($_POST['statusId']);
-   
-    if (empty($pageCategoryId)){ /// start if 2
-        $response = [
-            'response'=> 100,
-            'success'=> false,
-            'message'=> "PAGE CATEGORY ID REQUIRED! Provide valid category ID and try again",
-        ]; 
-        goto end;
-    }
-
-    if (empty($publishId)){ /// start if 2
-        $response = [
-            'response'=> 100,
-            'success'=> false,
-            'message'=> "PUBLISH ID REQUIRED! Provide valid category ID and try again",
-        ]; 
-        goto end;
-    }
 
     //////////////////check for empty fields//////////////////////////////////////
+    validateEmptyField($pageCategoryId, 'PAGE CATEGORY ID');
+    validateEmptyField($publishId, 'PUBLISH ID');
     validateEmptyField($regTitle, 'EXAM NAME');
     validateEmptyField($examAbbr, 'EXAM ABBREVIATION');
     validateEmptyField($incentives, 'EXAM INCENTIVES');
@@ -86,7 +70,7 @@
             WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'";
             mysqli_query($conn, $update) or die(mysqli_error($conn));
 
-            /// delete existing records first
+            /// delete existing incentives records first 
             mysqli_query($conn,"DELETE FROM `EXAM_INCENTIVE_TAB` WHERE publishId='$publishId'")or die (mysqli_error($conn));
 
             // Handle departments (comma-separated)

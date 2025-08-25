@@ -2492,6 +2492,10 @@ main {
 	min-height: unset !important;
 }
 
+.form-fill-content{
+	box-shadow: 0px 0px 12px 3px rgba(17, 17, 17, 0.082);
+}
+
 .page-summ-content{
 	box-shadow: none;
 }
@@ -3880,3 +3884,135 @@ main {
 
 
 
+.pages-toggle-back-div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	width: 100%;
+}
+
+.pages-toggle-back-div .pages-toggle-div{
+	width: 100%;
+    border-radius: 8px;
+	background: var(--white-color);
+	border: 1px solid rgba(215, 215, 215, .6);
+	cursor: pointer;
+	-moz-transition:all 0.2s ease-in 02s;
+	transition:all 0.2s ease-in 0.2s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
+}
+
+.pages-toggle-back-div .pages-toggle-div:hover{
+	box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.062);
+}
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title{
+	width: calc(100% - 40px);
+	min-height: 75px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: body-font;
+    font-size: 14px;
+	padding: 0px 20px;
+	border-radius: 8px;
+	background: #f8f8f8;
+}
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title .title-back-div{
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+}	
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title .title-back-div h3{
+    font-size: 17px;
+    padding: 0px 0px 0px 10px;
+    font-weight: lighter;
+	font-family: title-font;
+	color: var(--sub-body-color2);
+}
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title .title-back-div .btn{
+    font-size: 10px;
+	color: var(--white-color);
+	border: none;
+	cursor: pointer;
+    min-width: 25px;
+    padding: 6px 8px;
+	border-radius: 4px;
+	font-family: sub-title-font;
+	background: var(--primary-color);
+}
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title .title-back-div .btn i{
+    font-size: 9px;
+}
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title .expand-div{
+	height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 25px;
+	color: var(--primary-color);
+	cursor: pointer;
+}
+
+.pages-toggle-back-div .pages-toggle-div .pages-toggle-title .expand-div i{
+    font-size: 15px;
+}
+
+.pages-toggle-back-div .toggle-expand-div {
+	padding: 30px 15px;
+    font-size: 12px;
+}
+
+
+.segmentDiv{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 10px 0px;
+}
+.segmentDiv .segmentTitle{
+	width: 100%;
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+	font-family: sub-title-font;
+}
+.segmentDiv .segmentTitle hr{
+	width: calc(100% - 200px);
+	align-self: flex-start;
+	border: rgba(153, 153, 153, .5) 1px solid;
+}
+.segmentDiv .segmentList{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.segmentDiv .segmentList .segmentBody{
+	width: 100%;
+}
+
+.segmentDiv .btn{
+	border: none;
+	padding: 10px 15px;
+	border-radius: 20px;
+	font-family: sub-title-font;
+	background: var(--sub-body-color);
+	color: var(--white-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.3s ease-in;
+	cursor: pointer;
+}

@@ -17,28 +17,26 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
-    $countryId =trim($_GET['countryId']);
-    $currency=trim($_GET['currency']);
     $publishId=trim($data['publishId']);
-    $amount=trim($data['amount']);
+    $locationName=trim(strtoupper($data['locationName']));
+    $statusId=trim($data['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
-    validateEmptyField($countryId, 'COUNTRY ID');
-    validateEmptyField($currency, 'CURRENCY');
     validateEmptyField($publishId, 'EXAM NAME');
-    validateEmptyField($amount, 'EXAM PRICE');
+    validateEmptyField($locationName, 'LOCATION NAME');
+    validateEmptyField($statusId, 'STATUS');
 
-    $examNameQuery=mysqli_query($conn,"SELECT publishId FROM BRANCH_EXAM_PRICING_TAB WHERE countryId='$countryId' AND publishId='$publishId'") or die (mysqli_error($conn));
-    $examNameCountQuery=mysqli_num_rows($examNameQuery);
+    $locationNameQuery=mysqli_query($conn,"SELECT locationName FROM EXAM_LOCATION_TAB WHERE locationName='$locationName'") or die (mysqli_error($conn));
+    $locationNameCountQuery=mysqli_num_rows($locationNameQuery);
 
-    if ($examNameCountQuery>0){ /// start if 4
+    if ($locationNameCountQuery>0){ /// start if 2
         $response = [
             'response'=> 101,
             'success'=> false,
-            'message' => "This exam already in use. Please choose another Exam."
+            'message' => "This exam location with name ('$locationName') is already in use. Please try another Name."
         ];
 
-        $alertDetail="ADD EXAM ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to add new exam name that is already in use.";	
+        $alertDetail="EXAM LOCATION REGISTRATION ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to register a new exam location with a name ($locationName) that is already in use.";		
         goto end;
     }
 
@@ -47,26 +45,33 @@
 	    $fetchExamQuery=mysqli_fetch_array($examQuery);
 		$examAbbr=$fetchExamQuery['examAbbr'];
 
-        mysqli_query($conn,"INSERT INTO `BRANCH_EXAM_PRICING_TAB`
-        (`countryId`, `publishId`, `examAbbr`, `currency`, `amount`, `createdBy`, `createdTime`) VALUES
-        ('$countryId', '$publishId', '$examAbbr', '$currency', '$amount', '$loginStaffId', NOW())")or die (mysqli_error($conn));
+        ///////////////////////geting sequence//////////////////////////
+        $countId='LOCATION';
+        $sequence=$callclass->_getSequenceCount($conn, $countId);
+        $array = json_decode($sequence, true);
+        $no= $array[0]['no'];
+        $locationId=$countId.$no.date("Ymdhis");
+
+
+        mysqli_query($conn,"INSERT INTO `EXAM_LOCATION_TAB`
+        (`publishId`, `examAbbr`, `locationId`, `locationName`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
+        ('$publishId', '$examAbbr', '$locationId', '$locationName', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
             'success'=> true,
-            'message'=> "EXAM ADDED SUCCESFFULLY!",
+            'message'=> "EXAM LOCATION CREATED SUCCESFFULLY!",
             'data' => array() // Initialize the data array
         ];
 
-            $alertDetail = "EXAM ADDED SUCCESSFULLY:Exam was added successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Country: $countryId | ID: $publishId | Exam: $examAbbr.";
+            $alertDetail = "EXAM LOCATION CREATED SUCCESSFULLY:Exam location was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: publish ID: $publishId | Exam: $examAbbr | location ID: $locationId | location Name: $locationName.";
 
             // Fetch branch details ///
-            $select="SELECT * FROM BRANCH_EXAM_PRICING_TAB WHERE publishId='$publishId' AND countryId='$countryId'";
+            $select="SELECT * FROM EXAM_LOCATION_TAB";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {
                 $createdBy=$fetchQuery['createdBy'];
-                $updatedBy=$fetchQuery['updatedBy'];
                
                 /////////////////// for  CreatedBy /////////
                 $createdByData=array();

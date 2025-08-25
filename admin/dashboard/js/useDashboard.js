@@ -107,6 +107,17 @@ function filters(selectBoxId) {
 	});
 };
 
+
+function _useCollapse(divId) {
+	var x = document.getElementById(divId + 'num');
+	if (x.innerHTML === '&nbsp;<i class="bi-chevron-down"></i>&nbsp;') {
+	  x.innerHTML = '&nbsp;<i class="bi-chevron-up"></i>&nbsp;';
+	} else {
+	  x.innerHTML = '&nbsp;<i class="bi-chevron-down"></i>&nbsp;';
+	}
+	  $('#'+divId+'answer').slideToggle('slow');
+}
+ 
 function thousandSeperator(val) {
 	let dp=2;
   const formatter = new Intl.NumberFormat('ng-NG', {

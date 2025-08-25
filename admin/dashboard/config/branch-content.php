@@ -105,7 +105,7 @@
                         <li class="active" title="Dashboard" id="countryBranchDashboard" onclick="_getActiveBranchPage({divid: 'countryBranchDashboard', page: 'countryBranchDashboard', url: adminPortalLocalUrl});"><i class="bi-speedometer2"></i> Dashboard</li>
                         <li title="Branches" id="branchesPage" onclick="_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});"><i class="bi-diagram-3"></i> Branches</li>
                         <li id="examPricingPage" title="Exam Pricing" onclick="_getActiveBranchPage({divid: 'examPricingPage', page: 'examPricingPage', url: adminPortalLocalUrl});"><i class="bi-credit-card-fill"></i> Exam Pricing</li>
-                        <li id="examPricing" title="Exam Pricing"><i class="bi-geo-alt"></i> Exam Location</li>
+                        <li id="examLocationPage" title="Exam Location" onclick="_getActiveBranchPage({divid: 'examLocationPage', page: 'examLocationPage', url: adminPortalLocalUrl});"><i class="bi-geo-alt"></i> Exam Location</li>
                         <li id="examPricing" title="Exam Pricing"><i class="bi-person-vcard"></i> Agent</li>
                         <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
                     </ul>
@@ -892,6 +892,230 @@
 
                 <div class="btn-div">
                     <button class="btn" title="SUBMIT" id="submitBtn" onclick="_addExamPricing();"> <i class="bi-check"></i> SUBMIT </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examLocationPage') { ?>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-geo-alt"></i>
+                    <p>Exam Location</p>
+                </div>
+
+                <div>
+                    <button class="btn" title="ADD NEW LOCATION" onclick="sessionStorage.removeItem('getEachExamLocationSession'); _getForm({page: 'examLocationReg', layer:2, url: adminPortalLocalUrl});">
+                        <i class="bi bi-plus-square"></i> ADD NEW LOCATION
+                    </button>
+                </div>
+            </div>
+
+            <div class="inner-table-content">
+                <div class="pages-toggle-back-div" id="pageContent">
+                    <script>fetchExamLocationData();</script>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examLocationReg') { ?>
+    <script> 
+        getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));
+        $('#pageTitle').html(getEachExamLocationSession?.locationId ? 'UPDATE EXAM LOCATION':'CREATE NEW EXAM LOCATION');
+        $('#subTitle, #subTitle2, #subTitle3').html(getEachExamLocationSession?.locationId ? 'update this exam location':'create new exam location');
+    </script>
+
+    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-geo-alt"></i></div>
+                <h3 id="pageTitle">CREATE NEW EXAM LOCATION</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
+            </div>
+        </div>
+
+        <!-- /////////// Title ////////////////////////////// -->
+        <div class="container-back-div">
+            <div class="form-notification">
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
+            </div>
+
+
+            <div class="main-content-div">
+                <div class="tables-content-div form-fill-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-geo-alt"></i>
+                            <p>Create new exam location here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="text_field_container" id="publishId_container">
+                            <script>
+                                selectField({
+                                    id: 'publishId',
+                                    title: 'Select Exam',
+                                    fieldValue: getEachExamLocationSession?.publishId ?? '',
+                                    fieldLabel: getEachExamLocationSession?.examAbbr ?? ''
+                                });
+                                _getSelectExams('publishId');
+                            </script>
+                        </div>
+                         
+                        <div class="text_field_container" id="locationName_container">
+                            <script>
+                                textField({
+                                    id: 'locationName',
+                                    title: 'Exam Location',
+                                    value: getEachExamLocationSession?.locationName ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status',
+                                    fieldValue: getEachExamLocationSession?.statusId ?? '',
+                                    fieldLabel: getEachExamLocationSession?.statusName ?? ''
+                                });
+                                _getSelectStatusId('statusId', '1,2');
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="createAndUpdateExamLocation();"> <i class="bi-check"></i> SUBMIT </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'examCenterReg') { ?>
+    <script> getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));</script>
+    <script> getEachExamCenterSession = JSON.parse(sessionStorage.getItem("getEachExamCenterSession"));</script>
+
+    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-geo-alt"></i></div>
+                <h3>ADD NEW EXAM CENTER</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
+            </div>
+        </div>
+
+        <!-- /////////// Title ////////////////////////////// -->
+        <div class="container-back-div">
+            <div class="form-notification">
+                <p>You are about to add a new exam center for 
+                    (<strong id="branchLocationCountryName">
+                        <script> $("#branchLocationCountryName").html(getEachExamLocationSession?.locationName);</script>
+                    </strong>). 
+                    Please complete the form below with accurate details to successfully add exam center under this country.
+                </p>
+            </div>
+
+
+            <div class="main-content-div">
+                <div class="tables-content-div form-fill-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-geo-alt"></i>
+                            <p>Add new exam location here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="text_field_container" id="centerName_container">
+                            <script>
+                                textField({
+                                    id: 'centerName',
+                                    title: 'Center Name',
+                                    value: getEachExamCenterSession?.centerName ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="centerNumber_container">
+                            <script>
+                                textField({
+                                    id: 'centerNumber',
+                                    title: 'Center Number',
+                                    value: getEachExamCenterSession?.centerNumber ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="centerAddress_container">
+                            <script>
+                                textField({
+                                    id: 'centerAddress',
+                                    title: 'Center Address',
+                                    value: getEachExamCenterSession?.centerAddress ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="segmentDiv">
+                            <div class="segmentTitle">
+                                <span>Date Segmentation</span>
+                                <hr>
+                            </div>
+
+                            <div class="segmentList">
+                                <script>
+                                    $(document).ready(function () {
+                                        let examDates = (getEachExamCenterSession?.examDateData) || [];
+
+                                        if (examDates.length > 0) {
+                                            examDates.forEach(item => addSegmentation(item.examDate));
+                                        } else {
+                                            addSegmentation();
+                                        }
+                                    });
+                                </script>
+
+                            </div>
+                            
+                            <div>
+                                <button type="button" class="btn" onClick="addSegmentation()"><i class="bi-plus"></i> Add date segment</button>
+                            </div>
+                        </div>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status',
+                                    fieldValue: getEachExamCenterSession?.statusId ?? '',
+                                    fieldLabel: getEachExamCenterSession?.statusName ?? ''
+                                });
+                                _getSelectStatusId('statusId', '1,2');
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createExamCenter();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

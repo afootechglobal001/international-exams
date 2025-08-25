@@ -24,16 +24,8 @@
     $incentives=trim(strtoupper($_POST['incentives']));
     $statusId=trim($_POST['statusId']);
    
-    if (empty($pageCategoryId)){ /// start if 2
-        $response = [
-            'response'=> 100,
-            'success'=> false,
-            'message'=> "PAGE CATEGORY ID REQUIRED! Provide valid category ID and try again",
-        ]; 
-        goto end;
-    }
-
     //////////////////check for empty fields//////////////////////////////////////
+    validateEmptyField($pageCategoryId, 'PAGE CATEGORY ID');
     validateEmptyField($regTitle, 'EXAM NAME');
     validateEmptyField($examAbbr, 'EXAM ABBREVIATION');
     validateEmptyField($regPix, 'EXAM PICTURE');
@@ -43,7 +35,7 @@
     $examNameQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
     $examNameCountQuery=mysqli_num_rows($examNameQuery);
 
-    if ($examNameCountQuery>0){ /// start if 4
+    if ($examNameCountQuery>0){ /// start if 2
         $response = [
             'response'=> 101,
             'success'=> false,
@@ -57,7 +49,7 @@
     $examAbbrQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE examAbbr='$examAbbr' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
     $examAbbrCountQuery=mysqli_num_rows($examAbbrQuery);
 
-    if ($examAbbrCountQuery>0){ /// start if 5
+    if ($examAbbrCountQuery>0){ /// start if 3
         $response = [
             'response'=> 102,
             'success'=> false,

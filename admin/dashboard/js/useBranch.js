@@ -10,7 +10,7 @@ function _getActiveBranchPage(props) {
 	}
 }
 function _getBranchPagesActiveLink(divid){
-	$('#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricingPage').removeClass('active');
+	$('#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricingPage, #examLocationPage').removeClass('active');
 	$("#"+divid).addClass('active');
 }
 
@@ -1041,3 +1041,542 @@ function _deleteExamCallBack(publishId) {
 		btn.html(btnText).prop("disabled", false);
 	}
 }
+
+let segmentationCounter = 0; // global counter
+
+function addSegmentation(value = '') {
+	const fieldId = Date.now() + '_' + (++segmentationCounter); // unique every time
+
+	const template = `
+		<div class="segmentBody">
+			<div class="text_field_container" id="${fieldId}_examDate_container"></div>
+		</div>
+	`;
+
+	$('.segmentList').append(template);
+
+	// Create date input with optional value
+	textField({
+		id: `${fieldId}_examDate`,
+		title: 'Exam Date',
+		type: 'date',
+		value: value
+	});
+}
+
+
+
+function fetchExamLocationData() {
+    $('#pageContent').html('<div class="ajax-loader pages-ajax-loader"><img src="' + websiteUrl + '/all-images/images/spinner.gif" alt="Loading"/></div>').fadeIn("fast");        
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/admin/branch/exam-location/fetch-exam-location`,
+			dataType: "json", 
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				const fetch = info.data;
+
+				let content = '';
+				let no=0;
+
+				if (info.success) {
+					for (let i = 0; i < fetch.length; i++) {
+						no++;
+						const locationInfo = fetch[i];
+						const locationId = locationInfo.locationId;
+						const locationName = locationInfo.locationName;
+						const centerData = locationInfo.centerData;
+
+						content +=`
+							<div class="pages-toggle-div">
+								<div class="pages-toggle-title" onclick="_useCollapse('view${no}');" title="Click to view exam centers">
+									<div class="title-back-div">
+										<h3>${locationName}</h3>
+										<button class="btn" title="Click to edit exam location" onclick="_fetchEachExamLocation('${locationId}');"><i class="bi-pencil-square"></i></button>
+									</div>
+									<div class="expand-div" id="view${no}num">&nbsp;<i class="bi-chevron-down"></i>&nbsp;</div> 
+								</div>
+
+								<div class="toggle-expand-div" id="view${no}answer" style="display: none;">  
+									<div class="main-content-div form-main-content">
+										<div class="tables-content-div">
+											<div class="content-title">
+												<div class="title">
+													<i class="bi bi-geo-alt"></i>
+													<p>Exam Center</p>
+												</div>
+
+												<div>
+													<button class="btn" title="ADD NEW CENTER" 
+														onclick="sessionStorage.removeItem('getEachExamCenterSession'); _openExamCenterForm(${JSON.stringify(locationInfo).replace(/"/g, '&quot;')});">
+														<i class="bi bi-plus-square"></i> ADD NEW CENTER
+													</button>
+
+												</div>
+											</div>
+
+											<div class="inner-table-content">
+												<div class="table-div animated fadeIn">
+													<table class="table" cellspacing="0" style="width:100%">
+														<thead>
+															<tr class="tb-col">
+																<th>sn</th>
+																<th>Center Name</th>
+																<th>Center Address</th>
+																<th>Exam Date</th>
+																<th>Status</th>
+																<th>Action</th>
+															</tr>
+														</thead>
+
+														<tbody>`;
+
+                        								if (centerData.length > 0) {
+															let sn = 0;
+															for (let k = 0; k < centerData.length; k++) {
+																sn++;
+																const centerInfo = centerData[k];
+																const centerId = centerInfo.centerId;
+																const centerName = centerInfo.centerName;
+																const centerNumber = centerInfo.centerNumber;							
+																const centerAddress = centerInfo.centerAddress;
+																const statusName = centerInfo.statusName;
+																const examDateData = centerInfo.examDateData;
+
+																const examDateValue = examDateData.length > 0 
+																	? examDateData
+																		.map(item => {
+																			const date = new Date(item.examDate);
+																			return date.toLocaleDateString("en-US", {
+																				weekday: "long",   // Saturday
+																				year: "numeric",   // 2025
+																				month: "long",     // May
+																				day: "2-digit"     // 03
+																			}) + "."; 
+																		})
+																		.join(", ")
+																	: "";
+
+																content += `
+																<tr class="tb-row">
+																	<td>${sn}</td>
+																	<td class="clickable-td">${centerName}<br/><span>${centerId}</span></td>
+																	<td>${centerAddress}<br/><span>${centerNumber}</span></td>
+																	<td>${examDateValue}</td>
+																	<td><div class="status-div ${statusName}">${statusName}</div></td>
+																	<td><button class="btn view-btn" onclick="_fetchEachExamCenter('${centerId}');">VIEW</button></td>
+																</tr>`;
+															}
+														} else {
+															content += `
+															<div class="false-notification-div">
+																<p>NO RECORD FOUND!!</p>
+																<div>
+																	<button class="btn" onclick="_getForm({page: 'examCenterReg', layer:2, url: adminPortalLocalUrl});">
+																		<i class="bi-plus-square"></i> ADD NEW EXAM CENTER
+																	</button>
+																</div>
+															</div>`;
+														}
+
+														content += `</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>`;
+						
+					}
+					$('#pageContent').html(content);
+				} else {
+					_showCustomConfirm({
+						title: 'Exam Location Error',
+						message: info.message,
+						alertType: 'warning',
+						trueActionBtnText: 'OK'
+					});
+
+					$('#pageContent').html(`
+						<div class="false-notification-div">
+							<p>${info.message}</p>
+							<div>
+								<button class="btn" title="ADD NEW EXAM LOCATION" onclick="_getForm({page: 'examLocationReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM LOCATION</button>
+							</div>
+						</div>
+					`);
+					
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
+				}
+			},
+			error: function(textStatus, errorThrown) {
+				console.error("AJAX Error: ", textStatus, errorThrown);
+				_showCustomConfirm({
+					title: 'Connection Error!',
+					message: 'An error occurred while fetching data! Please try again.',
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
+
+				$('#pageContent').html(`
+					<div class="false-notification-div">
+						<p>An error occurred while fetching data! Please try again.</p>
+					</div>
+				`);
+			}
+		});
+	} catch (error) {
+		console.error("Error: ", error);
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
+	}
+}
+
+function createAndUpdateExamLocation() {
+	try {
+		let issueCount = 0;
+		const publishId = $('#publishId').val();
+		const locationName = $('#locationName').val();
+		const statusId = $('#statusId').val();
+
+		$('#publishId, #locationName, #statusId').removeClass('issue');
+		$('#issue_publishId, #issue_locationName, #issue_statusId').html('');
+
+		if (!publishId) {
+			$('#publishId').addClass('issue');
+			$('#issue_publishId').html('USER ERROR! Kindly Select exam to continue');
+			issueCount++;
+		}
+
+		if (!locationName) {
+			$('#locationName').addClass("issue");
+			$('#issue_locationName').html('USER ERROR! Kindly Provide mobile number to continue');
+			issueCount++;
+		}
+
+		if (!statusId) {
+			$('#statusId').addClass("issue");
+			$('#issue_statusId').html('USER ERROR! Kindly Select status to continue');
+			issueCount++;
+		}
+
+		if (issueCount > 0) return;
+
+		const form ={publishId, locationName, statusId}
+		_showCustomConfirm({
+			callback: () => {
+				_createAndUpdateExamLocationCallback(form);
+			},
+			title: 'Are you sure?',
+			message: 'Are you sure you want to create a new exam location? This action is irreversible.',
+			alertType: 'warning',
+			falseActionBtn: true,
+		});
+	} catch (error) {
+		_showCustomConfirm({
+			title: 'Unexpected Error',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
+		$("#submitBtn").prop("disabled", false);
+	}
+}
+
+function _createAndUpdateExamLocationCallback(form){
+	let getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));
+
+	const btnText = $("#submitBtn").html();
+	$("#submitBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
+	$("#submitBtn").prop("disabled", true);
+
+	const formData = {
+		"publishId": form.publishId,
+		"locationName": form.locationName,
+		"statusId": form.statusId,
+	};
+
+	let callUrl= getEachExamLocationSession?.locationId ? `${endPoint}/admin/branch/exam-location/update-exam-location?locationId=${getEachExamLocationSession?.locationId}` : `${endPoint}/admin/branch/exam-location/create-exam-location`;
+
+	$.ajax({
+		type: "POST",
+		url: callUrl,
+		data: JSON.stringify(formData),
+		dataType: "json", 
+		cache: false,
+		headers: getAuthHeaders(true),
+		success: function (info) {
+			const success = info.success;
+			const message = info.message;
+
+			if (success=== true) {
+				_showCustomConfirm({
+					callback: () => {
+						_getActiveBranchPage({divid: 'examLocationPage', page: 'examLocationPage', url: adminPortalLocalUrl});
+						_alertClose(2);
+					},
+					title: 'Success!',
+					message: message,
+					alertType: 'success',
+					trueActionBtnText: 'OK, Thanks.',
+				});
+			} else {
+				_showCustomConfirm({
+					title: 'Create Exam Location Error',
+					message: message,
+					alertType: 'warning',
+					trueActionBtnText: 'OK'
+				});
+			}
+			$("#submitBtn").html(btnText).prop("disabled", false);
+	},
+		error: function (error) {
+			_showCustomConfirm({
+				title: 'Unexpected Error',
+				message: 'An unexpected error occurred! Please try again.',
+				alertType: 'error',
+				trueActionBtnText: 'OK, Retry'
+			});
+			$("#submitBtn").html(btnText).prop("disabled", false);
+		}
+	});
+}
+
+function _fetchEachExamLocation(locationId) {
+	$("#get-more-div-secondary").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/admin/branch/exam-location/fetch-exam-location?locationId=${locationId}`,
+			dataType: "json", 
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				if (info.success && info.data.length > 0) {
+					sessionStorage.setItem("getEachExamLocationSession", JSON.stringify(info.data[0]));
+					_getForm({page: 'examLocationReg', layer:2, url: adminPortalLocalUrl});
+				} else {
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
+				}
+			},
+			error: function(textStatus, errorThrown) {
+				_alertClose();
+				console.error("AJAX Error: ", textStatus, errorThrown);
+				_showCustomConfirm({
+					title: 'Connection Error!',
+					message: 'An error occurred while fetching data! Please try again.',
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
+			}
+		});
+	} catch (error) {
+		_alertClose();
+		console.error("Error: ", error);
+		_showCustomConfirm({
+			title: 'Unexpected Error',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
+	}
+}
+
+function _fetchEachExamCenter(centerId) {
+    $("#get-more-div-secondary").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
+    try {
+        $.ajax({
+            type: "GET",
+            url: `${endPoint}/admin/branch/exam-center/fetch-exam-center?centerId=${centerId}`,
+            dataType: "json", 
+            cache: false,
+            headers: getAuthHeaders(true),
+            success: function(info) {
+                if (info.success && info.data.length > 0) {
+                    sessionStorage.setItem("getEachExamCenterSession", JSON.stringify(info.data[0]));
+                    
+                    _getForm({page: 'examCenterReg', layer:2, url: adminPortalLocalUrl});
+                } else {
+                    const response = info.response;
+                    if (response < 100) {
+                        _logOut();
+                    }    
+                }
+            },
+            error: function(textStatus, errorThrown) {
+                _alertClose();
+                console.error("AJAX Error: ", textStatus, errorThrown);
+                _showCustomConfirm({
+                    title: 'Connection Error!',
+                    message: 'An error occurred while fetching data! Please try again.',
+                    alertType: 'error',
+                    trueActionBtnText: 'OK, Retry'
+                });
+            }
+        });
+    } catch (error) {
+        _alertClose();
+        console.error("Error: ", error);
+        _showCustomConfirm({
+            title: 'Unexpected Error',
+            message: 'An unexpected error occurred! Please try again.',
+            alertType: 'error',
+            trueActionBtnText: 'OK, Retry'
+        });
+    }
+}
+
+function _openExamCenterForm(locationInfo) {
+    // Save the selected location to sessionStorage
+    sessionStorage.setItem("getEachExamLocationSession", JSON.stringify(locationInfo));
+    
+    // Open the exam center registration form
+    _getForm({page: 'examCenterReg', layer:2, url: adminPortalLocalUrl});
+}
+
+function _createExamCenter() {
+	try {
+		let issueCount = 0;
+		const centerName = $('#centerName').val();
+		const centerNumber = $('#centerNumber').val();
+		const centerAddress = $('#centerAddress').val();
+		const statusId = $('#statusId').val();
+
+		const dateSegment = [];
+		$('.segmentBody input').each(function () {
+			dateSegment.push({ examDate: $(this).val() });
+		});
+
+		$('#centerName, #centerNumber, #centerAddress, #statusId').removeClass('issue');
+		$('.segmentBody input').removeClass('issue');
+		$('#issue_centerName, #issue_centerNumber, #issue_centerAddress, #issue_examDate, #issue_statusId').html('');
+
+		let atLeastOneFilled = dateSegment.some(d => d.examDate && d.examDate.trim() !== "");
+		if (!atLeastOneFilled) {
+			$('.segmentBody input').addClass('issue');
+			$('#issue_examDate').html('USER ERROR! Kindly enter at least one date to continue!');
+			issueCount++;
+		}
+
+		if (!centerName) {
+			$('#centerName').addClass('issue');
+			$('#issue_centerName').html('USER ERROR! Kindly provide exam center to continue');
+			issueCount++;
+		}
+
+		if (!centerNumber) {
+			$('#centerNumber').addClass("issue");
+			$('#issue_centerNumber').html('USER ERROR! Kindly Provide center number to continue');
+			issueCount++;
+		}
+
+		if (!centerAddress) {
+			$('#centerAddress').addClass("issue");
+			$('#issue_ceissue_centerAddressterNumber').html('USER ERROR! Kindly Provide center address to continue');
+			issueCount++;
+		}
+
+		if (!statusId) {
+			$('#statusId').addClass("issue");
+			$('#issue_statusId').html('USER ERROR! Kindly Select status to continue');
+			issueCount++;
+		}
+
+		if (issueCount > 0) return;
+
+		const form ={centerName, centerNumber, centerAddress, dateSegment, statusId}
+		_showCustomConfirm({
+			callback: () => {
+				_createExamCenterCallback(form);
+			},
+			title: 'Are you sure?',
+			message: 'Are you sure you want to create a new exam center? This action is irreversible.',
+			alertType: 'warning',
+			falseActionBtn: true,
+		});
+	} catch (error) {
+		_showCustomConfirm({
+			title: 'Unexpected Error',
+			message: 'An unexpected error occurred! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
+		$("#submitBtn").prop("disabled", false);
+	}
+}
+
+function _createExamCenterCallback(form){
+	let getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));
+	let getEachExamCenterSession = JSON.parse(sessionStorage.getItem("getEachExamCenterSession"));
+
+	const btnText = $("#submitBtn").html();
+	$("#submitBtn").html('<img src="' + websiteUrl + '/all-images/images/loading.gif" width="12px" alt="Loading"/>');
+	$("#submitBtn").prop("disabled", true);
+
+	const formData = {
+		"centerName": form.centerName,
+		"centerNumber": form.centerNumber,
+		"centerAddress": form.centerAddress,
+		dateSegment: form.dateSegment,
+		"statusId": form.statusId,
+	};
+
+	let callUrl= getEachExamCenterSession?.centerId ? `${endPoint}/admin/branch/exam-center/update-exam-center?locationId=${getEachExamLocationSession?.locationId}&centerId=${getEachExamCenterSession?.centerId}` : `${endPoint}/admin/branch/exam-center/create-exam-center?locationId=${getEachExamLocationSession?.locationId}`;
+
+	$.ajax({
+		type: "POST",
+		url: callUrl,
+		data: JSON.stringify(formData),
+		dataType: "json", 
+		cache: false,
+		headers: getAuthHeaders(true),
+		success: function (info) {
+			const success = info.success;
+			const message = info.message;
+
+			if (success=== true) {
+				_showCustomConfirm({
+					callback: () => {
+						_getActiveBranchPage({divid: 'examLocationPage', page: 'examLocationPage', url: adminPortalLocalUrl});
+						_alertClose(2);
+					},
+					title: 'Success!',
+					message: message,
+					alertType: 'success',
+					trueActionBtnText: 'OK, Thanks.',
+				});
+			} else {
+				_showCustomConfirm({
+					title: 'Create Exam Center Error',
+					message: message,
+					alertType: 'warning',
+					trueActionBtnText: 'OK'
+				});
+			}
+			$("#submitBtn").html(btnText).prop("disabled", false);
+	},
+		error: function (error) {
+			_showCustomConfirm({
+				title: 'Unexpected Error',
+				message: 'An unexpected error occurred! Please try again.',
+				alertType: 'error',
+				trueActionBtnText: 'OK, Retry'
+			});
+			$("#submitBtn").html(btnText).prop("disabled", false);
+		}
+	});
+}
+

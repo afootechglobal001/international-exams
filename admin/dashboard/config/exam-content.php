@@ -45,7 +45,7 @@
     <script> 
         getEachExamSession = JSON.parse(sessionStorage.getItem("getEachExamSession"));
         $('#pageTitle').html(getEachExamSession?.publishId ? 'UPDATE EXAM':'CREATE NEW EXAM');
-        $('#subTitle, #subTitle2, #subTitle3').html(getEachExamSession?.publishId ? 'update this exam':'create new exam');
+        $('#subTitle, #subTitle2').html(getEachExamSession?.publishId ? 'update this exam':'create new exam');
     </script>
 
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">

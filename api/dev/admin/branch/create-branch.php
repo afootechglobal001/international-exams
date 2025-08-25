@@ -25,16 +25,8 @@
     $managerId=trim(strtoupper($data['managerId']));
     $statusId=trim($data['statusId']);
 
-    if (!$countryId){ /// start if 1
-        $response = [
-            'response'=> 100,
-            'success'=> false,
-            'message'=> "COUNTRY ID REQUIRED! Provide valid country ID and try again",
-        ]; 
-        goto end;
-    }
-
     //////////////////check for empty fields//////////////////////////////////////
+    validateEmptyField($countryId, 'COUNTRY ID');
     validateEmptyField($branchName, 'BRANCH NAME');
     validateEmptyField($email, 'EMAIL ADDRESS');
     validateEmptyField($phoneNumber, 'MOBILE NUMBER');
@@ -44,7 +36,7 @@
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){ /// start if 2
         $response = [
-            'response'=> 102,
+            'response'=> 101,
             'success'=> false,
             'message'=> "INVALID EMAIL ADDRESS! Enter a valid email address and try again",
         ]; 
@@ -53,7 +45,7 @@
 
     if (!preg_match('/^[0-9]{10,15}$/', $phoneNumber)){ /// start if 3
         $response = [
-            'response'=> 103,
+            'response'=> 102,
             'success'=> false,
             'message'=> "INVALID MOBILE NUMBER! Enter a valid mobile number and try again",
         ];
@@ -62,7 +54,7 @@
 
     if (strlen($phoneNumber) != 11) {
         $response = [
-            'response' => 104,
+            'response' => 103,
             'success' => false,
             'message' => "INVALID PHONE NUMBER! NUMBER MUST BE EXACTLY 11 DIGITS."
         ];
@@ -74,7 +66,7 @@
 
     if ($nameCountQuery>0){ /// start if 5
         $response = [
-            'response'=> 105,
+            'response'=> 104,
             'success'=> false,
             'message' => "This branch with name ('$branchName') is already in use. Please try another Name."
         ];

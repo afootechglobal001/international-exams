@@ -917,7 +917,7 @@
             <div class="inner-table-content">
                 <div class="pages-toggle-back-div" id="pageContent">
                     <script>fetchExamLocationData();</script>
-                </div>
+                    </div>
             </div>
         </div>
     </div>

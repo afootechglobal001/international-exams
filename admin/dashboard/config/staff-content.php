@@ -147,7 +147,7 @@
                                                 id: 'countryId',
                                                 title: 'Select Country'
                                             });
-                                            _getSelectCountry('countryId');
+                                            _getSelectCountryStaff('countryId');
                                         </script>
                                     </div>
 
@@ -344,7 +344,7 @@
                                         fieldValue: getEachStaffDetailsSession?.countryId ?? '',
                                         fieldLabel: getEachStaffDetailsSession?.countryName ?? ''
                                     });
-                                    _getSelectCountry('countryId');
+                                    _getSelectCountryStaff('countryId');
                                 </script>
                             </div>
 

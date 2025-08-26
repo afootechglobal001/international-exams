@@ -916,8 +916,7 @@
 
             <div class="inner-table-content">
                 <div class="pages-toggle-back-div" id="pageContent">
-                    <script>fetchExamLocationData();</script>
-                    </div>
+                    <script>fetchExamLocationData();</script></div>
             </div>
         </div>
     </div>
@@ -946,7 +945,8 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
+                <p>You are about to <span id="subTitle"></span> for (<strong id="formBranchCountryName"> <script> $("#formBranchCountryName").html(getEachCountrySession?.countryName);</script> </strong>).
+                 Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
 
@@ -1007,13 +1007,18 @@
 
 <?php if ($page == 'examCenterReg') { ?>
     <script> getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));</script>
-    <script> getEachExamCenterSession = JSON.parse(sessionStorage.getItem("getEachExamCenterSession"));</script>
+    <script> 
+        getEachExamCenterSession = JSON.parse(sessionStorage.getItem("getEachExamCenterSession"));
+        $('#pageTitle').html(getEachExamCenterSession?.locationId ? 'UPDATE EXAM CENTER':'CREATE NEW EXAM CENTER');
+        $('#subTitle, #subTitle2').html(getEachExamCenterSession?.locationId ? 'update this exam center':'create new exam center');
+    </script>
+
 
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-geo-alt"></i></div>
-                <h3>ADD NEW EXAM CENTER</h3>
+                <h3 id="pageTitle">ADD NEW EXAM CENTER</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -1025,11 +1030,9 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to add a new exam center for 
-                    (<strong id="branchLocationCountryName">
-                        <script> $("#branchLocationCountryName").html(getEachExamLocationSession?.locationName);</script>
-                    </strong>). 
-                    Please complete the form below with accurate details to successfully add exam center under this country.
+                <p>You are about to <span id="subTitle"></span> for 
+                    (<strong id="branchLocationCountryName"> <script> $("#branchLocationCountryName").html(getEachExamLocationSession?.locationName);</script> </strong>).
+                    Please complete the form below with accurate details to successfully <span id="subTitle2"></span> under this exam location.
                 </p>
             </div>
 
@@ -1086,13 +1089,14 @@
                                         let examDates = (getEachExamCenterSession?.examDateData) || [];
 
                                         if (examDates.length > 0) {
-                                            examDates.forEach(item => addSegmentation(item.examDate));
+                                            for (let i = 0; i < examDates.length; i++) {
+                                                addSegmentation(examDates[i].examDate);
+                                            }
                                         } else {
                                             addSegmentation();
                                         }
                                     });
                                 </script>
-
                             </div>
                             
                             <div>

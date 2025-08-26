@@ -17,11 +17,13 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
+    $countryId =trim($_GET['countryId']);
     $publishId=trim($data['publishId']);
     $locationName=trim(strtoupper($data['locationName']));
     $statusId=trim($data['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
+    validateEmptyField($countryId, 'COUNTRY ID');
     validateEmptyField($publishId, 'EXAM NAME');
     validateEmptyField($locationName, 'LOCATION NAME');
     validateEmptyField($statusId, 'STATUS');
@@ -52,10 +54,9 @@
         $no= $array[0]['no'];
         $locationId=$countId.$no.date("Ymdhis");
 
-
         mysqli_query($conn,"INSERT INTO `EXAM_LOCATION_TAB`
-        (`publishId`, `examAbbr`, `locationId`, `locationName`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
-        ('$publishId', '$examAbbr', '$locationId', '$locationName', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
+        (`countryId`, `publishId`, `examAbbr`, `locationId`, `locationName`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
+        ('$countryId', '$publishId', '$examAbbr', '$locationId', '$locationName', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
@@ -67,7 +68,7 @@
             $alertDetail = "EXAM LOCATION CREATED SUCCESSFULLY:Exam location was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: publish ID: $publishId | Exam: $examAbbr | location ID: $locationId | location Name: $locationName.";
 
             // Fetch branch details ///
-            $select="SELECT * FROM EXAM_LOCATION_TAB";
+            $select="SELECT * FROM EXAM_LOCATION_TAB WHERE countryId ='$countryId'";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {

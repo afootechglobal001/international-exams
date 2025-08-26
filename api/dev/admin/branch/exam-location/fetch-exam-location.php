@@ -18,6 +18,7 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $q = $_GET['q'];
+    $countryId = $_GET['countryId'];
     $publishId = $_GET['publishId'];
     $locationId = $_GET['locationId'];
     $statusId = $_GET['statusId'];
@@ -41,6 +42,7 @@
     JOIN SETUP_STATUS_TAB b 
     ON a.statusId = b.statusId 
     WHERE (a.locationName LIKE '%$q%' OR a.examAbbr LIKE '%$q%') $publishIds $statusIds $locationIds
+    AND a.countryId ='$countryId'
     ORDER BY a.locationName ASC";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));

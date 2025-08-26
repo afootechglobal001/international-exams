@@ -36,10 +36,10 @@
 
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
-    $select = "SELECT a.*, b.statusName 
+    $select = "SELECT a.*, b.locationName, c.statusName 
     FROM EXAM_CENTER_TAB a 
-    JOIN SETUP_STATUS_TAB b 
-    ON a.statusId = b.statusId 
+    JOIN EXAM_LOCATION_TAB b ON a.locationId=b.locationId
+    JOIN SETUP_STATUS_TAB c ON a.statusId = c.statusId 
     WHERE (a.centerName LIKE '%$q%' OR a.centerNumber LIKE '%$q%' OR a.centerAddress LIKE '%$q%') $centerIds $statusIds $locationIds
     ORDER BY a.centerName ASC";
 

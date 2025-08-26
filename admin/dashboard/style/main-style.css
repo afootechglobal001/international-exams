@@ -4003,6 +4003,25 @@ main {
 	width: 100%;
 }
 
+.segmentDiv .segmentList .segmentBody .text-field-container-back-div{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 7px;
+}
+
+.segmentDiv .segmentList .segmentBody .text-field-container-back-div .full-width{
+	width: calc(100% - 19px)
+}
+
+.segmentDiv .segmentList .segmentBody .text-field-container-back-div .delete-icon{
+	font-size: 12px;
+	color: var(--close-color);
+	cursor: pointer;
+}
+
+
 .segmentDiv .btn{
 	border: none;
 	padding: 10px 15px;

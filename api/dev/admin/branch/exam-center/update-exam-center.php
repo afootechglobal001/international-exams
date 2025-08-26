@@ -33,6 +33,15 @@
     validateEmptyField($centerAddress, 'CENTER ADDRESS');
     validateEmptyField($statusId, 'STATUS');
 
+    if (count($dateSegment)==0) {
+        $response = [
+            'response' => 101,
+            'success' => false,
+            'message' => 'DATE SEGMENT REQUIRED! Check field and try again.'
+        ];
+        goto end;
+    }
+
     $centerNameQuery=mysqli_query($conn,"SELECT centerName FROM EXAM_CENTER_TAB WHERE centerName='$centerName' AND centerId!='$centerId'") or die (mysqli_error($conn));
     $centerNameCountQuery=mysqli_num_rows($centerNameQuery);
 

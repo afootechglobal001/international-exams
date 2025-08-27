@@ -1,8 +1,11 @@
 function _logUserEmail() {
   try {
     //////get all needed values////
+    const firstName = $("#firstName").val().trim();
+    const lastName = $("#lastName").val().trim();
     const emailAddress = $("#emailAddress").val().trim();
     const phoneNumber = $("#phoneNumber").val().trim();
+    const countryId = $("#countryId").val().trim();
     const createPassword = $("#createPassword").val().trim();
     const confirmPassword = $("#confirmPassword").val().trim();
     ///// empty field validation//////////
@@ -26,6 +29,9 @@ function _logUserEmail() {
     // Gather form data
     const formData = {
       emailAddress,
+      firstName,
+      lastName,
+      countryId,
     };
     ////// confirm action
     _showCustomConfirm({
@@ -103,7 +109,7 @@ function _verifyUserEmail() {
     })
       .then((response) => {
         if (response.success) {
-          _userSignUp();
+          _userSignUp(otp);
           _alertClose();
         } else {
           _showCustomConfirm({
@@ -127,7 +133,7 @@ function _verifyUserEmail() {
   }
 }
 
-function _userSignUp() {
+function _userSignUp(otp) {
   const btnText = $("#submitBtn").html();
   _btnDisable("submitBtn", btnText, true);
   try {
@@ -141,6 +147,7 @@ function _userSignUp() {
     const confirmPassword = $("#confirmPassword").val().trim();
     // Gather form data
     const formData = {
+      otp: otp,
       firstName: firstName,
       lastName: lastName,
       emailAddress: emailAddress,

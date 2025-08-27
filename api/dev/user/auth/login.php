@@ -3,7 +3,7 @@
 
 <?php
 	//////////////////declaration of variables//////////////////////////////////////
-	$userName=trim($data['userName']);
+	$emailAddress=trim($data['emailAddress']);
 	$p_password=$data['password'];
 	$password=md5($p_password);
 
@@ -20,7 +20,7 @@
         goto end;
 	}
 
-        $query=mysqli_query($conn,"SELECT * FROM STAFF_TAB WHERE emailAddress='$userName' AND `password`='$password'") or die (mysqli_error($conn));
+        $query=mysqli_query($conn,"SELECT * FROM USERS_TAB WHERE emailAddress='$emailAddress' AND `password`='$password'") or die (mysqli_error($conn));
         $countUser=mysqli_num_rows($query);
         if ($countUser==0){ /// start if 2
             $response = [
@@ -32,14 +32,12 @@
         }
 
             $fetchQuery=mysqli_fetch_array($query);
-            $staffId=$fetchQuery['staffId']; 
+            $userId=$fetchQuery['userId'];
+            $countryId=$fetchQuery['countryId'];
             $statusId=$fetchQuery['statusId'];
-            $roleId=$fetchQuery['roleId'];
-            $titleId=$fetchQuery['titleId'];
             $firstName=$fetchQuery['firstName'];
             $lastName=$fetchQuery['lastName'];
-            $fullName="$titleId $firstName $lastName";
-            $loginFullName="$titleId $lastName";
+            $fullName="$firstName $lastName";
 
             if($statusId==2){ /// start if 3 (check if the user is suspended)
                 $response = [
@@ -52,9 +50,9 @@
 
                 if($statusId==1){ /// start if 4 (check if the user is active)
                     /// Generate login access key ///
-                    $accessKey=trim(md5($staffId.date("Ymdhis")));
-                    /// update user on STAFF_TAB
-                    mysqli_query($conn,"UPDATE STAFF_TAB SET accessKey='$accessKey', lastLoginTime=NOW() WHERE staffId='$staffId'")or die (mysqli_error($conn));
+                    $accessKey=trim(md5($userId.date("Ymdhis")));
+                    /// update user on USERS_TAB
+                    mysqli_query($conn,"UPDATE USERS_TAB SET accessKey='$accessKey', lastLoginDate=NOW() WHERE userId='$userId'")or die (mysqli_error($conn));
 
                     $response = [
                         'response'=> 200,
@@ -63,26 +61,22 @@
                         'data' => array() // Initialize the data array
                     ];
 
-                    // Fetch staff details
-                    $select="SELECT * FROM STAFF_VIEW WHERE staffId = '$staffId'";
-
+                    // Fetch user details
+                    $select="SELECT * FROM USER_VIEW WHERE userId = '$userId'";
                     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
-                    while ($fetchQuery = mysqli_fetch_assoc($query)) {
-                        $fetchQuery['loginFullName']=$loginFullName;
-                        $fetchQuery['fullName']=$fullName;
-                        $response['data'][] = $fetchQuery;
-                    }
+                    $fetchQuery = mysqli_fetch_assoc($query);
+                    $response['data'] = $fetchQuery;
 
-                    $alertDetail="LOGIN ALERT: A Staff whose name $fullName with ID: $staffId has successfully logged in to international exam application";
+                    $alertDetail="LOGIN ALERT: A user whose name $fullName with ID: $userId has successfully logged in to international exam application";
                 }else {
                     $response = [
                         'response'=> 105,
                         'success'=> false,
                         'message'=> "ACCOUNT UNDER REVIEW! Contact the administrator for more info.",
                     ];
-                    $alertDetail="LOGIN ALERT: A Staff whose name $fullName with ID: $staffId was denied from logging in for account is under review";
+                    $alertDetail="LOGIN ALERT: A user whose name $fullName with ID: $userId was denied from logging in for account is under review";
                 }
-                $callclass->_alertSequenceAndUpdate($conn,$staffId,$fullName,$roleId,$alertDetail,$ipAddress,$systemName);
+                $callclass->_alertSequenceAndUpdate($conn,$countryId,$userId,$fullName,$alertDetail,$ipAddress,$systemName);
 //////////////////////////////////////////////////////////////////////////////////////////////
 end:
 echo json_encode($response);

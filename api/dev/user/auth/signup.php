@@ -2,8 +2,10 @@
 <?php if (!$checkBasicSecurity) {goto end;}?>
 <?php
 	//////////////////declaration of variables//////////////////////////////////////
+    $otp=trim($data['otp']);
 	$firstName=trim($data['firstName']);
     $lastName=trim($data['lastName']);
+    $fullName="$firstName $lastName";
     $emailAddress=trim($data['emailAddress']);
     $phoneNumber=trim($data['phoneNumber']);
     $countryId=trim($data['countryId']);
@@ -60,9 +62,9 @@
         $password=md5($password);
         $accessKey=trim(md5($staffId.date("Ymdhis")));
         mysqli_query($conn,"INSERT INTO `USERS_TAB`
-        (`userId`, `accessKey`,  `firstName`, `lastName`, `emailAddress`, `phoneNumber`, `countryId`, `userTypeId`, `password`, `statusId`, `lastLoginDate`, `createdTime`) VALUES  
-        ('$userId', '$accessKey', '$firstName', '$lastName', '$emailAddress', '$phoneNumber', '$countryId', '$userTypeId', '$password', 1, NOW(), NOW())")or die (mysqli_error($conn));
-    
+        (`userId`, `accessKey`, `otp`,  `firstName`, `lastName`, `emailAddress`, `phoneNumber`, `countryId`, `userTypeId`, `password`, `statusId`, `lastLoginDate`, `createdTime`) VALUES  
+        ('$userId', '$accessKey', '$otp', '$firstName', '$lastName', '$emailAddress', '$phoneNumber', '$countryId', '$userTypeId', '$password', 1, NOW(), NOW())")or die (mysqli_error($conn));
+
         /// delete the record
         mysqli_query($conn,"DELETE FROM `USER_SIGNUP_VERIFIER_TAB` WHERE emailAddress='$emailAddress'")or die (mysqli_error($conn));
         $response = [
@@ -71,6 +73,10 @@
             'message'  => "You have successfully signed up. kindly procees to your portal.",
             'data'=> array()
         ];
+        $alertDetail="SIGNUP ALERT: A user whose name $fullName with ID: $userId has successfully signed up to international exam application";
+        $callclass->_alertSequenceAndUpdate($conn,$countryId,$userId,$fullName,$alertDetail,$ipAddress,$systemName);
+        $alertDetail="LOGIN ALERT: A user whose name $fullName with ID: $userId has successfully logged in to international exam application";
+        $callclass->_alertSequenceAndUpdate($conn,$countryId,$userId,$fullName,$alertDetail,$ipAddress,$systemName);
         // Fetch user details
         $select="SELECT * FROM USER_VIEW WHERE userId = '$userId'";
         $query=mysqli_query($conn,$select)or die (mysqli_error($conn));

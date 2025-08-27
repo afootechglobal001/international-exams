@@ -1,10 +1,10 @@
 <?php
 class allClass{
-    function _get_setup_backend_settings_detail_for_branch($conn, $clientId, $branchId){
-	$query=mysqli_query($conn,"SELECT * FROM BRANCHES_TAB WHERE clientId='$clientId' AND branchId='$branchId'")or die (mysqli_error($conn));
+    function _get_setup_backend_settings_detail_for_country($conn, $countryId){
+	$query=mysqli_query($conn,"SELECT * FROM COUNTRY_TAB WHERE countryId='$countryId'")or die (mysqli_error($conn));
 	$fetchQuery=mysqli_fetch_array($query);
          $response = [
-            "senderName" => $fetchQuery['name'],
+            "senderName" => $fetchQuery['senderName'],
             "smtpHost" => $fetchQuery['smtpHost'],
             "smtpUsername" => $fetchQuery['smtpUsername'],
             "smtpPassword" => $fetchQuery['smtpPassword'],
@@ -12,7 +12,7 @@ class allClass{
             "supportEmail" => $fetchQuery['supportEmail'],
         ];
 		return json_encode([$response]);
-}
+    }
 /////////////////////////////////////////
 function _staffAccesskeyValidation($conn, $accessKey) {
     $query = mysqli_query($conn, "SELECT * FROM STAFF_VIEW WHERE accessKey='$accessKey' AND statusId=1 AND accessKey!=''") or die(mysqli_error($conn));
@@ -44,41 +44,16 @@ function _getSequenceCount($conn, $counterId){
 
 
 /////////////////////////////////////////
-function _alertSequenceAndUpdate($conn,$userId,$userName,$roleId,$alertDetail,$ipAddress,$systemName){
+function _alertSequenceAndUpdate($conn,$countryId,$userId,$userName,$alertDetail,$ipAddress,$systemName){
 	$sequence=$this->_getSequenceCount($conn, 'ALT');
 	$array = json_decode($sequence, true);
 	$no= $array[0]['no'];
 	$alertId='ALT'.$no.date("Ymdhis");
 	
 	mysqli_query($conn,"INSERT INTO `0_ALERT_TAB`
-	(`alertId`, `userId`, `userName`, `roleId`, `alertDetail`, `seenStatus`, `ipAddress`, `systemName`) VALUES
-	('$alertId', '$userId', '$userName', '$roleId', '$alertDetail', 0, '$ipAddress', '$systemName')")or die (mysqli_error($conn));
+	(`alertId`,`countryId`, `userId`, `userName`, `alertDetail`, `ipAddress`, `systemName`) VALUES
+	('$alertId', '$countryId', '$userId', '$userName', '$alertDetail', '$ipAddress', '$systemName')")or die (mysqli_error($conn));
 }
-
-function _getAlertDetails($conn,$alertId){
-	$query=mysqli_query($conn,"SELECT * FROM 0_ALERT_TAB WHERE alertId='$alertId'")or die (mysqli_error($conn));
-	$fetch_query=mysqli_fetch_array($query);
-		$seenStatus=$fetch_query['seenStatus'];
-		return '[{"seenStatus":"'.$seenStatus.'"}]';
-}
-
-
-function _getStaffDetails($conn,$staffId){
-	$query=mysqli_query($conn,"SELECT * FROM STAFF_TAB WHERE staffId='$staffId'")or die (mysqli_error($conn));
-	$fetchQuery=mysqli_fetch_array($query);
-        $response = [
-            "staffId" => $fetchQuery['staffId'],
-            "titleId" => $fetchQuery['titleId'],
-            "firstName" => $fetchQuery['firstName'],
-            "middleName" => $fetchQuery['middleName'],
-            "lastName" => $fetchQuery['lastName'],
-            "emailAddress" => $fetchQuery['emailAddress'],
-            "profilePix" => $fetchQuery['profilePix'],
-            "roleId" => $fetchQuery['roleId']
-        ];
-		return json_encode([$response]);
-}
-
 
 function _getSetupPageCategoryDetails($conn,$pageCategoryId){
 	$query=mysqli_query($conn,"SELECT * FROM SETUP_PAGE_CATEGORIES_TAB WHERE pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));

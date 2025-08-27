@@ -55,13 +55,13 @@ function _fetchExamData() {
 						content +=`
 							<div class="exam-div">
 								<div class="exam-image">
-									<img src="${websiteUrl}/uploaded_files/examLogo/${regPix}" alt="${regTitle}">
+									<img src="${examPixPath}/${regPix}" alt="${regTitle}">
 								</div>
 								
 								<div class="top-div">
 								<div class="btn-div">
-										<button class="btn active-btn" title="EDIT" onclick="_fetchEachExam('${pageCategoryId}','${publishId}');">EDIT</button>
-										<button class="btn" title="EDIT PAGE DETAILS" onclick="_getForm({page: 'editPageForm', pageCatId: '${pageCategoryId}', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
+										<button class="btn active-btn" title="EDIT" onclick="_fetchEachExam('${pageCategoryId}','${publishId}', 'edit');">EDIT</button>
+										<button class="btn" title="EDIT PAGE DETAILS" onclick="_fetchEachExam('${pageCategoryId}','${publishId}', 'page');">EDIT PAGE DETAILS</button>
 									</div>
 									<div class="exam-status ${statusName}">${statusName}</div>
 								</div>
@@ -131,7 +131,6 @@ function _fetchExamData() {
 	}
 }
 
-
 function _createExam() {
 	try {
 		let issueCount = 0;
@@ -191,7 +190,6 @@ function _createExam() {
 	}
 }
 
-
 function _createExamCallback(form){
 	let getEachExamSession = JSON.parse(sessionStorage.getItem("getEachExamSession"));
 
@@ -247,7 +245,6 @@ function _createExamCallback(form){
 	});
 }
 
-
 function _uploadExamPix(newRegPix, oldRegPix, message) {
     const uploadedFile = $("#regPix").prop("files")[0];
 
@@ -289,7 +286,7 @@ function _uploadExamPix(newRegPix, oldRegPix, message) {
     });
 }
 
-function _fetchEachExam(pageCategoryId, publishId) {
+function _fetchEachExam(pageCategoryId, publishId, action) {
 	$("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
 	try {
 		$.ajax({
@@ -301,7 +298,13 @@ function _fetchEachExam(pageCategoryId, publishId) {
 			success: function(info) {
 				if (info.success && info.data.length > 0) {
 					sessionStorage.setItem("getEachExamSession", JSON.stringify(info.data[0]));
-					_getForm({page: 'examReg', url: adminPortalLocalUrl});
+
+					const publishData = {
+						publishId: info.data[0].publishId,
+						pageCategoryId: pageCategoryId
+					};
+					sessionStorage.setItem("publishData", JSON.stringify(publishData));
+					_getForm({page: action==='edit' ? 'examReg' : 'editPageForm', pageCatId: pageCategoryId, url: adminPortalLocalUrl});
 				} else {
 					const response = info.response;
 					if (response < 100) {
@@ -314,7 +317,7 @@ function _fetchEachExam(pageCategoryId, publishId) {
 				console.error("AJAX Error: ", textStatus, errorThrown);
 				_showCustomConfirm({
 					title: 'Connection Error!',
-					message: 'An error occurred while fetching staff details! Please try again.',
+					message: 'An error occurred while fetching exam details! Please try again.',
 					alertType: 'error',
 					trueActionBtnText: 'OK, Retry'
 				});
@@ -325,7 +328,7 @@ function _fetchEachExam(pageCategoryId, publishId) {
 		console.error("Error: ", error);
 		_showCustomConfirm({
 			title: 'Unexpected Error!',
-			message: 'An unexpected error occurred while fetching staff details! Please try again.',
+			message: 'An unexpected error occurred while fetching exam details! Please try again.',
 			alertType: 'error',
 			trueActionBtnText: 'OK, Retry'
 		});

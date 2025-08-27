@@ -8,7 +8,7 @@
                     <script>
                         textField({
                             id: 'pageUrl',
-                            title: 'page-url'
+                            title: 'Page Url'
                         });
                     </script>
                 </div>
@@ -48,8 +48,8 @@
             
             <div class="picture-div">
                 <label>
-                    <div class="pix-div"><img id="seo_flyer_preview_pix" src="<?php echo $websiteUrl?>/all-images/images/sample.jpg"  id="seo-flyer" /></div>
-                    <input type="file" id="seo_flyer" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif"  onchange="seoFlyer.UpdatePreview(this);" />
+                    <div class="pix-div"><img id="seoFlyerPreviewPix" src="<?php echo $websiteUrl?>/all-images/images/sample.jpg"/></div>
+                    <input type="file" id="seoFlyer" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="seoFlyerPreview.UpdatePreview(this);" />
                 </label>
             </div>                        			
         </div>
@@ -59,18 +59,20 @@
         <div class="page-title">FULL PAGE CONTENT</div>
         <div class="form-div content-form">
             <script src="js/TextEditor.js" referrerpolicy="origin"></script>
-            <script>tinymce.init({selector:'#page_content_text',  // change this value according to your HTML
+            <script>tinymce.init({selector:'#pageContents',  // change this value according to your HTML
                 plugins: "link, image, table"
                 });</script>
-            <div style="margin-bottom: 5px;">
-                <textarea class="text_field" style="width:100%;" rows="27" id="page_content_text" title="TYPE FULL PAGE CONTENT HERE" type="text" maxlength="167" id="" placeholder=""></textarea>
+            <div class="page-content-back-div">
+                <textarea class="text_area" style="width:100%;" rows="27" id="pageContents" title="TYPE FULL PAGE CONTENT HERE" type="text" placeholder=""></textarea>
+                <div class="issueText" id="issue_pageContents"></div>
             </div>
 
             <div class="btn-div">
-                <button class="btn" id="save_btn" title="Save Page" onclick="_addPageContent('<?php echo $publish_id?>')"><i class="bi-save"></i> SAVE</button>
+                <button class="btn" id="saveBtn" title="Save Page" onclick="_savePageContent();"><i class="bi-save"></i> SAVE</button>
             </div>
         </div>
-    </div>     
+    </div>    
+    <script>_fetchPageContent();</script> 
 <?php }?>
 
 <?php if ($page=='picturePage'){ ?>    

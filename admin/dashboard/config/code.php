@@ -79,5 +79,21 @@ switch ($action){
 			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
 		}
     break;
+
+	case 'uploadPagePix':
+		$oldSeoFlyer = $_POST['oldSeoFlyer'] ?? '';
+		$newSeoFlyer = $_POST['newSeoFlyer'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/seoFlyer/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldSeoFlyer) && file_exists($uploadDir . $oldSeoFlyer)) {
+			unlink($uploadDir . $oldSeoFlyer);
+		}
+
+		if (!empty($newSeoFlyer) && isset($_FILES['seoFlyer']) && $_FILES['seoFlyer']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['seoFlyer']['tmp_name'], $uploadDir . $newSeoFlyer);
+		}
+    break;
 }
 ?>

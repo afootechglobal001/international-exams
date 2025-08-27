@@ -1,18 +1,33 @@
 <?php if ($pageCatId == 'examCategory') { ?>
+    <script> getEachExamSession = JSON.parse(sessionStorage.getItem("getEachExamSession"));</script>
     <div class="exams-back-div page-summ-exam-div">
         <div class="exam-div pg-summ-exam-div">
             <div class="exam-image">
-                <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
+                <img id="examPix" src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
+                <script>
+                    $(document).ready(function() {
+                        $("#examPix").attr("src", examPixPath+'/'+getEachExamSession.regPix).attr("alt", getEachExamSession.regTitle);
+                    });
+                </script>
             </div>
 
             <div class="exam-info">
-                <h3>IELTS</h3>
-                <p>International English Language Testing System</p>
+                <h3 id="examAbbr"><script>$("#examAbbr").html(getEachExamSession.examAbbr);</script></h3>
+                <p id="regTitle"><script>$("#regTitle").html(getEachExamSession.regTitle);</script></p>
                 <div class="exam-time page-summ-exam-time">
-                    <p><i class="bi bi-calendar"></i> Updated on: <strong>25 Jan 2025</strong></p>
+                    <p id="updatedDate"></p>
                     <p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
                 </div>
             </div>
+
+            <script>
+                $(document).ready(function() {
+                    const dateObj = new Date(getEachExamSession.updatedTime);
+                    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+                    const formattedDate = dateObj.toLocaleDateString('en-GB', options).replace(" ", ", ");
+                    $("#updatedDate").html(`<i class="bi bi-calendar"></i> Updated on: <strong>${formattedDate}</strong>`);
+                });
+            </script>
         </div>
     </div>
 
@@ -25,13 +40,23 @@
                 </div>
             </div>
 
-            <div class="inner-table-content pages-inner-content">
-                <span>- Free Online Lectures</span>
-                <span>- Free e-books</span>
-                <span>- Textbook(Hard Copy)</span>
-                <span>- Magoosh Premium Account</span>
-                <span>- TOEFL past questions</span>
-                <span>- TOEFL Softwares and Simulations</span>
+            <div class="inner-table-content pages-inner-content" id="fetchedIncentives">
+                <script>
+                    $(document).ready(function () {
+                        const incentivesList = getEachExamSession?.incentivesData || [];
+
+                        let content='';
+                        for (let i = 0; i < incentivesList.length; i++) {
+                            const incentivesInfo = incentivesList[i];
+                            const incentives = incentivesInfo.incentives;
+                            content +=`
+                                <span>- ${incentives}</span>
+						    `;
+					    }
+					    $('#fetchedIncentives').html(content);
+                    });
+                </script>
+
             </div>
         </div>
     </div>

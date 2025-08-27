@@ -57,6 +57,8 @@ var portalDashboardUrl = websiteUrl + '/portal/dashboard'; /// For Admin Url //
 var portalAuthMiddlewareUrl = websiteUrl + '/portal/config/code';
 var portalOperationMiddlewareUrl = websiteUrl + '/portal/dashboard/config/code';
 
+var examPixPath=websiteUrl+'/uploaded_files/examLogo'; /// For exam Pix Path //
+var seoFlyerPixPath=websiteUrl+'/uploaded_files/seoFlyer'; /// For seo flyer Pix Path //
 var pageCategory = {
     examCategory: 'examCategory',
 }

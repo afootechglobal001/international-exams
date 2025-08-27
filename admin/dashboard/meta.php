@@ -36,3 +36,4 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useStudent.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useExams.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useCountry.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/usePage.js?v=<?php echo $codeVersion?>"></script>

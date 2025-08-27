@@ -407,18 +407,45 @@ function _callFileEndPoints(payLoadProps) {
     url = "",
     formData = null,
     accessKey = false,
+    expectJson = true, // default true
   } = payLoadProps;
-  // Auto-flatten if formData has only one key called "formData"
+
   const payload = formData && formData.formData ? formData.formData : formData;
+  const finalUrl = url.startsWith("http") ? url : `${endPoint}/${url}`;
+
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: type,
+      url: finalUrl,
+      data: formData,
+      dataType: expectJson ? "json" : undefined, // only parse if JSON expected
+      contentType: false,
+      cache: false,
+      processData: false,
+      headers: getAuthHeaders(accessKey),
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (error) {
+        reject(error);
+      },
+    });
+  });
+}
+
+
+function _callFetchEndPoints(payLoadProps) {
+  const {
+    type = "GET",
+    url = "",
+    accessKey = false,
+  } = payLoadProps;
   return new Promise((resolve, reject) => {
     $.ajax({
       type: type,
       url: `${endPoint}/${url}`,
-      data: formData,
-      dataType: "json",
-      contentType: false, // important for JSON
-      cache: false,
-      processData: false,
+      dataType: "json", 
+			cache: false,
       headers: getAuthHeaders(accessKey),
       success: function (data) {
         resolve(data);

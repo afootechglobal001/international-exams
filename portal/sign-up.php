@@ -86,7 +86,8 @@
                         <script>
                         textField({
                             id: 'createPassword',
-                            title: 'Create Password'
+                            title: 'Create Password',
+                            type: 'password'
                         });
                         </script>
                     </div>
@@ -94,7 +95,8 @@
                         <script>
                         textField({
                             id: 'confirmPassword',
-                            title: 'Confirm Password'
+                            title: 'Confirm Password',
+                            type: 'password'
                         });
                         </script>
                     </div>

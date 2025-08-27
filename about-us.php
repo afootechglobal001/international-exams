@@ -47,7 +47,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </a>
                         </li>
                         <li title="About Us">
-                            <a href="<?php echo $websiteUrl ?>/about">
+                            <a href="<?php echo $websiteUrl ?>/about-us">
                                 About Us
                             </a>
                         </li>
@@ -95,7 +95,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
 
     <section class="other-pages-main-section">
-        <section class="body-div net-bg-bl">
+        <section class="body-div net-bg-br">
             <div class="body-div-in">
                 <div class="about-back-div">
 
@@ -161,8 +161,38 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </div>
         </section>
 
+        <section class="body-div net-bg-tr">
+            <div class="body-div-in">
+                <div class="about-back-div">
 
-        <section class="body-div net-bg-tl">
+                    <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
+
+                        <h2>We are also renowned for efficient service delivery with huge success in:</h2>
+
+                        <div class="values-list">
+                            <ul>
+                                <li><i class="bi bi-check"></i> PTE & IELTS Lectures</li>
+                                <li><i class="bi bi-check"></i> GMAT & GRE Lectures</li>
+                                <li><i class="bi bi-check"></i> LSAT, MCAT Lectures</li>
+                                <li><i class="bi bi-check"></i> SAT & TOEFL Tutorials</li>
+                                <li><i class="bi bi-check"></i> MCAT, NCLEX Tutorials</li>
+                                <li><i class="bi bi-check"></i> MCAT, NCLEX Tutorials</li>
+                                <li><i class="bi bi-check"></i> ACT, OET, Duolingo, and more.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="image-div" data-aos="fade-in" data-aos-duration="1200">
+                        <div class="values-image" data-aos="fade-in" data-aos-duration="1200">
+                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/bg2.png" alt="Team working">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="body-div net-bg-bl">
             <div class="body-div-in">
                 <div class="about-back-div">
 
@@ -176,7 +206,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                     <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
 
-                        <h2>We Build Futures Through Shared Values</h2>
+                        <h2>WHY EDUGRADE?</h2>
                         <p>
                             Our strength lies in a commitment to integrity, excellence, and innovation—values that
                             drive us to guide every student with care and professionalism.
@@ -184,19 +214,15 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="values-list">
                             <ul>
-                                <li><i class="bi bi-check"></i> Student-Centered Approach</li>
-                                <li><i class="bi bi-check"></i> Global Reach</li>
-                                <li><i class="bi bi-check"></i> Expert Guidance</li>
-                                <li><i class="bi bi-check"></i> Integrity & Trust</li>
-                                <li><i class="bi bi-check"></i> Comprehensive Support</li>
-                            </ul>
-
-                            <ul>
-                                <li><i class="bi bi-check"></i> Excellence Driven</li>
-                                <li><i class="bi bi-check"></i> Innovation in Learning</li>
-                                <li><i class="bi bi-check"></i> Lifelong Impact</li>
-                                <li><i class="bi bi-check"></i> Accessibility & Inclusion</li>
-                                <li><i class="bi bi-check"></i>Proven Partnerships</li>
+                                <li><i class="bi bi-check"></i> Free online simulation tests.</li>
+                                <li><i class="bi bi-check"></i> Fully air-conditioned classrooms.</li>
+                                <li><i class="bi bi-check"></i> Seasoned and experienced tutors.</li>
+                                <li><i class="bi bi-check"></i> Affordable registration and tuition fees.</li>
+                                <li><i class="bi bi-check"></i> Excellent and conducive learning environment.</li>
+                                <li><i class="bi bi-check"></i> Direct Teacher to Student interaction and focus.</li>
+                                <li><i class="bi bi-check"></i> Standby power supply to classrooms and computer lab..</li>
+                                <li><i class="bi bi-check"></i> Varieties of study materials for instructional purposes.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -284,7 +310,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </script>
         </section>
 
-        <section class="body-div net-bg-tr">
+        <section class="body-div">
             <div class="body-div-in">
                 <div class="testimonial">
                     <div class="content" data-aos="fade-up" data-aos-duration="1400">

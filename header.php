@@ -64,7 +64,7 @@
 
                 <nav>
                     <ul>
-                        <a href="<?php echo $websiteUrl ?>/about" title="About Us">
+                        <a href="<?php echo $websiteUrl ?>/about-us" title="About Us">
                             <li>About Us</li>
                         </a>
                         <a href="<?php echo $websiteUrl ?>/study-abroad" title="study-abroad" >
@@ -82,7 +82,7 @@
                         <a href="<?php echo $websiteUrl ?>/index">
                             <li>Gallery</li>
                         </a>
-                        <a title="contact" href="<?php echo $websiteUrl ?>/contact">
+                        <a title="contact" href="<?php echo $websiteUrl ?>/contact-us">
                             <li>Contact us</li>
                         </a>
                     </ul>

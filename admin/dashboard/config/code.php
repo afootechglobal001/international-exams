@@ -95,5 +95,55 @@ switch ($action){
 			move_uploaded_file($_FILES['seoFlyer']['tmp_name'], $uploadDir . $newSeoFlyer);
 		}
     break;
+
+	case 'createPagesFolder': 	
+		$pageCategoryId =(trim($_POST['pageCategoryId']));
+		$publishId = trim($_POST['publishId']);
+		$pageUrl= trim(strtolower($_POST['pageUrl']));
+		$oldPageUrl = trim($_POST['oldPageUrl']);
+		$pageTitle = trim($_POST['pageTitle']);
+		$seoKeywords = $_POST['seoKeywords']; 
+		$seoDescription = $_POST['seoDescription']; 
+		$newSeoFlyer = $_POST['newSeoFlyer'];
+		$oldSeoFlyer = $_POST['oldSeoFlyer']; 
+		$pageContent = $_POST['pageContent']; 
+
+		$pageSeoPix = !empty($newSeoFlyer) ? $newSeoFlyer : $oldSeoFlyer;
+
+		// common text content
+		$txt .= "<?php \$publishId='$publishId';?>\n";
+		$txt .= "<?php \$pageUrl='$pageUrl';?>\n";
+		$txt .= "<?php \$pageTitle='$pageTitle';?>\n";
+		$txt .= "<?php \$seoKeywords='$seoKeywords';?>\n";
+		$txt .= "<?php \$seoDescription='$seoDescription';?>\n";
+		$txt .= "<?php \$pageSeoPix='$pageSeoPix';?>\n";
+		$txt .= "<?php include '{$pageCategoryId}_details.php';?>";
+
+		// new page
+		if (empty($oldPageUrl)) {
+			if ($pageCategoryId == 'blogCategory') {
+				mkdir('../../../blog/'.$pageUrl);
+				$myfile = fopen("../../../blog/" . $pageUrl . "/index.php", "w") or die("Unable to open file!");
+			} else {
+				// examCategory and others → single php file
+				$myfile = fopen("../../../$pageUrl.php", "w") or die("Unable to open file!");
+			}
+			fwrite($myfile, $txt);
+			fclose($myfile);
+		} else {
+			if ($pageCategoryId == 'blogCategory') {
+				array_map('unlink', glob("../../../blog/$oldPageUrl/*.*"));
+				rmdir("../../../blog/$oldPageUrl");
+			} else {
+				// delete old single file if exists
+				if (file_exists("../../../$oldPageUrl.php")) {
+					unlink("../../../$oldPageUrl.php");
+				}
+				$myfile = fopen("../../../$pageUrl.php", "w") or die("Unable to open file!");
+			}
+			fwrite($myfile, $txt);
+			fclose($myfile);
+		}
+	break;
 }
 ?>

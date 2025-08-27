@@ -26,7 +26,7 @@
 
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
-    $select = "SELECT * FROM COUNTRY_VIEW WHERE (countryName LIKE '%$q%' OR email LIKE '%$q%' OR phoneNumber LIKE '%$q%') $countryIds";
+    $select = "SELECT * FROM COUNTRY_VIEW WHERE (countryName LIKE '%$q%' OR smtpUsername LIKE '%$q%' OR phoneNumber LIKE '%$q%') $countryIds";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);

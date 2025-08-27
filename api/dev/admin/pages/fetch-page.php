@@ -21,6 +21,16 @@
 
 	validateEmptyField($publishId, 'PUBLISH ID');
 
+    $select="SELECT * FROM PAGES_TAB WHERE publishId='$publishId'";
+    $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
+    $allRecordCount=mysqli_num_rows($query);
+    if($allRecordCount==0){///start if 1
+        $response['response']=200;
+        $response['success']=false;
+        $response['message']="This page has not been created yet. Please create a new page.";
+        goto end;
+    }
+
     $response = [
         'response'=> 200,
         'success'=> true,
@@ -28,8 +38,6 @@
         'data' => array() // Initialize the data array
     ];
 
-    $select="SELECT * FROM PAGES_TAB WHERE publishId='$publishId'";
-    $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $response['data'][] = $fetchQuery;
     }

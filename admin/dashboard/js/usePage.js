@@ -47,7 +47,10 @@ function _savePageContent(){
 		formData.append("seoKeywords", seoKeywords);
 		formData.append("seoDescription", seoDescription);
 		formData.append("pageContent", pageContent);
-		formData.append("seoFlyer", seoFlyer);
+
+		if (seoFlyer) {
+            formData.append("seoFlyer", seoFlyer);
+        }
 
 		////// confirm action////
 		_showCustomConfirm({
@@ -81,11 +84,22 @@ function _savePageCallback(formData) {
 	})
     .then((response) => {
 		if (response.success) {
+			const message = response.message;
+			const oldPageUrl = response.oldPageUrl;
 			const oldSeoFlyer = response.oldSeoFlyer;
 
-			const data = response.data;
+			const data = response.data[0];
+			const publishId = data.publishId;
+			const pageCategoryId = data.pageCategoryId;
+			const pageUrl = data.pageUrl;
+			const pageTitle = data.pageTitle;
+			const seoKeywords = data.seoKeywords;
+			const seoDescription = data.seoDescription;
+			const newSeoFlyer = data.seoFlyer;
+			const pageContent = data.pageContent;
 
 			_uploadPagePix(oldSeoFlyer, newSeoFlyer);
+			_createPagesFolder(pageCategoryId, publishId, pageUrl, oldPageUrl, pageTitle, seoKeywords, seoDescription, newSeoFlyer, oldSeoFlyer, pageContent, message);
 		
 			_btnDisable("saveBtn", btnText, false);
 		} else {
@@ -126,7 +140,45 @@ function _uploadPagePix(oldSeoFlyer, newSeoFlyer) {
     });
 }
 
+function _createPagesFolder(pageCategoryId, publishId, pageUrl, oldPageUrl, pageTitle, seoKeywords, seoDescription, newSeoFlyer, oldSeoFlyer, pageContent, message) {
+	if(newSeoFlyer==null){
+		newSeoFlyer='';
+	}
+	if(oldPageUrl==null){
+		oldPageUrl='';
+	}
 
+	const formData = new FormData();
+    formData.append("action", "createPagesFolder");
+	formData.append("pageCategoryId", pageCategoryId);
+	formData.append("publishId", publishId);
+	formData.append("pageUrl", pageUrl);
+	formData.append("oldPageUrl", oldPageUrl);
+	formData.append("pageTitle", pageTitle);
+	formData.append("seoKeywords", seoKeywords);
+	formData.append("seoDescription", seoDescription);
+	formData.append("newSeoFlyer", newSeoFlyer);
+	formData.append("oldSeoFlyer", oldSeoFlyer);
+	formData.append("pageContent", pageContent);
+
+	_callFileEndPoints({
+		url: adminPortalLocalUrl,
+		formData,
+		expectJson: false,
+	})
+	.then(() => {
+		_showCustomConfirm({
+			title: 'Success!',
+			message: message,
+			alertType: 'success',
+			trueActionBtnText: 'OK, Thanks.',
+		});
+	})
+    .catch((error) => {
+		console.error("Error:", error);
+		_callAjaxError(() => _createPagesFolder());
+    });
+}
 
 function _fetchPageContent() {
 	let publishData = JSON.parse(sessionStorage.getItem("publishData"));

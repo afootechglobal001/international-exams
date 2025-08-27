@@ -8,4 +8,5 @@ $checkSession = $array[0]['checkSession'];
 $loginStaffId = $array[0]['loginStaffId']; // Correct key name
 $loginStaffFullname = $array[0]['loginFullname'];
 $loginRoleId = $array[0]['loginRoleId']; // Correct key name
+$loginProfilePix = $array[0]['profilePix']; // Correct profile pix
 ?>

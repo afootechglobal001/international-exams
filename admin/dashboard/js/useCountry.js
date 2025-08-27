@@ -37,7 +37,7 @@ function _fetchCountryData() {
             const countryInfo = fetch[i];
             const countryId = countryInfo.countryId;
             const countryName = countryInfo.countryName;
-            const email = countryInfo.email;
+            const smtpUsername = countryInfo.smtpUsername;
             const phoneNumber = countryInfo.phoneNumber;
             const statusName = countryInfo.statusName;
             const totalNumberOfBranches = countryInfo.totalNumberOfBranches;
@@ -47,7 +47,7 @@ function _fetchCountryData() {
 							 <tr class="tb-row">
 								<td>${no}</td>
 								<td class="clickable-td" title="CLICK TO VIEW ${countryName} PROFILE" onclick="_fetchEachCountry('${countryId}');">${countryName}</td>
-								<td>${phoneNumber}<br/><span>${email}</span></td>
+								<td>${phoneNumber}<br/><span>${smtpUsername}</span></td>
 								<td>${totalNumberOfBranches}</td>
 								<td>
 									<div class="status-div ${statusName}">${statusName}</div>

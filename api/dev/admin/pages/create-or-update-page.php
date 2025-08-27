@@ -19,9 +19,9 @@
 	//////////////////declaration of variables//////////////////////////////////////
 	$publishId=trim(($_GET['publishId']));
     $pageCategoryId=trim(($_GET['pageCategoryId']));
-    $pageTitle=trim(($_POST['pageTitle']));
-    $pageUrl=trim(($_POST['pageUrl']));
-    $seoKeywords=trim(($_POST['seoKeywords']));
+    $pageTitle =trim((str_replace("'", "\'", $_POST['pageTitle'])));
+    $pageUrl = strtolower(trim($_POST['pageUrl']));
+    $seoKeywords =trim((str_replace("'", "\'", $_POST['seoKeywords'])));
     $seoDescription =trim((str_replace("'", "\'", $_POST['seoDescription'])));
     $seoFlyer = $_FILES["seoFlyer"]["name"];
     $pageContent =trim((str_replace("'", "\'", $_POST['pageContent'])));
@@ -42,7 +42,7 @@
             $response = [
                 'response'=> 105,
                 'success'=> false,
-                'message'=> "PAGE EXIST! Page already exist by URL. Check and try again.",
+                'message'=> "PAGE EXIST! Page already exist by URL ($pageUrl). Check and try again.",
             ];
 
             $alertDetail="PAGE CREATION ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to create a page with a url ($pageUrl) that is already in use.";	

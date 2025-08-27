@@ -52,14 +52,6 @@
 	
 		$datetime = date("Ymdhi");
 		$profilePix = $staffId . '_' . $datetime . '_' . $profilePix;
-	
-		$userArray = $callclass->_getStaffDetails($conn, $staffId);
-		$userFetchedArray = json_decode($userArray, true);
-		$dbPassport = $userFetchedArray[0]['profilePix'];
-		$titleId=$userFetchedArray[0]['titleId'];
-        $firstName=$userFetchedArray[0]['firstName'];
-        $lastName=$userFetchedArray[0]['lastName'];
-        $fullName="$titleId $firstName $lastName";
 		
 		mysqli_query($conn,"UPDATE `STAFF_TAB` SET profilePix='$profilePix' WHERE staffId='$staffId'")or die (mysqli_error($conn));
 
@@ -67,12 +59,12 @@
 			'response'=> 200,
 			'success'=> true,
 			'profilePix' => $profilePix,
-			'oldProfilePix' => $dbPassport,
+			'oldProfilePix' => $loginProfilePix,
 			'message'=> 'SUCCESS! Staff picture updated successfully!',
 			'data' => array() // Initialize the data array
 		];  
 
-		$alertDetail="STAFF PICTURE UPDATED SUCCESSFUL:A staff whose name - $loginStaffFullname, successfully uploaded his/her profile picture. DETAILS: - Full Name: $fullName, ID: $staffId";	
+		$alertDetail="STAFF PICTURE UPDATED SUCCESSFUL:A staff whose name - $loginStaffFullname, successfully uploaded his/her profile picture. ID: $loginStaffId";	
 
 		// Fetch staff details
         $select="SELECT * FROM STAFF_VIEW WHERE staffId='$staffId'";

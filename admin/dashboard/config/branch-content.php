@@ -75,7 +75,7 @@
                                     | OFFICIAL EMAIL:
                                     <strong id="officialEmailAddress">
                                         <script>
-                                            $("#officialEmailAddress").html(getEachCountrySession?.email);
+                                            $("#officialEmailAddress").html(getEachCountrySession?.smtpUsername);
                                         </script>
                                     </strong>
 

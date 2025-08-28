@@ -148,6 +148,6 @@
         }
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////
-$callclass->_alertSequenceAndUpdate($conn,$countryId,$loginStaffId,$loginStaffFullname,$alertDetail,$ipAddress,$systemName);
+$callclass->_alertSequenceAndUpdate($conn,$loginCountryId,$loginStaffId,$loginStaffFullname,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

@@ -27,7 +27,9 @@ function _staffAccesskeyValidation($conn, $accessKey) {
             "checkSession" => true,
             "loginStaffId" => $fetchQuery['staffId'],
             "loginFullname" => "$titleId $firstName $lastName",
-            "loginRoleId" => $fetchQuery['roleId']
+            "loginRoleId" => $fetchQuery['roleId'],
+            "loginProfilePix" => $fetchQuery['profilePix'],
+            "loginCountryId" => $fetchQuery['countryId']
         ];
     }
     return json_encode([$response]);

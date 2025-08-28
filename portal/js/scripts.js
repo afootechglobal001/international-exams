@@ -196,3 +196,55 @@ function _userSignUp(otp) {
     _btnDisable("submitBtn", btnText, false);
   }
 }
+
+function _userLogin() {
+  try {
+    //////get all needed values////
+    const emailAddress = $("#emailAddress").val().trim();
+    const password = $("#password").val().trim();
+    ///// empty field validation//////////
+    let issueCount = 0;
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    issueCount += _validateEmptyValue("password", "PASSWORD");
+    issueCount += _validateEmail("emailAddress", emailAddress);
+
+    if (issueCount > 0) return;
+    // Gather form data
+    const formData = {
+      emailAddress: emailAddress,
+      password: password,
+    };
+
+    const btnText = $("#submitBtn").html();
+    _btnDisable("submitBtn", btnText, true);
+
+    _callRawEndPoints({
+      url: "user/auth/login",
+      formData,
+    })
+      .then((response) => {
+        if (response.success) {
+          const data = response.data;
+          sessionStorage.setItem("userLoginData", JSON.stringify(data));
+          window.location.href = portalDashboardUrl;
+        } else {
+          _showCustomConfirm({
+            title: "USER ERROR",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+          _btnDisable("submitBtn", btnText, false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _userLogin()); // retry if needed
+        _btnDisable("submitBtn", btnText, false);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _userLogin());
+    _btnDisable("submitBtn", btnText, false);
+  }
+}

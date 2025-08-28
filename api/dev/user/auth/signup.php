@@ -3,8 +3,8 @@
 <?php
 	//////////////////declaration of variables//////////////////////////////////////
     $otp=trim($data['otp']);
-	$firstName=trim($data['firstName']);
-    $lastName=trim($data['lastName']);
+	$firstName=trim(strtoupper($data['firstName']));
+    $lastName=trim(strtoupper($data['lastName']));
     $fullName="$firstName $lastName";
     $emailAddress=trim($data['emailAddress']);
     $phoneNumber=trim($data['phoneNumber']);
@@ -77,11 +77,11 @@
         $callclass->_alertSequenceAndUpdate($conn,$countryId,$userId,$fullName,$alertDetail,$ipAddress,$systemName);
         $alertDetail="LOGIN ALERT: A user whose name $fullName with ID: $userId has successfully logged in to international exam application";
         $callclass->_alertSequenceAndUpdate($conn,$countryId,$userId,$fullName,$alertDetail,$ipAddress,$systemName);
-        // Fetch user details
-        $select="SELECT * FROM USER_VIEW WHERE userId = '$userId'";
-        $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
-        $fetchQuery = mysqli_fetch_assoc($query);
-        $response['data'] = $fetchQuery;
+
+        //// get user login details
+        $loginUserId = $userId;
+        require_once 'loginUserDetails.php';
+        $response['data'] = $userData;
 //////////////////////////////////////////////////////////////////////////////////////////////
 end:
 echo json_encode($response);

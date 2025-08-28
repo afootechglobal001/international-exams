@@ -44,8 +44,7 @@
                         </script>
                     </div>
                     <div class="btn-div">
-                        <button class="btn" title="Click to log In"
-                            onclick="window.location.href='<?php echo $websiteUrl?>/portal/dashboard'">
+                        <button class="btn" id="submitBtn" title="Click to log In" onclick="_userLogin()">
                             Log In <i class="bi bi-check"></i>
                         </button>
                         <a href="#" title="Recover your password">Forgot Password?</a>

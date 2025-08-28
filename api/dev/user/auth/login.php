@@ -3,7 +3,7 @@
 
 <?php
 	//////////////////declaration of variables//////////////////////////////////////
-	$emailAddress=trim($data['emailAddress']);
+	$userName=trim($data['emailAddress']);
 	$p_password=$data['password'];
 	$password=md5($p_password);
 
@@ -20,7 +20,7 @@
         goto end;
 	}
 
-        $query=mysqli_query($conn,"SELECT * FROM USERS_TAB WHERE emailAddress='$emailAddress' AND `password`='$password'") or die (mysqli_error($conn));
+        $query=mysqli_query($conn,"SELECT * FROM USERS_TAB WHERE emailAddress='$userName' AND `password`='$password'") or die (mysqli_error($conn));
         $countUser=mysqli_num_rows($query);
         if ($countUser==0){ /// start if 2
             $response = [
@@ -60,12 +60,10 @@
                         'message'=> "LOGIN SUCCESSFUL!",
                         'data' => array() // Initialize the data array
                     ];
-
-                    // Fetch user details
-                    $select="SELECT * FROM USER_VIEW WHERE userId = '$userId'";
-                    $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
-                    $fetchQuery = mysqli_fetch_assoc($query);
-                    $response['data'] = $fetchQuery;
+                    //// get user login details
+                    $loginUserId = $userId;
+                    require_once 'loginUserDetails.php';
+                    $response['data'] = $userData;
 
                     $alertDetail="LOGIN ALERT: A user whose name $fullName with ID: $userId has successfully logged in to international exam application";
                 }else {

@@ -42,6 +42,6 @@
         $alertDetail = "EXAM DELETED SUCCESSFULLY:Exam was deleted successfully by $loginStaffFullname (ID: $loginStaffId).";
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////
-$callclass->_alertSequenceAndUpdate($conn,$loginStaffId,$loginStaffFullname,$loginRoleId,$alertDetail,$ipAddress,$systemName);
+$callclass->_alertSequenceAndUpdate($conn,$countryId,$loginStaffId,$loginStaffFullname,$alertDetail,$ipAddress,$systemName);
 echo json_encode($response);
 ?>

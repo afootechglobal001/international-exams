@@ -34,7 +34,7 @@
             $fetchQuery=mysqli_fetch_array($query);
             $staffId=$fetchQuery['staffId']; 
             $statusId=$fetchQuery['statusId'];
-            $roleId=$fetchQuery['roleId'];
+            $countryId=$fetchQuery['countryId'];
             $titleId=$fetchQuery['titleId'];
             $firstName=$fetchQuery['firstName'];
             $lastName=$fetchQuery['lastName'];
@@ -82,7 +82,7 @@
                     ];
                     $alertDetail="LOGIN ALERT: A Staff whose name $fullName with ID: $staffId was denied from logging in for account is under review";
                 }
-                $callclass->_alertSequenceAndUpdate($conn,$staffId,$fullName,$roleId,$alertDetail,$ipAddress,$systemName);
+                $callclass->_alertSequenceAndUpdate($conn,$countryId,$staffId,$fullName,$alertDetail,$ipAddress,$systemName);
 //////////////////////////////////////////////////////////////////////////////////////////////
 end:
 echo json_encode($response);

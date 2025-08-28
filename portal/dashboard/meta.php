@@ -14,8 +14,18 @@
     rel="stylesheet" />
 
 <script src="<?php echo $websiteUrl?>/js/jquery-v3.6.1.min.js"></script>
+<script>
+let userLoginData = JSON.parse(sessionStorage.getItem("userLoginData"));
+const loginUserId = userLoginData.userId;
+const loginAccessKey = userLoginData.accessKey;
+</script>
+
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
 <script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+
 
 <script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePortal.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePayment.js?v=<?php echo $codeVersion?>"></script>

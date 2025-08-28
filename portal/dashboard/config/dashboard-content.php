@@ -31,13 +31,27 @@
         <div class="greetings-div">
             <div class="title-div">
                 <p>August 13, 2025 </p>
-                <h1>Welcome Back, Oluwagbenga!</h1>
+                <h1>Welcome Back, <b id="greetingsFirstName">
+                        <script>
+                        $("#greetingsFirstName").html(capitalizeFirstLetterOfEachWord(userLoginData.firstName));
+                        </script>
+                    </b>!
+                </h1>
                 <p><span>Last login date: <strong>31-05-2025 11:03:45</strong></span></p>
             </div>
             <div class="wallet-div">
                 <div class="wallet-info">
-                    <p>Wallet Balance (₦)</p>
-                    <h2>500,000.00</h2>
+                    <p>Wallet Balance
+                        (<span id="currencySymbol">
+                            <script>
+                            $("#currencySymbol").html(userLoginData.currency);
+                            </script>
+                        </span>)</p>
+                    <h2 id="walletBalance">
+                        <script>
+                        $("#walletBalance").html(thousandSeperator(userLoginData.walletBalance));
+                        </script>
+                    </h2>
                 </div>
                 <button class="btn" title="Load wallet"
                     onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">

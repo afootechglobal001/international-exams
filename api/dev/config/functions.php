@@ -32,6 +32,27 @@ function _staffAccesskeyValidation($conn, $accessKey) {
     }
     return json_encode([$response]);
 }
+function _userAccesskeyValidation($conn, $accessKey) {
+    $query = mysqli_query($conn, "SELECT * FROM USER_VIEW WHERE accessKey='$accessKey' AND statusId=1 AND accessKey!=''") or die(mysqli_error($conn));
+    $count = mysqli_num_rows($query);
+    $response = ["checkSession" => false];
+    if ($count > 0) {
+        $fetchQuery = mysqli_fetch_assoc($query);
+		$firstName=$fetchQuery['firstName'];
+		$lastName=$fetchQuery['lastName'];
+        $response = [
+            "checkSession" => true,
+            "loginUserId" => $fetchQuery['userId'],
+            "loginFullname" => "$firstName $lastName",
+            "loginUserEmail" => $fetchQuery['emailAddress'],
+            "loginUserPhoneNumber" => $fetchQuery['phoneNumber'],
+            "loginUserWalletBalance" => $fetchQuery['walletBalance'],
+            "loginUserCountryId" => $fetchQuery['countryId'],
+            "loginUserCurrency" => $fetchQuery['currency']
+        ];
+    }
+    return json_encode([$response]);
+}
 /////////////////////////////////////////
 function _getSequenceCount($conn, $counterId){
 	$count=mysqli_fetch_array(mysqli_query($conn,"SELECT counterValue FROM SETUP_COUNTER_TAB WHERE counterId = '$counterId' FOR UPDATE"));

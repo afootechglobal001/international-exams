@@ -433,19 +433,14 @@ function _callFileEndPoints(payLoadProps) {
   });
 }
 
-
 function _callFetchEndPoints(payLoadProps) {
-  const {
-    type = "GET",
-    url = "",
-    accessKey = false,
-  } = payLoadProps;
+  const { type = "GET", url = "", accessKey = false } = payLoadProps;
   return new Promise((resolve, reject) => {
     $.ajax({
       type: type,
       url: `${endPoint}/${url}`,
-      dataType: "json", 
-			cache: false,
+      dataType: "json",
+      cache: false,
       headers: getAuthHeaders(accessKey),
       success: function (data) {
         resolve(data);

@@ -133,7 +133,7 @@
             </script>
         </div>
         <div class="btn-div">
-            <button class="btn" onclick="_logOut();">LOAD WALLET</button>
+            <button class="btn" id="loadWalletBtn" onclick="_loadWallet();">LOAD WALLET</button>
         </div>
     </div>
 </div>

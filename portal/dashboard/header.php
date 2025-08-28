@@ -9,9 +9,19 @@
                 <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" />
             </div>
             <div class="country-logo">
-                <img src="<?php echo $websiteUrl ?>/all-images/country/NIGERIA.jpg" alt="Nigeria" />
+                <img id="countryFlag" src="<?php echo $websiteUrl ?>/uploaded_files/countryFlag/nigeriaFlag.jpg"
+                    alt="Flag" />
+                <script>
+                $("#countryFlag").prop("src", "<?php echo $websiteUrl; ?>/uploaded_files/countryFlag/" + userLoginData
+                    .countryFlag);
+                </script>
             </div>
-            <p>Hi, Oluwagbenga</p>
+            <p>Hi, <span id="headerFirstName">
+                    <script>
+                    $("#headerFirstName").html(capitalizeFirstLetterOfEachWord(userLoginData.firstName));
+                    </script>
+                </span>
+            </p>
             <div class="search-div">
                 <input type="text" placeholder="Search...">
                 <i class="bi bi-search"></i>
@@ -28,11 +38,27 @@
                 <div class="toggle">
                     <div class="toggle-in">
                         <div class="toggle-title">
-                            <div class="dp">OA</div>
+                            <div class="dp" id="loginProfileName">
+                                <script>
+                                $("#loginProfileName").html(getFirstLettersOfEachWord(userLoginData.fullName));
+                                </script>
+                            </div>
                             <div class="text">
-                                <h2>OLUWAGBENGA AFOLABI</h2>
-                                <p>afootechglobal@gmail.com</p>
-                                <p>08131252996</p>
+                                <h2 id="loginUserFullname">
+                                    <script>
+                                    $("#loginUserFullname").html(userLoginData.fullName);
+                                    </script>
+                                </h2>
+                                <p id="loginUserEmail">
+                                    <script>
+                                    $("#loginUserEmail").html(userLoginData.emailAddress);
+                                    </script>
+                                </p>
+                                <p id="loginUserPhone">
+                                    <script>
+                                    $("#loginUserPhone").html(userLoginData.phoneNumber);
+                                    </script>
+                                </p>
                             </div>
                         </div>
 

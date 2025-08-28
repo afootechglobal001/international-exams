@@ -42,3 +42,38 @@ function _closeProfileDiv(event) {
   }
 }
 $(document).on("click", _closeProfileDiv);
+
+function capitalizeFirstLetterOfEachWord(inputText) {
+  const words = inputText.toLowerCase().split(" ");
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+  }
+  const result = words.join(" ");
+  return result;
+}
+
+function getFirstLettersOfEachWord(str) {
+  return str
+    .split(" ") // split by spaces
+    .filter((word) => word) // remove empty strings (in case of double spaces)
+    .map((word) => word[0].toUpperCase()) // take first letter and uppercase it
+    .join(""); // join into a single string
+}
+
+function thousandSeperator(val) {
+  let dp = 2;
+  const formatter = new Intl.NumberFormat("ng-NG", {
+    style: "decimal",
+    maximumFractionDigits: dp,
+    minimumFractionDigits: dp,
+  });
+  //   return formatter.format(val);
+  return isNaN(parseFloat(formatter.format(val))) ? "-" : formatter.format(val);
+}
+
+function _userValidationCheck(code) {
+  if (code < 100) {
+    _logOut();
+    return;
+  }
+}

@@ -15,7 +15,7 @@
 
         </div>
         <div class="search-div">
-            <input type="text" placeholder="Search Here...">
+            <input type="text" placeholder="Search Here..." onkeyup="_filtersTransactionHistory(this.value)">
             <i class="bi bi-search"></i>
         </div>
 
@@ -23,7 +23,20 @@
 </section>
 <!-- /////////// Title ////////////////////////////// -->
 
-<sction class="main-content-div">
+<section class="main-content-div">
+    <!--  ////////////////////////////////////////////////////////////////////////////////-->
+    <section class="statistics-back-div">
+        <div class="statistics-div" id="branch">
+            <div class="statistics-inner-div completed">
+                <div class="statistics-text">
+                    <p>TOTAL WALLET BALANCE</p>
+                    <span>Statistics of total wallet balance</span>
+                    <h2><b id="currencySymbol">--</b> <b id="walletBalance">0.00</b></h2>
+                </div>
+                <div class="statistics-icon completed"><i class="bi-check-circle"></i></div>
+            </div>
+        </div>
+    </section>
     <!--  ////////////////////////////////////////////////////////////////////////////////-->
     <section class="content-div">
         <div class="content-title">
@@ -31,76 +44,48 @@
                 <i class="bi bi-credit-card-2-back"></i>
                 <p>My Transactions</p>
             </div>
+            <div>
+                <button class="btn" title="View all"
+                    onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
+                    <i class="bi bi-wallet"></i> Load Wallet
+                </button>
+            </div>
         </div>
         <div class="content-inner">
             <div class="table-div">
-                <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                <table class="table" cellspacing="0" style="width:100%" id="searchTransactionHistory">
                     <thead>
                         <tr class="tb-col">
                             <th>sn</th>
                             <th>Date</th>
                             <th>Transaction ID</th>
-                            <th>Amount (N)</th>
+                            <th>Amount</th>
                             <th>Transaction Type</th>
                             <th>Method</th>
                             <th>Status</th>
                             <th>View</th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        <tr class="tb-row">
-                            <td>1</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>ONLINE</td>
-                            <td>
-                                <div class="status-div ACTIVE">ACTIVE</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
+                    <tbody id="transactionHistoryContent">
+                        <script>
+                        _fetchTransactionHistory();
+                        </script>
+                        <tr>
+                            <td colspan="8">
+                                <div class="content-loading-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                </div>
                             </td>
                         </tr>
-                        <tr class="tb-row">
-                            <td>2</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>BANK TRANSFER</td>
-                            <td>
-                                <div class="status-div PENDING">PENDING</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-                        <tr class="tb-row">
-                            <td>3</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>BANK TRANSFER</td>
-                            <td>
-                                <div class="status-div CANCELLED">CANCELLED</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-
                     </tbody>
                 </table>
+
+                <!-- Pagination -->
+                <div id="transactionPaginationControls" class="pagination-div"></div>
             </div>
         </div>
     </section>
-</sction>
+</section>
 <?php } ?>
 
 

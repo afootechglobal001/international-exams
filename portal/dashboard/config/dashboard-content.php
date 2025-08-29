@@ -41,17 +41,8 @@
             </div>
             <div class="wallet-div">
                 <div class="wallet-info">
-                    <p>Wallet Balance
-                        (<span id="currencySymbol">
-                            <script>
-                            $("#currencySymbol").html(userLoginData.currency);
-                            </script>
-                        </span>)</p>
-                    <h2 id="walletBalance">
-                        <script>
-                        $("#walletBalance").html(thousandSeperator(userLoginData.walletBalance));
-                        </script>
-                    </h2>
+                    <p>Wallet Balance (<span id="currencySymbol">--</span>)</p>
+                    <h2 id="walletBalance">0.00</h2>
                 </div>
                 <button class="btn" title="Load wallet"
                     onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
@@ -62,7 +53,7 @@
     </section>
     <!--  ////////////////////////////////////////////////////////////////////////////////-->
     <section class="statistics-back-div">
-        <div class="statistics-div" id="branch" title="Branches">
+        <div class="statistics-div" id="branch">
             <div class="statistics-inner-div">
                 <div class="statistics-text">
                     <p>PENDING EXAM</p>
@@ -74,7 +65,7 @@
             </div>
         </div>
 
-        <div class="statistics-div" id="branch" title="Branches">
+        <div class="statistics-div" id="branch">
             <div class="statistics-inner-div">
                 <div class="statistics-text">
                     <p>UPCOMING EXAM</p>
@@ -85,7 +76,7 @@
             </div>
         </div>
 
-        <div class="statistics-div" id="branch" title="Branches">
+        <div class="statistics-div" id="branch">
             <div class="statistics-inner-div">
                 <div class="statistics-text">
                     <p>COMPLETED EXAM</p>
@@ -260,76 +251,43 @@
                 <p>My Recent Transactions</p>
             </div>
             <div>
-                <button class="btn" title="View all">
+                <button class="btn" title="View all"
+                    onclick="_getActivePage({page:'transactions', divid:'transactions'});">
                     <i class="bi bi-eye"></i> View All
                 </button>
             </div>
         </div>
         <div class="content-inner">
             <div class="table-div">
-                <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                <table class="table" cellspacing="0" style="width:100%">
                     <thead>
                         <tr class="tb-col">
                             <th>sn</th>
                             <th>Date</th>
                             <th>Transaction ID</th>
-                            <th>Amount (N)</th>
+                            <th>Amount</th>
                             <th>Transaction Type</th>
                             <th>Method</th>
                             <th>Status</th>
                             <th>View</th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        <tr class="tb-row">
-                            <td>1</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>ONLINE</td>
-                            <td>
-                                <div class="status-div ACTIVE">ACTIVE</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
+                    <tbody id="transactionHistoryContent">
+                        <script>
+                        _fetchTransactionHistory();
+                        </script>
+                        <tr>
+                            <td colspan="8">
+                                <div class="content-loading-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                </div>
                             </td>
                         </tr>
-                        <tr class="tb-row">
-                            <td>2</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>BANK TRANSFER</td>
-                            <td>
-                                <div class="status-div PENDING">PENDING</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-                        <tr class="tb-row">
-                            <td>3</td>
-                            <td>00-00-00 00:00:00</td>
-                            <td class="clickable-td"> STUDENT001239485959 </td>
-                            <td> 230,000.00 </td>
-                            <td>CREDIT</td>
-                            <td>BANK TRANSFER</td>
-                            <td>
-                                <div class="status-div CANCELLED">CANCELLED</div>
-                            </td>
-                            <td>
-                                <button class="btn view-btn" title="Click to view staff profile"
-                                    onclick="_fetchEachStaff('${staffId}');">VIEW</button>
-                            </td>
-                        </tr>
-
                     </tbody>
                 </table>
+
+                <!-- Pagination -->
+                <div id="transactionPaginationControls" class="pagination-div pagination-div-hidden"></div>
             </div>
         </div>
     </section>

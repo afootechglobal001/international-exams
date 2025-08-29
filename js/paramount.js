@@ -460,7 +460,7 @@ function _callAjaxError(callback) {
     title: "Connection Error!",
     message: "Check your internet connection and try again.",
     alertType: "error",
-    trueActionBtnText: "OK, Retry",
+    trueActionBtnText: "OK",
   });
 }
 function _callCatchError(callback) {

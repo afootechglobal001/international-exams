@@ -78,7 +78,7 @@
             });
         </script>
         <div class="text-div">
-            <div class="top-text"><span id="studyAbroadSummary"><script>$("#studyAbroadSummary").html(getEachStudyAbroadSession.studyAbroadSummary);</script> </span></div>
+            <div class="top-text"><span id="studyAbroadSummary"><script>$("#studyAbroadSummary").html(getEachStudyAbroadSession.studyAbroadSummary.substr(0, 120) +'...');</script> </span></div>
             <h2 id="studyAbroadRegTitle"><script>$("#studyAbroadRegTitle").html(getEachStudyAbroadSession.regTitle);</script></h2>
             <div class="text-in">
                 <div class="text">UPDATED ON: <span id="formattedDate">Loading...</span> | <span id="page_view">200</span> VIEWS </div>

@@ -24,6 +24,7 @@ switch ($action){
 		require_once('pages-content.php');
 		require_once('page-details.php');
 		require_once('ebook-content.php');
+		require_once('exam-related-links-content.php');
 	break;
 
 	case 'get_form':
@@ -46,6 +47,7 @@ switch ($action){
 		require_once('pages-content.php');
 		require_once('page-details.php');
 		require_once('ebook-content.php');
+		require_once('exam-related-links-content.php');
 	break;	
 
 	case 'uploadStaffPix':

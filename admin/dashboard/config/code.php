@@ -86,13 +86,30 @@ switch ($action){
 		
 		$uploadDir = "../../../uploaded_files/seoFlyer/";
 
+		if (!empty($newSeoFlyer) && isset($_FILES['seoFlyer']) && $_FILES['seoFlyer']['error'] === UPLOAD_ERR_OK) {
+			// Delete old image only if it's not the default
+			if (!empty($oldSeoFlyer) && file_exists($uploadDir . $oldSeoFlyer)) {
+				unlink($uploadDir . $oldSeoFlyer);
+			}
+
+			// Save the new uploaded file
+			move_uploaded_file($_FILES['seoFlyer']['tmp_name'], $uploadDir . $newSeoFlyer);
+		}
+    break;
+
+	case 'uploadStudyAbroadPix':
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/studyAbroad/";
+
 		// Delete old image only if it's not the default
-		if (!empty($oldSeoFlyer) && file_exists($uploadDir . $oldSeoFlyer)) {
-			unlink($uploadDir . $oldSeoFlyer);
+		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
+			unlink($uploadDir . $oldRegPix);
 		}
 
-		if (!empty($newSeoFlyer) && isset($_FILES['seoFlyer']) && $_FILES['seoFlyer']['error'] === UPLOAD_ERR_OK) {
-			move_uploaded_file($_FILES['seoFlyer']['tmp_name'], $uploadDir . $newSeoFlyer);
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
 		}
     break;
 

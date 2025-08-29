@@ -235,11 +235,20 @@
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="examtTitle_container">
+                        <div class="text_field_container" id="regTitle_container">
                             <script>
                                 textField({
-                                    id: 'examtTitle',
+                                    id: 'regTitle',
                                     title: 'Study Abroad Title'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="studyAbroadSummary_container">
+                            <script>
+                                textField({
+                                    id: 'studyAbroadSummary',
+                                    title: 'Study Abroad Summary'
                                 });
                             </script>
                         </div>
@@ -248,7 +257,7 @@
                         <label>
                             <div class="pix-div">
                                 <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
                             </div>
                         </label>
 
@@ -258,13 +267,14 @@
                                     id: 'statusId',
                                     title: 'Select Status'
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createAndUpdateStudyAbroad();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

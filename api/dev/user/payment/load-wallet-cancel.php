@@ -24,11 +24,8 @@
             'response'=> 200,
             'success'=> true,
             'message'=> "You have cancelled the transaction.",
-            'data' => [],
         ];
-   //// get user login details
-        require_once '../auth/loginUserDetails.php';
-        $response['data'] = $userData;
+
     /// sent alert
     $alertDetail = "User with ID $loginUserId and Name $loginUserFullname cancelled their wallet load transaction with Transaction ID $transactionId.";
 end:

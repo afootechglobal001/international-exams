@@ -45,7 +45,7 @@ function _loadWallet() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError(() => _loadWallet()); // retry if needed
+        _callAjaxError(() => _logOut()); // retry if needed
         _btnDisable("loadWalletBtn", btnText, false);
       });
   } catch (error) {
@@ -92,7 +92,6 @@ function _payWithPaystackLoadWallet(
   });
   handler.openIframe();
 }
-
 ////////////////////// END LOAD WALLET PAYSTACK /////////////////////////////
 
 function _loadWalletAction(action, transactionId) {
@@ -105,14 +104,10 @@ function _loadWalletAction(action, transactionId) {
         _userValidationCheck(response.response);
 
         if (response.success) {
-          const data = response.data;
-          console.log(data);
-          // $("#user_wallet_balance,#user_wallet_balance").html(
-          //   _numberWithComma(getData.wallet_balance)
-          // );
-          sessionStorage.setItem("userLoginData", JSON.stringify(data));
           _alertClose();
           _showCustomConfirm({
+            callback: () =>
+              _getActivePage({ page: "transactions", divid: "transactions" }),
             title:
               action === "success"
                 ? "TRANSACTION SUCCESSFUL"
@@ -133,7 +128,7 @@ function _loadWalletAction(action, transactionId) {
       })
       .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError(() => _loadWalletAction()); // retry if needed
+        _callAjaxError(() => _logOut()); // retry if needed
         _btnDisable("loadWalletBtn", btnText, false);
       });
   } catch (error) {
@@ -143,4 +138,85 @@ function _loadWalletAction(action, transactionId) {
   }
 }
 
-// action==='success' ?"You have successfully loaded your wallet." : "You have cancelled the transaction.",
+function _fetchTransactionHistory() {
+  try {
+    _callFetchEndPoints({
+      url: `user/payment/fetch-transactions`,
+      accessKey: true,
+    })
+      .then((response) => {
+        console.log(response);
+        _userValidationCheck(response.response);
+        if (response.success && response.data?.length > 0) {
+          $("#walletBalance").html(
+            thousandSeperator(response.userData.walletBalance)
+          );
+          $("#currencySymbol").html(response.userData.currency);
+          initTransactionTable(response.data);
+        } else {
+          $("transactionHistoryContent").html(`
+            <tr>
+              <td colspan="8">
+                <div class="false-notification-div">
+                  <p>${response.message}</p>
+                </div>
+              </td>
+            </tr>`);
+          $("transactionPaginationControls").html("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _logOut());
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _fetchTransactionHistory());
+  }
+}
+
+function renderTransactionRows(data, start) {
+  return data
+    .map(
+      (item, i) => `
+    <tr class="tb-row">
+      <td>${start + i + 1}</td>
+      <td>${item.updatedTime}</td>
+      <td class="clickable-td">${item.transactionId}</td>
+      <td>${item.currency} ${item.amount}</td>
+      <td>${item.transactionTypeName}</td>
+      <td>${item.paymentMethodName}</td>
+      <td><div class="status-div ${item.statusName}">${
+        item.statusName
+      }</div></td>
+      <td>
+        <button class="btn view-btn"
+          onclick="_fetchTEachransactionHistory('${item.transactionId}')">
+          VIEW
+        </button>
+      </td>
+    </tr>`
+    )
+    .join("");
+}
+
+function initTransactionTable(transactions) {
+  const paginator = new Paginator(
+    transactions,
+    renderTransactionRows,
+    "transactionPaginationControls",
+    "transactionHistoryContent",
+    10 // items per page
+  );
+  __paginatorHandlers["transactionHistoryContent"] = paginator;
+  paginator.renderPage();
+}
+
+function _filtersTransactionHistory(value) {
+  $("#searchTransactionHistory > tbody .tb-row").each(function () {
+    var text = $(this).text();
+    text.toLowerCase().indexOf(value.toLowerCase()) > -1
+      ? $(this).show()
+      : $(this).hide();
+  });
+}

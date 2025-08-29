@@ -31,11 +31,7 @@
             'response'=> 200,
             'success'=> true,
             'message'=> "You have successfully loaded your wallet.",
-            'data' => [],
         ];
-    //// get user login details
-        require_once '../auth/loginUserDetails.php';
-        $response['data'] = $userData;
     /// sent alert
     $alertDetail = "User with ID $loginUserId and Name $loginUserFullname loaded their wallet with $loginUserCurrency $amount.";
 end:

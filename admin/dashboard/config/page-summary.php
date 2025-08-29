@@ -7,6 +7,7 @@
                 <script>
                     $(document).ready(function() {
                         $("#examPix").attr("src", examPixPath+'/'+getEachExamSession.regPix).attr("alt", getEachExamSession.regTitle);
+                        $("#updatedDate").html(_fetchFormatDate(getEachExamSession.updatedTime));
                     });
                 </script>
             </div>
@@ -15,19 +16,10 @@
                 <h3 id="examAbbr"><script>$("#examAbbr").html(getEachExamSession.examAbbr);</script></h3>
                 <p id="regTitle"><script>$("#regTitle").html(getEachExamSession.regTitle);</script></p>
                 <div class="exam-time page-summ-exam-time">
-                    <p id="updatedDate"></p>
+                    <p><i class="bi bi-calendar"></i> Updated on: <strong id="updatedDate">Loading...</strong></p>
                     <p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
                 </div>
             </div>
-
-            <script>
-                $(document).ready(function() {
-                    const dateObj = new Date(getEachExamSession.updatedTime);
-                    const options = { day: '2-digit', month: 'short', year: 'numeric' };
-                    const formattedDate = dateObj.toLocaleDateString('en-GB', options).replace(" ", ", ");
-                    $("#updatedDate").html(`<i class="bi bi-calendar"></i> Updated on: <strong>${formattedDate}</strong>`);
-                });
-            </script>
         </div>
     </div>
 
@@ -76,13 +68,20 @@
 <?php } ?>
 
 <?php if ($pageCatId == 'studyAbroadCategory') { ?>
+     <script> getEachStudyAbroadSession = JSON.parse(sessionStorage.getItem("getEachStudyAbroadSession"));</script>
     <div class="grid-div">
-        <div class="img-div"><img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="TOEFL" /></div>
+        <div class="img-div"><img id="studyAbroadPix" src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="TOEFL" /></div>
+        <script>
+            $(document).ready(function() {
+                $("#studyAbroadPix").attr("src", studyAbroadPixPath+'/'+getEachStudyAbroadSession.regPix).attr("alt", getEachStudyAbroadSession.regTitle);
+                $("#formattedDate").html(_fetchFormatDate(getEachStudyAbroadSession.updatedTime));
+            });
+        </script>
         <div class="text-div">
-            <div class="top-text"><span> Test of English as a Foreign Language </span></div>
-            <h2 id="">STUDY IN ABROAD</h2>
+            <div class="top-text"><span id="studyAbroadSummary"><script>$("#studyAbroadSummary").html(getEachStudyAbroadSession.studyAbroadSummary);</script> </span></div>
+            <h2 id="studyAbroadRegTitle"><script>$("#studyAbroadRegTitle").html(getEachStudyAbroadSession.regTitle);</script></h2>
             <div class="text-in">
-                <div class="text">UPDATED ON: <span id="formattedDate">25 Jan 2025</span> | <span id="page_view">200</span> VIEWS </div>
+                <div class="text">UPDATED ON: <span id="formattedDate">Loading...</span> | <span id="page_view">200</span> VIEWS </div>
             </div>
         </div>
     </div>

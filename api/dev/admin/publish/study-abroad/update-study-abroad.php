@@ -20,14 +20,13 @@
     $pageCategoryId =trim($_GET['pageCategoryId']);
     $publishId =trim($_GET['publishId']);
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
-    $studyAbroadSummary=trim(strtoupper($_POST['studyAbroadSummary']));
+    $studyAbroadSummary =trim(str_replace("'", "\'", $_POST['studyAbroadSummary']));
     $regPix=$_FILES['regPix']['name'];
     $statusId=trim($_POST['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($pageCategoryId, 'PAGE CATEGORY ID');
     validateEmptyField($regTitle, 'TITLE');
-    validateEmptyField($regPix, 'PICTURE');
     validateEmptyField($studyAbroadSummary, 'SUMMARY');
     validateEmptyField($statusId, 'STATUS');
 

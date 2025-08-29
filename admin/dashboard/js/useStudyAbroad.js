@@ -1,3 +1,21 @@
+$(function () {
+	studyAbroadPreview = {
+	UpdatePreview: function (obj) {
+		if (!window.FileReader) {
+		// Handle browsers that don't support FileReader
+		console.error("FileReader is not supported.");
+		} else {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			$('#studyAbroadPreview').prop("src", e.target.result);
+		};
+		reader.readAsDataURL(obj.files[0]);
+		}
+	},
+	};
+});
+
 function _createAndUpdateStudyAbroad(){
 	try {
 		////////get all needed values////////////
@@ -38,21 +56,27 @@ function _createAndUpdateStudyAbroad(){
 }
 
 function _saveStudyAbroadCallback(formData) {
+    let getEachStudyAbroadSession = JSON.parse(sessionStorage.getItem("getEachStudyAbroadSession"));
 	///// get btn text/////
 	const btnText = $("#submitBtn").html();
 	_btnDisable("submitBtn", btnText, true);
 	
+    let callUrl= getEachStudyAbroadSession?.publishId ? `admin/publish/study-abroad/update-study-abroad?pageCategoryId=${pageCategory.studyAbroadCategory}&publishId=${getEachStudyAbroadSession?.publishId}` : `admin/publish/study-abroad/create-study-abroad?pageCategoryId=${pageCategory.studyAbroadCategory}`;
+
 	//// call endpoint //////
 	_callFileEndPoints({
-		url: `admin/publish/study-abroad/create-study-abroad?pageCategoryId=${pageCategory.studyAbroadCategory}`,
+		url: callUrl,
 		formData,
 		accessKey: true,
 	})
     .then((response) => {
+          _staffValidationCheck(response.response);
 		if (response.success) {
-
+            const message = response.message;
 			const newRegPix = response.regPix;
-            _uploadStudyAbroadPix(newRegPix, message);
+            const oldRegPix = response.oldRegPix;
+
+            _uploadStudyAbroadPix(newRegPix, oldRegPix, message);
 			_btnDisable("submitBtn", btnText, false);
 		} else {
 			_btnDisable("submitBtn", btnText, false);
@@ -71,12 +95,13 @@ function _saveStudyAbroadCallback(formData) {
     });
 }
 
-function _uploadStudyAbroadPix(newRegPix, message) {
+function _uploadStudyAbroadPix(newRegPix, oldRegPix, message) {
     const uploadedFile = $("#regPix").prop("files")[0];
 
     const formData = new FormData();
     formData.append("action", "uploadStudyAbroadPix");
     formData.append("newRegPix", newRegPix);
+    formData.append("oldRegPix", oldRegPix);
     formData.append("regPix", uploadedFile);
 
     _callFileEndPoints({
@@ -102,7 +127,6 @@ function _uploadStudyAbroadPix(newRegPix, message) {
     });
 }
 
-
 function _fetchStudyAbroadData() {
 	try {
 		//// call endpoint //////
@@ -111,35 +135,9 @@ function _fetchStudyAbroadData() {
 			accessKey: true,
 		})
 		.then((response) => {
+            _staffValidationCheck(response.response);
 			if (response.success && response.data?.length > 0) {
-    			for (let i = 0; i < response.length; i++) {
-                    
-                    
-                    content +=`
-                        <div class="grid-div">
-                            <div class="btn-div">
-                                <button class="btn active-btn" onclick="">EDIT</button>
-                                <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'studyAbroadCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                            </div>
-
-                            <div class="img-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="STUDY IN CANADA" />
-                            </div>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-                            <div class="text-div">
-                                <h2>STUDY IN CANADA</h2>
-                                <div class="top-text"><span> Canada plays host to more than 180,000 International students in any given... </span></div>
-                                <div class="text-in">
-                                    <div class="text">
-                                        UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-                $('#pageContent').html(content);	
-				
+                _initfetchStudyAbroadData(response.data);
 			} else {
 				_showCustomConfirm({
 					title: "PAGE ERROR",
@@ -147,11 +145,6 @@ function _fetchStudyAbroadData() {
 					alertType: "warning",
 					trueActionBtnText: "OK",
 				});
-
-				const backResponses = response.backResponses;
-				if(backResponses<100){
-					_logOut();
-				}
 			} 
 		 })
 		.catch((error) => {
@@ -164,3 +157,64 @@ function _fetchStudyAbroadData() {
   	}
 }
 
+function _initfetchStudyAbroadData(data) {
+  const content = data.map((item) => `
+    <div class="grid-div">
+        <div class="btn-div">
+            <button class="btn active-btn" onclick="_fetchEachStudyAbroad('${item.pageCategoryId}','${item.publishId}', 'edit');">EDIT</button>
+            <button class="btn" onclick="_fetchEachStudyAbroad('${item.pageCategoryId}','${item.publishId}', 'page');">EDIT PAGE DETAILS</button>
+        </div>
+
+        <div class="img-div">
+            <img src="${studyAbroadPixPath}/${item.regPix}" alt="${item.regTitle}" />
+        </div>
+        <div class="status-div ${item.statusName}">${item.statusName}</div>
+        <div class="text-div">
+            <h2>${item.regTitle}</h2>
+            <div class="top-text"><span>${item.studyAbroadSummary.substr(0, 120)}...</span></div>
+            <div class="text-in">
+                <div class="text">
+                    UPDATED ON: <span>${_fetchFormatDate(item.updatedTime)}</span> | <span>200</span> VIEWS
+                </div>
+            </div>
+        </div>
+    </div>`).join("");
+    $('#pageContent').html(content);
+}
+
+function _fetchEachStudyAbroad(pageCategoryId, publishId, action) {
+    $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `admin/publish/study-abroad/fetch-study-abroad?pageCategoryId=${pageCategoryId}&publishId=${publishId}`,
+			accessKey: true,
+		})
+		.then((response) => {
+            _staffValidationCheck(response.response);
+			if (response.success && response.data?.length > 0) {
+    			sessionStorage.setItem("getEachStudyAbroadSession", JSON.stringify(response.data[0]));
+                const publishData = {
+                    publishId: response.data[0].publishId,
+                    pageCategoryId: pageCategoryId
+                };
+                sessionStorage.setItem("publishData", JSON.stringify(publishData));
+                _getForm({page: action==='edit' ? 'studyAbroadReg' : 'editPageForm', pageCatId: pageCategoryId, url: adminPortalLocalUrl});
+			} else {
+				_showCustomConfirm({
+					title: "FETCH ERROR",
+					message: response.message,
+					alertType: "warning",
+					trueActionBtnText: "OK",
+				});
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+			_callAjaxError(() => _fetchEachStudyAbroad()); // retry if needed
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _fetchEachStudyAbroad());
+  	}
+}

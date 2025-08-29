@@ -19,7 +19,7 @@
     //////////////////declaration of variables//////////////////////////////////////
     $pageCategoryId =trim($_GET['pageCategoryId']);
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
-    $studyAbroadSummary=trim(strtoupper($_POST['studyAbroadSummary']));
+    $studyAbroadSummary =trim(str_replace("'", "\'", $_POST['studyAbroadSummary']));
     $regPix=$_FILES['regPix']['name'];
     $statusId=trim($_POST['statusId']);
    

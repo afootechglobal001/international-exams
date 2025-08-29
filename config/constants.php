@@ -59,6 +59,7 @@ var portalOperationMiddlewareUrl = websiteUrl + '/portal/dashboard/config/code';
 
 var examPixPath=websiteUrl+'/uploaded_files/examLogo'; /// For exam Pix Path //
 var seoFlyerPixPath=websiteUrl+'/uploaded_files/seoFlyer'; /// For seo flyer Pix Path //
+var studyAbroadPixPath=websiteUrl+'/uploaded_files/studyAbroad'; /// For seo flyer Pix Path //
 var pageCategory = {
     examCategory: 'examCategory',
     studyAbroadCategory: 'studyAbroadCategory',

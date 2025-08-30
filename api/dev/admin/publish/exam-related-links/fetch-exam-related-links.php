@@ -18,9 +18,10 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $pageCategoryId =trim($_GET['pageCategoryId']);
-    $q = $_GET['q'];
-    $publishId = $_GET['publishId'];
+    $parentPublishId = trim($_GET['parentPublishId']);
+    $publishId = trim($_GET['publishId']);
     $statusId = $_GET['statusId'];
+    $q = $_GET['q'];
 
     if (empty($pageCategoryId)){ /// start if 2
         $response = [
@@ -31,22 +32,29 @@
         goto end;
     }
 
+    if (empty($parentPublishId)){ /// start if 2
+        $response = [
+            'response'=> 100,
+            'success'=> false,
+            'message'=> "PUBLISH ID REQUIRED! Provide valid publish ID and try again",
+        ]; 
+        goto end;
+    }
+
     if (!empty($publishId)) {
-        $publishIds = "AND a.publishId ='$publishId' ";
+        $publishIds = "AND a.publishId ='$publishId'";
     }
 
     if (!empty($statusId)) {
         $statusIds = "AND a.statusId IN ($statusId)";
     }
 
-
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
         a.pageCategoryId, 
-        a.publishId, 
+        a.publishId,
         a.regTitle, 
-        a.examAbbr, 
         a.regPix, 
         a.statusId, 
         a.createdBy, 
@@ -56,10 +64,10 @@
         FROM PUBLISH_TAB a
         JOIN SETUP_STATUS_TAB b 
             ON a.statusId = b.statusId
-        WHERE (a.regTitle LIKE '%$q%' OR a.examAbbr LIKE '%$q%') $publishIds $statusIds
+        WHERE (a.regTitle LIKE '%$q%') $publishIds $statusIds
             AND a.pageCategoryId ='$pageCategoryId'
-            AND (a.parentPublishId IS NULL OR a.parentPublishId = '')
-        ORDER BY a.examAbbr ASC;
+            AND a.parentPublishId ='$parentPublishId'
+        ORDER BY a.regTitle ASC;
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -74,24 +82,15 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "EXAM FETCH SUCCESFFULY!",
+        'message' => "EXAM RELATED LINK FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-        $publishId=$fetchQuery['publishId'];
-
-        /////////////////// fetch incentives per exam ////////////
-        $incentivesData=array();
-        $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
-        while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
-            $incentivesData[] = $getIncentivesfetch;
-        }
-        $fetchQuery['incentivesData']= $incentivesData;
-
         $response['data'][] = $fetchQuery;
     }
+
 end:
 echo json_encode($response);
 ?>

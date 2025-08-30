@@ -31,8 +31,9 @@
             </div>
 
             <div class="inner-table-content">
-                <div class="other-pg-back-div">
-                    <div class="grid-div">
+                <div class="other-pg-back-div" id="pageContent">
+                    <script>_fetchAllExamLinkData();</script>
+                    <!-- <div class="grid-div">
                         <div class="btn-div">
                             <button class="btn active-btn" onclick="">EDIT</button>
                             <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'examCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
@@ -51,7 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -118,7 +119,7 @@
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createExamLink();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

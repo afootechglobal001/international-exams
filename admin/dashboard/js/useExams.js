@@ -75,7 +75,7 @@ function _fetchExamData() {
 										<p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
 									</div>
 								</div>
-								<button class="btn" title="Related Links" onclick="_getActivePage({page:'examRelatedLinks', divid:'publish'});">
+								<button class="btn" title="Related Links" onclick="_getEachExamLinkPage('${pageCategoryId}','${publishId}');">
 									Related Links <span>5</span>
 								</button>
 							</div>
@@ -306,6 +306,51 @@ function _fetchEachExam(pageCategoryId, publishId, action) {
 					};
 					sessionStorage.setItem("publishData", JSON.stringify(publishData));
 					_getForm({page: action==='edit' ? 'examReg' : 'editPageForm', pageCatId: pageCategoryId, url: adminPortalLocalUrl});
+				} else {
+					const response = info.response;
+					if (response < 100) {
+						_logOut();
+					}    
+				}
+			},
+			error: function(textStatus, errorThrown) {
+				_alertClose();
+				console.error("AJAX Error: ", textStatus, errorThrown);
+				_showCustomConfirm({
+					title: 'Connection Error!',
+					message: 'An error occurred while fetching exam details! Please try again.',
+					alertType: 'error',
+					trueActionBtnText: 'OK, Retry'
+				});
+			}
+		});
+	} catch (error) {
+		_alertClose();
+		console.error("Error: ", error);
+		_showCustomConfirm({
+			title: 'Unexpected Error!',
+			message: 'An unexpected error occurred while fetching exam details! Please try again.',
+			alertType: 'error',
+			trueActionBtnText: 'OK, Retry'
+		});
+	}
+}
+
+function _getEachExamLinkPage(pageCategoryId, publishId) {
+	$("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}).fadeIn(500);
+	try {
+		$.ajax({
+			type: "GET",
+			url: `${endPoint}/admin/publish/exams/fetch-exam?pageCategoryId=${pageCategoryId}&publishId=${publishId}`,
+			dataType: "json", 
+			cache: false,
+			headers: getAuthHeaders(true),
+			success: function(info) {
+				if (info.success && info.data.length > 0) {
+					sessionStorage.setItem("getEachExamLinkSession", JSON.stringify(info.data[0]));
+
+					_getActivePage({page:'examRelatedLinks', divid:'publish'});
+					_alertClose();
 				} else {
 					const response = info.response;
 					if (response < 100) {

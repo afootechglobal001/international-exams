@@ -1,5 +1,5 @@
-<?php require_once '../../../config/connection.php';?>
-<?php require_once '../../../config/staff-session-check.php';?>
+<?php require_once '../../../../config/connection.php';?>
+<?php require_once '../../../../config/staff-session-check.php';?>
 
 <?php
     if (!$checkBasicSecurity){/// start if 1
@@ -16,14 +16,14 @@
 ?>
 
 <?php
-    //////////////////declaration of variables//////////////////////////////////////
+     //////////////////declaration of variables//////////////////////////////////////
     $pageCategoryId =trim($_GET['pageCategoryId']);
-    $parentPublishId = trim($_GET['parentPublishId']);
-    $publishId = trim($_GET['publishId']);
-    $statusId = $_GET['statusId'];
+    $parentPublishId =trim($_GET['parentPublishId']);
+    $publishId =trim($_GET['publishId']);
     $q = $_GET['q'];
-
-    if (empty($pageCategoryId)){ /// start if 2
+    $statusId = $_GET['statusId'];
+   
+    if (empty($pageCategoryId)){
         $response = [
             'response'=> 100,
             'success'=> false,
@@ -32,7 +32,7 @@
         goto end;
     }
 
-    if (empty($parentPublishId)){ /// start if 2
+    if (empty($parentPublishId)){
         $response = [
             'response'=> 100,
             'success'=> false,
@@ -52,7 +52,8 @@
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
-        a.pageCategoryId, 
+        a.pageCategoryId,
+        a.parentPublishId,
         a.publishId,
         a.regTitle, 
         a.regPix, 
@@ -90,7 +91,6 @@
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $response['data'][] = $fetchQuery;
     }
-
 end:
 echo json_encode($response);
 ?>

@@ -35,6 +35,21 @@ main {
   font-family: body-font;
   color: var(--text-color);
 }
+
+.page-title-div .title-div .back-div{
+	display: flex;
+	gap: 5px;
+	font-family: body-font;
+	color: var(--sub-body-color);
+	font-size: 12px;
+}
+
+.page-title-div .title-div .back-div span{
+	font-family: body-font;
+	color: var(--text-color);
+	cursor: pointer;
+}
+
 .page-title-div .title-div .icon-div {
   width: 50px;
   height: 50px;
@@ -3583,6 +3598,10 @@ main {
   gap: 5px;
 }
 
+.page-summ-exam-div .pg-summ-exam-div .exam-info .page-summ-exam-time strong{
+	color: var(--primary-color);
+}
+
 .incentives-back-div{
 	width: calc(100% - 40px);
 	padding: 20px;
@@ -3593,7 +3612,11 @@ main {
 	border-radius: 7px;
 }
 
-
+#fullExamBlock{
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
 
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */

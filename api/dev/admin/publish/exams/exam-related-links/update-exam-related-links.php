@@ -1,5 +1,5 @@
-<?php require_once '../../../config/connection.php';?>
-<?php require_once '../../../config/staff-session-check.php';?>
+<?php require_once '../../../../config/connection.php';?>
+<?php require_once '../../../../config/staff-session-check.php';?>
 
 <?php
     if (!$checkBasicSecurity){/// start if 1
@@ -18,71 +18,41 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $pageCategoryId =trim($_GET['pageCategoryId']);
+    $parentPublishId =trim($_GET['parentPublishId']);
     $publishId =trim($_GET['publishId']);
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
-    $examAbbr=trim(strtoupper($_POST['examAbbr']));
     $regPix=$_FILES['regPix']['name'];
-    $incentives=trim(strtoupper($_POST['incentives']));
     $statusId=trim($_POST['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($pageCategoryId, 'PAGE CATEGORY ID');
     validateEmptyField($publishId, 'PUBLISH ID');
-    validateEmptyField($regTitle, 'EXAM NAME');
-    validateEmptyField($examAbbr, 'EXAM ABBREVIATION');
-    validateEmptyField($incentives, 'EXAM INCENTIVES');
+    validateEmptyField($parentPublishId, 'PUBLISH ID');
+    validateEmptyField($regTitle, 'RELATED LINK TITLE');
     validateEmptyField($statusId, 'STATUS');
 
-    $examNameQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND publishId!='$publishId' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
-    $examNameCountQuery=mysqli_num_rows($examNameQuery);
+    $linkTitleQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND publishId!='$publishId' AND parentPublishId!='$parentPublishId' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
+    $linkTitleCountQuery=mysqli_num_rows($linkTitleQuery);
 
-    if ($examNameCountQuery>0){ /// start if 4
+    if ($linkTitleCountQuery>0){ /// start if 4
         $response = [
             'response'=> 101,
             'success'=> false,
-            'message' => "This exam with name ('$regTitle') is already in use. Please try another Name."
+            'message' => "This exam link with title ('$regTitle') is already in use. Please try another Name."
         ];
 
-        $alertDetail="EXAM UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to update an exam with a name ($regTitle) that is already in use.";	
-        goto end;
-    }
-
-    $examAbbrQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE examAbbr='$examAbbr' AND publishId!='$publishId' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
-    $examAbbrCountQuery=mysqli_num_rows($examAbbrQuery);
-
-    if ($examAbbrCountQuery>0){ /// start if 5
-        $response = [
-            'response'=> 102,
-            'success'=> false,
-            'message' => "This exam with abbreviation ('$examAbbr') is already in use. Please try another Exam Abbreviation."
-        ];
-
-        $alertDetail="EXAM UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to udpate an exam with abbreviation ($examAbbr) that is already in use.";	
+        $alertDetail="EXAM LINK UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to update an exam link with a title ($regTitle) that is already in use.";	
         goto end;
     }
 
         $update ="UPDATE PUBLISH_TAB SET 
             regTitle = '$regTitle',
-            examAbbr = '$examAbbr',
             statusId = '$statusId',
             updatedBy = '$loginStaffId',
             updatedTime = NOW()
-            WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'";
+            WHERE publishId = '$publishId' AND parentPublishId = '$parentPublishId' AND pageCategoryId = '$pageCategoryId'";
             mysqli_query($conn, $update) or die(mysqli_error($conn));
 
-            /// delete existing incentives records first 
-            mysqli_query($conn,"DELETE FROM `EXAM_INCENTIVE_TAB` WHERE publishId='$publishId'")or die (mysqli_error($conn));
-
-            // Handle departments (comma-separated)
-            $incentiveArray = array_map('trim', explode(',', $incentives));
-
-            foreach ($incentiveArray as $incentiveName) {
-                $incentiveName = mysqli_real_escape_string($conn, $incentiveName);
-
-                mysqli_query($conn, "INSERT INTO `EXAM_INCENTIVE_TAB`
-                (`publishId`, `examAbbr`, `incentives`, `createdBy`, `createdTime`) VALUES 
-                ('$publishId', '$examAbbr', '$incentiveName', '$loginStaffId', NOW())") or die(mysqli_error($conn));
-            }
 
             ///////////////////////geting image extention//////////////////////////
             $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png","PNG","GIF","webp","WEBP");
@@ -95,7 +65,7 @@
 
                 $datetime = date("Ymdhi");
                 $regPix = $publishId . '_' . $datetime . '_' . $regPix;
-                mysqli_query($conn, "UPDATE PUBLISH_TAB SET regPix = '$regPix' WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'") or die(mysqli_error($conn));
+                mysqli_query($conn, "UPDATE PUBLISH_TAB SET regPix = '$regPix' WHERE publishId = '$publishId' AND parentPublishId = '$parentPublishId' AND pageCategoryId = '$pageCategoryId'") or die(mysqli_error($conn));
             }
 
             $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
@@ -107,28 +77,36 @@
                 'success'=> true,
                 'regPix' => $regPix,
                 'oldRegPix' => $oldRegPix,
-                'message'=> "EXAM UPDATED SUCCESFFULLY!",
+                'message'=> "EXAM RELATED LINK UPDATED SUCCESFFULLY!",
                 'data' => array() // Initialize the data array
             ];
 
-            $alertDetail = "EXAM UPDATED SUCCESSFULLY: $pageCategoryName was upadated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | Abbreviation: $examAbbr | ID: $publishId.";
+            $alertDetail = "EXAM RELATED LINK UPDATED SUCCESSFULLY: $pageCategoryName was upadated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | ID: $publishId.";
 
-            // Fetch branch details ///
-            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.statusId, a.createdBy, a.updatedBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
-
+             // Fetch exam related links details ///
+            $select="SELECT
+                a.pageCategoryId,
+                a.parentPublishId,
+                a.publishId,
+                a.regTitle, 
+                a.regPix, 
+                a.statusId, 
+                a.createdBy,
+                a.updatedBy, 
+                a.createdTme, 
+                a.updatedTime,
+                b.statusName
+                FROM PUBLISH_TAB a
+                JOIN SETUP_STATUS_TAB b 
+                    ON a.statusId = b.statusId
+                AND a.pageCategoryId ='$pageCategoryId'
+                    AND a.parentPublishId ='$parentPublishId'
+                ORDER BY a.regTitle ASC";
+            
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {
                 $createdBy=$fetchQuery['createdBy'];
                 $updatedBy=$fetchQuery['updatedBy'];
-                $publishId=$fetchQuery['publishId'];
-
-                /////////////////// fetch incentives per exam ////////////
-                $incentivesData=array();
-                $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
-                while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
-                    $incentivesData[] = $getIncentivesfetch;
-                }
-                $fetchQuery['incentivesData']= $incentivesData;
 
                 /////////////////// for  CreatedBy /////////
                 $createdByData=array();

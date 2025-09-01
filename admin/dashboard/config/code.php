@@ -115,6 +115,22 @@ switch ($action){
 		}
     break;
 
+	case 'uploadRelatedExamPix':
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/examRelatedLink/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
+			unlink($uploadDir . $oldRegPix);
+		}
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
+		}
+    break;
+
 	case 'createPagesFolder': 	
 		$pageCategoryId =(trim($_POST['pageCategoryId']));
 		$publishId = trim($_POST['publishId']);

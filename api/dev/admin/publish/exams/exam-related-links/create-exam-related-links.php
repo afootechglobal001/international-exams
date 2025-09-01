@@ -1,5 +1,5 @@
-<?php require_once '../../../config/connection.php';?>
-<?php require_once '../../../config/staff-session-check.php';?>
+<?php require_once '../../../../config/connection.php';?>
+<?php require_once '../../../../config/staff-session-check.php';?>
 
 <?php
     if (!$checkBasicSecurity){/// start if 1
@@ -25,31 +25,31 @@
    
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($pageCategoryId, 'PAGE CATEGORY ID');
-    validateEmptyField($regTitle, 'EXAM NAME');
-    validateEmptyField($regPix, 'EXAM PICTURE');
+    validateEmptyField($regTitle, 'RELATED LINK TITLE');
+    validateEmptyField($regPix, 'RELATED LINK PICTURE');
     validateEmptyField($statusId, 'STATUS');
 
-    $examNameQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
-    $examNameCountQuery=mysqli_num_rows($examNameQuery);
+    $linkTitleQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
+    $linkTitleCountQuery=mysqli_num_rows($linkTitleQuery);
 
-    if ($examNameCountQuery>0){ /// start if 2
+    if ($linkTitleCountQuery>0){
         $response = [
             'response'=> 101,
             'success'=> false,
-            'message' => "This exam with name ('$regTitle') is already in use. Please try another Name."
+            'message' => "This exam link with title ('$regTitle') is already in use. Please try another Name."
         ];
 
-        $alertDetail="EXAM REGISTRATION ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to register a new exam with a name ($regTitle) that is already in use.";	
+        $alertDetail="EXAM RELATED LINK REGISTRATION ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to register a new exam related link with a title ($regTitle) that is already in use.";	
         goto end;
     }
 
-        /////////////////get exam abbreviation //////////////////////////////////////
-        $examQuery=mysqli_query($conn,"SELECT publishId FROM PUBLISH_TAB WHERE publishId='$publishId' AND pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
-	    $fetchExamQuery=mysqli_fetch_array($examQuery);
-		$parentPublishId=$fetchExamQuery['publishId'];
+        /////////////////get exam publish Id //////////////////////////////////////
+        $publishIdQuery=mysqli_query($conn,"SELECT publishId FROM PUBLISH_TAB WHERE publishId='$publishId' AND pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
+	    $fetchPublishQuery=mysqli_fetch_array($publishIdQuery);
+		$parentPublishId=$fetchPublishQuery['publishId'];
 
         ///////////////////////geting sequence//////////////////////////
-        $countId='EXAM';
+        $countId='EXAMLINK';
         $sequence=$callclass->_getSequenceCount($conn, $countId);
         $array = json_decode($sequence, true);
         $no= $array[0]['no'];
@@ -72,8 +72,8 @@
             $regPix = $publishId . '_' . $datetime . '_' . $regPix;
 
             mysqli_query($conn,"INSERT INTO `PUBLISH_TAB`
-            (`pageCategoryId`, `parentPublishId`, `publishId`, `regTitle`, `examAbbr`, `regPix`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
-            ('$pageCategoryId', '$parentPublishId', '$publishId', '$regTitle', '$examAbbr', '$regPix', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
+            (`pageCategoryId`, `parentPublishId`, `publishId`, `regTitle`, `regPix`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
+            ('$pageCategoryId', '$parentPublishId', '$publishId', '$regTitle', '$regPix', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
             $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
             $fetchPageCat = json_decode($pageCatArray, true);
@@ -83,14 +83,29 @@
                 'response'=> 200,
                 'success'=> true,
                 'regPix' => $regPix,
-                'message'=> "EXAM CREATED SUCCESFFULLY!",
+                'message'=> "EXAM RELATED LINK CREATED SUCCESFFULLY!",
                 'data' => array() // Initialize the data array
             ];
 
-            $alertDetail = "EXAM CREATED SUCCESSFULLY: $pageCategoryName was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | Abbreviation: $examAbbr | ID: $publishId.";
+            $alertDetail = "EXAM RELATED LINK CREATED SUCCESSFULLY: $pageCategoryName was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | ID: $publishId.";
 
-            // Fetch branch details ///
-            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.statusId, a.createdBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
+            // Fetch exam related links details ///
+            $select="SELECT
+                a.pageCategoryId,
+                a.parentPublishId,
+                a.publishId,
+                a.regTitle, 
+                a.regPix, 
+                a.statusId, 
+                a.createdBy, 
+                a.createdTme, 
+                a.updatedTime, 
+                b.statusName
+                FROM PUBLISH_TAB a
+                JOIN SETUP_STATUS_TAB b
+                    ON a.statusId = b.statusId
+                AND a.pageCategoryId ='$pageCategoryId'
+                ORDER BY a.regTitle ASC";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {

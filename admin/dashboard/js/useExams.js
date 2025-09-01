@@ -39,11 +39,9 @@ function _fetchExamData() {
 				const fetch = info.data;
 
 				let content = '';
-				let no=0;
 
 				if (info.success) {
 					for (let i = 0; i < fetch.length; i++) {
-						no++;
 						const examInfo = fetch[i];
 						const pageCategoryId = examInfo.pageCategoryId;
 						const publishId = examInfo.publishId;
@@ -52,6 +50,7 @@ function _fetchExamData() {
 						const regPix = examInfo.regPix;
 						const statusName = examInfo.statusName;
 						const formattedDate = formatDate(examInfo.updatedTime);
+						const totalNumberOfRelatedLinks = examInfo.totalNumberOfRelatedLinks;
 
 						content +=`
 							<div class="exam-div">
@@ -76,7 +75,7 @@ function _fetchExamData() {
 									</div>
 								</div>
 								<button class="btn" title="Related Links" onclick="_getEachExamLinkPage('${pageCategoryId}','${publishId}');">
-									Related Links <span>5</span>
+									Related Links <span>${totalNumberOfRelatedLinks}</span>
 								</button>
 							</div>
 						`;
@@ -94,7 +93,7 @@ function _fetchExamData() {
 						<div class="false-notification-div">
 							<p>${info.message}</p>
 							<div>
-								<button class="btn" title="ADD NEW INTERNATIONAL EXAM" onclick="_getForm({page: 'examReg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM</button>
+								<button class="btn" title="ADD NEW EXAM" onclick="ADD NEW INTERNATIONAL EXAM" onclick="_getForm({page: 'examReg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM</button>
 							</div>
 						</div>
 					`);
@@ -298,11 +297,14 @@ function _fetchEachExam(pageCategoryId, publishId, action) {
 			headers: getAuthHeaders(true),
 			success: function(info) {
 				if (info.success && info.data.length > 0) {
-					sessionStorage.setItem("getEachExamSession", JSON.stringify(info.data[0]));
+					const examData = info.data[0];
+
+					sessionStorage.setItem("getEachExamSession", JSON.stringify(examData));
+					sessionStorage.setItem("pageSummary", JSON.stringify(examData));
 
 					const publishData = {
-						publishId: info.data[0].publishId,
-						pageCategoryId: pageCategoryId
+						publishId: examData.publishId,
+						pageCategoryId: examData.pageCategoryId
 					};
 					sessionStorage.setItem("publishData", JSON.stringify(publishData));
 					_getForm({page: action==='edit' ? 'examReg' : 'editPageForm', pageCatId: pageCategoryId, url: adminPortalLocalUrl});
@@ -347,7 +349,7 @@ function _getEachExamLinkPage(pageCategoryId, publishId) {
 			headers: getAuthHeaders(true),
 			success: function(info) {
 				if (info.success && info.data.length > 0) {
-					sessionStorage.setItem("getEachExamLinkSession", JSON.stringify(info.data[0]));
+					sessionStorage.setItem("getEachExamLinkPageSession", JSON.stringify(info.data[0]));
 
 					_getActivePage({page:'examRelatedLinks', divid:'publish'});
 					_alertClose();

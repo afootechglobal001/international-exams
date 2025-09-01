@@ -145,6 +145,15 @@ function _fetchStudyAbroadData() {
 					alertType: "warning",
 					trueActionBtnText: "OK",
 				});
+
+				$('#pageContent').html(`
+					<div class="false-notification-div">
+						<p>${response.message}</p>
+						<div>
+							<button class="btn" title="ADD NEW STUDY ABROAD" onclick="sessionStorage.removeItem('getEachStudyAbroadSession'); _getForm({page: 'studyAbroadReg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW STUDY ABROAD</button>
+						</div>
+					</div>
+				`);
 			} 
 		 })
 		.catch((error) => {

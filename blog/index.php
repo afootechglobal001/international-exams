@@ -1,10 +1,10 @@
-<?php include 'config/constants.php'; ?>
+<?php include '../config/constants.php'; ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <?php include 'meta.php' ?>
+    <?php include '../meta.php' ?>
     <title><?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria</title>
     <meta name="keywords"
         content="<?php echo $appName ?>, TOEFL registration in Nigeria, GRE exam Nigeria, GMAT test Nigeria, SAT registration, ACT exam Nigeria, PTE Nigeria, IELTS Nigeria, exam registration Nigeria, EduGrade Services, study abroad exam, international exam, international exam in Nigeria, TOEFL Registration in Nigeria, TOEFL Registration in Kano, TOEFL Registration in Kaduna, TOEFL Registration in Lagos, TOEFL Registration in Ibadan, TOEFL Registration in Akure, TOEFL Registration in Abuja, TOEFL Registration in Oyo state, TOEFL Registration in Ondo state, TOEFL Registration in Owerri, TOEFL Registration in Africa, TOEFL Registration in Ilorin, TOEFL Registration in Ikeja, TOEFL Registration in Minna, TOEFL Registration in Abeokuta, TOEFL Registration in Oshogbo, TOEFL Registration in Jos, TOEFL Registration in Port Harcourt, GRE Registration in Nigeria, GRE Registration in Oyo, GRE Registration in Kaduna, GRE Registration in Abuja, GRE Registration in Kano,  GRE Registration in Benin City, GRE Registration in Akure GRE Registration in Enugu, GRE Registration in Owerri, GRE Registration in Kaduna, GRE Registration in Kano, GRE Registration in Ilorin, GRE Registration in Lagos, GRE Registration in Minna, GRE Registration in Abeokuta, GRE Registration in Akure, GRE Registration in Oshogbo, GRE Registration in Ibadan, GRE Registration in Jos, GRE Registration in Port Harcourt, GMAT Registration in Nigeria, GMAT Registration in akure, GMAT Registration in Kaduna, GMAT Registration in Kano, GMAT Registration in Abuja, GMAT Registration in Lagos, GMAT Registration in Ibadan,
@@ -32,7 +32,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include '../header.php' ?>
+
+    
 
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
@@ -108,7 +110,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 From staff management to academic performance tracking, learn how this innovative
                                 platform is simplifying school operations and improving efficiency.
                             </p>
-                            <a href="#">read more <i class="bi-arrow-right"></i></a>
+                            <a href="<?php echo $websiteUrl ?>/blog/study-abroad-with-international-exams">read more <i class="bi-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -205,7 +207,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog1.png"
+                                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png"
                                         alt="How International Exams Open Doors to Global Education Opportunities">
                                 </div>
 
@@ -224,7 +226,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog2.png"
+                                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png"
                                         alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
                                 </div>
 
@@ -243,7 +245,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
                             <div class="blog-inner-div">
                                 <div class="image-div">
-                                    <img src="all-images/blogs/blog3.png"
+                                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog3.png"
                                         alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
                                 </div>
 
@@ -263,7 +265,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </div>
         </section>
 
-        <?php include 'footer.php' ?>
+        <?php include '../footer.php' ?>
     </section>
 
 </body>

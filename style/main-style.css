@@ -406,7 +406,6 @@ header .main-header .main-header-inner .button-div .btn:hover {
   justify-content: center;
   align-items: center;
   padding: 50px 0px;
-  background: var(--primary-color);
 }
 
 .body-div .body-div-in {
@@ -425,6 +424,12 @@ header .main-header .main-header-inner .button-div .btn:hover {
   flex-direction: column;
   gap: 30px;
   
+}
+
+
+.body-div-inner{
+  background: var(--primary-color);
+
 }
 
 
@@ -968,6 +973,32 @@ header .main-header .main-header-inner .button-div .btn:hover {
   line-height: 25px;
   text-align: justify;
 }
+
+
+
+.about-back-div .content-div .check-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-back-div .content-div .check-div .check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.about-back-div .content-div .check-div .check h5 {
+  font-size: 15px;
+  color: var(--sub-body-color);
+  font-family: sub-title-font;
+}
+
+.about-back-div .content-div .check-div .check i {
+  color: var(--secondary-color);
+  font-size: 20px;
+}
+
 
 
 .about-back-div .content-div .box-div {
@@ -2513,6 +2544,11 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 
+.other-pages-blog-details {
+  height: 100%;
+}
+
+
 
 
 .other-pages-slide-section-outer {
@@ -2620,6 +2656,48 @@ header .main-header .main-header-inner .button-div .btn:hover {
   color: var(--white-color);
 }
 
+
+.blog-details-div{
+  width: 75% !important;
+
+}
+
+
+.blog-details-div h1{
+  line-height: 1.2;
+}
+
+
+
+/* Meta Info Row */
+.meta {
+  display: flex;
+  gap: 10px; 
+  font-size: 14px;
+  font-family: body-font;
+  color: var(--white-color); 
+  margin-top: 15px;
+  padding: 10px 0px;
+  border-top: 1px solid var(--white-color);
+  border-bottom: 1px solid var(--white-color);
+}
+
+.meta i {
+  margin-right: 6px;
+  font-family: body-font;
+  color: var(--secondary-color); 
+}
+
+
+/* Paragraph */
+.intro {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+
 .other-pages-slide-div .other-pages-back-div .main-content-back-div .text-content-div p {
   font-size: 17px;
   font-family: body-font;
@@ -2683,9 +2761,10 @@ header .main-header .main-header-inner .button-div .btn:hover {
   left: 0px;
 }
 
+
 /* blog */
 .blog-bg {
-  background: #e7e7e7;
+  background: var(--white-color);
 }
 
 .column {
@@ -2700,7 +2779,8 @@ header .main-header .main-header-inner .button-div .btn:hover {
 
 .blog-div .blog-div-inner {
   width: 68%;
-  background: var(--white-color);
+  background: var(--bg-color3);
+  border:  1px solid var(--bg-color);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -2708,19 +2788,191 @@ header .main-header .main-header-inner .button-div .btn:hover {
   padding: 30px;
   box-sizing: border-box;
   position: relative;
+  
 }
 
-.blog-div .blog-div-inner .image-div {
+
+.blog-div-inner-details{
+  padding: 0px !important;
+  background: var(--white-color) !important;
+  border: none !important;
+}
+
+
+
+.blog-div-inner-details .image-div{
   width: 100%;
   height: 350px;
   border-radius: 10px;
   overflow: hidden;
 }
 
+
+.blog-div .blog-div-inner .image-div {
+  width: 100%;
+  height: 500px;
+}
+
+
 .blog-div .blog-div-inner .image-div img {
   width: 100%;
   object-fit: contain;
 }
+
+
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  position: relative; /* Needed for arrows */
+}
+
+.thumbnails-img {
+  width: 110px;
+  height: 120px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+}
+
+
+.thumbnails-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.thumbnails-img img:hover {
+  transform: scale(1.03);
+}
+
+
+
+
+.thumb-arrow {
+  position: absolute;
+  top: 50%;
+  background: #252525;
+  color: var(--white-color);
+  border: none;
+  padding:  8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 2;
+}
+
+
+.thumb-arrow.prev {
+  left: 1px; 
+}
+
+.thumb-arrow.next {
+  right: 1px;
+}
+
+
+
+.blog-text {
+  font-size: 16px;
+  font-family: body-font;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+
+
+.search-inner-details{
+  display: flex;
+  flex-direction: column;
+  gap: 25px !important;
+}
+
+
+
+.search-inner-details h2{
+  font-size: 18px !important;
+  font-family: subtitle-font;
+}
+
+
+
+
+.recent-post {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--bg-color2);
+  padding-bottom: 15px;
+  cursor: pointer;
+ 
+}
+
+.recent-post-inner  {
+  width: 220px;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  
+}
+
+
+.recent-post-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.recent-post p {
+  font-size: 15px;
+  font-family: body-font;
+  font-weight: bold;
+ 
+}
+
+
+.recent-post p:hover {
+  color: var(--secondary-color);
+ 
+}
+
+.recent-post small {
+  font-size: 12px;
+  font-family: body-font;
+  color: var(--secondary-color);
+}
+
+.recent-post i {
+  margin-right: 3px;
+  color: var(--text-color);
+}
+
+
+.recent-post span {
+  color: var(--text-color);
+}
+
+
+
+/* @media (max-width: 900px) {
+  .body-div-in.column {
+    flex-direction: column;
+  }
+
+  .blog-div-inner.blog-div-inner-details,
+  .blog-search.sticky-div {
+    width: 100%;
+  }
+
+  .thumbnails {
+    justify-content: center;
+  }
+} */
+
+
 
 .blog-div .blog-div-inner .trade-mark {
   position: absolute;
@@ -2786,13 +3038,14 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .blog-div .blog-search .search-inner {
-  background: var(--white-color);
+  background: var(--bg-color);
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid var(--bg-color2);
 }
 
 .blog-div .blog-search .search-inner h2 {
@@ -2805,13 +3058,15 @@ header .main-header .main-header-inner .button-div .btn:hover {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  
 }
 
 .blog-div .blog-search .search-inner .tag-list .btn {
-  border: none;
+  border: 1px solid var(--bg-color2);
   border-radius: 6px;
   font-family: body-font;
   color: var(--sub-body-color);
+  background: var(--white-color);
   font-size: 13px;
   padding: 10px;
   -webkit-border-radius: 6px;

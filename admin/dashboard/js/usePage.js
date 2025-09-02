@@ -37,6 +37,12 @@ function _savePageContent(){
 		issueCount += _validateEmptyValue("seoKeywords", "SEO KEYWORDS");
 		issueCount += _validateEmptyValue("seoDescription", "SEO DESCRIPTION");
 
+		if (!pageContent) {
+			$("#pageContents").addClass("issue");
+			$("#issue_pageContents").html("PAGE CONTENT REQUIRED");
+			issueCount += 1;
+		}
+
 		if (issueCount > 0) return;
 
 		/////Gather form data////

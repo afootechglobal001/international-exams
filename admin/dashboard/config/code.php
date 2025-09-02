@@ -67,20 +67,33 @@ switch ($action){
     break;
 
 	case 'uploadExamPix':
+		///// Exam Picture /////
 		$oldRegPix = $_POST['oldRegPix'] ?? '';
 		$newRegPix = $_POST['newRegPix'] ?? '';
-		
-		$uploadDir = "../../../uploaded_files/examLogo/";
+		$regPixDir = "../../../uploaded_files/examPicture/";
 
-		// Delete old image only if it's not the default
-		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
-			unlink($uploadDir . $oldRegPix);
+		if (!empty($oldRegPix) && file_exists($regPixDir . $oldRegPix)) {
+			unlink($regPixDir . $oldRegPix);
 		}
 
 		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
-			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $regPixDir . $newRegPix);
+		}
+
+		////// Exam Logo ///////
+		$oldExamLogo = $_POST['oldExamLogo'] ?? '';
+		$newExamLogo = $_POST['newExamLogo'] ?? '';
+		$logoDir = "../../../uploaded_files/examLogo/";
+
+		if (!empty($oldExamLogo) && file_exists($logoDir . $oldExamLogo)) {
+			unlink($logoDir . $oldExamLogo);
+		}
+
+		if (!empty($newExamLogo) && isset($_FILES['examLogo']) && $_FILES['examLogo']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['examLogo']['tmp_name'], $logoDir . $newExamLogo);
 		}
     break;
+
 
 	case 'uploadPagePix':
 		$oldSeoFlyer = $_POST['oldSeoFlyer'] ?? '';

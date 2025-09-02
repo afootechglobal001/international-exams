@@ -97,7 +97,7 @@
                             </script>
                         </div>
 
-                       <div class="form-title">UPLOAD EXAM LOGO: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <div class="form-title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
                                 <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
@@ -107,9 +107,26 @@
                             <script>
                                 $(document).ready(function () {
                                     const examPix = getEachExamSession.regPix;
-                                    const examPixUrl = examPix ? "<?php echo $websiteUrl ?>/uploaded_files/examLogo/" + examPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                                    const examPixUrl = examPix ? "<?php echo $websiteUrl ?>/uploaded_files/examPicture/" + examPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
 
                                     $("#examPixPreview").attr("src", examPixUrl).attr("alt", getEachExamSession.regPix + " Logo");
+                                });
+                            </script>
+                        </label>
+
+                        <div class="form-title">UPLOAD EXAM LOGO: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <label>
+                            <div class="pix-div">
+                                <img id="examLogoPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="examLogo" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examLogoPreview.UpdatePreview(this);" />
+                            </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    const examLogoPix = getEachExamSession.examLogo;
+                                    const examLogoUrl = examLogoPix ? "<?php echo $websiteUrl ?>/uploaded_files/examLogo/" + examLogoPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+
+                                    $("#examLogoPreview").attr("src", examLogoUrl).attr("alt", getEachExamSession.regPix + " Logo");
                                 });
                             </script>
                         </label>

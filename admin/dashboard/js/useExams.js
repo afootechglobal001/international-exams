@@ -17,6 +17,23 @@ $(function () {
 	};
 });
 
+$(function () {
+	examLogoPreview = {
+	UpdatePreview: function (obj) {
+		if (!window.FileReader) {
+		// Handle browsers that don't support FileReader
+		console.error("FileReader is not supported.");
+		} else {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			$('#examLogoPreview').prop("src", e.target.result);
+		};
+		reader.readAsDataURL(obj.files[0]);
+		}
+	},
+	};
+});
 
 function formatDate(date) {
 	const options = { day: '2-digit', month: 'short', year: 'numeric' };
@@ -47,7 +64,7 @@ function _fetchExamData() {
 						const publishId = examInfo.publishId;
 						const regTitle = examInfo.regTitle;
 						const examAbbr = examInfo.examAbbr;
-						const regPix = examInfo.regPix;
+						const examLogo = examInfo.examLogo;
 						const statusName = examInfo.statusName;
 						const formattedDate = formatDate(examInfo.updatedTime);
 						const totalNumberOfRelatedLinks = examInfo.totalNumberOfRelatedLinks;
@@ -55,7 +72,7 @@ function _fetchExamData() {
 						content +=`
 							<div class="exam-div">
 								<div class="exam-image">
-									<img src="${examPixPath}/${regPix}" alt="${regTitle}">
+									<img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
 								</div>
 								
 								<div class="top-div">
@@ -137,6 +154,7 @@ function _createExam() {
 		const regTitle = $('#regTitle').val();
 		const examAbbr = $('#examAbbr').val();
 		const regPix = $("#regPix").prop("files")[0];
+		const examLogo = $("#examLogo").prop("files")[0];
 		const incentives = $('#incentives').val();
 		const statusId = $('#statusId').val();
 
@@ -169,7 +187,7 @@ function _createExam() {
 
 		if (issueCount > 0) return;
 
-		const form ={regTitle, examAbbr, regPix, incentives, statusId}
+		const form ={regTitle, examAbbr, regPix, examLogo, incentives, statusId}
 		_showCustomConfirm({
 			callback: () => {
 				_createExamCallback(form);
@@ -201,6 +219,7 @@ function _createExamCallback(form){
 	formData.append("regTitle", form.regTitle);
 	formData.append("examAbbr", form.examAbbr);
 	formData.append("regPix", form.regPix);
+	formData.append("examLogo", form.examLogo);
 	formData.append("incentives", form.incentives);
 	formData.append("statusId", form.statusId);
 
@@ -221,8 +240,10 @@ function _createExamCallback(form){
 
 			if (success=== true) {
 				const newRegPix = info.regPix;
+				const newExamLogo = info.examLogo;
+				const oldExamLogo = info.oldExamLogo;
 				const oldRegPix = info.oldRegPix;
-				_uploadExamPix(newRegPix, oldRegPix, message);
+				_uploadExamPix(newRegPix, oldRegPix, newExamLogo, oldExamLogo, message);
 			} else {
 				_showCustomConfirm({
 					title: 'Create Branch Error',
@@ -245,14 +266,22 @@ function _createExamCallback(form){
 	});
 }
 
-function _uploadExamPix(newRegPix, oldRegPix, message) {
-    const uploadedFile = $("#regPix").prop("files")[0];
+function _uploadExamPix(newRegPix, oldRegPix, newExamLogo, oldExamLogo, message) {
+    const uploadedRegPix = $("#regPix").prop("files")[0];
+    const uploadedExamLogo = $("#examLogo").prop("files")[0];
 
     const formData = new FormData();
     formData.append("action", "uploadExamPix");
+
+    // regPix
     formData.append("oldRegPix", oldRegPix);
     formData.append("newRegPix", newRegPix);
-    formData.append("regPix", uploadedFile);
+    formData.append("regPix", uploadedRegPix);
+
+    // examLogo
+    formData.append("oldExamLogo", oldExamLogo);
+    formData.append("newExamLogo", newExamLogo);
+    formData.append("examLogo", uploadedExamLogo);
 
     $.ajax({
         url: adminPortalLocalUrl,
@@ -262,29 +291,28 @@ function _uploadExamPix(newRegPix, oldRegPix, message) {
         cache: false,
         processData: false,
         success: function () {
-			_showCustomConfirm({
-				callback: () => {
-					_getActivePage({page:'examCategory', divid:'publish'});
-					_alertClose();
-				},
-				title: 'Success!',
-				message: message,
-				alertType: 'success',
-				trueActionBtnText: 'OK, Thanks.',
-			});
-			
-			
+            _showCustomConfirm({
+                callback: () => {
+                    _getActivePage({page:'examCategory', divid:'publish'});
+                    _alertClose();
+                },
+                title: 'Success!',
+                message: message,
+                alertType: 'success',
+                trueActionBtnText: 'OK, Thanks.',
+            });
         },
         error: function () {
-			_showCustomConfirm({
-				title: 'Upload Error',
-				message: 'An error occurred while uploading the profile picture! Please try again.',
-				alertType: 'error',
-				trueActionBtnText: 'OK, Retry'
-			});
+            _showCustomConfirm({
+                title: 'Upload Error',
+                message: 'An error occurred while uploading files! Please try again.',
+                alertType: 'error',
+                trueActionBtnText: 'OK, Retry'
+            });
         }
     });
 }
+
 
 function _fetchEachExam(pageCategoryId, publishId, action) {
 	$("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);

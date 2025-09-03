@@ -26,8 +26,7 @@
         JOIN PAGES_TAB b
             ON a.publishId= b.publishId
             AND a.statusId =1
-        AND a.publishId ='$publishId'
-        AND (a.parentPublishId IS NULL OR a.parentPublishId = '')
+        AND a.publishId ='$publishId'  
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -58,6 +57,14 @@
             $incentivesData[] = $getIncentivesfetch;
         }
         $fetchQuery['incentivesData']= $incentivesData;
+
+        /////////////////// fetch Related Links per exam ////////////
+        $relatedLinksData=array();
+        $getRelatedLinksQuery = mysqli_query($conn, "SELECT a.parentPublishId, a.publishId, a.regTitle, b.pageUrl FROM PUBLISH_TAB a JOIN PAGES_TAB b ON a.publishId= b.publishId WHERE a.parentPublishId='$publishId'");
+        while ($getRelatedLinksfetch = mysqli_fetch_assoc($getRelatedLinksQuery)) {
+            $relatedLinksData[] = $getRelatedLinksfetch;
+        }
+        $fetchQuery['relatedLinksData']= $relatedLinksData;
 
         /////////////////// for  CreatedBy /////////
         $createdByData=array();

@@ -1362,6 +1362,10 @@ main {
   white-space: nowrap;
 }
 
+.slide-form-div .container-back-div .btn-div .backBtn {
+  background: linear-gradient(90deg, var(--body-color), var(--sub-body-color));
+}
+
 .slide-form-div .container-back-div .btn-div .btn:hover {
   background-size: 200% 100%;
   background-position: right;

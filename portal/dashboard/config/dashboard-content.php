@@ -14,10 +14,12 @@
 
         </div>
         <div class="btn-div">
-            <button class="btn donwload-btn" title="Refresh Page">
+            <button class="btn donwload-btn" title="Refresh Page"
+                onclick="_getActivePage({page:'ebook', divid:'ebook'});">
                 <i class="bi bi-filetype-pdf"></i> Download E-books
             </button>
-            <button class="btn" title="Apply for Exam">
+            <button class="btn" title="Apply for Exam"
+                onclick="_getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
                 <i class="bi bi-journal-text"></i> Apply for Exam
             </button>
         </div>
@@ -96,7 +98,8 @@
             </div>
 
             <div>
-                <button class="btn" title="Apply for Exam">
+                <button class="btn" title="Apply for Exam"
+                    onclick="_getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
                     <i class="bi bi-eye"></i> Apply for Exam
                 </button>
             </div>
@@ -148,7 +151,7 @@
                 <p>Download E-Books - <strong>It's Free</strong></p>
             </div>
             <div>
-                <button class="btn" title="View all">
+                <button class="btn" title="View all" onclick="_getActivePage({page:'ebook', divid:'ebook'});">
                     <i class="bi bi-eye"></i> View All
                 </button>
             </div>

@@ -43,11 +43,13 @@
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
-        a.pageCategoryId, 
+        a.pageCategoryId,
+        a.parentPublishId,
         a.publishId, 
         a.regTitle, 
         a.examAbbr, 
-        a.regPix, 
+        a.regPix,
+        a.examLogo,
         a.statusId, 
         a.createdBy, 
         a.createdTme, 
@@ -58,6 +60,7 @@
             ON a.statusId = b.statusId
         WHERE (a.regTitle LIKE '%$q%' OR a.examAbbr LIKE '%$q%') $publishIds $statusIds
             AND a.pageCategoryId ='$pageCategoryId'
+            AND (a.parentPublishId IS NULL OR a.parentPublishId = '')
         ORDER BY a.examAbbr ASC;
     ";
 
@@ -89,9 +92,13 @@
         }
         $fetchQuery['incentivesData']= $incentivesData;
 
+        //// get number of related exam links
+        $examLinkCountQuery = mysqli_query($conn, "SELECT COUNT(*) AS count FROM PUBLISH_TAB WHERE parentPublishId='$publishId'");
+        $examLinkCountFetch = mysqli_fetch_assoc($examLinkCountQuery);
+        $fetchQuery['totalNumberOfRelatedLinks'] = $examLinkCountFetch['count']; // Assign the actual count value
+
         $response['data'][] = $fetchQuery;
     }
-
 end:
 echo json_encode($response);
 ?>

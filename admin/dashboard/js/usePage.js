@@ -36,7 +36,12 @@ function _savePageContent(){
 		issueCount += _validateEmptyValue("pageUrl", "PAGE URL");
 		issueCount += _validateEmptyValue("seoKeywords", "SEO KEYWORDS");
 		issueCount += _validateEmptyValue("seoDescription", "SEO DESCRIPTION");
-		issueCount += _validateEmptyValue("pageContents", "PAGE CONTENT");
+
+		if (!pageContent) {
+			$("#pageContents").addClass("issue");
+			$("#issue_pageContents").html("PAGE CONTENT REQUIRED");
+			issueCount += 1;
+		}
 
 		if (issueCount > 0) return;
 
@@ -47,10 +52,7 @@ function _savePageContent(){
 		formData.append("seoKeywords", seoKeywords);
 		formData.append("seoDescription", seoDescription);
 		formData.append("pageContent", pageContent);
-
-		if (seoFlyer) {
-            formData.append("seoFlyer", seoFlyer);
-        }
+		formData.append("seoFlyer", seoFlyer);
 
 		////// confirm action////
 		_showCustomConfirm({

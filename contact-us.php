@@ -46,7 +46,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </a>
                         </li>
                         <li title="Contact Us">
-                            <a href="<?php echo $websiteUrl ?>/contact">
+                            <a href="<?php echo $websiteUrl ?>/contact-us">
                                 Contact Us
                             </a>
                         </li>

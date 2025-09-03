@@ -21,6 +21,7 @@
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
     $examAbbr=trim(strtoupper($_POST['examAbbr']));
     $regPix=$_FILES['regPix']['name'];
+    $examLogo=$_FILES['examLogo']['name'];
     $incentives=trim(strtoupper($_POST['incentives']));
     $statusId=trim($_POST['statusId']);
    
@@ -29,6 +30,7 @@
     validateEmptyField($regTitle, 'EXAM NAME');
     validateEmptyField($examAbbr, 'EXAM ABBREVIATION');
     validateEmptyField($regPix, 'EXAM PICTURE');
+    validateEmptyField($examLogo, 'EXAM LOGO');
     validateEmptyField($incentives, 'EXAM INCENTIVES');
     validateEmptyField($statusId, 'STATUS');
 
@@ -67,86 +69,105 @@
         $no= $array[0]['no'];
         $publishId=$countId.$no.date("Ymdhis");
 
-        ///////////////////////getting image extention//////////////////////////
-        $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png","PNG","GIF","webp","WEBP");
-        $extension = pathinfo($_FILES['regPix']['name'], PATHINFO_EXTENSION);
-        
-        if (!in_array(($extension), $allowedExts)) {
+        ///////////////////////getting image extensions//////////////////////////
+        $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png", "PNG", "GIF", "webp", "WEBP");
+
+        //// Validate exam picture /////
+        $regPixExt = pathinfo($_FILES['regPix']['name'], PATHINFO_EXTENSION);
+        if (!in_array($regPixExt, $allowedExts)) {
             $response = [
                 'response' => 103,
                 'success' => false,
-                'message' => 'INVALID PICTURE FORMAT! Check the picture format and try again.'
+                'message' => 'INVALID EXAM PICTURE FORMAT! Check the picture format and try again.'
             ];  
             goto end;
         }
-	
-            $datetime = date("Ymdhi");
-            $regPix = $publishId . '_' . $datetime . '_' . $regPix;
 
-            mysqli_query($conn,"INSERT INTO `PUBLISH_TAB`
-            (`pageCategoryId`, `publishId`, `regTitle`, `examAbbr`, `regPix`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
-            ('$pageCategoryId', '$publishId', '$regTitle', '$examAbbr', '$regPix', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
-
-            // Handle departments (comma-separated)
-            $incentiveArray = array_map('trim', explode(',', $incentives));
-
-            foreach ($incentiveArray as $incentiveName) {
-                $incentiveName = mysqli_real_escape_string($conn, $incentiveName);
-
-                mysqli_query($conn, "INSERT INTO `EXAM_INCENTIVE_TAB`
-                (`publishId`, `examAbbr`, `incentives`, `createdBy`, `createdTime`) VALUES 
-                ('$publishId', '$examAbbr', '$incentiveName', '$loginStaffId', NOW())") or die(mysqli_error($conn));
-            }
-
-            $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
-            $fetchPageCat = json_decode($pageCatArray, true);
-            $pageCategoryName= $fetchPageCat[0]['pageCategoryName'];
-
+        ///// Validate exam logo ////
+        $examLogoExt = pathinfo($_FILES['examLogo']['name'], PATHINFO_EXTENSION);
+        if (!in_array($examLogoExt, $allowedExts)) {
             $response = [
-                'response'=> 200,
-                'success'=> true,
-                'regPix' => $regPix,
-                'message'=> "EXAM CREATED SUCCESFFULLY!",
-                'data' => array() // Initialize the data array
-            ];
+                'response' => 104,
+                'success' => false,
+                'message' => 'INVALID LOGO FORMAT! Check the logo format and try again.'
+            ];  
+            goto end;
+        }
 
-            $alertDetail = "EXAM CREATED SUCCESSFULLY: $pageCategoryName was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | Abbreviation: $examAbbr | ID: $publishId.";
+        ///////////////////////rename with unique ID//////////////////////////
+        $datetime = date("Ymdhi");
 
-            // Fetch branch details ///
-            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.statusId, a.createdBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
+        // Add unique ID for exam picture ////
+        $regPix = $publishId . '_' . $datetime . '_' . $regPix;
 
-            $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
-            while ($fetchQuery = mysqli_fetch_assoc($query)) {
-                $createdBy=$fetchQuery['createdBy'];
-                $updatedBy=$fetchQuery['updatedBy'];
-                $publishId=$fetchQuery['publishId'];
+        // Add unique ID for exam logo ////
+        $examLogo = $publishId . '_' . $datetime . '_' . $examLogo;
 
-                /////////////////// fetch incentives per exam ////////////
-                $incentivesData=array();
-                $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
-                while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
-                    $incentivesData[] = $getIncentivesfetch;
-                }
-                $fetchQuery['incentivesData']= $incentivesData;
+        mysqli_query($conn,"INSERT INTO `PUBLISH_TAB`
+        (`pageCategoryId`, `publishId`, `regTitle`, `examAbbr`, `regPix`, `examLogo`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
+        ('$pageCategoryId', '$publishId', '$regTitle', '$examAbbr', '$regPix', '$examLogo', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
-                /////////////////// for  CreatedBy /////////
-                $createdByData=array();
-                $getCreatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$createdBy'");
-                while ($getCreatedByfetch = mysqli_fetch_assoc($getCreatedByQuery)) {
-                    $createdByData[] = $getCreatedByfetch;
-                }
-                $fetchQuery['createdBy']= $createdByData;
+        // Handle departments (comma-separated)
+        $incentiveArray = array_map('trim', explode(',', $incentives));
 
-                /////////////////// for  UpdatedBy /////////
-                $updatedByData=array();
-                $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$updatedBy'");
-                while ($getUpdatedByfetch = mysqli_fetch_assoc($getUpdatedByQuery)) {
-                    $updatedByData[] = $getUpdatedByfetch;
-                }
-                $fetchQuery['updatedBy']= $updatedByData;
+        foreach ($incentiveArray as $incentiveName) {
+            $incentiveName = mysqli_real_escape_string($conn, $incentiveName);
 
-                $response['data'][] = $fetchQuery;
+            mysqli_query($conn, "INSERT INTO `EXAM_INCENTIVE_TAB`
+            (`publishId`, `examAbbr`, `incentives`, `createdBy`, `createdTime`) VALUES 
+            ('$publishId', '$examAbbr', '$incentiveName', '$loginStaffId', NOW())") or die(mysqli_error($conn));
+        }
+
+        $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
+        $fetchPageCat = json_decode($pageCatArray, true);
+        $pageCategoryName= $fetchPageCat[0]['pageCategoryName'];
+
+        $response = [
+            'response'=> 200,
+            'success'=> true,
+            'regPix' => $regPix,
+            'examLogo' => $examLogo,
+            'message'=> "EXAM CREATED SUCCESFFULLY!",
+            'data' => array() // Initialize the data array
+        ];
+
+        $alertDetail = "EXAM CREATED SUCCESSFULLY: $pageCategoryName was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | Abbreviation: $examAbbr | ID: $publishId.";
+
+        // Fetch branch details ///
+        $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.examLogo, a.statusId, a.createdBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
+
+        $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
+        while ($fetchQuery = mysqli_fetch_assoc($query)) {
+            $createdBy=$fetchQuery['createdBy'];
+            $updatedBy=$fetchQuery['updatedBy'];
+            $publishId=$fetchQuery['publishId'];
+
+            /////////////////// fetch incentives per exam ////////////
+            $incentivesData=array();
+            $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
+            while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
+                $incentivesData[] = $getIncentivesfetch;
             }
+            $fetchQuery['incentivesData']= $incentivesData;
+
+            /////////////////// for  CreatedBy /////////
+            $createdByData=array();
+            $getCreatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$createdBy'");
+            while ($getCreatedByfetch = mysqli_fetch_assoc($getCreatedByQuery)) {
+                $createdByData[] = $getCreatedByfetch;
+            }
+            $fetchQuery['createdBy']= $createdByData;
+
+            /////////////////// for  UpdatedBy /////////
+            $updatedByData=array();
+            $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$updatedBy'");
+            while ($getUpdatedByfetch = mysqli_fetch_assoc($getUpdatedByQuery)) {
+                $updatedByData[] = $getUpdatedByfetch;
+            }
+            $fetchQuery['updatedBy']= $updatedByData;
+
+            $response['data'][] = $fetchQuery;
+        }
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////
 $callclass->_alertSequenceAndUpdate($conn,$loginCountryId,$loginStaffId,$loginStaffFullname,$alertDetail,$ipAddress,$systemName);

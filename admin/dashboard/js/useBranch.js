@@ -627,7 +627,7 @@ function fetchCountryExamData() {
             const publishId = examInfo.publishId;
             const examAbbr = examInfo.examAbbr;
             const regTitle = examInfo.regTitle;
-            const regPix = examInfo.regPix;
+            const examLogo = examInfo.examLogo;
             const currency = examInfo.currency;
             const amount = thousandSeperator(examInfo.amount);
             const formattedDate = formatDate(examInfo.createdTime);
@@ -635,7 +635,7 @@ function fetchCountryExamData() {
             content += `
                 <div class="exam-div country-exam-div" id="publish_${publishId}">
                     <div class="exam-image">
-                        <img src="${websiteUrl}/uploaded_files/examLogo/${regPix}" alt="${regTitle}">
+                        <img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
                     </div>
 
                     <div class="top-div">
@@ -786,14 +786,14 @@ function _getSelectFetchExam(publishId) {
             const examInfo = data[i];
             const regTitle = examInfo.regTitle;
             const examAbbr = examInfo.examAbbr;
-            const regPix = examInfo.regPix;
+            const examLogo = examInfo.examLogo;
             const statusName = examInfo.statusName;
 
             content += `
                 <div class="exams-back-div">
                     <div class="exam-div form-exam-div">
                         <div class="exam-image">
-                            <img src="${websiteUrl}/uploaded_files/examLogo/${regPix}" alt="${regTitle}">
+                          <img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
                         </div>
 
                         <div class="top-div">

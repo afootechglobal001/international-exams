@@ -97,7 +97,7 @@
                             </script>
                         </div>
 
-                       <div class="form-title">UPLOAD EXAM LOGO: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <div class="form-title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
                                 <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
@@ -107,9 +107,26 @@
                             <script>
                                 $(document).ready(function () {
                                     const examPix = getEachExamSession.regPix;
-                                    const examPixUrl = examPix ? "<?php echo $websiteUrl ?>/uploaded_files/examLogo/" + examPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                                    const examPixUrl = examPix ? "<?php echo $websiteUrl ?>/uploaded_files/examPicture/" + examPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
 
                                     $("#examPixPreview").attr("src", examPixUrl).attr("alt", getEachExamSession.regPix + " Logo");
+                                });
+                            </script>
+                        </label>
+
+                        <div class="form-title">UPLOAD EXAM LOGO: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <label>
+                            <div class="pix-div">
+                                <img id="examLogoPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="examLogo" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examLogoPreview.UpdatePreview(this);" />
+                            </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    const examLogoPix = getEachExamSession.examLogo;
+                                    const examLogoUrl = examLogoPix ? "<?php echo $websiteUrl ?>/uploaded_files/examLogo/" + examLogoPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+
+                                    $("#examLogoPreview").attr("src", examLogoUrl).attr("alt", getEachExamSession.regPix + " Logo");
                                 });
                             </script>
                         </label>
@@ -148,124 +165,6 @@
 
                 <div class="btn-div">
                     <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createExam();"> <i class="bi-check"></i> SUBMIT </button>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php } ?>
-
-<?php if ($page == 'examRelatedLinks') { ?>
-    <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="title-div">
-            <div>
-                <div class="icon-div"><i class="bi-book-half"></i></div>
-            </div>
-            <div class="text-div">
-                <h3>Related Links</h3>
-                <p>Create and manage dedicated pages for international exams. Customize details, organize categories, and keep information up to date for easy access by students and staff.</p>
-            </div>
-        </div>
-
-        <div class="btn-div">
-            <div class="search-div">
-                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Exam Here...">
-                <i class="bi bi-search"></i>
-            </div>
-            <button class="btn" title="ADD NEW RELATED LINK" onclick="_getForm({page: 'relatedLinksReg', url: adminPortalLocalUrl});">
-                <i class="bi-plus-square"></i> ADD NEW RELATED LINK
-            </button>
-        </div>
-    </div>
-
-    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="tables-content-div">
-            <div class="content-title">
-                <div class="title">
-                    <i class="bi bi-book-half"></i>
-                    <p>International Exams</p>
-                </div>
-            </div>
-
-            <div class="inner-table-content">
-                <div class="other-pg-back-div">
-                    <div class="grid-div">
-                        <div class="btn-div">
-                            <button class="btn active-btn" onclick="">EDIT</button>
-                            <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'examRelatedLinks', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                        </div>
-
-                        <div class="img-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
-                        </div>
-                        <div class="status-div ACTIVE">ACTIVE</div>
-                        <div class="text-div">
-                            <h2>TOEFL ELIGIBILTY IN NIGERIA</h2>
-                            <div class="top-text"><span> Test of English as a Foreign Language </span></div>
-                            <div class="text-in">
-                                <div class="text">
-                                    UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php } ?>
-
-<?php if ($page == 'relatedLinksReg') { ?>
-    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW RELATED LINK</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
-            </div>
-        </div>
-
-        <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD NEW RELATED LINK</span></div>
-                </div>
-
-                <div class="text_field_container" id="abbreviation_container">
-                    <script>
-                        textField({
-                            id: 'abbreviation',
-                            title: 'Related Link Title',
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="examtTitle_container">
-                    <script>
-                        textField({
-                            id: 'examtTitle',
-                            title: 'Related Link'
-                        });
-                    </script>
-                </div>
-
-                <div class="form-title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
-                <label>
-                    <div class="pix-div">
-                        <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                        <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
-                    </div>
-                </label>
-
-                <div class="text_field_container" id="statusId_container">
-                    <script>
-                        selectField({
-                            id: 'statusId',
-                            title: 'Select Status'
-                        });
-                    </script>
-                </div>
-
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
                 </div>
             </div>
         </div>

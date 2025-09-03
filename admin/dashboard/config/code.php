@@ -24,6 +24,7 @@ switch ($action){
 		require_once('pages-content.php');
 		require_once('page-details.php');
 		require_once('ebook-content.php');
+		require_once('exam-related-links-content.php');
 	break;
 
 	case 'get_form':
@@ -46,6 +47,7 @@ switch ($action){
 		require_once('pages-content.php');
 		require_once('page-details.php');
 		require_once('ebook-content.php');
+		require_once('exam-related-links-content.php');
 	break;	
 
 	case 'uploadStaffPix':
@@ -65,10 +67,56 @@ switch ($action){
     break;
 
 	case 'uploadExamPix':
+		///// Exam Picture /////
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		$regPixDir = "../../../uploaded_files/examPicture/";
+
+		if (!empty($oldRegPix) && file_exists($regPixDir . $oldRegPix)) {
+			unlink($regPixDir . $oldRegPix);
+		}
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $regPixDir . $newRegPix);
+		}
+
+		////// Exam Logo ///////
+		$oldExamLogo = $_POST['oldExamLogo'] ?? '';
+		$newExamLogo = $_POST['newExamLogo'] ?? '';
+		$logoDir = "../../../uploaded_files/examLogo/";
+
+		if (!empty($oldExamLogo) && file_exists($logoDir . $oldExamLogo)) {
+			unlink($logoDir . $oldExamLogo);
+		}
+
+		if (!empty($newExamLogo) && isset($_FILES['examLogo']) && $_FILES['examLogo']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['examLogo']['tmp_name'], $logoDir . $newExamLogo);
+		}
+    break;
+
+
+	case 'uploadPagePix':
+		$oldSeoFlyer = $_POST['oldSeoFlyer'] ?? '';
+		$newSeoFlyer = $_POST['newSeoFlyer'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/seoFlyer/";
+
+		if (!empty($newSeoFlyer) && isset($_FILES['seoFlyer']) && $_FILES['seoFlyer']['error'] === UPLOAD_ERR_OK) {
+			// Delete old image only if it's not the default
+			if (!empty($oldSeoFlyer) && file_exists($uploadDir . $oldSeoFlyer)) {
+				unlink($uploadDir . $oldSeoFlyer);
+			}
+
+			// Save the new uploaded file
+			move_uploaded_file($_FILES['seoFlyer']['tmp_name'], $uploadDir . $newSeoFlyer);
+		}
+    break;
+
+	case 'uploadStudyAbroadPix':
 		$oldRegPix = $_POST['oldRegPix'] ?? '';
 		$newRegPix = $_POST['newRegPix'] ?? '';
 		
-		$uploadDir = "../../../uploaded_files/examLogo/";
+		$uploadDir = "../../../uploaded_files/studyAbroad/";
 
 		// Delete old image only if it's not the default
 		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
@@ -80,19 +128,19 @@ switch ($action){
 		}
     break;
 
-	case 'uploadPagePix':
-		$oldSeoFlyer = $_POST['oldSeoFlyer'] ?? '';
-		$newSeoFlyer = $_POST['newSeoFlyer'] ?? '';
+	case 'uploadRelatedExamPix':
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
 		
-		$uploadDir = "../../../uploaded_files/seoFlyer/";
+		$uploadDir = "../../../uploaded_files/examRelatedLink/";
 
 		// Delete old image only if it's not the default
-		if (!empty($oldSeoFlyer) && file_exists($uploadDir . $oldSeoFlyer)) {
-			unlink($uploadDir . $oldSeoFlyer);
+		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
+			unlink($uploadDir . $oldRegPix);
 		}
 
-		if (!empty($newSeoFlyer) && isset($_FILES['seoFlyer']) && $_FILES['seoFlyer']['error'] === UPLOAD_ERR_OK) {
-			move_uploaded_file($_FILES['seoFlyer']['tmp_name'], $uploadDir . $newSeoFlyer);
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
 		}
     break;
 

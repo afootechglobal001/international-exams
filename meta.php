@@ -23,3 +23,5 @@
 <meta property="og:type" content="Website" />
 <meta property="og:site_name" content="<?php echo $appName?>">
 <meta property="og:url" content="<?php echo $websiteAutoUrl?>" />
+
+<script src="<?php echo $websiteUrl?>/js/exams/useExam.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>

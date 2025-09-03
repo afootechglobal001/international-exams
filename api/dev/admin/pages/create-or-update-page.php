@@ -33,7 +33,6 @@
     validateEmptyField($pageUrl, 'PAGE URL');
     validateEmptyField($seoKeywords, 'SEO KEYWORDS');
     validateEmptyField($seoDescription, 'SEO DESCRIPTION');
-    validateEmptyField($seoFlyer, 'SEO FLYER');
     validateEmptyField($pageContent, 'PAGE CONTENT');
    
         $query=mysqli_query($conn,"SELECT * FROM PAGES_TAB WHERE pageCategoryId='$pageCategoryId' AND pageUrl='$pageUrl' AND publishId!='$publishId'") or die (mysqli_error($conn));
@@ -67,13 +66,13 @@
             `pageContent`='$pageContent', `updatedBy`='$loginStaffId', `updatedTime`=NOW() WHERE publishId='$publishId'")or die (mysqli_error($conn));
 
             $response['message']="PAGE UPDATED SUCCESFFULY!";
+            $alertDetail = "PAGE UPDATED SUCCESSFULLY: $pageCategoryName was updated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $pageTitle | Page Url: $pageUrl | ID: $publishId.";
         }else{
             mysqli_query($conn,"INSERT INTO `PAGES_TAB`
             (`publishId`, `pageCategoryId`, `pageUrl`, `pageTitle`, `seoKeywords`, `seoDescription`, `pageContent`, `createdBy`, `createdTime`) VALUES
             ('$publishId', '$pageCategoryId', '$pageUrl', '$pageTitle', '$seoKeywords',  '$seoDescription', '$pageContent', '$loginStaffId', NOW())")or die (mysqli_error($conn));
             
             $response['message']="PAGE CREATED SUCCESFFULY!";
-
             $alertDetail = "PAGE CREATED SUCCESSFULLY: $pageCategoryName was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $pageTitle | Page Url: $pageUrl | ID: $publishId.";
         }
 
@@ -81,19 +80,12 @@
         $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png","PNG","GIF","webp","WEBP");
         $extension = pathinfo($_FILES['seoFlyer']['name'], PATHINFO_EXTENSION);
         
-        if (!in_array(($extension), $allowedExts)) {
-            $response = [
-                'response' => 103,
-                'success' => false,
-                'message' => 'INVALID PICTURE FORMAT! Check the picture format and try again.'
-            ];  
-            goto end;
+        if (in_array(($extension), $allowedExts)) {
+            $datetime = date("Ymdhi");
+            $seoFlyer = $publishId . '_' . $datetime . '_' . $seoFlyer;
+            mysqli_query($conn,"UPDATE `PAGES_TAB` SET `seoFlyer`='$seoFlyer' WHERE publishId='$publishId'")or die (mysqli_error($conn));
         }
 	
-        $datetime = date("Ymdhi");
-        $seoFlyer = $publishId . '_' . $datetime . '_' . $seoFlyer;
-        mysqli_query($conn,"UPDATE `PAGES_TAB` SET `seoFlyer`='$seoFlyer' WHERE publishId='$publishId'")or die (mysqli_error($conn));
-
         $response = [
             'response'=> 200,
             'success'=> true,

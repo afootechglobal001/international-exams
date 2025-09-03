@@ -22,6 +22,7 @@
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
     $examAbbr=trim(strtoupper($_POST['examAbbr']));
     $regPix=$_FILES['regPix']['name'];
+    $examLogo=$_FILES['examLogo']['name'];
     $incentives=trim(strtoupper($_POST['incentives']));
     $statusId=trim($_POST['statusId']);
 
@@ -84,18 +85,39 @@
                 ('$publishId', '$examAbbr', '$incentiveName', '$loginStaffId', NOW())") or die(mysqli_error($conn));
             }
 
-            ///////////////////////geting image extention//////////////////////////
-            $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png","PNG","GIF","webp","WEBP");
-            $extension = pathinfo($_FILES['regPix']['name'], PATHINFO_EXTENSION);
-            
-            if (in_array(($extension), $allowedExts)) {
-                $imageArray=$callclass->_getPublishDetails($conn, $publishId, $pageCategoryId);
-                $fetchImage = json_decode($imageArray, true);
-                $oldRegPix= $fetchImage[0]['regPix'];
+            ///////////////////////getting image extensions//////////////////////////
+            $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png", "PNG", "GIF", "webp", "WEBP");
 
-                $datetime = date("Ymdhi");
-                $regPix = $publishId . '_' . $datetime . '_' . $regPix;
-                mysqli_query($conn, "UPDATE PUBLISH_TAB SET regPix = '$regPix' WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'") or die(mysqli_error($conn));
+            ///// Fetch current image details from database /////
+            $imageArray = $callclass->_getPublishDetails($conn, $publishId, $pageCategoryId);
+            $fetchImage = json_decode($imageArray, true);
+
+            //////Handles exam picture extention/////
+            if (!empty($_FILES['regPix']['name'])) {
+                $regPixExt = pathinfo($_FILES['regPix']['name'], PATHINFO_EXTENSION);
+
+                if (in_array($regPixExt, $allowedExts)) {
+                    $oldRegPix = $fetchImage[0]['regPix'];
+
+                    $datetime = date("Ymdhi");
+                    $regPix = $publishId . '_' . $datetime . '_' . $regPix;
+
+                    mysqli_query($conn, "UPDATE PUBLISH_TAB SET regPix = '$regPix' WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'") or die(mysqli_error($conn));
+                }
+            }
+
+            ///// Handle exam logo iamge //////
+            if (!empty($_FILES['examLogo']['name'])) {
+                $examLogoExt = pathinfo($_FILES['examLogo']['name'], PATHINFO_EXTENSION);
+
+                if (in_array($examLogoExt, $allowedExts)) {
+                    $oldExamLogo = $fetchImage[0]['examLogo'];
+
+                    $datetime = date("Ymdhi");
+                    $examLogo = $publishId . '_' . $datetime . '_' . $examLogo;
+
+                    mysqli_query($conn, "UPDATE PUBLISH_TAB SET examLogo = '$examLogo' WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'") or die(mysqli_error($conn));
+                }
             }
 
             $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
@@ -107,6 +129,8 @@
                 'success'=> true,
                 'regPix' => $regPix,
                 'oldRegPix' => $oldRegPix,
+                'examLogo' => $examLogo,
+                'oldExamLogo' => $oldExamLogo,
                 'message'=> "EXAM UPDATED SUCCESFFULLY!",
                 'data' => array() // Initialize the data array
             ];
@@ -114,7 +138,7 @@
             $alertDetail = "EXAM UPDATED SUCCESSFULLY: $pageCategoryName was upadated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | Abbreviation: $examAbbr | ID: $publishId.";
 
             // Fetch branch details ///
-            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.statusId, a.createdBy, a.updatedBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
+            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.examLogo, a.statusId, a.createdBy, a.updatedBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {

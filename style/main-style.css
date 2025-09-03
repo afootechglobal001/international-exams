@@ -2540,9 +2540,25 @@ header .main-header .main-header-inner .button-div .btn:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--primary-color);
+background: url(../all-images/body-pix/faq.webp) center no-repeat;
+    background-size: cover;
 }
 
+.other-pages-slide-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(157, 4, 60, 0.897);
+    z-index: 1;
+}
+
+.other-pages-slide-section > * {
+    position: relative;
+    z-index: 2;
+}
 
 .other-pages-blog-details {
   height: 100%;
@@ -2629,7 +2645,6 @@ header .main-header .main-header-inner .button-div .btn:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
  
 }
 
@@ -2712,7 +2727,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 .other-pages-slide-div .other-pages-back-div .main-content-back-div .btn {
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(to right, #e00a59f1, var(--secondary-color));
   height: 50px;
   border: none;
   padding: 0px 25px;
@@ -2736,7 +2751,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 
 .other-pages-slide-div .other-pages-back-div .main-content-back-div .btn:hover {
   color: var(--white-color);
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(to left, #e00a59f1, var(--secondary-color));
   transform: translateY(-2px); 
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 
@@ -2803,7 +2818,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 .blog-div-inner-details .image-div{
   width: 100%;
   height: 350px;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -2829,7 +2844,7 @@ header .main-header .main-header-inner .button-div .btn:hover {
 
 .thumbnails-img {
   width: 110px;
-  height: 120px;
+  height: 100px;
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
@@ -2956,21 +2971,33 @@ header .main-header .main-header-inner .button-div .btn:hover {
 }
 
 
+.search-inner-details .inner-table-content {
+	width: calc(100% - 40px);
+	padding: 20px;
+}
 
-/* @media (max-width: 900px) {
-  .body-div-in.column {
-    flex-direction: column;
-  }
+.search-inner-details .pages-inner-content {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
 
-  .blog-div-inner.blog-div-inner-details,
-  .blog-search.sticky-div {
-    width: 100%;
-  }
+.search-inner-details .pages-inner-content span{
+   color: var(--sub-body-color);
+}
 
-  .thumbnails {
-    justify-content: center;
-  }
-} */
+.main-pages-content-div{
+	color: var(--sub-body-color);
+	font-family: body-font;
+	text-align: justify;
+	padding: 20px 0px;
+  line-height: 30px;
+}
+
+.comment-back-div{
+	width: 100%;
+	margin-top: 10px;
+}
 
 
 

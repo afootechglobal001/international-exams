@@ -81,20 +81,6 @@
         <div class="form-div form-picture-div">
             <div class="picture-back-div">
                 <div id="fetchPagePicture"></div>
-                <div class="picture-div">
-                    <div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
-                </div> 
-
-                <div class="picture-div">
-                    <div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
-                </div>
-
-                <div class="picture-div">
-                    <div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
-                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/TOEL.jpg" alt="TOEFL" />
-                </div>
 
                 <div class="picture-div select-pix-div">
                     <label>
@@ -105,4 +91,5 @@
             </div>  
         </div>
     </div>  
+    <script>_fetchPagePicture();</script>
 <?php }?>

@@ -64,6 +64,7 @@ var studyAbroadPixPath=websiteUrl+'/uploaded_files/studyAbroad'; /// For Study A
 var examRelatedLinkPixPath=websiteUrl+'/uploaded_files/examRelatedLink'; /// For Exam Related Link Pix Path //
 var blogPixPath=websiteUrl+'/uploaded_files/blog'; /// For Blog Pix Path //
 var galleryPixPath=websiteUrl+'/uploaded_files/galleryPictures'; /// For Gallery Pix Path
+var pagePixPath=websiteUrl+'/uploaded_files/pagePictures'; /// For Page Pix Path
 
 var pageCategory = {
     examCategory: 'examCategory',

@@ -176,6 +176,20 @@ switch ($action){
 		}
     break;
 
+	case 'uploadPagePictures':
+		$newPagePictures=$_POST['newPagePictures'];
+
+		if($newPagePictures!=''){
+			$myArray = explode(',', $newPagePictures);
+				$i=0;
+				foreach($myArray as $picture){
+					move_uploaded_file($_FILES["pictures"]["tmp_name"][$i], '../../../uploaded_files/pagePictures/' . $picture);
+					$i++;
+				}
+		}
+	break;
+
+
 	case 'createPagesFolder': 	
 		$pageCategoryId =(trim($_POST['pageCategoryId']));
 		$publishId = trim($_POST['publishId']);

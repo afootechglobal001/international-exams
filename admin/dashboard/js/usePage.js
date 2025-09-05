@@ -192,6 +192,7 @@ function _fetchPageContent() {
 			accessKey: true,
 		})
 		.then((response) => {
+			_staffValidationCheck(response.response);
 			if (response.success && response.data?.length > 0) {
     			const data = response.data[0];
 				const pageUrl = data.pageUrl;
@@ -218,11 +219,6 @@ function _fetchPageContent() {
 					alertType: "warning",
 					trueActionBtnText: "OK",
 				});
-
-				const backResponses = response.backResponses;
-				if(backResponses<100){
-					_logOut();
-				}
 			} 
 		 })
 		.catch((error) => {
@@ -233,4 +229,141 @@ function _fetchPageContent() {
 		console.error("Error:", error);
 		_callCatchError(() => _fetchPageContent());
   	}
+}
+
+
+function _savePagePictures() {
+   try {
+		/////Gather form data////
+		const formData = new FormData();
+		const totalFiles = $('#pictures').get(0).files.length;
+
+		if (totalFiles>0){
+			for(var i = 0; i < totalFiles; i++){
+				formData.append("pictures[]", $("#pictures").get(0).files[i]);
+			}
+		}
+
+		////// confirm action////
+		_showCustomConfirm({
+		callback: () => {
+			_savePagePicturesCallback(formData);
+		},
+			title: "Are you sure?",
+			message: 'Are you sure you want to upload? This action is irreversible.',
+			alertType: "warning",
+			falseActionBtn: true,
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _savePagePictures());
+	}
+}
+
+function _savePagePicturesCallback(formData) {
+    let publishData = JSON.parse(sessionStorage.getItem("publishData"));
+
+    $("#getPagesDetails").html('<div class="ajax-loader"><img src="' + websiteUrl + '/all-images/images/spinner.gif"/></div>')
+        .css({ display: "flex", "flex-direction": "column", gap: "20px", "align-items": "center" })
+        .fadeIn(500);
+
+    // send files + publishId to backend
+    _callFileEndPoints({
+        url: `admin/pages/pages-pictures/save-pages-pictures?publishId=${publishData?.publishId}`,
+        formData,
+        accessKey: true,
+    })
+    .then((response) => {
+        _staffValidationCheck(response.response);
+        if (response.success) {
+            const message = response.message;
+            const newPagePictures = response.newPagePictures;
+
+            _uploadPagePictures(formData, newPagePictures, message);
+        } else {
+            _showCustomConfirm({
+                title: "PICTURE ERROR",
+                message: response.message,
+                alertType: "warning",
+                trueActionBtnText: "OK",
+            });
+        }
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _savePagePicturesCallback(formData));
+    });
+}
+
+function _uploadPagePictures(formData, newPagePictures, message) {
+    formData.append("action", "uploadPagePictures");
+    formData.append("newPagePictures", newPagePictures);
+
+    _callFileEndPoints({
+        url: adminPortalLocalUrl,
+        formData,
+        expectJson: false,
+    })
+    .then(() => {
+        _showCustomConfirm({
+            callback: () => {
+                _getActivePagesTab({ divid: "picturePage", page: "picturePage", url: adminPortalLocalUrl });
+            },
+            title: "Success!",
+            message: message,
+            alertType: "success",
+            trueActionBtnText: "OK, Thanks.",
+        });
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _uploadPagePictures(formData, newPagePictures, message));
+    });
+}
+
+function _fetchPagePicture() {
+	let publishData = JSON.parse(sessionStorage.getItem("publishData"));
+
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `admin/pages/pages-pictures/fetch-pages-pictures?publishId=${publishData?.publishId}`,
+			accessKey: true,
+		})
+		.then((response) => {
+            _staffValidationCheck(response.response);
+			if (response.success && response.data?.length > 0) {
+                _initfetchPagePicture(response.data);
+			} else {
+				_showCustomConfirm({
+					title: "PAGE ERROR",
+					message: response.message,
+					alertType: "warning",
+					trueActionBtnText: "OK",
+				});
+
+				$('#fetchPagePicture').html(`
+					<div class="false-notification-div">
+						<p>${response.message}</p>
+					</div>
+				`);
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+			_callAjaxError(() => _fetchPagePicture()); // retry if needed
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _fetchPagePicture());
+  	}
+}
+
+function _initfetchPagePicture(data) {
+  	const content = data.map((item) => `
+    <div class="picture-div">
+		<div class="icon-div" title="Delete Picture" onclick=""><i class="bi-trash"></i></div>
+		<img src="${pagePixPath}/${item.pictures}" alt="${item.sn}" />
+	</div>`).join("");
+    $('#fetchPagePicture').html(content);
 }

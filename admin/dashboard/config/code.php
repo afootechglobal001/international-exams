@@ -128,11 +128,43 @@ switch ($action){
 		}
     break;
 
+	case 'uploadBlogPix':
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/blog/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
+			unlink($uploadDir . $oldRegPix);
+		}
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
+		}
+    break;
+
 	case 'uploadRelatedExamPix':
 		$oldRegPix = $_POST['oldRegPix'] ?? '';
 		$newRegPix = $_POST['newRegPix'] ?? '';
 		
 		$uploadDir = "../../../uploaded_files/examRelatedLink/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
+			unlink($uploadDir . $oldRegPix);
+		}
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
+		}
+    break;
+
+	case 'uploadGalleryPix':
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/galleryPictures/";
 
 		// Delete old image only if it's not the default
 		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
@@ -167,7 +199,7 @@ switch ($action){
 		$txt .= "<?php \$pageSeoPix='$pageSeoPix';?>\n";
 		$txt .= "<?php include '{$pageCategoryId}_details.php';?>";
 
-		// new page
+		// for new page creation ////
 		if (empty($oldPageUrl)) {
 			if ($pageCategoryId == 'blogCategory') {
 				mkdir('../../../blog/'.$pageUrl);
@@ -180,8 +212,13 @@ switch ($action){
 			fclose($myfile);
 		} else {
 			if ($pageCategoryId == 'blogCategory') {
+				//// delete file with folders ////
 				array_map('unlink', glob("../../../blog/$oldPageUrl/*.*"));
 				rmdir("../../../blog/$oldPageUrl");
+
+				//// recreate new file with folders ////
+				mkdir('../../../blog/'.$pageUrl);
+				$myfile = fopen("../../../blog/" . $pageUrl . "/index.php", "w") or die("Unable to open file!");
 			} else {
 				// delete old single file if exists
 				if (file_exists("../../../$oldPageUrl.php")) {

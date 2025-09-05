@@ -73,7 +73,7 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "EXAM FETCH SUCCESFFULY!",
+        'message' => "STUDY ABROAD FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];

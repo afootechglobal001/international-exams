@@ -15,7 +15,7 @@
                 <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Gallery Here...">
                 <i class="bi bi-search"></i>
             </div>
-            <button class="btn" title="ADD NEW GALLERY" onclick="_getForm({page: 'galleryReg', url: adminPortalLocalUrl});">
+            <button class="btn" title="ADD NEW GALLERY" onclick="sessionStorage.removeItem('getEachGallerySession'); _getForm({page: 'galleryReg', url: adminPortalLocalUrl});">
                 <i class="bi-plus-square"></i> ADD NEW GALLERY
             </button>
         </div>
@@ -32,73 +32,12 @@
 
             <div class="inner-table-content">
                 <div class="other-pg-back-div">
-                    <div class="other-pg-back-div">
-                        <div class="grid-div">
-                            <div class="btn-div">
-                                <button class="btn active-btn" onclick="">EDIT</button>
-                                <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'galleryCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                            </div>
+                    <div class="other-pg-back-div" id="pageContent">
+                        <script>_fetchGalleryData();</script>
 
-                            <div class="img-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="Students preparing for international exams like IELTS and SAT" />
-                            </div>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-
-                            <div class="text-div">
-                                <div class="top-text blog-top-text"><span> GLOBAL READINESS</span></div>
-                                <h2>INSIDE THE EXAM HALL: FOCUSED & DETERMINED</h2>
-                                <div class="text-in">
-                                    <div class="text">
-                                        UPDATED ON: <span>25 Jan 2025</span> | <span>350</span> VIEWS
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="content-loading-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                         </div>
-
-                        <div class="grid-div">
-                            <div class="btn-div">
-                                <button class="btn active-btn" onclick="">EDIT</button>
-                                <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                            </div>
-
-                            <div class="img-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/gallery/study-group.webp" alt="Students taking an international standardized test" />
-                            </div>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-
-                            <div class="text-div">
-                                <div class="top-text blog-top-text"><span> PREP SESSIONS</span></div>
-                                <h2>COLLABORATIVE LEARNING: DIVERSE STUDY GROUPS</h2>
-                                <div class="text-in">
-                                    <div class="text">
-                                        UPDATED ON: <span>25 Jan 2025</span> | <span>410</span> VIEWS
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid-div">
-                            <div class="btn-div">
-                                <button class="btn active-btn" onclick="">EDIT</button>
-                                <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                            </div>
-
-                            <div class="img-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/gallery/result-celebration.jpg" alt="EDUGRADE students celebrating international exam success" />
-                            </div>
-                            <div class="status-div ACTIVE">ACTIVE</div>
-
-                            <div class="text-div">
-                                <div class="top-text blog-top-text"><span> SUCCESS STORIES</span></div>
-                                <h2>GLOBAL ACHIEVEMENTS: EXAM SUCCESS CELEBRATED</h2>
-                                <div class="text-in">
-                                    <div class="text">
-                                        UPDATED ON: <span>25 Jan 2025</span> | <span>500</span> VIEWS
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>  
@@ -107,11 +46,16 @@
 <?php } ?>
 
 <?php if ($page == 'galleryReg') { ?>
+    <script> 
+        getEachGallerySession = JSON.parse(sessionStorage.getItem("getEachGallerySession"));
+        $('#pageTitle').html(getEachGallerySession?.publishId ? 'UPDATE GALLERY':'CREATE NEW GALLERY');
+        $('#subTitle, #subTitle2').html(getEachGallerySession?.publishId ? 'update this gallery':'create new gallery');
+    </script>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-images"></i></div>
-                <h3>CREATE NEW GALLERY</h3>
+                <h3 id="pageTitle">CREATE NEW GALLERY</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -123,7 +67,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to create a new gallery. Please complete the form below with accurate details to successfully create new gallery</p>
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
             <div class="main-content-div">
@@ -136,11 +80,12 @@
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="blogCat_container">
+                        <div class="text_field_container" id="regTitle_container">
                             <script>
                                 textField({
-                                    id: 'blogCat',
-                                    title: 'Gallery Title'
+                                    id: 'regTitle',
+                                    title: 'Gallery Title',
+                                    value: getEachGallerySession?.regTitle ?? ''
                                 });
                             </script>
                         </div>
@@ -148,24 +93,36 @@
                         <div class="form-title">UPLOAD GALLERY PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
-                                <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+                                <img id="galleryPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="galleryPixPreview.UpdatePreview(this);" />
                             </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    const galleryPix = getEachGallerySession.regPix;
+                                    const galleryPixUrl = galleryPix ? galleryPixPath + "/" + galleryPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+
+                                    $("#galleryPixPreview").attr("src", galleryPixUrl).attr("alt", getEachGallerySession.regPix + " Logo");
+                                });
+                            </script>
                         </label>
 
                         <div class="text_field_container" id="statusId_container">
                             <script>
                                 selectField({
                                     id: 'statusId',
-                                    title: 'Select Status'
+                                    title: 'Select Status',
+                                    fieldValue: getEachGallerySession?.statusId ?? '',
+                                    fieldLabel: getEachGallerySession?.statusName ?? ''
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="createAndUpdateGallery();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

@@ -39,36 +39,28 @@
         $statusIds = "AND a.statusId IN ($statusId)";
     }
 
-
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
-        a.pageCategoryId,
-        a.parentPublishId,
+        a.pageCategoryId, 
         a.publishId, 
-        a.regTitle, 
-        a.examAbbr,
-        a.officialWebsite,
-        a.conductingBody,
-        a.acceptedBy,
-        a.mostPopular,
-        a.modeOfExam,
-        a.incentives,
-        a.scoreRange,
-        a.regPix,
-        a.examLogo,
+        a.faqCatId, 
+        a.faqQuestion, 
+        a.faqAnswer, 
         a.statusId, 
         a.createdBy, 
         a.createdTme, 
         a.updatedTime, 
-        b.statusName
+        b.statusName,
+        c.catName AS faqCatName
         FROM PUBLISH_TAB a
         JOIN SETUP_STATUS_TAB b 
             ON a.statusId = b.statusId
-        WHERE (a.regTitle LIKE '%$q%' OR a.examAbbr LIKE '%$q%') $publishIds $statusIds
+        JOIN SETUP_CATEGORIES_TAB c
+            ON a.faqCatId = c.catId
+        WHERE (a.faqQuestion LIKE '%$q%' OR a.faqAnswer LIKE '%$q%') $publishIds $statusIds
             AND a.pageCategoryId ='$pageCategoryId'
-            AND (a.parentPublishId IS NULL OR a.parentPublishId = '')
-        ORDER BY a.examAbbr ASC;
+        ORDER BY a.faqQuestion ASC;
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -83,21 +75,15 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "EXAM FETCH SUCCESFFULY!",
+        'message' => "FAQ FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-        $publishId=$fetchQuery['publishId'];
-
-        //// get number of related exam links
-        $examLinkCountQuery = mysqli_query($conn, "SELECT COUNT(*) AS count FROM PUBLISH_TAB WHERE parentPublishId='$publishId'");
-        $examLinkCountFetch = mysqli_fetch_assoc($examLinkCountQuery);
-        $fetchQuery['totalNumberOfRelatedLinks'] = $examLinkCountFetch['count']; // Assign the actual count value
-
         $response['data'][] = $fetchQuery;
     }
+
 end:
 echo json_encode($response);
 ?>

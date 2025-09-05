@@ -99,7 +99,7 @@
                 <div class="picture-div select-pix-div">
                     <label>
                         <div class="pix-div"><img src="<?php echo $websiteUrl?>/all-images/images/default.png"/></div>
-                        <input type="file" id="pictures" name="pictures[]" multiple accept=".jpg, .JPG, .png, .PNG, .jpeg, .JPEG"  onchange="_save_page_other_pictures('<?php echo $publish_id;?>')" style="display:none;"/>
+                        <input type="file" id="pictures" name="pictures[]" multiple accept=".jpg, .JPG, .png, .PNG, .jpeg, .JPEG"  onchange="_savePagePictures();" style="display:none;"/>
                     </label>
                 </div>
             </div>  

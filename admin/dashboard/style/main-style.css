@@ -3112,7 +3112,7 @@ main {
 	gap: 10px;
 }
 
-.tables-content-div .inner-table-content span{
+.tables-content-div .inner-table-content p{
 	color: var(--sub-body-color);
 	font-size: 13px;
 	font-family: sub-title-font;

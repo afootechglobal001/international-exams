@@ -20,9 +20,15 @@
     $pageCategoryId =trim($_GET['pageCategoryId']);
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
     $examAbbr=trim(strtoupper($_POST['examAbbr']));
+    $officialWebsite=trim($_POST['officialWebsite']);
+    $conductingBody=trim($_POST['conductingBody']);
+    $acceptedBy=trim($_POST['acceptedBy']);
+    $mostPopular=trim($_POST['mostPopular']);
+    $modeOfExam=trim($_POST['modeOfExam']);
     $regPix=$_FILES['regPix']['name'];
     $examLogo=$_FILES['examLogo']['name'];
     $incentives=trim(strtoupper($_POST['incentives']));
+    $scoreRange=trim($_POST['scoreRange']);
     $statusId=trim($_POST['statusId']);
    
     //////////////////check for empty fields//////////////////////////////////////
@@ -104,19 +110,8 @@
         $examLogo = $publishId . '_' . $datetime . '_' . $examLogo;
 
         mysqli_query($conn,"INSERT INTO `PUBLISH_TAB`
-        (`pageCategoryId`, `publishId`, `regTitle`, `examAbbr`, `regPix`, `examLogo`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
-        ('$pageCategoryId', '$publishId', '$regTitle', '$examAbbr', '$regPix', '$examLogo', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
-
-        // Handle departments (comma-separated)
-        $incentiveArray = array_map('trim', explode(',', $incentives));
-
-        foreach ($incentiveArray as $incentiveName) {
-            $incentiveName = mysqli_real_escape_string($conn, $incentiveName);
-
-            mysqli_query($conn, "INSERT INTO `EXAM_INCENTIVE_TAB`
-            (`publishId`, `examAbbr`, `incentives`, `createdBy`, `createdTime`) VALUES 
-            ('$publishId', '$examAbbr', '$incentiveName', '$loginStaffId', NOW())") or die(mysqli_error($conn));
-        }
+        (`pageCategoryId`, `publishId`, `regTitle`, `examAbbr`, `officialWebsite`, `conductingBody`, `acceptedBy`, `mostPopular`, `modeOfExam`, `incentives`, `scoreRange`, `regPix`, `examLogo`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
+        ('$pageCategoryId', '$publishId', '$regTitle', '$examAbbr', '$officialWebsite', '$conductingBody', '$acceptedBy', '$mostPopular', '$modeOfExam', '$incentives', '$scoreRange', '$regPix', '$examLogo', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
         $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
         $fetchPageCat = json_decode($pageCatArray, true);
@@ -140,15 +135,6 @@
         while ($fetchQuery = mysqli_fetch_assoc($query)) {
             $createdBy=$fetchQuery['createdBy'];
             $updatedBy=$fetchQuery['updatedBy'];
-            $publishId=$fetchQuery['publishId'];
-
-            /////////////////// fetch incentives per exam ////////////
-            $incentivesData=array();
-            $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
-            while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
-                $incentivesData[] = $getIncentivesfetch;
-            }
-            $fetchQuery['incentivesData']= $incentivesData;
 
             /////////////////// for  CreatedBy /////////
             $createdByData=array();

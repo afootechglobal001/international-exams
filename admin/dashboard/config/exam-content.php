@@ -97,6 +97,56 @@
                             </script>
                         </div>
 
+                        <div class="text_field_container" id="officialWebsite_container">
+                            <script>
+                                textField({
+                                    id: 'officialWebsite',
+                                    title: 'Official Website',
+                                    value: getEachExamSession?.officialWebsite ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="conductingBody_container">
+                            <script>
+                                textField({
+                                    id: 'conductingBody',
+                                    title: 'Conducting Body',
+                                    value: getEachExamSession?.conductingBody ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="acceptedBy_container">
+                            <script>
+                                textField({
+                                    id: 'acceptedBy',
+                                    title: 'Generally Accepted By',
+                                    value: getEachExamSession?.acceptedBy ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="mostPopular_container">
+                            <script>
+                                textField({
+                                    id: 'mostPopular',
+                                    title: 'Most Popular',
+                                    value: getEachExamSession?.mostPopular ?? ''
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="modeOfExam_container">
+                            <script>
+                                textField({
+                                    id: 'modeOfExam',
+                                    title: 'Mode Of Exam',
+                                    value: getEachExamSession?.modeOfExam ?? ''
+                                });
+                            </script>
+                        </div>
+
                         <div class="form-title">UPLOAD EXAM PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
@@ -131,23 +181,39 @@
                             </script>
                         </label>
 
-                        <div class="text_area_container" id="incentives_container">
-                            <script>
-                                $(document).ready(function () {
-                                    const incentivesList = getEachExamSession?.incentivesData?.map(item => item.incentives) || [];
-
-                                    // Join them with comma and space
-                                    const incentivesValue = incentivesList.join(", ");  
-
-                                    textField({
-                                        id: 'incentives',
-                                        title: 'Incentives',
-                                        type: 'textarea',
-                                        value: incentivesValue
-                                    });
-                                });
-                            </script>
+                        <div class="form-title">EXAM INCENTIVES</div>
+                        <div class="page-content-back-div">
+                            <textarea class="text_field" style="width:100%;" rows="8" id="incentives" title="TYPE EXAM INCENTIVES HERE"></textarea>
+                            <div class="issueText" id="issue_incentives"></div>
                         </div>
+
+                        <div class="form-title">EXAM SCORE RANGE</div>
+                        <div class="page-content-back-div">
+                            <textarea class="text_field" style="width:100%;" rows="8" id="scoreRange" title="TYPE EXAM SCORE RANGE HERE"></textarea>
+                            <div class="issueText" id="issue_scoreRange"></div>
+                        </div>
+
+                        <script src="js/TextEditor.js" referrerpolicy="origin"></script>
+                        <script>
+                            $(document).ready(function () {
+                                tinymce.init({
+                                    selector: '#incentives, #scoreRange',
+                                    plugins: "link image table",
+                                    setup: function (editor) {
+                                        editor.on('init', function () {
+                                            setTimeout(function () {
+                                                if (editor.id === "incentives") {
+                                                    editor.setContent(getEachExamSession?.incentives ?? '');
+                                                }
+                                                if (editor.id === "scoreRange") {
+                                                    editor.setContent(getEachExamSession?.scoreRange ?? '');
+                                                }
+                                            }, 300);
+                                        });
+                                    }
+                                });
+                            });
+                        </script>
 
                         <div class="text_field_container" id="statusId_container">
                             <script>

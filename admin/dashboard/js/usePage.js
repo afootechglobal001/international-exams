@@ -80,7 +80,7 @@ function _savePageCallback(formData) {
 	
 	//// call endpoint //////
 	_callFileEndPoints({
-		url: `admin/pages/create-or-update-page?publishId=${publishData?.publishId}&pageCategoryId=${publishData?.pageCategoryId}`,
+		url: `admin/pages/page-content/create-or-update-page?publishId=${publishData?.publishId}&pageCategoryId=${publishData?.pageCategoryId}`,
 		formData,
 		accessKey: true,
 	})
@@ -188,7 +188,7 @@ function _fetchPageContent() {
 	try {
 		//// call endpoint //////
 		_callFetchEndPoints({
-			url: `admin/pages/fetch-page?publishId=${publishData?.publishId}`,
+			url: `admin/pages/page-content/fetch-page?publishId=${publishData?.publishId}`,
 			accessKey: true,
 		})
 		.then((response) => {

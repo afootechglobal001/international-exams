@@ -62,8 +62,14 @@ var examPixPath=websiteUrl+'/uploaded_files/examPicture'; /// For exam Pix Path 
 var seoFlyerPixPath=websiteUrl+'/uploaded_files/seoFlyer'; /// For seo flyer Pix Path //
 var studyAbroadPixPath=websiteUrl+'/uploaded_files/studyAbroad'; /// For Study Abroad Pix Path //
 var examRelatedLinkPixPath=websiteUrl+'/uploaded_files/examRelatedLink'; /// For Exam Related Link Pix Path //
+var blogPixPath=websiteUrl+'/uploaded_files/blog'; /// For Blog Pix Path //
+var galleryPixPath=websiteUrl+'/uploaded_files/galleryPictures'; /// For Gallery Pix Path
+
 var pageCategory = {
     examCategory: 'examCategory',
     studyAbroadCategory: 'studyAbroadCategory',
+    blogCategory: 'blogCategory',
+    faqCategory: 'faqCategory',
+    galleryCategory: 'galleryCategory',
 }
 </script>

@@ -110,7 +110,7 @@ function _fetchExamData() {
 						<div class="false-notification-div">
 							<p>${info.message}</p>
 							<div>
-								<button class="btn" title="ADD NEW EXAM" onclick="ADD NEW INTERNATIONAL EXAM" onclick="_getForm({page: 'examReg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM</button>
+								<button class="btn" title="ADD NEW EXAM" onclick="ADD NEW INTERNATIONAL EXAM" onclick="sessionStorage.removeItem('getEachExamSession'); _getForm({page: 'examReg', url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM</button>
 							</div>
 						</div>
 					`);
@@ -150,16 +150,24 @@ function _fetchExamData() {
 
 function _createExam() {
 	try {
+		tinyMCE.triggerSave();
+		
 		let issueCount = 0;
 		const regTitle = $('#regTitle').val();
 		const examAbbr = $('#examAbbr').val();
+		const officialWebsite = $('#officialWebsite').val();
+		const conductingBody = $('#conductingBody').val();
+		const acceptedBy = $('#acceptedBy').val();
+		const mostPopular = $('#mostPopular').val();
+		const modeOfExam = $('#modeOfExam').val();
 		const regPix = $("#regPix").prop("files")[0];
 		const examLogo = $("#examLogo").prop("files")[0];
 		const incentives = $('#incentives').val();
+		const scoreRange = $('#scoreRange').val();
 		const statusId = $('#statusId').val();
 
-		$('#regTitle, #examAbbr, #regPix, #incentives, #statusId').removeClass('issue');
-		$('#issue_regTitle, #issue_examAbbr, #issue_regPix, #issue_incentives, #issue_statusId').html('');
+		$('#regTitle, #examAbbr, #incentives, #statusId').removeClass('issue');
+		$('#issue_regTitle, #issue_examAbbr, #issue_incentives, #issue_statusId').html('');
 
 		if (!regTitle) {
 			$('#regTitle').addClass('issue');
@@ -187,7 +195,7 @@ function _createExam() {
 
 		if (issueCount > 0) return;
 
-		const form ={regTitle, examAbbr, regPix, examLogo, incentives, statusId}
+		const form ={regTitle, examAbbr, officialWebsite, conductingBody, acceptedBy, mostPopular, modeOfExam, scoreRange, regPix, examLogo, incentives, statusId}
 		_showCustomConfirm({
 			callback: () => {
 				_createExamCallback(form);
@@ -218,6 +226,12 @@ function _createExamCallback(form){
 	const formData = new FormData();
 	formData.append("regTitle", form.regTitle);
 	formData.append("examAbbr", form.examAbbr);
+	formData.append("officialWebsite", form.officialWebsite);
+	formData.append("conductingBody", form.conductingBody);
+	formData.append("acceptedBy", form.acceptedBy);
+	formData.append("mostPopular", form.mostPopular);
+	formData.append("modeOfExam", form.modeOfExam);
+	formData.append("scoreRange", form.scoreRange);
 	formData.append("regPix", form.regPix);
 	formData.append("examLogo", form.examLogo);
 	formData.append("incentives", form.incentives);

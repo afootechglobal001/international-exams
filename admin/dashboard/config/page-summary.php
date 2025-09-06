@@ -8,7 +8,7 @@
             $("#fullExamBlock").hide();
             $("#shortExamBlock").hide();
 
-            if (pageSummary.incentivesData && pageSummary.incentivesData.length > 0) {
+            if (pageSummary.incentives && pageSummary.incentives.length > 0) {
                 $("#fullExamBlock").show();
 
                 $("#examPixFull").attr("src", examPixPath + '/' + pageSummary.regPix).attr("alt", pageSummary.regTitle);
@@ -16,11 +16,8 @@
                 $("#regTitleFull").html(pageSummary.regTitle);
                 $("#updatedDateFull").html(_fetchFormatDate(pageSummary.updatedTime));
 
-                let content = '';
-                for (let i = 0; i < pageSummary.incentivesData.length; i++) {
-                    content += `<span>- ${pageSummary.incentivesData[i].incentives}</span>`;
-                }
-                $('#fetchedIncentives').html(content);
+                const incentives = pageSummary.incentives || '';
+                $('#fetchedIncentives').html(incentives);
 
             } else {
                 $("#shortExamBlock").show();
@@ -92,7 +89,7 @@
 <?php } ?>
 
 <?php if ($pageCatId == 'studyAbroadCategory') { ?>
-     <script> getEachStudyAbroadSession = JSON.parse(sessionStorage.getItem("getEachStudyAbroadSession"));</script>
+    <script> getEachStudyAbroadSession = JSON.parse(sessionStorage.getItem("getEachStudyAbroadSession"));</script>
     <div class="grid-div">
         <div class="img-div"><img id="studyAbroadPix" src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="TOEFL" /></div>
         <script>
@@ -112,26 +109,38 @@
 <?php } ?>
 
 <?php if ($pageCatId == 'blogCategory') { ?>
+    <script> getEachBlogSession = JSON.parse(sessionStorage.getItem("getEachBlogSession"));</script>
     <div class="grid-div">
-        <div class="img-div"><img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="TOEFL" /></div>
+        <div class="img-div"><img id="blogPix" src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="TOEFL" /></div>
+        <script>
+            $(document).ready(function() {
+                $("#blogPix").attr("src", blogPixPath+'/'+getEachBlogSession.regPix).attr("alt", getEachBlogSession.regTitle);
+            });
+        </script>
+
         <div class="text-div">
-            <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
-            <h2 id="">HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION...</h2>
+            <div class="top-text blog-top-text"><span id="blogCatName"> <script>$("#blogCatName").html(getEachBlogSession.blogCatName);</script></span></div>
+            <h2 id="blogRegTitle"><script>$("#blogRegTitle").html(getEachBlogSession.regTitle);</script></h2>
             <div class="text-in">
-                <div class="text">UPDATED ON: <span id="formattedDate">25 Jan 2025</span> | <span id="page_view">200</span> VIEWS </div>
+                <div class="text">UPDATED ON: <span id="formattedDate"><script>$("#formattedDate").html(_fetchFormatDate(getEachBlogSession.updatedTime));</script></span> | <span id="page_view">200</span> VIEWS </div>
             </div>
         </div>
     </div>
 <?php } ?>
 
 <?php if ($pageCatId == 'galleryCategory') { ?>
+    <script> getEachGallerySession = JSON.parse(sessionStorage.getItem("getEachGallerySession"));</script>
     <div class="grid-div">
-        <div class="img-div"><img src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="TOEFL" /></div>
+        <div class="img-div"><img id="galleryPix" src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="TOEFL" /></div>
+        <script>
+            $(document).ready(function() {
+                $("#galleryPix").attr("src", galleryPixPath+'/'+getEachGallerySession.regPix).attr("alt", getEachGallerySession.regTitle);
+            });
+        </script>
         <div class="text-div">
-            <div class="top-text blog-top-text"><span> GLOBAL READINESS</span></div>
-            <h2 id="">INSIDE THE EXAM HALL: FOCUSED & DETERMINED...</h2>
+            <h2 id="galleryRegTitle"><script>$("#galleryRegTitle").html(getEachGallerySession.regTitle);</script></h2>
             <div class="text-in">
-                <div class="text">UPDATED ON: <span id="formattedDate">25 Jan 2025</span> | <span id="page_view">200</span> VIEWS </div>
+                <div class="text">UPDATED ON: <span id="formattedDate"><script>$("#formattedDate").html(_fetchFormatDate(getEachGallerySession.updatedTime));</script></span> | <span id="page_view">200</span> VIEWS </div>
             </div>
         </div>
     </div>

@@ -12,10 +12,6 @@
                     <?php if ($pageCatId == 'examCategory') { ?>
                         <li class="active-li" title="PAGE CONTENT" id="pageContent" onclick="_getActivePagesTab({divid:'pageContent', page: 'pageContent', url: adminPortalLocalUrl});">PAGE CONTENT</li>
                         <li title="UPLOAD PICTURE" id="picturePage" onclick="_getActivePagesTab({divid:'picturePage', page: 'picturePage', url: adminPortalLocalUrl});">UPLOAD PICTURE</li>
-                        <li title="ADD EXAM KEY INFO" id="picturePage" onclick="">ADD EXAM KEY INFO</li>
-                        <li title="ADD SCORE RANGE" id="picturePage" onclick="">ADD SCORE RANGE</li>
-                        <li title="CENTERS LOCATION" id="picturePage" onclick="">CENTERS LOCATION</li>
-                        <li title="FAQS" id="picturePage" onclick="">FAQS</li>
                     <?php } ?>
 
                     <?php if ($pageCatId == 'studyAbroadCategory') { ?>

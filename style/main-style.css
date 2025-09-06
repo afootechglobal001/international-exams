@@ -2982,7 +2982,7 @@ background: url(../all-images/body-pix/faq.webp) center no-repeat;
 	gap: 12px;
 }
 
-.search-inner-details .pages-inner-content span{
+.search-inner-details .pages-inner-content p{
    color: var(--sub-body-color);
 }
 

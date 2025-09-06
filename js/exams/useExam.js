@@ -93,6 +93,7 @@ function _fetchEachSiteExam(publishId) {
 				const fullName = data.createdBy.fullName;
                 const updatedTime = _fetchFormatDate(data.updatedTime);
                 const regPix = data.regPix;
+				const incentives = data.incentives;
 
 				$('#regTitle, #regTopTitle').html(regTitle);
                 $('#seoDescription').html(seoDescription);
@@ -101,12 +102,7 @@ function _fetchEachSiteExam(publishId) {
                 $('#updatedTime').html(updatedTime);
 				$('#examPreviewPix').attr('src', (examPixPath ? examPixPath : examRelatedLinkPixPath) + '/' + regPix);
 				$('#examTitleLink').attr('href', websiteUrl + '/' + pageUrl);
-
-				let content = '';
-                for (let i = 0; i < data.incentivesData.length; i++) {
-                    content += `<span>- ${data.incentivesData[i].incentives}</span>`;
-                }
-                $('#fetchedIncentives').html(content);
+                $('#incentives').html(incentives);
 
 				let linkContent = '';
                 for (let i = 0; i < data.relatedLinksData.length; i++) {

@@ -21,9 +21,15 @@
     $publishId =trim($_GET['publishId']);
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
     $examAbbr=trim(strtoupper($_POST['examAbbr']));
+    $officialWebsite=trim($_POST['officialWebsite']);
+    $conductingBody=trim($_POST['conductingBody']);
+    $acceptedBy=trim($_POST['acceptedBy']);
+    $mostPopular=trim($_POST['mostPopular']);
+    $modeOfExam=trim($_POST['modeOfExam']);
     $regPix=$_FILES['regPix']['name'];
     $examLogo=$_FILES['examLogo']['name'];
     $incentives=trim(strtoupper($_POST['incentives']));
+    $scoreRange=trim($_POST['scoreRange']);
     $statusId=trim($_POST['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
@@ -65,25 +71,18 @@
         $update ="UPDATE PUBLISH_TAB SET 
             regTitle = '$regTitle',
             examAbbr = '$examAbbr',
+            officialWebsite = '$officialWebsite',
+            conductingBody = '$conductingBody',
+            acceptedBy = '$acceptedBy',
+            mostPopular = '$mostPopular',
+            modeOfExam = '$modeOfExam',
+            incentives = '$incentives',
+            scoreRange = '$scoreRange',
             statusId = '$statusId',
             updatedBy = '$loginStaffId',
             updatedTime = NOW()
             WHERE publishId = '$publishId' AND pageCategoryId = '$pageCategoryId'";
             mysqli_query($conn, $update) or die(mysqli_error($conn));
-
-            /// delete existing incentives records first 
-            mysqli_query($conn,"DELETE FROM `EXAM_INCENTIVE_TAB` WHERE publishId='$publishId'")or die (mysqli_error($conn));
-
-            // Handle departments (comma-separated)
-            $incentiveArray = array_map('trim', explode(',', $incentives));
-
-            foreach ($incentiveArray as $incentiveName) {
-                $incentiveName = mysqli_real_escape_string($conn, $incentiveName);
-
-                mysqli_query($conn, "INSERT INTO `EXAM_INCENTIVE_TAB`
-                (`publishId`, `examAbbr`, `incentives`, `createdBy`, `createdTime`) VALUES 
-                ('$publishId', '$examAbbr', '$incentiveName', '$loginStaffId', NOW())") or die(mysqli_error($conn));
-            }
 
             ///////////////////////getting image extensions//////////////////////////
             $allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png", "PNG", "GIF", "webp", "WEBP");
@@ -138,21 +137,12 @@
             $alertDetail = "EXAM UPDATED SUCCESSFULLY: $pageCategoryName was upadated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Title: $regTitle | Abbreviation: $examAbbr | ID: $publishId.";
 
             // Fetch branch details ///
-            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.regPix, a.examLogo, a.statusId, a.createdBy, a.updatedBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
+            $select="SELECT a.pageCategoryId, a.publishId, a.regTitle, a.examAbbr, a.officialWebsite, a.conductingBody, a.acceptedBy, a.mostPopular, a.modeOfExam, a.incentives, a.scoreRange, a.regPix, a.examLogo, a.statusId, a.createdBy, a.updatedBy, a.createdTme, a.updatedTime, b.statusName FROM PUBLISH_TAB a, SETUP_STATUS_TAB b WHERE a.statusId=b.statusId AND a.pageCategoryId='$pageCategoryId'";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {
                 $createdBy=$fetchQuery['createdBy'];
                 $updatedBy=$fetchQuery['updatedBy'];
-                $publishId=$fetchQuery['publishId'];
-
-                /////////////////// fetch incentives per exam ////////////
-                $incentivesData=array();
-                $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
-                while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
-                    $incentivesData[] = $getIncentivesfetch;
-                }
-                $fetchQuery['incentivesData']= $incentivesData;
 
                 /////////////////// for  CreatedBy /////////
                 $createdByData=array();

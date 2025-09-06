@@ -137,7 +137,7 @@
                         <div class="search-inner search-inner-details">
                             <h2>INCENTIVES:-</h2>
 
-                            <div class="recent-post pages-inner-content" id="fetchedIncentives">
+                            <div class="recent-post pages-inner-content" id="incentives">
                             </div>
                         </div>
 

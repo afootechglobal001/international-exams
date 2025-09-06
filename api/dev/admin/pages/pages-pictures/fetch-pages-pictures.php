@@ -1,5 +1,5 @@
-<?php require_once '../../config/connection.php';?>
-<?php require_once '../../config/staff-session-check.php';?>
+<?php require_once '../../../config/connection.php';?>
+<?php require_once '../../../config/staff-session-check.php';?>
 
 <?php
     if (!$checkBasicSecurity){/// start if 1
@@ -16,32 +16,35 @@
 ?>
 
 <?php
-	//////////////////declaration of variables//////////////////////////////////////
-	$publishId=trim(($_GET['publishId']));
+    //////////////////declaration of variables//////////////////////////////////////
+    $publishId=$_GET['publishId'];
 
-	validateEmptyField($publishId, 'PUBLISH ID');
+    $getPictures = "SELECT 
+    sn, publishId, pictures 
+    FROM PAGES_PICTURE_TAB 
+    WHERE publishId = '$publishId'";
 
-    $select="SELECT * FROM PAGES_TAB WHERE publishId='$publishId'";
-    $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
+    $query=mysqli_query($conn,$getPictures)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);
     if($allRecordCount==0){///start if 1
         $response['response']=200;
         $response['success']=false;
-        $response['message']="This page has not been created yet. Please create a new page.";
+        $response['message']="No Record found";
         goto end;
     }
 
     $response = [
         'response'=> 200,
         'success'=> true,
-        'message'=> "PAGE FETCHED SUCCESFFULLY!",
+        'message'=> "PICTURES FETCH SUCCESSFULLY!",
         'data' => array() // Initialize the data array
     ];
-
+    
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $response['data'][] = $fetchQuery;
     }
-//////////////////////////////////////////////////////////////////////////////////////////////
+
+        
 end:
 echo json_encode($response);
 ?>

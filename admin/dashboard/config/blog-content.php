@@ -15,7 +15,7 @@
                 <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Blog Here...">
                 <i class="bi bi-search"></i>
             </div>
-            <button class="btn" title="ADD NEW BLOG" onclick="_getForm({page: 'blogReg', url: adminPortalLocalUrl});">
+            <button class="btn" title="ADD NEW BLOG" onclick="sessionStorage.removeItem('getEachBlogSession'); _getForm({page: 'blogReg', url: adminPortalLocalUrl});">
                 <i class="bi-plus-square"></i> ADD NEW BLOG
             </button>
         </div>
@@ -31,49 +31,11 @@
             </div>
 
             <div class="inner-table-content">
-                <div class="other-pg-back-div">
-                    <div class="grid-div">
-                        <div class="btn-div">
-                            <button class="btn active-btn" onclick="">EDIT</button>
-                            <button class="btn" onclick="_getForm({page: 'editPageForm', pageCatId: 'blogCategory', url: adminPortalLocalUrl});">EDIT PAGE DETAILS</button>
-                        </div>
+                <div class="other-pg-back-div" id="pageContent">
+                    <script>_fetchBlogData();</script>
 
-                        <div class="img-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION" />
-                        </div>
-                        <div class="status-div ACTIVE">ACTIVE</div>
-
-                        <div class="text-div">
-                            <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
-                            <h2>HOW INTERNATIONAL EXAMS OPEN DOORS TO GLOBAL EDUCATION...</h2>
-                            <div class="text-in">
-                                <div class="text">
-                                    UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid-div">
-                        <div class="btn-div">
-                            <button class="btn active-btn" onclick="">EDIT</button>
-                            <button class="btn" onclick="">EDIT PAGE DETAILS</button>
-                        </div>
-
-                        <div class="img-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png" alt="TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE & MORE" />
-                        </div>
-                        <div class="status-div ACTIVE">ACTIVE</div>
-
-                        <div class="text-div">
-                            <div class="top-text blog-top-text"><span> INTERNATIONAL EXAM</span></div>
-                            <h2>TOP EXAMS YOU NEED TO STUDY ABROAD: IELTS, TOEFL, SAT, GRE...</h2>
-                            <div class="text-in">
-                                <div class="text">
-                                    UPDATED ON: <span>25 Jan 2025</span> | <span>200</span> VIEWS
-                                </div>
-                            </div>
-                        </div>
+                    <div class="content-loading-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                     </div>
                 </div>
             </div>
@@ -82,11 +44,17 @@
 <?php } ?>
 
 <?php if ($page == 'blogReg') { ?>
+    <script> 
+        getEachBlogSession = JSON.parse(sessionStorage.getItem("getEachBlogSession"));
+        $('#pageTitle').html(getEachBlogSession?.publishId ? 'UPDATE BLOG':'CREATE NEW BLOG');
+        $('#subTitle, #subTitle2').html(getEachBlogSession?.publishId ? 'update this blog':'create new blog');
+    </script>
+
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-journals"></i></div>
-                <h3>CREATE NEW BLOG</h3>
+                <h3 id="pageTitle">CREATE NEW BLOG</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -98,7 +66,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to create a new blog. Please complete the form below with accurate details to successfully create new blog</p>
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
             <div class="main-content-div">
@@ -111,20 +79,24 @@
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="blogCat_container">
+                        <div class="text_field_container" id="catId_container">
                             <script>
                                 selectField({
-                                    id: 'blogCat',
-                                    title: 'Select Blog Category'
+                                    id: 'catId',
+                                    title: 'Select Blog Category',
+                                    fieldValue: getEachBlogSession?.blogCatId ?? '',
+                                    fieldLabel: getEachBlogSession?.blogCatName ?? ''
                                 });
+                                _getSelectBlogCategory('catId');
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="blogTitle_container">
+                        <div class="text_field_container" id="regTitle_container">
                             <script>
                                 textField({
-                                    id: 'blogTitle',
-                                    title: 'Blog Title'
+                                    id: 'regTitle',
+                                    title: 'Blog Title',
+                                    value: getEachBlogSession?.regTitle ?? ''
                                 });
                             </script>
                         </div>
@@ -132,24 +104,36 @@
                        <div class="form-title">UPLOAD BLOG PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
-                                <img id="blog_preview_pix" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="reg_thumbnail" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
+                                <img id="blogPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="blogPixPreview.UpdatePreview(this);" />
                             </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    const blogPix = getEachBlogSession.regPix;
+                                    const blogPixUrl = blogPix ? blogPixPath + "/" + blogPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+
+                                    $("#blogPixPreview").attr("src", blogPixUrl).attr("alt", getEachBlogSession.regPix + " Logo");
+                                });
+                            </script>
                         </label>
 
                         <div class="text_field_container" id="statusId_container">
                             <script>
                                 selectField({
                                     id: 'statusId',
-                                    title: 'Select Status'
+                                    title: 'Select Status',
+                                    fieldValue: getEachBlogSession?.statusId ?? '',
+                                    fieldLabel: getEachBlogSession?.statusName ?? ''
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="createAndUpdateBlog();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

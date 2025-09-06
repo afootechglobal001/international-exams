@@ -15,7 +15,7 @@
                 <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search FAQ Here...">
                 <i class="bi bi-search"></i>
             </div>
-            <button class="btn" title="ADD NEW FAQ" onclick="_getForm({page: 'faqReg', url: adminPortalLocalUrl});">
+            <button class="btn" title="ADD NEW FAQ" onclick="sessionStorage.removeItem('getEachFaqSession'); _getForm({page: 'faqReg', url: adminPortalLocalUrl});">
                 <i class="bi-plus-square"></i> ADD NEW FAQ
             </button>
         </div>
@@ -31,29 +31,11 @@
             </div>
 
             <div class="inner-table-content">
-                <div class="other-pg-back-div">
-                    <div class="faq-back-div">
-                        <div class="title-div">
-                            <div class="num">1</div>
-                            <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>What is the TOEFL exam used for?</span></button>
-                        </div>
-                        <div class="answer-div">The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</div>
-                    </div>
+                <div class="other-pg-back-div" id="pageContent">
+                    <script>_fetchFaqData();</script>
 
-                    <div class="faq-back-div">
-                        <div class="title-div">
-                            <div class="num">2</div>
-                            <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>How is the IELTS scored?</span></button>
-                        </div>
-                        <div class="answer-div">The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</div>
-                    </div>
-
-                    <div class="faq-back-div">
-                        <div class="title-div">
-                            <div class="num">3</div>
-                            <button class="btn" onClick=""><i class="bi-pencil-square"></i> <span>What is the purpose of the PTE?</span></button>
-                        </div>
-                        <div class="answer-div">The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</div>
+                    <div class="content-loading-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                     </div>
                 </div>
             </div>
@@ -62,11 +44,17 @@
 <?php } ?>
 
 <?php if ($page == 'faqReg') { ?>
+    <script> 
+        getEachFaqSession = JSON.parse(sessionStorage.getItem("getEachFaqSession"));
+        $('#pageTitle').html(getEachFaqSession?.publishId ? 'UPDATE FAQ':'CREATE NEW FAQ');
+        $('#subTitle, #subTitle2').html(getEachFaqSession?.publishId ? 'update this faq':'create new faq');
+    </script>
+
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-patch-question"></i></div>
-                <h3>CREATE NEW FAQ</h3>
+                <h3 id="pageTitle">CREATE NEW FAQ</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -78,7 +66,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to create a new faq. Please complete the form below with accurate details to successfully create new faq</p>
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
             <div class="main-content-div">
@@ -91,40 +79,66 @@
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="faqCat_container">
+                        <div class="text_field_container" id="catId_container">
                             <script>
                                 selectField({
-                                    id: 'faqCat',
-                                    title: 'Slect Faq Category'
+                                    id: 'catId',
+                                    title: 'Select Faq Category',
+                                    fieldValue: getEachFaqSession?.faqCatId ?? '',
+                                    fieldLabel: getEachFaqSession?.faqCatName ?? ''
+                                });
+                                 _getSelectFaqCategory('catId');
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="faqQuestion_container">
+                            <script>
+                                textField({
+                                    id: 'faqQuestion',
+                                    title: 'FAQ Question',
+                                    value: getEachFaqSession?.faqQuestion ?? ''
                                 });
                             </script>
                         </div>
 
                         <div class="form-title">FAQ ANSWER</div>
+                        <div class="page-content-back-div">
+                            <textarea class="text_field" style="width:100%;" rows="8" id="faqAnswer" title="TYPE FAQ ANSWER HERE"></textarea>
+                            <div class="issueText" id="issue_faqAnswer"></div>
+                        </div>
                         <script src="js/TextEditor.js" referrerpolicy="origin"></script>
                         <script>
-                            tinymce.init({
-                                selector: '#faq_answer', // change this value according to your HTML
-                                plugins: "link, image, table"
+                            $(document).ready(function () {
+                                tinymce.init({
+                                    selector: '#faqAnswer',
+                                    plugins: "link image table",
+                                    setup: function (editor) {
+                                        editor.on('init', function () {
+                                            setTimeout(function () {
+                                                editor.setContent(getEachFaqSession?.faqAnswer ?? '');
+                                            }, 300);
+                                        });
+                                    }
+                                });
                             });
                         </script>
-                        <div style="margin-bottom: 10px;">
-                            <textarea class="text_field" style="width:100%;" rows="5" id="faq_answer" title="TYPE FULL PAGE CONTENT HERE" type="text" maxlength="167" id="" placeholder=""></textarea>
-                        </div>
 
                         <div class="text_field_container" id="statusId_container">
                             <script>
                                 selectField({
                                     id: 'statusId',
-                                    title: 'Select Status'
+                                    title: 'Select Status',
+                                    fieldValue: getEachFaqSession?.statusId ?? '',
+                                    fieldLabel: getEachFaqSession?.statusName ?? ''
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="createAndUpdatefaq();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

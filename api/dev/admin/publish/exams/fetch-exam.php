@@ -47,7 +47,14 @@
         a.parentPublishId,
         a.publishId, 
         a.regTitle, 
-        a.examAbbr, 
+        a.examAbbr,
+        a.officialWebsite,
+        a.conductingBody,
+        a.acceptedBy,
+        a.mostPopular,
+        a.modeOfExam,
+        a.incentives,
+        a.scoreRange,
         a.regPix,
         a.examLogo,
         a.statusId, 
@@ -83,14 +90,6 @@
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $publishId=$fetchQuery['publishId'];
-
-        /////////////////// fetch incentives per exam ////////////
-        $incentivesData=array();
-        $getIncentivesQuery = mysqli_query($conn, "SELECT * FROM EXAM_INCENTIVE_TAB WHERE publishId='$publishId'");
-        while ($getIncentivesfetch = mysqli_fetch_assoc($getIncentivesQuery)) {
-            $incentivesData[] = $getIncentivesfetch;
-        }
-        $fetchQuery['incentivesData']= $incentivesData;
 
         //// get number of related exam links
         $examLinkCountQuery = mysqli_query($conn, "SELECT COUNT(*) AS count FROM PUBLISH_TAB WHERE parentPublishId='$publishId'");

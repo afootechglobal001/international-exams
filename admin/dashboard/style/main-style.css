@@ -2164,10 +2164,7 @@ main {
 .pages-creation-panel .pages-content-div .pages-back-div .page-form-div .form-picture-div .picture-back-div{
 	width:calc(100% - 20px);
 	display: flex;
-	align-items: center;
 	padding: 0px 10px;
-	gap: 20px;
-	flex-wrap: wrap;
 }
 
 .pages-creation-panel .pages-content-div .pages-back-div .page-form-div .form-picture-div .picture-back-div #fetchPagePicture{

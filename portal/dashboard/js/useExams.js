@@ -144,7 +144,6 @@ function _getcountryExamPricing(examId) {
       headers: getAuthHeaders(true),
       success: function (info) {
         const success = info.success;
-
         if (success === true) {
           const data = info.data[0];
           _previewExam(data);
@@ -171,7 +170,7 @@ function _previewExam(examInfo) {
   let content = "";
   const regTitle = examInfo.regTitle;
   const examAbbr = examInfo.examAbbr;
-  const examLogo = examInfo.regPix;
+  const examLogo = examInfo.examLogo;
   const currency = examInfo.currency;
   const amount = examInfo.amount;
 

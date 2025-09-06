@@ -9,8 +9,12 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $countryId=trim($_GET['countryId']);
+    $examId=trim($_GET['examId']);
+    if($examId!=""){
+        $examIds="AND a.publishId='$examId'";
+    }
 
-    $select = "SELECT a.*, b.publishId, b.regTitle, b.examAbbr, b.regPix FROM BRANCH_EXAM_PRICING_TAB a, PUBLISH_TAB b WHERE a.countryId='$countryId' AND a.publishId=b.publishId";
+    $select = "SELECT a.*, b.publishId, b.regTitle, b.examAbbr, b.regPix FROM BRANCH_EXAM_PRICING_TAB a, PUBLISH_TAB b WHERE a.countryId='$countryId' AND a.publishId=b.publishId $examIds";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);

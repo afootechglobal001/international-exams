@@ -121,7 +121,10 @@
                 identifying
                 document on the day of the exam. Kindly use a valid Email address has you will use this for receiving
                 your Exam Details that you will input below and get payment details for completing the exam
-                registration. Call Test Registration department for any enquiry <strong>:-+234(0)-703-841-1794</strong>
+                registration. Call Test Registration department for any enquiry: <strong id="phoneNumber">---</strong>
+                <script>
+                $("#phoneNumber").html((loginCountryData.phoneNumber));
+                </script>
             </p>
         </div>
 
@@ -143,9 +146,36 @@
                             id: 'examId',
                             title: 'Select Exam Type'
                         });
-                        // _getSelectCountry('countryId');
+                        _getCountryExams('examId');
                         </script>
                     </div>
+
+                    <section class="content-div" id="examPreviewContainer" style="display: none;">
+                        <div class="content-title">
+                            <div class="title">
+                                <i class="bi bi-clipboard2"></i>
+                                <p>Exam Preview</p>
+                            </div>
+
+                        </div>
+
+                        <div class="exams-back-div" id="examPreviewDiv">
+                            <div class="exam-div">
+                                <div class="exam-image">
+                                    <img src="<?php echo $websiteUrl?>/all-images/exam-logo/ielts-exam-nigeria.jpg"
+                                        alt="Exam Image">
+                                </div>
+                                <div class="exam-status active">ACTIVE</div>
+                                <div class="exam-info">
+                                    <h3>IELTS</h3>
+                                    <p>International English Language Testing System</p>
+                                </div>
+                                <div class="price">
+                                    <p>NGN 293,000.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
                     <div class="text_field_container" id="locationId_container">
                         <script>
@@ -271,59 +301,15 @@
             </div>
 
             <!-- Academic information -->
-            <div class="content-div">
-                <div class="content-title">
-                    <div class="title">
-                        <i class="bi bi-mortarboard-fill"></i>
-                        <p> Academic information</p>
-                    </div>
-                </div>
-
-                <div class="form-text">
-                    <div class="text_field_container" id="schoolOfInterest_container">
-                        <script>
-                        textField({
-                            id: 'schoolOfInterest',
-                            title: 'School of Interest',
-                        });
-                        </script>
-                    </div>
-                    <div class="text_field_container" id="institutionalCode_container">
-                        <script>
-                        textField({
-                            id: 'institutionalCode',
-                            title: 'Institutional Code',
-                        });
-                        </script>
-                    </div>
-                    <div class="text_field_container" id="institutionLocation_container">
-                        <script>
-                        textField({
-                            id: 'institutionLocation',
-                            title: 'Institution Location',
-                        });
-                        </script>
-                    </div>
-
-                    <div class="text_field_container" id="programOfStudy_container">
-                        <script>
-                        selectField({
-                            id: 'programOfStudy',
-                            title: 'Program of Study'
-                        });
-                        // _getSelectCountry('countryId');
-                        </script>
-                    </div>
-                    <div class="text_field_container" id="courseOfStudy_container">
-                        <script>
-                        textField({
-                            id: 'courseOfStudy',
-                            title: 'Course of Study',
-                        });
-                        </script>
-                    </div>
-                </div>
+            <div id="schoolsOfInterest_div">
+                <script>
+                _addMoreSchoolsOfInterest();
+                </script>
             </div>
+            <div class="form-note">
+                <p><span onclick="_addMoreSchoolsOfInterest();">CLICK HERE</span> to add more schools of interest</p>
+            </div>
+
 
             <div class="btn-div" style="flex-direction: column; gap: 5px;">
                 <button class="btn" title="REGISTER AND PAY NOW" id="submitBtn" onclick="_changePassword();"> <i

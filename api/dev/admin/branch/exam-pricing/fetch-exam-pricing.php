@@ -19,7 +19,7 @@
     //////////////////declaration of variables//////////////////////////////////////
     $countryId=trim($_GET['countryId']);
 
-    $select = "SELECT a.*, b.publishId, b.regTitle, b.examAbbr, b.examLogo FROM BRANCH_EXAM_PRICING_TAB a, PUBLISH_TAB b WHERE a.countryId='$countryId' AND a.publishId=b.publishId";
+    $select = "SELECT a.*, b.publishId, b.regTitle, b.examAbbr, b.examLogo FROM BRANCH_EXAM_PRICING_TAB a, PUBLISH_TAB b WHERE a.countryId='$countryId' AND a.examId=b.publishId";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);

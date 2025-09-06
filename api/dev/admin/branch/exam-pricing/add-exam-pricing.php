@@ -19,16 +19,16 @@
     //////////////////declaration of variables//////////////////////////////////////
     $countryId =trim($_GET['countryId']);
     $currency=trim($_GET['currency']);
-    $publishId=trim($data['publishId']);
+    $examId=trim($data['examId']);
     $amount=trim($data['amount']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($countryId, 'COUNTRY ID');
     validateEmptyField($currency, 'CURRENCY');
-    validateEmptyField($publishId, 'EXAM NAME');
+    validateEmptyField($examId, 'EXAM');
     validateEmptyField($amount, 'EXAM PRICE');
 
-    $examNameQuery=mysqli_query($conn,"SELECT publishId FROM BRANCH_EXAM_PRICING_TAB WHERE countryId='$countryId' AND publishId='$publishId'") or die (mysqli_error($conn));
+    $examNameQuery=mysqli_query($conn,"SELECT examId FROM BRANCH_EXAM_PRICING_TAB WHERE countryId='$countryId' AND examId='$examId'") or die (mysqli_error($conn));
     $examNameCountQuery=mysqli_num_rows($examNameQuery);
 
     if ($examNameCountQuery>0){ /// start if 4
@@ -43,13 +43,13 @@
     }
 
         //////////////////get exam abbreviation //////////////////////////////////////
-        $examQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE publishId='$publishId'")or die (mysqli_error($conn));
+        $examQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE publishId='$examId'")or die (mysqli_error($conn));
 	    $fetchExamQuery=mysqli_fetch_array($examQuery);
 		$examAbbr=$fetchExamQuery['examAbbr'];
 
         mysqli_query($conn,"INSERT INTO `BRANCH_EXAM_PRICING_TAB`
-        (`countryId`, `publishId`, `examAbbr`, `currency`, `amount`, `createdBy`, `createdTime`) VALUES
-        ('$countryId', '$publishId', '$examAbbr', '$currency', '$amount', '$loginStaffId', NOW())")or die (mysqli_error($conn));
+        (`countryId`, `examId`, `examAbbr`, `currency`, `amount`, `createdBy`, `createdTime`) VALUES
+        ('$countryId', '$examId', '$examAbbr', '$currency', '$amount', '$loginStaffId', NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
@@ -58,10 +58,10 @@
             'data' => array() // Initialize the data array
         ];
 
-            $alertDetail = "EXAM ADDED SUCCESSFULLY:Exam was added successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Country: $countryId | ID: $publishId | Exam: $examAbbr.";
+            $alertDetail = "EXAM ADDED SUCCESSFULLY:Exam was added successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Country: $countryId | ID: $examId | Exam: $examAbbr.";
 
             // Fetch branch details ///
-            $select="SELECT * FROM BRANCH_EXAM_PRICING_TAB WHERE publishId='$publishId' AND countryId='$countryId'";
+            $select="SELECT * FROM BRANCH_EXAM_PRICING_TAB WHERE examId='$examId' AND countryId='$countryId'";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {

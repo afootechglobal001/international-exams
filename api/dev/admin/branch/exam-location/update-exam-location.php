@@ -19,14 +19,14 @@
     //////////////////declaration of variables//////////////////////////////////////
     $countryId =trim($_GET['countryId']);
     $locationId = $_GET['locationId'];
-    $publishId=trim($data['publishId']);
+    $examId=trim($data['examId']);
     $locationName=trim(strtoupper($data['locationName']));
     $statusId=trim($data['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($countryId, 'COUNTRY ID');
     validateEmptyField($locationId, 'LOCATION ID');
-    validateEmptyField($publishId, 'EXAM NAME');
+    validateEmptyField($examId, 'EXAM');
     validateEmptyField($locationName, 'LOCATION NAME');
     validateEmptyField($statusId, 'STATUS');
 
@@ -50,8 +50,8 @@
 		$examAbbr=$fetchExamQuery['examAbbr'];
 
         mysqli_query($conn,"UPDATE `EXAM_LOCATION_TAB` 
-        SET `countryId`='$countryId', `publishId`='$publishId', `examAbbr`='$examAbbr', `locationName`='$locationName', `statusId`='$statusId', `updatedBy`='$loginStaffId', `updatedTime`=NOW()
-        WHERE `publishId`='$publishId' AND `locationId`='$locationId'")or die (mysqli_error($conn));
+        SET `countryId`='$countryId', `examId`='$examId', `examAbbr`='$examAbbr', `locationName`='$locationName', `statusId`='$statusId', `updatedBy`='$loginStaffId', `updatedTime`=NOW()
+        WHERE `examId`='$examId' AND `locationId`='$locationId'")or die (mysqli_error($conn));
         
         $response = [
             'response'=> 200,
@@ -60,7 +60,7 @@
             'data' => array() // Initialize the data array
         ];
 
-            $alertDetail = "EXAM LOCATION UPDATED SUCCESSFULLY:Exam location was updated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: publish ID: $publishId | Exam: $examAbbr | location ID: $locationId | location Name: $locationName.";
+            $alertDetail = "EXAM LOCATION UPDATED SUCCESSFULLY:Exam location was updated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Exam ID: $examId | Exam: $examAbbr | location ID: $locationId | location Name: $locationName.";
 
             // Fetch branch details ///
             $select="SELECT * FROM EXAM_LOCATION_TAB WHERE countryId ='$countryId'";

@@ -18,13 +18,13 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $countryId =trim($_GET['countryId']);
-    $publishId=trim($data['publishId']);
+    $examId=trim($data['examId']);
     $locationName=trim(strtoupper($data['locationName']));
     $statusId=trim($data['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($countryId, 'COUNTRY ID');
-    validateEmptyField($publishId, 'EXAM NAME');
+    validateEmptyField($examId, 'EXAM');
     validateEmptyField($locationName, 'LOCATION NAME');
     validateEmptyField($statusId, 'STATUS');
 
@@ -43,7 +43,7 @@
     }
 
         //////////////////get exam abbreviation //////////////////////////////////////
-        $examQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE publishId='$publishId'")or die (mysqli_error($conn));
+        $examQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE publishId='$examId'")or die (mysqli_error($conn));
 	    $fetchExamQuery=mysqli_fetch_array($examQuery);
 		$examAbbr=$fetchExamQuery['examAbbr'];
 
@@ -55,8 +55,8 @@
         $locationId=$countId.$no.date("Ymdhis");
 
         mysqli_query($conn,"INSERT INTO `EXAM_LOCATION_TAB`
-        (`countryId`, `publishId`, `examAbbr`, `locationId`, `locationName`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
-        ('$countryId', '$publishId', '$examAbbr', '$locationId', '$locationName', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
+        (`countryId`, `examId`, `examAbbr`, `locationId`, `locationName`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
+        ('$countryId', '$examId', '$examAbbr', '$locationId', '$locationName', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
@@ -65,7 +65,7 @@
             'data' => array() // Initialize the data array
         ];
 
-            $alertDetail = "EXAM LOCATION CREATED SUCCESSFULLY:Exam location was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: publish ID: $publishId | Exam: $examAbbr | location ID: $locationId | location Name: $locationName.";
+            $alertDetail = "EXAM LOCATION CREATED SUCCESSFULLY:Exam location was created successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: Exam ID: $examId | Exam: $examAbbr | location ID: $locationId | location Name: $locationName.";
 
             // Fetch branch details ///
             $select="SELECT * FROM EXAM_LOCATION_TAB WHERE countryId ='$countryId'";

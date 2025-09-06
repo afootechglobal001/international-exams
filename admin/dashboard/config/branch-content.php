@@ -965,7 +965,7 @@
                                 selectField({
                                     id: 'publishId',
                                     title: 'Select Exam',
-                                    fieldValue: getEachExamLocationSession?.publishId ?? '',
+                                    fieldValue: getEachExamLocationSession?.examId ?? '',
                                     fieldLabel: getEachExamLocationSession?.examAbbr ?? ''
                                 });
                                 _getSelectExams('publishId');

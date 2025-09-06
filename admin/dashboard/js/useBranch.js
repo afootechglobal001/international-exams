@@ -624,7 +624,7 @@ function fetchCountryExamData() {
           for (let i = 0; i < fetch.length; i++) {
             no++;
             const examInfo = fetch[i];
-            const publishId = examInfo.publishId;
+            const examId = examInfo.examId;
             const examAbbr = examInfo.examAbbr;
             const regTitle = examInfo.regTitle;
             const examLogo = examInfo.examLogo;
@@ -633,13 +633,13 @@ function fetchCountryExamData() {
             const formattedDate = formatDate(examInfo.createdTime);
 
             content += `
-                <div class="exam-div country-exam-div" id="publish_${publishId}">
+                <div class="exam-div country-exam-div" id="examId_${examId}">
                     <div class="exam-image">
                         <img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
                     </div>
 
                     <div class="top-div">
-                        <button class="delete-btn" id="deleteBtn_${publishId}" title="DELETE" onclick="_deleteExam('${publishId}');">DELETE</button>
+                        <button class="delete-btn" id="deleteBtn_${examId}" title="DELETE" onclick="_deleteExam('${examId}');">DELETE</button>
                     </div>
 
                     <div class="exam-info">
@@ -831,13 +831,13 @@ function _getSelectFetchExam(publishId) {
 function _addExamPricing() {
   try {
     let issueCount = 0;
-    const publishId = $("#publishId").val();
+    const examId = $("#publishId").val();
     const amount = $("#amount").val();
 
     $("#publishId, #amount").removeClass("issue");
     $("#issue_publishId, #issue_amount").html("");
 
-    if (!publishId) {
+    if (!examId) {
       $("#publishId").addClass("issue");
       $("#issue_publishId").html("USER ERROR! Kindly Select exam to continue");
       issueCount++;
@@ -853,7 +853,7 @@ function _addExamPricing() {
 
     if (issueCount > 0) return;
 
-    const form = { publishId, amount };
+    const form = { examId, amount };
     _showCustomConfirm({
       callback: () => {
         _addExamPricingCallback(form);
@@ -889,7 +889,7 @@ function _addExamPricingCallback(form) {
   $("#submitBtn").prop("disabled", true);
 
   const formData = {
-    publishId: form.publishId,
+    examId: form.examId,
     amount: form.amount,
   };
 
@@ -941,11 +941,11 @@ function _addExamPricingCallback(form) {
   });
 }
 
-function _deleteExam(publishId) {
+function _deleteExam(examId) {
   try {
     _showCustomConfirm({
       callback: () => {
-        _deleteExamCallBack(publishId);
+        _deleteExamCallBack(examId);
       },
       title: "Are you sure?",
       message:
@@ -965,9 +965,9 @@ function _deleteExam(publishId) {
   }
 }
 
-function _deleteExamCallBack(publishId) {
+function _deleteExamCallBack(examId) {
   try {
-    const btn = $("#deleteBtn_" + publishId);
+    const btn = $("#deleteBtn_" + examId);
     const btnText = btn.html();
     btn
       .html(
@@ -979,13 +979,13 @@ function _deleteExamCallBack(publishId) {
 
     $.ajax({
       type: "POST",
-      url: `${endPoint}/admin/branch/exam-pricing/delete-exam-pricing?countryId=${getEachCountrySession?.countryId}&publishId=${publishId}`,
+      url: `${endPoint}/admin/branch/exam-pricing/delete-exam-pricing?countryId=${getEachCountrySession?.countryId}&examId=${examId}`,
       dataType: "json",
       cache: false,
       headers: getAuthHeaders(true),
       success: function (info) {
         if (info.success) {
-          $("#publish_" + publishId).fadeOut(300, function () {
+          $("#examId_" + examId).fadeOut(300, function () {
             $(this).remove();
           });
 
@@ -1039,14 +1039,14 @@ function _deleteExamCallBack(publishId) {
 function createAndUpdateExamLocation() {
   try {
     let issueCount = 0;
-    const publishId = $("#publishId").val();
+    const examId = $("#publishId").val();
     const locationName = $("#locationName").val();
     const statusId = $("#statusId").val();
 
     $("#publishId, #locationName, #statusId").removeClass("issue");
     $("#issue_publishId, #issue_locationName, #issue_statusId").html("");
 
-    if (!publishId) {
+    if (!examId) {
       $("#publishId").addClass("issue");
       $("#issue_publishId").html("USER ERROR! Kindly Select exam to continue");
       issueCount++;
@@ -1068,7 +1068,7 @@ function createAndUpdateExamLocation() {
 
     if (issueCount > 0) return;
 
-    const form = { publishId, locationName, statusId };
+    const form = { examId, locationName, statusId };
     _showCustomConfirm({
       callback: () => {
         _createAndUpdateExamLocationCallback(form);
@@ -1108,7 +1108,7 @@ function _createAndUpdateExamLocationCallback(form) {
   $("#submitBtn").prop("disabled", true);
 
   const formData = {
-    publishId: form.publishId,
+    examId: form.examId,
     locationName: form.locationName,
     statusId: form.statusId,
   };

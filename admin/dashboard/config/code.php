@@ -189,6 +189,17 @@ switch ($action){
 		}
 	break;
 
+	case 'deleteOldPagePictures':
+		$oldPagePictures=$_POST['oldPagePictures'];
+
+		$uploadDir = "../../../uploaded_files/pagePictures/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldPagePictures) && file_exists($uploadDir . $oldPagePictures)) {
+			unlink($uploadDir . $oldPagePictures);
+		}
+	break;
+
 
 	case 'createPagesFolder': 	
 		$pageCategoryId =(trim($_POST['pageCategoryId']));

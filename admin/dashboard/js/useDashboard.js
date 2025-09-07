@@ -104,7 +104,7 @@ function filters(selectBoxId) {
   $(
     "#page" +
       selectBoxId +
-      " > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div, .exam-div"
+      " > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div, .exam-div, .book-back-div"
   ).each(function () {
     var text = $(this).text();
     text.toLowerCase().indexOf(valThis.toLowerCase()) > -1

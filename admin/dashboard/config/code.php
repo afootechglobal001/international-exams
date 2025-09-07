@@ -94,7 +94,6 @@ switch ($action){
 		}
     break;
 
-
 	case 'uploadPagePix':
 		$oldSeoFlyer = $_POST['oldSeoFlyer'] ?? '';
 		$newSeoFlyer = $_POST['newSeoFlyer'] ?? '';
@@ -173,6 +172,42 @@ switch ($action){
 
 		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
 			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
+		}
+    break;
+
+	case 'uploadEbookPixAndMaterial':
+		///// Ebook Picture /////
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		$regPixDir = "../../../uploaded_files/ebookPicture/";
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $regPixDir . $newRegPix);
+		}
+
+		////// Ebook Material ///////
+		$newMaterial = $_POST['newMaterial'] ?? '';
+		$materialDir = "../../../uploaded_files/ebookMaterial/";
+
+		if (!empty($newMaterial) && isset($_FILES['material']) && $_FILES['material']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['material']['tmp_name'], $materialDir . $newMaterial);
+		}
+    break;
+
+	case 'unlinkEbookPixAndMaterial':
+		///// Ebook Picture /////
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$oldRegPixDir = "../../../uploaded_files/ebookPicture/";
+
+		if (!empty($oldRegPix) && file_exists($oldRegPixDir . $oldRegPix)) {
+			unlink($oldRegPixDir . $oldRegPix);
+		}
+
+		////// Ebook Material ///////
+		$oldMaterial = $_POST['oldMaterial'] ?? '';
+		$oldMaterialDir = "../../../uploaded_files/ebookMaterial/";
+
+		if (!empty($oldMaterial) && file_exists($oldMaterialDir . $oldMaterial)) {
+			unlink($oldMaterialDir . $oldMaterial);
 		}
     break;
 

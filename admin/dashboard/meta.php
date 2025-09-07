@@ -41,6 +41,7 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/usePage.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useStudyAbroad.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useExamRelatedLinks.js?v=<?php echo $codeVersion?>"></script>
-<script src="<?php echo $websiteUrl?>/admin/dashboard/js/use-blog.js?v=<?php echo $codeVersion?>"></script>
-<script src="<?php echo $websiteUrl?>/admin/dashboard/js/use-gallery.js?v=<?php echo $codeVersion?>"></script>
-<script src="<?php echo $websiteUrl?>/admin/dashboard/js/use-faq.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useBlog.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useGallery.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useFaq.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useEbook.js?v=<?php echo $codeVersion?>"></script>

@@ -21,197 +21,11 @@
         </div>
     </div>
 
-    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="tables-content-div">
-            <div class="content-title">
-                <div class="title">
-                    <i class="bi bi-filetype-pdf"></i>
-                    <p>TOELF E-Books</p>
-                </div>
-            </div>
+    <div class="fetch-ebooks" id="pageContent">
+        <script>_fetchEbookData();</script>
 
-            <div class="inner-table-content">
-                <div class="other-pg-back-div">
-                    <div class="book-back-div">
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/toefl-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>TOEFL</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/act-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>ACT</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/ielts-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>IELTS</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/toefl-2.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>TOEFL</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/gmat-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>GMAT</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
-        <div class="tables-content-div">
-            <div class="content-title">
-                <div class="title">
-                    <i class="bi bi-filetype-pdf"></i>
-                    <p>TOELF E-Books</p>
-                </div>
-            </div>
-
-            <div class="inner-table-content">
-                <div class="other-pg-back-div">
-                    <div class="book-back-div">
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/toefl-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>TOEFL</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/act-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>ACT</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/ielts-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>IELTS</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/toefl-2.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>TOEFL</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="book-div">
-                            <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/gmat-1.jpg" alt="TOELF"></div>
-                            <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                            <div class="text-div">
-                                <div class="details">
-                                    <h3>GMAT</h3>
-                                    <p>Test of English as a Foreign Language</p>
-                                    <div class="book-sum">
-                                        <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                        <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                                    </div>
-                                </div>
-                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="content-loading-div">
+            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
         </div>
     </div>
 <?php } ?>
@@ -221,7 +35,7 @@
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-book-half"></i></div>
-                <h3 id="pageTitle">CREATE NEW E-BOOK</h3>
+                <h3 id="pageTitle">UPLOAD NEW E-BOOK</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -233,7 +47,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
+                <p>You are about to upload e-book. Please complete the form below with accurate details to successfully upload the e-book.</p>
             </div>
 
             <div class="main-content-div">
@@ -252,14 +66,14 @@
                                     id: 'publishId',
                                     title: 'Select Exam',
                                 });
-                                _getSelectExams('publishId');
+                                _getSelectEbookExam('publishId');
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="eBookTitle_container">
+                        <div class="text_field_container" id="ebookTitle_container">
                             <script>
                                 textField({
-                                    id: 'eBookTitle',
+                                    id: 'ebookTitle',
                                     title: 'E-book Title',
                                 });
                             </script>
@@ -268,8 +82,8 @@
                         <div class="form-title">UPLOAD E-BOOK PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
-                                <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
+                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="ebookPixPreview.UpdatePreview(this);" />
                             </div>
                         </label>
 
@@ -288,6 +102,9 @@
                                 </label>
                             </div>
                             <div id="file-list"></div>
+                            <!-- Hidden inputs to hold extra data -->
+                            <input type="hidden" name="ebookSize" id="ebookSize">
+                            <input type="hidden" name="ebookPages" id="ebookPages">
                         </div>
                     
                         <script>
@@ -308,7 +125,10 @@
 
                                     // File size
                                     let sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
-                                    $fileList.html('File size: ' + sizeInMB + ' MB');
+                                    $fileList.html('File size: ' + sizeInMB + 'MB');
+
+                                    // ✅ Store in hidden input
+                                    $('#ebookSize').val(sizeInMB + 'MB');
 
                                     // Get number of pages with PDF.js
                                     let reader = new FileReader();
@@ -319,6 +139,9 @@
                                             data: typedArray
                                         }).promise.then(function(pdf) {
                                             $fileList.append('<br>File Pages: ' + pdf.numPages);
+
+                                            // ✅ Store in hidden input
+                                            $('#ebookPages').val(pdf.numPages);
                                         }).catch(function(error) {
                                             console.error("PDF.js error:", error);
                                             $fileList.append('<br>Could not read number of pages.');
@@ -364,9 +187,15 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="alert alert-success" id="progress-alert">
+                    <span>UPLOADING IN PROGRESS...</span><br>
+                    Please DO NOT close this panel as the process takes some time.
+                    <div class="ajax-progress">0%</div>
+                </div> 
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="createAndEbook();"> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createEbook();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

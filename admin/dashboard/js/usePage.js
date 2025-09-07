@@ -302,7 +302,7 @@ function _savePagePicturesCallback(formData) {
     })
     .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError(() => _savePagePicturesCallback(formData));
+        _callAjaxError();
     });
 }
 
@@ -367,8 +367,8 @@ function _fetchPagePicture() {
 function _initfetchPagePicture(data) {
     $("#fetchPagePicture .picture-div:not(.select-pix-div)").remove();
 	const content = data.map((item) => `
-		<div class="picture-div">
-			<div class="icon-div" title="Delete Picture" id="deleteBtn_${item.publishId}" onclick="_deletePagePicture('${item.publishId}','${item.sn}');"><i class="bi-trash"></i></div>
+		<div class="picture-div" id="pictureDiv_${item.sn}">
+			<div class="icon-div" title="Delete Picture" id="deleteBtn_${item.sn}" onclick="_deletePagePicture('${item.publishId}','${item.sn}');"><i class="bi-trash"></i></div>
 			<img src="${pagePixPath}/${item.pictures}" alt="${item.sn}" />
 		</div>
 	`).join("");
@@ -390,8 +390,8 @@ function _deletePagePicture(publishId, sn) {
 function _deletePagePictureCallback(publishId, sn){
 	try {
 		///// get btn text/////
-		const btnText = $(`#deleteBtn_${publishId}`).html();
-		_btnDisable(`deleteBtn_${publishId}`, btnText, true);
+		const btnText = $(`#deleteBtn_${sn}`).html();
+		_btnDisable(`deleteBtn_${sn}`, btnText, true);
 		
 		//// call endpoint //////
 		_callFetchEndPoints({
@@ -404,10 +404,10 @@ function _deletePagePictureCallback(publishId, sn){
 				const message = response.message;
 				const oldPagePictures = response.oldPagePictures;
 
-				_deleteOldPagePictures(oldPagePictures, message);
-				_btnDisable(`deleteBtn_${publishId}`, btnText, false);
+				_deleteOldPagePictures(oldPagePictures, sn, message);
+				_btnDisable(`deleteBtn_${sn}`, btnText, false);
 			} else {
-				_btnDisable(`deleteBtn_${publishId}`, btnText, false);
+				_btnDisable(`deleteBtn_${sn}`, btnText, false);
 				_showCustomConfirm({
 					title: "Error!",
 					message: response.message,
@@ -419,16 +419,16 @@ function _deletePagePictureCallback(publishId, sn){
 		.catch((error) => {
 			console.error("Error:", error);
 			_callAjaxError(() => _deletePagePictureCallback()); // retry if needed
-			_btnDisable(`deleteBtn_${publishId}`, btnText, false);
+			_btnDisable(`deleteBtn_${sn}`, btnText, false);
       	});
 	} catch (error) {
 		console.error("Error:", error);
 		_callCatchError(() => _deletePagePictureCallback());
-		_btnDisable(`deleteBtn_${publishId}`, btnText, false);
+		_btnDisable(`deleteBtn_${sn}`, btnText, false);
 	}
 }
 
-function _deleteOldPagePictures(oldPagePictures, message) {
+function _deleteOldPagePictures(oldPagePictures, sn, message) {
 	const formData = new FormData();
 	formData.append("action", "deleteOldPagePictures");
 	formData.append("oldPagePictures", oldPagePictures);
@@ -439,6 +439,9 @@ function _deleteOldPagePictures(oldPagePictures, message) {
 		expectJson: false,
 	})
 	.then(() => {
+		$("#pictureDiv_" + sn).fadeOut(300, function () {
+			$(this).remove();
+		});
 		_showCustomConfirm({
 			title: "Success!",
 			message: message,

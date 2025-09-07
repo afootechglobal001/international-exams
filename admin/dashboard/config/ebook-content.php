@@ -15,7 +15,7 @@
                 <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search E-book Here...">
                 <i class="bi bi-filetype-pdf"></i>
             </div>
-            <button class="btn" title="ADD NEW E-BOOK" onclick="_getForm({page: '', url: adminPortalLocalUrl});">
+            <button class="btn" title="ADD NEW E-BOOK" onclick="_getForm({page: 'eBookReg', url: adminPortalLocalUrl});">
                 <i class="bi-plus-square"></i> ADD NEW E-BOOK
             </button>
         </div>
@@ -61,7 +61,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
 
@@ -109,7 +109,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
 
@@ -174,7 +174,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
 
@@ -190,7 +190,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
 
@@ -206,7 +206,7 @@
                                         <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
                                     </div>
                                 </div>
-                                 <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
+                                <button class="btn" title="Edit"><i class="bi-pencil-square"></i> Edit</button>
                             </div>
                         </div>
                     </div>
@@ -218,66 +218,155 @@
 
 <?php if ($page == 'eBookReg') { ?>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-plus-square"></i> ADD A NEW INTERNATIONAL EXAM</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-book-half"></i></div>
+                <h3 id="pageTitle">CREATE NEW E-BOOK</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
             </div>
         </div>
 
+        <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to <span> ADD INTERNATIONAL EXAM</span></div>
-                </div>
+            <div class="form-notification">
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
+            </div>
 
-                <div class="text_field_container" id="name_container">
-                    <script>
-                        textField({
-                            id: 'name',
-                            title: 'Exam Name'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="abbreviation_container">
-                    <script>
-                        textField({
-                            id: 'abbreviation',
-                            title: 'Exam Abbreviation',
-                        });
-                    </script>
-                </div>
-
-                <div class="form-title">UPLOAD EXAM LOGO: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
-                <label>
-                    <div class="pix-div">
-                        <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                        <input type="file" id="" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-book-half"></i>
+                            <p>E-book Registration</p>
+                        </div>
                     </div>
-                </label>
 
-                <div class="text_area_container" id="incentives_container">
-                    <script>
-                        textField({
-                            id: 'incentives',
-                            title: 'Incentives',
-                            type: 'textarea',
-                        });
-                    </script>
+                    <div class="form-container">
+                        <div class="text_field_container" id="publishId_container">
+                            <script>
+                                selectField({
+                                    id: 'publishId',
+                                    title: 'Select Exam',
+                                });
+                                _getSelectExams('publishId');
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="eBookTitle_container">
+                            <script>
+                                textField({
+                                    id: 'eBookTitle',
+                                    title: 'E-book Title',
+                                });
+                            </script>
+                        </div>
+
+                        <div class="form-title">UPLOAD E-BOOK PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <label>
+                            <div class="pix-div">
+                                <img id="examPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="examPixPreview.UpdatePreview(this);" />
+                            </div>
+                        </label>
+
+                        <div class="form-title">E-BOOK MATERIAL (PDF): <span>*</span></div>
+                        <div class="pdf-back-div">
+                            <legend id="pdfLegend" style="cursor:pointer;">Click to Upload PDF <i class="bi-upload"></i></legend>
+                            <div class="div-in" id="pdf_upload_area">
+                                <label>
+                                    <div id="pdfDisplay" class="pdf-container background-display">
+                                        <embed id="pdfFile" type="application/pdf" width="100%" height="350px" style="display:none;">
+                                        <div id="pdfBackground" class="background-text" style="cursor:pointer;">
+                                            <img src="<?php echo $websiteUrl ?>/all-images/images/defaults.png" alt="Default Image">
+                                        </div>
+                                    </div>
+                                    <input type="file" id="material" name="pdfFile" accept=".pdf" style="display:none;">
+                                </label>
+                            </div>
+                            <div id="file-list"></div>
+                        </div>
+                    
+                        <script>
+                            $(document).ready(function() {
+                                let $pdfDisplay = $('#pdfDisplay');
+                                let $pdfInput = $('#material');
+                                let $pdfEmbed = $('#pdfFile');
+                                let $fileList = $('#file-list');
+
+                                function showPdf(file) {
+                                    if (!file) return;
+
+                                    // Show preview
+                                    let fileUrl = URL.createObjectURL(file);
+                                    $pdfDisplay.removeClass('background-display').addClass('embed-display');
+                                    $pdfEmbed.show().attr('src', fileUrl);
+                                    $('#pdfBackground').hide();
+
+                                    // File size
+                                    let sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                                    $fileList.html('File size: ' + sizeInMB + ' MB');
+
+                                    // Get number of pages with PDF.js
+                                    let reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        let typedArray = new Uint8Array(e.target.result);
+
+                                        pdfjsLib.getDocument({
+                                            data: typedArray
+                                        }).promise.then(function(pdf) {
+                                            $fileList.append('<br>File Pages: ' + pdf.numPages);
+                                        }).catch(function(error) {
+                                            console.error("PDF.js error:", error);
+                                            $fileList.append('<br>Could not read number of pages.');
+                                        });
+                                    };
+                                    reader.readAsArrayBuffer(file);
+                                }
+
+                                // Click legend to open file input
+                                $('#pdfLegend').click(function() {
+                                    $pdfInput.click();
+                                });
+
+                                // On file select
+                                $pdfInput.on('change', function() {
+                                    showPdf(this.files[0]);
+                                });
+
+                                // Drag & Drop
+                                $pdfDisplay.on('dragover', function(e) {
+                                    e.preventDefault();
+                                    $(this).addClass('drag-over');
+                                }).on('dragleave', function() {
+                                    $(this).removeClass('drag-over');
+                                }).on('drop', function(e) {
+                                    e.preventDefault();
+                                    $(this).removeClass('drag-over');
+                                    let file = e.originalEvent.dataTransfer.files[0];
+                                    $pdfInput[0].files = e.originalEvent.dataTransfer.files;
+                                    showPdf(file);
+                                });
+                            });
+                        </script>
+
+                        <div class="text_field_container" id="statusId_container">
+                            <script>
+                                selectField({
+                                    id: 'statusId',
+                                    title: 'Select Status',
+                                });
+                                _getSelectStatusId('statusId', '1,2');
+                            </script>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="text_field_container" id="statusId_container">
-                    <script>
-                        selectField({
-                            id: 'statusId',
-                            title: 'Select Status'
-                        });
-                    </script>
-                </div>
-
-                <div>
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i>SUBMIT </button>
+                <div class="btn-div">
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="createAndEbook();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

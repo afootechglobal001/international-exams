@@ -3101,6 +3101,7 @@ main {
 .tables-content-div .inner-table-content {
 	width: calc(100% - 40px);
 	padding: 20px;
+	color: var(--sub-body-color);
 }
 
 .tables-content-div .pages-inner-content {
@@ -3110,7 +3111,6 @@ main {
 }
 
 .tables-content-div .inner-table-content p{
-	color: var(--sub-body-color);
 	font-size: 13px;
 	font-family: sub-title-font;
 }
@@ -3906,4 +3906,53 @@ main {
 	justify-content: center;
 	transition: 0.3s ease-in;
 	cursor: pointer;
+}
+
+.pdf-back-div {
+	padding: 20px 20px;
+	background: #f8f8f8;
+	border-radius: 3px;
+	border: 1px dashed #e6e6e6;
+}
+  
+.pdf-back-div .div-in{
+	padding: 10px;
+	background: var(--white-color);
+	margin: 10px 0px;
+	border-radius: 10px;
+	border: rgba(157, 4, 60, 0.3) 1px dashed;
+	align-items: center;
+	cursor: pointer;
+}
+
+.pdf-back-div .div-in .pdf-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pdf-back-div .div-in .pdf-container .background-text {
+    width: 100%;
+    height: 100%;
+}
+
+.pdf-back-div .div-in .pdf-container .background-text img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdf-back-div .div-in input[type="file"] {
+    display: none;
+}
+
+.pdf-back-div .div-in .dragover {
+    border: 2px dashed #80fca9;
+}
+
+.pdf-back-div legend{
+	font-size:13px;
+	font-family: body-font;
+	color: var(--text-color);
+	margin-bottom: 10px;
 }

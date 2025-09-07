@@ -68,18 +68,18 @@
         /////////////////// fetch exam centers per location////////////
         $centerData=array();
         $getexamCenterQuery = mysqli_query($conn, "SELECT a.*, b.statusName 
-        FROM EXAM_CENTER_TAB a 
+        FROM EXAM_CENTRE_TAB a 
         JOIN SETUP_STATUS_TAB b 
         ON a.statusId = b.statusId 
         WHERE a.locationId='$locationId'
-        ORDER BY a.centerName ASC");
+        ORDER BY a.centreName ASC");
 
         while ($getExamCenterFetch = mysqli_fetch_assoc($getexamCenterQuery)) {
-            $centerId = $getExamCenterFetch['centerId'];
+            $centreId = $getExamCenterFetch['centreId'];
 
             /////////////////// fetch exam date per center////////////
             $examDateData = array();
-            $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTER_DATE WHERE centerId='$centerId'");
+            $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTRE_DATE WHERE centreId='$centreId'");
             while ($getExamDateFetch = mysqli_fetch_assoc($getExamDateQuery)) {
                 $examDateData[] = $getExamDateFetch;
             }

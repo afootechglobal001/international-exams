@@ -29,6 +29,8 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/jquery.datetimepicker.js"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/chart.min.js"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/canvasjs.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"></script>
 
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useDashboard.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useBranch.js?v=<?php echo $codeVersion?>"></script>

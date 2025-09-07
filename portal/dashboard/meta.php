@@ -21,14 +21,18 @@
 let userLoginData = JSON.parse(sessionStorage.getItem("userLoginData"));
 const loginUserId = userLoginData.userId;
 const loginAccessKey = userLoginData.accessKey;
+const loginCountryData = userLoginData.countryData;
+console.log("loginCountryData", loginCountryData);
 </script>
 
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
 <script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/tablePagenator.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/js/helper.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 
 <script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePortal.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePayment.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/portal/dashboard/js/useExams.js?v=<?php echo $codeVersion?>"></script>

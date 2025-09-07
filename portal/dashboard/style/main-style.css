@@ -880,7 +880,8 @@ main {
   border: 1px solid var(--link-color);
   background: rgba(50, 138, 179, 0.1);
 }
-.exams-back-div .exam-div .done {
+.exams-back-div .exam-div .done,
+.exams-back-div .exam-div .active {
   color: var(--active-color);
   border: 1px solid var(--active-color);
   background: rgba(0, 153, 0, 0.1);
@@ -907,6 +908,11 @@ main {
 }
 .exams-back-div .exam-div .exam-info .exam-time p i {
   color: var(--primary-color);
+}
+.exams-back-div .exam-div .price {
+  color: var(--body-color);
+  font-family: title-font;
+  font-size: 20px;
 }
 
 .exams-back-div .exam-div .btn {
@@ -1362,6 +1368,10 @@ main {
   white-space: nowrap;
 }
 
+.slide-form-div .container-back-div .btn-div .backBtn {
+  background: linear-gradient(90deg, var(--body-color), var(--sub-body-color));
+}
+
 .slide-form-div .container-back-div .btn-div .btn:hover {
   background-size: 200% 100%;
   background-position: right;
@@ -1394,6 +1404,12 @@ main {
   font-size: 11px;
 }
 
+.form-container .form-note span {
+  color: var(--link-color);
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: sub-title-font;
+}
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .caption-div {
@@ -1549,4 +1565,12 @@ main {
   background: linear-gradient(90deg, #faf5e5, #fff);
   color: var(--body-color);
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+#schoolsOfInterest_div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

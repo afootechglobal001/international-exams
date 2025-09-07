@@ -95,3 +95,225 @@
     </section>
 </sction>
 <?php } ?>
+
+
+
+
+<?php if ($page == 'examForm') { ?>
+<!-- /////////// Title ////////////////////////////// -->
+<section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+    <div class="form-title-div">
+        <div class="title-div">
+            <div class="icon-div"><i class="bi bi-journal-text"></i></div>
+            <h3>EXAM REGISTRAION</h3>
+        </div>
+        <div class="btn-div">
+            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                <i class="bi bi-x-lg"></i> Close
+            </button>
+        </div>
+    </div>
+    <!-- /////////// Title ////////////////////////////// -->
+    <div class="container-back-div">
+        <div class="form-notification">
+            <p><strong>Importance Notice!</strong><br /> Test takers in Nigeria will need a valid international passport
+                as an
+                identifying
+                document on the day of the exam. Kindly use a valid Email address has you will use this for receiving
+                your Exam Details that you will input below and get payment details for completing the exam
+                registration. Call Test Registration department for any enquiry: <strong id="phoneNumber">---</strong>
+                <script>
+                $("#phoneNumber").html((loginCountryData.phoneNumber));
+                </script>
+            </p>
+        </div>
+
+        <div class="form-container">
+
+            <!-- Exam Information -->
+            <div class="content-div">
+                <div class="content-title">
+                    <div class="title">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        <p>Exam Information</p>
+                    </div>
+                </div>
+
+                <div class="form-text">
+                    <div class="text_field_container" id="examId_container">
+                        <script>
+                        selectField({
+                            id: 'examId',
+                            title: 'Select Exam Type'
+                        });
+                        _getCountryExams('examId');
+                        </script>
+                    </div>
+
+                    <section class="content-div" id="examPreviewContainer" style="display: none;">
+                        <div class="content-title">
+                            <div class="title">
+                                <i class="bi bi-clipboard2"></i>
+                                <p>Exam Preview</p>
+                            </div>
+
+                        </div>
+
+                        <div class="exams-back-div" id="examPreviewDiv">
+                            <!-- <div class="exam-div">
+                                <div class="exam-image">
+                                    <img src="<?php echo $websiteUrl?>/all-images/exam-logo/ielts-exam-nigeria.jpg"
+                                        alt="Exam Image">
+                                </div>
+                                <div class="exam-status active">ACTIVE</div>
+                                <div class="exam-info">
+                                    <h3>IELTS</h3>
+                                    <p>International English Language Testing System</p>
+                                </div>
+                                <div class="price">
+                                    <p>NGN 293,000.00</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </section>
+
+                    <div class="text_field_container" id="locationId_container">
+                        <script>
+                        selectField({
+                            id: 'locationId',
+                            title: 'Select Preferred Location'
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="locationCentreId_container">
+                        <script>
+                        selectField({
+                            id: 'locationCentreId',
+                            title: 'Select Preferred Centre'
+                        });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="examDate_container">
+                        <script>
+                        selectField({
+                            id: 'examDate',
+                            title: 'Preferred Exam Date'
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="altDate_container">
+                        <script>
+                        selectField({
+                            id: 'altDate',
+                            title: 'Alternate Exam Date'
+                        });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio Data -->
+            <div class="content-div">
+                <div class="content-title">
+                    <div class="title">
+                        <i class="bi bi-person-lines-fill"></i>
+                        <p>Bio Data</p>
+                    </div>
+                </div>
+
+                <div class="form-text">
+                    <div class="text_field_container" id="firstName_container">
+                        <script>
+                        textField({
+                            id: 'firstName',
+                            title: 'Enter Your First Name',
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="middleName_container">
+                        <script>
+                        textField({
+                            id: 'middleName',
+                            title: 'Enter Your Middle Name',
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="lastName_container">
+                        <script>
+                        textField({
+                            id: 'lastName',
+                            title: 'Enter Your Last Name',
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="dob_container">
+                        <script>
+                        textField({
+                            id: 'dob',
+                            title: 'Enter Your Date of Birth',
+                            type: 'date'
+                        });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="emailAddress_container">
+                        <script>
+                        textField({
+                            id: 'emailAddress',
+                            title: 'Enter Your Email Address',
+                        });
+                        </script>
+                    </div>
+                    <div class="form-note">
+                        <p> Make sure you use a correct and valid email address.</p>
+                    </div>
+                    <div class="text_field_container" id="phoneNumber_container">
+                        <script>
+                        textField({
+                            id: 'phoneNumber',
+                            title: 'Enter Your Phone Number',
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="residentialAddress_container">
+                        <script>
+                        textField({
+                            id: 'residentialAddress',
+                            title: 'Enter Your Residential Address',
+                        });
+                        </script>
+                    </div>
+                    <div class="text_field_container" id="genderId_container">
+                        <script>
+                        selectField({
+                            id: 'genderId',
+                            title: 'Select Your Gender'
+                        });
+                        _getSelectGender('genderId');
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic information -->
+            <div id="schoolsOfInterest_div">
+                <script>
+                schoolCounter = 0;
+                _addMoreSchoolsOfInterest();
+                </script>
+            </div>
+            <div class="form-note">
+                <p><span onclick="_addMoreSchoolsOfInterest();">CLICK HERE</span> to add more schools of interest</p>
+            </div>
+
+
+            <div class="btn-div" style="flex-direction: column; gap: 5px;">
+                <button class="btn" title="REGISTER AND PAY NOW" id="submitBtn" onclick="_changePassword();"> <i
+                        class="bi-credit-card-2-back"></i> REGISTER AND PAY NOW </button>
+                <button class="btn backBtn" title="REGISTER AND PAY LATER" id="submitBtn" onclick="_changePassword();">
+                    <i class="bi-arrow-clockwise"></i> REGISTER AND PAY LATER </button>
+            </div>
+        </div>
+</section>
+<?php } ?>

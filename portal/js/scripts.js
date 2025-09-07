@@ -39,7 +39,7 @@ function _logUserEmail() {
         _proceedLog(formData);
       },
       title: "Are you sure?",
-      message: "An unexpected error occurred! Please try again.",
+      message: "Will proceed to send OTP to your email address.",
       alertType: "warning",
       falseActionBtn: true,
     });

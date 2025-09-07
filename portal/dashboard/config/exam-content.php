@@ -121,9 +121,9 @@
                 identifying
                 document on the day of the exam. Kindly use a valid Email address has you will use this for receiving
                 your Exam Details that you will input below and get payment details for completing the exam
-                registration. Call Test Registration department for any enquiry: <strong id="phoneNumber">---</strong>
+                registration. Call Test Registration department for any enquiry: <strong id="phoneNumber_">---</strong>
                 <script>
-                $("#phoneNumber").html((loginCountryData.phoneNumber));
+                $("#phoneNumber_").html((loginCountryData.phoneNumber));
                 </script>
             </p>
         </div>
@@ -308,10 +308,10 @@
             </div>
 
 
-            <div class="btn-div" style="flex-direction: column; gap: 5px;">
-                <button class="btn" title="REGISTER AND PAY NOW" id="submitBtn" onclick="_changePassword();"> <i
+            <div class="btn-div" style="flex-direction: column; gap: 5px;" id="submitBtn">
+                <button class="btn" title="REGISTER AND PAY NOW" onclick="_registerExam('CC');"> <i
                         class="bi-credit-card-2-back"></i> REGISTER AND PAY NOW </button>
-                <button class="btn backBtn" title="REGISTER AND PAY LATER" id="submitBtn" onclick="_changePassword();">
+                <button class="btn backBtn" title="REGISTER AND PAY LATER" onclick="_registerExam('BT');">
                     <i class="bi-arrow-clockwise"></i> REGISTER AND PAY LATER </button>
             </div>
         </div>

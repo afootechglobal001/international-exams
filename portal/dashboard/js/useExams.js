@@ -19,7 +19,7 @@ function _addMoreSchoolsOfInterest() {
             </div>
              ${
                schoolCounter > 1
-                 ? `<button type="button" class="btn" onclick="_deleteSchool('${schoolDiv.id}')">Delete</button>`
+                 ? `<button type="button" class="btn" onclick="_deleteSchool('${schoolDiv.id}')"><i class="bi bi-trash3"></i></button>`
                  : ""
              }
         </div>
@@ -56,7 +56,7 @@ function _addMoreSchoolsOfInterest() {
     id: `programId_${schoolCounter}`,
     title: "Program of Study",
   });
-
+  _getSelectProgram(`programId_${schoolCounter}`);
   textField({
     id: `courseOfStudy_${schoolCounter}`,
     title: "Course of Study",
@@ -91,21 +91,14 @@ function _getCountryExams(fieldId) {
           $("#searchList_" + fieldId).html("");
 
           for (let i = 0; i < data.length; i++) {
-            const id = data[i].publishId;
+            const id = data[i].examId;
             const value = data[i].examAbbr;
-            $("#searchList_" + fieldId).append(
-              "<li onclick=\"_clickOption('searchList_" +
-                fieldId +
-                "', '" +
-                id +
-                "', '" +
-                value +
-                "'); _getcountryExamPricing('" +
-                id +
-                "');\">" +
-                value +
-                "</li>"
-            );
+            $("#searchList_" + fieldId).append(`
+              <li onclick="_clickOption('searchList_${fieldId}', '${id}', '${value}'); 
+                _getcountryExamPricing('${id}');">
+                ${value}
+              </li>
+            `);
           }
         } else {
           const response = info.response;
@@ -147,6 +140,7 @@ function _getcountryExamPricing(examId) {
         if (success === true) {
           const data = info.data[0];
           _previewExam(data);
+          _getExamLocations("locationId", data.examId);
         } else {
           const response = info.response;
           if (response < 100) {
@@ -192,6 +186,150 @@ function _previewExam(examInfo) {
 
   $("#examPreviewDiv").html(content);
 }
+
+function _getExamLocations(fieldId, examId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/preset-data/fetch-exam-location?countryId=${loginCountryData.countryId}&examId=${examId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+        console.log(data);
+        if (success === true) {
+          $("#searchList_" + fieldId).html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].locationId;
+            const value = data[i].locationName;
+            $("#searchList_" + fieldId).append(`
+              <li onclick="_clickOption('searchList_${fieldId}', '${id}', '${value}'); 
+                _getExamLocationCentres('locationCentreId', '${id}');">
+                ${value}
+              </li>
+            `);
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+function _getExamLocationCentres(fieldId, locationId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/preset-data/fetch-exam-location-centres?locationId=${locationId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        if (success === true) {
+          $("#searchList_" + fieldId).html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].centreId;
+            const value = data[i].centreName;
+            $("#searchList_" + fieldId).append(`
+              <li onclick="_clickOption('searchList_${fieldId}', '${id}', '${value}'); 
+                _getExamLocationCentreDates('examDate', '${id}');">
+                ${value}
+              </li>
+            `);
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+function _getExamLocationCentreDates(fieldId, centreId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/preset-data/fetch-exam-location-centre-dates?centreId=${centreId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        if (success === true) {
+          $("#searchList_" + fieldId + ", #searchList_altDate").html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].examDate;
+            const value = formatExamDate(data[i].examDate);
+
+            $("#searchList_" + fieldId).append(`
+              <li onclick="_clickOption('searchList_${fieldId}', '${id}', '${value}');">
+                ${value}
+              </li>
+            `);
+
+            $("#searchList_altDate").append(`
+              <li onclick="_clickOption('searchList_altDate', '${id}', '${value}');">
+                ${value}
+              </li>
+            `);
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
 function _registerExam() {
   try {
     //////get all needed values////

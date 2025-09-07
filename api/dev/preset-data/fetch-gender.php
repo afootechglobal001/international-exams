@@ -1,41 +1,38 @@
 <?php require_once '../config/connection.php';?>
 
-<?php
-    if (!$checkBasicSecurity){/// start if 1
-        goto end;
-    }
-?>
+<?php if (!$checkBasicSecurity) {goto end;}?>
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
-    $countryId=trim($_GET['countryId']);
-    $examId=trim($_GET['examId']);
-    if($examId!=""){
-        $examIds="AND a.examId='$examId'";
+    $q = $_GET['q'];
+    $genderIds = $_GET['genderId'];
+    if ($genderIds !=''){
+        $whareClause= "AND genderId IN ($genderIds)";
     }
-
-    $select = "SELECT a.*, b.publishId, b.regTitle, b.examAbbr, b.examLogo FROM BRANCH_EXAM_PRICING_TAB a, PUBLISH_TAB b WHERE a.countryId='$countryId' AND a.examId=b.publishId $examIds";
-
+    $select="SELECT * FROM SETUP_GENDER_TAB WHERE (genderName LIKE '%$q%' $whareClause)";
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
+
     $allRecordCount=mysqli_num_rows($query);
     if($allRecordCount==0){///start if 1
-        $response['response']=200;
-        $response['success']=false;
-        $response['message']="No Exam Record found for this country";
+        $response = [
+            'response' => 200,
+            'success' => false,
+            'message' => "No Record found"
+        ];
         goto end;
     }
 
-    $response=[
+    $response = [
         'response' => 200,
         'success' => true,
-        'message' => "EXAM FETCH SUCCESFFULY!",
+        'message' => "GENDER FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
-
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $response['data'][] = $fetchQuery;
     }
+//////////////////////////////////////////////////////////////////////////////////////////////
 end:
 echo json_encode($response);
 ?>

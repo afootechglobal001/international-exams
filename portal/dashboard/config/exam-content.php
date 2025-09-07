@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="exams-back-div" id="examPreviewDiv">
-                            <div class="exam-div">
+                            <!-- <div class="exam-div">
                                 <div class="exam-image">
                                     <img src="<?php echo $websiteUrl?>/all-images/exam-logo/ielts-exam-nigeria.jpg"
                                         alt="Exam Image">
@@ -173,7 +173,7 @@
                                 <div class="price">
                                     <p>NGN 293,000.00</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </section>
 
@@ -183,16 +183,14 @@
                             id: 'locationId',
                             title: 'Select Preferred Location'
                         });
-                        // _getSelectCountry('countryId');
                         </script>
                     </div>
-                    <div class="text_field_container" id="centreId_container">
+                    <div class="text_field_container" id="locationCentreId_container">
                         <script>
                         selectField({
-                            id: 'centreId',
+                            id: 'locationCentreId',
                             title: 'Select Preferred Centre'
                         });
-                        // _getSelectCountry('countryId');
                         </script>
                     </div>
 
@@ -202,7 +200,6 @@
                             id: 'examDate',
                             title: 'Preferred Exam Date'
                         });
-                        // _getSelectCountry('countryId');
                         </script>
                     </div>
                     <div class="text_field_container" id="altDate_container">
@@ -211,7 +208,6 @@
                             id: 'altDate',
                             title: 'Alternate Exam Date'
                         });
-                        // _getSelectCountry('countryId');
                         </script>
                     </div>
                 </div>
@@ -288,13 +284,13 @@
                         });
                         </script>
                     </div>
-                    <div class="text_field_container" id="gender_container">
+                    <div class="text_field_container" id="genderId_container">
                         <script>
                         selectField({
-                            id: 'gender',
+                            id: 'genderId',
                             title: 'Select Your Gender'
                         });
-                        // _getSelectCountry('countryId');
+                        _getSelectGender('genderId');
                         </script>
                     </div>
                 </div>
@@ -303,6 +299,7 @@
             <!-- Academic information -->
             <div id="schoolsOfInterest_div">
                 <script>
+                schoolCounter = 0;
                 _addMoreSchoolsOfInterest();
                 </script>
             </div>

@@ -205,7 +205,6 @@ a {
   list-style: none;
   padding: 20px;
   min-height: 10px;
-  line-height: 10px;
   cursor: pointer;
   background: rgba(156, 156, 156, 0.1);
   transition: all 0.2s ease-in 0.2s;
@@ -215,6 +214,7 @@ a {
 .text_field_container .searchPanel ul li:hover {
   color: var(--primary-color);
   padding-left: 30px;
+  background: rgba(226, 226, 226, 0.5);
 }
 
 /*--------------------------------------------------------------------------------------------------*/

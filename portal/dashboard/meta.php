@@ -29,6 +29,7 @@ console.log("loginCountryData", loginCountryData);
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
 <script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/tablePagenator.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/js/helper.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 

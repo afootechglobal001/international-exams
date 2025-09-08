@@ -8,26 +8,45 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
+    $pageCategoryId =trim($_GET['pageCategoryId']);
     $publishId = $_GET['publishId'];
+    $blogCatId = $_GET['blogCatId'];
+    $q = $_GET['q'];
 
+    if (!empty($publishId)) {
+        $publishIds = "AND a.publishId ='$publishId' ";
+    }
+
+    if (!empty($blogCatId)) {
+        $blogCatIds = "AND a.blogCatId ='$blogCatId' ";
+    }
+    
+    // Securely escape $q
+    $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
-        a.pageCategoryId,
+        a.pageCategoryId, 
         a.publishId, 
         a.regTitle, 
-        a.examAbbr,
-        a.incentives,
+        a.blogCatId, 
         a.regPix, 
         a.statusId, 
-        a.updatedBy,
-        a.updatedTime,
-        b.seoDescription,
+        a.createdBy,
+        a.updatedBy, 
+        a.createdTme, 
+        a.updatedTime, 
         b.pageUrl,
-        b.pageContent
+        b.pageContent,
+        b.seoDescription,
+        c.catName AS blogCatName
         FROM PUBLISH_TAB a
-        JOIN PAGES_TAB b
-            ON a.publishId= b.publishId
-            AND a.statusId =1
-        AND a.publishId ='$publishId'  
+        JOIN PAGES_TAB b 
+            ON a.publishId = b.publishId
+        JOIN SETUP_CATEGORIES_TAB c
+            ON a.blogCatId = c.catId
+        WHERE (a.regTitle LIKE '%$q%' OR c.catName LIKE '%$q%') $publishIds $blogCatIds
+        AND a.statusId= 1    
+            AND a.pageCategoryId ='$pageCategoryId'
+        ORDER BY a.createdTme DESC LIMIT 2;
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -42,33 +61,26 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "EXAM FETCH SUCCESFFULY!",
+        'message' => "BLOG FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-        $publishId=$fetchQuery['publishId'];
         $updatedBy=$fetchQuery['updatedBy'];
 
-        /////////////////// fetch Related Links per exam ////////////
-        $relatedLinksData=array();
-        $getRelatedLinksQuery = mysqli_query($conn, "SELECT a.parentPublishId, a.publishId, a.regTitle, b.pageUrl FROM PUBLISH_TAB a JOIN PAGES_TAB b ON a.publishId= b.publishId WHERE a.parentPublishId='$publishId'");
-        while ($getRelatedLinksfetch = mysqli_fetch_assoc($getRelatedLinksQuery)) {
-            $relatedLinksData[] = $getRelatedLinksfetch;
-        }
-        $fetchQuery['relatedLinksData']= $relatedLinksData;
-
-       /////////////////// for  UpdatedBy /////////
+        /////////////////// for  UpdatedBy /////////
         $updatedByData=array();
         $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$updatedBy'");
         while ($getUpdatedByfetch = mysqli_fetch_assoc($getUpdatedByQuery)) {
-            $updatedByData= $getUpdatedByfetch;
+            $updatedByData = $getUpdatedByfetch;
         }
         $fetchQuery['updatedBy']= $updatedByData;
 
-        $response['data']= $fetchQuery;
+
+        $response['data'][] = $fetchQuery;
     }
+
 end:
 echo json_encode($response);
 ?>

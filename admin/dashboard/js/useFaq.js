@@ -166,18 +166,25 @@ function _fetchFaqData() {
   	}
 }
 
-function _initFetchFaqData(data) {
-  	const content = data.map((item) => `
-   	<div class="faq-back-div">
-		<div class="title-div">
-			<div class="num">1</div>
-			<button class="btn" onClick="_fetchEachFaq('${item.pageCategoryId}','${item.publishId}');"><i class="bi-pencil-square"></i> <span>${item.faqQuestion}</span></button>
-		</div>
-		<div class="answer-div">${item.faqAnswer}</div>
-	</div>
-  	`).join("");
-    $('#pageContent').html(content);
+function _initFetchFaqData(data, start = 0) {
+  	const content = data.map((item, index) => {
+    return `
+      <div class="faq-back-div">
+        <div class="title-div">
+          <div class="num">${start + index + 1}</div>
+          <button class="btn" onClick="_fetchEachFaq('${item.pageCategoryId}','${item.publishId}');">
+            <i class="bi-pencil-square"></i> 
+            <span>${item.faqQuestion}</span>
+          </button>
+        </div>
+        <div class="answer-div">${item.faqAnswer}</div>
+      </div>
+    `;
+  }).join("");
+
+  $('#pageContent').html(content);
 }
+
 
 function _fetchEachFaq(pageCategoryId, publishId) {
     $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);

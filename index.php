@@ -617,54 +617,15 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <h2>Frequently Asked <span>#Questions</span></h2>
                         </div>    
 
-                        <div class="faq-toggle-back">
-                            <div class="faq-toggle" id="faq1">
-								<div class="title-text" onclick="_collapse('faq1')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>What is the TOEFL exam used for?</h3>
-									</div>
-									<div class="expand-div" id="faq1num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq1answer" style="display: none;">
-									<p>The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</p>
-								</div>
-							</div>
+                        <div class="faq-toggle-back" id="indexFaqContent">
+                            <script> _fetchIndexFaqData();</script>
 
-                            <div class="faq-toggle" id="faq2">
-								<div class="title-text" onclick="_collapse('faq2')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>How is the IELTS scored?</h3>
-									</div>
-									<div class="expand-div" id="faq2num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq2answer" style="display: none;">
-									<p>The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</p>
-								</div>
-							</div>
-
-                            <div class="faq-toggle" id="faq3">
-								<div class="title-text" onclick="_collapse('faq3')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>What is the purpose of the PTE?</h3>
-									</div>
-									<div class="expand-div" id="faq1num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq3answer" style="display: none;">
-									<p>The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</p>
-								</div>
-							</div>
+                            <div class="content-loading-div">
+                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                            </div>
                         </div> 
 
-                        <a href="<?php echo $websiteUrl?>" title="Read More FAQ">
+                        <a href="<?php echo $websiteUrl?>/faq" title="Read More FAQ">
                         <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>            
                     </div>                     
                 </div>
@@ -859,58 +820,16 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         </div>
 
                         <div class="btn-div">
-                            <a href="#">
+                            <a href="<?php echo $websiteUrl ?>/blog" title="Explore All Blogs">
                                 <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
-                    <div class="blog-back-div">
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog1.png" alt="How International Exams Open Doors to Global Education Opportunities">
-                                </div>
+                    <div class="blog-back-div" id="indexBlogContent">
+                        <script> _fetchIndexBlogData();</script>
 
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 250 VIEWS</div>
-                                    <h3>How International Exams Open Doors to Global Education Opportunities</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog2.png" alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 50 VIEWS</div>
-                                    <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="all-images/blogs/blog3.png" alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i class="bi-eye-fill"></i> 200 VIEWS</div>
-                                    <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
+                        <div class="content-loading-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                         </div>
                     </div>
                 </div>

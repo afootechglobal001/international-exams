@@ -3995,7 +3995,8 @@ main {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	margin: auto;
 	align-items: center;
+	justify-content: center;
 	gap: 15px;
 }

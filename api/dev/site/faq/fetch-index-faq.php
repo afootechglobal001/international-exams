@@ -8,29 +8,34 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
-    $pageCategoryId = $_GET['pageCategoryId'];
+    $pageCategoryId =trim($_GET['pageCategoryId']);
+    $publishId = $_GET['publishId'];
+    $q = $_GET['q'];
 
+    if (!empty($publishId)) {
+        $publishIds = "AND a.publishId ='$publishId' ";
+    }
+
+    // Securely escape $q
+    $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
-        a.pageCategoryId,
+        a.pageCategoryId, 
         a.publishId, 
-        a.regTitle, 
-        a.examAbbr,
-        a.regPix,
-        a.examLogo, 
-        b.pageUrl,
-        c.amount,
-        c.currency
+        a.faqCatId, 
+        a.faqQuestion,
+        a.faqAnswer,
+        a.statusId, 
+        a.createdBy, 
+        a.createdTme, 
+        a.updatedTime, 
+        b.catName AS faqCatName
         FROM PUBLISH_TAB a
-        JOIN PAGES_TAB b
-            ON a.publishId= b.publishId
-        JOIN (
-            SELECT examId, MAX(amount) AS amount, MAX(currency) AS currency
-            FROM BRANCH_EXAM_PRICING_TAB
-            GROUP BY examId
-        ) c ON a.publishId = c.examId
-            AND a.statusId =1
-        AND a.pageCategoryId ='$pageCategoryId'
-        AND (a.parentPublishId IS NULL OR a.parentPublishId = '')
+        JOIN SETUP_CATEGORIES_TAB b
+            ON a.faqCatId = b.catId
+        WHERE (a.faqQuestion LIKE '%$q%' OR b.catName LIKE '%$q%') $publishIds
+        AND a.statusId= 1    
+            AND a.pageCategoryId ='$pageCategoryId'
+        ORDER BY a.updatedTime DESC LIMIT 3;
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -45,15 +50,15 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "EXAM FETCH SUCCESFFULY!",
+        'message' => "FAQ    FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-        $publishId=$fetchQuery['publishId'];
-        $response['data'][]= $fetchQuery;
+        $response['data'][] = $fetchQuery;
     }
+
 end:
 echo json_encode($response);
 ?>

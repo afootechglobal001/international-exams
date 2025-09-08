@@ -39,124 +39,106 @@
                             </a>
                         </li>
 
-                        <li title="Blog Title">
-                            <a href="<?php echo $websiteUrl ?>/blog">
-                                Study Abroad with Interantional Exams
-                            </a>
-                        </li>
+                        <a id="blogTitleLink" href="#">
+                        <li id="regTopTitle" title="Blog Title"> Loading...</li></a>
                     </ul>
                 </nav>
             </div>
 
             <div class="other-pages-back-div">
                 <div class="main-content-back-div">
-
-                    <div class="text-content-div blog-details-div" data-aos="fade-in" data-aos-duration="900">
-                        <h1>Study Abroad with Interantional Exams</h1>
-
+                    <div class="text-content-div blog-details-div" >
+                        <h1 id="regTitle">Loading...</h1>
 
                         <div class="meta">
-                            <span><i class="bi bi-person"></i> By: Paul Emmanuel</span> |
-                            <span><i class="bi-calendar3"></i> DATE: 25 NOV 2024</span> |
+                            <span><i class="bi bi-person"></i> By: <strong id="fullName">Loading...</strong> </span> |
+                            <span><i class="bi-calendar3"></i> DATE: <strong id="updatedTime">Loading...</strong></span> |
                             <span><i class="bi-eye"></i> VIEWS: 200</span>
                         </div>
-
-                        <p class="intro">
-                            Discover how "Interantional Exams" is revolutionizing school administration for basic and
-                            secondary schools in Nigeria. From staff management to academic performance tracking, learn
-                            how this innovative platform is simplifying school operations and improving efficiency.
-                        </p>
-
+                        <p class="intro" id="seoDescription">Loading...</p>
                     </div>
-
                 </div>
-
             </div>
         </div>
         <section class="other-pages-main-section">
             <section class="body-div blog-bg">
-                <div class="body-div-in column">
-                    <div class="blog-div">
-                        <div class="blog-div-inner blog-div-inner-details">
-                            <div class="image-div">
-                                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+                <div class="body-div-in">
+                    <div class="page-back-div">
+                        <div class="left-div">
+                            <div class="page-list-back-div">
+                                <div class="main-picture-back-div">	
+                                    <div class="main-picture-div" id="blog_preview">
+                                        <img id="blogPreviewPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                    </div>   
+
+                                    <div class="bottom-img-div">
+                                        <div class="inner-img-container"> 
+                                            <div class="inner-img-div">
+                                                <div class="each-img-div" title="Click to Preview" id="img1" onclick="_view_preview_img('img1')">
+                                                    <img src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                                </div> 
+                                                <div class="each-img-div" title="Click to Preview" id="img2" onclick="_view_preview_img('img2')">
+                                                    <img src="<?php echo $websiteUrl?>/all-images/blog/blog_2.webp" alt="Blog"/> 
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
+                                        <button class="blog-right-btn"> <i class="bi-chevron-double-right"></i></button>
+                                    </div>                                   
+                                </div>                         
+                            
+                                <div class="main-pages-content-div" id="pageContentInfo"></div>
+
+                                <div class="comment-back-div">
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                        (function() { // DON'T EDIT BELOW THIS LINE
+                                        var d = document, s = d.createElement('script');
+                                        s.src = 'https://1stculturetour-com.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                        })();
+                                    </script>
+                                </div>
                             </div>
+                        </div>
 
-
-                            <div class="thumbnails">
-                                <button class="thumb-arrow prev"><i class="bi bi-chevron-double-left"></i></button>
-
-                                <div class="thumbnails-img">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                                </div>
-
-                                <div class="thumbnails-img">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                                </div>
-
-                                <div class="thumbnails-img">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                                </div>
+                        <div class="right-div sticky-div">   
+                            <div class="div-in">
+                                <h3>RECENT BLOG</h3>
                                 
-                                <button class="thumb-arrow next"><i class="bi bi-chevron-double-right"></i></button>
-                            </div>
+                                <div class="related-post-back-div">
+                                    <a href="<?php echo $websiteUrl?>/blog/transforming-school-management-in-nigeria-with-schoolbolt" title="Transforming School Management in Nigeria with SchoolBolt">
+                                    <div class="related-post">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                        </div>
 
-
-                            <p class="blog-text">
-                                Discover how "Interantional Exams" is revolutionizing school administration for basic
-                                and
-                                secondary schools in Nigeria. From staff management to academic performance tracking,
-                                learn
-                                how this innovative platform is simplifying school operations and improving efficiency.
-                            </p>
-
-                            <p class="blog-text">
-                                Discover how "Interantional Exams" is revolutionizing school administration for basic
-                                and
-                                secondary schools in Nigeria. From staff management to academic performance tracking,
-                                learn
-                                how this innovative platform is simplifying school operations and improving efficiency.
-                            </p>
-                        </div>
-
-
-                        <div class="blog-search sticky-div">
-                            <div class="search-inner search-inner-details">
-                                <h2>RECENT BLOG</h2>
-
-                                <div class="recent-post">
-                                    <div class="recent-post-inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
-                                            alt="Recent pics">
-                                    </div>
-
-                                    <div>
-                                        <p> Discover how "Interantional Exams" is revolutionizing school
-                                            administration...</p>
-                                        <small><i class="bi bi-clock"></i> 25 Nov 2024 <span>|</span> <i
-                                                class="bi bi-eye-fill"></i> 200 Views</small>
-                                    </div>
+                                        <div class="cont-div">
+                                            <h3>Transforming School Management in Nigeria with SchoolBolt</h3> 
+                                            <div class="comment"><i class="bi-clock"></i> <span> 15 Jan, 2025 </span> | <i class="bi-eye-fill"></i> <span> 200 Views </span></div>
+                                        </div>
+                                    </div></a>                           
                                 </div>
 
-                                <div class="recent-post">
-                                    <div class="recent-post-inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
-                                            alt="Recent pics">
-                                    </div>
+                                <div class="related-post-back-div">
+                                    <a href="<?php echo $websiteUrl?>/blog/">
+                                    <div class="related-post">
+                                        <div class="image-div">
+                                            <img src="<?php echo $websiteUrl?>/all-images/blog/blog_2.webp" alt="Blog"/> 
+                                        </div>
 
-                                    <div>
-                                        <p>Master "TOEFL and IELTS" with tips, strategies, and resources that boost
-                                            your...</p>
-                                        <small><i class="bi bi-clock"></i> 25 Nov 2024 <span>|</span> <i
-                                                class="bi bi-eye-fill"></i> 200 Views</small>
-                                    </div>
+                                        <div class="cont-div">
+                                            <h3>Top 5 Benefits of Using SchoolBolt for Your School</h3> 
+                                            <div class="comment"><i class="bi-clock"></i> <span> 15 Jan, 2025 </span> | <i class="bi-eye-fill"></i> <span> 200 Views </span></div>
+                                        </div>
+                                    </div></a>                           
                                 </div>
                             </div>
-
-                        </div>
+                        </div>                     
                     </div>
-
                 </div>
+                <script>_fetchEachSiteBlog('<?php echo $publishId?>')</script>
             </section>
 
             <?php include '../../footer.php' ?>

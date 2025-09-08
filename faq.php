@@ -34,92 +34,87 @@ Best place to register ACT exam in Nigeria, where to register international exam
 <body>
     <?php include 'header.php' ?>
 
-    <div class="other-pages-slide-section animated fadeInDown">
+     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-            <div class="other-pages-slide-card">
-                <h1>Frequently Asked Questions</h1>
+            <div class="top-title">
+                <nav>
+                    <ul>
+                        <li title="Home">
+                            <a href="<?php echo $websiteUrl ?>/index">
+                                Home <i class="bi bi-caret-right-fill"></i>
+                            </a>
+                        </li>
+                        <li title="About Us">
+                            <a href="<?php echo $websiteUrl ?>/about-us">
+                                Frequently Asked Questions
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
-                <div class="text-div">
-                    <p>EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries like Ghana,
-                        Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully placed thousands of students
-                        into foreign universities.
-                    </p>
-                    <div class="btn-div">
-                        <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
-                        <button class="btn no-bg"><span>Download E-Books</span> <span class="span">
-                                It's Free</span>
-                        </button>
+            <div class="other-pages-back-div">
+                <div class="main-content-back-div">
+
+                    <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
+                        <h1>Frequently Asked Questions</h1>
+                        <p>
+                            Edugrade Services is a trusted international educational consultancy with 9+ years of
+                            excellence,
+                            helping thousands of students secure admissions and succeed in top global universities.
+                        </p>
+
+                        <div class="btn-div">
+                            <a href="#" title="Get Started">
+                                <button class="btn" title="Get Started">
+                                    Get Started <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </a>
+                            <a href="#" title="Contact Us">
+                                <button class="btn right-btn" title="Contact Us">
+                                    Contact Us <span>+234-703-841-1794</span>
+                                </button>
+                            </a>
+                        </div>
                     </div>
+
+                    <div class="image-div">
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.svg" alt="International Exam">
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </div>
 
     <section class="other-pages-main-section">
-
-        <section class="body-div net-bg-br">
+        <section class="body-div blog-bg">
             <div class="body-div-in">
-                <div class="faq-back-div">              
-                    <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <img src="<?php echo $websiteUrl?>/all-images/body-pix/faq.webp" alt="<?php echo $appName?> Frequently Asked Question"/>
+                <div class="page-back-div">
+                    <div class="right-div sticky-div">
+                        <div class="div-in">
+                            <h3>SEARCH</h3>
+                            <div class="text_field_container">
+                                <input class="text_field" id="searchContent" onkeyup="filters('Content');" type="text" placeholder="" />
+                                <div class="placeholder">Type Here To Search</div>
+                            </div>
+                        </div>
+
+                        <div class="div-in">
+                            <h3>TAG LIST</h3>
+
+                            <ul id="catId">
+                                <script>_fetchFaqCat(); </script>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="faq-title">
-                            <div><span class="top-title">FAQ</span></div>
-                            <h2>Frequently Asked <span>#Questions</span></h2>
-                        </div>    
-
-                        <div class="faq-toggle-back">
-                            <div class="faq-toggle" id="faq1">
-								<div class="title-text" onclick="_collapse('faq1')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>What is the TOEFL exam used for?</h3>
-									</div>
-									<div class="expand-div" id="faq1num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq1answer" style="display: none;">
-									<p>The TOEFL (Test of English as a Foreign Language) is widely used to assess the English proficiency of non-native speakers, primarily for academic purposes such as university admissions in English-speaking countries.</p>
-								</div>
-							</div>
-
-                            <div class="faq-toggle" id="faq2">
-								<div class="title-text" onclick="_collapse('faq2')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>How is the IELTS scored?</h3>
-									</div>
-									<div class="expand-div" id="faq2num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq2answer" style="display: none;">
-									<p>The IELTS (International English Language Testing System) is scored on a band scale from 0 to 9, with each skill (Listening, Reading, Writing, Speaking) rated individually, and an overall band score calculated as an average.</p>
-								</div>
-							</div>
-
-                            <div class="faq-toggle" id="faq3">
-								<div class="title-text" onclick="_collapse('faq3')">
-									<div class="quest-text-div">
-										<div class="icon-div"><i class="bi-question"></i></div>
-										<h3>What is the purpose of the PTE?</h3>
-									</div>
-									<div class="expand-div" id="faq1num">
-										<i class="bi-plus"></i>
-									</div>
-								</div>
-								<div class="answer-div" id="faq3answer" style="display: none;">
-									<p>The PTE (Pearson Test of English) is used to measure English language proficiency for academic, professional, or immigration purposes, offering a computer-based test format recognized globally.</p>
-								</div>
-							</div>
-                        </div> 
-
-                        <a href="<?php echo $websiteUrl?>" title="Read More FAQ">
-                        <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>            
-                    </div>                     
+                    <div class="left-div">
+                        <div class="general-faq-div" id="pageContent">
+                            <script> _fetchFaqPageData();</script>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -257,7 +257,15 @@ switch ($action){
 		$txt .= "<?php \$seoKeywords='$seoKeywords';?>\n";
 		$txt .= "<?php \$seoDescription='$seoDescription';?>\n";
 		$txt .= "<?php \$pageSeoPix='$pageSeoPix';?>\n";
-		$txt .= "<?php include '{$pageCategoryId}_details.php';?>";
+		
+		// Decide include path automatically based on pageCategoryId
+		if ($pageCategoryId == 'blogCategory') {
+			$includePath = "../{$pageCategoryId}_details.php";
+		} else {
+			$includePath = "{$pageCategoryId}_details.php";
+		}
+
+		$txt .= "<?php include '$includePath';?>";
 
 		// for new page creation ////
 		if (empty($oldPageUrl)) {

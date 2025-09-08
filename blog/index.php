@@ -89,99 +89,39 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
         </div>
     </div>
+
     <section class="other-pages-main-section">
         <section class="body-div blog-bg">
-            <div class="body-div-in column">
-                <div class="blog-div">
-                    <div class="blog-div-inner">
-                        <div class="image-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
+            <div class="body-div-in">
+                <div class="page-back-div">
+                    <div class="right-div sticky-div">
+                        <div class="div-in">
+                            <h3>SEARCH</h3>
+                            <div class="text_field_container">
+                                <input class="text_field" id="searchContent" onkeyup="filters('Content');" type="text" placeholder="" />
+                                <div class="placeholder">Type Here To Search</div>
+                            </div>
                         </div>
-                        <div class="trade-mark">
-                            <span>INTERNATIONAL EXAMS</span>
-                        </div>
-                        <div class="blog-text-div">
-                            <h2>Study Abroad with Interantional Exams</h2>
-                            <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
-                            <p> Discover how <strong>"Interantional Exams"</strong> is revolutionizing school
-                                administration for basic and secondary schools in Nigeria.
-                                From staff management to academic performance tracking, learn how this innovative
-                                platform is simplifying school operations and improving efficiency.
-                            </p>
-                            <a href="<?php echo $websiteUrl ?>/blog/study-abroad-with-international-exams">read more <i class="bi-arrow-right"></i></a>
-                        </div>
-                    </div>
 
+                        <div class="div-in">
+                            <h3>TAG LIST</h3>
 
-                    <div class="blog-search sticky-div">
-                        <div class="search-inner">
-                            <h2>SEARCH</h2>
-
-                            <div class="text_field_container" id="search_container" title="Search Blog">
+                            <ul id="catId">
                                 <script>
-                                textField({
-                                    id: 'search',
-                                    title: 'Type Here To Search'
-                                });
+                                    _fetchBlogCat();
                                 </script>
-                            </div>
+                            </ul>
                         </div>
+                    </div>
 
-                        <div class="search-inner">
-                            <h2>TAG LIST</h2>
-                            <div class="tag-list">
-                                <button class="btn">International Exam</button>
-                                <button class="btn">TOEFL</button>
-                                <button class="btn">MIVA</button>
-                                <button class="btn">Exam</button>
-                            </div>
+                    <div class="left-div">
+                        <div class="page-list-back-div" id="pageContent">
+                            <script> _fetchAllPageBlogData();</script>
                         </div>
                     </div>
                 </div>
-
-                <div class="blog-div">
-                    <div class="blog-div-inner">
-                        <div class="image-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                        </div>
-                        <div class="trade-mark">
-                            <span>TOEFL & IELTS Prep</span>
-                        </div>
-                        <div class="blog-text-div">
-                            <h2>Your Guide to Excelling in English Proficiency Tests</h2>
-                            <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
-                            <p> Master <strong>"TOEFL and IELTS"</strong> with tips, strategies, and resources that
-                                boost your confidence and scores. Find out how Edugrade Services helps you prepare for
-                                success
-                            </p>
-                            <a href="#">read more <i class="bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-div">
-                    <div class="blog-div-inner">
-                        <div class="image-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                        </div>
-                        <div class="trade-mark">
-                            <span>Study Abroad</span>
-                        </div>
-                        <div class="blog-text-div">
-                            <h2>Top 3 Countries for International Students in 2025</h2>
-                            <span><i class="bi-calendar"></i> 23 Jul | <i class="bi-eye"></i> 200 VIEWS </span>
-                            <p> Explore the most <strong>"popular destinations"</strong> or students seeking quality
-                                education abroad. From Canada to the UK, discover opportunities that shape global
-                                careers.
-                            </p>
-                            <a href="#">read more <i class="bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
-
 
         <section class="body-div">
             <div class="body-div-in">
@@ -193,70 +133,13 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
                             <h3>Our Latest News And <span>#Articles</span></h3>
                         </div>
-
-                        <div class="btn-div">
-                            <a href="#">
-                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i
-                                        class="bi-chevron-right"></i></button></a>
-                        </div>
                     </div>
 
-                    <div class="blog-back-div">
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png"
-                                        alt="How International Exams Open Doors to Global Education Opportunities">
-                                </div>
+                    <div class="blog-back-div" id="relatedBlogContent">
+                        <script> _fetchRelatedBlogData();</script>
 
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 250 VIEWS</div>
-                                    <h3>How International Exams Open Doors to Global Education Opportunities</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog2.png"
-                                        alt="Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 50 VIEWS</div>
-                                    <h3>Top Exams You Need to Study Abroad: IELTS, TOEFL, SAT, GRE & More</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="blog-div" data-aos="fade-in" data-aos-duration="1000">
-                            <div class="blog-inner-div">
-                                <div class="image-div">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/blogs/blog3.png"
-                                        alt="From Nigeria to the World: How EDUGRADE Helps You Ace International Exams">
-                                </div>
-
-                                <div class="text-div">
-                                    <div class="count"><i class="bi-calendar3"></i> 01 Jul, 2025 <span>|</span> <i
-                                            class="bi-eye-fill"></i> 200 VIEWS</div>
-                                    <h3>From Nigeria to the World: How EDUGRADE Helps You Ace International Exams</h3>
-
-                                    <a href="<?php echo $websiteUrl ?>" title="Read More">
-                                        <button class="btn" title="Read More">Read More <i
-                                                class="bi-chevron-right"></i></button></a>
-                                </div>
-                            </div>
+                        <div class="content-loading-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                         </div>
                     </div>
                 </div>

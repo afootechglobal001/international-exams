@@ -1,12 +1,3 @@
-function _fetchFormatDate(dateString) {
-  if (!dateString) return "N/A"; // fallback if no date
-  const dateObj = new Date(dateString);
-  const options = { day: "2-digit", month: "short", year: "numeric" };
-  // Example: 25 Jan 2025
-  return dateObj.toLocaleDateString("en-GB", options).replace(" ", " ");
-}
-
-
 function _fetchAllexamsData() {
 	try {
 		//// call endpoint //////
@@ -90,8 +81,8 @@ function _fetchEachSiteExam(publishId) {
 				const seoDescription = data.seoDescription;
                 const pageContent = data.pageContent;
 				const pageUrl = data.pageUrl;
-				const fullName = data.createdBy.fullName;
-                const updatedTime = _fetchFormatDate(data.updatedTime);
+				const fullName = data.updatedBy.fullName;
+                const updatedTime = formatExamDate(data.updatedTime);
                 const regPix = data.regPix;
 				const incentives = data.incentives;
 

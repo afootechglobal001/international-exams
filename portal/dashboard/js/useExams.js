@@ -477,6 +477,15 @@ function _proceedExamRegistrationLog(formData) {
             page: "paymentInstructions",
             url: portalOperationMiddlewareUrl,
           });
+        } else if (formData.paymentMethodId === "WLT") {
+          _alertClose();
+          _showCustomConfirm({
+            callback: () => _getActivePage({ page: "exam", divid: "exam" }),
+            title: "PAYMENT SUCCESSFUL",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "OK",
+          });
         } else {
           _btnDisable("submitBtn", btnText, false);
           _showCustomConfirm({

@@ -33,7 +33,7 @@
     $residentialAddress=trim(($data['residentialAddress']));
     $genderId=trim(($data['genderId']));
     $schoolsOfInterestSegment=$data['schoolsOfInterestSegment'];
-    $paymentMethodId=trim(($data['paymentMethodId'])); /// CC or BT
+    $paymentMethodId=trim(($data['paymentMethodId'])); /// CC or BT OR WLT
 
     //////////////////check for empty fields//////////////////////////////////////
         validateEmptyField($examId, 'EXAM ID');
@@ -100,22 +100,55 @@
         $transactionId=$countId.$no.date("Ymdhis");
         
         $transactionTypeId='PMT'; /// PAYMENT
-        $statusId=3; /// PENDING
         $balanceBefore=$loginUserWalletBalance;
         $balanceAfter=$balanceBefore; /// since payment is pending
 
-        $paymentKey='';
         if ($paymentMethodId=='CC') {
-            ///get country paymentKey
-            $query=mysqli_query($conn,"SELECT paymentKey FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
-            $fetchQuery=mysqli_fetch_array($query);
-            $paymentKey=$fetchQuery['paymentKey'];
-        }
-        
-         mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
-        (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES 
-        ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+        ///get country paymentKey
+        $query=mysqli_query($conn,"SELECT paymentKey FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
+        $fetchQuery=mysqli_fetch_array($query);
+        $paymentKey=$fetchQuery['paymentKey'];
+        $statusId=3; /// PENDING
 
+        mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
+        (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+        ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+            $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
+
+        }elseif($paymentMethodId=='BT'){
+            $paymentKey='BANK TRANSFER';
+            $statusId=3; /// PENDING
+            mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
+            (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+            ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', $balanceBefore, '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+            $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
+        }elseif($paymentMethodId=='WLT'){
+            if ($loginUserWalletBalance < $amount) {
+                $response = [
+                    'response' => 103,
+                    'success' => false,
+                    'message' => "INSUFFICIENT WALLET BALANCE! You have $currency $loginUserWalletBalance in your wallet. Please fund your wallet and try again.",
+                ];
+                goto end;
+            }
+            $paymentKey='WALLET';
+            $statusId=1; /// APPROVED
+            $balanceAfter=$balanceBefore - $amount; /// since payment is from wallet
+            mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
+            (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+            ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+            /// update user wallet balance
+            mysqli_query($conn,"UPDATE USERS_TAB SET walletBalance='$balanceAfter' WHERE userId='$studentId'")or die (mysqli_error($conn));
+        $alertDetail = "User with ID $studentId and Name $loginUserFullname successfully paid $currency $amount from wallet for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment.";
+
+        }else{
+            $response = [
+                'response' => 104,
+                'success' => false,
+                'message' => "INVALID PAYMENT METHOD! Please select a valid payment method and try again.",
+            ];
+            goto end;
+        }
         
         $response = [
             'response' => 200,
@@ -133,7 +166,6 @@
                 'paymentMethodId' => $paymentMethodId
             ]
         ];
-        $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
         $callclass->_alertSequenceAndUpdate($conn,$loginUserCountryId,$loginUserId,$loginUserFullname,$alertDetail,$ipAddress,$systemName);
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////

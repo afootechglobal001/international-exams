@@ -22,7 +22,6 @@ let userLoginData = JSON.parse(sessionStorage.getItem("userLoginData"));
 const loginUserId = userLoginData.userId;
 const loginAccessKey = userLoginData.accessKey;
 const loginCountryData = userLoginData.countryData;
-console.log("loginCountryData", loginCountryData);
 </script>
 
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>

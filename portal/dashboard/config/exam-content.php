@@ -308,11 +308,31 @@
             </div>
 
 
+            <!-- Payment Information -->
+            <div class="content-div">
+                <div class="content-title">
+                    <div class="title">
+                        <i class="bi bi-credit-card-2-back"></i>
+                        <p>Payment Method</p>
+                    </div>
+                </div>
+
+                <div class="form-text">
+                    <div class="text_field_container" id="paymentMethodId_container">
+                        <script>
+                        selectField({
+                            id: 'paymentMethodId',
+                            title: 'Select Payment Method'
+                        });
+                        _getSelectPaymentMethod('paymentMethodId');
+                        </script>
+                    </div>
+                </div>
+            </div>
             <div class="btn-div" style="flex-direction: column; gap: 5px;" id="submitBtn">
-                <button class="btn" title="REGISTER AND PAY NOW" onclick="_registerExam('CC');"> <i
-                        class="bi-credit-card-2-back"></i> REGISTER AND PAY NOW </button>
-                <button class="btn backBtn" title="REGISTER AND PAY LATER" onclick="_registerExam('BT');">
-                    <i class="bi-arrow-clockwise"></i> REGISTER AND PAY LATER </button>
+                <button class="btn" title="PROCEED TO PAYMENT" onclick="_registerExam();"> <i
+                        class="bi-credit-card-2-back"></i> PROCEED TO PAYMENT </button>
+
             </div>
         </div>
 </section>

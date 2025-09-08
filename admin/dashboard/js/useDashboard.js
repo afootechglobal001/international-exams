@@ -182,7 +182,6 @@ function _fetchFormatDate(dateString) {
   return dateObj.toLocaleDateString("en-GB", options).replace(" ", " ");
 }
 
-
 function _getSelectRoleId(fieldId) {
   try {
     $.ajax({
@@ -225,5 +224,3 @@ function _getSelectRoleId(fieldId) {
     _actionAlert("An unexpected error occurred. Please try again.", false);
   }
 }
-
-

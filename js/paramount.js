@@ -356,9 +356,12 @@ function _validateEmail(fieldId, email) {
 }
 function _validateNumber(fieldId, number) {
   if (!number) return 0;
-  if (!/^\d+$/.test(number)) {
+  // Allow integer or decimal numbers (e.g. 123, 123.45, .5)
+  if (!/^\d+(\.\d+)?$/.test(number)) {
     $("#" + fieldId).addClass("issue");
-    $("#issue_" + fieldId).html("PHONE NUMBER MUST CONTAIN ONLY DIGITS");
+    $("#issue_" + fieldId).html(
+      "NUMBER MUST CONTAIN ONLY DIGITS OR DECIMAL POINT"
+    );
     return 1;
   }
   return 0;

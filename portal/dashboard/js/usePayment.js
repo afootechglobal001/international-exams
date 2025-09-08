@@ -81,7 +81,6 @@ function _payWithPaystackLoadWallet(
       ],
     },
     callback: function (response) {
-      console.log(response);
       _loadWalletAction("success", transactionId);
     },
     onClose: function () {
@@ -145,11 +144,10 @@ function _fetchTransactionHistory() {
       accessKey: true,
     })
       .then((response) => {
-        console.log(response);
         _userValidationCheck(response.response);
         if (response.success && response.data?.length > 0) {
           $("#walletBalance").html(
-            thousandSeperator(response.userData.walletBalance)
+            thousandSeparator(response.userData.walletBalance)
           );
           $("#currencySymbol").html(response.userData.currency);
           initTransactionTable(response.data);
@@ -183,7 +181,7 @@ function renderTransactionRows(data, start) {
       <td>${start + i + 1}</td>
       <td>${item.updatedTime}</td>
       <td class="clickable-td">${item.transactionId}</td>
-      <td>${item.currency} ${item.amount}</td>
+      <td>${item.currency} ${thousandSeparator(item.amount)}</td>
       <td>${item.transactionTypeName}</td>
       <td>${item.paymentMethodName}</td>
       <td><div class="status-div ${item.statusName}">${

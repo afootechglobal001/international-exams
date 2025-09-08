@@ -167,7 +167,7 @@ function _previewExam(examInfo) {
   const examAbbr = examInfo.examAbbr;
   const examLogo = examInfo.examLogo;
   const currency = examInfo.currency;
-  const amount = examInfo.amount;
+  const amount = thousandSeparator(examInfo.amount);
 
   content += `
       <div class="exam-div">
@@ -180,7 +180,7 @@ function _previewExam(examInfo) {
               <p>${regTitle}</p>
           </div>
           <div class="price">
-              <p>${currency} ${amount.toLocaleString()}</p>
+              <p>${currency} ${amount}</p>
           </div>
       </div>
       `;
@@ -202,7 +202,6 @@ function _getExamLocations(fieldId, examId) {
       success: function (info) {
         const data = info.data;
         const success = info.success;
-        console.log(data);
         if (success === true) {
           $("#searchList_" + fieldId).html("");
 
@@ -333,7 +332,7 @@ function _getExamLocationCentreDates(fieldId, centreId) {
   }
 }
 
-function _registerExam(paymentMethodId) {
+function _registerExam() {
   try {
     //////get all needed values////
     const examId = $("#examId").val().trim();
@@ -349,6 +348,7 @@ function _registerExam(paymentMethodId) {
     const phoneNumber = $("#phoneNumber").val().trim();
     const residentialAddress = $("#residentialAddress").val().trim();
     const genderId = $("#genderId").val().trim();
+    const paymentMethodId = $("#paymentMethodId").val().trim();
     ///// empty field validation//////////
     let issueCount = 0;
     issueCount += _validateEmptyValue("examId", "EXAM");
@@ -366,6 +366,7 @@ function _registerExam(paymentMethodId) {
       "RESIDENTIAL ADDRESS"
     );
     issueCount += _validateEmptyValue("genderId", "GENDER");
+    issueCount += _validateEmptyValue("paymentMethodId", "PAYMENT METHOD");
     if (issueCount > 0) return;
 
     const schoolsOfInterestSegment = [];
@@ -386,7 +387,6 @@ function _registerExam(paymentMethodId) {
       // Check if this form has at least one non-empty value
       if (
         nameOfInstitution ||
-        institutionCode ||
         institutionLocation ||
         programId ||
         courseOfStudy
@@ -470,7 +470,6 @@ function _proceedExamRegistrationLog(formData) {
     .then((response) => {
       if (response.success) {
         const data = response.data;
-        console.log(data);
         if (formData.paymentMethodId === "CC") {
           _payWithPaystackExamRegistration(data);
         } else if (formData.paymentMethodId === "BT") {
@@ -523,7 +522,6 @@ function _payWithPaystackExamRegistration(data) {
       ],
     },
     callback: function (response) {
-      console.log(response);
       _examRegistrationPaymentAction(
         "success",
         data.transactionId,
@@ -560,8 +558,7 @@ function _examRegistrationPaymentAction(
         if (response.success) {
           _alertClose();
           _showCustomConfirm({
-            callback: () =>
-              _getActivePage({ page: "transactions", divid: "transactions" }),
+            callback: () => _getActivePage({ page: "exam", divid: "exam" }),
             title:
               action === "success" ? "PAYMENT SUCCESSFUL" : "PAYMENT CANCELLED",
             message: response.message,

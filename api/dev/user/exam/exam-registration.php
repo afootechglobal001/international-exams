@@ -133,7 +133,7 @@
                 'paymentMethodId' => $paymentMethodId
             ]
         ];
-        $alertDetail = "User with ID $studentId and Name $loginUserFullname registered for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
+        $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
         $callclass->_alertSequenceAndUpdate($conn,$loginUserCountryId,$loginUserId,$loginUserFullname,$alertDetail,$ipAddress,$systemName);
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////

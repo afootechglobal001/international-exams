@@ -26,10 +26,10 @@
     $response = [
             'response'=> 200,
             'success'=> true,
-            'message'=> "Your Exam payment has been cancelled.",
+            'message'=> "Your Exam payment has been cancelled and your registration saved to draft.",
         ];
     /// sent alert
-    $alertDetail = "User with ID $loginUserId and Name $loginUserFullname cancelled their wallet load transaction with Transaction ID $transactionId.";
+    $alertDetail = "User with ID $loginUserId and Name $loginUserFullname cancelled payment for an exam with Registration ID $examRegistrationId.";
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////
 $callclass->_alertSequenceAndUpdate($conn,$loginUserCountryId,$loginUserId,$loginUserFullname,$alertDetail,$ipAddress,$systemName);

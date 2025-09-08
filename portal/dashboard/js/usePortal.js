@@ -60,7 +60,7 @@ function getFirstLettersOfEachWord(str) {
     .join(""); // join into a single string
 }
 
-function thousandSeperator(val) {
+function thousandSeparator(val) {
   let dp = 2;
   const formatter = new Intl.NumberFormat("ng-NG", {
     style: "decimal",

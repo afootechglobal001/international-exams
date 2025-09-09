@@ -17,7 +17,12 @@
                 $("#updatedDateFull").html(_fetchFormatDate(pageSummary.updatedTime));
 
                 const incentives = pageSummary.incentives || '';
-                $('#fetchedIncentives').html(incentives);
+                const $temp = $("<div>").html(incentives);
+                // Add hyphen before each <p>
+                $temp.find("p").prepend("- ");
+                // Put it back in the DOM
+
+                $('#fetchedIncentives').html($temp.html());
 
             } else {
                 $("#shortExamBlock").show();

@@ -47,11 +47,10 @@
                         <div class="meta">
                             <span><i class="bi bi-person"></i> By: <strong id="fullName">Loading...</strong> </span> |
                             <span><i class="bi-calendar3"></i> DATE: <strong id="updatedTime">Loading...</strong></span> |
-                            <span><i class="bi-eye"></i> VIEWS: 200</span>
+                            <span><i class="bi-eye"></i> VIEWS: <strong id="pageView">Loading...</strong></span>
                         </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -59,99 +58,60 @@
 
     <section class="other-pages-main-section">
         <section class="body-div blog-bg">
-            <div class="body-div-in column">
-                <div class="blog-div">
-                    <div class="blog-div-inner blog-div-inner-details">
-                        <div class="image-div">
-                            <img id="examPreviewPix" src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="">
-                        </div>
+                <div class="body-div-in">
+                    <div class="page-back-div">
+                        <div class="left-div">
+                            <div class="page-list-back-div">
+                                <div class="main-picture-back-div">	
+                                    <div class="main-picture-div" id="examPreviewPix">
+                                        <img id="examFetchPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                    </div>   
 
-                        <div class="thumbnails">
-                            <button class="thumb-arrow prev"><i class="bi bi-chevron-double-left"></i></button>
-
-                            <div class="thumbnails-img">
-                                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                            </div>
-
-                            <div class="thumbnails-img">
-                                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                            </div>
-
-                            <div class="thumbnails-img">
-                                <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="blog pics">
-                            </div>
+                                    <div class="bottom-img-div">
+                                        <div class="inner-img-container"> 
+                                            <div class="inner-img-div" id="fetchPagePictures">
+                                                <script>_fetchPagesPictureData('<?php echo $publishId?>', 'examPreviewPix');</script>
+                                            </div>
+                                        </div>
+                                        <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
+                                        <button class="right-click-btn"> <i class="bi-chevron-double-right"></i></button>
+                                    </div>                                   
+                                </div>                         
                             
-                            <button class="thumb-arrow next"><i class="bi bi-chevron-double-right"></i></button>
-                        </div>
+                                <div class="main-pages-content-div" id="pageContent"></div>
 
-
-                        <div class="main-pages-content-div" id="pageContent"></div>
-
-                        <div class="comment-back-div">
-                            <div id="disqus_thread"></div>
-                            <script>
-                                (function() { // DON'T EDIT BELOW THIS LINE
-                                var d = document, s = d.createElement('script');
-                                s.src = 'https://arrahmanmontessori.disqus.com/embed.js';
-                                s.setAttribute('data-timestamp', +new Date());
-                                (d.head || d.body).appendChild(s);
-                                })();
-                            </script>
-                        </div>
-                    </div>
-
-
-                    <div class="blog-search sticky-div">
-                        <div class="search-inner search-inner-details">
-                            <h2>RECENT BLOG</h2>
-
-                            <div class="recent-post">
-                                <div class="recent-post-inner">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
-                                        alt="Recent pics">
-                                </div>
-
-                                <div>
-                                    <p> Discover how "Interantional Exams" is revolutionizing school
-                                        administration...</p>
-                                    <small><i class="bi bi-clock"></i> 25 Nov 2024 <span>|</span> <i
-                                            class="bi bi-eye-fill"></i> 200 Views</small>
-                                </div>
-                            </div>
-
-                            <div class="recent-post">
-                                <div class="recent-post-inner">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
-                                        alt="Recent pics">
-                                </div>
-
-                                <div>
-                                    <p>Master "TOEFL and IELTS" with tips, strategies, and resources that boost
-                                        your...</p>
-                                    <small><i class="bi bi-clock"></i> 25 Nov 2024 <span>|</span> <i
-                                            class="bi bi-eye-fill"></i> 200 Views</small>
+                                <div class="comment-back-div">
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                        (function() { // DON'T EDIT BELOW THIS LINE
+                                        var d = document, s = d.createElement('script');
+                                        s.src = 'https://1stculturetour-com.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
+                                        })();
+                                    </script>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="search-inner search-inner-details">
-                            <h2>INCENTIVES:-</h2>
-
-                            <div class="recent-post pages-inner-content" id="incentives">
+                        <div class="right-div sticky-div">   
+                            <div class="div-in">
+                                <h3>INCENTIVES</h3>
+                                
+                                <div class="related-post-back-div pages-inner-content" id="incentives"></div>
                             </div>
-                        </div>
 
-                        <div class="search-inner search-inner-details">
-                            <h2>RELATED LINKS:-</h2>
-
-                            <div class="recent-post pages-inner-content" id="fetchedRelatedLinks">
+                            <div class="div-in">
+                                <h3>RELATED LINKS</h3>
+                                
+                                <div class="related-post-back-div pages-inner-content" id="fetchedRelatedLinks"></div>
                             </div>
-                        </div>
+                        </div>                     
                     </div>
                 </div>
-            </div>
-            <script>_fetchEachSiteExam('<?php echo $publishId ?>');</script>
-        </section>
+                <script>_fetchEachSiteExam('<?php echo $publishId?>')</script>
+            </section>
+
 
         <?php include 'footer.php' ?>
     </section>

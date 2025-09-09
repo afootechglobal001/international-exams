@@ -624,7 +624,7 @@ function fetchCountryExamData() {
           for (let i = 0; i < fetch.length; i++) {
             no++;
             const examInfo = fetch[i];
-            const publishId = examInfo.publishId;
+            const examId = examInfo.examId;
             const examAbbr = examInfo.examAbbr;
             const regTitle = examInfo.regTitle;
             const examLogo = examInfo.examLogo;
@@ -633,13 +633,13 @@ function fetchCountryExamData() {
             const formattedDate = formatDate(examInfo.createdTime);
 
             content += `
-                <div class="exam-div country-exam-div" id="publish_${publishId}">
+                <div class="exam-div country-exam-div" id="examId_${examId}">
                     <div class="exam-image">
                         <img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
                     </div>
 
                     <div class="top-div">
-                        <button class="delete-btn" id="deleteBtn_${publishId}" title="DELETE" onclick="_deleteExam('${publishId}');">DELETE</button>
+                        <button class="delete-btn" id="deleteBtn_${examId}" title="DELETE" onclick="_deleteExam('${examId}');">DELETE</button>
                     </div>
 
                     <div class="exam-info">
@@ -831,13 +831,13 @@ function _getSelectFetchExam(publishId) {
 function _addExamPricing() {
   try {
     let issueCount = 0;
-    const publishId = $("#publishId").val();
+    const examId = $("#publishId").val();
     const amount = $("#amount").val();
 
     $("#publishId, #amount").removeClass("issue");
     $("#issue_publishId, #issue_amount").html("");
 
-    if (!publishId) {
+    if (!examId) {
       $("#publishId").addClass("issue");
       $("#issue_publishId").html("USER ERROR! Kindly Select exam to continue");
       issueCount++;
@@ -853,7 +853,7 @@ function _addExamPricing() {
 
     if (issueCount > 0) return;
 
-    const form = { publishId, amount };
+    const form = { examId, amount };
     _showCustomConfirm({
       callback: () => {
         _addExamPricingCallback(form);
@@ -889,7 +889,7 @@ function _addExamPricingCallback(form) {
   $("#submitBtn").prop("disabled", true);
 
   const formData = {
-    publishId: form.publishId,
+    examId: form.examId,
     amount: form.amount,
   };
 
@@ -941,11 +941,11 @@ function _addExamPricingCallback(form) {
   });
 }
 
-function _deleteExam(publishId) {
+function _deleteExam(examId) {
   try {
     _showCustomConfirm({
       callback: () => {
-        _deleteExamCallBack(publishId);
+        _deleteExamCallBack(examId);
       },
       title: "Are you sure?",
       message:
@@ -965,9 +965,9 @@ function _deleteExam(publishId) {
   }
 }
 
-function _deleteExamCallBack(publishId) {
+function _deleteExamCallBack(examId) {
   try {
-    const btn = $("#deleteBtn_" + publishId);
+    const btn = $("#deleteBtn_" + examId);
     const btnText = btn.html();
     btn
       .html(
@@ -979,13 +979,13 @@ function _deleteExamCallBack(publishId) {
 
     $.ajax({
       type: "POST",
-      url: `${endPoint}/admin/branch/exam-pricing/delete-exam-pricing?countryId=${getEachCountrySession?.countryId}&publishId=${publishId}`,
+      url: `${endPoint}/admin/branch/exam-pricing/delete-exam-pricing?countryId=${getEachCountrySession?.countryId}&examId=${examId}`,
       dataType: "json",
       cache: false,
       headers: getAuthHeaders(true),
       success: function (info) {
         if (info.success) {
-          $("#publish_" + publishId).fadeOut(300, function () {
+          $("#examId_" + examId).fadeOut(300, function () {
             $(this).remove();
           });
 
@@ -1039,14 +1039,14 @@ function _deleteExamCallBack(publishId) {
 function createAndUpdateExamLocation() {
   try {
     let issueCount = 0;
-    const publishId = $("#publishId").val();
+    const examId = $("#publishId").val();
     const locationName = $("#locationName").val();
     const statusId = $("#statusId").val();
 
     $("#publishId, #locationName, #statusId").removeClass("issue");
     $("#issue_publishId, #issue_locationName, #issue_statusId").html("");
 
-    if (!publishId) {
+    if (!examId) {
       $("#publishId").addClass("issue");
       $("#issue_publishId").html("USER ERROR! Kindly Select exam to continue");
       issueCount++;
@@ -1068,7 +1068,7 @@ function createAndUpdateExamLocation() {
 
     if (issueCount > 0) return;
 
-    const form = { publishId, locationName, statusId };
+    const form = { examId, locationName, statusId };
     _showCustomConfirm({
       callback: () => {
         _createAndUpdateExamLocationCallback(form);
@@ -1108,7 +1108,7 @@ function _createAndUpdateExamLocationCallback(form) {
   $("#submitBtn").prop("disabled", true);
 
   const formData = {
-    publishId: form.publishId,
+    examId: form.examId,
     locationName: form.locationName,
     statusId: form.statusId,
   };
@@ -1232,8 +1232,8 @@ function fetchExamLocationData() {
                                             <thead>
                                                 <tr class="tb-col">
                                                     <th>sn</th>
-                                                    <th>Center Name</th>
-                                                    <th>Center Address</th>
+                                                    <th>Centre Name</th>
+                                                    <th>Centre Address</th>
                                                     <th>Exam Date</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -1246,13 +1246,13 @@ function fetchExamLocationData() {
                                                 let sn = 0;
                                                 for (let k = 0; k < centerData.length; k++) {
                                                     sn++;
-                                                    const centerInfo = centerData[k];
-                                                    const centerId = centerInfo.centerId;
-                                                    const centerName = centerInfo.centerName;
-                                                    const centerNumber = centerInfo.centerNumber;
-                                                    const centerAddress = centerInfo.centerAddress;
-                                                    const statusName = centerInfo.statusName;
-                                                    const examDateData = centerInfo.examDateData;
+                                                    const centreInfo = centerData[k];
+                                                    const centreId = centreInfo.centreId;
+                                                    const centreName = centreInfo.centreName;
+                                                    const centreNumber = centreInfo.centreNumber;
+                                                    const centreAddress = centreInfo.centreAddress;
+                                                    const statusName = centreInfo.statusName;
+                                                    const examDateData = centreInfo.examDateData;
 
                                                     const examDateValue =
                                                     examDateData.length > 0
@@ -1274,11 +1274,11 @@ function fetchExamLocationData() {
                                                     content += `
                                                     <tr class="tb-row">
                                                         <td>${sn}</td>
-                                                        <td class="clickable-td">${centerName}<br/><span>${centerId}</span></td>
-                                                        <td>${centerAddress}<br/><span>${centerNumber}</span></td>
+                                                        <td class="clickable-td">${centreName}<br/><span>${centreId}</span></td>
+                                                        <td>${centreAddress}<br/><span>${centreNumber}</span></td>
                                                         <td>${examDateValue}</td>
                                                         <td><div class="status-div ${statusName}">${statusName}</div></td>
-                                                        <td><button class="btn view-btn" onclick="_fetchEachExamCenter('${centerId}');">VIEW</button></td>
+                                                        <td><button class="btn view-btn" onclick="_fetchEachExamCenter('${centreId}');">VIEW</button></td>
                                                     </tr>`;
                                                 }
                                             } else {
@@ -1289,9 +1289,9 @@ function fetchExamLocationData() {
                                                                 <div class="false-notification-div">
                                                                     <p>NO RECORD FOUND!!</p>
                                                                     <div>
-                                                                        <button class="btn" title="ADD NEW CENTER" 
+                                                                        <button class="btn" title="ADD NEW CENTRE" 
                                                                             onclick="sessionStorage.removeItem('getEachExamCenterSession'); _openExamCenterForm(${JSON.stringify(locationInfo).replace(/"/g, "&quot;")});">
-                                                                            <i class="bi bi-plus-square"></i> ADD NEW CENTER
+                                                                            <i class="bi bi-plus-square"></i> ADD NEW CENTRE
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -1474,9 +1474,9 @@ function _openExamCenterForm(locationInfo) {
 function _createExamCenter() {
   try {
     let issueCount = 0;
-    const centerName = $("#centerName").val();
-    const centerNumber = $("#centerNumber").val();
-    const centerAddress = $("#centerAddress").val();
+    const centreName = $("#centreName").val();
+    const centreNumber = $("#centreNumber").val();
+    const centreAddress = $("#centreAddress").val();
     const statusId = $("#statusId").val();
 
     const dateSegment = [];
@@ -1484,12 +1484,12 @@ function _createExamCenter() {
       dateSegment.push({ examDate: $(this).val() });
     });
 
-    $("#centerName, #centerNumber, #centerAddress, #statusId").removeClass(
+    $("#centreName, #centreNumber, #centreAddress, #statusId").removeClass(
       "issue"
     );
     $(".segmentBody input").removeClass("issue");
     $(
-      "#issue_centerName, #issue_centerNumber, #issue_centerAddress, #issue_examDate, #issue_statusId"
+      "#issue_centreName, #issue_centreNumber, #issue_centreAddress, #issue_examDate, #issue_statusId"
     ).html("");
 
     let atLeastOneFilled = dateSegment.some(
@@ -1503,26 +1503,26 @@ function _createExamCenter() {
       issueCount++;
     }
 
-    if (!centerName) {
-      $("#centerName").addClass("issue");
-      $("#issue_centerName").html(
-        "USER ERROR! Kindly provide exam center to continue"
+    if (!centreName) {
+      $("#centreName").addClass("issue");
+      $("#issue_centreName").html(
+        "USER ERROR! Kindly provide exam centre to continue"
       );
       issueCount++;
     }
 
-    if (!centerNumber) {
-      $("#centerNumber").addClass("issue");
-      $("#issue_centerNumber").html(
-        "USER ERROR! Kindly Provide center number to continue"
+    if (!centreNumber) {
+      $("#centreNumber").addClass("issue");
+      $("#issue_centreNumber").html(
+        "USER ERROR! Kindly Provide centre number to continue"
       );
       issueCount++;
     }
 
-    if (!centerAddress) {
-      $("#centerAddress").addClass("issue");
-      $("#issue_ceissue_centerAddressterNumber").html(
-        "USER ERROR! Kindly Provide center address to continue"
+    if (!centreAddress) {
+      $("#centreAddress").addClass("issue");
+      $("#issue_centreAddress").html(
+        "USER ERROR! Kindly Provide centre address to continue"
       );
       issueCount++;
     }
@@ -1536,9 +1536,9 @@ function _createExamCenter() {
     if (issueCount > 0) return;
 
     const form = {
-      centerName,
-      centerNumber,
-      centerAddress,
+      centreName,
+      centreNumber,
+      centreAddress,
       dateSegment,
       statusId,
     };
@@ -1580,15 +1580,15 @@ function _createExamCenterCallback(form) {
   $("#submitBtn").prop("disabled", true);
 
   const formData = {
-    centerName: form.centerName,
-    centerNumber: form.centerNumber,
-    centerAddress: form.centerAddress,
+    centreName: form.centreName,
+    centreNumber: form.centreNumber,
+    centreAddress: form.centreAddress,
     dateSegment: form.dateSegment,
     statusId: form.statusId,
   };
 
-  let callUrl = getEachExamCenterSession?.centerId
-    ? `${endPoint}/admin/branch/exam-center/update-exam-center?locationId=${getEachExamLocationSession?.locationId}&centerId=${getEachExamCenterSession?.centerId}`
+  let callUrl = getEachExamCenterSession?.centreId
+    ? `${endPoint}/admin/branch/exam-center/update-exam-center?locationId=${getEachExamLocationSession?.locationId}&centreId=${getEachExamCenterSession?.centreId}`
     : `${endPoint}/admin/branch/exam-center/create-exam-center?locationId=${getEachExamLocationSession?.locationId}`;
 
   $.ajax({
@@ -1639,7 +1639,7 @@ function _createExamCenterCallback(form) {
   });
 }
 
-function _fetchEachExamCenter(centerId) {
+function _fetchEachExamCenter(centreId) {
   $("#get-more-div-secondary")
     .css({
       display: "flex",
@@ -1650,7 +1650,7 @@ function _fetchEachExamCenter(centerId) {
   try {
     $.ajax({
       type: "GET",
-      url: `${endPoint}/admin/branch/exam-center/fetch-exam-center?centerId=${centerId}`,
+      url: `${endPoint}/admin/branch/exam-center/fetch-exam-center?centreId=${centreId}`,
       dataType: "json",
       cache: false,
       headers: getAuthHeaders(true),

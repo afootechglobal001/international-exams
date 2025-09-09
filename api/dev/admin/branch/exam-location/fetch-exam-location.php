@@ -19,7 +19,7 @@
     //////////////////declaration of variables//////////////////////////////////////
     $q = $_GET['q'];
     $countryId = $_GET['countryId'];
-    $publishId = $_GET['publishId'];
+    $examId = $_GET['examId'];
     $locationId = $_GET['locationId'];
     $statusId = $_GET['statusId'];
 
@@ -31,8 +31,8 @@
         $statusIds = "AND a.statusId IN ($statusId)";
     }
 
-    if (!empty($publishId)) {
-        $publishIds = "AND a.publishId ='$publishId'";
+    if (!empty($examId)) {
+        $examIds = "AND a.publishId ='$examId'";
     }
 
     // Securely escape $q
@@ -41,7 +41,7 @@
     FROM EXAM_LOCATION_TAB a 
     JOIN SETUP_STATUS_TAB b 
     ON a.statusId = b.statusId 
-    WHERE (a.locationName LIKE '%$q%' OR a.examAbbr LIKE '%$q%') $publishIds $statusIds $locationIds
+    WHERE (a.locationName LIKE '%$q%' OR a.examAbbr LIKE '%$q%') $examIds $statusIds $locationIds
     AND a.countryId ='$countryId'
     ORDER BY a.locationName ASC";
 
@@ -68,18 +68,18 @@
         /////////////////// fetch exam centers per location////////////
         $centerData=array();
         $getexamCenterQuery = mysqli_query($conn, "SELECT a.*, b.statusName 
-        FROM EXAM_CENTER_TAB a 
+        FROM EXAM_CENTRE_TAB a 
         JOIN SETUP_STATUS_TAB b 
         ON a.statusId = b.statusId 
         WHERE a.locationId='$locationId'
-        ORDER BY a.centerName ASC");
+        ORDER BY a.centreName ASC");
 
         while ($getExamCenterFetch = mysqli_fetch_assoc($getexamCenterQuery)) {
-            $centerId = $getExamCenterFetch['centerId'];
+            $centreId = $getExamCenterFetch['centreId'];
 
             /////////////////// fetch exam date per center////////////
             $examDateData = array();
-            $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTER_DATE WHERE centerId='$centerId'");
+            $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTRE_DATE WHERE centreId='$centreId'");
             while ($getExamDateFetch = mysqli_fetch_assoc($getExamDateQuery)) {
                 $examDateData[] = $getExamDateFetch;
             }

@@ -18,7 +18,7 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $countryId =trim($_GET['countryId']);
-    $publishId=trim($_GET['publishId']);
+    $examId=trim($_GET['examId']);
 
     if (empty($countryId)){ /// start if 2
         $response = [
@@ -30,13 +30,12 @@
     }
     
         /// delete exam from branch exam pricing
-        mysqli_query($conn,"DELETE FROM `BRANCH_EXAM_PRICING_TAB` WHERE publishId='$publishId' AND countryId='$countryId'")or die (mysqli_error($conn));
+        mysqli_query($conn,"DELETE FROM `BRANCH_EXAM_PRICING_TAB` WHERE examId='$examId' AND countryId='$countryId'")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,
             'success'=> true,
             'message'=> "EXAM DELETED SUCCESFFULLY!",
-            'data' => array() // Initialize the data array
         ];
 
         $alertDetail = "EXAM DELETED SUCCESSFULLY:Exam was deleted successfully by $loginStaffFullname (ID: $loginStaffId).";

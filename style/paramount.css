@@ -519,7 +519,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .false-notification-div .btn {
@@ -549,9 +549,8 @@ a {
 }
 
 .false-notification-div p {
-  padding: 0px;
-  margin: 0px;
   font-size: 14px;
+    color: var(--primary-color);
 }
 .content-loading-div {
   width: 100%;

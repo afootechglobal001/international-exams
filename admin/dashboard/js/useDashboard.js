@@ -104,7 +104,7 @@ function filters(selectBoxId) {
   $(
     "#page" +
       selectBoxId +
-      " > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div, .exam-div"
+      " > tbody .tb-row, .grid-div, .faq-back-div, .testimony-div, .exam-div, .book-back-div"
   ).each(function () {
     var text = $(this).text();
     text.toLowerCase().indexOf(valThis.toLowerCase()) > -1
@@ -121,17 +121,6 @@ function _useCollapse(divId) {
     x.innerHTML = '&nbsp;<i class="bi-chevron-down"></i>&nbsp;';
   }
   $("#" + divId + "answer").slideToggle("slow");
-}
-
-function thousandSeperator(val) {
-  let dp = 2;
-  const formatter = new Intl.NumberFormat("ng-NG", {
-    style: "decimal",
-    maximumFractionDigits: dp,
-    minimumFractionDigits: dp,
-  });
-  //   return formatter.format(val);
-  return isNaN(parseFloat(formatter.format(val))) ? "-" : formatter.format(val);
 }
 
 function _logOut() {

@@ -18,19 +18,19 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $locationId = $_GET['locationId'];
-    $centerId = $_GET['centerId'];
-    $centerName=trim(strtoupper($data['centerName']));
-    $centerNumber=trim(strtoupper($data['centerNumber']));
-    $centerAddress=trim(strtoupper($data['centerAddress']));
+    $centreId = $_GET['centreId'];
+    $centreName=trim(strtoupper($data['centreName']));
+    $centreNumber=trim(strtoupper($data['centreNumber']));
+    $centreAddress=trim(strtoupper($data['centreAddress']));
     $dateSegment = $data['dateSegment'];
     $statusId=trim($data['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($locationId, 'LOCATION ID');
-    validateEmptyField($centerId, 'CENETR ID');
-    validateEmptyField($centerName, 'CENTER NAME');
-    validateEmptyField($centerNumber, 'CENTER NUMBER');
-    validateEmptyField($centerAddress, 'CENTER ADDRESS');
+    validateEmptyField($centreId, 'CENTRE ID');
+    validateEmptyField($centreName, 'CENTRE NAME');
+    validateEmptyField($centreNumber, 'CENTRE NUMBER');
+    validateEmptyField($centreAddress, 'CENTRE ADDRESS');
     validateEmptyField($statusId, 'STATUS');
 
     if (count($dateSegment)==0) {
@@ -42,57 +42,57 @@
         goto end;
     }
 
-    $centerNameQuery=mysqli_query($conn,"SELECT centerName FROM EXAM_CENTER_TAB WHERE centerName='$centerName' AND centerId!='$centerId'") or die (mysqli_error($conn));
-    $centerNameCountQuery=mysqli_num_rows($centerNameQuery);
+    $centreNameQuery=mysqli_query($conn,"SELECT centreName FROM EXAM_CENTRE_TAB WHERE centreName='$centreName' AND centreId!='$centreId'") or die (mysqli_error($conn));
+    $centreNameCountQuery=mysqli_num_rows($centreNameQuery);
 
-    if ($centerNameCountQuery>0){ /// start if 2
+    if ($centreNameCountQuery>0){ /// start if 2
         $response = [
             'response'=> 101,
             'success'=> false,
-            'message' => "This exam center with name ('$centerName') is already in use. Please try another Name."
+            'message' => "This exam center with name ('$centreName') is already in use. Please try another Name."
         ];
 
-        $alertDetail="EXAM CENTER UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to update exam center with a name ($centerName) that is already in use.";		
+        $alertDetail="EXAM CENTER UPDATE ATTEMPT FAILED: A staff whose name - ($loginStaffFullname) - (ID: $loginStaffId) attempted to update exam center with a name ($centreName) that is already in use.";		
         goto end;
     }
 
-        mysqli_query($conn,"UPDATE `EXAM_CENTER_TAB` 
-        SET `centerName`='$centerName', `centerNumber`='$centerNumber', `centerAddress`='$centerAddress', `statusId`='$statusId', `updatedBy`='$loginStaffId', `updatedTime`=NOW()
-        WHERE `centerId`='$centerId' AND `locationId`='$locationId'")or die (mysqli_error($conn));
-        
-        /// delete existing records from exam date tab
-        mysqli_query($conn,"DELETE FROM `EXAM_CENTER_DATE` WHERE centerId='$centerId'")or die (mysqli_error($conn));
+        mysqli_query($conn,"UPDATE `EXAM_CENTRE_TAB` 
+        SET `centreName`='$centreName', `centreNumber`='$centreNumber', `centreAddress`='$centreAddress', `statusId`='$statusId', `updatedBy`='$loginStaffId', `updatedTime`=NOW()
+        WHERE `centreId`='$centreId' AND `locationId`='$locationId'")or die (mysqli_error($conn));
 
-        ///////////////////////Insert into EXAM_CENTER_DATE//////////////////////////
+        /// delete existing records from exam date tab
+        mysqli_query($conn,"DELETE FROM `EXAM_CENTRE_DATE` WHERE centreId='$centreId'")or die (mysqli_error($conn));
+
+        ///////////////////////Insert into EXAM_CENTRE_DATE//////////////////////////
         foreach ($dateSegment as $date) {
             $examDate = trim($date['examDate']);
 
-            mysqli_query($conn,"INSERT INTO `EXAM_CENTER_DATE`
-            (`centerId`, `examDate`) VALUES
-            ('$centerId', '$examDate')") or die (mysqli_error($conn));
+            mysqli_query($conn,"INSERT INTO `EXAM_CENTRE_DATE`
+            (`centreId`, `examDate`) VALUES
+            ('$centreId', '$examDate')") or die (mysqli_error($conn));
         }
 
 
         $response = [
             'response'=> 200,
             'success'=> true,
-            'message'=> "EXAM CENTER UPDATED SUCCESFFULLY!",
+            'message'=> "EXAM CENTRE UPDATED SUCCESFFULLY!",
             'data' => array() // Initialize the data array
         ];
 
-            $alertDetail = "EXAM CENTER UPDATED SUCCESSFULLY:Exam center was updated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: center Number: $centerNumber | center ID: $centerId | center Name: $centerName.";
+            $alertDetail = "EXAM CENTRE UPDATED SUCCESSFULLY:Exam centre was updated successfully by $loginStaffFullname (ID: $loginStaffId). DETAILS: centre Number: $centreNumber | centreId ID: $centreId | centre Name: $centreName.";
 
             // Fetch branch details ///
-            $select="SELECT * FROM EXAM_CENTER_TAB";
+            $select="SELECT * FROM EXAM_CENTRE_TAB";
 
             $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
             while ($fetchQuery = mysqli_fetch_assoc($query)) {
                 $updatedBy=$fetchQuery['updatedBy'];
-                $centerId=$fetchQuery['centerId'];
+                $centreId=$fetchQuery['centreId'];
 
                 /////////////////// fetch exam date////////////
                 $examDateData=array();
-                $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTER_DATE WHERE centerId='$centerId'");
+                $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTRE_DATE WHERE centreId='$centreId'");
                 while ($getExamDateFetch = mysqli_fetch_assoc($getExamDateQuery)) {
                     $examDateData[] = $getExamDateFetch;
                 }

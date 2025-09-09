@@ -28,7 +28,7 @@
     $modeOfExam=trim($_POST['modeOfExam']);
     $regPix=$_FILES['regPix']['name'];
     $examLogo=$_FILES['examLogo']['name'];
-    $incentives=trim(strtoupper($_POST['incentives']));
+    $incentives=trim($_POST['incentives']);
     $scoreRange=trim($_POST['scoreRange']);
     $statusId=trim($_POST['statusId']);
 

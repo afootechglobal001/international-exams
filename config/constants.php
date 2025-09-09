@@ -65,6 +65,9 @@ var examRelatedLinkPixPath=websiteUrl+'/uploaded_files/examRelatedLink'; /// For
 var blogPixPath=websiteUrl+'/uploaded_files/blog'; /// For Blog Pix Path //
 var galleryPixPath=websiteUrl+'/uploaded_files/galleryPictures'; /// For Gallery Pix Path
 var pagePixPath=websiteUrl+'/uploaded_files/pagePictures'; /// For Page Pix Path
+var eBookPixPath=websiteUrl+'/uploaded_files/ebookPicture'; /// For E-Book Pix Path
+var ebookMaterialPath=websiteUrl+'/uploaded_files/ebookMaterial'; /// For E-Book Material Path
+var pagePicturePath=websiteUrl+'/uploaded_files/pagePictures'; /// For Pages Picture Path
 
 var pageCategory = {
     examCategory: 'examCategory',

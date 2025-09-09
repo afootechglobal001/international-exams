@@ -10,7 +10,7 @@ $_HOST_NAME = "145.239.185.59";
 $_DB_USERNAME ="arrahman_int_exam";
 $_DB_PASSWORD ="Password@12345.";
 
-// ////////////for local connect  
+////////////for local connect  
 // $_HOST_NAME = "localhost";  
 // $_DB_USERNAME ="root";
 // $_DB_PASSWORD ="";

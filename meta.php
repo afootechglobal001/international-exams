@@ -12,7 +12,7 @@
 <link href="<?php echo $websiteUrl?>/style/main-style.css?v=<?php echo $codeVersion?>" type="text/css" rel="stylesheet" />
 
 <script src="<?php echo $websiteUrl?>/js/jquery-v3.6.1.min.js"></script>
-<script src="<?php echo $websiteUrl?>/js/scripts.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/js/scripts.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
 <script src="<?php echo $websiteUrl?>/js/paramount.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/textfield-selectfield.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/js/aos.js"></script>
@@ -24,4 +24,9 @@
 <meta property="og:site_name" content="<?php echo $appName?>">
 <meta property="og:url" content="<?php echo $websiteAutoUrl?>" />
 
+<script src="<?php echo $websiteUrl?>/js/helper.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
 <script src="<?php echo $websiteUrl?>/js/exams/useExam.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
+<script src="<?php echo $websiteUrl?>/js/blog/useBlog.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
+<script src="<?php echo $websiteUrl?>/js/faq/useFaq.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
+<script src="<?php echo $websiteUrl?>/js/study-abroad/useStudyAbroad.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
+<script src="<?php echo $websiteUrl?>/js/payment-pricing/paymentPricing.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>

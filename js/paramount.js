@@ -276,6 +276,8 @@ function _showCustomConfirm(options) {
     trueActionBtnText = "YES",
     falseActionBtn = false,
     falseActionBtnText = "NO",
+    trueActionCallback = () => {},
+    falseActionCallback = () => {},
   } = options;
 
   // Show modal
@@ -318,12 +320,14 @@ function _showCustomConfirm(options) {
     .on("click", function () {
       callback();
       _modalClose();
+      trueActionCallback();
     });
   if (falseActionBtn) {
     $("#confirmCancelBtn")
       .off("click")
       .on("click", function () {
         _modalClose();
+        falseActionCallback();
       });
   }
 }
@@ -493,4 +497,16 @@ function _btnDisable(btnId, btnText = "SUBMIT", action = true) {
       .prop("disabled", false);
   }
   ////////////////////////////////////////////////
+}
+
+
+function thousandSeperator(val) {
+  let dp = 2;
+  const formatter = new Intl.NumberFormat("ng-NG", {
+    style: "decimal",
+    maximumFractionDigits: dp,
+    minimumFractionDigits: dp,
+  });
+  //   return formatter.format(val);
+  return isNaN(parseFloat(formatter.format(val))) ? "-" : formatter.format(val);
 }

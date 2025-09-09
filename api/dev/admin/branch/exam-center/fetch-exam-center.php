@@ -19,11 +19,11 @@
     //////////////////declaration of variables//////////////////////////////////////
     $q = $_GET['q'];
     $locationId = $_GET['locationId'];
-    $centerId = $_GET['centerId'];
+    $centreId = $_GET['centreId'];
     $statusId = $_GET['statusId'];
 
-    if (!empty($centerId)) {
-        $centerIds = "AND a.centerId ='$centerId'";
+    if (!empty($centreId)) {
+        $centreIds = "AND a.centreId ='$centreId'";
     }
 
     if (!empty($statusId)) {
@@ -37,11 +37,11 @@
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT a.*, b.locationName, c.statusName 
-    FROM EXAM_CENTER_TAB a 
+    FROM EXAM_CENTRE_TAB a 
     JOIN EXAM_LOCATION_TAB b ON a.locationId=b.locationId
     JOIN SETUP_STATUS_TAB c ON a.statusId = c.statusId 
-    WHERE (a.centerName LIKE '%$q%' OR a.centerNumber LIKE '%$q%' OR a.centerAddress LIKE '%$q%') $centerIds $statusIds $locationIds
-    ORDER BY a.centerName ASC";
+    WHERE (a.centreName LIKE '%$q%' OR a.centreNumber LIKE '%$q%' OR a.centreAddress LIKE '%$q%') $centreIds $statusIds $locationIds
+    ORDER BY a.centreName ASC";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);
@@ -55,17 +55,17 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "EXAM CENTER FETCH SUCCESFFULY!",
+        'message' => "EXAM CENTRE FETCH SUCCESSFULLY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-        $centerId=$fetchQuery['centerId'];
+        $centreId=$fetchQuery['centreId'];
 
         /////////////////// fetch exam date////////////
         $examDateData=array();
-        $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTER_DATE WHERE centerId='$centerId'");
+        $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTRE_DATE WHERE centreId='$centreId'");
         while ($getExamDateFetch = mysqli_fetch_assoc($getExamDateQuery)) {
             $examDateData[] = $getExamDateFetch;
         }

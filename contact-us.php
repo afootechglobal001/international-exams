@@ -34,9 +34,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 <body>
     <?php include 'header.php' ?>
 
-    <div class="other-pages-slide-section other-pages-slide-section-outer animated fadeInDown">
+    <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-
             <div class="top-title">
                 <nav>
                     <ul>
@@ -85,109 +84,218 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
             </div>
         </div>
+    </div>
+    
+    <section class="other-pages-main-section">
+        <div class="menu-btn-div">
+            <div class="btn-div-in">
+                <button class="menu-btn active-btn" id="next-abuja" title="ABUJA ADDRESS" onclick="_nextContactPage('abuja-hide-div','abuja');">ABUJA ADDRESS</button>
+                <button class="menu-btn" id="next-ibadan" title="IBADAN ADDRESS" onclick="_nextContactPage('ibadan-hide-div','ibadan');">IBADAN ADDRESS</button>
+                <button class="menu-btn" id="next-kaduna" title="KADUNA ADDRESS" onclick="_nextContactPage('kaduna-hide-div','kaduna');">KADUNA ADDRESS</button>
+            </div>
+        </div>
 
-        <section class="other-pages-main-section">
-
-            <section class="body-div contactBg">
-                <div class="body-div-in">
-                    <div class="location-phone">
-                        <div class="address-name-button">
-                            <button class="btn">LAGOS BRANCH</button>
-                            <button class="btn">OGUN BRANCH</button>
-                            <button class="btn">OYO BRANCH</button>
-                        </div>
-                        <div class="location-details-div">
-                            <div class="location-details">
-                                <div class="image-div">
-                                    <img src="all-images/images/email.png" alt="">
-                                </div>
-                                <div class="text-div">
-                                    <h2>MAIL US</h2>
-                                    <span>info@schoolbolt.com</span>
-                                </div>
-                            </div>
-
-                            <div class="location-details">
-                                <div class="image-div">
-                                    <img src="all-images/images/phone.png" alt="">
-                                </div>
-                                <div class="text-div">
-                                    <h2>CALL US</h2>
-                                    <span>(+234) 812 700 0262</span>
-                                </div>
-                            </div>
-
-                            <div class="location-details">
-                                <div class="image-div">
-                                    <img src="all-images/images/location.png" alt="">
-                                </div>
-                                <div class="text-div">
-                                    <h2>LOCATION</h2>
-                                    <span>Lagos, Nigeria</span>
-                                </div>
-                            </div>
+        <div id="abuja-hide-div">
+            <section class="contact-hash-bg">
+                <div class="bottom-body-div">
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                            <div class="icon img-div"><img src="all-images/images/email.png" alt="<?php echo $thename?> Email Address"/></div>
+                            
+                            <div class="text">
+                                <h2>MAIL US</h2>
+                                <p>abuja@internationalexam.com</p>
+                            </div>                 
                         </div>
                     </div>
-                </div>
-                <div style="width:100%; height: 350px;">
-                    <div class="map"
-                        style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:100%;height:100%;">
-                        <div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;" alt="Map"><iframe
-                                style="height:100%;width:100%;border:0;" frameborder="0"
-                                src="https://www.google.com/maps/embed/v1/place?q=Ode+remo&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
-                        </div><a class="googl-ehtml" href="https://www.bootstrapskins.com/themes" id="get-map-data"></a>
-                        <style>
-                        #google-maps-canvas img {
-                            max-width: none !important;
-                            background: none !important;
-                            font-size: inherit;
-                            font-weight: inherit;
-                        }
-                        </style>
+
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                            <div class="icon img-div"><img src="all-images/images/phone.png" alt="<?php echo $thename?> Phone Number"/></div>
+                            
+                            <div class="text">
+                                <h2>CALL US</h2>
+                                <p>+234(0) 814-325-9931</p>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                        <div class="icon img-div"><img src="all-images/images/location.png" alt="<?php echo $thename?> Office Address"/></div>
+
+                            <div class="text">
+                                <h2>LOCATION</h2> 
+                                <p>Suite 319A Beta Foundation Plaza, OPP. Desire Of Nations Reedemer's School Obafemi Awolowo way JABI, Abuja</p>
+                            </div>                  
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="body-div">
-                <div class="body-div-in message-contact">
-                    <div class="contact-input-div">
-                        <div class="text_field_container" id="fullName_container" title="full name">
-                            <script>
-                            textField({
-                                id: 'fullName',
-                                title: 'Enter full name'
-                            });
-                            </script>
-                        </div>
-
-                        <div class="text_field_container" id="emailAddress_container" title="email address">
-                            <script>
-                            textField({
-                                id: 'emailAddress',
-                                title: 'Enter email address'
-                            });
-                            </script>
-                        </div>
-
-                        <div class="text_field_container" id="subject_container" title="subject">
-                            <script>
-                            textField({
-                                id: 'subject',
-                                title: 'Type subject here'
-                            });
-                            </script>
+            <section class="map-body-div">
+                <div class="map-back-div"> 
+                    <iframe 
+                        class="google-map"
+                        allowfullscreen="" 
+                        src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d4045590.7070377283!2d2.7596340243550213!3d8.022412238622978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d6.5568767999999995!2d3.3488895999999997!4m5!1s0x104e75df07efb231%3A0xa61d38dac4357f08!2sBeta%20Foundation%20Plaza%2C%2024%20Ebitu%20Ukiwe%20St%2C%20Jabi%2C%20Abuja%20900211%2C%20Federal%20Capital%20Territory!3m2!1d9.0647738!2d7.426448499999999!5e0!3m2!1sen!2sng!4v1757419379633!5m2!1sen!2sng">
+                    </iframe>
+                </div>
+            </section> 
+        </div>
+        
+        <div id="kaduna-hide-div">
+            <section class="contact-hash-bg">
+                <div class="bottom-body-div">
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                            <div class="icon img-div"><img src="all-images/images/email.png" alt="<?php echo $thename?> Email Address"/></div>
+                            
+                            <div class="text">
+                                <h2>MAIL US</h2>
+                                <p>kaduna@internationalexam.com</p>
+                            </div>                 
                         </div>
                     </div>
 
-                    <div class="contact-input-div">
-                        <textarea name="message" id="message" class="message" placeholder="message"></textarea>
-                        <button class="btn">Send Mail <i class="bi-send-fill"></i></button>
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                            <div class="icon img-div"><img src="all-images/images/phone.png" alt="<?php echo $thename?> Phone Number"/></div>
+                            
+                            <div class="text">
+                                <h2>CALL US</h2>
+                                <p>(+234) 901 753 6325</p>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                        <div class="icon img-div"><img src="all-images/images/location.png" alt="<?php echo $thename?> Office Address"/></div>
+
+                            <div class="text">
+                                <h2>LOCATION</h2> 
+                                <p>Suite 205 land wing Mall @ No11 Congo street beside Epitome hotel and suite off CBN QUARTER barnawa Kaduna</p>
+                            </div>                  
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <?php include 'footer.php' ?>
+            <section class="map-body-div">
+                <div class="map-back-div"> 
+                    <iframe 
+                        class="google-map"
+                        allowfullscreen="" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.3579739722763!2d7.452939174593656!3d10.48258608961343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11b2b5d5c94ab7f9%3A0xd9e2c3928b59cbb!2sEpitome%20Hotel%20Suites!5e0!3m2!1sen!2sng!4v1725894100000!5m2!1sen!2sng">
+                    </iframe>
+                </div>
+            </section> 
+        </div>
+
+         <div id="ibadan-hide-div">
+            <section class="contact-hash-bg">
+                <div class="bottom-body-div">
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                            <div class="icon img-div"><img src="all-images/images/email.png" alt="<?php echo $thename?> Email Address"/></div>
+                            
+                            <div class="text">
+                                <h2>MAIL US</h2>
+                                <p>ibadan@internationalexam.com</p>
+                            </div>                 
+                        </div>
+                    </div>
+
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                            <div class="icon img-div"><img src="all-images/images/phone.png" alt="<?php echo $thename?> Phone Number"/></div>
+                            
+                            <div class="text">
+                                <h2>CALL US</h2>
+                                <p>+234(0) 814-325-9931</p>
+                            </div>                  
+                        </div>
+                    </div>
+
+                    <div class="contact-div animated zoomIn">
+                        <div class="div-in inner-contact">
+                        <div class="icon img-div"><img src="all-images/images/location.png" alt="<?php echo $thename?> Office Address"/></div>
+
+                            <div class="text">
+                                <h2>LOCATION</h2> 
+                                <p>76, Agarawu Plaza, Opposite Country Kitchen, Challenge, Ibadan, Oyo State</p>
+                            </div>                  
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="map-body-div">
+                <div class="map-back-div"> 
+                    <iframe 
+                        class="google-map"
+                        allowfullscreen="" 
+                        src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d126626.80834760105!2d3.7958197629611306!3d7.344041587789011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x10398dd9b76b8559%3A0x828e1d604f2513dc!2sopposite%20Country%20Kitchen%2C%2076%2C%20Agarawu%20Plaza%2C%20Challenge%20Expressway%2C%20Ibadan%2C%20Oyo!3m2!1d7.344006899999999!2d3.8780810999999997!5e0!3m2!1sen!2sng!4v1757419613833!5m2!1sen!2sng">
+                    </iframe>
+                </div>
+            </section> 
+        </div>
+
+        <section class="body-div">
+            <div class="body-div-in">
+                <div class="contact-mail-div" data-aos="fade-in" data-aos-duration="800">
+                    <div class="inner-div">
+                        <div class="div-in">
+                            <div class="text_field_container" id="fullName_container">
+                                <script>
+                                    textField({
+                                        id: 'fullName',
+                                        title: 'Full Name'
+                                    });
+                                </script>
+                            </div>
+
+                            <div class="text_field_container" id="email_container">
+                                <script>
+                                    textField({
+                                        id: 'email',
+                                        title: 'Email Address',
+                                        type: 'email'
+                                    });
+                                </script>
+                            </div>
+
+                            <div class="text_field_container" id="subject_container">
+                                <script>
+                                    textField({
+                                        id: 'subject',
+                                        title: 'Subject'
+                                    });
+                                </script>
+                            </div>       
+                        </div>
+
+                        <div class="div-in right-div-in">
+                            <div class="text_area_container" id="message_container">
+                                <script>
+                                    textField({
+                                        id: 'message',
+                                        title: 'Message',
+                                        type: 'textarea'
+                                    });
+                                </script>
+                            </div>
+                
+                            <button class="btn" id="submitBtn" onclick="_sendContactEmail();">Send Mail <i class="bi-send-check"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <?php include 'footer.php' ?>
+    </section>
 </body>
 
 </html>

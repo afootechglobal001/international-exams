@@ -9,6 +9,7 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $pageCategoryId = $_GET['pageCategoryId'];
+    $countryId = $_GET['countryId'];
 
     $select = "SELECT 
         a.pageCategoryId,
@@ -16,18 +17,17 @@
         a.regTitle, 
         a.examAbbr,
         a.regPix,
-        a.examLogo, 
-        b.pageUrl,
-        c.amount,
-        c.currency
+        a.examLogo,
+        a.incentives,
+        b.countryId,
+        b.examId,
+        b.amount,
+        b.currency,
+        c.pageUrl
         FROM PUBLISH_TAB a
-        JOIN PAGES_TAB b
-            ON a.publishId= b.publishId
-        JOIN (
-            SELECT publishId, MAX(amount) AS amount, MAX(currency) AS currency
-            FROM BRANCH_EXAM_PRICING_TAB
-            GROUP BY publishId
-        ) c ON a.publishId = c.publishId
+        JOIN BRANCH_EXAM_PRICING_TAB b ON a.publishId = b.examId
+        JOIN PAGES_TAB c ON a.publishId = c.publishId
+            AND b.countryId ='$countryId'
             AND a.statusId =1
         AND a.pageCategoryId ='$pageCategoryId'
         AND (a.parentPublishId IS NULL OR a.parentPublishId = '')

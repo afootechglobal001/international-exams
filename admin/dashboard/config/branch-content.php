@@ -965,7 +965,7 @@
                                 selectField({
                                     id: 'publishId',
                                     title: 'Select Exam',
-                                    fieldValue: getEachExamLocationSession?.publishId ?? '',
+                                    fieldValue: getEachExamLocationSession?.examId ?? '',
                                     fieldLabel: getEachExamLocationSession?.examAbbr ?? ''
                                 });
                                 _getSelectExams('publishId');
@@ -1009,8 +1009,8 @@
     <script> getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));</script>
     <script> 
         getEachExamCenterSession = JSON.parse(sessionStorage.getItem("getEachExamCenterSession"));
-        $('#pageTitle').html(getEachExamCenterSession?.locationId ? 'UPDATE EXAM CENTER':'CREATE NEW EXAM CENTER');
-        $('#subTitle, #subTitle2').html(getEachExamCenterSession?.locationId ? 'update this exam center':'create new exam center');
+        $('#pageTitle').html(getEachExamCenterSession?.locationId ? 'UPDATE EXAM CENTRE':'CREATE NEW EXAM CENTRE');
+        $('#subTitle, #subTitle2').html(getEachExamCenterSession?.locationId ? 'update this exam centre':'create new exam centre');
     </script>
 
 
@@ -1018,7 +1018,7 @@
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-geo-alt"></i></div>
-                <h3 id="pageTitle">ADD NEW EXAM CENTER</h3>
+                <h3 id="pageTitle">ADD NEW EXAM CENTRE</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -1047,32 +1047,32 @@
                     </div>
 
                     <div class="form-container">
-                        <div class="text_field_container" id="centerName_container">
+                        <div class="text_field_container" id="centreName_container">
                             <script>
                                 textField({
-                                    id: 'centerName',
-                                    title: 'Center Name',
-                                    value: getEachExamCenterSession?.centerName ?? ''
+                                    id: 'centreName',
+                                    title: 'Centre Name',
+                                    value: getEachExamCenterSession?.centreName ?? ''
                                 });
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="centerNumber_container">
+                        <div class="text_field_container" id="centreNumber_container">
                             <script>
                                 textField({
-                                    id: 'centerNumber',
-                                    title: 'Center Number',
-                                    value: getEachExamCenterSession?.centerNumber ?? ''
+                                    id: 'centreNumber',
+                                    title: 'Centre Number',
+                                    value: getEachExamCenterSession?.centreNumber ?? ''
                                 });
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="centerAddress_container">
+                        <div class="text_field_container" id="centreAddress_container">
                             <script>
                                 textField({
-                                    id: 'centerAddress',
-                                    title: 'Center Address',
-                                    value: getEachExamCenterSession?.centerAddress ?? ''
+                                    id: 'centreAddress',
+                                    title: 'Centre Address',
+                                    value: getEachExamCenterSession?.centreAddress ?? ''
                                 });
                             </script>
                         </div>

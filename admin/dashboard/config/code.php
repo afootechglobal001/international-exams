@@ -94,7 +94,6 @@ switch ($action){
 		}
     break;
 
-
 	case 'uploadPagePix':
 		$oldSeoFlyer = $_POST['oldSeoFlyer'] ?? '';
 		$newSeoFlyer = $_POST['newSeoFlyer'] ?? '';
@@ -176,6 +175,42 @@ switch ($action){
 		}
     break;
 
+	case 'uploadEbookPixAndMaterial':
+		///// Ebook Picture /////
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		$regPixDir = "../../../uploaded_files/ebookPicture/";
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $regPixDir . $newRegPix);
+		}
+
+		////// Ebook Material ///////
+		$newMaterial = $_POST['newMaterial'] ?? '';
+		$materialDir = "../../../uploaded_files/ebookMaterial/";
+
+		if (!empty($newMaterial) && isset($_FILES['material']) && $_FILES['material']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['material']['tmp_name'], $materialDir . $newMaterial);
+		}
+    break;
+
+	case 'unlinkEbookPixAndMaterial':
+		///// Ebook Picture /////
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$oldRegPixDir = "../../../uploaded_files/ebookPicture/";
+
+		if (!empty($oldRegPix) && file_exists($oldRegPixDir . $oldRegPix)) {
+			unlink($oldRegPixDir . $oldRegPix);
+		}
+
+		////// Ebook Material ///////
+		$oldMaterial = $_POST['oldMaterial'] ?? '';
+		$oldMaterialDir = "../../../uploaded_files/ebookMaterial/";
+
+		if (!empty($oldMaterial) && file_exists($oldMaterialDir . $oldMaterial)) {
+			unlink($oldMaterialDir . $oldMaterial);
+		}
+    break;
+
 	case 'uploadPagePictures':
 		$newPagePictures=$_POST['newPagePictures'];
 
@@ -222,7 +257,15 @@ switch ($action){
 		$txt .= "<?php \$seoKeywords='$seoKeywords';?>\n";
 		$txt .= "<?php \$seoDescription='$seoDescription';?>\n";
 		$txt .= "<?php \$pageSeoPix='$pageSeoPix';?>\n";
-		$txt .= "<?php include '{$pageCategoryId}_details.php';?>";
+		
+		// Decide include path automatically based on pageCategoryId
+		if ($pageCategoryId == 'blogCategory') {
+			$includePath = "../{$pageCategoryId}_details.php";
+		} else {
+			$includePath = "{$pageCategoryId}_details.php";
+		}
+
+		$txt .= "<?php include '$includePath';?>";
 
 		// for new page creation ////
 		if (empty($oldPageUrl)) {

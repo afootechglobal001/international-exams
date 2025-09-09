@@ -9,6 +9,18 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $publishId = $_GET['publishId'];
+    $pageSession = $_GET['pageSession'];
+
+    if (!empty($publishId)){
+        ///////////////////////geting checkPageSession//////////////////////////
+        $checkPageSession=$callclass->_checkPageSession($conn, 'examCategory', $publishId, $pageSession);
+        $array = json_decode($checkPageSession, true);
+        $pageSessionCheck= $array[0]['pageSessionCheck'];
+
+        if ($pageSessionCheck==1){
+            mysqli_query($conn,"UPDATE `PUBLISH_TAB` SET pageView=pageView+1 WHERE publishId='$publishId'")or die (mysqli_error($conn));
+        }
+    }
 
     $select = "SELECT 
         a.pageCategoryId,
@@ -17,7 +29,8 @@
         a.examAbbr,
         a.incentives,
         a.regPix, 
-        a.statusId, 
+        a.statusId,
+        a.pageView,
         a.updatedBy,
         a.updatedTime,
         b.seoDescription,

@@ -101,6 +101,23 @@ function _getPublishDetails($conn,$publishId, $pageCategoryId){
 		return json_encode([$response]);
 }
 
+
+function _checkPageSession($conn, $pageCategoryId, $publishId, $pageSession){
+	$viewCount = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM PAGE_VIEWS_TAB WHERE pageCategoryId='$pageCategoryId' AND publishId='$publishId' AND pageSession='$pageSession'"));
+	if ($viewCount>0){
+		$pageSessionCheck=0;
+	}else{
+		$ipAddress=$_SERVER['REMOTE_ADDR']; //ip used
+		$sysName=gethostname();//computer used
+		$pageSessionCheck=1;
+		mysqli_query($conn,"INSERT INTO `PAGE_VIEWS_TAB`
+        (`pageCategoryId`, `publishId`, `pageSession`, `system`, `ipAddress`, `date`) VALUES
+		('$pageCategoryId','$publishId','$pageSession','$sysName','$ipAddress', NOW())")or die (mysqli_error($conn));
+	}
+	
+    return '[{"pageSessionCheck":"'.$pageSessionCheck.'"}]';
+}
+
 }//end of class
 $callclass=new allClass();
 

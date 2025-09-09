@@ -31,6 +31,7 @@
             AND a.statusId =1
         AND a.pageCategoryId ='$pageCategoryId'
         AND (a.parentPublishId IS NULL OR a.parentPublishId = '')
+        LIMIT 6
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));

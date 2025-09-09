@@ -1,5 +1,6 @@
 <div id="get-more-div"></div>
 <div id="get-more-div-secondary"></div>
+<div id="customConfirmModal" class="modal-overlay" style="display:none;"></div>
 
 <div class="sidenavdiv">
     <div class="live-chat-back-div">
@@ -126,3 +127,37 @@
 
     <div class="sidenavdiv-in" onclick="_close_side_nav()"></div>
 </div>
+
+<div class="switch-country-overlay" id="switchCountryModal" style="display:none;">
+    <div class="switch-modal-div">
+        <div class="image-div"></div>
+        <div class="content-div">
+            <h3>SELECT YOUR COUNTRY</h3>
+            <div class="each-content" onclick="_setCountry('NG');">
+                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/nigeria-logo.jpg" alt="Logo"></div>
+                <div class="text-div">
+                    <h2>NIGERIA</h2>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </div>
+            </div>
+
+            <div class="each-content" onclick="_setCountry('GH');">
+                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/ghana-logo.png" alt="Logo"></div>
+                <div class="text-div">
+                    <h2>GHANA</h2>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </div>
+            </div>
+
+            <div class="each-content" onclick="_setCountry('KE');">
+                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/kenya-logo.png" alt="Logo"></div>
+                <div class="text-div">
+                    <h2>KENYA</h2>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="switch-country-link" onclick="_getForms('switchCountry')"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/switch.png"></div>

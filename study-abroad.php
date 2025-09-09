@@ -89,48 +89,29 @@ Best place to register ACT exam in Nigeria, where to register international exam
             </div>
         </div>
     </div>
+
     <section class="other-pages-main-section">
-
-        <section class="body-div net-bg-tr">
+       <section class="body-div net-bg-br">
             <div class="body-div-in">
-                <div class="about-back-div">
-                    <div class="image-div" data-aos="fade-up" data-aos-duration="1400">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg"
-                            alt="About International Exams" />
-                    </div>
-
-                    <div class="content-div" data-aos="flip-right" data-aos-duration="1400">
-                        <div class="icon-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg"
-                                alt="About Us icon" />
+                <div class="inner-body-div-in">
+                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
+                        <div class="left-div">
+                            <div class="top-title">
+                                <h2>STUDY ABROAD</h2>
+                            </div>
+                            <h3>Achieve Your Dreams: Study in Top Universities <span>#Abroad</span></h3>
                         </div>
 
-                        <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
-                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in
-                            almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and
-                            many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of
-                            students for admissions into foreign universities.</p>
+                        <div class="btn-div">
+                            <a href="#"><button class="btn" title="Register now">Apply Now <i class="bi-chevron-right"></i></button></a>
+                        </div>
+                    </div>
 
-                        <div class="check-div">
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>Lowest Test Registration Fee</h5>
-                            </div>
+                    <div class="our-exam-back-div" id="pageContent">
+                        <script>_fetchAllStudyAbroadData();</script>
 
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>Physical and Online Lectures</h5>
-                            </div>
-
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>FREE E-books</h5>
-                            </div>
-
-                            <div class="check">
-                                <i class="bi-check-lg"></i>
-                                <h5>Free Study Packs</h5>
-                            </div>
+                        <div class="content-loading-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                         </div>
                     </div>
                 </div>
@@ -139,7 +120,5 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
         <?php include 'footer.php' ?>
     </section>
-
 </body>
-
 </html>

@@ -30,8 +30,8 @@
                         <a href="<?php echo $websiteUrl ?>">
                         <li title="Home">Home <i class="bi bi-caret-right-fill"></i></li></a>
 
-                        <a href="<?php echo $websiteUrl ?>/international-exams">
-                        <li title="International Exams">International Exams <i class="bi bi-caret-right-fill"></i></a></li>
+                        <a href="<?php echo $websiteUrl ?>/study-abroad">
+                        <li title="Study Abroad">Study Abroad <i class="bi bi-caret-right-fill"></i></a></li>
 
                         <a id="examTitleLink" href="#">
                         <li id="regTopTitle" title="">Loading...</li></a>
@@ -63,14 +63,14 @@
                         <div class="left-div">
                             <div class="page-list-back-div">
                                 <div class="main-picture-back-div">	
-                                    <div class="main-picture-div" id="examPreviewPix">
-                                        <img id="examFetchPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                    <div class="main-picture-div" id="studyAbroadPreviewPix">
+                                        <img id="studyAbroadFetchPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
                                     </div>   
 
                                     <div class="bottom-img-div">
                                         <div class="inner-img-container"> 
                                             <div class="inner-img-div" id="fetchPagePictures">
-                                                <script>_fetchPagesPictureData('<?php echo $publishId?>', 'examPreviewPix');</script>
+                                                <script>_fetchPagesPictureData('<?php echo $publishId?>', 'studyAbroadPreviewPix');</script>
                                             </div>
                                         </div>
                                         <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
@@ -96,22 +96,17 @@
 
                         <div class="right-div sticky-div">   
                             <div class="div-in">
-                                <h3>INCENTIVES</h3>
+                                <h3>RELATED STUDY ABROAD </h3>
                                 
-                                <div class="related-post-back-div pages-inner-content" id="incentives"></div>
-                            </div>
-
-                            <div class="div-in">
-                                <h3>RELATED LINKS</h3>
-                                
-                                <div class="related-post-back-div pages-inner-content" id="fetchedRelatedLinks"></div>
+                                <div class="related-post-back-div" id="relatedPageStudyAbroadContent">                                                              
+                                    <script>_fetchPageRelatedStudyAbroadData();</script>                   
+                                </div>
                             </div>
                         </div>                     
                     </div>
                 </div>
-                <script>_fetchEachSiteExam('<?php echo $publishId?>')</script>
+                <script>_fetchEachStudyAbroad('<?php echo $publishId?>')</script>
             </section>
-
 
         <?php include 'footer.php' ?>
     </section>

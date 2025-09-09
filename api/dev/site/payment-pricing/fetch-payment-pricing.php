@@ -22,11 +22,9 @@
         b.countryId,
         b.examId,
         b.amount,
-        b.currency,
-        c.pageUrl
+        b.currency
         FROM PUBLISH_TAB a
         JOIN BRANCH_EXAM_PRICING_TAB b ON a.publishId = b.examId
-        JOIN PAGES_TAB c ON a.publishId = c.publishId
             AND b.countryId ='$countryId'
             AND a.statusId =1
         AND a.pageCategoryId ='$pageCategoryId'

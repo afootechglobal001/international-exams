@@ -183,7 +183,7 @@
 
                         <div class="form-title">EXAM INCENTIVES</div>
                         <div class="page-content-back-div">
-                            <textarea class="text_field" style="width:100%;" rows="8" id="incentives" title="TYPE EXAM INCENTIVES HERE"></textarea>
+                            <textarea class="text_field" style="width:100%;" rows="24" id="incentives" title="TYPE EXAM INCENTIVES HERE"></textarea>
                             <div class="issueText" id="issue_incentives"></div>
                         </div>
 

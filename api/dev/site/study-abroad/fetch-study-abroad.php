@@ -11,52 +11,44 @@
     $pageCategoryId =trim($_GET['pageCategoryId']);
     $publishId = $_GET['publishId'];
     $pageSession = $_GET['pageSession'];
-    $blogCatId = $_GET['blogCatId'];
     $q = $_GET['q'];
 
     if (!empty($publishId)) {
         $publishIds = "AND a.publishId ='$publishId' ";
         ///////////////////////geting checkPageSession//////////////////////////
-		$checkPageSession=$callclass->_checkPageSession($conn, 'blogCategory', $publishId, $pageSession);
+		$checkPageSession=$callclass->_checkPageSession($conn, 'studyAbroadCategory', $publishId, $pageSession);
 		$array = json_decode($checkPageSession, true);
 		$pageSessionCheck= $array[0]['pageSessionCheck'];
 
 		if ($pageSessionCheck==1){
-			mysqli_query($conn,"UPDATE `PUBLISH_TAB` SET blogView=blogView+1 WHERE publishId='$publishId'")or die (mysqli_error($conn));
+			mysqli_query($conn,"UPDATE `PUBLISH_TAB` SET pageView=pageView+1 WHERE publishId='$publishId'")or die (mysqli_error($conn));
 		}
     }
 
-    if (!empty($blogCatId)) {
-        $blogCatIds = "AND a.blogCatId ='$blogCatId' ";
-    }
-    
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
         a.pageCategoryId, 
         a.publishId, 
         a.regTitle, 
-        a.blogCatId, 
-        a.regPix, 
+        a.regPix,
+        a.studyAbroadSummary,
         a.statusId, 
-        a.blogView,
+        a.pageView,
         a.createdBy,
         a.updatedBy, 
         a.createdTme, 
         a.updatedTime, 
         b.pageUrl,
         b.pageContent,
-        b.seoDescription,
-        c.catName AS blogCatName
+        b.seoDescription
         FROM PUBLISH_TAB a
         JOIN PAGES_TAB b 
             ON a.publishId = b.publishId
-        JOIN SETUP_CATEGORIES_TAB c
-            ON a.blogCatId = c.catId
-        WHERE (a.regTitle LIKE '%$q%' OR c.catName LIKE '%$q%') $publishIds $blogCatIds
+        WHERE (a.regTitle LIKE '%$q%') $publishIds
         AND a.statusId= 1    
             AND a.pageCategoryId ='$pageCategoryId'
-        ORDER BY a.createdTme DESC LIMIT 2;
+        ORDER BY a.updatedTime DESC;
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -71,7 +63,7 @@
     $response=[
         'response' => 200,
         'success' => true,
-        'message' => "BLOG FETCH SUCCESFFULY!",
+        'message' => "STUDY ABROAD FETCH SUCCESFFULY!",
         'allRecordCount' => $allRecordCount,
         'data' => array() // Initialize the data array
     ];
@@ -86,7 +78,6 @@
             $updatedByData = $getUpdatedByfetch;
         }
         $fetchQuery['updatedBy']= $updatedByData;
-
 
         $response['data'][] = $fetchQuery;
     }

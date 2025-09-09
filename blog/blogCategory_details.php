@@ -22,9 +22,8 @@
 <body>
     <?php include '../../header.php' ?>
 
-    <div class="other-pages-slide-section other-pages-blog-details animated fadeInDown">
+    <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-
             <div class="top-title">
                 <nav>
                     <ul>
@@ -47,102 +46,75 @@
 
             <div class="other-pages-back-div">
                 <div class="main-content-back-div">
-                    <div class="text-content-div blog-details-div" >
+                    <div class="text-content-div">
                         <h1 id="regTitle">Loading...</h1>
 
                         <div class="meta">
                             <span><i class="bi bi-person"></i> By: <strong id="fullName">Loading...</strong> </span> |
                             <span><i class="bi-calendar3"></i> DATE: <strong id="updatedTime">Loading...</strong></span> |
-                            <span><i class="bi-eye"></i> VIEWS: 200</span>
+                            <span><i class="bi-eye"></i> VIEWS: <strong id="blogView">Loading...</strong></span>
                         </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
             </div>
         </div>
-        <section class="other-pages-main-section">
-            <section class="body-div blog-bg">
-                <div class="body-div-in">
-                    <div class="page-back-div">
-                        <div class="left-div">
-                            <div class="page-list-back-div">
-                                <div class="main-picture-back-div">	
-                                    <div class="main-picture-div" id="blog_preview">
-                                        <img id="blogPreviewPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
-                                    </div>   
+    </div>
 
-                                    <div class="bottom-img-div">
-                                        <div class="inner-img-container"> 
-                                            <div class="inner-img-div">
-                                                <div class="each-img-div" title="Click to Preview" id="img1" onclick="_view_preview_img('img1')">
-                                                    <img src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
-                                                </div> 
-                                                <div class="each-img-div" title="Click to Preview" id="img2" onclick="_view_preview_img('img2')">
-                                                    <img src="<?php echo $websiteUrl?>/all-images/blog/blog_2.webp" alt="Blog"/> 
-                                                </div> 
-                                            </div>
+    <section class="other-pages-main-section">
+        <section class="body-div blog-bg">
+            <div class="body-div-in">
+                <div class="page-back-div">
+                    <div class="left-div">
+                        <div class="page-list-back-div">
+                            <div class="main-picture-back-div">	
+                                <div class="main-picture-div" id="blogPreviewPix">
+                                    <img id="blogFetchPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                </div>   
+
+                                <div class="bottom-img-div">
+                                    <div class="inner-img-container"> 
+                                        <div class="inner-img-div" id="fetchPagePictures">
+                                            <script>_fetchPagesPictureData('<?php echo $publishId?>','blogPreviewPix');</script>
                                         </div>
-                                        <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
-                                        <button class="blog-right-btn"> <i class="bi-chevron-double-right"></i></button>
-                                    </div>                                   
-                                </div>                         
-                            
-                                <div class="main-pages-content-div" id="pageContentInfo"></div>
+                                    </div>
+                                    <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
+                                    <button class="right-click-btn"> <i class="bi-chevron-double-right"></i></button>
+                                </div>                                   
+                            </div>                         
+                        
+                            <div class="main-pages-content-div" id="pageContentInfo"></div>
 
-                                <div class="comment-back-div">
-                                    <div id="disqus_thread"></div>
-                                    <script>
-                                        (function() { // DON'T EDIT BELOW THIS LINE
-                                        var d = document, s = d.createElement('script');
-                                        s.src = 'https://1stculturetour-com.disqus.com/embed.js';
-                                        s.setAttribute('data-timestamp', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                        })();
-                                    </script>
-                                </div>
+                            <div class="comment-back-div">
+                                <div id="disqus_thread"></div>
+                                <script>
+                                    (function() { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = 'https://1stculturetour-com.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                    })();
+                                </script>
                             </div>
                         </div>
-
-                        <div class="right-div sticky-div">   
-                            <div class="div-in">
-                                <h3>RECENT BLOG</h3>
-                                
-                                <div class="related-post-back-div">
-                                    <a href="<?php echo $websiteUrl?>/blog/transforming-school-management-in-nigeria-with-schoolbolt" title="Transforming School Management in Nigeria with SchoolBolt">
-                                    <div class="related-post">
-                                        <div class="image-div">
-                                            <img src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
-                                        </div>
-
-                                        <div class="cont-div">
-                                            <h3>Transforming School Management in Nigeria with SchoolBolt</h3> 
-                                            <div class="comment"><i class="bi-clock"></i> <span> 15 Jan, 2025 </span> | <i class="bi-eye-fill"></i> <span> 200 Views </span></div>
-                                        </div>
-                                    </div></a>                           
-                                </div>
-
-                                <div class="related-post-back-div">
-                                    <a href="<?php echo $websiteUrl?>/blog/">
-                                    <div class="related-post">
-                                        <div class="image-div">
-                                            <img src="<?php echo $websiteUrl?>/all-images/blog/blog_2.webp" alt="Blog"/> 
-                                        </div>
-
-                                        <div class="cont-div">
-                                            <h3>Top 5 Benefits of Using SchoolBolt for Your School</h3> 
-                                            <div class="comment"><i class="bi-clock"></i> <span> 15 Jan, 2025 </span> | <i class="bi-eye-fill"></i> <span> 200 Views </span></div>
-                                        </div>
-                                    </div></a>                           
-                                </div>
-                            </div>
-                        </div>                     
                     </div>
-                </div>
-                <script>_fetchEachSiteBlog('<?php echo $publishId?>')</script>
-            </section>
 
-            <?php include '../../footer.php' ?>
+                    <div class="right-div sticky-div">   
+                        <div class="div-in">
+                            <h3>RECENT BLOG</h3>
+                            
+                            <div class="related-post-back-div" id="relatedPageBlogContent">                                                              
+                                <script>_fetchPageRelatedBlogData();</script>                   
+                            </div>
+                        </div>
+                    </div>                     
+                </div>
+            </div>
+            <script>_fetchEachSiteBlog('<?php echo $publishId?>');</script>
         </section>
+
+        <?php include '../../footer.php' ?>
+    </section>
 
 </body>
 

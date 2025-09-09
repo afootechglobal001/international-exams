@@ -1,5 +1,10 @@
 function _fetchAllPageBlogData(blogCatId = '') {
-    $('#pageContent').html('<div class="ajax-loader blog-ajax-loader"><img src="' + websiteUrl + '/all-images/images/spinner.gif" alt="Loading"/></div>').fadeIn("fast");
+	$('#pageContent').html(`
+      <div class="content-loading-div">
+        <img src="${websiteUrl}/all-images/images/spinner.gif" alt="Loading..." />
+      </div>
+    `).fadeIn("fast");
+
 	try {
 		//// call endpoint //////
 		_callFetchEndPoints({
@@ -44,7 +49,7 @@ function _initFetchBlogData(data) {
         
         <div class="text-content-div">
             <h2>${item.regTitle}</h2>
-            <div class="count"><i class="bi-calendar3"></i> ${formatExamDate(item.updatedTime)} <span> | </span> <i class="bi-eye"></i> 10 VIEWS</div>
+            <div class="count"><i class="bi-calendar3"></i> ${formatExamDate(item.updatedTime)} <span> | </span> <i class="bi-eye"></i> ${item.blogView} VIEWS</div>
             <p>${item.seoDescription}</p>
 
             <div>
@@ -135,7 +140,7 @@ function _initFetchRelatedBlogData(data) {
 
             <div class="text-div">
                 <div class="count"><i class="bi-calendar3"></i> ${formatExamDate(item.updatedTime)} <span>|</span> <i
-                        class="bi-eye-fill"></i> 250 VIEWS</div>
+                        class="bi-eye-fill"></i>${item.blogView} VIEWS</div>
                 <h3>${item.regTitle}</h3>
 
                 <a href="${websiteUrl}/blog/${item.pageUrl}" title="Read More">
@@ -192,10 +197,10 @@ function _initFetchIndexBlogData(data) {
 
             <div class="text-div">
                 <div class="count"><i class="bi-calendar3"></i> ${formatExamDate(item.updatedTime)} <span>|</span> <i
-                        class="bi-eye-fill"></i> 250 VIEWS</div>
+                        class="bi-eye-fill"></i> ${item.blogView} VIEWS</div>
                 <h3>${item.regTitle}</h3>
 
-                <a href="${websiteUrl}/blog/${item.pageUrl}" title="Read More">
+                <a href="${websiteUrl}/blog/${item.pageUrl}" title="${item.regTitle}">
                     <button class="btn" title="Read More">Read More <i
                             class="bi-chevron-right"></i></button></a>
             </div>
@@ -205,45 +210,102 @@ function _initFetchIndexBlogData(data) {
 }
 
 function _fetchEachSiteBlog(publishId) {
+	let pageSession = JSON.parse(sessionStorage.getItem("pageSession"));
+	if(pageSession==null){
+		_getPageSessionValue('reload')
+	} else {
+		try {
+			//// call endpoint //////
+			_callFetchEndPoints({
+				url: `site/blog/fetch-blog?pageCategoryId=${pageCategory?.blogCategory}&publishId=${publishId}&pageSession=${pageSession}`,
+			})
+			.then((response) => {
+				if (response.success && response.data) {
+					const data = response.data[0];
+
+					const regTitle = data.regTitle;
+					const seoDescription = data.seoDescription;
+					const pageContent = data.pageContent;
+					const blogView = data.blogView;
+					const pageUrl = data.pageUrl;
+					const fullName = data.updatedBy.fullName;
+					const updatedTime = formatExamDate(data.updatedTime);
+					const regPix = data.regPix;
+
+					$('#regTitle, #regTopTitle').html(regTitle);
+					$('#seoDescription').html(seoDescription);
+					$('#pageContentInfo').html(pageContent);
+					$('#fullName').html(fullName);
+					$('#blogView').html(blogView);
+					$('#updatedTime').html(updatedTime);
+					$('#blogFetchPix').attr('src', (blogPixPath) + '/' + regPix);
+					$('#blogTitleLink').attr('href', websiteUrl + '/blog/' + pageUrl);
+				} else {
+					_showCustomConfirm({
+						title: "PAGE ERROR",
+						message: response.message,
+						alertType: "warning",
+						trueActionBtnText: "OK",
+					});
+				} 
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+				_callAjaxError(() => _fetchEachSiteBlog()); // retry if needed
+			});
+		} catch (error) {
+			console.error("Error:", error);
+			_callCatchError(() => _fetchEachSiteBlog());
+		}
+	}
+}
+
+function _fetchPageRelatedBlogData() {
 	try {
 		//// call endpoint //////
 		_callFetchEndPoints({
-			url: `site/blog/fetch-blog?pageCategoryId=${pageCategory?.blogCategory}&publishId=${publishId}`,
+			url: `site/blog/fetch-index-blog?pageCategoryId=${pageCategory?.blogCategory}`,
 		})
 		.then((response) => {
-			if (response.success && response.data) {
-    			const data = response.data[0];
-
-				const regTitle = data.regTitle;
-				const seoDescription = data.seoDescription;
-                const pageContent = data.pageContent;
-				const pageUrl = data.pageUrl;
-				const fullName = data.updatedBy.fullName;
-                const updatedTime = formatExamDate(data.updatedTime);
-                const regPix = data.regPix;
-
-				$('#regTitle, #regTopTitle').html(regTitle);
-                $('#seoDescription').html(seoDescription);
-                $('#pageContentInfo').html(pageContent);
-				$('#fullName').html(fullName);
-                $('#updatedTime').html(updatedTime);
-				$('#blogPreviewPix').attr('src', (blogPixPath) + '/' + regPix);
-				$('#blogTitleLink').attr('href', websiteUrl + '/blog/' + pageUrl);
+			if (response.success && response.data?.length > 0) {
+                _initFetchPageRelatedBlogData(response.data);
 			} else {
 				_showCustomConfirm({
-					title: "PAGE ERROR",
+					title: "BLOG INFO",
 					message: response.message,
 					alertType: "warning",
 					trueActionBtnText: "OK",
 				});
+
+				$('#pageContent').html(`
+					<div class="false-notification-div">
+						<p>${response.message}</p>
+					</div>
+				`);
 			} 
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchEachSiteBlog()); // retry if needed
+			_callAjaxError(() => _fetchPageRelatedBlogData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchEachSiteBlog());
+		_callCatchError(() => _fetchPageRelatedBlogData());
   	}
+}
+
+function _initFetchPageRelatedBlogData(data) {
+  	const content = data.map((item) => `
+    <a href="${websiteUrl}/blog/${item.pageUrl}" title="${item.regTitle}">
+	<div class="related-post">
+		<div class="image-div">
+            <img src="${blogPixPath}/${item.regPix}" alt="${item.regTitle}"/>
+        </div>
+
+		<div class="cont-div">
+			<h3>${item.regTitle.substr(0, 90)}...</h3> 
+			<div class="comment"><i class="bi-clock"></i> <span> ${formatExamDate(item.updatedTime)} </span> </div>
+		</div>
+	</div></a>`).join("");
+    $('#relatedPageBlogContent').html(content);
 }

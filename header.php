@@ -60,27 +60,53 @@
                         </a>
                     </div>
                 </div>
+                <div class="country-logo">
+                    <img id="countryFlag" src="<?php echo $websiteUrl ?>/uploaded_files/countryFlag/nigeriaFlag.jpg"
+                        alt="Flag" />
+                    <script>
+                    const currentCountry = JSON.parse(localStorage.getItem("websiteCountryId"));
+                    let countryFlag = 'nigeriaFlag.jpg';
+                    if (currentCountry == 'KE') {
+                        countryFlag = 'kenyaFlag.jpg';
+                    } else if (currentCountry == 'GH') {
+                        countryFlag = 'ghanaFlag.jpg';
+                    }
+                    $("#countryFlag").prop("src", "<?php echo $websiteUrl; ?>/uploaded_files/countryFlag/" +
+                        countryFlag);
+                    </script>
+                </div>
 
                 <nav>
                     <ul>
                         <a href="<?php echo $websiteUrl ?>/about-us" title="About Us">
-                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/about-us")) { ?> active <?php } ?>">About Us</li>
+                            <li
+                                class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/about-us")) { ?> active <?php } ?>">
+                                About Us</li>
                         </a>
                         <a href="<?php echo $websiteUrl ?>/study-abroad" title="Study Abroad">
-                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/study-abroad")) { ?> active <?php } ?>">Study Abroad <i class="bi-plus"></i></li>
+                            <li
+                                class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/study-abroad")) { ?> active <?php } ?>">
+                                Study Abroad <i class="bi-plus"></i></li>
                         </a>
 
-                        <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/international-exams")) { ?> active <?php } ?>">
+                        <li id="expand-li"
+                            class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/international-exams")) { ?> active <?php } ?>">
                             <a href="<?php echo $websiteUrl ?>/international-exams" title="Training">
-                                International Exam  <i class="bi-plus"></i></a>
+                                International Exam <i class="bi-plus"></i></a>
                             <ul class="animated fadeIn">
                                 <div class="sub-nav-div training-sub-nav">
                                     <div class="info-container">
-                                        <div class="pix-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="training" /></div>
+                                        <div class="pix-div"><img
+                                                src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
+                                                alt="training" /></div>
                                         <h2>International Tests/Examinations to Study Abroad</h2>
-                                        <p>These exams are reqiured for admission to universities and colleges in various countries across the globe. At times, the need may be a combination of two or more of the tests/examinations specific to that country and its education system.</p>
+                                        <p>These exams are reqiured for admission to universities and colleges in
+                                            various countries across the globe. At times, the need may be a combination
+                                            of two or more of the tests/examinations specific to that country and its
+                                            education system.</p>
                                         <a href="<?php echo $websiteUrl ?>">
-                                            <button class="btn" title="Become An Agent">Become An Agent <i class="bi-chevron-right"></i></button></a>
+                                            <button class="btn" title="Become An Agent">Become An Agent <i
+                                                    class="bi-chevron-right"></i></button></a>
                                     </div>
 
                                     <div class="each-container-back-div">
@@ -128,7 +154,7 @@
                                             </a>
                                         </div>
 
-                                         <div class="each-container">
+                                        <div class="each-container">
                                             <a href="<?php echo $websiteUrl ?>" title="Data Analysis">
                                                 <li>SAT</li>
                                             </a>
@@ -155,16 +181,23 @@
                         </li>
 
                         <a href="<?php echo $websiteUrl ?>/payment-pricing" title="Payment plans">
-                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/payment-pricing")) { ?> active <?php } ?>">Payment plans</li>
+                            <li
+                                class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/payment-pricing")) { ?> active <?php } ?>">
+                                Payment plans</li>
                         </a>
                         <a href="<?php echo $websiteUrl ?>/blog" title="Blog">
-                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/blog/")) { ?> active <?php } ?>">Blog</li>
+                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/blog/")) { ?> active <?php } ?>">
+                                Blog</li>
                         </a>
                         <a href="<?php echo $websiteUrl ?>/#" title="Gallery">
-                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/gallery")) { ?> active <?php } ?>">Gallery</li>
+                            <li
+                                class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/gallery")) { ?> active <?php } ?>">
+                                Gallery</li>
                         </a>
                         <a title="Contact Us" href="<?php echo $websiteUrl ?>/contact-us" title="Contact us">
-                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">Contact us</li>
+                            <li
+                                class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">
+                                Contact us</li>
                         </a>
                     </ul>
                 </nav>
@@ -172,7 +205,8 @@
 
             <div class="button-div">
                 <a href="<?php echo $websiteUrl ?>/portal" title="Get Started">
-                    <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button></a>
+                    <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get
+                            Started</span></button></a>
             </div>
         </div>
     </div>

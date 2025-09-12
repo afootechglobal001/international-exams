@@ -133,24 +133,29 @@
         <div class="image-div"></div>
         <div class="content-div">
             <h3>SELECT YOUR COUNTRY</h3>
-            <div class="each-content" onclick="_setCountry('NG');">
-                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/nigeria-logo.jpg" alt="Logo"></div>
+            <div class="each-content" onclick="_setWebsiteCountryId('NG');">
+                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/uploaded_files/countryFlag/nigeriaFlag.jpg"
+                        alt="Logo"></div>
                 <div class="text-div">
                     <h2>NIGERIA</h2>
                     <i class="bi bi-box-arrow-up-right"></i>
                 </div>
             </div>
 
-            <div class="each-content" onclick="_setCountry('GH');">
-                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/ghana-logo.png" alt="Logo"></div>
+            <div class="each-content" onclick="_setWebsiteCountryId('GH');">
+                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/uploaded_files/countryFlag/ghanaFlag.jpg"
+                        alt="Logo">
+                </div>
                 <div class="text-div">
                     <h2>GHANA</h2>
                     <i class="bi bi-box-arrow-up-right"></i>
                 </div>
             </div>
 
-            <div class="each-content" onclick="_setCountry('KE');">
-                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/kenya-logo.png" alt="Logo"></div>
+            <div class="each-content" onclick="_setWebsiteCountryId('KE');">
+                <div class="logo-div"><img src="<?php echo $websiteUrl ?>/uploaded_files/countryFlag/kenyaFlag.jpg"
+                        alt="Logo">
+                </div>
                 <div class="text-div">
                     <h2>KENYA</h2>
                     <i class="bi bi-box-arrow-up-right"></i>
@@ -160,4 +165,5 @@
     </div>
 </div>
 
-<div class="switch-country-link" onclick="_getForms('switchCountry')"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/switch.png"></div>
+<div class="switch-country-link" onclick="_switchCountry()"><img
+        src="<?php echo $websiteUrl ?>/all-images/body-pix/switch.png"></div>

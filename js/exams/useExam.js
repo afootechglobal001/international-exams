@@ -20,11 +20,9 @@ function _fetchAllExamsData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchAllexamsData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchAllexamsData());
   	}
 }
 
@@ -114,22 +112,13 @@ function _fetchEachSiteExam(publishId) {
 					}
 					$('#fetchedRelatedLinks').html(linkContent);
 
-				} else {
-					_showCustomConfirm({
-						title: "PAGE ERROR",
-						message: response.message,
-						alertType: "warning",
-						trueActionBtnText: "OK",
-					});
-				} 
+				}
 			})
 			.catch((error) => {
 				console.error("Error:", error);
-				_callAjaxError(() => _fetchEachSiteExam()); // retry if needed
 			});
 		} catch (error) {
 			console.error("Error:", error);
-			_callCatchError(() => _fetchEachSiteExam());
 		}
 	}
 }
@@ -156,11 +145,9 @@ function _fetchIndexExamData() {
         })
         .catch((error) => {
             console.error("Error:", error);
-            _callAjaxError(() => _initFetchIndexExamData()); // retry if needed
         });
     } catch (error) {
         console.error("Error:", error);
-        _callCatchError(() => _initFetchIndexExamData());
     }
 }
 

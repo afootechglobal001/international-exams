@@ -14,22 +14,13 @@ function _fetchFaqCat() {
                     text += `<li title="${value}" onclick="_fetchFaqPageData('${id}');">${value}</li>`;
 				}
         		$('#catId').html(text);
-			} else {
-				_showCustomConfirm({
-					title: "FETCH FAQ CAT ERROR",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-			} 
+			}
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchFaqCat()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchFaqCat());
   	}
 }
 
@@ -43,13 +34,6 @@ function _fetchIndexFaqData() {
 			if (response.success && response.data?.length > 0) {
                 	_initFetchIndexFaqData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "FAQ INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -59,11 +43,9 @@ function _fetchIndexFaqData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchIndexFaqData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchIndexFaqData());
   	}
 }
 
@@ -110,13 +92,6 @@ function _fetchFaqPageData(faqCatId='') {
 			if (response.success && response.data?.length > 0) {
                 	_initFetchPageFaqData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "FAQ INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -126,11 +101,9 @@ function _fetchFaqPageData(faqCatId='') {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchIndexFaqData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchIndexFaqData());
   	}
 }
 

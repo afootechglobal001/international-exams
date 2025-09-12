@@ -21,15 +21,15 @@
     $publishId =trim($_GET['publishId']);
     $regTitle =trim(str_replace("'", "\'", $_POST['regTitle']));
     $examAbbr=trim(strtoupper($_POST['examAbbr']));
-    $officialWebsite=trim($_POST['officialWebsite']);
-    $conductingBody=trim($_POST['conductingBody']);
-    $acceptedBy=trim($_POST['acceptedBy']);
-    $mostPopular=trim($_POST['mostPopular']);
-    $modeOfExam=trim($_POST['modeOfExam']);
+    $officialWebsite =trim(str_replace("'", "\'", $_POST['officialWebsite']));
+    $conductingBody =trim(str_replace("'", "\'", $_POST['conductingBody']));
+    $acceptedBy =trim(str_replace("'", "\'", $_POST['acceptedBy']));
+    $mostPopular =trim(str_replace("'", "\'", $_POST['mostPopular']));
+    $modeOfExam =trim(str_replace("'", "\'", $_POST['modeOfExam']));
     $regPix=$_FILES['regPix']['name'];
     $examLogo=$_FILES['examLogo']['name'];
-    $incentives=trim($_POST['incentives']);
-    $scoreRange=trim($_POST['scoreRange']);
+    $incentives =trim(str_replace("'", "\'", $_POST['incentives']));
+    $scoreRange =trim(str_replace("'", "\'", $_POST['scoreRange']));
     $statusId=trim($_POST['statusId']);
 
     //////////////////check for empty fields//////////////////////////////////////

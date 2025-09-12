@@ -8,13 +8,6 @@ function _fetchAllStudyAbroadData() {
 			if (response.success && response.data?.length > 0) {
                 _initFetchStudyAbroadData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "EXANM LINK",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -24,11 +17,9 @@ function _fetchAllStudyAbroadData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchAllStudyAbroadData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchAllStudyAbroadData());
   	}
 }
 
@@ -90,22 +81,13 @@ function _fetchEachStudyAbroad(publishId) {
 					$('#updatedTime').html(updatedTime);
 					$('#studyAbroadFetchPix').attr('src', studyAbroadPixPath + '/' + regPix);
 					$('#examTitleLink').attr('href', websiteUrl + '/' + pageUrl);
-				} else {
-					_showCustomConfirm({
-						title: "PAGE ERROR",
-						message: response.message,
-						alertType: "warning",
-						trueActionBtnText: "OK",
-					});
-				} 
+				}
 			})
 			.catch((error) => {
 				console.error("Error:", error);
-				_callAjaxError(() => _fetchEachStudyAbroad()); // retry if needed
 			});
 		} catch (error) {
 			console.error("Error:", error);
-			_callCatchError(() => _fetchEachStudyAbroad());
 		}
 	}
 }
@@ -120,13 +102,6 @@ function _fetchPageRelatedStudyAbroadData() {
 			if (response.success && response.data?.length > 0) {
                 _initFetchRelatedStudyAbroadData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "STUDY ABROAD INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#relatedPageStudyAbroadContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -136,11 +111,9 @@ function _fetchPageRelatedStudyAbroadData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchPageRelatedBlogData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchPageRelatedBlogData());
   	}
 }
 

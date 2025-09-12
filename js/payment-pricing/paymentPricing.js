@@ -20,11 +20,9 @@ function _fetchPaymentPricingData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchPaymentPricingData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchPaymentPricingData());
   	}
 }
 

@@ -41,13 +41,6 @@ function _fetchPagesPictureData(publishId, imageContainer) {
 			if (response.success && response.data?.length > 0) {
         		_initFetchPagesPictureData(response.data, imageContainer);
 			} else {
-				_showCustomConfirm({
-					title: "BLOG INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#fetchPagePictures').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -58,11 +51,9 @@ function _fetchPagesPictureData(publishId, imageContainer) {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchPagesPictureData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchPagesPictureData());
   	}
 }
 

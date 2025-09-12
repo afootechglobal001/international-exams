@@ -14,13 +14,6 @@ function _fetchAllPageBlogData(blogCatId = '') {
 			if (response.success && response.data?.length > 0) {
                 _initFetchBlogData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "BLOG INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -30,11 +23,9 @@ function _fetchAllPageBlogData(blogCatId = '') {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchAllPageBlogData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchAllPageBlogData());
   	}
 }
 
@@ -76,22 +67,13 @@ function _fetchBlogCat() {
                     text += `<li title="${value}" onclick="_fetchAllPageBlogData('${id}');">${value}</li>`;
 				}
         		$('#catId').html(text);
-			} else {
-				_showCustomConfirm({
-					title: "FETCH BLOG CAT ERROR",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
 			} 
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _getSelectBlogCategory()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _getSelectBlogCategory());
   	}
 }
 
@@ -105,13 +87,6 @@ function _fetchRelatedBlogData() {
 			if (response.success && response.data?.length > 0) {
                 _initFetchRelatedBlogData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "BLOG INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -121,11 +96,9 @@ function _fetchRelatedBlogData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchRelatedBlogData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchRelatedBlogData());
   	}
 }
 
@@ -162,13 +135,6 @@ function _fetchIndexBlogData() {
 			if (response.success && response.data?.length > 0) {
                 _initFetchIndexBlogData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "BLOG INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -178,11 +144,9 @@ function _fetchIndexBlogData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchRelatedBlogData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchRelatedBlogData());
   	}
 }
 
@@ -240,22 +204,13 @@ function _fetchEachSiteBlog(publishId) {
 					$('#updatedTime').html(updatedTime);
 					$('#blogFetchPix').attr('src', (blogPixPath) + '/' + regPix);
 					$('#blogTitleLink').attr('href', websiteUrl + '/blog/' + pageUrl);
-				} else {
-					_showCustomConfirm({
-						title: "PAGE ERROR",
-						message: response.message,
-						alertType: "warning",
-						trueActionBtnText: "OK",
-					});
-				} 
+				}
 			})
 			.catch((error) => {
 				console.error("Error:", error);
-				_callAjaxError(() => _fetchEachSiteBlog()); // retry if needed
 			});
 		} catch (error) {
 			console.error("Error:", error);
-			_callCatchError(() => _fetchEachSiteBlog());
 		}
 	}
 }
@@ -270,13 +225,6 @@ function _fetchPageRelatedBlogData() {
 			if (response.success && response.data?.length > 0) {
                 _initFetchPageRelatedBlogData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "BLOG INFO",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>
@@ -286,11 +234,9 @@ function _fetchPageRelatedBlogData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchPageRelatedBlogData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchPageRelatedBlogData());
   	}
 }
 

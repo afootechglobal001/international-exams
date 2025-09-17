@@ -108,6 +108,7 @@
                         <li id="examLocationPage" title="Exam Location" onclick="_getActiveBranchPage({divid: 'examLocationPage', page: 'examLocationPage', url: adminPortalLocalUrl});"><i class="bi-geo-alt"></i> Exam Location</li>
                         <li id="examPricing" title="Exam Pricing"><i class="bi-person-vcard"></i> Agent</li>
                         <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
+                        <li id="branchCountrySettings" title="Settings" onclick="_getActiveBranchPage({divid: 'branchCountrySettings', page: 'branchCountrySettings', url: adminPortalLocalUrl});"><i class="bi-gear-wide-connected"></i> Settings</li>
                     </ul>
                 </div>
             </div>
@@ -590,6 +591,76 @@
                     <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createCountryBranch();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($page == 'branchCountrySettings') { ?>
+    <script>
+        getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
+    </script>
+  
+    <div class="user-in branch-user-in">
+        <div class="title">BRANCH SMTP INFORMATIONS</div>
+
+        <div class="profile-segment-div">
+            <div class="text_field_container col-1" id="smtpHost_container">
+                <script>
+                textField({
+                    id: 'smtpHost',
+                    title: 'SMTP HOST',
+                    value: getEachCountrySession?.smtpHost ?? ''
+                });
+                </script>
+            </div>
+
+            <div class="text_field_container col-1" id="smtpUsername_container">
+                <script>
+                textField({
+                    id: 'smtpUsername',
+                    title: 'SMTP USERNAME',
+                    value: getEachCountrySession?.smtpUsername ?? ''
+                });
+                </script>
+            </div>
+
+            <div class="text_field_container col-1" id="smtpPassword_container">
+                <script>
+                textField({
+                    id: 'smtpPassword',
+                    title: 'SMTP PASSWORD',
+                    type: 'password',
+                    value: getEachCountrySession?.smtpPassword ?? ''
+                });
+                </script>
+            </div>
+
+            <div class="text_field_container col-1" id="smtpPort_container">
+                <script>
+                textField({
+                    id: 'smtpPort',
+                    title: 'SMTP PORT',
+                    type: 'number',
+                    value: getEachCountrySession?.smtpPort ?? ''
+                });
+                </script>
+            </div>
+
+            <div class="text_field_container col-2" id="supportEmail_container">
+                <script>
+                textField({
+                    id: 'supportEmail',
+                    title: 'SUPPORT EMAIL',
+                    type: 'email',
+                    value: getEachCountrySession?.supportEmail ?? ''
+                });
+                </script>
+            </div>
+        </div>
+
+        <div class="btn-div">
+        <button class="btn" title="UPDATE PROFILE" id="updateBtn" onclick="_updateCountrySettings();"> UPDATE PROFILE <i
+                class="bi-check"></i></button>
         </div>
     </div>
 <?php } ?>

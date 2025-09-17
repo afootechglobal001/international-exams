@@ -5,7 +5,7 @@
                 <div class="icon-div"><i class="bi bi-speedometer2"></i></div>
             </div>
             <div class="text-div">
-                <h2>👋 Welcome Back, <span id="DashFullname">
+                <h2>Welcome Back, <span id="DashFullname">
                         <script>
                             $("#DashFullname").html(capitalizeFirstLetterOfEachWord(staffLoginData.loginFullName));
                         </script>
@@ -34,7 +34,7 @@
                         <div class="statistics-text">
                             <p>Branches</p>
                             <span>Statistics of Branches</span>
-                            <h2>3</h2>
+                            <h2 id="totalActiveCountryCount">0</h2>
                         </div>
                         <div class="statistics-icon pending"><i class="bi-diagram-3"></i></div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="statistics-text">
                             <p>Administrators</p>
                             <span>Statistics of Administrators</span>
-                            <h2>10</h2>
+                            <h2 id="totalActiveStaffCount">0</h2>
                         </div>
                         <div class="statistics-icon upcoming"><i class="bi-person-bounding-box"></i></div>
                     </div>
@@ -56,7 +56,7 @@
                         <div class="statistics-text">
                             <p>Students</p>
                             <span>Statistics of Students</span>
-                            <h2>30</h2>
+                            <h2 id="">30</h2>
                         </div>
                         <div class="statistics-icon completed"><i class="bi-people"></i></div>
                     </div>
@@ -67,7 +67,7 @@
                         <div class="statistics-text">
                             <p>Gallery</p>
                             <span>Statistics of Gallery</span>
-                            <h2>5</h2>
+                            <h2 id="totalActiveGalleryCount">0</h2>
                         </div>
                         <div class="statistics-icon pending"><i class="bi-images"></i></div>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="statistics-text">
                             <p>Blog</p>
                             <span>Statistics of Blog</span>
-                            <h2>10</h2>
+                            <h2 id="totalActiveBlogCount">0</h2>
                         </div>
                         <div class="statistics-icon upcoming"><i class="bi-file-post"></i></div>
                     </div>
@@ -89,7 +89,7 @@
                         <div class="statistics-text">
                             <p>FAQ</p>
                             <span>Statistics of FAQ</span>
-                            <h2>3</h2>
+                            <h2 id="totalActiveFaqCount">0</h2>
                         </div>
                         <div class="statistics-icon completed"><i class="bi-patch-question"></i></div>
                     </div>
@@ -100,7 +100,7 @@
                         <div class="statistics-text">
                             <p>Testimony</p>
                             <span>Statistics of Testimonies</span>
-                            <h2>10</h2>
+                            <h2 id="totalActiveTestimonyCount">0</h2>
                         </div>
                         <div class="statistics-icon pending"><i class="bi-people"></i></div>
                     </div>
@@ -416,6 +416,11 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            _fetchDashboardStatistics();
+         });
+    </script>
 <?php } ?>
 
 <?php if ($page == 'logoutConfirmForm') { ?>

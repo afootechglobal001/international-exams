@@ -29,16 +29,6 @@
             <div class="inner-table-content">
                 <div class="other-pg-back-div">
                     <div class="user-managment-back-div" data-aos="fade-in" data-aos-duration="1500">
-                        <div class="user-managment-list" title="Account Management" onclick="_getForm({page: 'accountSettings', url: adminPortalLocalUrl});">
-                            <div class="inner-div">
-                                <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/gear.png" alt="Account Management" /></div>
-                                <div class="text-div">
-                                    <h3>Account Management</h3>
-                                    <p>User can Manage account informations, ensuring secure and efficient access to features.</p>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="user-managment-list" title="Change Password" onclick="_getForm({page: 'changePassword', url: adminPortalLocalUrl});">
                             <div class="inner-div">
                                 <div class="icon-div"><img src="<?php echo $websiteUrl ?>/all-images/images/status.png" alt="Change Password" /></div>
@@ -56,7 +46,81 @@
 <?php } ?>
 
 <?php if ($page == 'changePassword') { ?>
-    <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+    <section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+        <div class="form-title-div">
+            <div class="title-div">
+                <div class="icon-div"><i class="bi bi-shield-shaded"></i></div>
+                <h3>RESET PASSWORD</h3>
+            </div>
+            <div class="btn-div">
+                <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                    <i class="bi bi-x-lg"></i> Close
+                </button>
+            </div>
+        </div>
+        <!-- /////////// Title ////////////////////////////// -->
+        <div class="container-back-div">
+            <div class="form-notification">
+                <p>Secure your account by creating a new password. Follow the steps to update your login details and regain
+                    access to your exam portal.</p>
+            </div>
+
+            <div class="main-content-div">
+                <div class="tables-content-div form-main-content">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-shield-shaded"></i>
+                            <p>Reset your password here</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <div class="text_field_container" id="oldPassword_container">
+                            <script>
+                                textField({
+                                    id: 'oldPassword',
+                                    title: 'Enter Your Old Password',
+                                    type: 'password'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="form-note">
+                            <p>At least 8 charaters required including upper & lower cases
+                                and special characters and numbers.</p>
+                        </div>
+
+                        <div class="text_field_container" id="newPassword_container">
+                            <script>
+                                textField({
+                                    id: 'newPassword',
+                                    title: 'Create New Password',
+                                    type: 'password'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="cnewPassword_container">
+                            <script>
+                                textField({
+                                    id: 'cnewPassword',
+                                    title: 'Confirm New Password',
+                                    type: 'password'
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-div">
+                    <button class="btn" title="CHANGE PASSWORD" id="submitBtn" onclick="_changePassword();"> <i
+                            class="bi-check"></i> CHANGE PASSWORD </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="title-panel-div">
             <div class="inner-top">
                 <span id="panel-title"><i class="bi-shield-lock"></i> CHANGE PASSWORD</span>
@@ -107,7 +171,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <?php } ?>
 
 <?php if ($page == 'accountSettings') { ?>

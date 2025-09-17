@@ -48,10 +48,10 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             processing, and expert guidance for success.</p>
                         <div class="btn-div">
                             <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="Download E-Books">
-                            <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button></a>
-                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="Download E-Books">
-                            <button class="btn no-bg"><span>Download E-Books</span> <span class="span">It's
-                                    Free</span></button></a>
+                                <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button></a>
+                            <a href="<?php echo $websiteUrl ?>/free-ebook" title="Download E-Books">
+                                <button class="btn no-bg"><span>Download E-Books</span> <span class="span">It's
+                                        Free</span></button></a>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
 
                     <div class="our-exam-back-div" id="indexPageContent">
-                        <script>_fetchIndexExamData();</script>
+                        <script>
+                            _fetchIndexExamData();
+                        </script>
 
                         <div class="content-loading-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
@@ -185,7 +187,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                     <div class="bottom-btn-div">
                         <a href="<?php echo $websiteUrl ?>/international-exams">
-                        <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button></a>
+                            <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -319,9 +321,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 <div class="about-back-div">
                     <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
                         <div><span class="top-title">OUR STATUS VALUES</span></div>
-                        <h2>Exploring Our Status <span class="text">#Values</span></h2>                           
+                        <h2>Exploring Our Status <span class="text">#Values</span></h2>
                         <p>Explore our status values to learn about the guiding principles that shape our approach to tech education and community.</p>
-                        
+
                         <div class="progress-back-div">
                             <div class="progress-container">
                                 <div class="progress-item">
@@ -357,7 +359,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="image-div" data-aos="fade-in" data-aos-duration="1200">
                         <div class="moving-object top-moving-object">
                             <div class="div-in">
@@ -367,9 +369,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 </div>
                                 <div class="img-back-div">
                                     <div class="img-div">
-                                        <img src="<?php echo $websiteUrl?>/all-images/images/multiple_img.png" alt="Slide Image"/>
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/multiple_img.png" alt="Slide Image" />
                                     </div>
-                                </div>                       
+                                </div>
                             </div>
                         </div>
 
@@ -378,40 +380,44 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 <div class="text-div">
                                     <span>5.8k</span>
                                     <h4>Success Courses</h4>
-                                </div>                                                
+                                </div>
                             </div>
-                        </div>                 
-                        <img src="<?php echo $websiteUrl?>/all-images/body-pix/status_image.png" alt="About Us"/>
+                        </div>
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/status_image.png" alt="About Us" />
                     </div>
                 </div>
             </div>
-            <script>_progressBar();</script>
+            <script>
+                _progressBar();
+            </script>
         </section>
 
         <section class="body-div net-bg-br">
             <div class="body-div-in">
-                <div class="faq-back-div">              
+                <div class="faq-back-div">
                     <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <img src="<?php echo $websiteUrl?>/all-images/body-pix/faq.webp" alt="<?php echo $appName?> Frequently Asked Question"/>
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="<?php echo $appName ?> Frequently Asked Question" />
                     </div>
 
                     <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
                         <div class="faq-title">
                             <div><span class="top-title">FAQ</span></div>
                             <h2>Frequently Asked <span>#Questions</span></h2>
-                        </div>    
+                        </div>
 
                         <div class="faq-toggle-back" id="indexFaqContent">
-                            <script> _fetchIndexFaqData();</script>
+                            <script>
+                                _fetchIndexFaqData();
+                            </script>
 
                             <div class="content-loading-div">
                                 <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                             </div>
-                        </div> 
+                        </div>
 
-                        <a href="<?php echo $websiteUrl?>/faq" title="Read More FAQ">
-                        <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>            
-                    </div>                     
+                        <a href="<?php echo $websiteUrl ?>/faq" title="Read More FAQ">
+                            <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -430,136 +436,19 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         </div>
 
                         <div>
-                            <button class="btn" title="View All">View All<i class="bi-chevron-right"></i></button>
+                            <button class="btn" title="Submit Your Review" onclick="_getForm({page: 'testimonialForm', url: siteMiddlewareUrl});">Submit Your Review<i class="bi-pencil-square"></i></button>
                         </div>
                     </div>
 
                     <div class="right-back-div">
                         <div class="cg-carousel">
                             <div class="cg-carousel__container" id="js-carousel_1">
-                                <div class="cg-carousel__track js-carousel__track">
+                                <div class="cg-carousel__track js-carousel__track" id="fetchSiteTestimony">
+                                    <script>_fetchSiteTestimony();</script>
 
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“EDUGRADE SERVICES”</strong> made my TOEFL registration process smooth and stress-free. Their team was so helpful every step of the way!</p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Solomon Mercy</h5>
-                                            </div>
-                                        </div>
+                                    <div class="content-loading-div">
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                                     </div>
-
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“Thanks to EDUGRADE”</strong>, I got all the resources I needed to prepare for my IELTS exam. Their guidance truly made a difference.</p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Jefry James</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“I registered for SAT through EDUGRADE”</strong> and everything went perfectly. They answered all my questions and kept me updated at every stage.</p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Clement Godwin</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“From Nigeria to Ghana”</strong>, EDUGRADE has been a trusted name among my classmates. Their international support is fast and reliable.</p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Smith James</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -588,7 +477,6 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                     }
                 });
-                _call_carousel(1);
             </script>
         </section>
 
@@ -610,7 +498,9 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     </div>
 
                     <div class="blog-back-div" id="indexBlogContent">
-                        <script> _fetchIndexBlogData();</script>
+                        <script>
+                            _fetchIndexBlogData();
+                        </script>
 
                         <div class="content-loading-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
@@ -623,4 +513,5 @@ Best place to register ACT exam in Nigeria, where to register international exam
         <?php include 'footer.php' ?>
     </section>
 </body>
+
 </html>

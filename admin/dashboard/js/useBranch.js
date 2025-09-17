@@ -11,7 +11,7 @@ function _getActiveBranchPage(props) {
 }
 function _getBranchPagesActiveLink(divid) {
   $(
-    "#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricingPage, #examLocationPage"
+    "#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricingPage, #examLocationPage, #branchCountrySettings"
   ).removeClass("active");
   $("#" + divid).addClass("active");
 }

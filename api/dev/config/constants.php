@@ -14,6 +14,9 @@ $ipAddress=$_SERVER['REMOTE_ADDR']; //ip used
 $systemName=gethostname();//computer used
 ////////////////////////////////////////////////////////////////////////
 
+//$websiteUrl='https://www.internationalexam.com';
+$websiteUrl='http://localhost/projects/international-exams';
+
 $checkBasicSecurity=true;
 ///// check for API security
 if ($frontEndApiKey!=$backEndApiKey){/// start if 1

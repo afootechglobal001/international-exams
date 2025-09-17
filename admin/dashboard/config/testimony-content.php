@@ -2,7 +2,7 @@
     <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title-div">
             <div>
-                <div class="icon-div"><i class="bi-chat-left-text"></i></div>
+                <div class="icon-div"><i class="bi-chat-quote-fill"></i></div>
             </div>
             <div class="text-div">
                 <h3>Testimonies</h3>
@@ -22,76 +22,18 @@
         <div class="tables-content-div">
             <div class="content-title">
                 <div class="title">
-                    <i class="bi bi-chat-left-text"></i>
+                    <i class="bi bi-chat-quote-fill"></i>
                     <p>Testimonies</p>
                 </div>
             </div>
 
             <div class="inner-table-content">
                 <div class="other-pg-back-div">
-                    <div class="testimony-back-div">
-                        <div class="testimony-div">
-                            <div class="details">
-                                <div class="text">
-                                    <h3>Paul Emmanuel</h3>
-                                    <div class="info">
-                                        <div>
-                                            <p>Email: <span>seunemmanuel107@gmail.com</span></p>
-                                            <p>Phone: <span>07050903886</span></p>
-                                        </div>
-                                        <button class="status-btn ACTIVE">ACTIVE</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn" onclick="_getForm({page: 'updateTestimony', url: adminPortalLocalUrl});">VIEW DETAILS</button>
-                        </div>
+                    <div class="testimony-back-div" id="pageContent">
+                        <script>_fetchTestimonyData();</script>
 
-                        <div class="testimony-div">
-                            <div class="details">
-                                <div class="text">
-                                    <h3>Gideo Smith</h3>
-                                    <div class="info">
-                                        <div>
-                                            <p>Email: <span>gideo200@gmail.com</span></p>
-                                            <p>Phone: <span>07050903886</span></p>
-                                        </div>
-                                        <button class="status-btn ACTIVE">ACTIVE</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn" onclick="">VIEW DETAILS</button>
-                        </div>
-
-                        <div class="testimony-div">
-                            <div class="details">
-                                <div class="text">
-                                    <h3>Solomon James</h3>
-                                    <div class="info">
-                                        <div>
-                                            <p>Email: <span>solomon12@gmail.com</span></p>
-                                            <p>Phone: <span>07050903886</span></p>
-                                        </div>
-                                        <button class="status-btn ACTIVE">ACTIVE</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn" onClick="">VIEW DETAILS</button>
-                        </div>
-
-                        <div class="testimony-div">
-                            <div class="details">
-                                <div class="text">
-                                    <h3>Cynthia Morgan</h3>
-                                    <div class="info">
-                                        <div>
-                                            <p>Email: <span>cynthia123@gmail.com</span></p>
-                                            <p>Phone: <span>07050903886</span></p>
-                                        </div>
-                                        <button class="status-btn ACTIVE">ACTIVE</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn" onClick="">VIEW DETAILS</button>
+                        <div class="content-loading-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                         </div>
                     </div>
                 </div>
@@ -101,6 +43,8 @@
 <?php } ?>
 
 <?php if ($page == 'updateTestimony') { ?>
+     <script> getEachTestimonySession = JSON.parse(sessionStorage.getItem("getEachTestimonySession"));</script>
+
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
@@ -126,7 +70,7 @@
                     <div class="content-title">
                         <div class="title">
                             <i class="bi bi-chat-left-text"></i>
-                            <p>update testimony here</p>
+                            <p>Update testimony here</p>
                         </div>
                     </div>
 
@@ -141,7 +85,7 @@
                                 </div>
 
                                 <div class="inner-table-content">
-                                    <span>seunemmanuel107@gmail.com</span>
+                                    <span id="fullName"><script>$("#fullName").html(getEachTestimonySession.fullName);</script></span>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +100,7 @@
                                 </div>
 
                                 <div class="inner-table-content">
-                                    <span>07050903886</span>
+                                    <span id="mobileNumber"><script>$("#mobileNumber").html(getEachTestimonySession.mobileNumber);</script></span>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +115,7 @@
                                 </div>
 
                                 <div class="inner-table-content">
-                                <span>“From Nigeria to Ghana”, EDUGRADE has been a trusted name among my classmates. Their international support is fast and reliable.</span> 
+                                <span id="testimony"><script>$("#testimony").html(getEachTestimonySession.testimony);</script></span> 
                                 </div>
                             </div>
                         </div>
@@ -180,15 +124,18 @@
                             <script>
                                 selectField({
                                     id: 'statusId',
-                                    title: 'Select Status'
+                                    title: 'Select Status',
+                                    fieldValue: getEachTestimonySession?.statusId ?? '',
+                                    fieldLabel: getEachTestimonySession?.statusName ?? ''
                                 });
+                                _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="updateBtn" onclick="_updateTestimony();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

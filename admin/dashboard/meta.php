@@ -45,3 +45,5 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useGallery.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useFaq.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useEbook.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useTestimony.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useSettings.js?v=<?php echo $codeVersion?>"></script>

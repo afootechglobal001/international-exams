@@ -213,3 +213,46 @@ function _getSelectRoleId(fieldId) {
     _actionAlert("An unexpected error occurred. Please try again.", false);
   }
 }
+
+
+
+function _fetchDashboardStatistics() {
+		try {
+			//// call endpoint //////
+			_callFetchEndPoints({
+				url: `admin/dashboard/dashboad-statistics`,
+        accessKey: true,
+			})
+			.then((response) => {
+        _staffValidationCheck(response.response);
+				if (response.success && response.data) {
+					const data = response.data[0];
+
+					const totalActiveStaffCount = data.totalActiveStaffCount;
+					const totalActiveGalleryCount = data.totalActiveGalleryCount;
+					const totalActiveExamCount = data.totalActiveExamCount;
+					const totalActiveStudyAbroadCount = data.totalActiveStudyAbroadCount;
+					const totalActiveBlogCount = data.totalActiveBlogCount;
+					const totalActiveFaqCount = data.totalActiveFaqCount;
+					const totalActiveCountryCount = data.totalActiveCountryCount;
+					const totalActiveBranchCount = data.totalActiveBranchCount;
+          const totalActiveTestimonyCount = data.totalActiveTestimonyCount;
+
+					$('#totalActiveStaffCount').html(totalActiveStaffCount);
+					$('#totalActiveGalleryCount, #sideGalleryCount').html(totalActiveGalleryCount);
+					$('#totalActiveExamCount, #sideExamCount').html(totalActiveExamCount);
+					$('#totalActiveStudyAbroadCount, #sideStudyAbroadCount').html(totalActiveStudyAbroadCount);
+					$('#totalActiveBlogCount, #sideBlogCount').html(totalActiveBlogCount);
+					$('#totalActiveFaqCount, #sideFaqCount').html(totalActiveFaqCount);
+          $('#totalActiveCountryCount').html(totalActiveCountryCount);
+					$('#totalActiveBranchCount').html(totalActiveBranchCount);
+					$('#totalActiveTestimonyCount, #sideTestimonyCount').html(totalActiveTestimonyCount);
+				}
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+			});
+		} catch (error) {
+			console.error("Error:", error);
+		}
+}

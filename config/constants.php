@@ -46,6 +46,8 @@ var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
 var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
 var userDeviceId = "<?php echo $userDeviceId;?>"; /// For User Device Id //
 
+var siteMiddlewareUrl = websiteUrl + '/config/code';//// For site url
+
 var adminLocalUrl = websiteUrl + '/admin/config/code';
 var adminPortalLocalUrl = websiteUrl + '/admin/dashboard/config/code';
 var adminDashboardUrl = websiteUrl + '/admin/dashboard'; /// For Dashboard Url //

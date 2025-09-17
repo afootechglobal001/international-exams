@@ -213,3 +213,106 @@ function _getSelectCountry(fieldId) {
     });
   }
 }
+
+
+function _updateCountrySettings(){
+	try {
+		////////get all needed values////////////
+		let issueCount = 0;
+		const smtpHost = $('#smtpHost').val().trim();
+    const smtpUsername = $('#smtpUsername').val().trim();
+    const smtpPassword = $('#smtpPassword').val().trim();
+    const smtpPort = $('#smtpPort').val().trim();
+    const supportEmail = $("#supportEmail").val().trim();
+
+		///// empty field validation//////////
+		issueCount += _validateEmptyValue("smtpPort", "SMTP PORT");
+    issueCount += _validateEmptyValue("smtpPassword", "SMPT PASSWORD");
+
+    if (!smtpHost || !/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(smtpHost)) {
+      $('#smtpHost').addClass("issue");
+      $('#issue_smtpHost').html('USER ERROR! Provide a valid SMTP Host to continue');
+      issueCount++;
+    }
+
+    if (!smtpUsername ||!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($("#smtpUsername").val())) {
+      $('#smtpUsername').addClass("issue");
+      $('#issue_smtpUsername').html('USER ERROR! Provide a valid SMTP Username (email) to continue');
+      issueCount++;
+    }
+
+    if (!supportEmail || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(supportEmail)) {
+      $('#supportEmail').addClass("issue");
+      $('#issue_supportEmail').html('USER ERROR! Provide a valid SMTP Username (email) to continue');
+      issueCount++;
+    }
+
+		if (issueCount > 0) return;
+
+		/////Gather form data////
+		const formData = {
+      smtpHost,
+      smtpUsername,
+      smtpPassword,
+      smtpPort,
+      supportEmail,
+    };
+
+		////// confirm action////
+		_showCustomConfirm({
+		callback: () => {
+			_updateCountrySettingsCallback(formData);
+		},
+			title: "Are you sure?",
+			message: 'Are you sure you want to update? This action is irreversible.',
+			alertType: "warning",
+			falseActionBtn: true,
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _updateCountrySettings());
+	}
+}
+
+function _updateCountrySettingsCallback(formData) {
+	let getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
+
+	///// get btn text/////
+	const btnText = $("#updateBtn").html();
+	_btnDisable("updateBtn", btnText, true);
+	
+	//// call endpoint //////
+	 _callRawEndPoints({
+		url: `admin/country/update-country-settings?countryId=${getEachCountrySession?.countryId}`,
+		formData,
+		accessKey: true,
+	})
+    .then((response) => {
+		_staffValidationCheck(response.response);
+		if (response.success) {
+          _showCustomConfirm({
+             callback: () => {
+           _fetchEachCountry(getEachCountrySession?.countryId);
+          },
+            title: "Settings Configuration!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+			_btnDisable("updateBtn", btnText, false);
+		} else {
+			_btnDisable("updateBtn", btnText, false);
+			_showCustomConfirm({
+				title: "SETTINGS ERROR",
+				message: response.message,
+				alertType: "warning",
+				trueActionBtnText: "OK",
+			});
+		}
+    })
+    .catch((error) => {
+		console.error("Error:", error);
+		_callAjaxError(() => _updateCountrySettingsCallback(formData)); // retry if needed
+		_btnDisable("updateBtn", btnText, false);
+    });
+}

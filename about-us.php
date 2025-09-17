@@ -307,150 +307,23 @@
 
                         <div class="text-div">
                             <h2>What Our Students Say <span>#About Us</span></h2>
-                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their
-                                success in international exams through expert guidance, timely assistance, and a
-                                seamless registration process.</p>
+                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their success in international exams through expert guidance, timely assistance, and a seamless registration process.</p>
                         </div>
 
                         <div>
-                            <button class="btn" title="View All">View All<i class="bi-chevron-right"></i></button>
+                            <button class="btn" title="Submit Your Review" onclick="_getForm({page: 'testimonialForm', url: siteMiddlewareUrl});">Submit Your Review<i class="bi-pencil-square"></i></button>
                         </div>
                     </div>
 
                     <div class="right-back-div">
                         <div class="cg-carousel">
                             <div class="cg-carousel__container" id="js-carousel_1">
-                                <div class="cg-carousel__track js-carousel__track">
+                                <div class="cg-carousel__track js-carousel__track" id="fetchSiteTestimony">
+                                    <script>_fetchSiteTestimony();</script>
 
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“EDUGRADE SERVICES”</strong> made my TOEFL registration process
-                                                smooth and stress-free. Their team was so helpful every step of the way!
-                                            </p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Solomon Mercy</h5>
-                                            </div>
-                                        </div>
+                                    <div class="content-loading-div">
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                                     </div>
-
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“Thanks to EDUGRADE”</strong>, I got all the resources I needed
-                                                to prepare for my IELTS exam. Their guidance truly made a difference.
-                                            </p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Jefry James</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“I registered for SAT through EDUGRADE”</strong> and everything
-                                                went perfectly. They answered all my questions and kept me updated at
-                                                every stage.</p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Clement Godwin</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="cg-carousel__slide js-carousel__slide" data-aos="fade-left"
-                                        data-aos-duration="1200">
-                                        <div class="main-testimonial">
-                                            <div class="img-back-div">
-                                                <div class="img-div">
-                                                    <img src="<?php echo $websiteUrl ?>/all-images/images/avatar.png"
-                                                        alt="testimonial" />
-                                                </div>
-
-                                                <div class="icon">
-                                                    <i class="bi-quote"></i>
-                                                </div>
-                                            </div>
-
-                                            <p><strong>“From Nigeria to Ghana”</strong>, EDUGRADE has been a trusted
-                                                name among my classmates. Their international support is fast and
-                                                reliable.</p>
-
-                                            <div class="bottom-div">
-                                                <div class="star-div">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
-
-                                                <h5>Smith James</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -458,31 +331,29 @@
                 </div>
             </div>
             <script>
-            window['carousel_options_1'] = ({
-                items: 4,
-                margin: 30,
-                loop: true,
-                dots: true,
-                autoplayHoverPause: true,
-                smartSpeed: 650,
-                autoplay: true,
-                breakpoints: {
-                    700: {
-                        slidesPerView: 1,
-                    },
-                    1100: {
-                        slidesPerView: 1,
-                    },
-                    1300: {
-                        slidesPerView: 2,
-                    }
+                window['carousel_options_1'] = ({
+                    items: 4,
+                    margin: 30,
+                    loop: true,
+                    dots: true,
+                    autoplayHoverPause: true,
+                    smartSpeed: 650,
+                    autoplay: true,
+                    breakpoints: {
+                        700: {
+                            slidesPerView: 1,
+                        },
+                        1100: {
+                            slidesPerView: 1,
+                        },
+                        1300: {
+                            slidesPerView: 2,
+                        }
 
-                }
-            });
-            _call_carousel(1);
+                    }
+                });
             </script>
         </section>
-
 
         <section class="body-div body-div-inner">
             <div class="body-div-in">

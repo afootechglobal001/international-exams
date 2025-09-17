@@ -31,3 +31,4 @@
 <script src="<?php echo $websiteUrl?>/js/study-abroad/useStudyAbroad.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
 <script src="<?php echo $websiteUrl?>/js/payment-pricing/paymentPricing.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
 <script src="<?php echo $websiteUrl?>/js/ebook/useEbook.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
+<script src="<?php echo $websiteUrl?>/js/testimony/useTestimony.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>

@@ -950,7 +950,7 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
 }
 
 .body-div .body-div-in .company-body-div-in .left-container p {
-  font-size: 19px;
+  font-size: 17px;
   font-family: body-font;
   color: var(--white-color);
   line-height: 1.6;
@@ -971,6 +971,29 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
   display: flex;
   align-items: center;
 }
+
+@media all and (max-width: 920px) {
+   .body-div .body-div-in .company-body-div-in {
+    flex-direction: column;
+  }
+ .body-div .body-div-in .company-body-div-in .left-container {
+    width: 100%;
+  }
+  .body-div .body-div-in .company-body-div-in .right-container .image-div {
+    width: 100%;
+}
+}
+
+@media all and (max-width: 670px) {
+  .body-div .body-div-in .company-body-div-in .left-container h2 {
+    font-size: 7vw;
+    line-height: 9vw;
+  }
+  .body-div .body-div-in .company-body-div-in .left-container p {
+  text-align: justify;
+}
+}
+
 
 .body-div .body-div-in .company-body-div-in .btn {
   background: linear-gradient(

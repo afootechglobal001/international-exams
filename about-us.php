@@ -487,7 +487,6 @@
         <section class="body-div body-div-inner">
             <div class="body-div-in">
                 <div class="company-body-div-in">
-
                     <div class="left-container">
                         <h2>Your Gateway to World-Class Education</h2>
                         <p>
@@ -502,7 +501,6 @@
                             </a>
                         </div>
                     </div>
-
 
                     <div class="right-container">
                         <div class="image-div">

@@ -5,7 +5,7 @@
 
 	//$websiteUrl='https://www.internationalexam.com'; /// For Live Server Url //
 	$websiteUrl = 'http://localhost/projects/international-exams'; /// Local Url
-    //$websiteUrl = 'http://192.168.104.198/projects/international-exams'; /// Local Url
+    //$websiteUrl = 'http://192.168.242.177/projects/international-exams'; /// Local Url
 	//$websitePath = $_SERVER['DOCUMENT_ROOT'];
 	$websitePath = $_SERVER['DOCUMENT_ROOT'].'/projects/international-exams'; //dirname(__FILE__);
 	$codeVersion= date('Ymdhis');

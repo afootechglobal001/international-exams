@@ -51,75 +51,83 @@
     <div class="index-menu-back-div">
         <div class="top-div">
             <div class="logo-div">
-                <a href="<?php echo $websiteUrl?>"><img src="<?php echo $websiteUrl?>/all-images/images/logo.png"
-                        alt="<?php echo $appName?> Logo" class="animated zoomIn" /></a>
+                <a href="<?php echo $websiteUrl ?>"><img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"
+                        alt="<?php echo $appName ?> Logo" class="animated zoomIn" /></a>
             </div>
         </div>
 
         <div class="div-in">
             <div class="div">
-                <a href="<?php echo $websiteUrl;?>" title="Home Page">
-                    <li <?php if ($page=='index.php') {?> id="active-li" <?php }?>><i class="bi-house"></i> Home Page
+                <a href="<?php echo $websiteUrl; ?>" title="Home Page">
+                    <li <?php if ($page == 'index.php') { ?> id="active-li" <?php } ?>><i class="bi-house"></i> Home Page
                     </li>
                 </a>
             </div>
 
             <div class="div">
-                <li onclick="_open_li('Schoolbolt')"><i class="bi-diagram-3"></i> SchoolBolt <i class="bi-plus"
-                        id="side-expand"></i></li>
-                <div class="sub-li" id="Schoolbolt-sub-li">
-                    <a href="<?php echo $websiteUrl;?>/about" title="About SchoolBolt">
-                        <li>About SchoolBolt</li>
-                    </a>
-
-                    <a href="<?php echo $websiteUrl;?>/features" title="SchoolBolt Features">
-                        <li> SchoolBolt Features </li>
-                    </a>
-
-                    <a href="<?php echo $websiteUrl;?>/sub-systems" title="SchoolBolt Subsystems">
-                        <li>SchoolBolt Subsystems</li>
-                    </a>
-                </div>
-            </div>
-
-            <div class="div">
-                <a href="<?php echo $websiteUrl;?>/modules" title="Modules">
-                    <li <?php if ($page=='modules') {?> id="active-li" <?php }?>><i class="bi-gear-wide-connected"></i>
-                        Modules</li>
+                <a href="<?php echo $websiteUrl; ?>/about-us" title="About">
+                    <li <?php if ($page == 'About') { ?> id="active-li" <?php } ?>><i class="bi-bookmark-check"></i>
+                        About</li>
                 </a>
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl;?>/partners" title="Partners">
-                    <li <?php if ($page=='partners') {?> id="active-li" <?php }?>><i class="bi-person-check"></i>
-                        Partners</li>
+                <a href="<?php echo $websiteUrl; ?>/international-exams" title="International Exams">
+                    <li <?php if ($page == 'About') { ?> id="active-li" <?php } ?>><i class="bi-journals"></i>
+                        International Exams</li>
                 </a>
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl;?>/agency" title="Agency">
-                    <li <?php if ($page=='agency') {?> id="active-li" <?php }?>><i class="bi-person-check"></i> Agency
+                <a href="<?php echo $websiteUrl; ?>/study-abroad" title="Study Abroad">
+                    <li <?php if ($page == 'study-abroad') { ?> id="active-li" <?php } ?>><i class="bi-journals"></i>
+                        Study Abroad</li>
+                </a>
+            </div>
+
+            <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/payment-pricing" title="Payment Plans">
+                    <li <?php if ($page == 'payment-pricing') { ?> id="active-li" <?php } ?>><i class="bi-credit-card"></i> Payment Plans
                     </li>
                 </a>
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl;?>/blog/" title="Blog">
-                    <li <?php if ($page=='blog') {?> id="active-li" <?php }?>><i class="bi-flower2"></i> Blog</li>
+                <a href="<?php echo $websiteUrl; ?>/free-ebook" title="Free-Ebook">
+                    <li <?php if ($page == 'free-ebook') { ?> id="active-li" <?php } ?>><i class="bi-filetype-pdf"></i> Free-Ebook
+                    </li>
                 </a>
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl;?>/contact-us" title="Blog">
-                    <li <?php if ($page=='contact-us') {?> id="active-li" <?php }?>><i class="bi-headset"></i> Contact
+                <a href="<?php echo $websiteUrl; ?>/blog/" title="Blog">
+                    <li <?php if ($page == 'blog') { ?> id="active-li" <?php } ?>><i class="bi-flower2"></i> Blog</li>
+                </a>
+            </div>
+
+            <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/contact-us" title="Blog">
+                    <li <?php if ($page == 'contact-us') { ?> id="active-li" <?php } ?>><i class="bi-headset"></i> Contact
                         Us</li>
                 </a>
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl;?>/faq" title="Frequently Asked Questions">
-                    <li <?php if ($page=='faq') {?> id="active-li" <?php }?>><i class="bi-patch-question"></i>
+                <a href="<?php echo $websiteUrl; ?>/faq" title="Frequently Asked Questions">
+                    <li <?php if ($page == 'faq') { ?> id="active-li" <?php } ?>><i class="bi-patch-question"></i>
                         Frequently Asked Question</li>
+                </a>
+            </div>
+
+            <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/portal" title="Log-In">
+                    <li class="student-li"><i class="bi-person-circle"></i> Log-In</li>
+                </a>
+            </div>
+
+            <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/portal/sign-up" title="Sign-Up">
+                    <li class="training-li"><i class="bi-person-circle"></i> Sign-Up</li>
                 </a>
             </div>
         </div>
@@ -165,5 +173,6 @@
     </div>
 </div>
 
-<div class="switch-country-link" onclick="_switchCountry()"><img
-        src="<?php echo $websiteUrl ?>/all-images/body-pix/switch.png"></div>
+<div class="switch-country-link" onclick="_switchCountry()">
+    <img src="<?php echo $websiteUrl ?>/all-images/body-pix/switch.png">
+</div>

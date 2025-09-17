@@ -186,7 +186,7 @@ function _back_to_top() {
   return false;
 }
 
-function _open_menu() {
+function _openMenu() {
   $(".sidenavdiv, .sidenavdiv-in").animate({ "margin-left": "0" }, 200);
   $(".live-chat-back-div").animate({ "margin-left": "-100%" }, 400);
   $(".index-menu-back-div").animate({ "margin-left": "0" }, 400);

@@ -69,7 +69,7 @@ function _initFetchExamData(data) {
 }
 
 function _fetchEachSiteExam(publishId) {
-  let pageSession = JSON.parse(localStorage.getItem("pageSession"));
+  let pageSession = JSON.parse(sessionStorage.getItem("pageSession"));
   if (pageSession == null) {
     _getPageSessionValue("reload");
   } else {
@@ -83,6 +83,7 @@ function _fetchEachSiteExam(publishId) {
             const data = response.data;
 
             const regTitle = data.regTitle;
+            const examAbbr = data.examAbbr;
             const seoDescription = data.seoDescription;
             const pageContent = data.pageContent;
             const pageUrl = data.pageUrl;
@@ -91,6 +92,9 @@ function _fetchEachSiteExam(publishId) {
             const updatedTime = formatExamDate(data.updatedTime);
             const regPix = data.regPix;
             const incentives = data.incentives;
+            const parentPublishId = data.parentPublishId;
+
+            let basePath = (parentPublishId && parentPublishId !== "0") ? examRelatedLinkPixPath : examPixPath;
 
             $("#regTitle, #regTopTitle").html(regTitle);
             $("#seoDescription").html(seoDescription);
@@ -98,30 +102,35 @@ function _fetchEachSiteExam(publishId) {
             $("#fullName").html(fullName);
             $("#pageView").html(pageView);
             $("#updatedTime").html(updatedTime);
-            $("#examFetchPix").attr(
-              "src",
-              (examPixPath ? examPixPath : examRelatedLinkPixPath) +
-                "/" +
-                regPix
-            );
+            $("#examFetchPix").attr("src", basePath + "/" + regPix);
             $("#examTitleLink").attr("href", websiteUrl + "/" + pageUrl);
 
-            const $temp = $("<div>").html(incentives);
-            // Add hyphen before each <p>
-            $temp.find("p").prepend("- ");
-            // Put it back in the DOM
-            $("#incentives").html($temp.html());
+            if ((!parentPublishId || parentPublishId === "0") && incentives) {
+              const $temp = $("<div>").html(incentives);
+              $temp.find("p").prepend("- ");
+              $("#incentives").html($temp.html()).closest(".div-in").show();
+            } else {
+              $("#incentives").empty().closest(".div-in").hide();
+            }
 
             let linkContent = "";
-            for (let i = 0; i < data.relatedLinksData.length; i++) {
-              const fetched = data.relatedLinksData[i];
-              const regTitle = fetched.regTitle;
-              const pageUrl = fetched.pageUrl;
+            // Only add the header if there are related links
+            if (data.relatedLinksData && data.relatedLinksData.length > 0) {
+                linkContent += `<h3>${examAbbr} RELATED LINKS</h3><div class="related-post-back-div pages-inner-content">`;
 
-              linkContent += `
-						<a href="${websiteUrl}/${pageUrl}" title="${regTitle}">
-							<span>${regTitle}</span></a>
-						`;
+                for (let i = 0; i < data.relatedLinksData.length; i++) {
+                    const fetched = data.relatedLinksData[i];
+                    const regTitle = fetched.regTitle;
+                    const pageUrl = fetched.pageUrl;
+
+                    // Don't hide links just because you're currently on one of them
+                    linkContent += `
+                        <a href="${websiteUrl}/${pageUrl}" title="${regTitle}">
+                            <span>${regTitle}</span>
+                        </a>
+                    `;
+                }
+                linkContent += `</div>`;
             }
             $("#fetchedRelatedLinks").html(linkContent);
           }
@@ -205,4 +214,81 @@ function _initFetchIndexExamData(data) {
     )
     .join("");
   $("#indexPageContent").html(content);
+}
+
+
+function _fetchHeaderExams() {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/exams/fetch-index-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
+    })
+      .then((response) => {
+        if (response.success && response.data?.length > 0) {
+          _initFetchHeaderExams(response.data);
+        } else {
+          $("#fetchHeaderExams").html(`
+              <div class="false-notification-div">
+                  <p>${response.message}</p>
+              </div>
+          `);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function _initFetchHeaderExams(data) {
+  const content = data
+    .map(
+      (item) => `
+       <div class="each-container">
+          <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+              <li>${item.examAbbr}</li>
+          </a>
+      </div>
+   `)
+    .join("");
+  $("#fetchHeaderExams").html(content);
+}
+
+
+function _fetchFooterExams() {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/exams/fetch-all-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
+    })
+      .then((response) => {
+        if (response.success && response.data?.length > 0) {
+          _initFetchFooterExams(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function _initFetchFooterExams(data) {
+  const content = data
+    .map(
+      (item) => `
+        <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+          <li><i class="bi-chevron-right"></i>${item.regTitle}</li>
+      </a>`)
+    .join("");
+  $("#fetchFooterExams").html(content);
 }

@@ -39,7 +39,7 @@
         WHERE (a.regTitle LIKE '%$q%') $publishIds
         AND a.statusId= 1    
             AND a.pageCategoryId ='$pageCategoryId'
-        ORDER BY a.updatedTime DESC LIMIT 3;
+        ORDER BY RAND() LIMIT 4;
     ";
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));

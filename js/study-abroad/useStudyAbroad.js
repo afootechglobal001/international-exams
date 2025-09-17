@@ -133,3 +133,37 @@ function _initFetchRelatedStudyAbroadData(data) {
 	</div></a>`).join("");
     $('#relatedPageStudyAbroadContent').html(content);
 }
+
+function _fetchHeaderStudyAbroad() {
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `site/study-abroad/fetch-study-abroad?pageCategoryId=${pageCategory?.studyAbroadCategory}`,
+		})
+		.then((response) => {
+			if (response.success && response.data?.length > 0) {
+                _initFetchHeaderStudyAbroad(response.data);
+			} else {
+				$('#fetchHeaderStudyAbroad').html(`
+					<div class="false-notification-div">
+						<p>${response.message}</p>
+					</div>
+				`);
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+	} catch (error) {
+		console.error("Error:", error);
+  	}
+}
+
+function _initFetchHeaderStudyAbroad(data) {
+  	const content = data.map((item) => `
+    <a class="service-div" href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+		<div class="pix-div"><img src="${studyAbroadPixPath}/${item.regPix}" alt="${item.regTitle}" /></div>
+		<li>${item.regTitle}</li>
+	</a>`).join("");
+    $('#fetchHeaderStudyAbroad').html(content);
+}

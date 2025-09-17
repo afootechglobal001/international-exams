@@ -89,11 +89,12 @@
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="studyAbroadSummary_container">
+                        <div class="text_area_container" id="studyAbroadSummary_container">
                             <script>
                                 textField({
                                     id: 'studyAbroadSummary',
                                     title: 'Study Abroad Summary',
+                                    type: 'textarea',
                                     value: getEachStudyAbroadSession?.studyAbroadSummary ?? ''
                                 });
                             </script>

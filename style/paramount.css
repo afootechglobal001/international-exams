@@ -762,7 +762,7 @@ a {
 }
 
 .index-menu-back-div .top-div .logo-div {
-  width: 150px;
+  width: 180px;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -794,7 +794,7 @@ a {
 .index-menu-back-div .div-in .div li {
   padding: 10px 0px 10px 15px;
   font-size: 14px;
-  color: var(--primary-color);
+  color: var(--sub-body-color);
   height: 30px;
   line-height: 30px;
   list-style: none;
@@ -806,7 +806,7 @@ a {
 }
 
 .index-menu-back-div .div-in .div li i {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-size: 15px;
   width: 40px;
   margin-right: 10px;
@@ -850,14 +850,19 @@ a {
 
 .index-menu-back-div .div-in .div .student-li {
   background: var(--secondary-color);
-  color: var(--text-white);
+  color: var(--white-color);
 }
 
 .index-menu-back-div .div-in .div .training-li {
   background: var(--primary-color);
-  color: var(--text-white);
+  color: var(--white-color);
 }
 
+.index-menu-back-div .div-in .div .training-li i{
+  color: var(--white-color);
+  font-size: 13px;
+}
 .index-menu-back-div .div-in .div .student-li i {
-  color: var(--text-white);
+  color: var(--white-color);
+  font-size: 13px;
 }

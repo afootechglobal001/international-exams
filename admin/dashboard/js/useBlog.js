@@ -83,7 +83,7 @@ function createAndUpdateBlog(){
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _createAndUpdateStudyAbroad());
+		_callCatchError(() => createAndUpdateBlog());
 	}
 }
 
@@ -122,7 +122,7 @@ function _saveBlogCallback(formData) {
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _saveBlogCallback()); // retry if needed
+		_callAjaxError(() => _saveBlogCallback(formData)); // retry if needed
 		_btnDisable("submitBtn", btnText, false);
     });
 }
@@ -155,7 +155,7 @@ function _uploadBlogPix(newRegPix, oldRegPix, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadBlogPix());
+		_callAjaxError(() => _uploadBlogPix(newRegPix, oldRegPix, message));
     });
 }
 

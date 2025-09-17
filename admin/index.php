@@ -14,7 +14,8 @@
         <div class="page-container">
             <div class="login-card-div">
                 <div class="logo-div">
-                    <img src="images/logo.png" alt="International Exams Logo" title="International Exams Logo">
+                    <a href="<?php echo $websiteUrl ?>" title="Home">
+                    <img src="images/logo.png" alt="International Exams Logo" title="International Exams Logo"></a>
                 </div>
 
                 <div id="page-content">

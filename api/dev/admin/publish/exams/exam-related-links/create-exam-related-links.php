@@ -44,9 +44,10 @@
     }
 
         /////////////////get exam publish Id //////////////////////////////////////
-        $publishIdQuery=mysqli_query($conn,"SELECT publishId FROM PUBLISH_TAB WHERE publishId='$publishId' AND pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
+        $publishIdQuery=mysqli_query($conn,"SELECT publishId, examAbbr FROM PUBLISH_TAB WHERE publishId='$publishId' AND pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
 	    $fetchPublishQuery=mysqli_fetch_array($publishIdQuery);
 		$parentPublishId=$fetchPublishQuery['publishId'];
+        $examAbbr=$fetchPublishQuery['examAbbr'];
 
         ///////////////////////geting sequence//////////////////////////
         $countId='EXAMLINK';
@@ -72,8 +73,8 @@
             $regPix = $publishId . '_' . $datetime . '_' . $regPix;
 
             mysqli_query($conn,"INSERT INTO `PUBLISH_TAB`
-            (`pageCategoryId`, `parentPublishId`, `publishId`, `regTitle`, `regPix`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
-            ('$pageCategoryId', '$parentPublishId', '$publishId', '$regTitle', '$regPix', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
+            (`pageCategoryId`, `parentPublishId`, `publishId`, `regTitle`, `examAbbr`, `regPix`, `statusId`, `createdBy`, `createdTme`, `updatedTime`) VALUES
+            ('$pageCategoryId', '$parentPublishId', '$publishId', '$regTitle', '$examAbbr', '$regPix', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
             $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
             $fetchPageCat = json_decode($pageCatArray, true);

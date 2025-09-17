@@ -1,5 +1,4 @@
 <?php include 'config/constants.php'; ?>
-<?php $countryId = $_GET['countryId'] ?? 'GH'; ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -48,12 +47,13 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 title="TOEFL">IELTS</a> exams in Nigeria with EduGrade Services. Trusted support, fast
                             processing, and expert guidance for success.</p>
                         <div class="btn-div">
-                            <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button>
+                            <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="Download E-Books">
+                            <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button></a>
+                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="Download E-Books">
                             <button class="btn no-bg"><span>Download E-Books</span> <span class="span">It's
-                                    Free</span></button>
+                                    Free</span></button></a>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="play-div">
@@ -170,7 +170,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         </div>
 
                         <div class="btn-div">
-                            <a href="#">
+                            <a href="<?php echo $websiteUrl ?>/portal/sign-up">
                                 <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>

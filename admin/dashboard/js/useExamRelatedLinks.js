@@ -49,7 +49,7 @@ function _createAndUpdateExamLink() {
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _createExamLink());
+		_callCatchError(() => _createAndUpdateExamLink());
 	}
 }
 
@@ -57,11 +57,14 @@ function _createExamLinkCallback(formData){
 	let getEachExamLinkPageSession = JSON.parse(sessionStorage.getItem("getEachExamLinkPageSession"));
 	let getEachExamLinkDataSession = JSON.parse(sessionStorage.getItem("getEachExamLinkDataSession"));
 
+	const examPageCategoryId = getEachExamLinkPageSession?.pageCategoryId;
+	const examPagePublishId= getEachExamLinkPageSession?.publishId;
+
 	///// get btn text/////
 	const btnText = $("#submitBtn").html();
 	_btnDisable("submitBtn", btnText, true);
 
-	let callUrl= getEachExamLinkDataSession?.publishId ? `admin/publish/exams/exam-related-links/update-exam-related-links?pageCategoryId=${getEachExamLinkDataSession?.pageCategoryId}&parentPublishId=${getEachExamLinkDataSession?.parentPublishId}&publishId=${getEachExamLinkDataSession?.publishId}` : `${endPoint}/admin/publish/exams/exam-related-links/create-exam-related-links?pageCategoryId=${getEachExamLinkPageSession?.pageCategoryId}&publishId=${getEachExamLinkPageSession?.publishId}`;
+	let callUrl= getEachExamLinkDataSession?.publishId ? `admin/publish/exams/exam-related-links/update-exam-related-links?pageCategoryId=${getEachExamLinkDataSession?.pageCategoryId}&parentPublishId=${getEachExamLinkDataSession?.parentPublishId}&publishId=${getEachExamLinkDataSession?.publishId}` : `${endPoint}/admin/publish/exams/exam-related-links/create-exam-related-links?pageCategoryId=${examPageCategoryId}&publishId=${examPagePublishId}`;
 
 	//// call endpoint //////
 	_callFileEndPoints({
@@ -76,7 +79,7 @@ function _createExamLinkCallback(formData){
 			const newRegPix = response.regPix;
 			const oldRegPix = response.oldRegPix;
 
-			_uploadRelatedLinkPix(newRegPix, oldRegPix, message);
+			_uploadRelatedLinkPix(newRegPix, oldRegPix, message, examPageCategoryId, examPagePublishId);
 			_btnDisable("submitBtn", btnText, false);
 		} else {
 			_btnDisable("submitBtn", btnText, false);
@@ -90,12 +93,12 @@ function _createExamLinkCallback(formData){
 	})
 	.catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _createExamLinkCallback()); // retry if needed
+		_callAjaxError(() => _createExamLinkCallback(formData)); // retry if needed
 		_btnDisable("submitBtn", btnText, false);
 	});
 }
 
-function _uploadRelatedLinkPix(newRegPix, oldRegPix, message) {
+function _uploadRelatedLinkPix(newRegPix, oldRegPix, message, examPageCategoryId, examPagePublishId) {
     const uploadedFile = $("#regPix").prop("files")[0];
 
     const formData = new FormData();
@@ -112,7 +115,7 @@ function _uploadRelatedLinkPix(newRegPix, oldRegPix, message) {
 	.then(() => {
 		_showCustomConfirm({
             callback: () => {
-                _getActivePage({page:'examRelatedLinks', divid:'publish'});
+                _getEachExamLinkPage(examPageCategoryId, examPagePublishId);
 				_alertClose();
             },
             title: 'Success!',
@@ -123,7 +126,7 @@ function _uploadRelatedLinkPix(newRegPix, oldRegPix, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadRelatedLinkPix());
+		_callAjaxError(() => _uploadRelatedLinkPix(newRegPix, oldRegPix, message));
     });
 }
 
@@ -224,10 +227,10 @@ function _fetchEachExamLink(pageCategoryId, parentPublishId, publishId, action) 
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchEachExamLink()); // retry if needed
+			_callAjaxError(() => _fetchEachExamLink(pageCategoryId, parentPublishId, publishId, action)); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchEachExamLink());
+		_callCatchError(() => _fetchEachExamLink(pageCategoryId, parentPublishId, publishId, action));
   	}
 }

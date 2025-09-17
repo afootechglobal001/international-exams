@@ -87,7 +87,7 @@ function _saveGalleryCallback(formData) {
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _saveBlogCallback()); // retry if needed
+		_callAjaxError(() => _saveGalleryCallback(formData)); // retry if needed
 		_btnDisable("submitBtn", btnText, false);
     });
 }
@@ -120,7 +120,7 @@ function _uploadGalleryPix(newRegPix, oldRegPix, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadGalleryPix());
+		_callAjaxError(() => _uploadGalleryPix(newRegPix, oldRegPix, message));
     });
 }
 
@@ -218,10 +218,10 @@ function _fetchEachGallery(pageCategoryId, publishId, action) {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchEachGallery()); // retry if needed
+			_callAjaxError(() => _fetchEachGallery(pageCategoryId, publishId, action)); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchEachGallery());
+		_callCatchError(() => _fetchEachGallery(pageCategoryId, publishId, action));
   	}
 }

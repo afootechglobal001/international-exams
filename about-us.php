@@ -5,39 +5,32 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria</title>
+    <title>About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria</title>
+    
     <meta name="keywords"
-        content="<?php echo $appName ?>, TOEFL registration in Nigeria, GRE exam Nigeria, GMAT test Nigeria, SAT registration, ACT exam Nigeria, PTE Nigeria, IELTS Nigeria, exam registration Nigeria, EduGrade Services, study abroad exam, international exam, international exam in Nigeria, TOEFL Registration in Nigeria, TOEFL Registration in Kano, TOEFL Registration in Kaduna, TOEFL Registration in Lagos, TOEFL Registration in Ibadan, TOEFL Registration in Akure, TOEFL Registration in Abuja, TOEFL Registration in Oyo state, TOEFL Registration in Ondo state, TOEFL Registration in Owerri, TOEFL Registration in Africa, TOEFL Registration in Ilorin, TOEFL Registration in Ikeja, TOEFL Registration in Minna, TOEFL Registration in Abeokuta, TOEFL Registration in Oshogbo, TOEFL Registration in Jos, TOEFL Registration in Port Harcourt, GRE Registration in Nigeria, GRE Registration in Oyo, GRE Registration in Kaduna, GRE Registration in Abuja, GRE Registration in Kano,  GRE Registration in Benin City, GRE Registration in Akure GRE Registration in Enugu, GRE Registration in Owerri, GRE Registration in Kaduna, GRE Registration in Kano, GRE Registration in Ilorin, GRE Registration in Lagos, GRE Registration in Minna, GRE Registration in Abeokuta, GRE Registration in Akure, GRE Registration in Oshogbo, GRE Registration in Ibadan, GRE Registration in Jos, GRE Registration in Port Harcourt, GMAT Registration in Nigeria, GMAT Registration in akure, GMAT Registration in Kaduna, GMAT Registration in Kano, GMAT Registration in Abuja, GMAT Registration in Lagos, GMAT Registration in Ibadan,
-IELTS Registration in Abuja, IELTS Registration in ibadan, IELTS Registration in Akure, IELTS Registration in Lagos, IELTS Registration in Kaduna, IELTS Registration in Kano, GRE exam, IELTS exam, TOEFL exam, GMAT exam , SAT exam
-MyExamConnect, International Examination Centre In Nigeria, International Examination Training Services, International Exams Registration In Nigeria, BEST INTERNATIONAL EDUCATION CONSULTANT IN NIGERIA, Educational Consultant On International Exams, Admission Placement into Universities, 
-Best place to register Toefl exam in Nigeria, Best place to register GRE IN Nigeria, Best place to register GMAT exam in Nigeria, Best place to register SAT exam in Nigeria, where can i take gmat rest,
-Best place to register IELTS exam in Nigeria, Best place to register PTE exam in Nigeria, Best place to register OET exam in Nigeria, 
-Best place to register DUOLINGO exam in Nigeria, Best place to register MCAT exam in Nigeria, Best place to register NCLEX exam in Nigeria, NCLEX exam in Nigeria,
-Best place to register ACT exam in Nigeria, where to register international exams in nigeria, ielts general training, International Examination Payments and Pricing" />
+        content="International Exams, About International Exams Nigeria, About EduGrade Services, TOEFL registration Nigeria, GRE exam Nigeria, GMAT test Nigeria, SAT exam Nigeria, ACT exam Nigeria, PTE registration Nigeria, IELTS registration Nigeria, international exam support, exam training Nigeria, study abroad exams, educational consultancy Nigeria" />
+    
     <meta name="description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
-
+        content="Learn more about International Exams – your trusted partner for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS registrations in Nigeria. We provide expert support, fast processing, and guidance to help students succeed." />
     <meta property="og:title"
-        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria" />
+        content="About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria" />
     <meta property="og:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
     <meta property="og:description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
-
+        content="Learn more about International Exams – trusted exam registration and support for students in Nigeria." />
     <meta name="twitter:title"
-        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria" />
-    <meta name="twitter:card" content="<?php echo $appName ?>" />
+        content="About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
     <meta name="twitter:description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+        content="Get to know International Exams – Nigeria’s reliable exam registration and training support platform." />
 </head>
+
 
 <body>
     <?php include 'header.php' ?>
 
     <div class="other-pages-slide-section animated fadeInDown">
         <div class="other-pages-slide-div">
-
-
             <div class="top-title">
                 <nav>
                     <ul>
@@ -93,7 +86,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
             <div class="body-div-in">
                 <div class="about-back-div">
 
-                    <div class="content-div">
+                    <div class="content-div about-page-content">
                         <h2>Why Choose Edugrade Services – Shaping Global Scholars</h2>
                         <p>
                             Edugrade Services is a premier educational consultancy with offices across Nigeria and

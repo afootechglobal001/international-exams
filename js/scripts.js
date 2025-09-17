@@ -140,3 +140,134 @@ function _setWebsiteCountryId(countryId) {
     $("#switchCountryModal").fadeOut(500);
   }
 }
+
+
+function _fetchHeaderContact() {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+    try {
+      //// call endpoint //////
+      _callFetchEndPoints({
+        url: `site/contact/fetch-header-contact?countryId=${countryId || ""}`,
+      })
+        .then((response) => {
+          if (response.success && response.data) {
+            const data = response.data[0];
+
+            const smtpUsername = data.smtpUsername;
+            const phoneNumber = data.phoneNumber;
+            
+            $("#smtpUsername").html(smtpUsername);
+            $("#phoneNumber").html(phoneNumber);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+}
+
+
+function _fetchFooterAddress(containerId) {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `site/contact/fetch-branch-contact?countryId=${countryId || ""}`,
+		})
+		.then((response) => {
+			if (response.success && response.data?.length > 0) {
+        _initFooterAddress(response.data, containerId);
+			}
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+	} catch (error) {
+		console.error("Error:", error);
+  	}
+}
+
+function _initFooterAddress(data, containerId) {
+  let groups = [];
+  // Split contacts into groups of 3
+  for (let i = 0; i < data.length; i += 3) {
+    let eachContact = data.slice(i, i + 3);
+    let content = eachContact.map((item, index) => `
+    <div class="contact-div ${((index + 1) === eachContact.length) ? 'no-right-border' : ''}">
+      <div class="icon-div">
+          <i class="bi-geo-alt"></i>
+      </div>
+      <div class="text-div">
+        <h3>${item.branchName}:</h3>
+        <div class="text-in">
+            <div>${item.address}</div>
+            <div class="span">Phone Number: <span>${item.phoneNumber}</span></div>
+            <div class="span">Email: <span>${item.email}</span></div>
+        </div>
+      </div>
+    </div>
+    `).join("");
+
+    groups.push(`
+        <div class="top-footer-contact">
+            <div class="top-inner-div">
+                <div class="contact-back-div">
+                    ${content}
+                </div>
+            </div>
+        </div>
+    `);
+    }
+
+    // Insert everything into container
+    $(`#${containerId}`).html(groups.join(""));
+}
+
+function _fetchContactPageInfo() {
+    // Get countryId from localStorage
+    const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+    try {
+      //// call endpoint //////
+      _callFetchEndPoints({
+        url: `site/contact/fetch-header-contact?countryId=${countryId || ""}`,
+      })
+        .then((response) => {
+          if (response.success && response.data) {
+            const data = response.data[0];
+
+            const countryName = data.countryName;
+            const smtpUsername = data.smtpUsername;
+            const phoneNumber = data.phoneNumber;
+            
+            $("#contactCountryName").html(countryName);
+            $("#ContactSmtpUsername").html(smtpUsername);
+            $("#ContactPhoneNumber").html(phoneNumber);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+}
+
+
+function _getTrainingNavModal() {
+  _showCustomConfirm({
+    title: "Join Our Training Program",
+    message: "To participate in our online and physical classes, kindly login or sign up.",
+    alertType: "info",
+    trueActionBtnText: "Login",
+    falseActionBtn: true,
+    falseActionBtnText: "Sign Up",
+    trueActionCallback: () => (window.location.href = `${websiteUrl}/portal`),
+    falseActionCallback: () =>
+      (window.location.href = `${websiteUrl}/portal/sign-up`),
+  });
+}

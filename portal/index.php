@@ -18,7 +18,8 @@
             <div class="form-box">
                 <div class="form-box-content">
                     <div class="logo-div">
-                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" />
+                         <a href="<?php echo $websiteUrl ?>" title="Home">
+                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" /></a>
                     </div>
                     <h1>👋 Hi, Welcome Back!</h1>
                     <div class="alert alert-success">

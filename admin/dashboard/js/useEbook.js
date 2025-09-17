@@ -100,7 +100,7 @@ function _createEbook(){
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _createAndUpdateEbook());
+		_callCatchError(() => _createEbook());
 	}
 }
 
@@ -124,7 +124,7 @@ function _createEbookCallback(formData) {
             }, false);
             return xhr;
         },
-		url: `admin/publish/ebook/create-ebook`,
+		url: `admin/ebook/create-ebook`,
 		formData,
 		accessKey: true,
 	})
@@ -149,7 +149,7 @@ function _createEbookCallback(formData) {
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _saveBlogCallback()); // retry if needed
+		_callAjaxError(() => _createEbookCallback(formData)); // retry if needed
 		$("#submitBtn").fadeIn();
 		$("#progress-alert").hide();
 		$(".ajax-progress").css("width", "0%").text("0%");
@@ -190,7 +190,7 @@ function _uploadEbookPixAndMaterial(newRegPix, newMaterial, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadEbookPixAndMaterial());
+		_callAjaxError(() => _uploadEbookPixAndMaterial(newRegPix, newMaterial, message));
     });
 }
 
@@ -198,7 +198,7 @@ function _fetchEbookData() {
 	try {
 		//// call endpoint //////
 		_callFetchEndPoints({
-			url: `admin/publish/ebook/fetch-ebook`,
+			url: `admin/ebook/fetch-ebook`,
 			accessKey: true,
 		})
 		.then((response) => {
@@ -227,11 +227,11 @@ function _fetchEbookData() {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchBlogData()); // retry if needed
+			_callAjaxError(() => _fetchEbookData()); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchBlogData());
+		_callCatchError(() => _fetchEbookData());
   	}
 }
 
@@ -306,7 +306,7 @@ function _deleteEbookCallback(examId, ebookId){
 
 		//// call endpoint //////
 		_callFetchEndPoints({
-			url: `admin/publish/ebook/delete-ebook?examId=${examId}&ebookId=${ebookId}`,
+			url: `admin/ebook/delete-ebook?examId=${examId}&ebookId=${ebookId}`,
 			accessKey: true,	
 		})
 		.then((response) => {
@@ -330,12 +330,12 @@ function _deleteEbookCallback(examId, ebookId){
 		})
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _deleteEbookCallback()); // retry if needed
+			_callAjaxError(() => _deleteEbookCallback(examId, ebookId)); // retry if needed
 			_btnDisable(`deleteBtn_${ebookId}`, btnText, false);
       	});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _deleteEbookCallback());
+		_callCatchError(() => _deleteEbookCallback(examId, ebookId));
 		_btnDisable(`deleteBtn_${ebookId}`, btnText, false);
 	}
 }
@@ -367,6 +367,6 @@ function _unlinkEbookPixAndMaterial(oldRegPix, oldMaterial, ebookId, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _unlinkEbookPixAndMaterial());
+		_callAjaxError(() => _unlinkEbookPixAndMaterial(oldRegPix, oldMaterial, ebookId, message));
     });
 }

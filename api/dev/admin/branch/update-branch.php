@@ -22,7 +22,7 @@
 	$branchName=trim(strtoupper($data['branchName']));
     $email=trim(strtolower($data['email']));
     $phoneNumber=trim($data['phoneNumber']);
-    $address =trim(strtoupper(str_replace("'", "\'", $data['address'])));
+    $address =trim(str_replace("'", "\'", $data['address']));
     $managerId=trim(strtoupper($data['managerId']));
     $statusId=trim($data['statusId']);
 

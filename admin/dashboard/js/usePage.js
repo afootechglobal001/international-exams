@@ -129,7 +129,7 @@ function _savePageCallback(formData) {
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _savePageContent()); // retry if needed
+		_callAjaxError(() => _savePageCallback(formData)); // retry if needed
 		_btnDisable("saveBtn", btnText, false);
     });
 }
@@ -150,7 +150,7 @@ function _uploadPagePix(oldSeoFlyer, newSeoFlyer) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadPagePix());
+		_callAjaxError(() => _uploadPagePix(oldSeoFlyer, newSeoFlyer));
     });
 }
 
@@ -190,7 +190,7 @@ function _createPagesFolder(pageCategoryId, publishId, pageUrl, oldPageUrl, page
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _createPagesFolder());
+		_callAjaxError(() => _createPagesFolder(pageCategoryId, publishId, pageUrl, oldPageUrl, pageTitle, seoKeywords, seoDescription, newSeoFlyer, oldSeoFlyer, pageContent, message));
     });
 }
 
@@ -302,7 +302,7 @@ function _savePagePicturesCallback(formData) {
     })
     .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError();
+        _callAjaxError(() => _savePagePicturesCallback(formData));
     });
 }
 
@@ -418,12 +418,12 @@ function _deletePagePictureCallback(publishId, sn){
 		})
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _deletePagePictureCallback()); // retry if needed
+			_callAjaxError(() => _deletePagePictureCallback(publishId, sn)); // retry if needed
 			_btnDisable(`deleteBtn_${sn}`, btnText, false);
       	});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _deletePagePictureCallback());
+		_callCatchError(() => _deletePagePictureCallback(publishId, sn));
 		_btnDisable(`deleteBtn_${sn}`, btnText, false);
 	}
 }
@@ -451,6 +451,6 @@ function _deleteOldPagePictures(oldPagePictures, sn, message) {
 	})
 	.catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _deleteOldPagePictures());
+		_callAjaxError(() => _deleteOldPagePictures(oldPagePictures, sn, message));
 	});	
 }

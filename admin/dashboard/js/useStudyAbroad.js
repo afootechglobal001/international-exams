@@ -90,7 +90,7 @@ function _saveStudyAbroadCallback(formData) {
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _saveStudyAbroadCallback()); // retry if needed
+		_callAjaxError(() => _saveStudyAbroadCallback(formData)); // retry if needed
 		_btnDisable("submitBtn", btnText, false);
     });
 }
@@ -123,7 +123,7 @@ function _uploadStudyAbroadPix(newRegPix, oldRegPix, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadStudyAbroadPix());
+		_callAjaxError(() => _uploadStudyAbroadPix(newRegPix, oldRegPix, message));
     });
 }
 
@@ -220,10 +220,10 @@ function _fetchEachStudyAbroad(pageCategoryId, publishId, action) {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchEachStudyAbroad()); // retry if needed
+			_callAjaxError(() => _fetchEachStudyAbroad(pageCategoryId, publishId, action)); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchEachStudyAbroad());
+		_callCatchError(() => _fetchEachStudyAbroad(pageCategoryId, publishId, action));
   	}
 }

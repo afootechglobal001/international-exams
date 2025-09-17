@@ -120,7 +120,7 @@ function _saveFaqCallback(formData) {
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _saveFaqCallback()); // retry if needed
+		_callAjaxError(() => _saveFaqCallback(formData)); // retry if needed
 		_btnDisable("submitBtn", btnText, false);
     });
 }
@@ -210,10 +210,10 @@ function _fetchEachFaq(pageCategoryId, publishId) {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchEachFaq()); // retry if needed
+			_callAjaxError(() => _fetchEachFaq(pageCategoryId, publishId)); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchEachFaq());
+		_callCatchError(() => _fetchEachFaq(pageCategoryId, publishId));
   	}
 }

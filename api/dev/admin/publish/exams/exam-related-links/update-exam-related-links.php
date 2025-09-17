@@ -45,8 +45,15 @@
         goto end;
     }
 
+        /////////////////get exam publish details //////////////////////////////////////
+        $publishIdQuery=mysqli_query($conn,"SELECT publishId, examAbbr FROM PUBLISH_TAB WHERE publishId='$parentPublishId' AND pageCategoryId='$pageCategoryId'")or die (mysqli_error($conn));
+	    $fetchPublishQuery=mysqli_fetch_array($publishIdQuery);
+		$parentPublishId=$fetchPublishQuery['publishId'];
+        $examAbbr=$fetchPublishQuery['examAbbr'];
+
         $update ="UPDATE PUBLISH_TAB SET 
             regTitle = '$regTitle',
+            examAbbr = '$examAbbr',
             statusId = '$statusId',
             updatedBy = '$loginStaffId',
             updatedTime = NOW()

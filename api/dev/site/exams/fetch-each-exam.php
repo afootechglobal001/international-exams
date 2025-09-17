@@ -24,11 +24,12 @@
 
     $select = "SELECT 
         a.pageCategoryId,
-        a.publishId, 
+        a.parentPublishId,
+        a.publishId,
         a.regTitle, 
         a.examAbbr,
         a.incentives,
-        a.regPix, 
+        a.regPix,
         a.statusId,
         a.pageView,
         a.updatedBy,
@@ -61,26 +62,49 @@
     ];
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
-        $publishId=$fetchQuery['publishId'];
-        $updatedBy=$fetchQuery['updatedBy'];
+        $publishId = $fetchQuery['publishId'];
+        $parentPublishId = $fetchQuery['parentPublishId'];
+        $updatedBy = $fetchQuery['updatedBy'];
 
         /////////////////// fetch Related Links per exam ////////////
-        $relatedLinksData=array();
-        $getRelatedLinksQuery = mysqli_query($conn, "SELECT a.parentPublishId, a.publishId, a.regTitle, b.pageUrl FROM PUBLISH_TAB a JOIN PAGES_TAB b ON a.publishId= b.publishId WHERE a.parentPublishId='$publishId'");
+        $relatedLinksData = array();
+        if ($parentPublishId && $parentPublishId !== "0") {
+            // fetch the related links siblings //////
+            $getRelatedLinksQuery = mysqli_query($conn, 
+                "SELECT a.parentPublishId, a.publishId, a.regTitle, a.examAbbr, b.pageUrl 
+                FROM PUBLISH_TAB a 
+                JOIN PAGES_TAB b ON a.publishId = b.publishId 
+                WHERE a.parentPublishId='$parentPublishId' 
+                AND a.statusId=1"
+            );
+        } else {
+            // fetch related links for main exam //////
+            $getRelatedLinksQuery = mysqli_query($conn, 
+                "SELECT a.parentPublishId, a.publishId, a.regTitle, a.examAbbr, b.pageUrl 
+                FROM PUBLISH_TAB a 
+                JOIN PAGES_TAB b ON a.publishId = b.publishId 
+                WHERE a.parentPublishId='$publishId' 
+                AND a.statusId=1"
+            );
+        }
+
         while ($getRelatedLinksfetch = mysqli_fetch_assoc($getRelatedLinksQuery)) {
             $relatedLinksData[] = $getRelatedLinksfetch;
         }
-        $fetchQuery['relatedLinksData']= $relatedLinksData;
+        $fetchQuery['relatedLinksData'] = $relatedLinksData;
 
-       /////////////////// for  UpdatedBy /////////
-        $updatedByData=array();
-        $getUpdatedByQuery = mysqli_query($conn, "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress FROM STAFF_TAB WHERE staffId='$updatedBy'");
+        /////////////////// for UpdatedBy /////////
+        $updatedByData = array();
+        $getUpdatedByQuery = mysqli_query($conn, 
+            "SELECT CONCAT(titleId, ' ', firstName, ' ', lastName) AS fullName, emailAddress 
+            FROM STAFF_TAB WHERE staffId='$updatedBy'"
+        );
         while ($getUpdatedByfetch = mysqli_fetch_assoc($getUpdatedByQuery)) {
-            $updatedByData= $getUpdatedByfetch;
+            $updatedByData = $getUpdatedByfetch;
         }
-        $fetchQuery['updatedBy']= $updatedByData;
+        $fetchQuery['updatedBy'] = $updatedByData;
 
-        $response['data']= $fetchQuery;
+        $response['data'] = $fetchQuery;
     }
 end:
 echo json_encode($response);

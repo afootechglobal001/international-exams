@@ -48,12 +48,7 @@
                 <div class="main-content-back-div">
                     <div class="text-content-div">
                         <h1 id="regTitle">Loading...</h1>
-
-                        <div class="meta">
-                            <span><i class="bi bi-person"></i> By: <strong id="fullName">Loading...</strong> </span> |
-                            <span><i class="bi-calendar3"></i> DATE: <strong id="updatedTime">Loading...</strong></span> |
-                            <span><i class="bi-eye"></i> VIEWS: <strong id="blogView">Loading...</strong></span>
-                        </div>
+                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong> </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i> VIEWS: <span><strong id="blogView">Loading..</strong></span> </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
@@ -69,7 +64,7 @@
                         <div class="page-list-back-div">
                             <div class="main-picture-back-div">	
                                 <div class="main-picture-div" id="blogPreviewPix">
-                                    <img id="blogFetchPix" src="<?php echo $websiteUrl?>/all-images/blog/blog_1.png" alt="Blog"/> 
+                                    <img id="blogFetchPix" src="<?php echo $websiteUrl?>/uploaded_files/blog/default.jpg" alt="Blog"/> 
                                 </div>   
 
                                 <div class="bottom-img-div">

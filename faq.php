@@ -5,31 +5,21 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria</title>
-    <meta name="keywords"
-        content="<?php echo $appName ?>, TOEFL registration in Nigeria, GRE exam Nigeria, GMAT test Nigeria, SAT registration, ACT exam Nigeria, PTE Nigeria, IELTS Nigeria, exam registration Nigeria, EduGrade Services, study abroad exam, international exam, international exam in Nigeria, TOEFL Registration in Nigeria, TOEFL Registration in Kano, TOEFL Registration in Kaduna, TOEFL Registration in Lagos, TOEFL Registration in Ibadan, TOEFL Registration in Akure, TOEFL Registration in Abuja, TOEFL Registration in Oyo state, TOEFL Registration in Ondo state, TOEFL Registration in Owerri, TOEFL Registration in Africa, TOEFL Registration in Ilorin, TOEFL Registration in Ikeja, TOEFL Registration in Minna, TOEFL Registration in Abeokuta, TOEFL Registration in Oshogbo, TOEFL Registration in Jos, TOEFL Registration in Port Harcourt, GRE Registration in Nigeria, GRE Registration in Oyo, GRE Registration in Kaduna, GRE Registration in Abuja, GRE Registration in Kano,  GRE Registration in Benin City, GRE Registration in Akure GRE Registration in Enugu, GRE Registration in Owerri, GRE Registration in Kaduna, GRE Registration in Kano, GRE Registration in Ilorin, GRE Registration in Lagos, GRE Registration in Minna, GRE Registration in Abeokuta, GRE Registration in Akure, GRE Registration in Oshogbo, GRE Registration in Ibadan, GRE Registration in Jos, GRE Registration in Port Harcourt, GMAT Registration in Nigeria, GMAT Registration in akure, GMAT Registration in Kaduna, GMAT Registration in Kano, GMAT Registration in Abuja, GMAT Registration in Lagos, GMAT Registration in Ibadan,
-IELTS Registration in Abuja, IELTS Registration in ibadan, IELTS Registration in Akure, IELTS Registration in Lagos, IELTS Registration in Kaduna, IELTS Registration in Kano, GRE exam, IELTS exam, TOEFL exam, GMAT exam , SAT exam
-MyExamConnect, International Examination Centre In Nigeria, International Examination Training Services, International Exams Registration In Nigeria, BEST INTERNATIONAL EDUCATION CONSULTANT IN NIGERIA, Educational Consultant On International Exams, Admission Placement into Universities, 
-Best place to register Toefl exam in Nigeria, Best place to register GRE IN Nigeria, Best place to register GMAT exam in Nigeria, Best place to register SAT exam in Nigeria, where can i take gmat rest,
-Best place to register IELTS exam in Nigeria, Best place to register PTE exam in Nigeria, Best place to register OET exam in Nigeria, 
-Best place to register DUOLINGO exam in Nigeria, Best place to register MCAT exam in Nigeria, Best place to register NCLEX exam in Nigeria, NCLEX exam in Nigeria,
-Best place to register ACT exam in Nigeria, where to register international exams in nigeria, ielts general training, International Examination Payments and Pricing" />
-    <meta name="description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+    <title><?php echo $appName ?> | Frequently Asked Questions (FAQ) - Exam Registration & Study Abroad</title>
+    
+    <meta name="keywords" content="<?php echo $appName ?> FAQ, Frequently Asked Questions, Exam Registration FAQ Nigeria, Study Abroad FAQ, TOEFL FAQ Nigeria, GRE FAQ Nigeria, GMAT FAQ Nigeria, SAT FAQ Nigeria, ACT FAQ Nigeria, IELTS FAQ Nigeria, PTE FAQ Nigeria, International Exam FAQ, EduGrade Services FAQ, exam registration questions, how to register TOEFL in Nigeria, IELTS registration cost Nigeria, exam payment plans Nigeria, study abroad questions" />
+    <meta name="description" content="Find answers to the most common questions about exam registration (TOEFL, GRE, GMAT, SAT, ACT, PTE, IELTS) and study abroad services with <?php echo $appName ?>. Clear guidance for Nigerian students." />
 
-    <meta property="og:title"
-        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria" />
+    <meta property="og:title" content="<?php echo $appName ?> | FAQ - Exam Registration & Study Abroad" />
     <meta property="og:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
-    <meta property="og:description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+    <meta property="og:description" content="Answers to frequently asked questions about TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exam registration, plus study abroad services in Nigeria." />
 
-    <meta name="twitter:title"
-        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria" />
-    <meta name="twitter:card" content="<?php echo $appName ?>" />
+    <meta name="twitter:title" content="<?php echo $appName ?> | FAQ - Exam Registration & Study Abroad" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
-    <meta name="twitter:description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+    <meta name="twitter:description" content="Get answers to common questions about exam registration and study abroad with <?php echo $appName ?>. TOEFL, GRE, GMAT, SAT, ACT, PTE, IELTS in Nigeria." />
 </head>
+
 
 <body>
     <?php include 'header.php' ?>

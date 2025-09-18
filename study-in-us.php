@@ -1,7 +1,7 @@
 <?php $publishId='STUDYABR00320250829045418';?>
 <?php $pageUrl='study-in-us';?>
 <?php $pageTitle='Study In UNITED STATE';?>
-<?php $seoKeywords='Edugrade Service, Study In United State From Nigeria, Study In United State, United State visa/study permit , requirement to study in United State, apply for admission in United State, Tuition fee in United State, Edugrade Services, International Exam';?>
-<?php $seoDescription='Why United State could be a great choice to study? Requirement to study in United State , United State Student visa/study permit. Admission Processing into Universities/Colleges in United State.';?>
+<?php $seoKeywords='study in usa from nigeria, study in usa from ghana, study in usa from kenya, us student visa nigeria, us student visa ghana, us student visa kenya, admission processing for usa, apply to us universities, international exams for usa, SAT for usa, GRE for usa universities, IELTS for usa, TOEFL for usa, Duolingo for usa admission, usa scholarships for africans, american universities admission, study abroad usa, us education consultants africa, undergraduate studies usa, masters in usa from nigeria, usa university application kenya, usa college application ghana';?>
+<?php $seoDescription='Begin your journey to study in the United States from Nigeria, Ghana, or Kenya with trusted admission support. We offer international exam registration (SAT, GRE, IELTS, TOEFL, Duolingo), university admission processing, and U.S. student visa guidance to help you succeed in top American institutions.';?>
 <?php $pageSeoPix='STUDYABR00320250829045418_202509090844_STUDYABR00320250829045418_202508290551_study-in-usa.png';?>
 <?php include 'studyAbroadCategory_details.php';?>

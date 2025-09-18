@@ -6,8 +6,8 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header('Content-Type: application/json; charset=UTF-8');
 
 //////////for live connect  
-$_HOST_NAME = "145.239.185.59";  
-$_DB_USERNAME ="arrahman_int_exam";
+$_HOST_NAME = "131.153.147.106";  
+$_DB_USERNAME ="intern77_afootech";
 $_DB_PASSWORD ="Password@12345.";
 
 ////////////for local connect  
@@ -16,7 +16,7 @@ $_DB_PASSWORD ="Password@12345.";
 // $_DB_PASSWORD ="";
 
 $conn = mysqli_connect($_HOST_NAME, $_DB_USERNAME, $_DB_PASSWORD)or die("Unable to connect to MySQL1");
-mysqli_select_db($conn,"arrahman_int_exam");
+mysqli_select_db($conn,"intern77_revamped_db");
 /////////////////////////////////////////////////////////////////
 ?>
 

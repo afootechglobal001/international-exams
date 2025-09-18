@@ -1,0 +1,7 @@
+<?php $publishId='STUDYABR01020250912062531';?>
+<?php $pageUrl='study-in-qatar';?>
+<?php $pageTitle='Study in QATAR';?>
+<?php $seoKeywords='study in qatar from nigeria, study in qatar from ghana, study in qatar from kenya, qatar student visa nigeria, qatar student visa ghana, qatar student visa kenya, admission processing for qatar, universities in qatar for africans, apply to qatar universities, international exams for qatar, IELTS for qatar, TOEFL for qatar universities, SAT for qatar admission, GRE for qatar studies, qatar scholarships for africans, education consultants for qatar, study abroad qatar, qatar university application nigeria, study in doha from africa, top universities in qatar';?>
+<?php $seoDescription='Discover top study opportunities in Qatar from Nigeria, Ghana, or Kenya with professional support. We offer international exam registration (IELTS, TOEFL, SAT, GRE), university admission processing, scholarship guidance, and assistance with Qatar student visa applications for leading institutions.';?>
+<?php $pageSeoPix='STUDYABR01020250912062531_202509120630_download (2).jpeg';?>
+<?php include 'studyAbroadCategory_details.php';?>

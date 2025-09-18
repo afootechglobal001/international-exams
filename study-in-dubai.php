@@ -1,0 +1,7 @@
+<?php $publishId='STUDYABR00520250829045735';?>
+<?php $pageUrl='study-in-dubai';?>
+<?php $pageTitle='Study in DUBAI';?>
+<?php $seoKeywords='study in dubai from nigeria, study in dubai from ghana, study in dubai from kenya, dubai student visa nigeria, dubai student visa ghana, dubai student visa kenya, admission processing for dubai, universities in dubai for africans, study abroad in dubai, international exams for dubai, IELTS for dubai admission, TOEFL for dubai, PTE exam dubai, SAT for dubai universities, apply to dubai universities, dubai scholarships for africans, uae education consultants nigeria, dubai university admission nigeria, study in uae from nigeria, study in uae from ghana, study in uae from kenya';?>
+<?php $seoDescription='Explore top study opportunities in Dubai from Nigeria, Ghana, or Kenya with professional support. We provide international exam registration (IELTS, TOEFL, PTE, SAT), university admission processing, Dubai student visa assistance, and guidance for studying at leading institutions in the UAE.';?>
+<?php $pageSeoPix='STUDYABR00520250829045735_202509120601_STUDYABR00520250829045735_202508290457_study-in-dubai.jpg';?>
+<?php include 'studyAbroadCategory_details.php';?>

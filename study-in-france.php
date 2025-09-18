@@ -1,0 +1,7 @@
+<?php $publishId='STUDYABR00420250829045605';?>
+<?php $pageUrl='study-in-france';?>
+<?php $pageTitle='Study in FRANCE';?>
+<?php $seoKeywords='study in france from nigeria, study in france from ghana, study in france from kenya, france student visa nigeria, france student visa ghana, france student visa kenya, admission processing for france, french universities admission, study abroad france, international exams for france, TEF exam registration, IELTS for france, TCF for french admission, TOEFL for france visa, GRE for france, france scholarships for africans, french universities for africans, apply to french universities, study in paris from africa, france education consultants nigeria, france education consultants ghana, france education consultants kenya';?>
+<?php $seoDescription='Start your journey to study in France from Nigeria, Ghana, or Kenya with expert guidance. We offer international exam registration (TEF, IELTS, TOEFL, TCF, GRE), university admission processing, French visa assistance, and support for applying to top institutions in France.';?>
+<?php $pageSeoPix='STUDYABR00420250829045605_202509120551_STUDYABR00420250829045605_202508290550_study-in-frnace.jpg';?>
+<?php include 'studyAbroadCategory_details.php';?>

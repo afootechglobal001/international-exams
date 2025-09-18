@@ -119,59 +119,6 @@
             </div>
         </div>
     </section>
-
-    <!-- <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
-        <div class="title-panel-div">
-            <div class="inner-top">
-                <span id="panel-title"><i class="bi-shield-lock"></i> CHANGE PASSWORD</span>
-                <div class="close" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">X</div>
-            </div>
-        </div>
-
-        <div class="container-back-div">
-            <div class="inner-container">
-                <div>
-                    <div class="alert alert-success form-alert">Kindly fill the form below to change your <span>PASSWORD</span></div>
-                </div>
-
-                <div class="text_field_container" id="oldPassword_container">
-                    <script>
-                        textField({
-                            id: 'oldPassword',
-                            title: 'Enter Your Old Password',
-                            type: 'password'
-                        });
-                    </script>
-                </div>
-
-                <div class="pswd_info" style="color:#8c8d8d"><em>At least 8 charaters required including upper & lower cases and special characters and numbers.</em></div>
-
-                <div class="text_field_container" id="newPassword_container">
-                    <script>
-                        textField({
-                            id: 'newPassword',
-                            title: 'Create New Password',
-                            type: 'password'
-                        });
-                    </script>
-                </div>
-
-                <div class="text_field_container" id="cnewPassword_container">
-                    <script>
-                        textField({
-                            id: 'cnewPassword',
-                            title: 'Confirm New Password',
-                            type: 'password'
-                        });
-                    </script>
-                </div>
-
-                <div>
-                    <button class="btn" title="CHANGE PASSWORD" id="submitBtn" onclick="_changePassword();"> <i class="bi-check"></i> CHANGE PASSWORD </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 <?php } ?>
 
 <?php if ($page == 'accountSettings') { ?>

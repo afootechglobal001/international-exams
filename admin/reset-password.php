@@ -1,4 +1,5 @@
 <?php include '../config/constants.php'; ?>
+<?php $ref = $_GET['ref']; ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -19,13 +20,10 @@
                 </div>
 
                 <div id="page-content">
-                    <?php $page='completeResetPassword';?>
-                    <?php include $websitePath.'/admin/config/page-content.php';?>
+                    <script>_verifyLink('<?php echo $ref?>');</script>
                 </div>
             </div>
         </div>
-
     </section>
 </body>
-
 </html>

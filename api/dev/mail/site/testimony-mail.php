@@ -83,7 +83,7 @@ try {
     /// copy this emails
     $mail->addAddress($smtpUsername, $fullName);  // Recipient email and name
     $mail->addAddress($supportEmail, $senderName);  // Support email
-    // $mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
+    $mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
 
     // Attach images
     $mail->Subject = $subject;

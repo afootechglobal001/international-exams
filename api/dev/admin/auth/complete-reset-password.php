@@ -4,9 +4,9 @@ if (!$checkBasicSecurity){/// start if 1
     goto end;
 }
 	//////////////////declaration of variables//////////////////////////////////////
-     $email = $_GET['email'];
-     $newPassword=($data['newPassword']);
-     $cnewPassword=($data['cnewPassword']);
+    $email = $_GET['email'];
+    $newPassword=($data['newPassword']);
+    $cnewPassword=($data['cnewPassword']);
     
 	////////////////////////////////////////////////////////////////////////////////
     validateEmptyField($email, 'EMAIL'); 

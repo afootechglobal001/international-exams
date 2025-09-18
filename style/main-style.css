@@ -4510,8 +4510,8 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
   position: fixed;
   top: 140px;
   z-index: 400;
-  width: 30px;
-  min-height: 70px;
+  width: 15px;
+  min-height: 50px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 2px;
   cursor: pointer;
   background: rgb(255, 255, 255);
@@ -4523,6 +4523,7 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
 
 .switch-country-link img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 

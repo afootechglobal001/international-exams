@@ -5,31 +5,33 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria</title>
+    <title><?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in
+        <?php echo $getwebsiteCountryName; ?></title>
     <meta name="keywords"
-        content="<?php echo $appName ?>, TOEFL registration in Nigeria, GRE exam Nigeria, GMAT test Nigeria, SAT registration, ACT exam Nigeria, PTE Nigeria, IELTS Nigeria, exam registration Nigeria, EduGrade Services, study abroad exam, international exam, international exam in Nigeria, TOEFL Registration in Nigeria, TOEFL Registration in Kano, TOEFL Registration in Kaduna, TOEFL Registration in Lagos, TOEFL Registration in Ibadan, TOEFL Registration in Akure, TOEFL Registration in Abuja, TOEFL Registration in Oyo state, TOEFL Registration in Ondo state, TOEFL Registration in Owerri, TOEFL Registration in Africa, TOEFL Registration in Ilorin, TOEFL Registration in Ikeja, TOEFL Registration in Minna, TOEFL Registration in Abeokuta, TOEFL Registration in Oshogbo, TOEFL Registration in Jos, TOEFL Registration in Port Harcourt, GRE Registration in Nigeria, GRE Registration in Oyo, GRE Registration in Kaduna, GRE Registration in Abuja, GRE Registration in Kano,  GRE Registration in Benin City, GRE Registration in Akure GRE Registration in Enugu, GRE Registration in Owerri, GRE Registration in Kaduna, GRE Registration in Kano, GRE Registration in Ilorin, GRE Registration in Lagos, GRE Registration in Minna, GRE Registration in Abeokuta, GRE Registration in Akure, GRE Registration in Oshogbo, GRE Registration in Ibadan, GRE Registration in Jos, GRE Registration in Port Harcourt, GMAT Registration in Nigeria, GMAT Registration in akure, GMAT Registration in Kaduna, GMAT Registration in Kano, GMAT Registration in Abuja, GMAT Registration in Lagos, GMAT Registration in Ibadan,
+        content="<?php echo $appName ?>, TOEFL registration in <?php echo $getwebsiteCountryName; ?>, GRE exam <?php echo $getwebsiteCountryName; ?>, GMAT test <?php echo $getwebsiteCountryName; ?>, SAT registration, ACT exam <?php echo $getwebsiteCountryName; ?>, PTE <?php echo $getwebsiteCountryName; ?>, IELTS <?php echo $getwebsiteCountryName; ?>, exam registration <?php echo $getwebsiteCountryName; ?>, EduGrade Services, study abroad exam, international exam, international exam in <?php echo $getwebsiteCountryName; ?>, TOEFL Registration in <?php echo $getwebsiteCountryName; ?>, TOEFL Registration in Kano, TOEFL Registration in Kaduna, TOEFL Registration in Lagos, TOEFL Registration in Ibadan, TOEFL Registration in Akure, TOEFL Registration in Abuja, TOEFL Registration in Oyo state, TOEFL Registration in Ondo state, TOEFL Registration in Owerri, TOEFL Registration in Africa, TOEFL Registration in Ilorin, TOEFL Registration in Ikeja, TOEFL Registration in Minna, TOEFL Registration in Abeokuta, TOEFL Registration in Oshogbo, TOEFL Registration in Jos, TOEFL Registration in Port Harcourt, GRE Registration in <?php echo $getwebsiteCountryName; ?>, GRE Registration in Oyo, GRE Registration in Kaduna, GRE Registration in Abuja, GRE Registration in Kano,  GRE Registration in Benin City, GRE Registration in Akure GRE Registration in Enugu, GRE Registration in Owerri, GRE Registration in Kaduna, GRE Registration in Kano, GRE Registration in Ilorin, GRE Registration in Lagos, GRE Registration in Minna, GRE Registration in Abeokuta, GRE Registration in Akure, GRE Registration in Oshogbo, GRE Registration in Ibadan, GRE Registration in Jos, GRE Registration in Port Harcourt, GMAT Registration in <?php echo $getwebsiteCountryName; ?>, GMAT Registration in akure, GMAT Registration in Kaduna, GMAT Registration in Kano, GMAT Registration in Abuja, GMAT Registration in Lagos, GMAT Registration in Ibadan,
 IELTS Registration in Abuja, IELTS Registration in ibadan, IELTS Registration in Akure, IELTS Registration in Lagos, IELTS Registration in Kaduna, IELTS Registration in Kano, GRE exam, IELTS exam, TOEFL exam, GMAT exam , SAT exam
-MyExamConnect, International Examination Centre In Nigeria, International Examination Training Services, International Exams Registration In Nigeria, BEST INTERNATIONAL EDUCATION CONSULTANT IN NIGERIA, Educational Consultant On International Exams, Admission Placement into Universities, 
-Best place to register Toefl exam in Nigeria, Best place to register GRE IN Nigeria, Best place to register GMAT exam in Nigeria, Best place to register SAT exam in Nigeria, where can i take gmat rest,
-Best place to register IELTS exam in Nigeria, Best place to register PTE exam in Nigeria, Best place to register OET exam in Nigeria, 
-Best place to register DUOLINGO exam in Nigeria, Best place to register MCAT exam in Nigeria, Best place to register NCLEX exam in Nigeria, NCLEX exam in Nigeria,
-Best place to register ACT exam in Nigeria, where to register international exams in nigeria, ielts general training, International Examination Payments and Pricing" />
+MyExamConnect, International Examination Centre In <?php echo $getwebsiteCountryName; ?>, International Examination Training Services, International Exams Registration In <?php echo $getwebsiteCountryName; ?>, BEST INTERNATIONAL EDUCATION CONSULTANT IN <?php echo strtoupper($getwebsiteCountryName); ?>, Educational Consultant On International Exams, Admission Placement into Universities, 
+Best place to register Toefl exam in <?php echo $getwebsiteCountryName; ?>, Best place to register GRE IN <?php echo $getwebsiteCountryName; ?>, Best place to register GMAT exam in <?php echo $getwebsiteCountryName; ?>, Best place to register SAT exam in <?php echo $getwebsiteCountryName; ?>, where can i take gmat rest,
+Best place to register IELTS exam in <?php echo $getwebsiteCountryName; ?>, Best place to register PTE exam in <?php echo $getwebsiteCountryName; ?>, Best place to register OET exam in <?php echo $getwebsiteCountryName; ?>, 
+Best place to register DUOLINGO exam in <?php echo $getwebsiteCountryName; ?>, Best place to register MCAT exam in <?php echo $getwebsiteCountryName; ?>, Best place to register NCLEX exam in <?php echo $getwebsiteCountryName; ?>, NCLEX exam in <?php echo $getwebsiteCountryName; ?>,
+Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where to register international exams in nigeria, ielts general training, International Examination Payments and Pricing" />
     <meta name="description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in <?php echo $getwebsiteCountryName; ?> with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
 
     <meta property="og:title"
-        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria" />
+        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in <?php echo $getwebsiteCountryName; ?>" />
     <meta property="og:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
     <meta property="og:description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in <?php echo $getwebsiteCountryName; ?> with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
 
     <meta name="twitter:title"
-        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in Nigeria" />
+        content="<?php echo $appName ?> | TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS Registration in <?php echo $getwebsiteCountryName; ?>" />
     <meta name="twitter:card" content="<?php echo $appName ?>" />
     <meta name="twitter:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
     <meta name="twitter:description"
-        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
+        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in <?php echo $getwebsiteCountryName; ?> with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
 </head>
+
 
 <body>
     <?php include 'header.php' ?>
@@ -44,11 +46,13 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <p>Register for <a href="#" title="TOEFL">TOEFL</a>, <a href="#" title="TOEFL">GRE</a>, <a
                                 href="#" title="TOEFL">GMAT</a>, <a href="#" title="TOEFL">SAT</a>, <a href="#"
                                 title="TOEFL">ACT</a>, <a href="#" title="TOEFL">PTE</a>, and <a href="#"
-                                title="TOEFL">IELTS</a> exams in Nigeria with EduGrade Services. Trusted support, fast
+                                title="TOEFL">IELTS</a> exams in <?php echo $getwebsiteCountryName; ?> with EduGrade
+                            Services. Trusted support, fast
                             processing, and expert guidance for success.</p>
                         <div class="btn-div">
                             <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="Download E-Books">
-                                <button class="btn"><span>Register For Exam</span> <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn"><span>Register For Exam</span> <i
+                                        class="bi-chevron-right"></i></button></a>
                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="Download E-Books">
                                 <button class="btn no-bg"><span>Download E-Books</span> <span class="span">It's
                                         Free</span></button></a>
@@ -63,56 +67,57 @@ Best place to register ACT exam in Nigeria, where to register international exam
         </div>
 
         <script type="text/javascript">
-            // List of sentences
-            var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN NIGERIA", "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
-                "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
-                "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
-            ];
-            // Current sentence being processed
-            var _PART = 0;
-            // Character number of the current sentence being processed 
-            var _PART_INDEX = 0;
-            // Element that holds the text
-            var _ELEMENT = document.querySelector("#pageTitle");
-            // Implements typing effect
-            function Type() {
-                var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-                _ELEMENT.innerHTML = text;
-                _PART_INDEX++;
+        // List of sentences
+        var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN <?php echo strtoupper($getwebsiteCountryName); ?>",
+            "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
+            "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
+            "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
+        ];
+        // Current sentence being processed
+        var _PART = 0;
+        // Character number of the current sentence being processed 
+        var _PART_INDEX = 0;
+        // Element that holds the text
+        var _ELEMENT = document.querySelector("#pageTitle");
+        // Implements typing effect
+        function Type() {
+            var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX++;
 
-                // If full sentence has been displayed then start to delete the sentence after some time
-                if (text === _CONTENT[_PART]) {
-                    clearInterval(_INTERVAL_VAL);
-                    setTimeout(function() {
-                        _INTERVAL_VAL = setInterval(Delete, 2);
-                    }, 5000);
-                }
+            // If full sentence has been displayed then start to delete the sentence after some time
+            if (text === _CONTENT[_PART]) {
+                clearInterval(_INTERVAL_VAL);
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Delete, 2);
+                }, 5000);
             }
-            // Implements deleting effect
-            function Delete() {
-                var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-                _ELEMENT.innerHTML = text;
-                _PART_INDEX--;
+        }
+        // Implements deleting effect
+        function Delete() {
+            var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+            _ELEMENT.innerHTML = text;
+            _PART_INDEX--;
 
-                // If sentence has been deleted then start to display the next sentence
-                if (text === '') {
-                    clearInterval(_INTERVAL_VAL);
+            // If sentence has been deleted then start to display the next sentence
+            if (text === '') {
+                clearInterval(_INTERVAL_VAL);
 
-                    // If last sentence then display the first one, else move to the next
-                    if (_PART == (_CONTENT.length - 1))
-                        _PART = 0;
-                    else
-                        _PART++;
-                    _PART_INDEX = 0;
+                // If last sentence then display the first one, else move to the next
+                if (_PART == (_CONTENT.length - 1))
+                    _PART = 0;
+                else
+                    _PART++;
+                _PART_INDEX = 0;
 
-                    // Start to display the next sentence after some time
-                    setTimeout(function() {
-                        _INTERVAL_VAL = setInterval(Type, 50);
-                    }, 200);
-                }
+                // Start to display the next sentence after some time
+                setTimeout(function() {
+                    _INTERVAL_VAL = setInterval(Type, 50);
+                }, 200);
             }
-            // Start the typing effect on load
-            _INTERVAL_VAL = setInterval(Type, 50);
+        }
+        // Start the typing effect on load
+        _INTERVAL_VAL = setInterval(Type, 50);
         </script>
     </div>
 
@@ -127,7 +132,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="text-div">
                             <h2>Affordable Test Registration Fee</h2>
-                            <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!</p>
+                            <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!
+                            </p>
                         </div>
                     </div>
 
@@ -138,7 +144,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="text-div">
                             <h2>Physical and Online Lectures</h2>
-                            <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn affordably,
+                            <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn
+                                affordably,
                                 anywhere!</p>
                         </div>
                     </div>
@@ -171,13 +178,14 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="btn-div">
                             <a href="<?php echo $websiteUrl ?>/portal/sign-up">
-                                <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Register now">Register now <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
                     <div class="our-exam-back-div" id="indexPageContent">
                         <script>
-                            _fetchIndexExamData();
+                        _fetchIndexExamData();
                         </script>
 
                         <div class="content-loading-div">
@@ -187,7 +195,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                     <div class="bottom-btn-div">
                         <a href="<?php echo $websiteUrl ?>/international-exams">
-                            <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button></a>
+                            <button class="btn" title="View All Exams">View All Exams <i
+                                    class="bi-chevron-right"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -197,16 +206,22 @@ Best place to register ACT exam in Nigeria, where to register international exam
             <div class="body-div-in">
                 <div class="about-back-div">
                     <div class="image-div" data-aos="fade-up" data-aos-duration="1400">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg" alt="About International Exams" />
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg"
+                            alt="About International Exams" />
                     </div>
 
                     <div class="content-div" data-aos="flip-right" data-aos-duration="1400">
                         <div class="icon-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg" alt="About Us icon" />
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg"
+                                alt="About Us icon" />
                         </div>
 
                         <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
-                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of students for admissions into foreign universities.</p>
+                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in
+                            almost the states in <?php echo $getwebsiteCountryName; ?> and other countries like GHANA,
+                            KENYA, ETHIOPIA, UGANDA and
+                            many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of
+                            students for admissions into foreign universities.</p>
 
                         <div class="check-div">
                             <div class="check">
@@ -247,7 +262,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="See how it works">See How It Works <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="See how it works">See How It Works <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
@@ -256,7 +272,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <div class="inner-div">
                                 <div class="icon-div">
                                     <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder.png" alt="Subjects available" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder.png"
+                                            alt="Subjects available" />
                                     </div>
                                 </div>
 
@@ -271,7 +288,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <div class="inner-div">
                                 <div class="icon-div">
                                     <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder2.png" alt="Total dynamic" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder2.png"
+                                            alt="Total dynamic" />
                                     </div>
                                 </div>
 
@@ -286,7 +304,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <div class="inner-div">
                                 <div class="icon-div">
                                     <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder4.png" alt="User daily" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder4.png"
+                                            alt="User daily" />
                                     </div>
                                 </div>
 
@@ -301,7 +320,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                             <div class="inner-div">
                                 <div class="icon-div">
                                     <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder3.png" alt="Active students" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder3.png"
+                                            alt="Active students" />
                                     </div>
                                 </div>
 
@@ -322,7 +342,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                     <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
                         <div><span class="top-title">OUR STATUS VALUES</span></div>
                         <h2>Exploring Our Status <span class="text">#Values</span></h2>
-                        <p>Explore our status values to learn about the guiding principles that shape our approach to tech education and community.</p>
+                        <p>Explore our status values to learn about the guiding principles that shape our approach to
+                            tech education and community.</p>
 
                         <div class="progress-back-div">
                             <div class="progress-container">
@@ -369,7 +390,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                                 </div>
                                 <div class="img-back-div">
                                     <div class="img-div">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/multiple_img.png" alt="Slide Image" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/multiple_img.png"
+                                            alt="Slide Image" />
                                     </div>
                                 </div>
                             </div>
@@ -388,7 +410,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
             <script>
-                _progressBar();
+            _progressBar();
             </script>
         </section>
 
@@ -396,7 +418,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
             <div class="body-div-in">
                 <div class="faq-back-div">
                     <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="<?php echo $appName ?> Frequently Asked Question" />
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
+                            alt="<?php echo $appName ?> Frequently Asked Question" />
                     </div>
 
                     <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
@@ -407,7 +430,7 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="faq-toggle-back" id="indexFaqContent">
                             <script>
-                                _fetchIndexFaqData();
+                            _fetchIndexFaqData();
                             </script>
 
                             <div class="content-loading-div">
@@ -416,7 +439,8 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         </div>
 
                         <a href="<?php echo $websiteUrl ?>/faq" title="Read More FAQ">
-                            <button class="btn" title="Read More FAQ">Read More <i class="bi-chevron-right"></i></button></a>
+                            <button class="btn" title="Read More FAQ">Read More <i
+                                    class="bi-chevron-right"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -432,11 +456,16 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="text-div">
                             <h2>What Our Students Say <span>#About Us</span></h2>
-                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their success in international exams through expert guidance, timely assistance, and a seamless registration process.</p>
+                            <p>Students from <?php echo $getwebsiteCountryName; ?>, across Africa share how EDUGRADE
+                                SERVICES has supported their
+                                success in international exams through expert guidance, timely assistance, and a
+                                seamless registration process.</p>
                         </div>
 
                         <div>
-                            <button class="btn" title="Submit Your Review" onclick="_getForm({page: 'testimonialForm', url: siteMiddlewareUrl});">Submit Your Review<i class="bi-pencil-square"></i></button>
+                            <button class="btn" title="Submit Your Review"
+                                onclick="_getForm({page: 'testimonialForm', url: siteMiddlewareUrl});">Submit Your
+                                Review<i class="bi-pencil-square"></i></button>
                         </div>
                     </div>
 
@@ -444,10 +473,13 @@ Best place to register ACT exam in Nigeria, where to register international exam
                         <div class="cg-carousel">
                             <div class="cg-carousel__container" id="js-carousel_1">
                                 <div class="cg-carousel__track js-carousel__track" id="fetchSiteTestimony">
-                                    <script>_fetchSiteTestimony();</script>
+                                    <script>
+                                    _fetchSiteTestimony();
+                                    </script>
 
                                     <div class="content-loading-div">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif"
+                                            alt="Loading" />
                                     </div>
                                 </div>
                             </div>
@@ -456,27 +488,27 @@ Best place to register ACT exam in Nigeria, where to register international exam
                 </div>
             </div>
             <script>
-                window['carousel_options_1'] = ({
-                    items: 4,
-                    margin: 30,
-                    loop: true,
-                    dots: true,
-                    autoplayHoverPause: true,
-                    smartSpeed: 650,
-                    autoplay: true,
-                    breakpoints: {
-                        700: {
-                            slidesPerView: 1,
-                        },
-                        1100: {
-                            slidesPerView: 1,
-                        },
-                        1300: {
-                            slidesPerView: 2,
-                        }
-
+            window['carousel_options_1'] = ({
+                items: 4,
+                margin: 30,
+                loop: true,
+                dots: true,
+                autoplayHoverPause: true,
+                smartSpeed: 650,
+                autoplay: true,
+                breakpoints: {
+                    700: {
+                        slidesPerView: 1,
+                    },
+                    1100: {
+                        slidesPerView: 1,
+                    },
+                    1300: {
+                        slidesPerView: 2,
                     }
-                });
+
+                }
+            });
             </script>
         </section>
 
@@ -493,13 +525,14 @@ Best place to register ACT exam in Nigeria, where to register international exam
 
                         <div class="btn-div">
                             <a href="<?php echo $websiteUrl ?>/blog" title="Explore All Blogs">
-                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Explore All Blogs">Explore All Blogs <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
                     <div class="blog-back-div" id="indexBlogContent">
                         <script>
-                            _fetchIndexBlogData();
+                        _fetchIndexBlogData();
                         </script>
 
                         <div class="content-loading-div">

@@ -1,4 +1,5 @@
 <?php
+    session_start();
 	error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_WARNING);
 	$websiteAutoUrl =(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	$appName='EDUGRADE SERVICES'; 
@@ -35,6 +36,9 @@ function getBrowserId() {
     return $browserId;
 }
 $userDeviceId=getBrowserId();
+
+/////////////////////////////////////////////////////////////////////////////////
+$getwebsiteCountryName=$_SESSION['websiteCountryName'] ?? 'Nigeria'; /// Default Currency Name
 ?>
 
 <script>
@@ -46,7 +50,8 @@ var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
 var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
 var userDeviceId = "<?php echo $userDeviceId;?>"; /// For User Device Id //
 
-var siteMiddlewareUrl = websiteUrl + '/config/code';//// For site url
+var siteMiddlewareUrl = websiteUrl + '/config/code'; //// For site url
+var siteSetSessionUrl = websiteUrl + '/config/set-session'; //// For site url
 
 var adminLocalUrl = websiteUrl + '/admin/config/code';
 var adminPortalLocalUrl = websiteUrl + '/admin/dashboard/config/code';
@@ -59,17 +64,17 @@ var portalDashboardUrl = websiteUrl + '/portal/dashboard'; /// For Admin Url //
 var portalAuthMiddlewareUrl = websiteUrl + '/portal/config/code';
 var portalOperationMiddlewareUrl = websiteUrl + '/portal/dashboard/config/code';
 
-var examLogoPixPath=websiteUrl+'/uploaded_files/examLogo'; /// For exam Logo Path //
-var examPixPath=websiteUrl+'/uploaded_files/examPicture'; /// For exam Pix Path //
-var seoFlyerPixPath=websiteUrl+'/uploaded_files/seoFlyer'; /// For seo flyer Pix Path //
-var studyAbroadPixPath=websiteUrl+'/uploaded_files/studyAbroad'; /// For Study Abroad Pix Path //
-var examRelatedLinkPixPath=websiteUrl+'/uploaded_files/examRelatedLink'; /// For Exam Related Link Pix Path //
-var blogPixPath=websiteUrl+'/uploaded_files/blog'; /// For Blog Pix Path //
-var galleryPixPath=websiteUrl+'/uploaded_files/galleryPictures'; /// For Gallery Pix Path
-var pagePixPath=websiteUrl+'/uploaded_files/pagePictures'; /// For Page Pix Path
-var eBookPixPath=websiteUrl+'/uploaded_files/ebookPicture'; /// For E-Book Pix Path
-var ebookMaterialPath=websiteUrl+'/uploaded_files/ebookMaterial'; /// For E-Book Material Path
-var pagePicturePath=websiteUrl+'/uploaded_files/pagePictures'; /// For Pages Picture Path
+var examLogoPixPath = websiteUrl + '/uploaded_files/examLogo'; /// For exam Logo Path //
+var examPixPath = websiteUrl + '/uploaded_files/examPicture'; /// For exam Pix Path //
+var seoFlyerPixPath = websiteUrl + '/uploaded_files/seoFlyer'; /// For seo flyer Pix Path //
+var studyAbroadPixPath = websiteUrl + '/uploaded_files/studyAbroad'; /// For Study Abroad Pix Path //
+var examRelatedLinkPixPath = websiteUrl + '/uploaded_files/examRelatedLink'; /// For Exam Related Link Pix Path //
+var blogPixPath = websiteUrl + '/uploaded_files/blog'; /// For Blog Pix Path //
+var galleryPixPath = websiteUrl + '/uploaded_files/galleryPictures'; /// For Gallery Pix Path
+var pagePixPath = websiteUrl + '/uploaded_files/pagePictures'; /// For Page Pix Path
+var eBookPixPath = websiteUrl + '/uploaded_files/ebookPicture'; /// For E-Book Pix Path
+var ebookMaterialPath = websiteUrl + '/uploaded_files/ebookMaterial'; /// For E-Book Material Path
+var pagePicturePath = websiteUrl + '/uploaded_files/pagePictures'; /// For Pages Picture Path
 
 var pageCategory = {
     examCategory: 'examCategory',

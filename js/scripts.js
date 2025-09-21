@@ -134,62 +134,64 @@ function _switchCountry() {
 function _setWebsiteCountryId(countryId) {
   const currentCountry = JSON.parse(localStorage.getItem("websiteCountryId"));
   if (countryId && countryId.trim() !== "" && currentCountry !== countryId) {
-    localStorage.setItem("websiteCountryId", JSON.stringify(countryId));
-    window.location.reload();
+    _callFetchEndPoints({
+      url: `${siteSetSessionUrl}?countryId=${countryId}`,
+    }).then(() => {
+      localStorage.setItem("websiteCountryId", JSON.stringify(countryId));
+      window.location.reload();
+    });
   } else {
     $("#switchCountryModal").fadeOut(500);
   }
 }
 
-
 function _fetchHeaderContact() {
   // Get countryId from localStorage
   const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
-    try {
-      //// call endpoint //////
-      _callFetchEndPoints({
-        url: `site/contact/fetch-header-contact?countryId=${countryId || ""}`,
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/contact/fetch-header-contact?countryId=${countryId || ""}`,
+    })
+      .then((response) => {
+        if (response.success && response.data) {
+          const data = response.data[0];
+
+          const smtpUsername = data.smtpUsername;
+          const phoneNumber = data.phoneNumber;
+
+          $("#smtpUsername").html(smtpUsername);
+          $("#phoneNumber").html(phoneNumber);
+        }
       })
-        .then((response) => {
-          if (response.success && response.data) {
-            const data = response.data[0];
-
-            const smtpUsername = data.smtpUsername;
-            const phoneNumber = data.phoneNumber;
-            
-            $("#smtpUsername").html(smtpUsername);
-            $("#phoneNumber").html(phoneNumber);
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    } catch (error) {
-      console.error("Error:", error);
-    }
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
-
 
 function _fetchFooterAddress(containerId) {
   // Get countryId from localStorage
   const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
 
-	try {
-		//// call endpoint //////
-		_callFetchEndPoints({
-			url: `site/contact/fetch-branch-contact?countryId=${countryId || ""}`,
-		})
-		.then((response) => {
-			if (response.success && response.data?.length > 0) {
-        _initFooterAddress(response.data, containerId);
-			}
-		 })
-		.catch((error) => {
-			console.error("Error:", error);
-		});
-	} catch (error) {
-		console.error("Error:", error);
-  	}
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/contact/fetch-branch-contact?countryId=${countryId || ""}`,
+    })
+      .then((response) => {
+        if (response.success && response.data?.length > 0) {
+          _initFooterAddress(response.data, containerId);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 function _initFooterAddress(data, containerId) {
@@ -197,8 +199,12 @@ function _initFooterAddress(data, containerId) {
   // Split contacts into groups of 3
   for (let i = 0; i < data.length; i += 3) {
     let eachContact = data.slice(i, i + 3);
-    let content = eachContact.map((item, index) => `
-    <div class="contact-div ${((index + 1) === eachContact.length) ? 'no-right-border' : ''}">
+    let content = eachContact
+      .map(
+        (item, index) => `
+    <div class="contact-div ${
+      index + 1 === eachContact.length ? "no-right-border" : ""
+    }">
       <div class="icon-div">
           <i class="bi-geo-alt"></i>
       </div>
@@ -206,12 +212,16 @@ function _initFooterAddress(data, containerId) {
         <h3>${item.branchName}:</h3>
         <div class="text-in">
             <div>${item.address}</div>
-            <div class="span">Phone Number: <span>${item.phoneNumber}</span></div>
+            <div class="span">Phone Number: <span>${
+              item.phoneNumber
+            }</span></div>
             <div class="span">Email: <span>${item.email}</span></div>
         </div>
       </div>
     </div>
-    `).join("");
+    `
+      )
+      .join("");
 
     groups.push(`
         <div class="top-footer-contact">
@@ -222,46 +232,46 @@ function _initFooterAddress(data, containerId) {
             </div>
         </div>
     `);
-    }
+  }
 
-    // Insert everything into container
-    $(`#${containerId}`).html(groups.join(""));
+  // Insert everything into container
+  $(`#${containerId}`).html(groups.join(""));
 }
 
 function _fetchContactPageInfo() {
-    // Get countryId from localStorage
-    const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
-    try {
-      //// call endpoint //////
-      _callFetchEndPoints({
-        url: `site/contact/fetch-header-contact?countryId=${countryId || ""}`,
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/contact/fetch-header-contact?countryId=${countryId || ""}`,
+    })
+      .then((response) => {
+        if (response.success && response.data) {
+          const data = response.data[0];
+
+          const countryName = data.countryName;
+          const smtpUsername = data.smtpUsername;
+          const phoneNumber = data.phoneNumber;
+
+          $("#contactCountryName").html(countryName);
+          $("#ContactSmtpUsername").html(smtpUsername);
+          $("#ContactPhoneNumber").html(phoneNumber);
+        }
       })
-        .then((response) => {
-          if (response.success && response.data) {
-            const data = response.data[0];
-
-            const countryName = data.countryName;
-            const smtpUsername = data.smtpUsername;
-            const phoneNumber = data.phoneNumber;
-            
-            $("#contactCountryName").html(countryName);
-            $("#ContactSmtpUsername").html(smtpUsername);
-            $("#ContactPhoneNumber").html(phoneNumber);
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    } catch (error) {
-      console.error("Error:", error);
-    }
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
-
 
 function _getTrainingNavModal() {
   _showCustomConfirm({
     title: "Join Our Training Program",
-    message: "To participate in our online and physical classes, kindly login or sign up.",
+    message:
+      "To participate in our online and physical classes, kindly login or sign up.",
     alertType: "info",
     trueActionBtnText: "Login",
     falseActionBtn: true,

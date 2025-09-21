@@ -139,9 +139,9 @@ main .form-div .form-box .form-box-content .fullName-div {
 @media all and (max-width: 1100px) {
   main .picture-div {
     width: 400px;
-    background: url(../../all-images/images/portal-login-bg.jpg) left no-repeat;
-    background-position: right calc(100% + 250px) top;
-    background-size: cover;
+    /* background: url(../../all-images/images/portal-login-bg.jpg) left no-repeat;
+    background-position: left calc(100% + 250px) top;
+    background-size: cover; */
   }
   main .form-div {
     width: calc(100% - 400px);

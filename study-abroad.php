@@ -6,19 +6,26 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | Study Abroad Services - Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai & France</title>
-    
-    <meta name="keywords" content="<?php echo $appName ?>, Study Abroad in Nigeria, Study in Canada from Nigeria, Study in USA from Nigeria, Study in Australia from Nigeria, Study in UK from Nigeria, Study in China from Nigeria, Study in Ghana from Nigeria, Study in Qatar from Nigeria, Study in Dubai from Nigeria, Study in France from Nigeria, Study Abroad services, International Exam registration Nigeria, GRE registration Nigeria, TOEFL registration Nigeria, IELTS registration Nigeria, GMAT registration Nigeria, SAT registration Nigeria, ACT registration Nigeria, PTE registration Nigeria, EduGrade Services, admission placement abroad, visa support, international education Nigeria, best study abroad consultant in Nigeria" />
-    <meta name="description" content="Achieve your study abroad dreams with <?php echo $appName ?>. Study in Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai, and France. We provide exam registration (TOEFL, GRE, IELTS, GMAT, SAT, ACT, PTE), admission placement, and visa application support in Nigeria." />
+    <title><?php echo $appName ?> | Study Abroad Services - Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai &
+        France</title>
 
-    <meta property="og:title" content="<?php echo $appName ?> | Study Abroad - Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai & France" />
+    <meta name="keywords"
+        content="<?php echo $appName ?>, Study Abroad in <?php echo $getwebsiteCountryName; ?>, Study in Canada from <?php echo $getwebsiteCountryName; ?>, Study in USA from <?php echo $getwebsiteCountryName; ?>, Study in Australia from <?php echo $getwebsiteCountryName; ?>, Study in UK from <?php echo $getwebsiteCountryName; ?>, Study in China from <?php echo $getwebsiteCountryName; ?>, Study in Ghana from <?php echo $getwebsiteCountryName; ?>, Study in Qatar from <?php echo $getwebsiteCountryName; ?>, Study in Dubai from <?php echo $getwebsiteCountryName; ?>, Study in France from <?php echo $getwebsiteCountryName; ?>, Study Abroad services, International Exam registration <?php echo $getwebsiteCountryName; ?>, GRE registration <?php echo $getwebsiteCountryName; ?>, TOEFL registration <?php echo $getwebsiteCountryName; ?>, IELTS registration <?php echo $getwebsiteCountryName; ?>, GMAT registration <?php echo $getwebsiteCountryName; ?>, SAT registration <?php echo $getwebsiteCountryName; ?>, ACT registration <?php echo $getwebsiteCountryName; ?>, PTE registration <?php echo $getwebsiteCountryName; ?>, EduGrade Services, admission placement abroad, visa support, international education <?php echo $getwebsiteCountryName; ?>, best study abroad consultant in <?php echo $getwebsiteCountryName; ?>" />
+    <meta name="description"
+        content="Achieve your study abroad dreams with <?php echo $appName ?>. Study in Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai, and France. We provide exam registration (TOEFL, GRE, IELTS, GMAT, SAT, ACT, PTE), admission placement, and visa application support in <?php echo $getwebsiteCountryName; ?>." />
+
+    <meta property="og:title"
+        content="<?php echo $appName ?> | Study Abroad - Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai & France" />
     <meta property="og:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
-    <meta property="og:description" content="Study abroad in Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai, and France with <?php echo $appName ?>. Get exam registration, admission placement, and visa support in Nigeria." />
+    <meta property="og:description"
+        content="Study abroad in Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai, and France with <?php echo $appName ?>. Get exam registration, admission placement, and visa support in <?php echo $getwebsiteCountryName; ?>." />
 
-    <meta name="twitter:title" content="<?php echo $appName ?> | Study Abroad Services - Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai & France" />
+    <meta name="twitter:title"
+        content="<?php echo $appName ?> | Study Abroad Services - Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai & France" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
-    <meta name="twitter:description" content="Achieve your study abroad goals in Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai, and France. Trusted study abroad agency in Nigeria for admission, visa, and exam registration." />
+    <meta name="twitter:description"
+        content="Achieve your study abroad goals in Canada, USA, Australia, UK, China, Ghana, Qatar, Dubai, and France. Trusted study abroad agency in <?php echo $getwebsiteCountryName; ?> for admission, visa, and exam registration." />
 </head>
 
 
@@ -51,13 +58,14 @@
                     <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
                         <h1>Study Abroad</h1>
                         <p>
-                            EDUGRADE SERVICES is a top Educational Consultancy with centers across Nigeria and countries
+                            EDUGRADE SERVICES is a top Educational Consultancy with centers across
+                            <?php echo $getwebsiteCountryName; ?> and countries
                             like Ghana, Kenya, Ethiopia, and Uganda. With 9 years of experience, we've successfully
                             placed thousands of students
                             into foreign universities.
                         </p>
 
-                        <?php $callclass->_pagesButtons($websiteUrl);?>   
+                        <?php $callclass->_pagesButtons($websiteUrl);?>
                     </div>
 
                     <div class="image-div">
@@ -70,7 +78,7 @@
     </div>
 
     <section class="other-pages-main-section">
-       <section class="body-div net-bg-br">
+        <section class="body-div net-bg-br">
             <div class="body-div-in">
                 <div class="inner-body-div-in">
                     <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
@@ -82,12 +90,15 @@
                         </div>
 
                         <div class="btn-div">
-                            <a href="#"><button class="btn" title="Register now">Apply Now <i class="bi-chevron-right"></i></button></a>
+                            <a href="#"><button class="btn" title="Register now">Apply Now <i
+                                        class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
                     <div class="our-exam-back-div" id="pageContent">
-                        <script>_fetchAllStudyAbroadData();</script>
+                        <script>
+                        _fetchAllStudyAbroadData();
+                        </script>
 
                         <div class="content-loading-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
@@ -100,4 +111,5 @@
         <?php include 'footer.php' ?>
     </section>
 </body>
+
 </html>

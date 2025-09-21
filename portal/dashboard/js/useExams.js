@@ -470,13 +470,11 @@ function _proceedExamRegistrationLog(formData) {
     .then((response) => {
       if (response.success) {
         const data = response.data;
-        if (formData.paymentMethodId === "CC") {
-          _payWithPaystackExamRegistration(data);
-        } else if (formData.paymentMethodId === "BT") {
-          _getForm({
-            page: "paymentInstructions",
-            url: portalOperationMiddlewareUrl,
-          });
+        if (
+          formData.paymentMethodId === "CC" ||
+          formData.paymentMethodId === "BT"
+        ) {
+          _payWithPaystackExamRegistration(data, formData.paymentMethodId);
         } else if (formData.paymentMethodId === "WLT") {
           _alertClose();
           _showCustomConfirm({
@@ -513,14 +511,15 @@ function _proceedExamRegistrationLog(formData) {
     });
 }
 
-////// CALL LOAD WALLET PAYSTACK ////////////////
-function _payWithPaystackExamRegistration(data) {
+////// CALL PAY WITH PAYSTACK ////////////////
+function _payWithPaystackExamRegistration(data, paymentMethodId) {
   var handler = PaystackPop.setup({
     key: data.paymentKey,
     email: data.emailAddress,
     amount: data.amount * 100, //amt in kobo
     ref: data.transactionId,
     currency: data.currency, // Use GHS for Ghana Cedis or USD for US Dollars
+    channel: [paymentMethodId === "CC" ? "card" : "bank_transfer"],
     metadata: {
       custom_fields: [
         {
@@ -549,7 +548,6 @@ function _payWithPaystackExamRegistration(data) {
   });
   handler.openIframe();
 }
-////////////////////// END LOAD WALLET PAYSTACK /////////////////////////////
 
 function _examRegistrationPaymentAction(
   action,
@@ -597,3 +595,4 @@ function _examRegistrationPaymentAction(
     _btnDisable("submitBtn", btnText, false);
   }
 }
+////////////////////// END PAY WITH PAYSTACK /////////////////////////////

@@ -417,7 +417,7 @@ function _callFileEndPoints(payLoadProps) {
     expectJson = true, // default true
   } = payLoadProps;
 
-  const payload = formData && formData.formData ? formData.formData : formData;
+  // const payload = formData && formData.formData ? formData.formData : formData;
   const finalUrl = url.startsWith("http") ? url : `${endPoint}/${url}`;
 
   return new Promise((resolve, reject) => {
@@ -443,10 +443,12 @@ function _callFileEndPoints(payLoadProps) {
 function _callFetchEndPoints(payLoadProps) {
   const { type = "GET", url = "", accessKey = false } = payLoadProps;
   return new Promise((resolve, reject) => {
+    const finalUrl = url.startsWith("http") ? url : `${endPoint}/${url}`;
+
     $.ajax({
       type: type,
-      url: `${endPoint}/${url}`,
-      dataType: "json",
+      url: finalUrl,
+      dataType: url.startsWith("http") ? undefined : "json",
       cache: false,
       headers: getAuthHeaders(accessKey),
       success: function (data) {
@@ -498,7 +500,6 @@ function _btnDisable(btnId, btnText = "SUBMIT", action = true) {
   }
   ////////////////////////////////////////////////
 }
-
 
 function thousandSeperator(val) {
   let dp = 2;

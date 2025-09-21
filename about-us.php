@@ -5,24 +5,25 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title>About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria</title>
-    
+    <title>About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in
+        <?php echo $getwebsiteCountryName; ?></title>
+
     <meta name="keywords"
-        content="International Exams, About International Exams Nigeria, About EduGrade Services, TOEFL registration Nigeria, GRE exam Nigeria, GMAT test Nigeria, SAT exam Nigeria, ACT exam Nigeria, PTE registration Nigeria, IELTS registration Nigeria, international exam support, exam training Nigeria, study abroad exams, educational consultancy Nigeria" />
-    
+        content="International Exams, About International Exams <?php echo $getwebsiteCountryName; ?>, About EduGrade Services, TOEFL registration <?php echo $getwebsiteCountryName; ?>, GRE exam <?php echo $getwebsiteCountryName; ?>, GMAT test <?php echo $getwebsiteCountryName; ?>, SAT exam <?php echo $getwebsiteCountryName; ?>, ACT exam <?php echo $getwebsiteCountryName; ?>, PTE registration <?php echo $getwebsiteCountryName; ?>, IELTS registration <?php echo $getwebsiteCountryName; ?>, international exam support, exam training <?php echo $getwebsiteCountryName; ?>, study abroad exams, educational consultancy <?php echo $getwebsiteCountryName; ?>" />
+
     <meta name="description"
-        content="Learn more about International Exams – your trusted partner for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS registrations in Nigeria. We provide expert support, fast processing, and guidance to help students succeed." />
+        content="Learn more about International Exams – your trusted partner for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS registrations in <?php echo $getwebsiteCountryName; ?>. We provide expert support, fast processing, and guidance to help students succeed." />
     <meta property="og:title"
-        content="About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria" />
+        content="About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in <?php echo $getwebsiteCountryName; ?>" />
     <meta property="og:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
     <meta property="og:description"
-        content="Learn more about International Exams – trusted exam registration and support for students in Nigeria." />
+        content="Learn more about International Exams – trusted exam registration and support for students in <?php echo $getwebsiteCountryName; ?>." />
     <meta name="twitter:title"
-        content="About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria" />
+        content="About Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in <?php echo $getwebsiteCountryName; ?>" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
     <meta name="twitter:description"
-        content="Get to know International Exams – Nigeria’s reliable exam registration and training support platform." />
+        content="Get to know International Exams – <?php echo $getwebsiteCountryName; ?>’s reliable exam registration and training support platform." />
 </head>
 
 
@@ -89,7 +90,8 @@
                     <div class="content-div about-page-content">
                         <h2>Why Choose Edugrade Services – Shaping Global Scholars</h2>
                         <p>
-                            Edugrade Services is a premier educational consultancy with offices across Nigeria and
+                            Edugrade Services is a premier educational consultancy with offices across
+                            <?php echo $getwebsiteCountryName; ?> and
                             presence in countries such as Ghana, Kenya, Ethiopia, and Uganda. With nearly a decade of
                             experience, we have successfully guided and placed thousands of students into prestigious
                             universities across the USA, UK, Canada, Europe, and beyond.
@@ -207,7 +209,8 @@
                                 <li><i class="bi bi-check"></i> Affordable registration and tuition fees.</li>
                                 <li><i class="bi bi-check"></i> Excellent and conducive learning environment.</li>
                                 <li><i class="bi bi-check"></i> Direct Teacher to Student interaction and focus.</li>
-                                <li><i class="bi bi-check"></i> Standby power supply to classrooms and computer lab..</li>
+                                <li><i class="bi bi-check"></i> Standby power supply to classrooms and computer lab..
+                                </li>
                                 <li><i class="bi bi-check"></i> Varieties of study materials for instructional purposes.
                                 </li>
                             </ul>
@@ -307,11 +310,15 @@
 
                         <div class="text-div">
                             <h2>What Our Students Say <span>#About Us</span></h2>
-                            <p>Students from Nigeria, across Africa share how EDUGRADE SERVICES has supported their success in international exams through expert guidance, timely assistance, and a seamless registration process.</p>
+                            <p>Students from <?php echo $getwebsiteCountryName; ?>, across Africa share how EDUGRADE
+                                SERVICES has supported their success in international exams through expert guidance,
+                                timely assistance, and a seamless registration process.</p>
                         </div>
 
                         <div>
-                            <button class="btn" title="Submit Your Review" onclick="_getForm({page: 'testimonialForm', url: siteMiddlewareUrl});">Submit Your Review<i class="bi-pencil-square"></i></button>
+                            <button class="btn" title="Submit Your Review"
+                                onclick="_getForm({page: 'testimonialForm', url: siteMiddlewareUrl});">Submit Your
+                                Review<i class="bi-pencil-square"></i></button>
                         </div>
                     </div>
 
@@ -319,10 +326,13 @@
                         <div class="cg-carousel">
                             <div class="cg-carousel__container" id="js-carousel_1">
                                 <div class="cg-carousel__track js-carousel__track" id="fetchSiteTestimony">
-                                    <script>_fetchSiteTestimony();</script>
+                                    <script>
+                                    _fetchSiteTestimony();
+                                    </script>
 
                                     <div class="content-loading-div">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                        <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif"
+                                            alt="Loading" />
                                     </div>
                                 </div>
                             </div>
@@ -331,27 +341,27 @@
                 </div>
             </div>
             <script>
-                window['carousel_options_1'] = ({
-                    items: 4,
-                    margin: 30,
-                    loop: true,
-                    dots: true,
-                    autoplayHoverPause: true,
-                    smartSpeed: 650,
-                    autoplay: true,
-                    breakpoints: {
-                        700: {
-                            slidesPerView: 1,
-                        },
-                        1100: {
-                            slidesPerView: 1,
-                        },
-                        1300: {
-                            slidesPerView: 2,
-                        }
-
+            window['carousel_options_1'] = ({
+                items: 4,
+                margin: 30,
+                loop: true,
+                dots: true,
+                autoplayHoverPause: true,
+                smartSpeed: 650,
+                autoplay: true,
+                breakpoints: {
+                    700: {
+                        slidesPerView: 1,
+                    },
+                    1100: {
+                        slidesPerView: 1,
+                    },
+                    1300: {
+                        slidesPerView: 2,
                     }
-                });
+
+                }
+            });
             </script>
         </section>
 

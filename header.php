@@ -21,9 +21,9 @@
                 </a>
                 <span class="hide-link"> |</span>
 
-                <a href="<?php echo $websiteUrl ?>/faq" class="hide-link" title="FAQ">
-                    <i class="bi-question-circle"></i>
-                    <span>FAQ</span>
+                <a href="<?php echo $websiteUrl ?>/" class="hide-link" title="Video Tutorial">
+                    <i class="bi-file-earmark-play-fill"></i>
+                    <span>Video Tutorial</span>
                 </a>
                 <span class="hide-link"> |</span>
 
@@ -135,8 +135,29 @@
                             <a href="<?php echo $websiteUrl ?>/blog" title="Blog"> Blog</a>
                         </li>
 
-                        <li class="hide-nav <?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">
-                            <a title="Contact Us" href="<?php echo $websiteUrl ?>/contact-us" title="Contact us"> Contact us</a>
+                        <li id="mini-expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">
+                           ICT Courses <i class="bi-plus"></i>
+                            <ul class="animated fadeIn">
+                                <a href="<?php echo $websiteUrl ?>/networking-in-nigeria" title="COMPUTER NETWORKING">
+                                    <li>COMPUTER NETWORKING</li>
+                                </a>
+                                <a href="<?php echo $websiteUrl ?>" title="GRAPHIC DESIGN">
+                                    <li>GRAPHIC DESIGN</li>
+                                </a>
+                                <a href="<?php echo $websiteUrl ?>" title="WEB DEVELOPMENT">
+                                    <li>WEB DEVELOPMENT</li>
+                                </a>
+                                <a href="<?php echo $websiteUrl ?>" title="DIGITAL MARKETING">
+                                    <li>DIGITAL MARKETING</li>
+                                </a>
+                                <a href="<?php echo $websiteUrl ?>" title="MOBILE APP DEVELOPMENT">
+                                    <li>MOBILE APP DEVELOPMENT</li>
+                                </a>
+                            </ul>
+                        </li>
+
+                        <li class="hide-nav <?php if (strstr($websiteAutoUrl, "$websiteUrl/testing-services")) { ?> active <?php } ?>">
+                            <a href="<?php echo $websiteUrl ?>/testing-services" title="Testing Services"> Testing Services </a>
                         </li>
 
                         <li id="mini-expand-li" class="mini-li">
@@ -156,8 +177,11 @@
                                 <a href="<?php echo $websiteUrl ?>/blog/" title="Blog">
                                     <li>Blog</li>
                                 </a>
-                                <a href="<?php echo $websiteUrl ?>/contact-us" title="Contact us">
-                                    <li>Contact us</li>
+                                <a href="<?php echo $websiteUrl ?>/testing-services" title="Testing Services">
+                                    <li>Testing Services</li>
+                                </a>
+                                 <a href="<?php echo $websiteUrl ?>/" title="Video Tutorial">
+                                    <li>Video Tutorial</li>
                                 </a>
                             </ul>
                         </li>

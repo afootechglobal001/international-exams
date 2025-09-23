@@ -20,9 +20,18 @@
 <link href="<?php echo $websiteUrl?>/slide-property/product-carousel/carousel.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo $websiteUrl?>/slide-property/product-carousel/carousel.js" type="text/javascript"></script>
 
+<link href="<?php echo $websiteUrl?>/slide-property/engine/style.css" rel="stylesheet" type="text/css" />
+
 <meta property="og:type" content="Website" />
 <meta property="og:site_name" content="<?php echo $appName?>">
 <meta property="og:url" content="<?php echo $websiteAutoUrl?>" />
+
+<!-- external link -->
+<!-- Slick CSS -->
+<link href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" rel="stylesheet" type="text/css"/>
+<!-- Slick JS -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js" type="text/javascript"></script>
+
 
 <script src="<?php echo $websiteUrl?>/js/helper.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>
 <script src="<?php echo $websiteUrl?>/js/exams/useExam.js?v=<?php echo $codeVersion?>" type="text/javascript"></script>

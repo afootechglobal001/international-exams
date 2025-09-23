@@ -32,11 +32,11 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
         content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in <?php echo $getwebsiteCountryName; ?> with EduGrade Services. Trusted support, fast processing, and expert guidance for success." />
 </head>
 
-
 <body>
     <?php include 'header.php' ?>
 
-    <div class="slide-section animated fadeInDown">
+    <div class="slide-section">
+        <?php include 'slide.php' ?>
         <div class="slide-div">
             <div class="slide-inner-div">
                 <div class="slide-card">
@@ -49,13 +49,15 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                                 title="TOEFL">IELTS</a> exams in <?php echo $getwebsiteCountryName; ?> with EduGrade
                             Services. Trusted support, fast
                             processing, and expert guidance for success.</p>
+
                         <div class="btn-div">
-                            <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="Download E-Books">
-                                <button class="btn"><span>Register For Exam</span> <i
-                                        class="bi-chevron-right"></i></button></a>
-                            <a href="<?php echo $websiteUrl ?>/free-ebook" title="Download E-Books">
-                                <button class="btn no-bg"><span>Download E-Books</span> <span class="span">It's
-                                        Free</span></button></a>
+                            <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="REGISTER FOR EXAM">
+                                <button class="btn">REGISTER FOR EXAM <i class="bi-chevron-right"></i></button></a>
+                            <button class="btn" title="MAKE ENQUIRES"> MAKE ENQUIRES <i class="bi-chat-text-fill"></i></button>
+                            <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="BECOME AN AGENT">
+                                <button class="btn">BECOME AN AGENT<i class="bi-person"></i></button></a>
+                            <a href="<?php echo $websiteUrl ?>/free-ebook" title="DOWNLOAD E-BOOKS">
+                                <button class="btn"> DOWNLOAD E-BOOKS <span class="span">IT'S FREE</span></button></a>
                         </div>
                     </div>
                 </div>
@@ -64,60 +66,99 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                     <div class="play-btn"></div>
                 </div>
             </div>
+
+            <div class="slide-bottom-div">
+                <div class="inner-div">
+                    <div class="exams-back-div" id="fetchSlideExams"></div>
+                </div>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('.exams-back-div').slick({
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 0, // continuous scroll on desktop
+                        speed: 3000,
+                        infinite: true,
+                        cssEase: 'linear',
+                        arrows: false,
+                        pauseOnHover: false,
+                        pauseOnFocus: false,
+                        variableWidth: true,
+                        draggable: true,
+                        swipe: true,
+                        touchMove: true,
+                        responsive: [{
+                            breakpoint: 768, // tablets & mobile
+                            settings: {
+                                autoplaySpeed: 2000, // switch to normal autoplay
+                                speed: 600, // normal slide animation
+                                cssEase: 'ease', // enable swipe properly
+                                slidesToShow: 3, // show fewer items
+                                variableWidth: true // cleaner swipe
+                            }
+                        }]
+                    });
+
+
+                });
+                _fetchSlideExamsData();
+            </script>
         </div>
 
         <script type="text/javascript">
-        // List of sentences
-        var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN <?php echo strtoupper($getwebsiteCountryName); ?>",
-            "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
-            "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
-            "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
-        ];
-        // Current sentence being processed
-        var _PART = 0;
-        // Character number of the current sentence being processed 
-        var _PART_INDEX = 0;
-        // Element that holds the text
-        var _ELEMENT = document.querySelector("#pageTitle");
-        // Implements typing effect
-        function Type() {
-            var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-            _ELEMENT.innerHTML = text;
-            _PART_INDEX++;
+            // List of sentences
+            var _CONTENT = ["INTERNATIONAL EXAMINATION CENTERS IN <?php echo strtoupper($getwebsiteCountryName); ?>",
+                "15% OFF INTERNATIONAL EXAMS REGISTRATION FEE",
+                "LEARNING MADE EASY WITH OUR PHYSICAL AND ONLINE CLASSES",
+                "GET ADMISSION INTO UNIVERSITY AND COLLEGE ABROAD"
+            ];
+            // Current sentence being processed
+            var _PART = 0;
+            // Character number of the current sentence being processed 
+            var _PART_INDEX = 0;
+            // Element that holds the text
+            var _ELEMENT = document.querySelector("#pageTitle");
+            // Implements typing effect
+            function Type() {
+                var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+                _ELEMENT.innerHTML = text;
+                _PART_INDEX++;
 
-            // If full sentence has been displayed then start to delete the sentence after some time
-            if (text === _CONTENT[_PART]) {
-                clearInterval(_INTERVAL_VAL);
-                setTimeout(function() {
-                    _INTERVAL_VAL = setInterval(Delete, 2);
-                }, 5000);
+                // If full sentence has been displayed then start to delete the sentence after some time
+                if (text === _CONTENT[_PART]) {
+                    clearInterval(_INTERVAL_VAL);
+                    setTimeout(function() {
+                        _INTERVAL_VAL = setInterval(Delete, 2);
+                    }, 5000);
+                }
             }
-        }
-        // Implements deleting effect
-        function Delete() {
-            var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-            _ELEMENT.innerHTML = text;
-            _PART_INDEX--;
+            // Implements deleting effect
+            function Delete() {
+                var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+                _ELEMENT.innerHTML = text;
+                _PART_INDEX--;
 
-            // If sentence has been deleted then start to display the next sentence
-            if (text === '') {
-                clearInterval(_INTERVAL_VAL);
+                // If sentence has been deleted then start to display the next sentence
+                if (text === '') {
+                    clearInterval(_INTERVAL_VAL);
 
-                // If last sentence then display the first one, else move to the next
-                if (_PART == (_CONTENT.length - 1))
-                    _PART = 0;
-                else
-                    _PART++;
-                _PART_INDEX = 0;
+                    // If last sentence then display the first one, else move to the next
+                    if (_PART == (_CONTENT.length - 1))
+                        _PART = 0;
+                    else
+                        _PART++;
+                    _PART_INDEX = 0;
 
-                // Start to display the next sentence after some time
-                setTimeout(function() {
-                    _INTERVAL_VAL = setInterval(Type, 50);
-                }, 200);
+                    // Start to display the next sentence after some time
+                    setTimeout(function() {
+                        _INTERVAL_VAL = setInterval(Type, 50);
+                    }, 200);
+                }
             }
-        }
-        // Start the typing effect on load
-        _INTERVAL_VAL = setInterval(Type, 50);
+            // Start the typing effect on load
+            _INTERVAL_VAL = setInterval(Type, 50);
         </script>
     </div>
 
@@ -178,14 +219,13 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="btn-div">
                             <a href="<?php echo $websiteUrl ?>/portal/sign-up">
-                                <button class="btn" title="Register now">Register now <i
-                                        class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
                     <div class="our-exam-back-div" id="indexPageContent">
                         <script>
-                        _fetchIndexExamData();
+                            _fetchIndexExamData();
                         </script>
 
                         <div class="content-loading-div">
@@ -195,8 +235,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                     <div class="bottom-btn-div">
                         <a href="<?php echo $websiteUrl ?>/international-exams">
-                            <button class="btn" title="View All Exams">View All Exams <i
-                                    class="bi-chevron-right"></i></button></a>
+                            <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -212,8 +251,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                     <div class="content-div" data-aos="flip-right" data-aos-duration="1400">
                         <div class="icon-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg"
-                                alt="About Us icon" />
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg" alt="About Us icon" />
                         </div>
 
                         <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
@@ -262,8 +300,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="btn-div">
                             <a href="#">
-                                <button class="btn" title="See how it works">See How It Works <i
-                                        class="bi-chevron-right"></i></button></a>
+                                <button class="btn" title="See how it works">See How It Works <i class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
@@ -410,7 +447,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                 </div>
             </div>
             <script>
-            _progressBar();
+                _progressBar();
             </script>
         </section>
 
@@ -430,7 +467,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="faq-toggle-back" id="indexFaqContent">
                             <script>
-                            _fetchIndexFaqData();
+                                _fetchIndexFaqData();
                             </script>
 
                             <div class="content-loading-div">
@@ -474,7 +511,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                             <div class="cg-carousel__container" id="js-carousel_1">
                                 <div class="cg-carousel__track js-carousel__track" id="fetchSiteTestimony">
                                     <script>
-                                    _fetchSiteTestimony();
+                                        _fetchSiteTestimony();
                                     </script>
 
                                     <div class="content-loading-div">
@@ -488,27 +525,27 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                 </div>
             </div>
             <script>
-            window['carousel_options_1'] = ({
-                items: 4,
-                margin: 30,
-                loop: true,
-                dots: true,
-                autoplayHoverPause: true,
-                smartSpeed: 650,
-                autoplay: true,
-                breakpoints: {
-                    700: {
-                        slidesPerView: 1,
-                    },
-                    1100: {
-                        slidesPerView: 1,
-                    },
-                    1300: {
-                        slidesPerView: 2,
-                    }
+                window['carousel_options_1'] = ({
+                    items: 4,
+                    margin: 30,
+                    loop: true,
+                    dots: true,
+                    autoplayHoverPause: true,
+                    smartSpeed: 650,
+                    autoplay: true,
+                    breakpoints: {
+                        700: {
+                            slidesPerView: 1,
+                        },
+                        1100: {
+                            slidesPerView: 1,
+                        },
+                        1300: {
+                            slidesPerView: 2,
+                        }
 
-                }
-            });
+                    }
+                });
             </script>
         </section>
 
@@ -532,7 +569,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                     <div class="blog-back-div" id="indexBlogContent">
                         <script>
-                        _fetchIndexBlogData();
+                            _fetchIndexBlogData();
                         </script>
 
                         <div class="content-loading-div">

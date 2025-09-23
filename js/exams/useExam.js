@@ -224,7 +224,7 @@ function _fetchHeaderExams() {
   try {
     //// call endpoint //////
     _callFetchEndPoints({
-      url: `site/exams/fetch-index-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
+      url: `site/exams/fetch-all-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
     })
       .then((response) => {
         if (response.success && response.data?.length > 0) {
@@ -260,7 +260,7 @@ function _initFetchHeaderExams(data) {
 }
 
 
-function _fetchFooterExams() {
+function _fetchSlideExamsData() {
   // Get countryId from localStorage
   const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
 
@@ -271,7 +271,7 @@ function _fetchFooterExams() {
     })
       .then((response) => {
         if (response.success && response.data?.length > 0) {
-          _initFetchFooterExams(response.data);
+          _initFetchSlideExamsData(response.data);
         }
       })
       .catch((error) => {
@@ -282,13 +282,21 @@ function _fetchFooterExams() {
   }
 }
 
-function _initFetchFooterExams(data) {
-  const content = data
-    .map(
-      (item) => `
-        <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
-          <li><i class="bi-chevron-right"></i>${item.regTitle}</li>
-      </a>`)
-    .join("");
-  $("#fetchFooterExams").html(content);
+function _initFetchSlideExamsData(data) {
+  data.forEach((item) => {
+    const slide = `
+       <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+          <div class="each-exam-back-div">
+            <div class="each-exam-div">
+                <div class="div-in">
+                    <div class="img-div"><img src="${examLogoPixPath}/${item.examLogo}" alt="${item.regTitle}" /></div>
+                </div>
+            </div>
+            <div class="text-div">
+              <h4>${item.examAbbr} EXAM</h4>
+            </div>
+          </div>
+       </a>`;
+    $('.exams-back-div').slick('slickAdd', slide);
+  });
 }

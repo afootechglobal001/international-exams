@@ -55,8 +55,8 @@
                         <div class="left-div">
                             <div class="page-list-back-div">
                                 <div class="main-picture-back-div">	
-                                    <div class="main-picture-div" id="studyAbroadPreviewPix">
-                                        <img id="ictCourseFetchPix" src="<?php echo $websiteUrl?>/uploaded_files/ictCourses/default.jpg" alt="ICT Courses"/> 
+                                    <div class="main-picture-div">
+                                        <img id="ictCourseFetchPix" src="<?php echo $websiteUrl?>/uploaded_files/IctCourses/default.jpg" alt="ICT Courses"/> 
                                     </div>   
                                 </div>                         
                             

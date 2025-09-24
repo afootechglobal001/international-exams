@@ -35,7 +35,7 @@
                         <li title="Home">Home <i class="bi bi-caret-right-fill"></i></li></a>
 
                         <a href="<?php echo $websiteUrl ?>/testing-services">
-                        <li title="Study Abroad">Testing Services <i class="bi bi-caret-right-fill"></i></a></li>
+                        <li title="Study Abroad">Testing Services </a></li>
                     </ul>
                 </nav>
             </div>

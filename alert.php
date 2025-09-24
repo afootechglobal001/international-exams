@@ -135,6 +135,20 @@
             </div>
 
             <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/testing-services" title="Testing Services">
+                    <li <?php if ($page == 'testing-services') { ?> id="active-li" <?php } ?>><i class="bi-flower2"></i>
+                        Testing Services</li>
+                </a>
+            </div>
+
+            <div class="div">
+                <li onclick="_openLi('courses')"><i class="bi-mortarboard-fill"></i> ICT Courses<i class="bi-plus" id="side-expand"></i></li>
+                <div class="sub-li" id="courses-sub-li">
+                    <script>_fetchMobileIctCourses();</script>
+                </div>
+            </div>
+
+            <div class="div">
                 <a href="<?php echo $websiteUrl; ?>/portal" title="Log-In">
                     <li class="student-li"><i class="bi-person-circle"></i> Log-In</li>
                 </a>

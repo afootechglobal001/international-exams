@@ -237,6 +237,7 @@ function _fetchDashboardStatistics() {
 					const totalActiveCountryCount = data.totalActiveCountryCount;
 					const totalActiveBranchCount = data.totalActiveBranchCount;
           const totalActiveTestimonyCount = data.totalActiveTestimonyCount;
+          const totalActiveIctCourseCount = data.totalActiveIctCourseCount;
 
 					$('#totalActiveStaffCount').html(totalActiveStaffCount);
 					$('#totalActiveGalleryCount, #sideGalleryCount').html(totalActiveGalleryCount);
@@ -247,6 +248,7 @@ function _fetchDashboardStatistics() {
           $('#totalActiveCountryCount').html(totalActiveCountryCount);
 					$('#totalActiveBranchCount').html(totalActiveBranchCount);
 					$('#totalActiveTestimonyCount, #sideTestimonyCount').html(totalActiveTestimonyCount);
+          $('#totalActiveIctCourseCount').html(totalActiveIctCourseCount);
 				}
 			})
 			.catch((error) => {

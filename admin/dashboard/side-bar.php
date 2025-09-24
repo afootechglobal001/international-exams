@@ -85,6 +85,9 @@
 
         <div class="link" title="Publish Testimony" onclick="_getActivePage({page:'testimonyCategory', divid:'publish'});">- Testimony <div class="num" id="sideTestimonyCount">0</div></div>
         <div class="hidden" id="_publish_testimony"><i class="bi-chat-left-text"></i> Publish Testimony</div>
+
+        <div class="link" title="ICT Courses" onclick="_getActivePage({page:'ictCourses', divid:'publish'});">- ICT Courses<div class="num" id="totalActiveIctCourseCount">0</div></div>
+        <div class="hidden" id="_publishIctCourses"><i class="bi-pc-display"></i> ICT Courses</div>
     </div>
 
     <div class="nav-div animated fadeInLeft" id="link-reports">

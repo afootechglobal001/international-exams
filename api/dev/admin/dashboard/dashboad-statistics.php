@@ -24,6 +24,7 @@
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='studyAbroadCategory' AND statusId=1) AS totalActiveStudyAbroadCount,
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='blogCategory' AND statusId=1) AS totalActiveBlogCount,
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='faqCategory' AND statusId=1) AS totalActiveFaqCount,
+	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='ictCourseCategory' AND statusId=1) AS totalActiveIctCourseCount,
 	(SELECT COUNT(*) FROM COUNTRY_TAB WHERE statusId=1) AS totalActiveCountryCount,
 	(SELECT COUNT(*) FROM BRANCH_COUNTRY_TAB WHERE statusId=1) AS totalActiveBranchCount,
 	(SELECT COUNT(*) FROM TESTIMONY_TAB WHERE statusId=1) AS totalActiveTestimonyCount");

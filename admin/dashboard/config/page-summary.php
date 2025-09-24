@@ -96,7 +96,7 @@
 <?php if ($pageCatId == 'studyAbroadCategory') { ?>
     <script> getEachStudyAbroadSession = JSON.parse(sessionStorage.getItem("getEachStudyAbroadSession"));</script>
     <div class="grid-div">
-        <div class="img-div"><img id="studyAbroadPix" src="<?php echo $websiteUrl ?>/all-images/study-abroad/study-in-canada.jpg" alt="TOEFL" /></div>
+        <div class="img-div"><img id="studyAbroadPix" src="<?php echo $websiteUrl ?>/uploaded_files/studyAbroad/default.jpg" alt="TOEFL" /></div>
         <script>
             $(document).ready(function() {
                 $("#studyAbroadPix").attr("src", studyAbroadPixPath+'/'+getEachStudyAbroadSession.regPix).attr("alt", getEachStudyAbroadSession.regTitle);
@@ -116,7 +116,7 @@
 <?php if ($pageCatId == 'blogCategory') { ?>
     <script> getEachBlogSession = JSON.parse(sessionStorage.getItem("getEachBlogSession"));</script>
     <div class="grid-div">
-        <div class="img-div"><img id="blogPix" src="<?php echo $websiteUrl ?>/all-images/blogs/blog1.png" alt="TOEFL" /></div>
+        <div class="img-div"><img id="blogPix" src="<?php echo $websiteUrl ?>/uploaded_files/blog/default.jpg" alt="TOEFL" /></div>
         <script>
             $(document).ready(function() {
                 $("#blogPix").attr("src", blogPixPath+'/'+getEachBlogSession.regPix).attr("alt", getEachBlogSession.regTitle);
@@ -136,7 +136,7 @@
 <?php if ($pageCatId == 'galleryCategory') { ?>
     <script> getEachGallerySession = JSON.parse(sessionStorage.getItem("getEachGallerySession"));</script>
     <div class="grid-div">
-        <div class="img-div"><img id="galleryPix" src="<?php echo $websiteUrl ?>/all-images/gallery/exam-writing.webp" alt="TOEFL" /></div>
+        <div class="img-div"><img id="galleryPix" src="<?php echo $websiteUrl ?>/uploaded_files/galleryPictures/default.jpg" alt="Gallery" /></div>
         <script>
             $(document).ready(function() {
                 $("#galleryPix").attr("src", galleryPixPath+'/'+getEachGallerySession.regPix).attr("alt", getEachGallerySession.regTitle);
@@ -146,6 +146,26 @@
             <h2 id="galleryRegTitle"><script>$("#galleryRegTitle").html(getEachGallerySession.regTitle);</script></h2>
             <div class="text-in">
                 <div class="text">UPDATED ON: <span id="formattedDate"><script>$("#formattedDate").html(_fetchFormatDate(getEachGallerySession.updatedTime));</script></span> | <span id="page_view">200</span> VIEWS </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if ($pageCatId == 'ictCourseCategory') { ?>
+    <script> getEachIctCoursesSession = JSON.parse(sessionStorage.getItem("getEachIctCoursesSession"));</script>
+    <div class="grid-div">
+        <div class="img-div"><img id="ictCoursePix" src="<?php echo $websiteUrl ?>/uploaded_files/IctCourses/default.jpg" alt="ICT COurses" /></div>
+        <script>
+            $(document).ready(function() {
+                $("#ictCoursePix").attr("src", ictCoursePixPath+'/'+getEachIctCoursesSession.regPix).attr("alt", getEachIctCoursesSession.regTitle);
+                $("#formattedDate").html(_fetchFormatDate(getEachIctCoursesSession.updatedTime));
+            });
+        </script>
+        <div class="text-div">
+            <div class="top-text"><span id="subTitle"><script>$("#subTitle").html(getEachIctCoursesSession.subTitle);</script> </span></div>
+            <h2 id="ictCourseRegTitle"><script>$("#ictCourseRegTitle").html(getEachIctCoursesSession.regTitle);</script></h2>
+            <div class="text-in">
+                <div class="text">UPDATED ON: <span id="formattedDate">Loading...</span> </div>
             </div>
         </div>
     </div>

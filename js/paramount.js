@@ -206,7 +206,7 @@ function _close_side_nav() {
   );
 }
 
-function _open_li(ids) {
+function _openLi(ids) {
   $("#" + ids + "-sub-li").toggle("slow");
 }
 

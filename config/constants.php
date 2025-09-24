@@ -5,8 +5,8 @@
 	$appName='EDUGRADE SERVICES'; 
 
 	//$websiteUrl='https://www.internationalexam.com'; /// For Live Server Url //
-	//$websiteUrl = 'http://localhost/projects/international-exams'; /// Local Url
-    $websiteUrl = 'http://192.168.234.177/projects/international-exams'; /// Local Url
+	$websiteUrl = 'http://localhost/projects/international-exams'; /// Local Url
+    //$websiteUrl = 'http://192.168.234.177/projects/international-exams'; /// Local Url
 	//$websitePath = $_SERVER['DOCUMENT_ROOT'];
 	$websitePath = $_SERVER['DOCUMENT_ROOT'].'/projects/international-exams'; //dirname(__FILE__);
 	$codeVersion= date('Ymdhis');
@@ -44,7 +44,7 @@ $getwebsiteCountryName=$_SESSION['websiteCountryName'] ?? 'Nigeria'; /// Default
 <script>
 var websiteUrl = "<?php echo $websiteUrl;?>";
 var apiKey = 'a883a517-bc6c-4d8b-a544-ec743c88354a'; /// For API Key //
-var endPoint = 'http://192.168.234.177/projects/international-exams/api/dev'; /// Server End Point url
+var endPoint = 'http://localhost/projects/international-exams/api/dev'; /// Server End Point url
 //var endPoint='https://schoolbolt.com/api/production'; /// Server End Point url
 var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
 var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
@@ -75,6 +75,8 @@ var pagePixPath = websiteUrl + '/uploaded_files/pagePictures'; /// For Page Pix 
 var eBookPixPath = websiteUrl + '/uploaded_files/ebookPicture'; /// For E-Book Pix Path
 var ebookMaterialPath = websiteUrl + '/uploaded_files/ebookMaterial'; /// For E-Book Material Path
 var pagePicturePath = websiteUrl + '/uploaded_files/pagePictures'; /// For Pages Picture Path
+var ictCoursePixPath = websiteUrl + '/uploaded_files/IctCourses'; /// For Pages Picture Path
+
 
 var pageCategory = {
     examCategory: 'examCategory',
@@ -82,5 +84,6 @@ var pageCategory = {
     blogCategory: 'blogCategory',
     faqCategory: 'faqCategory',
     galleryCategory: 'galleryCategory',
+    ictCourseCategory: 'ictCourseCategory',
 }
 </script>

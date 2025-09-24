@@ -1,22 +1,22 @@
-<?php if ($page == 'studyAbroadCategory') { ?>
+<?php if ($page == 'ictCourses') { ?>
     <div class="page-title-div" data-aos="fade-in" data-aos-duration="1500">
         <div class="title-div">
             <div>
-                <div class="icon-div"><i class="bi-flag-fill"></i></div>
+                <div class="icon-div"><i class="bi-pc-display"></i></div>
             </div>
             <div class="text-div">
-                <h3>Study Abroad</h3>
-                <p>Build and manage study abroad pages to showcase opportunities, requirements, and guidelines. Keep information organized and up to date to help students plan their journey with confidence.</p>
+                <h3>ICT Courses</h3>
+                <p>Manage and update ICT course information, including modules, schedules, and resources, all from your dashboard.</p>
             </div>
         </div>
 
         <div class="btn-div">
             <div class="search-div">
-                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search Country Here...">
+                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search ICT Courses...">
                 <i class="bi bi-search"></i>
             </div>
-            <button class="btn" title="ADD NEW STUDY ABROAD" onclick="sessionStorage.removeItem('getEachStudyAbroadSession'); _getForm({page: 'studyAbroadReg', url: adminPortalLocalUrl});">
-                <i class="bi-plus-square"></i> ADD NEW STUDY ABROAD
+            <button class="btn" title="ADD NEW ICT COURSES" onclick="sessionStorage.removeItem('getEachIctCoursesSession'); _getForm({page: 'ictCoursesReg', url: adminPortalLocalUrl});">
+                <i class="bi-plus-square"></i> ADD NEW ICT COURSES
             </button>
         </div>
     </div>
@@ -25,14 +25,16 @@
         <div class="tables-content-div">
             <div class="content-title">
                 <div class="title">
-                    <i class="bi bi-flag-fill"></i>
+                    <i class="bi bi-pc-display"></i>
                     <p>Study Abroad</p>
                 </div>
             </div>
 
             <div class="inner-table-content">
                 <div class="other-pg-back-div" id="pageContent">
-                    <script>_fetchStudyAbroadData();</script>
+                    <script>
+                        _fetchIctCoursesData();
+                    </script>
 
                     <div class="content-loading-div">
                         <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
@@ -43,18 +45,18 @@
     </div>
 <?php } ?>
 
-<?php if ($page == 'studyAbroadReg') { ?>
+<?php if ($page == 'ictCoursesReg') { ?>
     <script> 
-        getEachStudyAbroadSession = JSON.parse(sessionStorage.getItem("getEachStudyAbroadSession"));
-        $('#pageTitle').html(getEachStudyAbroadSession?.publishId ? 'UPDATE STUDY ABROAD':'CREATE NEW STUDY ABROAD');
-        $('#subTitle, #subTitle2').html(getEachStudyAbroadSession?.publishId ? 'update this study abroad':'create new study abroad');
+        getEachIctCoursesSession = JSON.parse(sessionStorage.getItem("getEachIctCoursesSession"));
+        $('#pageTitle').html(getEachIctCoursesSession?.publishId ? 'UPDATE ICT COURSE':'CREATE NEW ICT COURSE');
+        $('#subTitle, #subTitle2').html(getEachIctCoursesSession?.publishId ? 'update this ICT Course':'create new ICT Course');
     </script>
 
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-book-half"></i></div>
-                <h3 id="pageTitle">CREATE NEW STUDY ABROAD</h3>
+                <h3 id="pageTitle">CREATE NEW ICT COURSES</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -74,7 +76,7 @@
                     <div class="content-title">
                         <div class="title">
                             <i class="bi bi-book-half"></i>
-                            <p>Create new study abroad here</p>
+                            <p>Create new ICT Course here</p>
                         </div>
                     </div>
 
@@ -83,35 +85,34 @@
                             <script>
                                 textField({
                                     id: 'regTitle',
-                                    title: 'Study Abroad Title',
-                                    value: getEachStudyAbroadSession?.regTitle ?? ''
+                                    title: 'ICT Course Title',
+                                    value: getEachIctCoursesSession?.regTitle ?? ''
                                 });
                             </script>
                         </div>
 
-                        <div class="text_area_container" id="studyAbroadSummary_container">
+                        <div class="text_field_container" id="courseSubTitle_container">
                             <script>
                                 textField({
-                                    id: 'studyAbroadSummary',
-                                    title: 'Study Abroad Summary',
-                                    type: 'textarea',
-                                    value: getEachStudyAbroadSession?.studyAbroadSummary ?? ''
+                                    id: 'courseSubTitle',
+                                    title: 'Sub Title',
+                                    value: getEachIctCoursesSession?.subTitle ?? ''
                                 });
                             </script>
                         </div>
 
-                        <div class="form-title">UPLOAD STUDY ABROAD PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
+                        <div class="form-title">UPLOAD ICT COURSE PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">
-                                <img id="studyAbroadPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="studyAbroadPreview.UpdatePreview(this);" />
+                                <img id="ictCoursesPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="ictCoursesPreview.UpdatePreview(this);" />
                             </div>
                             <script>
                                 $(document).ready(function () {
-                                    const studyAbroadPix = getEachStudyAbroadSession.regPix;
-                                    const  studyAbroadPixUrl = studyAbroadPix ? studyAbroadPixPath + "/" + studyAbroadPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                                    const ictCoursesPix = getEachIctCoursesSession.regPix;
+                                    const ictCoursesPixUrl = ictCoursesPix ? ictCoursePixPath + "/" + ictCoursesPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
 
-                                    $("#studyAbroadPreview").attr("src", studyAbroadPixUrl).attr("alt", getEachStudyAbroadSession.regPix + " Logo");
+                                    $("#ictCoursesPreview").attr("src", ictCoursesPixUrl).attr("alt", getEachIctCoursesSession.regPix + " Logo");
                                 });
                             </script>
                         </label>
@@ -121,8 +122,8 @@
                                 selectField({
                                     id: 'statusId',
                                     title: 'Select Status',
-                                    fieldValue: getEachStudyAbroadSession?.statusId ?? '',
-                                    fieldLabel: getEachStudyAbroadSession?.statusName ?? ''
+                                    fieldValue: getEachIctCoursesSession?.statusId ?? '',
+                                    fieldLabel: getEachIctCoursesSession?.statusName ?? ''
                                 });
                                 _getSelectStatusId('statusId', '1,2');
                             </script>
@@ -131,7 +132,7 @@
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createAndUpdateStudyAbroad();"> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createAndUpdateIctCourses();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

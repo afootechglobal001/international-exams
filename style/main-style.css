@@ -3426,6 +3426,14 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
   font-size: 7vw;
   line-height: 10vw;
 }
+ .other-pages-slide-div
+  .other-pages-back-div
+  .main-content-back-div
+  .text-content-div
+  h2 {
+  font-size: 5vw;
+  line-height: 6vw;
+}
 .intro {
   text-align: justify;
 }

@@ -137,22 +137,8 @@
 
                         <li id="mini-expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">
                            ICT Courses <i class="bi-plus"></i>
-                            <ul class="animated fadeIn">
-                                <a href="<?php echo $websiteUrl ?>/networking-in-nigeria" title="COMPUTER NETWORKING">
-                                    <li>COMPUTER NETWORKING</li>
-                                </a>
-                                <a href="<?php echo $websiteUrl ?>" title="GRAPHIC DESIGN">
-                                    <li>GRAPHIC DESIGN</li>
-                                </a>
-                                <a href="<?php echo $websiteUrl ?>" title="WEB DEVELOPMENT">
-                                    <li>WEB DEVELOPMENT</li>
-                                </a>
-                                <a href="<?php echo $websiteUrl ?>" title="DIGITAL MARKETING">
-                                    <li>DIGITAL MARKETING</li>
-                                </a>
-                                <a href="<?php echo $websiteUrl ?>" title="MOBILE APP DEVELOPMENT">
-                                    <li>MOBILE APP DEVELOPMENT</li>
-                                </a>
+                            <ul class="animated fadeIn" id="fetchHeaderIctCourses">
+                                <script>_fetchHeaderIctCourses();</script>
                             </ul>
                         </li>
 

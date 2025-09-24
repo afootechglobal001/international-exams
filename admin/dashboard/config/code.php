@@ -25,6 +25,7 @@ switch ($action){
 		require_once('page-details.php');
 		require_once('ebook-content.php');
 		require_once('exam-related-links-content.php');
+		require_once('ict-courses-content.php');
 	break;
 
 	case 'get_form':
@@ -48,6 +49,7 @@ switch ($action){
 		require_once('page-details.php');
 		require_once('ebook-content.php');
 		require_once('exam-related-links-content.php');
+		require_once('ict-courses-content.php');
 	break;	
 
 	case 'uploadStaffPix':
@@ -208,6 +210,22 @@ switch ($action){
 
 		if (!empty($oldMaterial) && file_exists($oldMaterialDir . $oldMaterial)) {
 			unlink($oldMaterialDir . $oldMaterial);
+		}
+    break;
+
+	case 'uploadIctCoursesPix':
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		
+		$uploadDir = "../../../uploaded_files/IctCourses/";
+
+		// Delete old image only if it's not the default
+		if (!empty($oldRegPix) && file_exists($uploadDir . $oldRegPix)) {
+			unlink($uploadDir . $oldRegPix);
+		}
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
 		}
     break;
 

@@ -32,6 +32,9 @@
                         <li class="active-li" title="PAGE CONTENT" id="pageContent" onclick="_getActivePagesTab({divid:'pageContent', page: 'pageContent', url: adminPortalLocalUrl});">PAGE CONTENT</li>
                     <?php } ?>
 
+                    <?php if ($pageCatId == 'ictCourseCategory') { ?>
+                        <li class="active-li" title="PAGE CONTENT" id="pageContent" onclick="_getActivePagesTab({divid:'pageContent', page: 'pageContent', url: adminPortalLocalUrl});">PAGE CONTENT</li>
+                    <?php } ?>
                 </ul>
                 <button class="close-btn" onclick="_alertClose(<?php echo $modalLayer ?>);" title="Close"><i class="bi-x-lg"></i></button>
             </div>
@@ -50,5 +53,4 @@
             </div>
         </div>
     </div>
-
 <?php } ?>

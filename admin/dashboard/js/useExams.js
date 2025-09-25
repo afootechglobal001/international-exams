@@ -66,6 +66,7 @@ function _fetchExamData() {
 						const examAbbr = examInfo.examAbbr;
 						const examLogo = examInfo.examLogo;
 						const statusName = examInfo.statusName;
+						const pageView = examInfo.pageView;
 						const formattedDate = formatDate(examInfo.updatedTime);
 						const totalNumberOfRelatedLinks = examInfo.totalNumberOfRelatedLinks;
 
@@ -88,7 +89,7 @@ function _fetchExamData() {
 									<p>${regTitle}</p>
 									<div class="exam-time">
 										<p><i class="bi bi-calendar"></i> Updated on: <strong>${formattedDate}</strong></p>
-										<p><i class="bi bi-eye"></i> View: <strong>10</strong></p>
+										<p><i class="bi bi-eye"></i> View: <strong>${pageView}</strong></p>
 									</div>
 								</div>
 								<button class="btn" title="Related Links" onclick="_getEachExamLinkPage('${pageCategoryId}','${publishId}');">

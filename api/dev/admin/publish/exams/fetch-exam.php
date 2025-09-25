@@ -39,7 +39,6 @@
         $statusIds = "AND a.statusId IN ($statusId)";
     }
 
-
     // Securely escape $q
     $q = mysqli_real_escape_string($conn, $q);
     $select = "SELECT 
@@ -57,6 +56,7 @@
         a.scoreRange,
         a.regPix,
         a.examLogo,
+        a.pageView,
         a.statusId, 
         a.createdBy, 
         a.createdTme, 

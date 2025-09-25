@@ -217,7 +217,7 @@ function _initFetchBlogData(data) {
             <h2>${item.regTitle}</h2>
             <div class="text-in">
                 <div class="text">
-                    UPDATED ON: <span>${_fetchFormatDate(item.updatedTime)}</span> | <span>200</span> VIEWS
+                    UPDATED ON: <span>${_fetchFormatDate(item.updatedTime)}</span> | <span>${item.blogView}</span> VIEWS
                 </div>
             </div>
         </div>

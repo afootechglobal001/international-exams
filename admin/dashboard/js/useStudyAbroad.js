@@ -183,7 +183,7 @@ function _initfetchStudyAbroadData(data) {
             <div class="top-text"><span>${item.studyAbroadSummary.substr(0, 120)}...</span></div>
             <div class="text-in">
                 <div class="text">
-                    UPDATED ON: <span>${_fetchFormatDate(item.updatedTime)}</span> | <span>200</span> VIEWS
+                    UPDATED ON: <span>${_fetchFormatDate(item.updatedTime)}</span> | <span>${item.pageView}</span> VIEWS
                 </div>
             </div>
         </div>

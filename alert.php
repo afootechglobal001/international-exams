@@ -87,10 +87,10 @@
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl; ?>/international-exams" title="International Exams">
-                    <li <?php if ($page == 'About') { ?> id="active-li" <?php } ?>><i class="bi-journals"></i>
-                        International Exams</li>
-                </a>
+                <li onclick="_openLi('exams')"><i class="bi-journals"></i> International Exams<i class="bi-plus" id="side-expand"></i></li>
+                <div class="sub-li" id="exams-sub-li">
+                    <script>_fetchMobileExams();</script>
+                </div>
             </div>
 
             <div class="div">

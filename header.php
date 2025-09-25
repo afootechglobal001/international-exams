@@ -92,40 +92,24 @@
                             <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/study-abroad")) { ?> active <?php } ?>">
                                 Study Abroad <i class="bi-plus"></i>
 
-                                <ul class="animated fadeIn">
-                                    <div class="sub-nav-div" id="fetchHeaderStudyAbroad">
-                                        <script>
-                                            _fetchHeaderStudyAbroad();
-                                        </script>
-                                    </div>
+                                <ul class="animated fadeIn" id="fetchHeaderStudyAbroad">
+                                    <script>
+                                        _fetchHeaderStudyAbroad();
+                                    </script>
                                 </ul>
                             </li>
                         </a>
 
                         <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/international-exams")) { ?> active <?php } ?>">
-                            <a href="<?php echo $websiteUrl ?>/international-exams" title="Training">
-                                International Exam <i class="bi-plus"></i></a>
-                            <ul class="animated fadeIn">
-                                <div class="sub-nav-div training-sub-nav">
-                                    <div class="info-container">
-                                        <div class="pix-div"><img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp" alt="training"/></div>
-                                        <h2>International Tests/Examinations to Study Abroad</h2>
-                                        <p>These exams are reqiured for admission to universities and colleges in
-                                            various countries across the globe. At times, the need may be a combination
-                                            of two or more of the tests/examinations specific to that country and its
-                                            education system.</p>
-                                        <a href="<?php echo $websiteUrl ?>/portal">
-                                        <button class="btn" title="Become An Agent">Become An Agent <i class="bi-chevron-right"></i></button></a>
-                                    </div>
+  <a href="<?php echo $websiteUrl ?>/international-exams" title="Training">
+    International Exam <i class="bi-plus"></i>
+  </a>
 
-                                    <div class="each-container-back-div" id="fetchHeaderExams">
-                                        <script>
-                                            _fetchHeaderExams();
-                                        </script>
-                                    </div>
-                                </div>
-                            </ul>
-                        </li>
+  <ul class="animated fadeIn" id="fetchHeaderExams">
+    <script>_fetchHeaderExams();</script>
+  </ul>
+</li>
+
 
                         <li class="hide-nav <?php if (strstr($websiteAutoUrl, "$websiteUrl/payment-pricing")) { ?> active <?php } ?>">
                             <a href="<?php echo $websiteUrl ?>/payment-pricing" title="Payment plans"> Payment plans </a>
@@ -135,10 +119,12 @@
                             <a href="<?php echo $websiteUrl ?>/blog" title="Blog"> Blog</a>
                         </li>
 
-                        <li id="mini-expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">
-                           ICT Courses <i class="bi-plus"></i>
+                        <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/contact-us")) { ?> active <?php } ?>">
+                            ICT Courses <i class="bi-plus"></i>
                             <ul class="animated fadeIn" id="fetchHeaderIctCourses">
-                                <script>_fetchHeaderIctCourses();</script>
+                                <script>
+                                    _fetchHeaderIctCourses();
+                                </script>
                             </ul>
                         </li>
 
@@ -146,7 +132,7 @@
                             <a href="<?php echo $websiteUrl ?>/testing-services" title="Testing Services"> Testing Services </a>
                         </li>
 
-                        <li id="mini-expand-li" class="mini-li">
+                        <li id="expand-li" class="mini-li">
                             <a href="#" title="Training">
                                 Read More <i class="bi-plus"></i></a>
                             <ul class="animated fadeIn">
@@ -166,7 +152,7 @@
                                 <a href="<?php echo $websiteUrl ?>/testing-services" title="Testing Services">
                                     <li>Testing Services</li>
                                 </a>
-                                 <a href="<?php echo $websiteUrl ?>/" title="Video Tutorial">
+                                <a href="<?php echo $websiteUrl ?>/" title="Video Tutorial">
                                     <li>Video Tutorial</li>
                                 </a>
                             </ul>
@@ -177,7 +163,7 @@
 
             <div class="button-div">
                 <a href="<?php echo $websiteUrl ?>/portal" title="Get Started">
-                <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button></a>
+                    <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button></a>
                 <button class="mobile-btn" onclick="_openMenu()"><i class="bi-text-right"></i></button>
             </div>
         </div>

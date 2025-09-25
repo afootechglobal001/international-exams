@@ -224,17 +224,11 @@ function _fetchHeaderExams() {
   try {
     //// call endpoint //////
     _callFetchEndPoints({
-      url: `site/exams/fetch-all-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
+      url: `site/exams/fetch-header-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
     })
       .then((response) => {
         if (response.success && response.data?.length > 0) {
           _initFetchHeaderExams(response.data);
-        } else {
-          $("#fetchHeaderExams").html(`
-              <div class="false-notification-div">
-                  <p>${response.message}</p>
-              </div>
-          `);
         }
       })
       .catch((error) => {
@@ -246,18 +240,42 @@ function _fetchHeaderExams() {
 }
 
 function _initFetchHeaderExams(data) {
-  const content = data
-    .map(
-      (item) => `
-       <div class="each-container">
-          <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
-              <li>${item.examAbbr}</li>
-          </a>
-      </div>
-   `)
-    .join("");
+  const content = data.map((item) => {
+    let relatedLinks = "";
+
+    if (item.relatedLinksData && item.relatedLinksData.length > 0) {
+      relatedLinks = `
+        <ul class="inner-expand-li animated fadeIn">
+          ${item.relatedLinksData
+            .map(
+              (link) => `
+                <li>
+                  <a href="${websiteUrl}/${link.pageUrl}" title="${link.regTitle}">
+                    ${link.regTitle}
+                  </a>
+                </li>
+              `
+            )
+            .join("")}
+        </ul>
+      `;
+    }
+
+    return `
+      <li>
+        <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+          ${item.examAbbr}
+        </a>
+        ${relatedLinks}
+      </li>
+    `;
+  }).join("");
+
   $("#fetchHeaderExams").html(content);
 }
+
+
+
 
 
 function _fetchSlideExamsData() {
@@ -299,4 +317,36 @@ function _initFetchSlideExamsData(data) {
        </a>`;
     $('.exams-back-div').slick('slickAdd', slide);
   });
+}
+
+
+function _fetchMobileExams() {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			 url: `site/exams/fetch-header-exams?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId || ""}`,
+		})
+		.then((response) => {
+			if (response.success && response.data?.length > 0) {
+          _initFetchMobileExams(response.data);
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+	} catch (error) {
+		console.error("Error:", error);
+  	}
+}
+
+function _initFetchMobileExams(data) {
+  	const content = data.map((item) => `
+	<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+		<li>${item.examAbbr}</li>
+	</a>
+    `).join("");
+    $('#exams-sub-li').html(content);
 }

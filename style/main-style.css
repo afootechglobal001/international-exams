@@ -236,20 +236,7 @@ header .main-header .main-header-inner .button-div .mobile-btn:hover{
 }
 
 /* EXPAND LI STYLE */
-#expand-li ul {
-  position: absolute;
-  top: 110px;
-  width: 100%;
-  min-height: 200px;
-  padding-bottom: 8px;
-  background: #f7f7ff;
-  box-shadow: 0px 7px 7px -2px rgba(109, 109, 109, 0.2);
-  left: 0px;
-  display: none;
-  z-index: 600;
-}
-
-#expand-li:before {
+#expand-li:before{
   content: "";
   width: 0;
   height: 0;
@@ -261,197 +248,11 @@ header .main-header .main-header-inner .button-div .mobile-btn:hover{
   opacity: 0;
   transition: opacity 0.3s;
 }
-
-#expand-li:hover:before {
-  opacity: 1;
-}
-
-#expand-li:hover ul {
-  display: block;
-}
-
-#expand-li ul .sub-nav-div {
-  width: 85%;
-  max-width: 1200px;
-  margin: 20px auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-#expand-li ul .sub-nav-div .service-div {
-  width: 24%;
-  border-radius: 5px;
-  background: var(--bg-white);
-  min-height: 70px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 20px 0px;
-  display: flex;
-  flex-direction: column;
-  -moz-transition: all 0.2s ease-in 02s;
-  transition: all 0.2s ease-in 0.2s;
-  -webkit-transition: all 0.2s ease-in 0.2s;
-  -ms-transition: all 0.2s ease-in 0.2s;
-  -o-transition: all 0.2s ease-in 0.2s;
-  cursor: pointer;
-}
-
-#expand-li ul .sub-nav-div .service-div .pix-div {
-  height: 100px;
-  overflow: hidden;
-  border-radius: 5px 5px 0px 0px;
-}
-
-#expand-li ul .sub-nav-div .service-div .pix-div img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#expand-li ul .sub-nav-div .service-div li {
-  color: #0e2a46;
-  padding: 10px;
-  margin: 0px;
-  display: flex;
-  text-align: left;
-  align-self: flex-start;
-  list-style: none;
-  color: var(--primary-color);
-  font-family: sub-title-font;
-}
-
-#expand-li ul .sub-nav-div .service-div:hover {
-  -moz-transform: scale(1.05) translate(1px);
-  -webkit-transform: scale(1.05) translate(1px);
-  transform: scale(1.05) translate(1px);
-}
-
-#expand-li ul .sub-nav-div .service-div:hover li {
-  color: var(--secondary-color);
-}
-
-/* TRAINING EXPAND LI STYLE */
-#expand-li ul .training-sub-nav {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-#expand-li ul .training-sub-nav .info-container {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-#expand-li ul .training-sub-nav .info-container .pix-div {
-  height: 100%;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-#expand-li ul .training-sub-nav .info-container .pix-div img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#expand-li ul .training-sub-nav .info-container h2 {
-  font-family: sub-title-font;
-  color: var(--sub-body-color);
-  font-size: 19px;
-}
-
-#expand-li ul .training-sub-nav .info-container p {
-  padding: 0px;
-  text-align: justify;
-  font-size: 14px;
-  font-family: body-font;
-  color: var(--sub-body-color);
-}
-
-#expand-li ul .training-sub-nav .info-container .btn {
-  height: 45px;
-  padding: 0px 20px;
-  color: var(--white-color);
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
-  border: none;
-  font-family: sub-title-font;
-  cursor: pointer;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  -moz-transition: all 0.2s ease-in 02s;
-  transition: all 0.2s ease-in 0.2s;
-  -webkit-transition: all 0.2s ease-in 0.2s;
-  -ms-transition: all 0.2s ease-in 0.2s;
-  -o-transition: all 0.2s ease-in 0.2s;
-}
-
-#expand-li ul .training-sub-nav .info-container .btn i {
-  font-size: 12px;
-  color: var(--white-color);
-}
-#expand-li ul .training-sub-nav .info-container .btn:hover {
-  opacity: 0.7;
-}
-
-#expand-li ul .training-sub-nav .each-container-back-div {
-  width: calc(100% - 520px);
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-#expand-li ul .training-sub-nav .each-container-back-div .each-container {
-  min-width: 75px;
-}
-
-#expand-li ul .training-sub-nav .each-container-back-div .each-container li {
-  margin: 0px;
-  min-height: 10px;
-  line-height: 10px;
-  padding: 8px;
-  list-style: none;
-  font-family: body-font;
-  cursor: pointer;
-  border-bottom: #e5e5e5 dashed 1px;
-  color: var(--body-color);
-  font-size: 14px;
-}
-
-#expand-li ul .training-sub-nav .each-container li:hover {
-  background: #f7f7f7;
-  color: var(--secondary-color);
-  padding-left: 15px;
-}
-
-
-
-#mini-expand-li:before{
-  content: "";
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-bottom-color: #d8d8d8;
-  position: absolute;
-  top: 82%;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-#mini-expand-li:hover:before{
+#expand-li:hover:before{
 	opacity:1;
 }
 
-#mini-expand-li ul{
+#expand-li ul{
 	padding:20px 0px;
 	min-width:200px;
   top: 110px;
@@ -462,23 +263,24 @@ header .main-header .main-header-inner .button-div .mobile-btn:hover{
 	box-shadow:rgba(0,0,0,.2) 0px 2px 5px 0px;
 	display:none;
 }
-#mini-expand-li:hover ul{
+#expand-li:hover ul{
 	display:block;
 }
-#mini-expand-li ul li{
+#expand-li ul li{
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 	width:calc(100% - 60px);
 	min-height:20px !important;
 	line-height:20px;
-	padding:10px 30px;
+	padding:12px 30px;
 	list-style:none;
 	border-bottom:#E5E5E5 dashed 1px;
 	color:#444;
 	font-size:13px;
 }
-#mini-expand-li ul li:hover{
+#expand-li ul li:hover{
 	background:#FFF;
 	color: var(--primary-color);
 }
@@ -487,8 +289,19 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
 	display:none;
 }
 
-/* Header Mobile Query */
+.inner-expand-li{
+	display: none !important;
+  position: relative;
+  left: 100%;
+  width: 280px;
+  min-height: auto !important;
+  top: 0px !important;
+}
+header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expand-li{
+	display:block !important;
+}
 
+/* Header Mobile Query */
 @media all and (max-width: 1350px) {
   header .main-header .main-header-inner .link-div nav ul .hide-nav {
     display: none;
@@ -516,7 +329,7 @@ header .main-header .main-header-inner .link-div nav ul .mini-li{
 
 @media all and (max-width: 990px) {
   header .main-header .main-header-inner .link-div nav,
-  header .main-header .main-header-inner .link-div nav ul .mini-li
+  header .main-header .main-header-inner .link-div nav ul .li
   {
     display:none;
   }

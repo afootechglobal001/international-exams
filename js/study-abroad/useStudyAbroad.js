@@ -143,13 +143,7 @@ function _fetchHeaderStudyAbroad() {
 		.then((response) => {
 			if (response.success && response.data?.length > 0) {
                 _initFetchHeaderStudyAbroad(response.data);
-			} else {
-				$('#fetchHeaderStudyAbroad').html(`
-					<div class="false-notification-div">
-						<p>${response.message}</p>
-					</div>
-				`);
-			} 
+			}
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
@@ -161,8 +155,7 @@ function _fetchHeaderStudyAbroad() {
 
 function _initFetchHeaderStudyAbroad(data) {
   	const content = data.map((item) => `
-    <a class="service-div" href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
-		<div class="pix-div"><img src="${studyAbroadPixPath}/${item.regPix}" alt="${item.regTitle}" /></div>
+    <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
 		<li>${item.regTitle}</li>
 	</a>`).join("");
     $('#fetchHeaderStudyAbroad').html(content);

@@ -44,11 +44,11 @@
                     <a href="<?php echo $websiteUrl?>/faq" title="Frequently Asked Questions">
                         <li><i class="bi-chevron-right"></i>Frequently Asked Questions</li>
                     </a>
-                    <a href="<?php echo $websiteUrl?>/study-abroad" title="Study Abroad">
-                        <li><i class="bi-chevron-right"></i>Study Abroad</li>
+                    <a href="<?php echo $websiteUrl?>/blog" title="blog">
+                        <li><i class="bi-chevron-right"></i>Blog</li>
                     </a>
-                    <a href="<?php echo $websiteUrl?>/international-exams" title="International Exams">
-                        <li><i class="bi-chevron-right"></i>International Exams</li>
+                    <a href="<?php echo $websiteUrl?>/" title="Admission Processin">
+                        <li><i class="bi-chevron-right"></i>Admission Processing</li>
                     </a>
                     <a href="<?php echo $websiteUrl?>/payment-pricing" title="Payment Plans">
                         <li><i class="bi-chevron-right"></i>Payment Plans</li>

@@ -19,7 +19,8 @@
                 <div class="form-box-content">
                     <div class="logo-div">
                         <a href="<?php echo $websiteUrl ?>" title="Home">
-                        <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png" alt="International Exam Logo" /></a>
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"
+                                alt="International Exam Logo" /></a>
                     </div>
                     <h1>Sign-Up</h1>
                     <div class="alert alert-success">
@@ -120,5 +121,6 @@
     </main>
 </body>
 
+<?php include 'bottom-scripts.php' ?>
 
 </html>

@@ -281,3 +281,18 @@ function _getTrainingNavModal() {
       (window.location.href = `${websiteUrl}/portal/sign-up`),
   });
 }
+
+function _getAgentModal() {
+  _showCustomConfirm({
+    title: "Become an Agent",
+    message:
+      "Join our Agent Program and enjoy massive discounts. Please log in if you already have an account or sign up to get started.",
+    alertType: "info",
+    trueActionBtnText: "Login",
+    falseActionBtn: true,
+    falseActionBtnText: "Sign Up",
+    trueActionCallback: () => (window.location.href = `${websiteUrl}/portal`),
+    falseActionCallback: () =>
+      (window.location.href = `${websiteUrl}/portal/sign-up`),
+  });
+}

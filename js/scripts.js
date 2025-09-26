@@ -296,3 +296,14 @@ function _getAgentModal() {
       (window.location.href = `${websiteUrl}/portal/sign-up`),
   });
 }
+
+
+function _diplaySuccess(){
+  _alertClose();
+ _showCustomConfirm({
+      title: "Message Sent!",
+      message: 'Your Message has been sent successfully',
+      alertType: "success",
+      trueActionBtnText: "Okay, Thanks",
+  });
+}

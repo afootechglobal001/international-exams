@@ -166,7 +166,7 @@
 
             <div class="button-div">
                 <a href="<?php echo $websiteUrl ?>/portal" title="Get Started">
-                    <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Get Started</span></button></a>
+                    <button class="btn" title="Get started"> <i class="bi-person"></i> <span>Portal</span></button></a>
                 <button class="mobile-btn" onclick="_openMenu()"><i class="bi-text-right"></i></button>
             </div>
         </div>

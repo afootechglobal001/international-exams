@@ -53,7 +53,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                         <div class="btn-div">
                             <a href="<?php echo $websiteUrl ?>/exam-registration" title="REGISTER FOR EXAMS">
                                 <button class="btn">REGISTER FOR EXAM <i class="bi-chevron-right"></i></button></a>
-                            <button class="btn" title="MAKE ENQUIRES"> MAKE ENQUIRES <i class="bi-chat-text-fill"></i></button>
+                            <button class="btn" title="MAKE ENQUIRES" onclick="_getForm({page: 'makeEnquiryForm', url: siteMiddlewareUrl});"> MAKE ENQUIRES <i class="bi-chat-text-fill"></i></button>
                                 <button class="btn" onclick="_getAgentModal();">BECOME AN AGENT<i class="bi-person"></i></button>
                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="DOWNLOAD E-BOOKS">
                                 <button class="btn"> DOWNLOAD E-BOOKS <span class="span">IT'S FREE</span></button></a>

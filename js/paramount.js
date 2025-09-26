@@ -330,6 +330,15 @@ function _showCustomConfirm(options) {
         falseActionCallback();
       });
   }
+  // If mouse enters modal, clear and hide it
+  $("#customConfirmModal")
+    .off("click")
+    .on("click", function (e) {
+      if (e.target === this) {
+        // ensures click is only on the modal, not children
+        $(this).html("").fadeOut(200);
+      }
+    });
 }
 function _modalClose() {
   $("#customConfirmModal").html("").fadeOut(200);

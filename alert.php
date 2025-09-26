@@ -61,8 +61,6 @@
     </div>
 
 
-
-
     <div class="index-menu-back-div">
         <div class="top-div">
             <div class="logo-div">

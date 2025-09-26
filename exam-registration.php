@@ -6,7 +6,8 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title>Free E-books | International Exams – GRE, TOEFL, ACT, IELTS, GMAT, SAT, CGFNS, PTE, LSAT, MCAT, USMLE, DUOLINGO</title>
+    <title>Free E-books | International Exams – GRE, TOEFL, ACT, IELTS, GMAT, SAT, CGFNS, PTE, LSAT, MCAT, USMLE,
+        DUOLINGO</title>
 
     <meta name="keywords"
         content="International Exams Free E-books, Free exam prep materials Nigeria, Free GRE E-book, Free TOEFL E-book, Free ACT E-book, Free IELTS E-book, Free GMAT E-book, Free SAT E-book, Free CGFNS E-book, Free PTE E-book, Free LSAT E-book, Free MCAT E-book, Free USMLE E-book, Free DUOLINGO E-book, exam preparation Nigeria, international exam resources" />
@@ -48,7 +49,7 @@
             <div class="other-pages-back-div">
                 <div class="main-content-back-div">
                     <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
-                        <h1>Exam Registration</h1>       
+                        <h1>Exam Registration</h1>
                     </div>
                 </div>
             </div>
@@ -63,12 +64,19 @@
                         <div class="inner-container">
                             <div>
                                 <div class="alert alert-warning">
-                                    <strong><span>Importance Notice!</span></strong> Test takers in <?php echo $getwebsiteCountryName; ?> will need a valid international passport as an identifying document on the day of the exam. Kindly use a valid Email address has you will use this for receiving your Exam Details that you will input below and get payment details for completing the exam registration. Call Test Registration department for any enquiry <strong><span id="examPageContact">:-+234(0)-703-841-1794</span></strong> 
+                                    <strong><span>Importance Notice!</span></strong> Test takers in
+                                    <?php echo $getwebsiteCountryName; ?> will need a valid international passport as an
+                                    identifying document on the day of the exam. Kindly use a valid Email address has
+                                    you will use this for receiving your Exam Details that you will input below and get
+                                    payment details for completing the exam registration. Call Test Registration
+                                    department for any enquiry <strong><span
+                                            id="examPageContact">:-+234(0)-703-841-1794</span></strong>
                                 </div>
                             </div>
 
-                            <div class="btn-div">
-                                <button class="btn" onclick="_getApplyExamModal();">PROCEED TO REGISTER FOR EXAM <i class="bi bi-arrow-right"></i></button>
+                            <div class="back-container-div">
+                                <button class="btn" onclick="_getApplyExamModal();">PROCEED TO REGISTER FOR EXAM <i
+                                        class="bi bi-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>

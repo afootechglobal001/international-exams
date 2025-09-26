@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in Nigeria and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. </p>
+                <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in <?php echo $getwebsiteCountryName; ?> and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. </p>
                 <div class="icon-div">
                     <a href="" title="YouTube">
                         <li><i class="bi-youtube"></i></li>

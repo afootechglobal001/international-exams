@@ -160,3 +160,32 @@ function _initFetchHeaderStudyAbroad(data) {
 	</a>`).join("");
     $('#fetchHeaderStudyAbroad').append(content);
 }
+
+
+function _fetchMobileStudyAbroad() {
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			 url: `site/study-abroad/fetch-study-abroad?pageCategoryId=${pageCategory?.studyAbroadCategory}`,
+		})
+		.then((response) => {
+			if (response.success && response.data?.length > 0) {
+          _initFetchMobileStudyAbroad(response.data);
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+	} catch (error) {
+		console.error("Error:", error);
+  	}
+}
+
+function _initFetchMobileStudyAbroad(data) {
+  	const content = data.map((item) => `
+	<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+		<li>${item.regTitle}</li>
+	</a>
+    `).join("");
+    $('#studyAbroad-sub-li').html(content);
+}

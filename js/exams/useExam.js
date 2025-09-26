@@ -246,7 +246,7 @@ function _initFetchHeaderExams(data) {
     if (item.relatedLinksData && item.relatedLinksData.length > 0) {
       relatedLinks = `
         <ul class="inner-expand-li animated fadeIn">
-        <li onclick="_getApplyExamModal();">RESGISTER FOR EXAM</li>
+        <li><a href="${websiteUrl}/exam-registration" title="REGISTER FOR EXAMS">RESGISTER FOR EXAM</a></li>
         <li> <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">WHAT IS ${item.examAbbr}</a></li>
           ${item.relatedLinksData
             .map(
@@ -345,10 +345,62 @@ function _fetchMobileExams() {
 }
 
 function _initFetchMobileExams(data) {
-  	const content = data.map((item) => `
-	<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
-		<li>${item.examAbbr}</li>
-	</a>
-    `).join("");
-    $('#exams-sub-li').html(content);
+  const content = data.map((item, index) => {
+    let relatedLinks = "";
+
+    if (item.relatedLinksData && item.relatedLinksData.length > 0) {
+      relatedLinks = `
+        <ul class="related-links" id="related-links-${index}">
+          <li><a href="${websiteUrl}/exam-registration" title="REGISTER FOR EXAMS">REGISTER FOR ${item.examAbbr} EXAM</a></li>
+          <li>
+            <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+              WHAT IS ${item.examAbbr}
+            </a>
+          </li>
+          ${item.relatedLinksData
+            .map(
+              (link) => `
+                <li>
+                  <a href="${websiteUrl}/${link.pageUrl}" title="${link.regTitle}">
+                    ${link.regTitle}
+                  </a>
+                </li>
+              `
+            )
+            .join("")}
+        </ul>
+      `;
+    }
+
+    return `
+      <li>
+        <div class="exam-header" onclick="toggleSubLinks(${index})">
+          ${item.examAbbr}
+          <i class="bi-plus side-expand"></i>
+        </div>
+        ${relatedLinks}
+      </li>
+    `;
+  }).join("");
+
+  $('#exams-sub-li').html(content);
 }
+
+
+function toggleSubLinks(index) {
+  $(`#related-links-${index}`).toggle("slow");
+}
+
+
+// function _initFetchMobileExams(data) {
+//   	const content = data.map((item) => `
+// 	<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+// 		<li>${item.examAbbr} <i class="bi-plus" id="side-expand"></i>
+//       <ul>
+//         <li>GMAT ELIGIBILITY</li>
+//       </ul>
+//     </li>
+// 	</a>
+//     `).join("");
+//     $('#exams-sub-li').html(content);
+// }

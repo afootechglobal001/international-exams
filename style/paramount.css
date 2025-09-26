@@ -390,6 +390,15 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+@media all and (max-width: 400px) {
+  .modal-overlay .modal-box .btn-div {
+   flex-direction: column;
+  }
+  .modal-overlay .modal-box .btn-div .btn {
+    width: 100%;
+  }
+}
+
 /*-------form alert div-------------------------------------------------------------------------------------------*/
 .alert {
   width: calc(100% - 42px);
@@ -776,11 +785,7 @@ a {
 .index-menu-back-div .div-in .div {
   border-bottom: #ccc 1px solid;
   cursor: pointer;
-  -moz-transition: all 0.2s ease-in 02s;
   transition: all 0.2s ease-in 0.2s;
-  -webkit-transition: all 0.2s ease-in 0.2s;
-  -ms-transition: all 0.2s ease-in 0.2s;
-  -o-transition: all 0.2s ease-in 0.2s;
 }
 
 .index-menu-back-div .div-in .div:hover {
@@ -792,6 +797,9 @@ a {
 }
 
 .index-menu-back-div .div-in .div li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px 0px 10px 15px;
   font-size: 14px;
   color: var(--sub-body-color);
@@ -808,36 +816,31 @@ a {
 .index-menu-back-div .div-in .div li i {
   color: var(--primary-color);
   font-size: 15px;
-  width: 40px;
-  margin-right: 10px;
 }
 
 .index-menu-back-div .div-in .div li #side-expand {
-  float: right;
-  color: var(--secondary-color);
-  width: 20px;
-  height: 23px;
-  padding-top: 7px;
+  color: var(--primary-color);
 }
 
 .index-menu-back-div .div-in .div .sub-li {
-  width: 90%;
-  margin-left: 10%;
-  margin-top: 10px;
+  width: calc(90% - 10px);
+  padding: 0px 5px;
+  margin: auto;
+  margin-bottom: 5px;
   display: none;
 }
 
 .index-menu-back-div .div-in .div .sub-li li {
   height: auto;
   line-height: 20px;
-  padding: 10px 5px 10px 0px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 12px;
-  -moz-transition: all 0.2s ease-in 02s;
   transition: all 0.2s ease-in 0.2s;
-  -webkit-transition: all 0.2s ease-in 0.2s;
-  -ms-transition: all 0.2s ease-in 0.2s;
-  -o-transition: all 0.2s ease-in 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .index-menu-back-div .div-in .div .sub-li li:hover {
@@ -847,6 +850,31 @@ a {
 .index-menu-back-div .div-in .div .sub-li #active-li {
   background: rgba(204, 204, 204, 0.2);
 }
+
+.index-menu-back-div .div-in .div .sub-li li .exam-header{
+  width: calc(100% - 10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.index-menu-back-div .div-in .div li .related-links {
+  width: calc(100% - 10px);
+  padding: 0px;
+  display: none;
+ 
+}
+
+.index-menu-back-div .div-in .div li .related-links li {
+  font-size: 12px;
+  color: #555;
+}
+
+.index-menu-back-div .div-in .div li .related-links li a {
+  text-decoration: none;
+  color: var(--sub-body-color);
+}
+
 
 .index-menu-back-div .div-in .div .student-li {
   background: var(--secondary-color);

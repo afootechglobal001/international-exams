@@ -92,7 +92,7 @@
                             Study Abroad <i class="bi-plus"></i></a>
 
                             <ul class="animated fadeIn" id="fetchHeaderStudyAbroad">
-                            <li onclick="_getApplyExamModal();">REGISTER FOR EXAMS</li>
+                            <a href="<?php echo $websiteUrl ?>/exam-registration" title="REGISTER FOR EXAMS"><li>REGISTER FOR EXAMS</li></a>
                             <li>ADMISSION PROCESSING</li>
                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="E-Books">
                             <li>FREE EBOOKS</li></a>

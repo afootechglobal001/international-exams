@@ -5065,3 +5065,51 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
     font-size: 11px;
     color: #666;
 }
+
+.back-container {
+  display: flex;
+  border: #e2e2e2 1px solid;
+  border-radius: 10px;
+  background: var(--white-color);
+}
+
+.back-container .inner-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+
+.back-container .inner-container .btn-div{
+  display: flex;
+}
+
+.back-container .inner-container .btn-div .btn{
+  border: none;
+  background: var(--primary-color);
+  border-radius: 25px;
+  font-family: sub-title-font;
+  padding: 0px 25px;
+  height: 45px;
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.back-container .inner-container .btn-div .btn:hover{
+ opacity: .9;
+}
+
+@media all and (max-width: 370px) {
+  .back-container .inner-container{
+    padding: 20px;
+  }
+  .back-container .inner-container .btn-div .btn{
+  width: 100%;
+   font-size: 12px;
+  }
+}

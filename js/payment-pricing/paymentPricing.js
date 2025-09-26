@@ -71,8 +71,8 @@ function _initFetchPaymentPricingData(data) {
 					<div class="incentive-back-div">
 						${incentivesContent}
 					</div>
-					
-					<button class="btn" title="Apply For Exam Now" onclick="_getApplyExamModal();">Apply Now<i class="bi-chevron-right"></i></button>
+					<a href="${websiteUrl}/exam-registration" title="REGISTER FOR EXAMS">
+					<button class="btn" title="Apply For Exam Now">Apply Now<i class="bi-chevron-right"></i></button></a>
 				</div>
 			</div>
 		</div>`;

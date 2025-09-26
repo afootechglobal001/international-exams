@@ -161,7 +161,7 @@ function _fetchHeaderContact() {
           const phoneNumber = data.phoneNumber;
 
           $("#smtpUsername").html(smtpUsername);
-          $("#phoneNumber").html(phoneNumber);
+          $("#phoneNumber, #examPageContact").html(phoneNumber);
         }
       })
       .catch((error) => {

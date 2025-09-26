@@ -35,7 +35,7 @@
 
                 <a href="#" class="hide-link" title="Training">
                     <i class="bi-mortarboard"></i>
-                    <span onclick="_getTrainingNavModal()">Training</span>
+                    <span onclick="_getForm({page: 'makeEnquiryForm', url: siteMiddlewareUrl});">Training</span>
                 </a>
             </div>
 
@@ -145,7 +145,7 @@
                                 <a href="<?php echo $websiteUrl ?>/free-ebook" title="E-Books">
                                     <li>E-Books</li>
                                 </a>
-                                <li title="Training" onclick="_getTrainingNavModal()">Training</li>
+                                <li title="Training" onclick="_getForm({page: 'makeEnquiryForm', url: siteMiddlewareUrl});">Training</li>
                                 <a href="<?php echo $websiteUrl ?>/payment-pricing" title="Payment Plans">
                                     <li>Payment Plans</li>
                                 </a>

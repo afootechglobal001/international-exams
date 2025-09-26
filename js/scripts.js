@@ -267,21 +267,6 @@ function _fetchContactPageInfo() {
   }
 }
 
-function _getTrainingNavModal() {
-  _showCustomConfirm({
-    title: "Join Our Training Program",
-    message:
-      "To participate in our online and physical classes, kindly login or sign up.",
-    alertType: "info",
-    trueActionBtnText: "Login",
-    falseActionBtn: true,
-    falseActionBtnText: "Sign Up",
-    trueActionCallback: () => (window.location.href = `${websiteUrl}/portal`),
-    falseActionCallback: () =>
-      (window.location.href = `${websiteUrl}/portal/sign-up`),
-  });
-}
-
 function _getAgentModal() {
   _showCustomConfirm({
     title: "Become an Agent",

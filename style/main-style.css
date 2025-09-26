@@ -281,7 +281,7 @@ header .main-header .main-header-inner .button-div .mobile-btn:hover{
 	font-size:13px;
 }
 #expand-li ul li:hover{
-	background:#FFF;
+	background:var(--white-color);
 	color: var(--primary-color);
 }
 

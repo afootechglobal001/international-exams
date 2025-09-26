@@ -41,7 +41,7 @@
                     <a href="<?php echo $websiteUrl?>/about-us" title="About Us">
                         <li><i class="bi-chevron-right"></i>About Us</li>
                     </a>
-                    <a href="<?php echo $websiteUrl?>/faq/" title="Frequently Asked Questions">
+                    <a href="<?php echo $websiteUrl?>/faq" title="Frequently Asked Questions">
                         <li><i class="bi-chevron-right"></i>Frequently Asked Questions</li>
                     </a>
                     <a href="<?php echo $websiteUrl?>/study-abroad" title="Study Abroad">

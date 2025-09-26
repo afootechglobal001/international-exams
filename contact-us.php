@@ -1,4 +1,6 @@
 <?php include 'config/constants.php'; ?>
+<?php include 'config/functions.php'; ?>
+
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -57,18 +59,7 @@
                             international study opportunities, our team is ready to assist you every step of the way.
                         </p>
 
-                        <div class="btn-div">
-                            <a href="#" title="Register For Exam">
-                                <button class="btn" title="Register For Exam">
-                                    <i class="bi bi-envelope"></i> Get in Touch
-                                </button>
-                            </a>
-                            <a href="#" title="Download E-Books">
-                                <button class="btn right-btn" title="Download E-Books">
-                                    <i class="bi bi-calendar-check"></i> Book a Consultation
-                                </button>
-                            </a>
-                        </div>
+                        <?php $callclass->_pagesButtons($websiteUrl);?>
                     </div>
 
                     <div class="image-div">

@@ -246,6 +246,8 @@ function _initFetchHeaderExams(data) {
     if (item.relatedLinksData && item.relatedLinksData.length > 0) {
       relatedLinks = `
         <ul class="inner-expand-li animated fadeIn">
+        <li onclick="_getApplyExamModal();">RESGISTER FOR EXAM</li>
+        <li> <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">WHAT IS ${item.examAbbr}</a></li>
           ${item.relatedLinksData
             .map(
               (link) => `

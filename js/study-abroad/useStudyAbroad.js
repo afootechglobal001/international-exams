@@ -158,5 +158,5 @@ function _initFetchHeaderStudyAbroad(data) {
     <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
 		<li>${item.regTitle}</li>
 	</a>`).join("");
-    $('#fetchHeaderStudyAbroad').html(content);
+    $('#fetchHeaderStudyAbroad').append(content);
 }

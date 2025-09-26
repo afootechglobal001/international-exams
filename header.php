@@ -84,32 +84,35 @@
                 <nav>
                     <ul>
                         <a href="<?php echo $websiteUrl ?>/about-us" title="About Us">
-                            <li
-                                class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/about-us")) { ?> active <?php } ?>">
-                                About Us</li>
+                            <li class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/about-us")) { ?> active <?php } ?>">About Us</li>
                         </a>
-                        <a href="<?php echo $websiteUrl ?>/study-abroad" title="Study Abroad">
-                            <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/study-abroad")) { ?> active <?php } ?>">
-                                Study Abroad <i class="bi-plus"></i>
 
-                                <ul class="animated fadeIn" id="fetchHeaderStudyAbroad">
-                                    <script>
-                                        _fetchHeaderStudyAbroad();
-                                    </script>
-                                </ul>
-                            </li>
-                        </a>
+                        <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/study-abroad")) { ?> active <?php } ?>">
+                        <a href="<?php echo $websiteUrl ?>/study-abroad" title="Study Abroad">
+                            Study Abroad <i class="bi-plus"></i></a>
+
+                            <ul class="animated fadeIn" id="fetchHeaderStudyAbroad">
+                            <li onclick="_getApplyExamModal();">REGISTER FOR EXAMS</li>
+                            <li>ADMISSION PROCESSING</li>
+                            <a href="<?php echo $websiteUrl ?>/free-ebook" title="E-Books">
+                            <li>FREE EBOOKS</li></a>
+                                <script>
+                                    _fetchHeaderStudyAbroad();
+                                </script>
+                            </ul>
+                        </li>
 
                         <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/international-exams")) { ?> active <?php } ?>">
-  <a href="<?php echo $websiteUrl ?>/international-exams" title="Training">
-    International Exam <i class="bi-plus"></i>
-  </a>
+                            <a href="<?php echo $websiteUrl ?>/international-exams" title="Training">
+                                International Exam <i class="bi-plus"></i>
+                            </a>
 
-  <ul class="animated fadeIn" id="fetchHeaderExams">
-    <script>_fetchHeaderExams();</script>
-  </ul>
-</li>
-
+                            <ul class="animated fadeIn" id="fetchHeaderExams">
+                                <script>
+                                    _fetchHeaderExams();
+                                </script>
+                            </ul>
+                        </li>
 
                         <li class="hide-nav <?php if (strstr($websiteAutoUrl, "$websiteUrl/payment-pricing")) { ?> active <?php } ?>">
                             <a href="<?php echo $websiteUrl ?>/payment-pricing" title="Payment plans"> Payment plans </a>

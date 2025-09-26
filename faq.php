@@ -1,4 +1,5 @@
 <?php include 'config/constants.php'; ?>
+<?php include 'config/functions.php'; ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -54,18 +55,7 @@
                             helping thousands of students secure admissions and succeed in top global universities.
                         </p>
 
-                        <div class="btn-div">
-                            <a href="#" title="Get Started">
-                                <button class="btn" title="Get Started">
-                                    Get Started <i class="bi bi-chevron-right"></i>
-                                </button>
-                            </a>
-                            <a href="#" title="Contact Us">
-                                <button class="btn right-btn" title="Contact Us">
-                                    Contact Us <span>+234-703-841-1794</span>
-                                </button>
-                            </a>
-                        </div>
+                        <?php $callclass->_pagesButtons($websiteUrl);?>
                     </div>
 
                     <div class="image-div">

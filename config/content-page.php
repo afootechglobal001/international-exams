@@ -144,7 +144,7 @@
                             <script>
                                 textField({
                                     id: 'testimony',
-                                    title: 'Kindly give details of your enquiry here...',
+                                    title: 'Please provide details of your enquiry here...',
                                     type: 'textarea'
                                 });
                             </script>

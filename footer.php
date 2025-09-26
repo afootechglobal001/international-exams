@@ -45,7 +45,7 @@
                         <li><i class="bi-chevron-right"></i>Frequently Asked Questions</li>
                     </a>
                     <a href="<?php echo $websiteUrl?>/blog" title="blog">
-                        <li><i class="bi-chevron-right"></i>Blog</li>
+                        <li><i class="bi-chevron-right"></i>Blog & Articles</li>
                     </a>
                     <a href="<?php echo $websiteUrl?>/" title="Admission Processin">
                         <li><i class="bi-chevron-right"></i>Admission Processing</li>

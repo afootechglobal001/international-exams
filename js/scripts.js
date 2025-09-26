@@ -286,7 +286,7 @@ function _getAgentModal() {
   _showCustomConfirm({
     title: "Become an Agent",
     message:
-      "Join our Agent Program and enjoy massive discounts. Please log in if you already have an account or sign up to get started.",
+      "Become an agent and enjoy massive discounts. Please log in if you already have an account or sign up to get started.",
     alertType: "info",
     trueActionBtnText: "Login",
     falseActionBtn: true,

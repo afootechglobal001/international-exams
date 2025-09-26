@@ -85,16 +85,20 @@
             </div>
 
             <div class="div">
-                <li onclick="_openLi('exams')"><i class="bi-journals"></i> International Exams<i class="bi-plus" id="side-expand"></i></li>
-                <div class="sub-li" id="exams-sub-li">
-                    <script>_fetchMobileExams();</script>
+                <li onclick="_openLi('studyAbroad')"><i class="bi-journals"></i> Study Abroad<i class="bi-plus" id="side-expand"></i></li>
+                <div class="sub-li" id="studyAbroad-sub-li">
+                    <script>
+                        _fetchMobileStudyAbroad();
+                    </script>
                 </div>
             </div>
 
             <div class="div">
-                <li onclick="_openLi('studyAbroad')"><i class="bi-journals"></i> Study Abroad<i class="bi-plus" id="side-expand"></i></li>
-                <div class="sub-li" id="studyAbroad-sub-li">
-                    <script>_fetchMobileStudyAbroad();</script>
+                <li onclick="_openLi('exams')"><i class="bi-journals"></i> International Exams<i class="bi-plus" id="side-expand"></i></li>
+                <div class="sub-li" id="exams-sub-li">
+                    <script>
+                        _fetchMobileExams();
+                    </script>
                 </div>
             </div>
 
@@ -106,10 +110,11 @@
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl; ?>/free-ebook" title="Free-Ebook">
-                    <li <?php if ($page == 'free-ebook') { ?> id="active-li" <?php } ?>><i class="bi-filetype-pdf"></i> Free-Ebook
-                    </li>
-                </a>
+                <li onclick="_openLi('training')"><i class="bi-mortarboard"></i> Lectures & Training<i class="bi-plus" id="side-expand"></i></li>
+                <div class="sub-li" id="training-sub-li">
+                    <li onclick="_getForm({page: 'makeEnquiryForm', url: siteMiddlewareUrl});">PHYSICAL LECTURES</li>
+                    <li onclick="_getForm({page: 'makeEnquiryForm', url: siteMiddlewareUrl});">ONLINE LECTURES</li>
+                </div>
             </div>
 
             <div class="div">
@@ -122,6 +127,13 @@
                 <a href="<?php echo $websiteUrl; ?>/contact-us" title="Blog">
                     <li <?php if ($page == 'contact-us') { ?> id="active-li" <?php } ?>><i class="bi-headset"></i> Contact
                         Us</li>
+                </a>
+            </div>
+
+            <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/free-ebook" title="Free-Ebook">
+                    <li <?php if ($page == 'free-ebook') { ?> id="active-li" <?php } ?>><i class="bi-filetype-pdf"></i> Free-Ebook
+                    </li>
                 </a>
             </div>
 
@@ -142,7 +154,9 @@
             <div class="div">
                 <li onclick="_openLi('courses')"><i class="bi-mortarboard-fill"></i> ICT Courses<i class="bi-plus" id="side-expand"></i></li>
                 <div class="sub-li" id="courses-sub-li">
-                    <script>_fetchMobileIctCourses();</script>
+                    <script>
+                        _fetchMobileIctCourses();
+                    </script>
                 </div>
             </div>
 

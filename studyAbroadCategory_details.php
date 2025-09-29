@@ -6,17 +6,17 @@
 <head>
     <?php include 'meta.php'?>
     <title><?php echo $pageTitle?> - <?php echo $appName?></title>
-    <meta name="description" content="<?php echo $seoKeywords?>" />
+    <meta name="description" content="<?php echo $seoDescription?>" />
     <meta name="keywords" content="<?php echo $seoKeywords?>" />
 
     <meta property="og:title" content="<?php echo $appName?> - <?php echo $pageTitle?>" />
     <meta property="og:image" content="<?php echo $websiteUrl?>/uploaded_files/seoFlyer/<?php echo $pageSeoPix?>" />
-    <meta property="og:description" content="<?php echo $seoKeywords?>" />
+    <meta property="og:description" content="<?php echo $seoDescription?>" />
 
-    <meta name="twitter:title" content=" <?php echo $appName?> - <?php echo $pageSeoPix?>" />
+    <meta name="twitter:title" content="<?php echo $appName?> - <?php echo $pageTitle?>" />
     <meta name="twitter:card" content="<?php echo $appName?>" />
     <meta name="twitter:image" content="<?php echo $websiteUrl?>/uploaded_files/seoFlyer/<?php echo $pageSeoPix?>" />
-    <meta name="twitter:description" content="<?php echo $seoKeywords?>" />
+    <meta name="twitter:description" content="<?php echo $seoDescription?>" />
 </head>
 
 <body>

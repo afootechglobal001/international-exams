@@ -93,7 +93,8 @@
 
                             <ul class="animated fadeIn" id="fetchHeaderStudyAbroad">
                             <a href="<?php echo $websiteUrl ?>/exam-registration" title="REGISTER FOR EXAMS"><li>REGISTER FOR EXAMS</li></a>
-                            <li>ADMISSION PROCESSING</li>
+                            <a href="<?php echo $websiteUrl ?>/admission-processing" title="ADMISSION PROCESSING">
+                            <li>ADMISSION PROCESSING</li></a>
                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="E-Books">
                             <li>FREE EBOOKS</li></a>
                                 <script>

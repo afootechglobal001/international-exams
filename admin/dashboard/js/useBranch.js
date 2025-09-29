@@ -833,9 +833,11 @@ function _addExamPricing() {
     let issueCount = 0;
     const examId = $("#publishId").val();
     const amount = $("#amount").val();
+    const physicalLectureAmount = $("#physicalLectureAmount").val();
+    const onlineLectureAmount = $("#onlineLectureAmount").val();
 
-    $("#publishId, #amount").removeClass("issue");
-    $("#issue_publishId, #issue_amount").html("");
+    $("#publishId, #amount, #physicalLectureAmount, #onlineLectureAmount").removeClass("issue");
+    $("#issue_publishId, #issue_amount, #issue_physicalLectureAmount, #issue_onlineLectureAmount").html("");
 
     if (!examId) {
       $("#publishId").addClass("issue");
@@ -851,9 +853,25 @@ function _addExamPricing() {
       issueCount++;
     }
 
+    if (!physicalLectureAmount) {
+      $("#physicalLectureAmount").addClass("issue");
+      $("#issue_physicalLectureAmount").html(
+        "USER ERROR! Kindly Provide Physical Lecture Price to continue"
+      );
+      issueCount++;
+    }
+
+    if (!onlineLectureAmount) {
+      $("#onlineLectureAmount").addClass("issue");
+      $("#issue_onlineLectureAmount").html(
+        "USER ERROR! Kindly Provide Physical Lecture Price to continue"
+      );
+      issueCount++;
+    }
+
     if (issueCount > 0) return;
 
-    const form = { examId, amount };
+    const form = { examId, amount, physicalLectureAmount, onlineLectureAmount };
     _showCustomConfirm({
       callback: () => {
         _addExamPricingCallback(form);
@@ -891,6 +909,8 @@ function _addExamPricingCallback(form) {
   const formData = {
     examId: form.examId,
     amount: form.amount,
+    physicalLectureAmount: form.physicalLectureAmount,
+    onlineLectureAmount: form.onlineLectureAmount,
   };
 
   $.ajax({

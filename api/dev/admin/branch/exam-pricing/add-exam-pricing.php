@@ -21,12 +21,15 @@
     $currency=trim($_GET['currency']);
     $examId=trim($data['examId']);
     $amount=trim($data['amount']);
+    $physicalLectureAmount=trim($data['physicalLectureAmount']);
+    $onlineLectureAmount=trim($data['onlineLectureAmount']);
 
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($countryId, 'COUNTRY ID');
     validateEmptyField($currency, 'CURRENCY');
     validateEmptyField($examId, 'EXAM');
-    validateEmptyField($amount, 'EXAM PRICE');
+    validateEmptyField($physicalLectureAmount, 'PHYSICAL LECTURE PRICE');
+    validateEmptyField($onlineLectureAmount, 'ONLINE LECTURE PRICE');
 
     $examNameQuery=mysqli_query($conn,"SELECT examId FROM BRANCH_EXAM_PRICING_TAB WHERE countryId='$countryId' AND examId='$examId'") or die (mysqli_error($conn));
     $examNameCountQuery=mysqli_num_rows($examNameQuery);
@@ -48,8 +51,8 @@
 		$examAbbr=$fetchExamQuery['examAbbr'];
 
         mysqli_query($conn,"INSERT INTO `BRANCH_EXAM_PRICING_TAB`
-        (`countryId`, `examId`, `examAbbr`, `currency`, `amount`, `createdBy`, `createdTime`) VALUES
-        ('$countryId', '$examId', '$examAbbr', '$currency', '$amount', '$loginStaffId', NOW())")or die (mysqli_error($conn));
+        (`countryId`, `examId`, `examAbbr`, `currency`, `amount`, `physicalLectureAmount`, `onlineLectureAmount`, `createdBy`, `createdTime`) VALUES
+        ('$countryId', '$examId', '$examAbbr', '$currency', '$amount', '$physicalLectureAmount', '$onlineLectureAmount', '$loginStaffId', NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response'=> 200,

@@ -5,18 +5,18 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> - <?php echo $pageTitle ?></title>
-    <meta name="description" content="<?php echo $seoKeywords ?>" />
-    <meta name="keywords" content="<?php echo $seoKeywords ?>" />
+    <title><?php echo $pageTitle?> - <?php echo $appName?></title>
+    <meta name="description" content="<?php echo $seoDescription?>" />
+    <meta name="keywords" content="<?php echo $seoKeywords?>" />
 
-    <meta property="og:title" content="<?php echo $appName ?> - <?php echo $pageTitle ?>" />
-    <meta property="og:image" content="<?php echo $websiteUrl ?>/uploaded_files/seoFlyer/<?php echo $pageSeoPix ?>" />
-    <meta property="og:description" content="<?php echo $seoKeywords ?>" />
+    <meta property="og:title" content="<?php echo $appName?> - <?php echo $pageTitle?>" />
+    <meta property="og:image" content="<?php echo $websiteUrl?>/uploaded_files/seoFlyer/<?php echo $pageSeoPix?>" />
+    <meta property="og:description" content="<?php echo $seoDescription?>" />
 
-    <meta name="twitter:title" content=" <?php echo $appName ?> - <?php echo $pageSeoPix ?>" />
-    <meta name="twitter:card" content="<?php echo $appName ?>" />
-    <meta name="twitter:image" content="<?php echo $websiteUrl ?>/uploaded_files/seoFlyer/<?php echo $pageSeoPix ?>" />
-    <meta name="twitter:description" content="<?php echo $seoKeywords ?>" />
+    <meta name="twitter:title" content="<?php echo $appName?> - <?php echo $pageTitle?>" />
+    <meta name="twitter:card" content="<?php echo $appName?>" />
+    <meta name="twitter:image" content="<?php echo $websiteUrl?>/uploaded_files/seoFlyer/<?php echo $pageSeoPix?>" />
+    <meta name="twitter:description" content="<?php echo $seoDescription?>" />
 </head>
 
 <body>
@@ -96,6 +96,31 @@
                     </div>
 
                     <div class="right-div sticky-div">
+                        <div class="div-in" id="pricingContainer">
+                            <h3>PAYMENT & PRICING</h3>
+                            
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    EXAM REGISTRATION FEES
+                                    <div><span id="amount">Loading...</span></div>
+                                </div>
+                            </div>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    PHYSICAL LECTURE (A MONTH)
+                                    <div><span id="physicalLectureAmount">Loading...</span></div>
+                                </div>
+                            </div>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    ONLINE LECTURE FEES (A MONTH)
+                                    <div><span id="onlineLectureAmount">Loading...</span></div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="div-in">
                             <h3>INCENTIVES</h3>
 

@@ -115,7 +115,7 @@
 
                             <div class="pricing-back-div">
                                 <div class="title">
-                                    ONLINE LECTURE FEES (A MONTH)
+                                    ONLINE LECTURE (A MONTH)
                                     <div><span id="onlineLectureAmount">Loading...</span></div>
                                 </div>
                             </div>

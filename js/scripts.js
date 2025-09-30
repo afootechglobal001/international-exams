@@ -292,3 +292,53 @@ function _diplaySuccess(){
       trueActionBtnText: "Okay, Thanks",
   });
 }
+
+
+
+function _fetchPagesPaymentPricingData() {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/payment-pricing/fetch-payment-pricing?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId}`,
+    })
+      .then((response) => {
+        if (response.success && response.data?.length > 0) {
+          _initFetchPagePaymentPricingData(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function _initFetchPagePaymentPricingData(data) {
+  let content = `
+    <div class="details-div">
+      <div>Exam Type</div>
+      <span>Registration Fees (#)</span>
+    </div>
+  `;
+
+  content += data
+    .map((item) => {
+      return `
+        <div class="details-div">
+          <div>${item.examAbbr}</div>
+          <span>${
+            item.currency === "USD"
+              ? "$" + thousandSeperator(item.amount)
+              : "<s>N</s>" + thousandSeperator(item.amount)
+          }</span>
+        </div>
+      `;
+    })
+    .join("");
+
+  $("#fetchPagesPaymentPricing").html(content);
+}

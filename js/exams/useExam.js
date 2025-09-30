@@ -69,6 +69,9 @@ function _initFetchExamData(data) {
 }
 
 function _fetchEachSiteExam(publishId) {
+   // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
   let pageSession = JSON.parse(sessionStorage.getItem("pageSession"));
   if (pageSession == null) {
     _getPageSessionValue("reload");
@@ -76,7 +79,7 @@ function _fetchEachSiteExam(publishId) {
     try {
       //// call endpoint //////
       _callFetchEndPoints({
-        url: `site/exams/fetch-each-exam?publishId=${publishId}&pageSession=${pageSession}`,
+        url: `site/exams/fetch-each-exam?publishId=${publishId}&pageSession=${pageSession}&countryId=${countryId}`,
       })
         .then((response) => {
           if (response.success && response.data) {
@@ -102,8 +105,26 @@ function _fetchEachSiteExam(publishId) {
             $("#fullName").html(fullName);
             $("#pageView").html(pageView);
             $("#updatedTime").html(updatedTime);
+            $("#amount").html(amount);
+            $("#physicalLectureAmount").html(physicalLectureAmount);
+            $("#onlineLectureAmount").html(onlineLectureAmount);
             $("#examFetchPix").attr("src", basePath + "/" + regPix);
             $("#examTitleLink").attr("href", websiteUrl + "/" + pageUrl);
+
+            ////// Handle Pricing //////
+            if (data.pricingData && data.pricingData.amount &&  data.pricingData.currency) {
+              const { amount, physicalLectureAmount, onlineLectureAmount, currency } = data.pricingData;
+
+              $("#amount").html(currency === "USD" ? "$" + thousandSeperator(amount) : "<s>N</s>" + thousandSeperator(amount));
+
+              $("#physicalLectureAmount").html(currency === "USD" ? "$" + thousandSeperator(physicalLectureAmount) : "<s>N</s>" + thousandSeperator(physicalLectureAmount));
+
+              $("#onlineLectureAmount").html(currency === "USD" ? "$" + thousandSeperator(onlineLectureAmount) : "<s>N</s>" + thousandSeperator(onlineLectureAmount));
+
+              $("#pricingContainer").css("display", "flex");
+            } else {
+              $("#pricingContainer").hide();
+            }
 
             if ((!parentPublishId || parentPublishId === "0") && incentives) {
               const $temp = $("<div>").html(incentives);

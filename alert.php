@@ -103,6 +103,13 @@
             </div>
 
             <div class="div">
+                <a href="<?php echo $websiteUrl; ?>/free-ebook" title="Video Tutorial">
+                    <li <?php if ($page == 'free-ebook') { ?> id="active-li" <?php } ?>><i class="bi-file-earmark-play-fill"></i> Video Tutorial
+                    </li>
+                </a>
+            </div>
+
+            <div class="div">
                 <a href="<?php echo $websiteUrl; ?>/payment-pricing" title="Payment Plans">
                     <li <?php if ($page == 'payment-pricing') { ?> id="active-li" <?php } ?>><i class="bi-credit-card"></i> Payment Plans
                     </li>

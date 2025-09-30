@@ -8,6 +8,7 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
+    $countryId = $_GET['countryId'];
     $publishId = $_GET['publishId'];
     $pageSession = $_GET['pageSession'];
 
@@ -37,12 +38,12 @@
         b.seoDescription,
         b.pageUrl,
         b.pageContent
-        FROM PUBLISH_TAB a
-        JOIN PAGES_TAB b
-            ON a.publishId= b.publishId
-            AND a.statusId =1
-        AND a.publishId ='$publishId'  
-    ";
+    FROM PUBLISH_TAB a
+    JOIN PAGES_TAB b
+        ON a.publishId = b.publishId
+    WHERE a.statusId = 1
+      AND a.publishId = '$publishId'";
+
 
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);
@@ -103,6 +104,19 @@
             $updatedByData = $getUpdatedByfetch;
         }
         $fetchQuery['updatedBy'] = $updatedByData;
+
+        // Fetch Pricing for this exam
+        $pricingData = array();
+        $getPricingQuery = mysqli_query($conn,
+            "SELECT countryId, examId, amount, currency, physicalLectureAmount, onlineLectureAmount
+            FROM BRANCH_EXAM_PRICING_TAB 
+            WHERE examId = '$publishId' 
+            AND countryId = '$countryId'"
+        );
+        while ($getPricingFetch = mysqli_fetch_assoc($getPricingQuery)) {
+            $pricingData = $getPricingFetch;
+        }
+        $fetchQuery['pricingData'] = $pricingData;
 
         $response['data'] = $fetchQuery;
     }

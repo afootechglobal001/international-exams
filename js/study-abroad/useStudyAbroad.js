@@ -189,3 +189,31 @@ function _initFetchMobileStudyAbroad(data) {
     `).join("");
     $('#studyAbroad-sub-li').html(content);
 }
+
+function _fetchAdmissionPgStudyAbroad() {
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `site/study-abroad/fetch-study-abroad?pageCategoryId=${pageCategory?.studyAbroadCategory}`,
+		})
+		.then((response) => {
+			if (response.success && response.data?.length > 0) {
+                _initFetchAdmissionPgStudyAbroad(response.data);
+			}
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+		});
+	} catch (error) {
+		console.error("Error:", error);
+  	}
+}
+
+function _initFetchAdmissionPgStudyAbroad(data) {
+  	const content = data.map((item) => `
+	<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+	<div class="details-div cursor-div">
+		<div>${item.regTitle}</div>
+	</div></a>`).join("");
+    $('#fetchAdmissionPgStudyAbroad').append(content);
+}

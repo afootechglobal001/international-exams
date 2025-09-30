@@ -958,6 +958,28 @@
                             </script>
                         </div>
 
+                        <div class="text_field_container" id="physicalLectureAmount_container">
+                            <script>
+                                textField({
+                                    id: 'physicalLectureAmount',
+                                    title: 'Physical Lecture Price',
+                                    type: 'number',
+                                    onKeyPressFunction: 'isNumberCheck(event);'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_field_container" id="onlineLectureAmount_container">
+                            <script>
+                                textField({
+                                    id: 'onlineLectureAmount',
+                                    title: 'Online Lecture Price',
+                                    type: 'number',
+                                    onKeyPressFunction: 'isNumberCheck(event);'
+                                });
+                            </script>
+                        </div>
+
                     </div>
                 </div>
 

@@ -3279,6 +3279,35 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   justify-content: center;
 }
 
+.page-back-div .left-div .table-page-list-back-div {
+  gap: 30px;
+}
+
+.page-back-div .left-div .table-page-list-back-div .btn-div{
+  display: flex;
+  align-self: flex-start;
+}
+
+.page-back-div .left-div .table-page-list-back-div .btn-div .btn{
+  border: none;
+  background: var(--primary-color);
+  border-radius: 25px;
+  font-family: sub-title-font;
+  padding: 0px 25px;
+  height: 45px;
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.page-back-div .left-div .table-page-list-back-div .btn-div .btn:hover{
+ opacity: .9;
+}
+
 .page-back-div .right-div {
   width: 340px;
   float: right;
@@ -4646,6 +4675,11 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   color: var(--primary-color);
 }
 
+.tables-content-div .content-title .title h3{
+	font-size: 15px;
+	font-family: sub-title-font;
+}
+
 .tables-content-div .content-title .btn {
 	display: flex;
 	justify-content: center;
@@ -4677,7 +4711,6 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 	font-size: 13px;
 	font-family: sub-title-font;
 }
-
 
 
 .book-back-div {
@@ -5227,4 +5260,62 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   width: 100%;
    font-size: 12px;
   }
+}
+
+
+
+.other-main-content {
+	display: flex;
+  width: 100%;
+  padding: 0px;
+}
+
+
+.table-div{
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	background: var(--white-color);
+	overflow: auto;
+	border: #e7ecec 1px solid;
+	border-radius: 10px;
+}
+
+.table-div .table {
+	width: 100%;
+	font-size: 12px;
+	min-width: 500px;
+	border-collapse: collapse;
+}
+
+.table-div .table .tb-col{
+background: rgba(204, 204, 204, .2);
+	height: 55px;
+  text-align: left;
+  border-bottom: 1px solid rgba(215, 215, 215, .6);
+	color: var(--sub-body-color);
+}
+
+.table-div .table .tb-col th {
+  padding: 10px 20px;
+	font-family: sub-title-font;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.table-div .table .tb-row {
+  height: 60px;
+	font-size: 15px;
+	color: var(--text-color);
+  border-bottom: 1px solid rgba(215, 215, 215, .6);
+	transition:all 0.2s ease-in 0.2s;
+}
+
+.table-div .table .tb-row:hover {
+	background: rgba(215, 215, 215, .3);
+}
+
+.table-div .table td {
+  padding: 10px 20px; 
+	font-family: body-font;
 }

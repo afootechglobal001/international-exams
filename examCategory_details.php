@@ -46,7 +46,10 @@
                 <div class="main-content-back-div">
                     <div class="text-content-div blog-details-div">
                         <h1 id="regTitle">Loading...</h1>
-                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong> </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i> VIEWS: <span><strong id="pageView">Loading..</strong></span> </div>
+                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong>
+                            </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong
+                                    id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i>
+                            VIEWS: <span><strong id="pageView">Loading..</strong></span> </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
@@ -62,14 +65,16 @@
                         <div class="page-list-back-div">
                             <div class="main-picture-back-div">
                                 <div class="main-picture-div" id="examPreviewPix">
-                                    <img id="examFetchPix" src="<?php echo $websiteUrl ?>/uploaded_files/examPicture/default.jpg" alt="International Exam" />
+                                    <img id="examFetchPix"
+                                        src="<?php echo $websiteUrl ?>/uploaded_files/examPicture/default.jpg"
+                                        alt="International Exam" />
                                 </div>
 
                                 <div class="bottom-img-div">
                                     <div class="inner-img-container">
                                         <div class="inner-img-div" id="fetchPagePictures">
                                             <script>
-                                                _fetchPagesPictureData('<?php echo $publishId ?>', 'examPreviewPix');
+                                            _fetchPagesPictureData('<?php echo $publishId ?>', 'examPreviewPix');
                                             </script>
                                         </div>
                                     </div>
@@ -79,26 +84,13 @@
                             </div>
 
                             <div class="main-pages-content-div" id="pageContent"></div>
-
-                            <div class="comment-back-div">
-                                <div id="disqus_thread"></div>
-                                <script>
-                                    (function() { // DON'T EDIT BELOW THIS LINE
-                                        var d = document,
-                                            s = d.createElement('script');
-                                        s.src = 'https://1stculturetour-com.disqus.com/embed.js';
-                                        s.setAttribute('data-timestamp', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                    })();
-                                </script>
-                            </div>
                         </div>
                     </div>
 
                     <div class="right-div sticky-div">
                         <div class="div-in" id="pricingContainer">
                             <h3>PAYMENT & PRICING</h3>
-                            
+
                             <div class="pricing-back-div">
                                 <div class="title">
                                     EXAM REGISTRATION FEES
@@ -132,7 +124,7 @@
                 </div>
             </div>
             <script>
-                _fetchEachSiteExam('<?php echo $publishId ?>')
+            _fetchEachSiteExam('<?php echo $publishId ?>')
             </script>
         </section>
 

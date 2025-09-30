@@ -5,7 +5,7 @@
 
 <head>
     <?php include '../../meta.php'?>
-   <title><?php echo $pageTitle?> - <?php echo $appName?></title>
+    <title><?php echo $pageTitle?> - <?php echo $appName?></title>
     <meta name="description" content="<?php echo $seoDescription?>" />
     <meta name="keywords" content="<?php echo $seoKeywords?>" />
 
@@ -39,7 +39,8 @@
                         </li>
 
                         <a id="blogTitleLink" href="#">
-                        <li id="regTopTitle" title="Blog Title"> Loading...</li></a>
+                            <li id="regTopTitle" title="Blog Title"> Loading...</li>
+                        </a>
                     </ul>
                 </nav>
             </div>
@@ -48,7 +49,10 @@
                 <div class="main-content-back-div">
                     <div class="text-content-div">
                         <h1 id="regTitle">Loading...</h1>
-                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong> </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i> VIEWS: <span><strong id="blogView">Loading..</strong></span> </div>
+                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong>
+                            </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong
+                                    id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i>
+                            VIEWS: <span><strong id="blogView">Loading..</strong></span> </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
@@ -62,50 +66,45 @@
                 <div class="page-back-div">
                     <div class="left-div">
                         <div class="page-list-back-div">
-                            <div class="main-picture-back-div">	
+                            <div class="main-picture-back-div">
                                 <div class="main-picture-div" id="blogPreviewPix">
-                                    <img id="blogFetchPix" src="<?php echo $websiteUrl?>/uploaded_files/blog/default.jpg" alt="Blog"/> 
-                                </div>   
+                                    <img id="blogFetchPix"
+                                        src="<?php echo $websiteUrl?>/uploaded_files/blog/default.jpg" alt="Blog" />
+                                </div>
 
                                 <div class="bottom-img-div">
-                                    <div class="inner-img-container"> 
+                                    <div class="inner-img-container">
                                         <div class="inner-img-div" id="fetchPagePictures">
-                                            <script>_fetchPagesPictureData('<?php echo $publishId?>','blogPreviewPix');</script>
+                                            <script>
+                                            _fetchPagesPictureData('<?php echo $publishId?>', 'blogPreviewPix');
+                                            </script>
                                         </div>
                                     </div>
                                     <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
                                     <button class="right-click-btn"> <i class="bi-chevron-double-right"></i></button>
-                                </div>                                   
-                            </div>                         
-                        
-                            <div class="main-pages-content-div" id="pageContentInfo"></div>
+                                </div>
+                            </div>
 
-                            <div class="comment-back-div">
-                                <div id="disqus_thread"></div>
+                            <div class="main-pages-content-div" id="pageContentInfo"></div>
+                        </div>
+                    </div>
+
+                    <div class="right-div sticky-div">
+                        <div class="div-in">
+                            <h3>RECENT BLOG</h3>
+
+                            <div class="related-post-back-div" id="relatedPageBlogContent">
                                 <script>
-                                    (function() { // DON'T EDIT BELOW THIS LINE
-                                    var d = document, s = d.createElement('script');
-                                    s.src = 'https://1stculturetour-com.disqus.com/embed.js';
-                                    s.setAttribute('data-timestamp', +new Date());
-                                    (d.head || d.body).appendChild(s);
-                                    })();
+                                _fetchPageRelatedBlogData();
                                 </script>
                             </div>
                         </div>
                     </div>
-
-                    <div class="right-div sticky-div">   
-                        <div class="div-in">
-                            <h3>RECENT BLOG</h3>
-                            
-                            <div class="related-post-back-div" id="relatedPageBlogContent">                                                              
-                                <script>_fetchPageRelatedBlogData();</script>                   
-                            </div>
-                        </div>
-                    </div>                     
                 </div>
             </div>
-            <script>_fetchEachSiteBlog('<?php echo $publishId?>');</script>
+            <script>
+            _fetchEachSiteBlog('<?php echo $publishId?>');
+            </script>
         </section>
 
         <?php include '../../footer.php' ?>

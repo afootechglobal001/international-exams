@@ -108,14 +108,14 @@
 
                             <div class="pricing-back-div">
                                 <div class="title">
-                                    PHYSICAL LECTURE (A MONTH)
+                                    PHYSICAL LECTURES (A MONTH)
                                     <div><span id="physicalLectureAmount">Loading...</span></div>
                                 </div>
                             </div>
 
                             <div class="pricing-back-div">
                                 <div class="title">
-                                    ONLINE LECTURE (A MONTH)
+                                    ONLINE LECTURES (A MONTH)
                                     <div><span id="onlineLectureAmount">Loading...</span></div>
                                 </div>
                             </div>

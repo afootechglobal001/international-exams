@@ -95,3 +95,95 @@ function _getApplyExamModal() {
       (window.location.href = `${websiteUrl}/portal/sign-up`),
   });
 }
+
+function _fetchTablePaymentPricingData() {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/payment-pricing/fetch-payment-pricing?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId}`,
+    })
+      .then((response) => {
+        if (response.success && response.data?.length > 0) {
+          _initFetchTablePaymentPricingData(response.data);
+          _initFetchTableLecturePricingData(response.data);
+        } else {
+          $("#fetchTablePaymentPricingData").html(`
+					<div class="false-notification-div">
+						<p>${response.message}</p>
+					</div>
+				`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function _initFetchTablePaymentPricingData(data, start = 0) {
+  const content = data
+    .map(
+      (item, i) => `
+      <tr class="tb-row">
+        <td>${start + i + 1}</td>
+        <td>${item.examAbbr}</td>
+        <td>${item.currency === "USD" ? "$" + thousandSeperator(item.amount) : "<s>N</s>" + thousandSeperator(item.amount)}</td>
+      </tr>`
+    )
+    .join("");
+
+  $("#fetchTablePaymentPricingData").html(content);
+}
+
+function _initFetchTableLecturePricingData(data, start = 0) {
+  const content = data
+    .map(
+      (item, i) => `
+      <tr class="tb-row">
+        <td>${start + i + 1}</td>
+        <td>${item.examAbbr}</td>
+        <td>${item.currency === "USD" ? "$" + thousandSeperator(item.physicalLectureAmount) : "<s>N</s>" + thousandSeperator(item.physicalLectureAmount)}</td>
+        <td>${item.currency === "USD" ? "$" + thousandSeperator(item.onlineLectureAmount) : "<s>N</s>" + thousandSeperator(item.onlineLectureAmount)}</td>
+      </tr>`
+    )
+    .join("");
+
+  $("#fetchTableLecturePricingData").html(content);
+}
+
+function _fetchAccountDetails() {
+   // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `site/payment-pricing/fetch-payment-pricing?pageCategoryId=${pageCategory?.examCategory}&countryId=${countryId}`,
+    })
+      .then((response) => {
+        if (response.success && response.data) {
+          const data = response.data[0];
+console.log(data);
+          ////// Handle Account Details //////
+          const accountName = data?.accountData?.accountName;
+          const accountNumber = data?.accountData?.accountNumber;
+          const bankName = data?.accountData?.bankName;
+          
+
+          $("#accountName").html(accountName);
+          $("#accountNumber").html(accountNumber);
+          $("#bankName").html(bankName);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}

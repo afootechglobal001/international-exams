@@ -33,10 +33,8 @@
                                 Home <i class="bi bi-caret-right-fill"></i>
                             </a>
                         </li>
-                        <li title="Study Abroad">
-                            <a href="<?php echo $websiteUrl ?>/study-abroad">
-                                Payment Pricing
-                            </a>
+                        <li title="Exams & Lectures Payment">
+                            Exams & Lectures Payment
                         </li>
                     </ul>
                 </nav>
@@ -46,15 +44,15 @@
                 <div class="main-content-back-div">
 
                     <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
-                        <h1>Payment & Pricing</h1>
+                        <h1>Exams & Lectures Payment</h1>
                         <p>
-                            At EDUGRADE SERVICES, we provide transparent and flexible payment options for our consultancy services. 
-                            Our pricing is designed to be affordable while covering the full process — from application guidance 
-                            to securing admission and visa support. Explore our plans and choose the one that best fits your 
+                            At EDUGRADE SERVICES, we provide transparent and flexible payment options for our consultancy services.
+                            Our pricing is designed to be affordable while covering the full process — from application guidance
+                            to securing admission and visa support. Explore our plans and choose the one that best fits your
                             study abroad journey.
                         </p>
 
-                        <?php $callclass->_pagesButtons($websiteUrl);?>
+                        <?php $callclass->_pagesButtons($websiteUrl); ?>
                     </div>
 
                     <div class="image-div">
@@ -67,7 +65,7 @@
     </div>
 
     <section class="other-pages-main-section">
-       <section class="body-div net-bg-br">
+        <section class="body-div net-bg-br">
             <div class="body-div-in">
                 <div class="inner-body-div-in">
                     <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
@@ -84,7 +82,9 @@
                     </div>
 
                     <div class="our-exam-back-div pricing-back-div" id="pageContent">
-                        <script>_fetchPaymentPricingData();</script>
+                        <script>
+                            _fetchPaymentPricingData();
+                        </script>
 
                         <div class="content-loading-div">
                             <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
@@ -94,7 +94,138 @@
             </div>
         </section>
 
+        <section class="body-div net-bg-tr">
+            <div class="body-div-in">
+                <div class="page-back-div">
+                    <div class="left-div">
+                        <div class="page-list-back-div table-page-list-back-div">
+                            <div class="main-content-div other-main-content" data-aos="fade-in" data-aos-duration="1500">
+                                <div class="tables-content-div">
+                                    <div class="content-title">
+                                        <div class="title">
+                                            <i class="bi bi-journal"></i>
+                                            <h3>EXAM PRICE DETAILS</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="inner-table-content">
+                                        <div class="table-div animated fadeIn">
+                                            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                                                <thead>
+                                                    <tr class="tb-col">
+                                                        <th>sn</th>
+                                                        <th>Exam Type</th>
+                                                        <th>Registration Fee</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="fetchTablePaymentPricingData">
+                                                    <script>
+                                                        _fetchTablePaymentPricingData();
+                                                    </script>
+                                                    <tr>
+                                                        <td colspan="8">
+                                                            <div class="content-loading-div">
+                                                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn-div">
+                                <a href="<?php echo $websiteUrl ?>/exam-registration" title="CLICK HERE TO MAKE PAYMENT ONLINE">
+                                <button class="btn">CLICK HERE TO MAKE PAYMENT ONLINE<i class="bi bi-check-circle"></i></button></a>
+                            </div>
+
+                            <div class="main-content-div other-main-content" data-aos="fade-in" data-aos-duration="1500">
+                                <div class="tables-content-div">
+                                    <div class="content-title">
+                                        <div class="title">
+                                            <i class="bi bi-journal"></i>
+                                            <h3>LECTURES PRICE DETAILS</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="inner-table-content">
+                                        <div class="table-div animated fadeIn">
+                                            <table class="table" cellspacing="0" style="width:100%" id="pageContent">
+                                                <thead>
+                                                    <tr class="tb-col">
+                                                        <th>sn</th>
+                                                        <th>Exam Type</th>
+                                                        <th>Physical Lecture Fee</th>
+                                                        <th>Online Lecture Fee</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="fetchTableLecturePricingData">
+                                                    <tr>
+                                                        <td colspan="8">
+                                                            <div class="content-loading-div">
+                                                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div class="right-div sticky-div">
+                        <div class="div-in">
+                            <h3>COMPANY ACCOUNT DETAILS</h3>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    ACCOUNT NUMBER
+                                    <div><span id="accountNumber">Loading...</span></div>
+                                </div>
+                            </div>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    BANK NAME
+                                    <div><span id="bankName">Loading...</span></div>
+                                </div>
+                            </div>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    ACCOUNT NAME
+                                    <div><span id="accountName">Loading...</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="div-in">
+                            <h3>INCENTIVES</h3>
+
+                            <div class="related-post-back-div pages-inner-content">
+                                <p>- Premium Online Lectures</p>
+                                <p>- Free e-books</p>
+                                <p>- Textbook (Hard Copy)</p>
+                                <p>- Magoosh Premium Account</p>
+                                <p>- Past questions</p>
+                                <p>- Test Simulations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <script>_fetchAccountDetails();</script>
+                </div>
+            </div>
+        </section>
+
         <?php include 'footer.php' ?>
     </section>
 </body>
+
 </html>

@@ -22,6 +22,8 @@
         b.countryId,
         b.examId,
         b.amount,
+        b.physicalLectureAmount,
+        b.onlineLectureAmount,
         b.currency
         FROM PUBLISH_TAB a
         JOIN BRANCH_EXAM_PRICING_TAB b ON a.publishId = b.examId
@@ -50,6 +52,20 @@
 
     while ($fetchQuery = mysqli_fetch_assoc($query)) {
         $publishId=$fetchQuery['publishId'];
+        $countryId=$fetchQuery['countryId'];
+
+        // Fetch Account Details
+        $accountData = array();
+        $getAccountQuery = mysqli_query($conn,
+            "SELECT countryId, accountName, accountNumber, bankName
+            FROM COUNTRY_TAB 
+            WHERE countryId = '$countryId'"
+        );
+        while ($getAccountFetch = mysqli_fetch_assoc($getAccountQuery)) {
+            $accountData = $getAccountFetch;
+        }
+        $fetchQuery['accountData'] = $accountData;
+
         $response['data'][]= $fetchQuery;
     }
 end:

@@ -3268,6 +3268,11 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   gap: 20px;
 }
 
+.page-back-div .full-container {
+  width: 100%;
+  float: none;
+}
+
 .page-back-div .other-pg-left-div {
   width: calc(100% - 380px);
 }
@@ -3924,6 +3929,40 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   width: 100%;
 }
 
+.main-pages-content-div .btn-div .btn{
+  color: var(--sub-body-color);
+  font-family: body-font;
+  text-align: justify;
+  padding: 20px 0px;
+  line-height: 30px;
+  width: 100%;
+}
+
+.main-pages-content-div .btn-div{
+  display: flex;
+  align-self: flex-start;
+}
+
+.main-pages-content-div .btn-div .btn{
+  border: none;
+  background: var(--primary-color);
+  border-radius: 25px;
+  font-family: sub-title-font;
+  padding: 0px 30px;
+  height: 45px;
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.main-pages-content-div .btn-div .btn:hover{
+ opacity: .9;
+}
+
 .comment-back-div {
   width: 100%;
   margin-top: 10px;
@@ -3945,6 +3984,10 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .main-pages-content-div ul{
     margin: 0px;
+}
+
+.main-pages-content-div .color{
+  color: var(--primary-color);
 }
 
 .main-pages-content-div .inner-div h2 {

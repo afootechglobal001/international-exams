@@ -37,7 +37,7 @@ function _initFetchVideoData(data) {
 				<i class="bi-play-fill"></i>
 			</div>
 
-      <div class="sub-overlay">
+      <div class="sub-overlay" onclick="_getSubscribeVideoModal();">
         <h3>Subscribe to watch this video</h3>
       </div>
 		</div>

@@ -76,6 +76,8 @@ var eBookPixPath = websiteUrl + '/uploaded_files/ebookPicture'; /// For E-Book P
 var ebookMaterialPath = websiteUrl + '/uploaded_files/ebookMaterial'; /// For E-Book Material Path
 var pagePicturePath = websiteUrl + '/uploaded_files/pagePictures'; /// For Pages Picture Path
 var ictCoursePixPath = websiteUrl + '/uploaded_files/IctCourses'; /// For Pages Picture Path
+var videoPixPath = websiteUrl + '/uploaded_files/video-images'; /// For video pix Path
+var videoPath = websiteUrl + '/uploaded_files/videos'; /// For videos Path
 
 
 var pageCategory = {

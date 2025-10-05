@@ -48,3 +48,4 @@
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useTestimony.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useSettings.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useIctCourses.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/admin/dashboard/js/useVideo.js?v=<?php echo $codeVersion?>"></script>

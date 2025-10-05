@@ -17,7 +17,7 @@ function _getActiveLink(divid, nav) {
 
 function _removeClass() {
   $(
-    "#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-ebook, #top-dashboard, #top-staff"
+    "#side-dashboard, #side-branch, #side-staff, #side-publish, #side-reports, #side-ebook, #side-videos, #top-dashboard, #top-staff"
   ).removeClass("active-li");
   $(
     "#mobile-dashboard,#mobile-branches,#mobile-staff,#mobile-reports"

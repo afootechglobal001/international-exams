@@ -441,7 +441,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                                 </div>
                             </div>
                         </div>
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/status_image.png" alt="About Us" />
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/status-image.png" alt="Our Status" />
                     </div>
                 </div>
             </div>

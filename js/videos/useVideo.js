@@ -28,7 +28,7 @@ function _initFetchVideoData(data) {
     const categoryContent = exam.categoryData.map((category) => {
       const videosHtml = category.videoData.map((video) => `
 		<div class="video-div">
-			<video class="video-slide" id="video_${video.videoId}" controls controlsList="nodownload"
+			<video class="video-slide" id="video_${video.videoId}" controls playsinline controlsList="nodownload"
 				poster="${videoPixPath}/${video.regPix}">
 				<source src="${videoPath}/${video.video}" type="video/mp4">
 			</video>
@@ -45,7 +45,7 @@ function _initFetchVideoData(data) {
 
       return `
         <div class="tables-content-div">
-          <div class="content-title">
+          <div class="content-title video-title">
             <div class="title">
               <i class="bi bi-play-circle-fill"></i>
               <p>${category.videoCatName} VIDEOS</p>

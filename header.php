@@ -21,7 +21,7 @@
                 </a>
                 <span class="hide-link"> |</span>
 
-                <a href="<?php echo $websiteUrl ?>/" class="hide-link" title="Video Tutorial">
+                <a href="<?php echo $websiteUrl ?>/video-tutorial" class="hide-link" title="Video Tutorial">
                     <i class="bi-file-earmark-play-fill"></i>
                     <span>Video Tutorial</span>
                 </a>

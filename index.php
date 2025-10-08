@@ -54,7 +54,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                             <a href="<?php echo $websiteUrl ?>/exam-registration" title="REGISTER FOR EXAMS">
                                 <button class="btn">REGISTER FOR EXAM <i class="bi-chevron-right"></i></button></a>
                             <button class="btn" title="MAKE ENQUIRES" onclick="_getForm({page: 'makeEnquiryForm', url: siteMiddlewareUrl});"> MAKE ENQUIRES <i class="bi-chat-text-fill"></i></button>
-                                <button class="btn" onclick="_getAgentModal();">BECOME AN AGENT<i class="bi-person"></i></button>
+                            <button class="btn" onclick="_getAgentModal();">BECOME AN AGENT<i class="bi-person"></i></button>
                             <a href="<?php echo $websiteUrl ?>/free-ebook" title="DOWNLOAD E-BOOKS">
                                 <button class="btn"> DOWNLOAD E-BOOKS <span class="span">IT'S FREE</span></button></a>
                         </div>
@@ -171,9 +171,14 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                         </div>
 
                         <div class="text-div">
-                            <h2>Affordable Test Registration Fee</h2>
-                            <p>Get test fee discounts! Promo on TOEFL, IELTS, PTE, SAT, ACT, GMAT & GRE. Register now!
+                            <h2>Lowest Test Registration Fee</h2>
+                            <p>We offer subsidized test fee when you registered for any of our international programmes during our promo period. we are currently running a promo for TOEFl, IELTS, PTE, SAT, ACT, GMAT and GRE test.
                             </p>
+
+                            <div class="btn-div">
+                                <a href="<?php echo $websiteUrl ?>/portal/sign-up">
+                                    <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>
+                            </div>
                         </div>
                     </div>
 
@@ -184,9 +189,11 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="text-div">
                             <h2>Physical and Online Lectures</h2>
-                            <p>Ace TOEFL, GRE, GMAT, PTE & IELTS with expert-led classes—online or onsite. Learn
-                                affordably,
-                                anywhere!</p>
+                            <p>Unlock premium exam preparation with our affordable paid lectures for international exams (TOEFL, GRE, GMAT, PTE, and IELTS). Access expert-led online and physical classes in our modern facilities. Join from anywhere globally for the ultimate learning experience!</p>
+                            <div class="btn-div">
+                                <a href="<?php echo $websiteUrl ?>/portal/sign-up">
+                                    <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>
+                            </div>
                         </div>
                     </div>
 
@@ -196,9 +203,27 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                         </div>
 
                         <div class="text-div">
-                            <h2>FREE E-books and Study Packs</h2>
-                            <p>Register for any exam & get 2020 textbook + free CD! Access 120+ video lessons & practice
-                                tests after signup!</p>
+                            <h2>FREE E-books</h2>
+                            <p>Get the 2020 updated version of the textbook (released a few weeks ago), with CD ROM free, once you register for any international exam(s).. This will be available for download after registration.</p>
+                            <div class="btn-div">
+                                <a href="<?php echo $websiteUrl ?>/portal/sign-up">
+                                    <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="unique-div">
+                        <div class="icon-div">
+                            <i class=" bi-journal"></i>
+                        </div>
+
+                        <div class="text-div">
+                            <h2>Free Study Packs</h2>
+                            <p>Simplify your Exam Preparation with video Lessons and Series of Practice Test. You will have access to over 120 Video Lesson after you register with us.</p>
+                            <div class="btn-div">
+                                <a href="<?php echo $websiteUrl ?>/portal/sign-up">
+                                    <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,45 +232,11 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
         <section class="body-div net-bg-br">
             <div class="body-div-in">
-                <div class="inner-body-div-in">
-                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
-                        <div class="left-div">
-                            <div class="top-title">
-                                <h2>INTERNATIONAL EXAMS</h2>
-                            </div>
-                            <h3>Take a Look At Our Available <span>#Exams</span></h3>
-                        </div>
-
-                        <div class="btn-div">
-                            <a href="<?php echo $websiteUrl ?>/portal/sign-up">
-                                <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
-                        </div>
-                    </div>
-
-                    <div class="our-exam-back-div" id="indexPageContent">
-                        <script>
-                            _fetchIndexExamData();
-                        </script>
-
-                        <div class="content-loading-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
-                        </div>
-                    </div>
-
-                    <div class="bottom-btn-div">
-                        <a href="<?php echo $websiteUrl ?>/international-exams">
-                            <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="body-div net-bg-tr">
-            <div class="body-div-in">
                 <div class="about-back-div">
                     <div class="image-div" data-aos="fade-up" data-aos-duration="1400">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/about.jpg"
-                            alt="About International Exams" />
+                        <video width="100%" controls="">
+                            <source src="https://www.internationalexam.com/demo_ielts.mp4" type="video/mp4">
+                        </video>
                     </div>
 
                     <div class="content-div" data-aos="flip-right" data-aos-duration="1400">
@@ -253,12 +244,8 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                             <img src="<?php echo $websiteUrl ?>/all-images/images/zigzag-line.svg" alt="About Us icon" />
                         </div>
 
-                        <h2>Empower Yourself With The Freedom To Learn From <span class="text">#Anywhere</span></h2>
-                        <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in
-                            almost the states in <?php echo $getwebsiteCountryName; ?> and other countries like GHANA,
-                            KENYA, ETHIOPIA, UGANDA and
-                            many more. Within the period of 9 years experiences we have successfully placed THOUSANDS of
-                            students for admissions into foreign universities.</p>
+                        <h2>Multiple Awards,<span class="text"> #We are the Best in Africa</span></h2>
+                        <p>We can vouch in Registration and Preparation of students for major standardized examinations such as TOEFL, PTE, IELTS, SAT I & II, GRE, GMAT, LSAT, MCAT, USMLE and other related services. Register Now and Have access to the Complete Video Course on your exam FREE.</p>
 
                         <div class="check-div">
                             <div class="check">
@@ -286,168 +273,39 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
             </div>
         </section>
 
-        <section class="body-div net-bg-bl">
+        <section class="body-div net-bg-tr">
             <div class="body-div-in">
                 <div class="inner-body-div-in">
                     <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
                         <div class="left-div">
                             <div class="top-title">
-                                <h2>OUR SUCCESS</h2>
+                                <h2>WHAT WE OFFER</h2>
                             </div>
-                            <h3>Stats That Explain Everything About <span>#Our success</span></h3>
+                            <h3>International Exam: <span>#Our Services</span></h3>
                         </div>
 
                         <div class="btn-div">
-                            <a href="#">
-                                <button class="btn" title="See how it works">See How It Works <i class="bi-chevron-right"></i></button></a>
+                            <a href="<?php echo $websiteUrl ?>/portal/sign-up">
+                                <button class="btn" title="Register now">Register now <i class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>
 
-                    <div class="success-back-div">
-                        <div class="success-div" data-aos="fade-up" data-aos-duration="900">
-                            <div class="inner-div">
-                                <div class="icon-div">
-                                    <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder.png"
-                                            alt="Subjects available" />
-                                    </div>
-                                </div>
+                    <div class="our-exam-back-div" id="indexPageContent">
+                        <script>
+                            _fetchIndexExamData();
+                        </script>
 
-                                <div class="text-div">
-                                    <h5>56 +</h5>
-                                    <p>Subjects available for verified and topics</p>
-                                </div>
-                            </div>
+                        <div class="content-loading-div">
+                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                         </div>
+                    </div>
 
-                        <div class="success-div" data-aos="fade-up" data-aos-duration="1000">
-                            <div class="inner-div">
-                                <div class="icon-div">
-                                    <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder2.png"
-                                            alt="Total dynamic" />
-                                    </div>
-                                </div>
-
-                                <div class="text-div">
-                                    <h5>1,821 +</h5>
-                                    <p>Total dynamic digital classrooms and videos </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="success-div" data-aos="fade-up" data-aos-duration="1200">
-                            <div class="inner-div">
-                                <div class="icon-div">
-                                    <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder4.png"
-                                            alt="User daily" />
-                                    </div>
-                                </div>
-
-                                <div class="text-div">
-                                    <h5>20+ Hours</h5>
-                                    <p>User daily average time spent on the platform</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="success-div" data-aos="fade-up" data-aos-duration="1400">
-                            <div class="inner-div">
-                                <div class="icon-div">
-                                    <div class="inner">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/placeholder3.png"
-                                            alt="Active students" />
-                                    </div>
-                                </div>
-
-                                <div class="text-div">
-                                    <h5>112,124</h5>
-                                    <p>Active students available on the platform</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="bottom-btn-div">
+                        <a href="<?php echo $websiteUrl ?>/international-exams">
+                            <button class="btn" title="View All Exams">View All Exams <i class="bi-chevron-right"></i></button></a>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="body-div net-bg-tl">
-            <div class="body-div-in">
-                <div class="about-back-div">
-                    <div class="content-div values-content-div" data-aos="fade-up" data-aos-duration="1000">
-                        <div><span class="top-title">OUR STATUS VALUES</span></div>
-                        <h2>Exploring Our Status <span class="text">#Values</span></h2>
-                        <p>Explore our status values to learn about the guiding principles that shape our approach to
-                            tech education and community.</p>
-
-                        <div class="progress-back-div">
-                            <div class="progress-container">
-                                <div class="progress-item">
-                                    <span class="title">Case study success</span>
-                                    <div class="progress-bar">
-                                        <div class="progress-per" data-text="90">90</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-item">
-                                    <span class="title">Happy student</span>
-                                    <div class="progress-bar">
-                                        <div class="progress-per" data-text="75">75</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-item">
-                                    <span class="title">Engaging</span>
-                                    <div class="progress-bar">
-                                        <div class="progress-per" data-text="93">93</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-item">
-                                    <span class="title">Student Community</span>
-                                    <div class="progress-bar">
-                                        <div class="progress-per" data-text="63">63</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <div class="moving-object top-moving-object">
-                            <div class="div-in">
-                                <div class="text-div">
-                                    <span>2k+</span>
-                                    <h4>Student</h4>
-                                </div>
-                                <div class="img-back-div">
-                                    <div class="img-div">
-                                        <img src="<?php echo $websiteUrl ?>/all-images/images/multiple_img.png"
-                                            alt="Slide Image" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="moving-object bottom-moving-object">
-                            <div class="div-in">
-                                <div class="text-div">
-                                    <span>5.8k</span>
-                                    <h4>Success Courses</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/status-image.png" alt="Our Status" />
-                    </div>
-                </div>
-            </div>
-            <script>
-                _progressBar();
-            </script>
         </section>
 
         <section class="body-div net-bg-br">

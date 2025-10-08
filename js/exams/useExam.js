@@ -212,19 +212,10 @@ function _initFetchIndexExamData(data) {
 			<div class="inner-div">
 				<div class="top-text">
 					<h3>${item.examAbbr}</h3>
-					<p>${item.regTitle}</p>
+					<p>${item.seoDescription.substr(0, 205)}...</p>
 				</div>
 
 				<div class="bottom-div">
-					<div class="left-div">
-						<span class="price">${
-              item.currency === "USD"
-                ? "$" + thousandSeperator(item.amount)
-                : "<s>N</s>" + thousandSeperator(item.amount)
-            }</span>
-						<span><i class="bi-person"></i> 320+</span>
-					</div>
-					
 					<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
 					<button class="btn" title="Read More">Read More <i
 						class="bi-chevron-right"></i></button></a>

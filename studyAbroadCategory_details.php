@@ -43,7 +43,6 @@
                 <div class="main-content-back-div">
                     <div class="text-content-div blog-details-div" >
                         <h1 id="regTitle">Loading...</h1>
-                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong> </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i> VIEWS: <span><strong id="pageView">Loading..</strong></span> </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
@@ -74,18 +73,6 @@
                                 </div>                         
                             
                                 <div class="main-pages-content-div" id="pageContent"></div>
-
-                                <div class="comment-back-div">
-                                    <div id="disqus_thread"></div>
-                                    <script>
-                                        (function() { // DON'T EDIT BELOW THIS LINE
-                                        var d = document, s = d.createElement('script');
-                                        s.src = 'https://1stculturetour-com.disqus.com/embed.js';
-                                        s.setAttribute('data-timestamp', +new Date());
-                                        (d.head || d.body).appendChild(s);
-                                        })();
-                                    </script>
-                                </div>
                             </div>
                         </div>
 

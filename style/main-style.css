@@ -995,7 +995,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 }
 
 .unique-back-div .unique-div {
-  width: 31%;
+  width: 45%;
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
@@ -1030,9 +1030,9 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .unique-back-div .unique-div .text-div h2 {
   font-family: sub-title-font;
-  font-size: 17px;
-  color: var(--body-color);
-  font-weight: 300;
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: 400;
 }
 
 .unique-back-div .unique-div .text-div p {
@@ -1056,6 +1056,38 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .unique-back-div .unique-div .nuetral i {
   color: var(--sub-body-color);
 }
+
+.unique-back-div .unique-div .btn-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.unique-back-div .unique-div .btn-div .btn {
+  border: none;
+  height: 40px;
+  min-width: 100px;
+  border-radius: 50px;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-family: sub-title-font;
+  background: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease-in 0.2s;
+}
+
+.unique-back-div .unique-div .btn-div .btn i {
+  font-size: 13px;
+}
+
+.unique-back-div .unique-div .btn-div .btn:hover{
+  text-decoration: underline;
+}
+
 
 
 @media all and (max-width: 640px) {
@@ -1156,7 +1188,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .our-exam-back-div .exam-div .text-div .inner-div .top-text {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .our-exam-back-div .exam-div .text-div .inner-div .top-text .count {
@@ -1180,6 +1212,11 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   font-size: 19px;
   line-height: 20px;
   color: var(--body-color);
+}
+
+.our-exam-back-div .exam-div .text-div .inner-div .top-text p {
+  text-align: justify;
+  color: var(--text-color);
 }
 
 .our-exam-back-div .exam-div .text-div .inner-div .bottom-div {
@@ -1419,7 +1456,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
    width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   color: var(--sub-body-color);
 }
 
@@ -1429,7 +1466,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .about-back-div .content-div h2 {
   font-size: 30px;
-  line-height: 35px;
+  line-height: 40px;
   font-family: title-font;
   color: var(--body-color);
 }

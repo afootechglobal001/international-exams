@@ -211,7 +211,7 @@ function _initFetchIndexExamData(data) {
 		<div class="text-div">
 			<div class="inner-div">
 				<div class="top-text">
-					<h3>${item.examAbbr}</h3>
+					<h3>${item.examAbbr} REGISTRATION</h3>
 					<p>${item.seoDescription.substr(0, 205)}...</p>
 				</div>
 

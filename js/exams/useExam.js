@@ -53,7 +53,6 @@ function _initFetchExamData(data) {
                 ? "$" + thousandSeperator(item.amount)
                 : "<s>N</s>" + thousandSeperator(item.amount)
             }</span>
-						<span><i class="bi-person"></i> 320+</span>
 					</div>
 					
 					<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">

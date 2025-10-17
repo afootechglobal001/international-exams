@@ -40,7 +40,7 @@
     validateEmptyField($incentives, 'EXAM INCENTIVES');
     validateEmptyField($statusId, 'STATUS');
 
-    $examNameQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND publishId!='$publishId' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
+    $examNameQuery=mysqli_query($conn,"SELECT regTitle FROM PUBLISH_TAB WHERE regTitle='$regTitle' AND publishId!='$publishId' AND pageCategoryId='$pageCategoryId' AND (parentPublishId IS NULL OR parentPublishId='')") or die (mysqli_error($conn));
     $examNameCountQuery=mysqli_num_rows($examNameQuery);
 
     if ($examNameCountQuery>0){ /// start if 4
@@ -54,7 +54,7 @@
         goto end;
     }
 
-    $examAbbrQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE examAbbr='$examAbbr' AND publishId!='$publishId' AND pageCategoryId='$pageCategoryId'") or die (mysqli_error($conn));
+    $examAbbrQuery=mysqli_query($conn,"SELECT examAbbr FROM PUBLISH_TAB WHERE examAbbr='$examAbbr' AND publishId!='$publishId' AND pageCategoryId='$pageCategoryId' AND (parentPublishId IS NULL OR parentPublishId='')") or die (mysqli_error($conn));
     $examAbbrCountQuery=mysqli_num_rows($examAbbrQuery);
 
     if ($examAbbrCountQuery>0){ /// start if 5

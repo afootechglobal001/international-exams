@@ -92,10 +92,8 @@
         <div class="div-in">
             <div class="text">
                 © 2010 - <?php echo date('Y') ?> <?php echo $appName ?>. All Rights Reserved
-                <br />
-                <a href="<?php echo $websiteUrl ?>/cookie-policy" title="Terms of Service">Terms of Service</a> | <a href="<?php echo $websiteUrl ?>/cookie-policy" title="Privacy Policy">Privacy Policy</a>
             </div>
-            <div class="text">Developed By: <a href="https://afootech.com" target="_blank"><span>AfooTECH Global IT Solution</span></a></div>
+            <div class="text"><a href="<?php echo $websiteUrl ?>/cookie-policy" title="Terms of Service">Terms of Service</a> | <a href="<?php echo $websiteUrl ?>/cookie-policy" title="Privacy Policy">Privacy Policy</a></div>
         </div>
     </div>
 </footer>

@@ -312,7 +312,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
             <div class="body-div-in">
                 <div class="faq-back-div">
                     <div class="left-image-div" data-aos="fade-in" data-aos-duration="1200">
-                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.webp"
+                        <img src="<?php echo $websiteUrl ?>/all-images/body-pix/faq.jpg"
                             alt="<?php echo $appName ?> Frequently Asked Question" />
                     </div>
 

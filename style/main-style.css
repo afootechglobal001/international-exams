@@ -5284,7 +5284,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   display: flex;
 }
 
-.back-container .inner-container .btn-div .btn{
+.back-container-div .btn{
   border: none;
   background: var(--primary-color);
   border-radius: 25px;

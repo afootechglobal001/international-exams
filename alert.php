@@ -103,8 +103,8 @@
             </div>
 
             <div class="div">
-                <a href="<?php echo $websiteUrl; ?>/free-ebook" title="Video Tutorial">
-                    <li <?php if ($page == 'free-ebook') { ?> id="active-li" <?php } ?>><i class="bi-file-earmark-play-fill"></i> Video Tutorial
+                <a href="<?php echo $websiteUrl; ?>/video-tutorial" title="Video Tutorial">
+                    <li <?php if ($page == 'video-tutorial') { ?> id="active-li" <?php } ?>><i class="bi-file-earmark-play-fill"></i> Video Tutorial
                     </li>
                 </a>
             </div>

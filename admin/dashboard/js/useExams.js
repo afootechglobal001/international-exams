@@ -202,7 +202,7 @@ function _createExam() {
 				_createExamCallback(form);
 			},
 			title: 'Are you sure?',
-			message: 'Are you sure you want to create a new exam? This action is irreversible.',
+			message: 'Are you sure you want to submit? This action is irreversible.',
 			alertType: 'warning',
 			falseActionBtn: true,
 		});
@@ -261,7 +261,7 @@ function _createExamCallback(form){
 				_uploadExamPix(newRegPix, oldRegPix, newExamLogo, oldExamLogo, message);
 			} else {
 				_showCustomConfirm({
-					title: 'Create Branch Error',
+					title: 'Exam Error',
 					message: message,
 					alertType: 'warning',
 					trueActionBtnText: 'OK'

@@ -26,6 +26,7 @@ switch ($action){
 		require_once('ebook-content.php');
 		require_once('exam-related-links-content.php');
 		require_once('ict-courses-content.php');
+		require_once('video-content.php');
 	break;
 
 	case 'get_form':
@@ -50,6 +51,7 @@ switch ($action){
 		require_once('ebook-content.php');
 		require_once('exam-related-links-content.php');
 		require_once('ict-courses-content.php');
+		require_once('video-content.php');
 	break;	
 
 	case 'uploadStaffPix':
@@ -226,6 +228,42 @@ switch ($action){
 
 		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
 			move_uploaded_file($_FILES['regPix']['tmp_name'], $uploadDir . $newRegPix);
+		}
+    break;
+
+	case 'uploadVideoPixAndVideo':
+		///// Ebook Picture /////
+		$newRegPix = $_POST['newRegPix'] ?? '';
+		$regPixDir = "../../../uploaded_files/video-images/";
+
+		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['regPix']['tmp_name'], $regPixDir . $newRegPix);
+		}
+
+		////// Ebook Material ///////
+		$newVideo = $_POST['newVideo'] ?? '';
+		$videoDir = "../../../uploaded_files/videos/";
+
+		if (!empty($newVideo) && isset($_FILES['video']) && $_FILES['video']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['video']['tmp_name'], $videoDir . $newVideo);
+		}
+    break;
+
+	case 'unlinkVideoPixAndVideo':
+		///// Ebook Picture /////
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
+		$oldRegPixDir = "../../../uploaded_files/video-images/";
+
+		if (!empty($oldRegPix) && file_exists($oldRegPixDir . $oldRegPix)) {
+			unlink($oldRegPixDir . $oldRegPix);
+		}
+
+		////// Ebook Material ///////
+		$oldVideo = $_POST['oldVideo'] ?? '';
+		$oldVideoDir = "../../../uploaded_files/videos/";
+
+		if (!empty($oldVideo) && file_exists($oldVideoDir . $oldVideo)) {
+			unlink($oldVideoDir . $oldVideo);
 		}
     break;
 

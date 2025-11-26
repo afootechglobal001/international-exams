@@ -46,10 +46,6 @@
                 <div class="main-content-back-div">
                     <div class="text-content-div blog-details-div">
                         <h1 id="regTitle">Loading...</h1>
-                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong>
-                            </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong
-                                    id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i>
-                            VIEWS: <span><strong id="pageView">Loading..</strong></span> </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
@@ -127,7 +123,6 @@
             _fetchEachSiteExam('<?php echo $publishId ?>')
             </script>
         </section>
-
 
         <?php include 'footer.php' ?>
     </section>

@@ -90,11 +90,11 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                             <div class="top-title">
                                 <h2>INTERNATIONAL EXAMS</h2>
                             </div>
-                            <h3>Take a Look At Our Available <span>#Exams</span></h3>
+                            <h3>Our <span>#Exams</span></h3>
                         </div>
 
                         <div class="btn-div">
-                            <a href="#"><button class="btn" title="Register now">Register now <i
+                            <a href="<?php echo $websiteUrl ?>/exam-registration"><button class="btn" title="Register now">Register now <i
                                         class="bi-chevron-right"></i></button></a>
                         </div>
                     </div>

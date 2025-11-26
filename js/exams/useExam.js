@@ -53,7 +53,6 @@ function _initFetchExamData(data) {
                 ? "$" + thousandSeperator(item.amount)
                 : "<s>N</s>" + thousandSeperator(item.amount)
             }</span>
-						<span><i class="bi-person"></i> 320+</span>
 					</div>
 					
 					<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
@@ -85,7 +84,7 @@ function _fetchEachSiteExam(publishId) {
           if (response.success && response.data) {
             const data = response.data;
 
-            const regTitle = data.regTitle;
+            const pageTitle = data.pageTitle;
             const examAbbr = data.examAbbr;
             const seoDescription = data.seoDescription;
             const pageContent = data.pageContent;
@@ -99,7 +98,7 @@ function _fetchEachSiteExam(publishId) {
 
             let basePath = (parentPublishId && parentPublishId !== "0") ? examRelatedLinkPixPath : examPixPath;
 
-            $("#regTitle, #regTopTitle").html(regTitle);
+            $("#regTitle, #regTopTitle").html(pageTitle);
             $("#seoDescription").html(seoDescription);
             $("#pageContent").html(pageContent);
             $("#fullName").html(fullName);
@@ -211,20 +210,11 @@ function _initFetchIndexExamData(data) {
 		<div class="text-div">
 			<div class="inner-div">
 				<div class="top-text">
-					<h3>${item.examAbbr}</h3>
-					<p>${item.regTitle}</p>
+					<h3>${item.examAbbr} REGISTRATION</h3>
+					<p>${item.seoDescription.substr(0, 205)}...</p>
 				</div>
 
 				<div class="bottom-div">
-					<div class="left-div">
-						<span class="price">${
-              item.currency === "USD"
-                ? "$" + thousandSeperator(item.amount)
-                : "<s>N</s>" + thousandSeperator(item.amount)
-            }</span>
-						<span><i class="bi-person"></i> 320+</span>
-					</div>
-					
 					<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
 					<button class="btn" title="Read More">Read More <i
 						class="bi-chevron-right"></i></button></a>

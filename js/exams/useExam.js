@@ -84,7 +84,7 @@ function _fetchEachSiteExam(publishId) {
           if (response.success && response.data) {
             const data = response.data;
 
-            const regTitle = data.regTitle;
+            const pageTitle = data.pageTitle;
             const examAbbr = data.examAbbr;
             const seoDescription = data.seoDescription;
             const pageContent = data.pageContent;
@@ -98,7 +98,7 @@ function _fetchEachSiteExam(publishId) {
 
             let basePath = (parentPublishId && parentPublishId !== "0") ? examRelatedLinkPixPath : examPixPath;
 
-            $("#regTitle, #regTopTitle").html(regTitle);
+            $("#regTitle, #regTopTitle").html(pageTitle);
             $("#seoDescription").html(seoDescription);
             $("#pageContent").html(pageContent);
             $("#fullName").html(fullName);

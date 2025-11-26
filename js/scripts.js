@@ -35,13 +35,10 @@ function _fetchPagesPictureData(publishId, imageContainer) {
     })
       .then((response) => {
         if (response.success && response.data?.length > 0) {
+          $(".bottom-img-div").show();
           _initFetchPagesPictureData(response.data, imageContainer);
         } else {
-          $("#fetchPagePictures").html(`
-					<div class="false-notification-div">
-						<p>${response.message}</p>
-					</div>
-				`);
+          $(".bottom-img-div").hide();
         }
         _slideImages();
       })

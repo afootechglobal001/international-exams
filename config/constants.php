@@ -50,6 +50,9 @@ var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
 var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
 var userDeviceId = "<?php echo $userDeviceId;?>"; /// For User Device Id //
 
+// JavaScript Session Country Name //
+var websiteCountryName = "<?php echo $getwebsiteCountryName;?>"; /// For JS  Country Name //
+
 var siteMiddlewareUrl = websiteUrl + '/config/code'; //// For site url
 var siteSetSessionUrl = websiteUrl + '/config/set-session'; //// For site url
 

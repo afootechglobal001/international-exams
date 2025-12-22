@@ -61,14 +61,16 @@
                         <div class="page-list-back-div">
                             <div class="main-picture-back-div">
                                 <div class="main-picture-div" id="examPreviewPix">
-                                    <img id="examFetchPix" src="<?php echo $websiteUrl ?>/uploaded_files/examPicture/default.jpg" alt="International Exam" />
+                                    <img id="examFetchPix"
+                                        src="<?php echo $websiteUrl ?>/uploaded_files/examPicture/default.jpg"
+                                        alt="International Exam" />
                                 </div>
 
                                 <div class="bottom-img-div">
                                     <div class="inner-img-container">
                                         <div class="inner-img-div" id="fetchPagePictures">
                                             <script>
-                                                _fetchPagesPictureData('<?php echo $publishId ?>', 'examPreviewPix');
+                                            _fetchPagesPictureData('<?php echo $publishId ?>', 'examPreviewPix');
                                             </script>
                                         </div>
                                     </div>
@@ -121,7 +123,7 @@
                     </div>
 
             <script>
-                _fetchEachSiteExam('<?php echo $publishId ?>')
+            _fetchEachSiteExam('<?php echo $publishId ?>')
             </script>
         </section>
 

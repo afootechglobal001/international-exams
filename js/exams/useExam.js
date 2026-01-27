@@ -10,7 +10,6 @@ function forceCountryTitle(title) {
     .trim() + " in " + websiteCountryName;
 }
 
-
 function _fetchAllExamsData() {
   // Get countryId from localStorage
   const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));

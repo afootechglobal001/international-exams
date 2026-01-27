@@ -35,3 +35,4 @@ const loginCountryData = userLoginData.countryData;
 <script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePortal.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/portal/dashboard/js/usePayment.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/portal/dashboard/js/useExams.js?v=<?php echo $codeVersion?>"></script>
+<script src="<?php echo $websiteUrl?>/portal/dashboard/js/useEbook.js?v=<?php echo $codeVersion?>"></script>

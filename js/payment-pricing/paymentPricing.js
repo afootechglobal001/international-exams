@@ -168,7 +168,6 @@ function _fetchAccountDetails() {
       .then((response) => {
         if (response.success && response.data) {
           const data = response.data[0];
-console.log(data);
           ////// Handle Account Details //////
           const accountName = data?.accountData?.accountName;
           const accountNumber = data?.accountData?.accountNumber;

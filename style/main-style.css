@@ -1311,6 +1311,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .pricing-back-div {
   gap: 40px 15px;
+  align-items: flex-start;
 }
 
 .pricing-back-div .pricing-div {

@@ -1,0 +1,7 @@
+<?php $publishId='EXAM02820251114050059';?>
+<?php $pageUrl='gre-exam-in-nigeria';?>
+<?php $pageTitle='What is GRE?';?>
+<?php $seoKeywords='Edugrade Service, GRE TEXTBOOKS, GRE STUDY MATERIALS, E-book for GRE, GRE,  GRE fee, What Is GRE, Types Of GRE Exams In Nigeria, GRE Registration, GRE Registration In Nigeria, GRE Test Dates In Nigeria, GRE Eligibility & Test Pattern, GRE Score In Nigeria, GRE Reading Materials, GRE Exam Training, International exams in nigeria,  GRE Registration in Nigeria, GRE Registration in Abuja, GRE Registration in Kaduna, GRE Registration in Kano, GRE Registration in Lagos, GRE Registration in Ibadan, GRE Registration in Akure, GRE Registration in Ado Ekiti, GRE Registration in Enugu, GRE Registration in Owerri, GRE exam in Kaduna, GRE exam in Kano, GRE Registration in Ilorin, GRE exam in Lagos, GRE Registration in Minna, GRE Registration in Abeokuta, GRE exam in Akure, GRE Registration in Oshogbo, GRE exam in Ibadan, GRE Registration in Jos, GRE Registration in Port Harcourt';?>
+<?php $seoDescription='General Test is one of the world largest assessment programs for graduate admissions and the exam is conducted by Educational Testing Service (ETS).';?>
+<?php $pageSeoPix='EXAM02820251114050059_202511140506_Classroom_Student_Studying_Indoor_GettyImages-492195511.webp';?>
+<?php include 'examCategory_details.php';?>

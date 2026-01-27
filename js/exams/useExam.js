@@ -1,3 +1,15 @@
+function forceCountryTitle(title) {
+  // If title starts with "What is", never add country
+  if (/^what is/i.test(title)) {
+    return title; // return clean
+  }
+
+  // Otherwise add country normally
+  return title
+    .replace(/in\s+[A-Za-z ]+$/i, "") // remove old country
+    .trim() + " in " + websiteCountryName;
+}
+
 function _fetchAllExamsData() {
   // Get countryId from localStorage
   const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
@@ -53,7 +65,6 @@ function _initFetchExamData(data) {
                 ? "$" + thousandSeperator(item.amount)
                 : "<s>N</s>" + thousandSeperator(item.amount)
             }</span>
-						<span><i class="bi-person"></i> 320+</span>
 					</div>
 					
 					<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
@@ -85,7 +96,7 @@ function _fetchEachSiteExam(publishId) {
           if (response.success && response.data) {
             const data = response.data;
 
-            const regTitle = data.regTitle;
+            const pageTitle = data.pageTitle;
             const examAbbr = data.examAbbr;
             const seoDescription = data.seoDescription;
             const pageContent = data.pageContent;
@@ -99,15 +110,12 @@ function _fetchEachSiteExam(publishId) {
 
             let basePath = (parentPublishId && parentPublishId !== "0") ? examRelatedLinkPixPath : examPixPath;
 
-            $("#regTitle, #regTopTitle").html(regTitle);
+            $("#regTitle, #regTopTitle").html(forceCountryTitle(pageTitle));
             $("#seoDescription").html(seoDescription);
             $("#pageContent").html(pageContent);
             $("#fullName").html(fullName);
             $("#pageView").html(pageView);
             $("#updatedTime").html(updatedTime);
-            $("#amount").html(amount);
-            $("#physicalLectureAmount").html(physicalLectureAmount);
-            $("#onlineLectureAmount").html(onlineLectureAmount);
             $("#examFetchPix").attr("src", basePath + "/" + regPix);
             $("#examTitleLink").attr("href", websiteUrl + "/" + pageUrl);
 
@@ -146,8 +154,8 @@ function _fetchEachSiteExam(publishId) {
 
                     // Don't hide links just because you're currently on one of them
                     linkContent += `
-                        <a href="${websiteUrl}/${pageUrl}" title="${regTitle}">
-                            <span>${regTitle}</span>
+                        <a href="${websiteUrl}/${pageUrl}" title="${forceCountryTitle(regTitle)}">
+                            <span>${forceCountryTitle(regTitle)}</span>
                         </a>
                     `;
                 }
@@ -211,20 +219,11 @@ function _initFetchIndexExamData(data) {
 		<div class="text-div">
 			<div class="inner-div">
 				<div class="top-text">
-					<h3>${item.examAbbr}</h3>
-					<p>${item.regTitle}</p>
+					<h3>${item.examAbbr} REGISTRATION</h3>
+					<p>${item.seoDescription.substr(0, 205)}...</p>
 				</div>
 
 				<div class="bottom-div">
-					<div class="left-div">
-						<span class="price">${
-              item.currency === "USD"
-                ? "$" + thousandSeperator(item.amount)
-                : "<s>N</s>" + thousandSeperator(item.amount)
-            }</span>
-						<span><i class="bi-person"></i> 320+</span>
-					</div>
-					
 					<a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
 					<button class="btn" title="Read More">Read More <i
 						class="bi-chevron-right"></i></button></a>
@@ -261,32 +260,31 @@ function _fetchHeaderExams() {
 }
 
 function _initFetchHeaderExams(data) {
-  const content = data.map((item) => {
+  const content = data.map(item => {
     let relatedLinks = "";
 
     if (item.relatedLinksData && item.relatedLinksData.length > 0) {
       relatedLinks = `
         <ul class="inner-expand-li animated fadeIn">
-        <li><a href="${websiteUrl}/exam-registration" title="REGISTER FOR EXAMS">RESGISTER FOR EXAM</a></li>
-        <li> <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">WHAT IS ${item.examAbbr}</a></li>
-          ${item.relatedLinksData
-            .map(
-              (link) => `
-                <li>
-                  <a href="${websiteUrl}/${link.pageUrl}" title="${link.regTitle}">
-                    ${link.regTitle}
-                  </a>
-                </li>
-              `
-            )
-            .join("")}
+          <li><a href="${websiteUrl}/exam-registration">REGISTER FOR EXAM</a></li>
+          <li><a href="${websiteUrl}/${item.pageUrl}">
+            WHAT IS ${item.examAbbr}
+          </a></li>
+
+          ${item.relatedLinksData.map(link => `
+            <li>
+              <a href="${websiteUrl}/${link.pageUrl}" title="${forceCountryTitle(link.regTitle)}">
+                ${forceCountryTitle(link.regTitle)}
+              </a>
+            </li>
+          `).join("")}
         </ul>
       `;
     }
 
     return `
       <li>
-        <a href="${websiteUrl}/${item.pageUrl}" title="${item.regTitle}">
+        <a href="${websiteUrl}/${item.pageUrl}">
           ${item.examAbbr}
         </a>
         ${relatedLinks}
@@ -384,8 +382,8 @@ function _initFetchMobileExams(data) {
               .map(
                   (link) => `
                     <li>
-                      <a href="${websiteUrl}/${link.pageUrl}" title="${link.regTitle}">
-                        ${link.regTitle}
+                      <a href="${websiteUrl}/${link.pageUrl}" title="${forceCountryTitle(link.regTitle)}">
+                        ${forceCountryTitle(link.regTitle)}
                       </a>
                     </li>
                   `

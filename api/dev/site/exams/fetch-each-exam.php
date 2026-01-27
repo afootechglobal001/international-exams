@@ -35,6 +35,7 @@
         a.pageView,
         a.updatedBy,
         a.updatedTime,
+        b.pageTitle,
         b.seoDescription,
         b.pageUrl,
         b.pageContent
@@ -72,7 +73,7 @@
         if ($parentPublishId && $parentPublishId !== "0") {
             // fetch the related links siblings //////
             $getRelatedLinksQuery = mysqli_query($conn, 
-                "SELECT a.parentPublishId, a.publishId, a.regTitle, a.examAbbr, b.pageUrl 
+                "SELECT a.parentPublishId, a.publishId, a.regTitle, a.examAbbr, b.pageUrl
                 FROM PUBLISH_TAB a 
                 JOIN PAGES_TAB b ON a.publishId = b.publishId 
                 WHERE a.parentPublishId='$parentPublishId' 

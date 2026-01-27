@@ -23,7 +23,8 @@
         b.examId,
         b.amount,
         b.currency,
-        c.pageUrl
+        c.pageUrl,
+        c.seoDescription
         FROM PUBLISH_TAB a
         JOIN BRANCH_EXAM_PRICING_TAB b ON a.publishId = b.examId
         JOIN PAGES_TAB c ON a.publishId = c.publishId

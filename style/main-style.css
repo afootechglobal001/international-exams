@@ -995,7 +995,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 }
 
 .unique-back-div .unique-div {
-  width: 31%;
+  width: 45%;
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
@@ -1030,9 +1030,9 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .unique-back-div .unique-div .text-div h2 {
   font-family: sub-title-font;
-  font-size: 17px;
-  color: var(--body-color);
-  font-weight: 300;
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: 400;
 }
 
 .unique-back-div .unique-div .text-div p {
@@ -1056,6 +1056,38 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .unique-back-div .unique-div .nuetral i {
   color: var(--sub-body-color);
 }
+
+.unique-back-div .unique-div .btn-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.unique-back-div .unique-div .btn-div .btn {
+  border: none;
+  height: 40px;
+  min-width: 100px;
+  border-radius: 50px;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-family: sub-title-font;
+  background: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease-in 0.2s;
+}
+
+.unique-back-div .unique-div .btn-div .btn i {
+  font-size: 13px;
+}
+
+.unique-back-div .unique-div .btn-div .btn:hover{
+  text-decoration: underline;
+}
+
 
 
 @media all and (max-width: 640px) {
@@ -1156,7 +1188,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .our-exam-back-div .exam-div .text-div .inner-div .top-text {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .our-exam-back-div .exam-div .text-div .inner-div .top-text .count {
@@ -1180,6 +1212,11 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   font-size: 19px;
   line-height: 20px;
   color: var(--body-color);
+}
+
+.our-exam-back-div .exam-div .text-div .inner-div .top-text p {
+  text-align: justify;
+  color: var(--text-color);
 }
 
 .our-exam-back-div .exam-div .text-div .inner-div .bottom-div {
@@ -1274,6 +1311,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .pricing-back-div {
   gap: 40px 15px;
+  align-items: flex-start;
 }
 
 .pricing-back-div .pricing-div {
@@ -1419,7 +1457,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
    width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   color: var(--sub-body-color);
 }
 
@@ -1429,7 +1467,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .about-back-div .content-div h2 {
   font-size: 30px;
-  line-height: 35px;
+  line-height: 40px;
   font-family: title-font;
   color: var(--body-color);
 }
@@ -2243,7 +2281,6 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .faq-back-div .left-image-div img {
   width: 100%;
-  height: 100%;
   border-radius: 40px 40px 40px 0px;
   object-fit: cover;
 }
@@ -2446,6 +2483,14 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
     width: 100%;
   }
 }
+
+@media all and (max-width: 500px) {
+ .faq-back-div .left-image-div {
+  height: auto;
+  }
+}
+
+
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .footer-div {
@@ -3268,6 +3313,11 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   gap: 20px;
 }
 
+.page-back-div .full-container {
+  width: 100%;
+  float: none;
+}
+
 .page-back-div .other-pg-left-div {
   width: calc(100% - 380px);
 }
@@ -3601,6 +3651,10 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   align-items: center;
 }
 
+.bottom-img-div {
+  display: none;
+}
+
 .main-picture-back-div .bottom-img-div .inner-img-container {
   display: flex;
   align-items: center;
@@ -3924,6 +3978,40 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   width: 100%;
 }
 
+.main-pages-content-div .btn-div .btn{
+  color: var(--sub-body-color);
+  font-family: body-font;
+  text-align: justify;
+  padding: 20px 0px;
+  line-height: 30px;
+  width: 100%;
+}
+
+.main-pages-content-div .btn-div{
+  display: flex;
+  align-self: flex-start;
+}
+
+.main-pages-content-div .btn-div .btn{
+  border: none;
+  background: var(--primary-color);
+  border-radius: 25px;
+  font-family: sub-title-font;
+  padding: 0px 30px;
+  height: 45px;
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.main-pages-content-div .btn-div .btn:hover{
+ opacity: .9;
+}
+
 .comment-back-div {
   width: 100%;
   margin-top: 10px;
@@ -3945,6 +4033,10 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 
 .main-pages-content-div ul{
     margin: 0px;
+}
+
+.main-pages-content-div .color{
+  color: var(--primary-color);
 }
 
 .main-pages-content-div .inner-div h2 {
@@ -4662,7 +4754,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 }
 
 .tables-content-div .content-title {
-	height: 50px;
+	min-height: 50px;
 	padding: 0px 20px;
 	display: flex;
 	align-items: center;
@@ -4859,12 +4951,27 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 }
 
 
+@media all and (max-width: 460px) {
+  .tables-content-div .video-title {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 15px 15px;
+  }
+
+  .tables-content-div .video-title p{
+    font-size: 13px;
+  }
+
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .slide-form-div {
   position: absolute;
   min-width: 550px;
-  min-height: 760px;
-  max-width: 500px;
+  min-height: 650px;
+  max-height: 650px;
   background-color: var(--white-color);
   overflow: hidden;
   border-radius: 10px;
@@ -5068,71 +5175,7 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 	padding-top: 0px;
 }
 
-/* *-----------table component---------------------------------------------------------------------------------------*/
-.tables-content-div {
-	background-color: var(--white-color);
-	border-radius: 7px;
-	width: 100%;
-	min-height: 200px;
-	border: 1px solid rgba(215, 215, 215, .6);
-}
 
-.tables-content-div .content-title {
-	height: 50px;
-	padding: 0px 20px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	border-bottom: 1px solid rgba(215, 215, 215, .6);
-}
-
-.tables-content-div .content-title .title {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-	font-family: sub-title-font;
-	font-size: 15px;
-	color: var(--sub-body-color2);
-}
-
-.tables-content-div .content-title .title i {
-  color: var(--primary-color);
-}
-
-.tables-content-div .content-title .btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 5px;
-	background: var(--sub-body-color);
-	color: var(--white-color);
-	font-size: 10px;
-	border: none;
-	cursor: pointer;
-	height: 30px;
-	padding: 0px 18px;
-	border-radius: 15px;
-	transition: 0.2s ease-in;
-	font-family: body-font;
-}
-
-.tables-content-div .inner-table-content {
-	width: calc(100% - 40px);
-	padding: 20px;
-	color: var(--sub-body-color);
-}
-
-.tables-content-div .pages-inner-content {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.tables-content-div .inner-table-content p{
-	font-size: 13px;
-	font-family: sub-title-font;
-}
 
 .form-main-content{
 	width: 100%;
@@ -5146,7 +5189,8 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 @media all and (max-width: 560px) {
   .slide-form-div {
     min-width: 100%;
-		height: 100%;
+		min-height: 100%;
+    max-height: 100%;
     border-radius: 0px;
   }
   .main-content-div {
@@ -5348,7 +5392,7 @@ background: rgba(204, 204, 204, .2);
 }
 
 .video-back-div .video-div .video-slide{
-  	width: 100%;
+  width: 100%;
 	height: 100%;
 	border-radius: 5px;
 	object-fit: cover;
@@ -5410,4 +5454,11 @@ background: rgba(204, 204, 204, .2);
   font-size: 18px;
   font-family: sub-title-font;
   text-align: center;
+}
+
+
+@media all and (max-width: 470px) {
+  .video-back-div .video-div {
+   width: 100%;
+  }
 }

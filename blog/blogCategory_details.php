@@ -82,9 +82,9 @@
                                     </div>
                                     <button class="left-btn"> <i class="bi-chevron-double-left"></i></button>
                                     <button class="right-click-btn"> <i class="bi-chevron-double-right"></i></button>
-                                </div>
-                            </div>
-
+                                </div>                                   
+                            </div>                         
+                        
                             <div class="main-pages-content-div" id="pageContentInfo"></div>
                         </div>
                     </div>

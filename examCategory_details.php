@@ -46,10 +46,6 @@
                 <div class="main-content-back-div">
                     <div class="text-content-div blog-details-div">
                         <h1 id="regTitle">Loading...</h1>
-                        <div class="count"><i class="bi-person"></i> By: <span><strong id="fullName">Loading...</strong>
-                            </span> &nbsp;|&nbsp; <i class="bi-calendar3"></i> DATE: <span><strong
-                                    id="updatedTime">Loading...</strong></span> &nbsp;|&nbsp; <i class="bi-eye"></i>
-                            VIEWS: <span><strong id="pageView">Loading..</strong></span> </div>
                         <p class="intro" id="seoDescription">Loading...</p>
                     </div>
                 </div>
@@ -90,21 +86,23 @@
                     <div class="right-div sticky-div">
                         <div class="div-in" id="pricingContainer">
                             <h3>PAYMENT & PRICING</h3>
-
-                            <div class="pricing-back-div">
-                                <div class="title">
-                                    EXAM REGISTRATION FEES
-                                    <div><span id="amount">Loading...</span></div>
+                    
+                            <?php if ($pageUrl !== 'nclex-exam-in-nigeria') : ?>
+                                <div class="pricing-back-div">
+                                    <div class="title">
+                                        EXAM REGISTRATION FEES
+                                        <div><span id="amount">Loading...</span></div>
+                                    </div>
                                 </div>
-                            </div>
-
+                            <?php endif; ?>
+                    
                             <div class="pricing-back-div">
                                 <div class="title">
                                     PHYSICAL LECTURES (A MONTH)
                                     <div><span id="physicalLectureAmount">Loading...</span></div>
                                 </div>
                             </div>
-
+                    
                             <div class="pricing-back-div">
                                 <div class="title">
                                     ONLINE LECTURES (A MONTH)
@@ -112,17 +110,18 @@
                                 </div>
                             </div>
                         </div>
-
+                    
                         <div class="div-in">
-                            <h3>INCENTIVES</h3>
-
+                            <?php if ($pageUrl !== 'nclex-exam-in-nigeria') : ?>
+                                <h3>INCENTIVES</h3>
+                            <?php endif; ?>
+                    
                             <div class="related-post-back-div pages-inner-content" id="incentives"></div>
                         </div>
-
+                    
                         <div class="div-in" id="fetchedRelatedLinks"></div>
                     </div>
-                </div>
-            </div>
+
             <script>
             _fetchEachSiteExam('<?php echo $publishId ?>')
             </script>

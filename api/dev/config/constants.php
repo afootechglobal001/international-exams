@@ -16,6 +16,7 @@ $systemName=gethostname();//computer used
 
 //$websiteUrl='https://www.internationalexam.com';
 $websiteUrl='http://localhost/projects/international-exams';
+$ebookFilePath=$websiteUrl.'/uploaded_files/ebookMaterial/';
 
 $checkBasicSecurity=true;
 ///// check for API security

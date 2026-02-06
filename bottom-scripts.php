@@ -14,7 +14,7 @@ AOS.init({
 </script>
 
 <div class="media-link-div">
-    <a href="" title="Call Customer Care">
+    <a href="tel:0703-841-1794" title="Call Customer Care">
         <li style="background:#008040;"><i class="bi-telephone-outbound-fill"></i></li>
     </a>
     <a href="https://www.facebook.com/" target="_blank" title="Facebook">
@@ -26,7 +26,7 @@ AOS.init({
     <a href="https://www.instagram.com/" target="_blank" title="Instagram">
         <li style="background-image: linear-gradient(to right,#03F, #F0F);"><i class="bi-instagram"></i></li>
     </a>
-    <a href="https://api.whatsapp.com/" target="_blank" title="Whatsapp">
+    <a href="https://api.whatsapp.com/send?text=Greetings! I'd like to make an enquiry on the services you offer.&phone=+2347038411794" target="_blank" title="Whatsapp">
         <li style="background:#25D366;"><i class="bi-whatsapp"></i></li>
     </a>
 </div>

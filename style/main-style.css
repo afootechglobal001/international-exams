@@ -1658,11 +1658,12 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .blog-back-div {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
 .blog-back-div .blog-div {
-  width: 33%;
+  width: 31.5%;
   min-height: 300px;
   background: #f3f3f3;
   border-radius: 8px;

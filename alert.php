@@ -19,17 +19,17 @@
 
 <div class="sidenavdiv">
     <div class="live-chat-back-div">
-        <a href="tel:1-800-658-5679" title="Call Customer Care">
+        <a href="tel:0703-841-1794" title="Call Customer Care">
             <div class="chat-div">
                 <div class="icon-div" style="background:#008040;"><i class="bi-telephone-outbound"></i></div>
-                <div class="text">1-800-658-5679</div>
+                <div class="text">0703-841-1794</div>
                 <br clear="all" />
             </div>
         </a>
-        <a href="https://api.whatsapp.com/" target="_blank" title="Whatsapp">
+        <a href="https://api.whatsapp.com/send?text=Greetings! I'd like to make an enquiry on the services you offer.&phone=+2347038411794" target="_blank" title="Whatsapp">
             <div class="chat-div">
                 <div class="icon-div" style="background:#25D366;"><i class="bi-whatsapp"></i></div>
-                <div class="text">+234-812-700-0262</div>
+                <div class="text">0703-841-1794</div>
                 <br clear="all" />
             </div>
         </a>

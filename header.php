@@ -9,11 +9,21 @@
                 </a>
                 <span class="hide-time"> |</span>
 
-                <a href="#" class="hide-time" title="Mail Us">
+                <!-- <a href="#" class="hide-time" title="Mail Us">
                     <i class="bi-envelope"></i>
                     <span id="smtpUsername">Loading...</span>
                 </a>
+                <span class="hide-time"> |</span> -->
+
+                <a href="#" class="hide-time" title="Mail Us">
+                    <i class="bi-envelope"></i>
+                    <div>
+                        <span>customer@internationalexam.com</span><br/>
+                        <span>registra.edugradeservices@gmail.com</span>
+                    </div>
+                </a>
                 <span class="hide-time"> |</span>
+    
 
                 <a href="#" title=" Call Us">
                     <i class="bi-telephone"></i>
@@ -88,15 +98,19 @@
                         </a>
 
                         <li id="expand-li" class="<?php if (strstr($websiteAutoUrl, "$websiteUrl/study-abroad")) { ?> active <?php } ?>">
-                        <a href="<?php echo $websiteUrl ?>/study-abroad" title="Study Abroad">
-                            Study Abroad <i class="bi-plus"></i></a>
+                            <a href="<?php echo $websiteUrl ?>/study-abroad" title="Study Abroad">
+                                Study Abroad <i class="bi-plus"></i></a>
 
                             <ul class="animated fadeIn" id="fetchHeaderStudyAbroad">
-                            <a href="<?php echo $websiteUrl ?>/exam-registration" title="REGISTER FOR EXAMS"><li>REGISTER FOR EXAMS</li></a>
-                            <a href="<?php echo $websiteUrl ?>/admission-processing" title="ADMISSION PROCESSING">
-                            <li>ADMISSION PROCESSING</li></a>
-                            <a href="<?php echo $websiteUrl ?>/free-ebook" title="E-Books">
-                            <li>FREE EBOOKS</li></a>
+                                <a href="<?php echo $websiteUrl ?>/exam-registration" title="REGISTER FOR EXAMS">
+                                    <li>REGISTER FOR EXAMS</li>
+                                </a>
+                                <a href="<?php echo $websiteUrl ?>/admission-processing" title="ADMISSION PROCESSING">
+                                    <li>ADMISSION PROCESSING</li>
+                                </a>
+                                <a href="<?php echo $websiteUrl ?>/free-ebook" title="E-Books">
+                                    <li>FREE EBOOKS</li>
+                                </a>
                                 <script>
                                     _fetchHeaderStudyAbroad();
                                 </script>

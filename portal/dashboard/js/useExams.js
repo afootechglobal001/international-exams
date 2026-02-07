@@ -596,3 +596,77 @@ function _examRegistrationPaymentAction(
   }
 }
 ////////////////////// END PAY WITH PAYSTACK /////////////////////////////
+
+
+function _fetchRegisteredExams() {
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `user/exam/fetch-exam`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _userValidationCheck(response.response);
+        if (response.success && response.data?.length > 0) {
+          _initFetchRegisteredExamsData(response.data);
+        } else {
+          $("#fetchRegisteredExamsContent").html(`
+              <div class="false-notification-div">
+                  <p>${response.message}</p>
+              </div>
+          `);
+          $("#examPaginationControls").html("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callCatchError(() => _fetchRegisteredExams());
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _fetchRegisteredExams());
+  }
+}
+
+function renderExamsData(data) {
+  return data
+    .map(item => `
+      <div class="exam-div">
+          <div class="exam-image">
+              <img src="${examLogoPixPath}/${item.examData?.examLogo}" alt="${item.examData?.examAbbr} Exam"/>
+          </div>
+          <div class="exam-status ${item.statusData?.statusName}">${item.statusData?.statusName}</div>
+          <div class="exam-info">
+              <h3>${item.examData?.examAbbr}</h3>
+              <p>${item.examData?.examName}</p>
+              <div class="exam-time">
+                  <p><i class="bi bi-calendar"></i> <strong>${item.examDate}</strong></p>
+              </div>
+          </div>
+          <button class="btn" title="View Details" onclick="">
+            <i class="bi bi-eye"></i> View Details
+          </button>
+      </div>`
+    ).join("");
+}
+
+function _initFetchRegisteredExamsData(data) {
+  const paginator = new Paginator(
+    data,
+    renderExamsData,
+    "examPaginationControls",
+    "fetchRegisteredExamsContent",
+    10 // items per page
+  );
+  __paginatorHandlers["fetchRegisteredExamsContent"] = paginator;
+  paginator.renderPage();
+}
+
+function _filtersExams(value) {
+  $("#fetchRegisteredExamsContent > .exam-div").each(function () {
+    var text = $(this).text();
+    text.toLowerCase().indexOf(value.toLowerCase()) > -1
+      ? $(this).show()
+      : $(this).hide();
+  });
+}

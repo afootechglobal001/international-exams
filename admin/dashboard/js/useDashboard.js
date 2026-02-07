@@ -258,3 +258,14 @@ function _fetchDashboardStatistics() {
 			console.error("Error:", error);
 		}
 }
+
+function thousandSeparator(val) {
+  let dp = 2;
+  const formatter = new Intl.NumberFormat("ng-NG", {
+    style: "decimal",
+    maximumFractionDigits: dp,
+    minimumFractionDigits: dp,
+  });
+  //   return formatter.format(val);
+  return isNaN(parseFloat(formatter.format(val))) ? "-" : formatter.format(val);
+}

@@ -61,6 +61,7 @@ function _createEbook(){
 		let issueCount = 0;
 		const examId = $('#publishId').val().trim();
 		const ebookTitle = $('#ebookTitle').val().trim();
+		const sellingPrice = $('#sellingPrice').val().trim();
 		const regPix = $("#regPix").prop("files")[0];
 		const material = $("#material").prop("files")[0];
 		const ebookSize  = $('#ebookSize').val().trim();
@@ -70,6 +71,7 @@ function _createEbook(){
 		///// empty field validation//////////
 		issueCount += _validateEmptyValue("publishId", "EXAM");
 		issueCount += _validateEmptyValue("ebookTitle", "E-BOOK TITLE");
+		issueCount += _validateEmptyValue("sellingPrice", "SELLING PRICE");
 		issueCount += _validateEmptyValue("regPix", "E-BOOK COVER IMAGE");
 		issueCount += _validateEmptyValue("material", "E-BOOK MATERIAL");
 		issueCount += _validateEmptyValue("ebookSize", "E-BOOK SIZE");
@@ -82,6 +84,7 @@ function _createEbook(){
 		const formData = new FormData();
 		formData.append("examId", examId);
 		formData.append("ebookTitle", ebookTitle);
+		formData.append("sellingPrice", sellingPrice);
 		formData.append("regPix", regPix);
 		formData.append("material", material);
 		formData.append("ebookSize", ebookSize);
@@ -257,6 +260,9 @@ function _initFetchEbookData(data) {
                 <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
               </div>
             </div>
+			<div class="book-sum">
+				<span><strong>${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</strong></span>
+			</div>
           </div>
         </div>
       </div>

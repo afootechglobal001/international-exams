@@ -41,7 +41,7 @@ function _initFetchEbookData(data) {
                         <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
                     </div>
                 </div>
-                <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
+                <button class="btn" title="Download" onclick="_downloadEbook('${ebook.material}')"><i class="bi bi-cloud-download"></i> Download Now!</button>
             </div>
         </div>
     `).join("");
@@ -65,4 +65,19 @@ function _initFetchEbookData(data) {
   }).join("");
 
   $('#pageContent').html(content);
+}
+
+function _downloadEbook(material) {
+  const url = `${ebookMaterialPath}/${material}`;
+
+  // open new tab
+  const tab = window.open(url, '_blank');
+
+  // force download after tab opens
+  setTimeout(() => {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = material;
+    a.click();
+  }, 500);
 }

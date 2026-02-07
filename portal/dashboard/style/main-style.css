@@ -956,10 +956,10 @@ main {
 
 .book-back-div {
   display: flex;
-  justify-content: start;
   gap: 5px;
   padding: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .book-back-div .book-div {
@@ -973,9 +973,7 @@ main {
   justify-content: start;
   flex-direction: column;
   cursor: pointer;
-  flex: 1 1 19%; /* grow:1 shrink:1 basis:19% */
-  min-width: 150px;
-  max-width: 300px;
+  
 }
 .book-back-div .book-div:hover {
   border: 1px solid var(--primary-color);
@@ -1101,6 +1099,24 @@ main {
   background-size: 200% 100%;
   background-position: right;
   transform: scale(1.05); /* subtle hover grow */
+}
+
+@media (max-width: 1150px) {
+  .book-back-div {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 880px) {
+  .book-back-div {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .book-back-div {
+      grid-template-columns: 1fr;
+  }
 }
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /*-----------table component---------------------------------------------------------------------------------------*/

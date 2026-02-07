@@ -27,19 +27,25 @@
     </section>
     <!-- /////////// Title ////////////////////////////// -->
 
-    <sction class="main-content-div">
+    <section class="main-content-div">
         <!--  ////////////////////////////////////////////////////////////////////////////////-->
         <section class="content-div bg-secondary">
             <div class="greetings-div">
                 <div class="title-div">
-                    <p>August 13, 2025 </p>
+                    <p><?php
+                        echo date("F d, Y");
+                        ?> </p>
                     <h1>Welcome Back, <b id="greetingsFirstName">
                             <script>
                                 $("#greetingsFirstName").html(capitalizeFirstLetterOfEachWord(userLoginData.firstName));
                             </script>
                         </b>!
                     </h1>
-                    <p><span>Last login date: <strong>31-05-2025 11:03:45</strong></span></p>
+                    <p><span>Last login date: <strong id="lastLoginDate">
+                                <script>
+                                    $("#lastLoginDate").html(userLoginData.lastLoginDate);
+                                </script>
+                            </strong></span></p>
                 </div>
                 <div class="wallet-div">
                     <div class="wallet-info">
@@ -50,42 +56,6 @@
                         onclick="_getForm({page: 'loadWallet', url: portalOperationMiddlewareUrl});">
                         <i class="bi bi-wallet"></i> Load Wallet
                     </button>
-                </div>
-            </div>
-        </section>
-        <!--  ////////////////////////////////////////////////////////////////////////////////-->
-        <section class="statistics-back-div">
-            <div class="statistics-div" id="branch">
-                <div class="statistics-inner-div">
-                    <div class="statistics-text">
-                        <p>PENDING EXAM</p>
-                        <span>Statistics of unpaid exam registrations</span>
-                        <h2>2</h2>
-
-                    </div>
-                    <div class="statistics-icon pending"><i class="bi-credit-card-2-back"></i></div>
-                </div>
-            </div>
-
-            <div class="statistics-div" id="branch">
-                <div class="statistics-inner-div">
-                    <div class="statistics-text">
-                        <p>UPCOMING EXAM</p>
-                        <span>Statistics of scheduled exams</span>
-                        <h2>1</h2>
-                    </div>
-                    <div class="statistics-icon upcoming"><i class="bi-calendar3"></i></div>
-                </div>
-            </div>
-
-            <div class="statistics-div" id="branch">
-                <div class="statistics-inner-div">
-                    <div class="statistics-text">
-                        <p>COMPLETED EXAM</p>
-                        <span>Statistics of completed exams</span>
-                        <h2>1</h2>
-                    </div>
-                    <div class="statistics-icon completed"><i class="bi-card-checklist"></i></div>
                 </div>
             </div>
         </section>
@@ -105,76 +75,20 @@
                 </div>
             </div>
 
-            <div class="exams-back-div">
-                <div class="exam-div">
-                    <div class="exam-image">
-                        <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                    </div>
-                    <div class="exam-status draft">DRAFT</div>
-                    <div class="exam-info">
-                        <h3>IELTS</h3>
-                        <p>International English Language Testing System</p>
-                        <div class="exam-time">
-                            <p><i class="bi bi-calendar"></i> <strong>31-05-2025</strong></p>
-                            <p><i class="bi bi-clock"></i> <strong>10:00 AM </strong></p>
-                        </div>
-                    </div>
-                    <button class="btn" title="View Details">
-                        <i class="bi bi-eye"></i> View Details
-                    </button>
-                </div>
+            <div class="exams-back-div" id="fetchRegisteredExamsContent">
+                <script>
+                    _fetchRegisteredExams();
+                </script>
 
-                <div class="exam-div">
-                    <div class="exam-image">
-                        <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg" alt="Exam Image">
-                    </div>
-                    <div class="exam-status pending">PENDING</div>
-                    <div class="exam-info">
-                        <h3>IELTS</h3>
-                        <p>International English Language Testing System</p>
-                        <div class="exam-time">
-                            <p><i class="bi bi-calendar"></i> <strong>31-05-2025</strong></p>
-                            <p><i class="bi bi-clock"></i> <strong>10:00 AM </strong></p>
-                        </div>
-                    </div>
-                    <button class="btn" title="View Details">
-                        <i class="bi bi-eye"></i> View Details
-                    </button>
+                <div class="content-loading-div">
+                    <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
                 </div>
             </div>
-        </section>
-        <!--  ////////////////////////////////////////////////////////////////////////////////-->
-        <section class="content-div">
-            <div class="content-title">
-                <div class="title">
-                    <i class="bi bi-filetype-pdf"></i>
-                    <p>Download E-Books - <strong>It's Free</strong></p>
-                </div>
-                <div>
-                    <button class="btn" title="View all" onclick="_getActivePage({page:'ebook', divid:'ebook'});">
-                        <i class="bi bi-eye"></i> View All
-                    </button>
-                </div>
-            </div>
-            <div class="book-back-div">
-                <div class="book-div">
-                    <div class="image-div"> <img src="<?php echo $websiteUrl ?>/all-images/e-books/toefl-1.jpg" alt="TOELF"></div>
-                    <div class="icon-div"> <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/toefl-exam-nigeria.jpg" alt="TOEFL Exam" /> </div>
-                    <div class="text-div">
-                        <div class="details">
-                            <h3>TOEFL</h3>
-                            <p>Test of English as a Foreign Language</p>
-                            <div class="book-sum">
-                                <p><i class="bi bi-journal-text"></i> <strong>96 Pages</strong></p>
-                                <p><i class="bi bi-floppy"></i> <strong> 5.4MB</strong></p>
-                            </div>
-                        </div>
-                        <button class="btn" title="Download"><i class="bi-cloud-download"></i> Download Now!</button>
-                    </div>
-                </div>
 
-            </div>
+            <!-- Pagination -->
+            <div id="examPaginationControls" class="pagination-div"></div>
         </section>
+
         <!--  ////////////////////////////////////////////////////////////////////////////////-->
         <section class="content-div">
             <div class="content-title">
@@ -223,5 +137,5 @@
                 </div>
             </div>
         </section>
-    </sction>
+    </section>
 <?php } ?>

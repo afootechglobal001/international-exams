@@ -534,7 +534,6 @@ main {
   width: calc(100% - 80px);
   display: flex;
   flex-direction: column;
-	margin: auto;
 	align-items: center;
 	justify-content: center;
   gap: 40px;
@@ -862,7 +861,7 @@ main {
   object-fit: cover;
 }
 .exams-back-div .exam-div .exam-status,
-.exams-back-div .exam-div .draft {
+.exams-back-div .exam-div .DRAFT {
   font-size: 10px;
   padding: 3px 10px;
   align-self: self-end;
@@ -872,18 +871,18 @@ main {
   background: rgba(124, 124, 124, 0.1);
 }
 
-.exams-back-div .exam-div .pending,
-.exams-back-div .exam-div .inprogress {
+.exams-back-div .exam-div .PENDING,
+.exams-back-div .exam-div .INPROGRESS {
   color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   background: rgba(247, 160, 37, 0.1);
 }
-.exams-back-div .exam-div .upcoming {
+.exams-back-div .exam-div .UPCOMING {
   color: var(--link-color);
   border: 1px solid var(--link-color);
   background: rgba(50, 138, 179, 0.1);
 }
-.exams-back-div .exam-div .done,
+.exams-back-div .exam-div .DONE,
 .exams-back-div .exam-div .active {
   color: var(--active-color);
   border: 1px solid var(--active-color);
@@ -950,6 +949,11 @@ main {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.ebook-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .book-back-div {
   display: flex;
   justify-content: start;
@@ -1576,4 +1580,13 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.fetch-div {
+ width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
 }

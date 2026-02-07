@@ -234,23 +234,11 @@
                     <div class="top-title">
                         <h3>WALLET BALANCE</h3>
                     </div>
-                    <button class="btn" title="Load Wallet" onclick="_getForm('load_user_wallet');"><i class="bi-credit-card"></i> Load Wallet</button>
                 </div>
 
                 <div class="wallet-details-wrapper">
                     <div class="wallet-details">
                         <h3>NGN 640,000.00</h3>
-                        <h4>TOTAL AMOUNT RECEIVED</h4>
-                    </div>
-
-                    <div class="wallet-details">
-                        <h3>NGN 466,484.92</h3>
-                        <h4>TOTAL AMOUNT SPENT</h4>
-                    </div>
-
-                    <div class="wallet-details border-none">
-                        <h3>NGN 173,515.08</h3>
-                        <h4>AVAILABLE BALANCE</h4>
                     </div>
                 </div>
 

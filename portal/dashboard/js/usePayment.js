@@ -152,7 +152,7 @@ function _fetchTransactionHistory() {
           $("#currencySymbol").html(response.userData.currency);
           initTransactionTable(response.data);
         } else {
-          $("transactionHistoryContent").html(`
+          $("#transactionHistoryContent").html(`
             <tr>
               <td colspan="8">
                 <div class="false-notification-div">
@@ -160,6 +160,7 @@ function _fetchTransactionHistory() {
                 </div>
               </td>
             </tr>`);
+
           $("transactionPaginationControls").html("");
         }
       })

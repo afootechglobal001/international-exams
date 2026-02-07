@@ -1,5 +1,6 @@
 let schoolCounter = 0; // keeps track of how many schools have been added
 function _addMoreSchoolsOfInterest() {
+  useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession"));
   schoolCounter++;
 
   // Get the container
@@ -40,26 +41,32 @@ function _addMoreSchoolsOfInterest() {
   textField({
     id: `nameOfInstitution_${schoolCounter}`,
     title: "Name Of Institution",
+    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.nameOfInstitution ?? ''
   });
 
   textField({
     id: `institutionCode_${schoolCounter}`,
     title: "Institutional Code",
+    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.institutionCode ?? ''
   });
 
   textField({
     id: `institutionLocation_${schoolCounter}`,
     title: "Institution Location",
+    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.institutionLocation ?? ''
   });
 
   selectField({
     id: `programId_${schoolCounter}`,
     title: "Program of Study",
+    fieldValue: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.programData?.programId ?? '',
+    fieldLabel: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.programData?.programName ?? ''
   });
   _getSelectProgram(`programId_${schoolCounter}`);
   textField({
     id: `courseOfStudy_${schoolCounter}`,
     title: "Course of Study",
+    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.courseOfStudy ?? ''
   });
 }
 
@@ -459,11 +466,19 @@ function _registerExam() {
 }
 
 function _proceedExamRegistrationLog(formData) {
+  let useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession")) || {};
+  let callUrl="";
+  if (useEachExamRegistrationSession?.examRegistrationId) {
+    callUrl = `user/exam/exam-registration?examRegistrationId=${useEachExamRegistrationSession?.examRegistrationId}`;
+  } else {
+    callUrl = "user/exam/exam-registration";
+  }
+
   //// call endpoint
   const btnText = $("#submitBtn").html();
   _btnDisable("submitBtn", btnText, true);
   _callRawEndPoints({
-    url: "user/exam/exam-registration",
+    url: callUrl,
     formData,
     accessKey: true,
   })
@@ -596,3 +611,109 @@ function _examRegistrationPaymentAction(
   }
 }
 ////////////////////// END PAY WITH PAYSTACK /////////////////////////////
+
+
+function _fetchRegisteredExams() {
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `user/exam/fetch-exam`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _userValidationCheck(response.response);
+        if (response.success && response.data?.length > 0) {
+          _initFetchRegisteredExamsData(response.data);
+        } else {
+          $("#fetchRegisteredExamsContent").html(`
+              <div class="false-notification-div">
+                  <p>${response.message}</p>
+              </div>
+          `);
+          $("#examPaginationControls").html("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callCatchError(() => _fetchRegisteredExams());
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _fetchRegisteredExams());
+  }
+}
+
+function renderExamsData(data) {
+  return data
+    .map(item => `
+      <div class="exam-div">
+          <div class="exam-image">
+              <img src="${examLogoPixPath}/${item.examData?.examLogo}" alt="${item.examData?.examAbbr} Exam"/>
+          </div>
+          <div class="exam-status ${item.statusData?.statusName}">${item.statusData?.statusName}</div>
+          <div class="exam-info">
+              <h3>${item.examData?.examAbbr}</h3>
+              <p>${item.examData?.examName}</p>
+              <div class="exam-time">
+                  <p><i class="bi bi-calendar"></i> <strong>${item.examDate}</strong></p>
+              </div>
+          </div>
+          <button class="btn" title="View Details" onclick="_fetchExamRegistrationDetails('${item.examRegistrationId}');">
+            <i class="bi bi-eye"></i> View Details
+          </button>
+      </div>`
+    ).join("");
+}
+
+function _initFetchRegisteredExamsData(data) {
+  const paginator = new Paginator(
+    data,
+    renderExamsData,
+    "examPaginationControls",
+    "fetchRegisteredExamsContent",
+    10 // items per page
+  );
+  __paginatorHandlers["fetchRegisteredExamsContent"] = paginator;
+  paginator.renderPage();
+}
+
+function _filtersExams(value) {
+  $("#fetchRegisteredExamsContent > .exam-div").each(function () {
+    var text = $(this).text();
+    text.toLowerCase().indexOf(value.toLowerCase()) > -1
+      ? $(this).show()
+      : $(this).hide();
+  });
+}
+
+function _fetchExamRegistrationDetails(examRegistrationId) {
+    $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `user/exam/fetch-exam?examRegistrationId=${examRegistrationId}`,
+			accessKey: true,
+		})
+		.then((response) => {
+            _userValidationCheck(response.response);
+			if (response.success && response.data?.length > 0) {
+    			sessionStorage.setItem("useEachExamRegistrationSession", JSON.stringify(response.data[0]));
+          _getForm({page: 'examForm', url: portalOperationMiddlewareUrl});
+			} else {
+				_showCustomConfirm({
+					title: "FETCH EXAM REGISTRATION ERROR",
+					message: response.message,
+					alertType: "warning",
+					trueActionBtnText: "OK",
+				});
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+			_callAjaxError(() => _fetchExamRegistrationDetails(examRegistrationId)); // retry if needed
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _fetchExamRegistrationDetails(examRegistrationId));
+  	}
+}

@@ -19,6 +19,8 @@
     //////////////////declaration of variables//////////////////////////////////////
 	$transactionId=($_GET['transactionId']);
     $examRegistrationId=($_GET['examRegistrationId']);
+    validateEmptyField($transactionId, 'TRANSACTION ID');
+    validateEmptyField($examRegistrationId, 'EXAM REGISTRATION ID');
     /// update transaction to cancelled
     $query=mysqli_query($conn,"UPDATE TRANSACTION_TAB SET statusId=5 WHERE transactionId='$transactionId'") or die (mysqli_error($conn));
     /// update STUDENT_EXAMS_REGISTRATION_TAB and save to draft

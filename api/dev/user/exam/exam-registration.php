@@ -17,6 +17,7 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
+    $examRegistrationId=trim($_GET['examRegistrationId']);
     $countryId=trim($loginUserCountryId);
     $studentId=trim($loginUserId);
 	$examId=trim(($data['examId']));
@@ -24,13 +25,13 @@
     $centreId=trim(($data['centreId']));
     $examDate=trim(($data['examDate']));
     $altExamDate=trim(($data['altExamDate']));
-    $firstName=trim(($data['firstName']));
-    $middleName=trim(($data['middleName']));
-    $lastName=trim(($data['lastName']));
+    $firstName=trim(strtoupper($data['firstName']));
+    $middleName=trim(strtoupper($data['middleName']));
+    $lastName=trim(strtoupper($data['lastName']));
     $dob=trim(($data['dob']));
     $emailAddress=trim(($data['emailAddress']));
     $phoneNumber=trim(($data['phoneNumber']));
-    $residentialAddress=trim(($data['residentialAddress']));
+    $residentialAddress=trim(strtoupper($data['residentialAddress']));
     $genderId=trim(($data['genderId']));
     $schoolsOfInterestSegment=$data['schoolsOfInterestSegment'];
     $paymentMethodId=trim(($data['paymentMethodId'])); /// CC or BT OR WLT
@@ -56,6 +57,20 @@
 			];
 			goto end;
 		}
+        if (!in_array($paymentMethodId, ['CC', 'BT', 'WLT'])) {
+            $response = [
+                'response' => 103,
+                'success' => false,
+                'message' => 'INVALID PAYMENT METHOD! Please select a valid payment method and try again.'
+            ];
+            goto end;
+        }
+
+        if($examRegistrationId!=""){
+            /// delete existing record for update
+            mysqli_query($conn,"DELETE FROM STUDENT_EXAMS_REGISTRATION_TAB WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+            mysqli_query($conn,"DELETE FROM STUDENT_SCHOOL_OF_INTEREST_TAB WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+        }
 
     ///////////////////////geting sequence//////////////////////////
         $countId='ER';
@@ -75,11 +90,11 @@
         ('$examRegistrationId', '$countryId', '$studentId', '$examId', '$locationId', '$centreId', '$examDate', '$altExamDate', '$firstName', '$middleName', '$lastName', '$dob', '$emailAddress', '$phoneNumber', '$residentialAddress', '$genderId', 3, NOW())")or die (mysqli_error($conn));
 
         foreach ($schoolsOfInterestSegment as $schoolsOfInterest) {
-			$nameOfInstitution = $schoolsOfInterest['nameOfInstitution'];
+			$nameOfInstitution = strtoupper($schoolsOfInterest['nameOfInstitution']);
 			$institutionCode = $schoolsOfInterest['institutionCode'];
-			$institutionLocation = $schoolsOfInterest['institutionLocation'];
+			$institutionLocation = strtoupper($schoolsOfInterest['institutionLocation']);
 			$programId = $schoolsOfInterest['programId'];
-			$courseOfStudy = $schoolsOfInterest['courseOfStudy'];
+			$courseOfStudy = strtoupper($schoolsOfInterest['courseOfStudy']);
 			/// Insert Into payment_breakdown_tab
 			mysqli_query($conn,"INSERT INTO `STUDENT_SCHOOL_OF_INTEREST_TAB` 
             (`examRegistrationId`, `nameOfInstitution`, `institutionCode`, `institutionLocation`, `programId`, `courseOfStudy`) VALUES 
@@ -93,6 +108,7 @@
         $currency=$fetchQuery['currency'];
         $examAbbr=$fetchQuery['examAbbr'];
 
+    
         $countId='TRANS';
         $sequence=$callclass->_getSequenceCount($conn, $countId);
         $array = json_decode($sequence, true);
@@ -103,11 +119,13 @@
         $balanceBefore=$loginUserWalletBalance;
         $balanceAfter=$balanceBefore; /// since payment is pending
 
-        if ($paymentMethodId=='CC') {
-        ///get country paymentKey
+         ///get country paymentKey
         $query=mysqli_query($conn,"SELECT paymentKey FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
         $fetchQuery=mysqli_fetch_array($query);
-        $paymentKey=$fetchQuery['paymentKey'];
+        $dbPaymentKey=$fetchQuery['paymentKey'];
+
+        if ($paymentMethodId=='CC') {
+            $paymentKey=$dbPaymentKey;
         $statusId=3; /// PENDING
 
         mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
@@ -116,7 +134,7 @@
             $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
 
         }elseif($paymentMethodId=='BT'){
-            $paymentKey='BANK TRANSFER';
+            $paymentKey=$dbPaymentKey;
             $statusId=3; /// PENDING
             mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
             (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
@@ -139,15 +157,11 @@
             ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
             /// update user wallet balance
             mysqli_query($conn,"UPDATE USERS_TAB SET walletBalance='$balanceAfter' WHERE userId='$studentId'")or die (mysqli_error($conn));
+            //// update exam registration status to approved
+            mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='$statusId WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+            
         $alertDetail = "User with ID $studentId and Name $loginUserFullname successfully paid $currency $amount from wallet for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment.";
 
-        }else{
-            $response = [
-                'response' => 104,
-                'success' => false,
-                'message' => "INVALID PAYMENT METHOD! Please select a valid payment method and try again.",
-            ];
-            goto end;
         }
         
         $response = [

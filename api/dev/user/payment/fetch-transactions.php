@@ -25,6 +25,15 @@
     }
     //// get user wallet balance
     $walletQuery = mysqli_query($conn, "SELECT walletBalance FROM USERS_TAB WHERE userId='$loginUserId'") or die(mysqli_error($conn));
+    $allRecordCount=mysqli_num_rows($query);
+    if($allRecordCount==0){
+        $response=[
+            'response' => 101,
+            'success' => false,
+            'message' => "NO TRANSACTION FOUND! Please make a transaction and try again.",
+        ];
+        goto end;
+    }
     $walletData = mysqli_fetch_array($walletQuery);
     $response = [
         'response'=> 200,
@@ -36,7 +45,7 @@
         ],
         'data' => [],
     ];
-     while($fetchQuery=mysqli_fetch_array($query)){
+     while($fetchQuery=mysqli_fetch_assoc($query)){
          $response['data'][] = $fetchQuery;
      }
 

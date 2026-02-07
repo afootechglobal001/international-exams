@@ -17,6 +17,8 @@ $_DB_PASSWORD ="Password@12345.";
 
 $conn = mysqli_connect($_HOST_NAME, $_DB_USERNAME, $_DB_PASSWORD)or die("Unable to connect to MySQL1");
 mysqli_select_db($conn,"intern77_revamped_db");
+mysqli_set_charset($conn, "utf8mb4");
+
 /////////////////////////////////////////////////////////////////
 ?>
 

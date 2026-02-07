@@ -18,6 +18,7 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
 	$transactionId=($_GET['id']);
+    validateEmptyField($transactionId, 'TRANSACTION ID');
     /// update transaction
     $query=mysqli_query($conn,"UPDATE TRANSACTION_TAB SET statusId=5 WHERE transactionId='$transactionId'") or die (mysqli_error($conn));
     $response = [

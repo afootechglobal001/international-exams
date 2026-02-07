@@ -11,10 +11,10 @@ function _fetchAllEbookData() {
           _initFetchEbookData(response.data);
         } else {
           $("#pageContent").html(`
-                <div class="false-notification-div">
-                    <p>${response.message}</p>
-                </div>
-            `);
+            <div class="false-notification-div">
+                <p>${response.message}</p>
+            </div>
+        `);
         }
       })
       .catch((error) => {
@@ -26,61 +26,78 @@ function _fetchAllEbookData() {
 }
 
 function _initFetchEbookData(data) {
-  const content = data.map((exam) => {
-    // loop through all ebooks for this exam
-    const eBookContent = exam.ebookData.map((ebook) => `
-          <div class="book-div">
-            <div class="image-div"> <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examAbbr} Cover"></div>
-            <div class="icon-div"> <img src="${examLogoPixPath}/${ebook.examLogo}" alt="${exam.examAbbr} Exam"/></div>
-            <div class="text-div">
-              <div class="details">
-                <h3>${exam.examAbbr}</h3>
-                <p>${ebook.ebookTitle}</p>
-                <div class="book-sum">
-                    <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
-                    <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
-                </div>
-              </div>
-              <div class="bottom-div">
-                <button class="btn" title="Download" onclick="_downloadEbook('${ebook.material}')"><i class="bi bi-cloud-download"></i> Download Now!</button>
-                <span class="price-value">${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</span>
-              </div>
-            </div>
-        </div>
-    `).join("");
+    const content = data.map((exam) => {
+        const dataInfo = exam.ebookData || [];
+        if (dataInfo.length === 0) return '';
 
-    return `
-        <section class="main-content-div">
-            <section class="content-div">
-                <div class="content-title">
-                    <div class="title">
-                        <i class="bi bi-filetype-pdf"></i>
-                        <p>${exam.examAbbr} E-Books</p>
+        const eBookContent = dataInfo.map((ebook) => {
+
+            const isFree = exam.isDownloadable === true;
+
+            const btnContainer = isFree
+                ? `
+                    <button class="btn" title="Download"
+                        onclick="">
+                        <i class="bi bi-cloud-download"></i> Download Now!
+                    </button>
+                  `
+                : `
+                    <button class="btn" title="Pay To Download">
+                        <i class="bi bi-credit-card"></i> Pay Now!
+                    </button>
+                  `;
+
+            const priceText = isFree
+                ? `<span class="price-value free">It’s Free</span>`
+                : `<span class="price-value">${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</span>`;
+
+            return `
+                <div class="book-div">
+                    <div class="image-div">
+                        <img src="${eBookPixPath}/${ebook.regpix}" alt="${exam?.examData?.examAbbr} Cover">
+                    </div>
+
+                    <div class="icon-div">
+                        <img src="${examLogoPixPath}/${exam?.examData?.examLogo}" alt="${exam?.examData?.examAbbr} Exam">
+                    </div>
+
+                    <div class="text-div">
+                        <div class="details">
+                            <h3>${exam?.examData?.examAbbr}</h3>
+                            <p>${ebook.ebookTitle}</p>
+
+                            <div class="book-sum">
+                                <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
+                                <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="bottom-div">
+                            ${btnContainer}
+                            ${priceText}
+                        </div>
                     </div>
                 </div>
+            `;
+        }).join("");
 
-                <div class="book-back-div">
-                    ${eBookContent}
-                </div>
+        return `
+            <section class="main-content-div">
+                <section class="content-div">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-filetype-pdf"></i>
+                            <p>${exam?.examData?.examAbbr} E-Books</p>
+                        </div>
+                    </div>
+
+                    <div class="book-back-div">
+                        ${eBookContent}
+                    </div>
+                </section>
             </section>
-        </section>
-    `;
-  }).join("");
+        `;
+    }).join("");
 
-  $('#pageContent').html(content);
-}
-
-function _downloadEbook(material) {
-  const url = `${ebookMaterialPath}/${material}`;
-
-  // open new tab
-  const tab = window.open(url, '_blank');
-
-  // force download after tab opens
-  setTimeout(() => {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = material;
-    a.click();
-  }, 500);
+    $('#pageContent').html(content);
 }

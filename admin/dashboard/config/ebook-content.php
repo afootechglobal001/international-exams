@@ -79,6 +79,15 @@
                             </script>
                         </div>
 
+                        <div class="text_field_container" id="sellingPrice_container">
+                            <script>
+                                textField({
+                                    id: 'sellingPrice',
+                                    title: 'Selling Price',
+                                });
+                            </script>
+                        </div>
+
                         <div class="form-title">UPLOAD E-BOOK PICTURE: <i>(JPG, PNG FORMAT ONLY)</i> <span>*</span></div>
                         <label>
                             <div class="pix-div">

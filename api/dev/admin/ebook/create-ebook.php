@@ -19,6 +19,7 @@
     //////////////////declaration of variables//////////////////////////////////////
     $examId =trim($_POST['examId']);
     $ebookTitle =trim(str_replace("'", "\'", $_POST['ebookTitle']));
+    $sellingPrice =trim($_POST['sellingPrice']);
     $regPix=$_FILES['regPix']['name'];
     $material=$_FILES['material']['name'];
     $ebookSize=trim($_POST['ebookSize']);
@@ -28,6 +29,7 @@
     //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($examId, 'EXAM');
     validateEmptyField($ebookTitle, 'E-BOOK TITLE');
+    validateEmptyField($sellingPrice, 'SELLING PRICE');
     validateEmptyField($regPix, 'PICTURE');
     validateEmptyField($material, 'MATERIAL');
     validateEmptyField($ebookSize, 'E-BOOK SIZE');
@@ -94,8 +96,8 @@
             $material = $ebookId . '_' . $datetime . '_' . $material;
 
             mysqli_query($conn,"INSERT INTO `EXAM_EBOOK_TAB`
-            (`examId`, `examAbbr`, `ebookId`, `ebookTitle`, `regPix`, `material`, `ebookSize`, `ebookPages`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
-            ('$examId', '$examAbbr', '$ebookId', '$ebookTitle', '$regPix', '$material', '$ebookSize', '$ebookPages', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
+            (`examId`, `examAbbr`, `ebookId`, `ebookTitle`, `sellingPrice`, `regPix`, `material`, `ebookSize`, `ebookPages`, `statusId`, `createdBy`, `createdTime`, `updatedTime`) VALUES
+            ('$examId', '$examAbbr', '$ebookId', '$ebookTitle', '$sellingPrice', '$regPix', '$material', '$ebookSize', '$ebookPages', '$statusId', '$loginStaffId', NOW(), NOW())")or die (mysqli_error($conn));
 
             $pageCatArray=$callclass->_getSetupPageCategoryDetails($conn, $pageCategoryId);
             $fetchPageCat = json_decode($pageCatArray, true);

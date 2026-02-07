@@ -520,3 +520,13 @@ function thousandSeperator(val) {
   //   return formatter.format(val);
   return isNaN(parseFloat(formatter.format(val))) ? "-" : formatter.format(val);
 }
+
+ ////////////////////////////////////////////////
+function _showLoader(message = 'Processing, please wait...') {
+  $('#globalLoaderText').html(message);
+  $('#globalLoader').fadeIn(150);
+}
+
+function _hideLoader() {
+  $('#globalLoader').fadeOut(150);
+}

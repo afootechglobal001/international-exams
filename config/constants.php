@@ -44,7 +44,7 @@ $getwebsiteCountryName=$_SESSION['websiteCountryName'] ?? 'Nigeria'; /// Default
 <script>
 var websiteUrl = "<?php echo $websiteUrl;?>";
 var apiKey = 'a883a517-bc6c-4d8b-a544-ec743c88354a'; /// For API Key //
-var endPoint = 'http://localhost/projects/international-exams/api/dev'; /// Server End Point url
+var endPoint = 'https://www.internationalexam.com/new/api/dev'; /// Server End Point url
 //var endPoint='https://schoolbolt.com/api/production'; /// Server End Point url
 var userOsBrowser = "<?php echo $userOsBrowser;?>"; /// For User OS Browser //
 var userIpAddress = "<?php echo $userIpAddress;?>"; /// For User IP Address //
@@ -81,7 +81,7 @@ var pagePicturePath = websiteUrl + '/uploaded_files/pagePictures'; /// For Pages
 var ictCoursePixPath = websiteUrl + '/uploaded_files/IctCourses'; /// For Pages Picture Path
 var videoPixPath = websiteUrl + '/uploaded_files/video-images'; /// For video pix Path
 var videoPath = websiteUrl + '/uploaded_files/videos'; /// For videos Path
-
+var userOtpVerificationUrl = websiteUrl + '/portal/verify'; /// For User OTP Verification Url //
 
 var pageCategory = {
     examCategory: 'examCategory',

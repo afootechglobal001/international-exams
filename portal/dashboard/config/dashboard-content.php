@@ -19,7 +19,7 @@
                     <i class="bi bi-filetype-pdf"></i> Download E-books
                 </button>
                 <button class="btn" title="Apply for Exam"
-                    onclick="_getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
+                    onclick="sessionStorage.removeItem('useEachExamRegistrationSession'); _getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
                     <i class="bi bi-journal-text"></i> Apply for Exam
                 </button>
             </div>
@@ -69,7 +69,7 @@
 
                 <div>
                     <button class="btn" title="Apply for Exam"
-                        onclick="_getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
+                        onclick="sessionStorage.removeItem('useEachExamRegistrationSession'); _getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
                         <i class="bi bi-eye"></i> Apply for Exam
                     </button>
                 </div>

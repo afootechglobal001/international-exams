@@ -31,7 +31,7 @@
                     <p>My International Exams</p>
                 </div>
                 <div>
-                    <button class="btn" title="Apply for Exam" onclick="_getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
+                    <button class="btn" title="Apply for Exam" onclick="sessionStorage.removeItem('useEachExamRegistrationSession'); _getForm({page: 'examForm', url: portalOperationMiddlewareUrl});">
                         <i class="bi bi-eye"></i> Apply for Exam
                     </button>
                 </div>
@@ -57,12 +57,16 @@
 
 
 <?php if ($page == 'examForm') { ?>
+    <script> 
+        useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession"));
+        $('#formTitle').html(useEachExamRegistrationSession?.examRegistrationId ? 'UPDATE EXAM REGISTRATION':'EXAM REGISTRATION');
+    </script>
     <!-- /////////// Title ////////////////////////////// -->
     <section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
                 <div class="icon-div"><i class="bi bi-journal-text"></i></div>
-                <h3>EXAM REGISTRAION</h3>
+                <h3 id="formTitle">EXAM REGISTRAION</h3>
             </div>
             <div class="btn-div">
                 <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
@@ -101,7 +105,9 @@
                             <script>
                                 selectField({
                                     id: 'examId',
-                                    title: 'Select Exam Type'
+                                    title: 'Select Exam Type',
+                                    fieldValue: useEachExamRegistrationSession?.examData?.examId ?? '',
+                                    fieldLabel: useEachExamRegistrationSession?.examData?.examAbbr ?? ''
                                 });
                                 _getCountryExams('examId');
                             </script>
@@ -116,29 +122,16 @@
 
                             </div>
 
-                            <div class="exams-back-div" id="examPreviewDiv">
-                                <!-- <div class="exam-div">
-                                <div class="exam-image">
-                                    <img src="<?php echo $websiteUrl ?>/all-images/exam-logo/ielts-exam-nigeria.jpg"
-                                        alt="Exam Image">
-                                </div>
-                                <div class="exam-status active">ACTIVE</div>
-                                <div class="exam-info">
-                                    <h3>IELTS</h3>
-                                    <p>International English Language Testing System</p>
-                                </div>
-                                <div class="price">
-                                    <p>NGN 293,000.00</p>
-                                </div>
-                            </div> -->
-                            </div>
+                            <div class="exams-back-div" id="examPreviewDiv"></div>
                         </section>
 
                         <div class="text_field_container" id="locationId_container">
                             <script>
                                 selectField({
                                     id: 'locationId',
-                                    title: 'Select Preferred Location'
+                                    title: 'Select Preferred Location',
+                                    fieldValue: useEachExamRegistrationSession?.locationData?.locationId ?? '',
+                                    fieldLabel: useEachExamRegistrationSession?.locationData?.locationName ?? ''
                                 });
                             </script>
                         </div>
@@ -146,7 +139,9 @@
                             <script>
                                 selectField({
                                     id: 'locationCentreId',
-                                    title: 'Select Preferred Centre'
+                                    title: 'Select Preferred Centre',
+                                    fieldValue: useEachExamRegistrationSession?.centreData?.centreId ?? '',
+                                    fieldLabel: useEachExamRegistrationSession?.centreData?.centreName ?? ''
                                 });
                             </script>
                         </div>
@@ -155,7 +150,9 @@
                             <script>
                                 selectField({
                                     id: 'examDate',
-                                    title: 'Preferred Exam Date'
+                                    title: 'Preferred Exam Date',
+                                    fieldValue: useEachExamRegistrationSession?.examDate ?? '',
+                                    fieldLabel: useEachExamRegistrationSession?.examDate ?? ''
                                 });
                             </script>
                         </div>
@@ -163,7 +160,9 @@
                             <script>
                                 selectField({
                                     id: 'altDate',
-                                    title: 'Alternate Exam Date'
+                                    title: 'Alternate Exam Date',
+                                    fieldValue: useEachExamRegistrationSession?.altExamDate ?? '',
+                                    fieldLabel: useEachExamRegistrationSession?.altExamDate ?? ''
                                 });
                             </script>
                         </div>
@@ -185,6 +184,7 @@
                                 textField({
                                     id: 'firstName',
                                     title: 'Enter Your First Name',
+                                    value: useEachExamRegistrationSession?.firstName ?? ''
                                 });
                             </script>
                         </div>
@@ -193,6 +193,7 @@
                                 textField({
                                     id: 'middleName',
                                     title: 'Enter Your Middle Name',
+                                    value: useEachExamRegistrationSession?.middleName ?? ''
                                 });
                             </script>
                         </div>
@@ -201,6 +202,7 @@
                                 textField({
                                     id: 'lastName',
                                     title: 'Enter Your Last Name',
+                                    value: useEachExamRegistrationSession?.lastName ?? ''
                                 });
                             </script>
                         </div>
@@ -209,7 +211,8 @@
                                 textField({
                                     id: 'dob',
                                     title: 'Enter Your Date of Birth',
-                                    type: 'date'
+                                    type: 'date',
+                                    value: useEachExamRegistrationSession?.dob ?? ''
                                 });
                             </script>
                         </div>
@@ -219,6 +222,7 @@
                                 textField({
                                     id: 'emailAddress',
                                     title: 'Enter Your Email Address',
+                                    value: useEachExamRegistrationSession?.emailAddress ?? ''
                                 });
                             </script>
                         </div>
@@ -230,6 +234,7 @@
                                 textField({
                                     id: 'phoneNumber',
                                     title: 'Enter Your Phone Number',
+                                    value: useEachExamRegistrationSession?.phoneNumber ?? ''
                                 });
                             </script>
                         </div>
@@ -238,6 +243,7 @@
                                 textField({
                                     id: 'residentialAddress',
                                     title: 'Enter Your Residential Address',
+                                    value: useEachExamRegistrationSession?.residentialAddress ?? ''
                                 });
                             </script>
                         </div>
@@ -245,7 +251,9 @@
                             <script>
                                 selectField({
                                     id: 'genderId',
-                                    title: 'Select Your Gender'
+                                    title: 'Select Your Gender',
+                                    fieldValue: useEachExamRegistrationSession?.genderData?.genderId ?? '',
+                                    fieldLabel: useEachExamRegistrationSession?.genderData?.genderName ?? ''
                                 });
                                 _getSelectGender('genderId');
                             </script>
@@ -260,36 +268,52 @@
                         _addMoreSchoolsOfInterest();
                     </script>
                 </div>
-                <div class="form-note">
-                    <p><span onclick="_addMoreSchoolsOfInterest();">CLICK HERE</span> to add more schools of interest</p>
-                </div>
 
+                <script>
+                    $(document).ready(function () {
+                        const dataInfo = useEachExamRegistrationSession?.statusData;
+                        if (dataInfo) {
+                            const statusId = dataInfo.statusId;
+                            if (statusId === '1') {
+                                $("#paymentWrapper").hide();
+                            } else {
+                                $("#paymentWrapper").show();
+                            }
+                        }
+                    });
+                </script>
 
-                <!-- Payment Information -->
-                <div class="content-div">
-                    <div class="content-title">
-                        <div class="title">
-                            <i class="bi bi-credit-card-2-back"></i>
-                            <p>Payment Method</p>
-                        </div>
+                <div id="paymentWrapper">
+                    <div class="form-note">
+                        <p><span onclick="_addMoreSchoolsOfInterest();">CLICK HERE</span> to add more schools of interest</p>
                     </div>
 
-                    <div class="form-text">
-                        <div class="text_field_container" id="paymentMethodId_container">
-                            <script>
-                                selectField({
-                                    id: 'paymentMethodId',
-                                    title: 'Select Payment Method'
-                                });
-                                _getSelectPaymentMethod('paymentMethodId');
-                            </script>
+                    <!-- Payment Information -->
+                    <div class="content-div">
+                        <div class="content-title">
+                            <div class="title">
+                                <i class="bi bi-credit-card-2-back"></i>
+                                <p>Payment Method</p>
+                            </div>
+                        </div>
+
+                        <div class="form-text">
+                            <div class="text_field_container" id="paymentMethodId_container">
+                                <script>
+                                    selectField({
+                                        id: 'paymentMethodId',
+                                        title: 'Select Payment Method'
+                                    });
+                                    _getSelectPaymentMethod('paymentMethodId');
+                                </script>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="btn-div" style="flex-direction: column; gap: 5px;" id="submitBtn">
-                    <button class="btn" title="PROCEED TO PAYMENT" onclick="_registerExam();"> <i
-                            class="bi-credit-card-2-back"></i> PROCEED TO PAYMENT </button>
+                    <div class="btn-div" style="flex-direction: column; gap: 5px;" id="submitBtn">
+                        <button class="btn" title="PROCEED TO PAYMENT" onclick="_registerExam();"> <i
+                                class="bi-credit-card-2-back"></i> PROCEED TO PAYMENT </button>
 
+                    </div>
                 </div>
             </div>
     </section>

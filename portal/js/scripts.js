@@ -1,42 +1,99 @@
-function _logUserEmail() {
+$(document).ready(function () {
+  $("#viewLogin input, #viewLogin").on("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      _userLogin(false);
+    }
+  });
+
+  $("#viewOtp input").on("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      _userSignUp();
+    }
+  });
+});
+
+function _counDownOtp(timer) {
+  $("#resendOtpBtn").hide();
+  $("#resendCountdown").fadeIn(500);
+  const countdown = setInterval(() => {
+    if (timer > 0) {
+      timer = timer - 1;
+      $("#timer").html(timer);
+    } else {
+      $("#resendCountdown").hide();
+      $("#resendOtpBtn").fadeIn(500);
+      clearInterval(countdown);
+    }
+  }, 1000);
+  return () => clearInterval(countdown);
+}
+
+function _logUserEmail(isResend = false) {
+  let userProceedLoginSession = JSON.parse(
+    localStorage.getItem("userProceedLoginSession")
+  );
+  
   try {
     //////get all needed values////
-    const firstName = $("#firstName").val().trim();
-    const lastName = $("#lastName").val().trim();
-    const emailAddress = $("#emailAddress").val().trim();
-    const phoneNumber = $("#phoneNumber").val().trim();
-    const countryId = $("#countryId").val().trim();
-    const createPassword = $("#createPassword").val().trim();
-    const confirmPassword = $("#confirmPassword").val().trim();
-    ///// empty field validation//////////
     let issueCount = 0;
-    issueCount += _validateEmptyValue("firstName", "FIRST NAME");
-    issueCount += _validateEmptyValue("lastName", "LAST NAME");
-    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
-    issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
-    issueCount += _validateEmptyValue("countryId", "COUNTRY");
-    issueCount += _validateEmptyValue("userTypeId", "USER TYPE");
-    issueCount += _validateEmptyValue("createPassword", "PASSWORD");
-    issueCount += _validateEmptyValue("confirmPassword", "PASSWORD");
-    issueCount += _validateEmail("emailAddress", emailAddress);
-    issueCount += _validateNumber("phoneNumber", phoneNumber);
-    if (createPassword != confirmPassword) {
-      $("#confirmPassword").addClass("issue");
-      $("#issue_confirmPassword").html("PASSWORD NOT MATCHED!");
-      issueCount += 1;
+    let firstName = $("#firstName").val()?.trim();
+    let lastName = $("#lastName").val()?.trim();
+    let emailAddress = $("#emailAddress").val()?.trim();
+    let phoneNumber = $("#phoneNumber").val()?.trim();
+    let countryId = $("#countryId").val()?.trim();
+    let userTypeId = $("#userTypeId").val()?.trim();
+    let password = $("#createPassword").val()?.trim();
+    let cpassword = $("#confirmPassword").val()?.trim();
+
+    // Use session values when resending ///
+    if (isResend) {
+      firstName = userProceedLoginSession?.signupData?.firstName;
+      lastName = userProceedLoginSession?.signupData?.lastName;
+      emailAddress = userProceedLoginSession?.signupData?.emailAddress;
+      phoneNumber = userProceedLoginSession?.signupData?.phoneNumber;
+      countryId = userProceedLoginSession?.signupData?.countryId;
+      userTypeId = userProceedLoginSession?.signupData?.userTypeId;
+      password = userProceedLoginSession?.signupData?.password;
+      cpassword = userProceedLoginSession?.signupData?.cpassword;
     }
+
+    ///// empty field validation//////////
+    if (!isResend) {
+      issueCount += _validateEmptyValue("firstName", "FIRST NAME");
+      issueCount += _validateEmptyValue("lastName", "LAST NAME");
+      issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+      issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
+      issueCount += _validateEmptyValue("countryId", "COUNTRY");
+      issueCount += _validateEmptyValue("userTypeId", "USER TYPE");
+      issueCount += _validateEmptyValue("createPassword", "PASSWORD");
+      issueCount += _validateEmptyValue("confirmPassword", "PASSWORD");
+      issueCount += _validateEmail("emailAddress", emailAddress);
+      issueCount += _validateNumber("phoneNumber", phoneNumber);
+      if (password != cpassword) {
+        $("#confirmPassword").addClass("issue");
+        $("#issue_confirmPassword").html("PASSWORD NOT MATCHED!");
+        issueCount += 1;
+      }
+    }
+   
     if (issueCount > 0) return;
     // Gather form data
     const formData = {
-      emailAddress,
       firstName,
       lastName,
+      emailAddress,
+      phoneNumber,
       countryId,
+      userTypeId,
+      password,
+      cpassword,
     };
     ////// confirm action
     _showCustomConfirm({
       callback: () => {
-        _proceedLog(formData);
+        _proceedLog(formData, isResend);
       },
       title: "Are you sure?",
       message: "Will proceed to send OTP to your email address.",
@@ -49,28 +106,42 @@ function _logUserEmail() {
   }
 }
 
-function _proceedLog(formData) {
+function _proceedLog(formData, isResend) {
   //// call endpoint
-  const btnText = $("#submitBtn").html();
-  _btnDisable("submitBtn", btnText, true);
+   let btnText = "";
+  if (!isResend) {
+    const btnText = $("#submitBtn").html();
+    _btnDisable("submitBtn", btnText, true);
+  } else {
+    _showLoader("Resending OTP... Please wait...");
+  }
+
   _callRawEndPoints({
-    url: "user/auth/log-user-signup-email",
+    url: "user/auth/verify-user-email-on-signup",
     formData,
   })
     .then((response) => {
       if (response.success) {
         const data = response.data;
-        //// get signup OTP modal////
-        _getForm({
-          page: "signupOtp",
-          url: portalAuthMiddlewareUrl,
-          id: data.email,
-        });
-        _btnDisable("submitBtn", btnText, false);
+         if (!isResend) {
+            _btnDisable("submitBtn", btnText, false);
+            localStorage.setItem(
+              "userProceedLoginSession",
+              JSON.stringify({
+                signupData: formData,   // for resend
+                displayData: data // for UI (fullName, email)
+              })
+            );
+              _showLoader("OTP Sent Successfully!. Please wait...");
+              window.location.href = userOtpVerificationUrl;
+          } else {
+            _hideLoader();
+            _counDownOtp(30);
+          }
       } else {
         _btnDisable("submitBtn", btnText, false);
         _showCustomConfirm({
-          title: "USER ERROR",
+          title: "Invalid Credentials!",
           message: response.message,
           alertType: "warning",
           trueActionBtnText: "OK",
@@ -80,91 +151,56 @@ function _proceedLog(formData) {
     .catch((error) => {
       console.error("Error:", error);
       _callAjaxError(() => _logUserEmail()); // retry if needed
-      _btnDisable("submitBtn", btnText, false);
+      if (!isResend) {
+        _btnDisable("submitBtn", btnText, false);
+      } else {
+        _hideLoader();
+      }
     });
 }
 
-function _verifyUserEmail() {
+/// Proceed To Sign Up ///
+function _userSignUp() {
+  let userProceedLoginSession = JSON.parse(
+    localStorage.getItem("userProceedLoginSession")
+  );
   try {
-    //////get all needed values////
-    const emailAddress = $("#emailAddress").val().trim();
-    const otp = $("#otp").val().trim();
-    ///// empty field validation//////////
+    ////////get all needed values////////////
     let issueCount = 0;
+    const otp = $("#otp").val();
+
+    ///// empty field validation//////////
     issueCount += _validateEmptyValue("otp", "OTP");
-    issueCount += _validateNumber("otp", otp);
+
     if (issueCount > 0) return;
-    const btnText = $("#proceedBtn").html();
-    _btnDisable("proceedBtn", btnText, true);
+
     // Gather form data
     const formData = {
-      emailAddress,
       otp,
+      emailAddress: userProceedLoginSession?.displayData?.email,
     };
 
-    //// call endpoint
-    _callRawEndPoints({
-      url: "user/auth/verify-user-signup-email",
-      formData,
-    })
-      .then((response) => {
-        if (response.success) {
-          _userSignUp(otp);
-          _alertClose();
-        } else {
-          _showCustomConfirm({
-            title: "INVALID OTP",
-            message: response.message,
-            alertType: "warning",
-            trueActionBtnText: "OK",
-          });
-          _btnDisable("proceedBtn", btnText, false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        _callAjaxError(() => _verifyUserEmail()); // retry if needed
-        _btnDisable("proceedBtn", btnText, false);
-      });
+    _userSignUpCallback(formData);
   } catch (error) {
     console.error("Error:", error);
-    _callCatchError(() => _verifyUserEmail());
-    _btnDisable("proceedBtn", btnText, false);
+    _callCatchError(() => _userSignUp());
   }
 }
 
-function _userSignUp(otp) {
+/// Proceed To Sign Up Callback ///
+function _userSignUpCallback(formData) {
+  ///// get btn text/////
   const btnText = $("#submitBtn").html();
   _btnDisable("submitBtn", btnText, true);
-  try {
-    const firstName = $("#firstName").val().trim();
-    const lastName = $("#lastName").val().trim();
-    const emailAddress = $("#emailAddress").val().trim();
-    const phoneNumber = $("#phoneNumber").val().trim();
-    const countryId = $("#countryId").val().trim();
-    const userTypeId = $("#userTypeId").val().trim();
-    const createPassword = $("#createPassword").val().trim();
-    const confirmPassword = $("#confirmPassword").val().trim();
-    // Gather form data
-    const formData = {
-      otp: otp,
-      firstName: firstName,
-      lastName: lastName,
-      emailAddress: emailAddress,
-      phoneNumber: phoneNumber,
-      countryId: countryId,
-      userTypeId: userTypeId,
-      password: createPassword,
-      cPassword: confirmPassword,
-    };
 
-    _callRawEndPoints({
-      url: "user/auth/signup",
-      formData,
-    })
-      .then((response) => {
-        if (response.success) {
-          const data = response.data;
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/signup`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+        const data = response.data;
           sessionStorage.setItem("userLoginData", JSON.stringify(data));
           _showCustomConfirm({
             callback: () => {
@@ -175,26 +211,25 @@ function _userSignUp(otp) {
             alertType: "success",
             trueActionBtnText: "Okay, Thanks",
           });
-        } else {
-          _showCustomConfirm({
-            title: "USER ERROR",
-            message: response.message,
-            alertType: "warning",
-            trueActionBtnText: "OK",
-          });
-          _btnDisable("submitBtn", btnText, false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        _callAjaxError(() => _userSignUp()); // retry if needed
         _btnDisable("submitBtn", btnText, false);
-      });
-  } catch (error) {
-    console.error("Error:", error);
-    _callCatchError(() => _userSignUp());
-    _btnDisable("submitBtn", btnText, false);
-  }
+      } else {
+        _btnDisable("submitBtn", btnText, false);
+        _hideLoader();
+        _showCustomConfirm({
+          title: "Invalid OTP",
+          message: response.message,
+          alertType: "error",
+          trueActionBtnText: "OK",
+          closeOnOverlayClick: true,
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _userSignUpCallback(formData)); // retry if needed
+      _btnDisable("submitBtn", btnText, false);
+      _hideLoader();
+    });
 }
 
 function _userLogin() {

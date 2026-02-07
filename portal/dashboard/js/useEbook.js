@@ -29,19 +29,22 @@ function _initFetchEbookData(data) {
   const content = data.map((exam) => {
     // loop through all ebooks for this exam
     const eBookContent = exam.ebookData.map((ebook) => `
-        <div class="book-div">
+          <div class="book-div">
             <div class="image-div"> <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examAbbr} Cover"></div>
             <div class="icon-div"> <img src="${examLogoPixPath}/${ebook.examLogo}" alt="${exam.examAbbr} Exam"/></div>
             <div class="text-div">
-                <div class="details">
-                    <h3>${exam.examAbbr}</h3>
-                    <p>${ebook.ebookTitle}</p>
-                    <div class="book-sum">
-                        <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
-                        <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
-                    </div>
+              <div class="details">
+                <h3>${exam.examAbbr}</h3>
+                <p>${ebook.ebookTitle}</p>
+                <div class="book-sum">
+                    <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
+                    <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
                 </div>
+              </div>
+              <div class="bottom-div">
                 <button class="btn" title="Download" onclick="_downloadEbook('${ebook.material}')"><i class="bi bi-cloud-download"></i> Download Now!</button>
+                <span class="price-value">${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</span>
+              </div>
             </div>
         </div>
     `).join("");

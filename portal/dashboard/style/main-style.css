@@ -1059,7 +1059,20 @@ main {
   color: var(--primary-color);
 }
 
-.book-back-div .book-div .text-div .btn {
+.book-back-div .book-div .text-div .bottom-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.book-back-div .book-div .text-div .bottom-div span{
+  font-family: sub-title-font;
+  font-size: 17px;
+  color: var(--sub-body-color);
+}
+
+.book-back-div .book-div .text-div .bottom-div .btn {
   border: none;
   height: 40px;
   font-size: 13px;

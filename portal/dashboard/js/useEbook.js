@@ -2,7 +2,7 @@ function _fetchAllEbookData() {
   try {
     //// call endpoint //////
     _callFetchEndPoints({
-      url: `user/ebook/fetch-ebook`,
+      url: `user/ebooks/fetch-ebook`,
       accessKey: true,
     })
       .then((response) => {

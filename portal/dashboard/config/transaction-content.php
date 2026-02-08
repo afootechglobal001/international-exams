@@ -131,7 +131,7 @@
     <section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
-                <div class="icon-div"><i class="bi bi-card"></i></div>
+                <div class="icon-div"><i class="bi bi-credit-card"></i></div>
                 <h3>TRANSACTION DETAILS</h3>
             </div>
             <div class="btn-div">
@@ -143,8 +143,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>Stay informed! Important updates about your exam schedules, payments, and portal activities will appear
-                    here in real time.</p>
+                <p>This section provides a complete breakdown of your transaction, including payment status, amount paid, and transaction reference.</p>
             </div>
 
             <!--  ////////////////////////////////////////////////////////////////////////////////-->

@@ -158,10 +158,9 @@
             /// update user wallet balance
             mysqli_query($conn,"UPDATE USERS_TAB SET walletBalance='$balanceAfter' WHERE userId='$studentId'")or die (mysqli_error($conn));
             //// update exam registration status to approved
-            mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='$statusId WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+            mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='$statusId' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
             
         $alertDetail = "User with ID $studentId and Name $loginUserFullname successfully paid $currency $amount from wallet for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment.";
-
         }
         
         $response = [

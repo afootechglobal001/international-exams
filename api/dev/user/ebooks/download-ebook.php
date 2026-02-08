@@ -46,7 +46,7 @@
         ];
     }else{
         //// get ebook details
-        $select = "SELECT ebookTitle, sellingPrice, regPix FROM EXAM_EBOOK_TAB WHERE examId='$examId' AND ebookId='$ebookId'";
+        $select = "SELECT ebookTitle, sellingPrice FROM EXAM_EBOOK_TAB WHERE examId='$examId' AND ebookId='$ebookId'";
         $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
         $fetchQuery=mysqli_fetch_assoc($query);
         

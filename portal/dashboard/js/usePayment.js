@@ -190,7 +190,7 @@ function renderTransactionRows(data, start) {
       }</div></td>
       <td>
         <button class="btn view-btn"
-          onclick="_fetchTEachransactionHistory('${item.transactionId}')">
+          onclick="_fetchEachTransactionHistory('${item.transactionId}')">
           VIEW
         </button>
       </td>
@@ -205,7 +205,7 @@ function initTransactionTable(transactions) {
     renderTransactionRows,
     "transactionPaginationControls",
     "transactionHistoryContent",
-    10 // items per page
+    5 // items per page
   );
   __paginatorHandlers["transactionHistoryContent"] = paginator;
   paginator.renderPage();
@@ -218,4 +218,36 @@ function _filtersTransactionHistory(value) {
       ? $(this).show()
       : $(this).hide();
   });
+}
+
+function _fetchEachTransactionHistory(transactionId) {
+  $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
+	try {
+		//// call endpoint //////
+		_callFetchEndPoints({
+			url: `user/payment/fetch-transactions?transactionId=${transactionId}`,
+			accessKey: true,
+		})
+		.then((response) => {
+        _userValidationCheck(response.response);
+			if (response.success && response.data?.length > 0) {
+    			sessionStorage.setItem("useEachTransactionSession", JSON.stringify(response.data[0]));
+          _getForm({page: 'transactionHistoryDetails', url: portalOperationMiddlewareUrl});
+			} else {
+				_showCustomConfirm({
+					title: "FETCH TRANSACTION HISTORY ERROR",
+					message: response.message,
+					alertType: "warning",
+					trueActionBtnText: "OK",
+				});
+			} 
+		 })
+		.catch((error) => {
+			console.error("Error:", error);
+			_callAjaxError(() => _fetchEachTransactionHistory(transactionId)); // retry if needed
+		});
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _fetchEachTransactionHistory(transactionId));
+  	}
 }

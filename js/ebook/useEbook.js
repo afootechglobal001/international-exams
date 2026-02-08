@@ -25,30 +25,32 @@ function _fetchAllEbookData() {
 
 function _initFetchEbookData(data) {
   const content = data.map((exam) => {
-    // loop through all ebooks for this exam
-    const eBookContent = exam.ebookData.map((ebook) => `
-    <div class="book-back-div">
-        <div class="book-div" id="ebookId_${ebook.ebookId}">
-          <div class="image-div">
-            <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examAbbr} Cover">
-          </div>
-          <div class="icon-div">
-            <img src="${examLogoPixPath}/${ebook.examLogo}" alt="${exam.examAbbr} Exam"/>
-          </div>
-          <div class="text-div">
-            <div class="details">
-              <h3>${exam.examAbbr}</h3>
-              <p>${ebook.ebookTitle}</p>
-              <div class="book-sum">
-                <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
-                <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
-              </div>
+    const dataInfo = exam.ebookData || [];
+     const eBookContent = dataInfo.map((ebook) => {
+      return `
+        <div class="book-back-div">
+          <div class="book-div" id="ebookId_${ebook.ebookId}">
+            <div class="image-div">
+              <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examData?.examAbbr} Cover">
             </div>
-            <button class="btn" title="Download" onclick="_getDownloadEbookModal();"><i class="bi-cloud-download"></i> Download Now!</button>
+            <div class="icon-div">
+              <img src="${examLogoPixPath}/${exam?.examData?.examLogo}" alt="${exam.examData?.examAbbr} Exam"/>
+            </div>
+            <div class="text-div">
+              <div class="details">
+                <h3>${exam.examData?.examAbbr}</h3>
+                <p>${ebook.ebookTitle}</p>
+                <div class="book-sum">
+                  <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
+                  <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
+                </div>
+              </div>
+              <button class="btn" title="Download" onclick="_getDownloadEbookModal();"><i class="bi-cloud-download"></i> Download Now!</button>
+            </div>
           </div>
         </div>
-      </div>
-    `).join("");
+    `;
+    }).join("");
 
     return `
       <div class="main-content-div animated fadeIn">
@@ -56,7 +58,7 @@ function _initFetchEbookData(data) {
           <div class="content-title">
             <div class="title">
               <i class="bi bi-filetype-pdf"></i>
-              <p>${exam.examAbbr} E-Books</p>
+              <p>${exam.examData?.examAbbr} E-Books</p>
             </div>
           </div>
 

@@ -239,21 +239,21 @@ function _fetchEbookData() {
 }
 
 function _initFetchEbookData(data) {
-  const content = data.map((exam) => {
-    // loop through all ebooks for this exam
-    const eBookContent = exam.ebookData.map((ebook) => `
-    <div class="book-back-div">
+  	const content = data.map((exam) => {
+    const dataInfo = exam.ebookData || [];
+     const eBookContent = dataInfo.map((ebook) => {
+		return`
         <div class="book-div" id="ebookId_${ebook.ebookId}">
           <div class="image-div">
 		  <div class="delete-icon" title="Delete E-Book" id="deleteBtn_${ebook.ebookId}" onclick="_deleteEbook('${ebook.examId}','${ebook.ebookId}');"><i class="bi-trash"></i></div>
-            <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examAbbr} Cover">
+            <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examData?.examAbbr} Cover">
           </div>
           <div class="icon-div">
-            <img src="${examLogoPixPath}/${ebook.examLogo}" alt="${exam.examAbbr} Exam"/>
+            <img src="${examLogoPixPath}/${exam?.examData?.examLogo}" alt="${exam.examData?.examAbbr} Exam"/>
           </div>
           <div class="text-div">
             <div class="details">
-              <h3>${exam.examAbbr}</h3>
+              <h3>${exam.examData?.examAbbr}</h3>
               <p>${ebook.ebookTitle}</p>
               <div class="book-sum">
                 <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
@@ -265,8 +265,8 @@ function _initFetchEbookData(data) {
 			</div>
           </div>
         </div>
-      </div>
-    `).join("");
+     `;
+    }).join("");
 
     return `
       <div class="main-content-div animated fadeIn">
@@ -274,12 +274,12 @@ function _initFetchEbookData(data) {
           <div class="content-title">
             <div class="title">
               <i class="bi bi-filetype-pdf"></i>
-              <p>${exam.examAbbr} E-Books</p>
+              <p>${exam.examData?.examAbbr} E-Books</p>
             </div>
           </div>
 
           <div class="inner-table-content">
-            <div class="other-pg-back-div">
+            <div class="book-back-div">
               ${eBookContent}
             </div>
           </div>
@@ -291,6 +291,14 @@ function _initFetchEbookData(data) {
   $('#pageContent').html(content);
 }
 
+function _filterEbooks(value) {
+  $("#pageContent > .main-content-div, .book-div").each(function () {
+    var text = $(this).text();
+    text.toLowerCase().indexOf(value.toLowerCase()) > -1
+      ? $(this).show()
+      : $(this).hide();
+  });
+}
 
 function _deleteEbook(examId, ebookId) {
 	_showCustomConfirm({

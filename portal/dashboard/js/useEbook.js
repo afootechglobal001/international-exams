@@ -44,7 +44,8 @@ function _initFetchEbookData(data) {
                   `
                 : `
                     <button class="btn" title="Pay To Download"
-                        onclick="_proceedDownloadEbook('${exam?.examData?.examId}', '${ebook.ebookId}');">
+                        id="downloadBtn_${ebook.ebookId}"
+                        onclick="_downloadEbook('${exam?.examData?.examId}', '${ebook.ebookId}');">
                         <i class="bi bi-credit-card"></i> Pay Now!
                     </button>
                   `;
@@ -125,9 +126,17 @@ function _downloadEbook(examId, ebookId) {
             .then((response) => {
                 _userValidationCheck(response.response);
                 if (response.success) {
+                    const isDownloadable = response.isDownloadable;
                     const material = response.material;
-                    _finishDownloadEbook(material);
-                    _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+
+                    if (isDownloadable===true) {
+                        _finishDownloadEbook(material);
+                        _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+                    } else {
+                        sessionStorage.setItem("useProceedEbookDownloadSession", JSON.stringify(response.data));
+                        _getForm({page: 'proceedEbookForm', url: portalOperationMiddlewareUrl});
+                        _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+                    }
                 } else {
                     _showCustomConfirm({
                         title: "Download E-Book Error",
@@ -139,11 +148,13 @@ function _downloadEbook(examId, ebookId) {
             })
             .catch((error) => {
                 console.error("Error:", error);
+                 _alertClose();
                 _callAjaxError(() => _downloadEbook(examId, ebookId)); // retry if needed
                 _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
             });
     } catch (error) {
         console.error("Error:", error);
+         _alertClose();
         _callAjaxError(() => _downloadEbook(examId, ebookId)); // retry if needed
          _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
     }
@@ -162,39 +173,4 @@ function _finishDownloadEbook(material) {
     a.download = material;
     a.click();
   }, 500);
-}
-
-function _proceedDownloadEbook(examId, ebookId) {
-    $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
-	try {
-		//// call endpoint //////
-		_callFetchEndPoints({
-			url: `user/ebooks/download-ebook?examId=${examId}&ebookId=${ebookId}`,
-			accessKey: true,
-		})
-		.then((response) => {
-            _userValidationCheck(response.response);
-			if (response.success && response.data) {
-    			sessionStorage.setItem("useProceedEbookDownloadSession", JSON.stringify(response.data));
-                _getForm({page: 'proceedEbookForm', url: portalOperationMiddlewareUrl});
-			} else {
-                _alertClose();
-				_showCustomConfirm({
-					title: "ERROR",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-			} 
-		 })
-		.catch((error) => {
-            _alertClose();
-			console.error("Error:", error);
-			_callAjaxError(() => _proceedDownloadEbook(examId, ebookId)); // retry if needed
-		});
-	} catch (error) {
-        _alertClose();
-		console.error("Error:", error);
-		_callCatchError(() => _proceedDownloadEbook(examId, ebookId));
-  	}
 }

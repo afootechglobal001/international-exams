@@ -12,7 +12,7 @@
 
         <div class="btn-div">
             <div class="search-div">
-                <input type="text" id="searchContent" onkeyup="filters('Content');" placeholder="Search E-book Here...">
+                <input type="text" id="searchContent" onkeyup="_filterEbooks(this.value);" placeholder="Search E-book Here...">
                 <i class="bi bi-filetype-pdf"></i>
             </div>
             <button class="btn" title="ADD NEW E-BOOK" onclick="_getForm({page: 'eBookReg', url: adminPortalLocalUrl});">

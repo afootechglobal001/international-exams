@@ -1658,6 +1658,8 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .blog-back-div {
   width: 100%;
   display: flex;
+  align-items: center !important;
+  justify-content: flex-start !important;
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -1724,10 +1726,10 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
 .blog-back-div .blog-div .blog-inner-div .text-div .count {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
   padding: 5px 5px;
-  height: 30px;
-  line-height: 30px;
+  min-height: 30px;
   font-size: 12px;
   text-align: left;
   color: var(--sub-body-color);

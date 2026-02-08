@@ -22,10 +22,6 @@
                     </script>
                 </span>
             </p>
-            <div class="search-div">
-                <input type="text" placeholder="Search...">
-                <i class="bi bi-search"></i>
-            </div>
         </div>
 
         <div class="header-right-div">

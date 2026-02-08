@@ -422,6 +422,11 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            _fetchDashboardStatistics();
+        });
+    </script>
 <?php } ?>
 
 <?php if ($page == 'logoutConfirmForm') { ?>

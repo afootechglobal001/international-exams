@@ -174,3 +174,175 @@ function _finishDownloadEbook(material) {
     a.click();
   }, 500);
 }
+
+///// proceed to ebook payment /////
+function _proceedToEbookPayment() {
+  try {
+    //////get all needed values////
+    const paymentMethodId = $("#paymentMethodId").val().trim();
+
+    ///// empty field validation//////////
+    let issueCount = 0;
+    issueCount += _validateEmptyValue("paymentMethodId", "PAYMENT METHOD");
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+        paymentMethodId,
+    };
+
+    ////// confirm action
+    _showCustomConfirm({
+      callback: () => {
+        _proceedEbookPaymentCallBack(formData);
+      },
+      title: "Are you sure?",
+      message: "Confirm you want to proceed with the payment.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _proceedToEbookPayment());
+  }
+}
+
+///// proceed to ebook payment callback ////
+function _proceedEbookPaymentCallBack(formData) {
+    let useProceedEbookDownloadSession = JSON.parse(sessionStorage.getItem("useProceedEbookDownloadSession")) || {};
+    //// call endpoint
+    const btnText = $("#proceedPayBtn").html();
+    _btnDisable("proceedPayBtn", btnText, true);
+    _callRawEndPoints({
+        url: `/user/ebooks/proceed-to-ebook-payment?examId=${useProceedEbookDownloadSession?.examId}&ebookId=${useProceedEbookDownloadSession?.ebookId}`,
+        formData,
+        accessKey: true,
+    })
+    .then((response) => {
+    if (response.success) {
+        if (
+          formData.paymentMethodId === "CC" ||
+          formData.paymentMethodId === "BT"
+        ) {
+          _payWithPaystackForEbookDownload(response.data, formData.paymentMethodId);
+          _btnDisable("proceedPayBtn", btnText, false);
+        } else if (formData.paymentMethodId === "WLT") {
+            const material = response.data?.material;
+            _alertClose();
+            _showCustomConfirm({
+                callback: () => _finishDownloadEbook(material),
+                title: "PAYMENT SUCCESSFUL",
+                message: response.message,
+                alertType: "success",
+                trueActionBtnText: "ClICK TO DOWNLOAD",
+            });
+        } else {
+            _btnDisable("proceedPayBtn", btnText, false);
+            _showCustomConfirm({
+                title: "USER ERROR",
+                message:"The selected payment method is not recognized. Please try again.",
+                alertType: "warning",
+                trueActionBtnText: "OK",
+            });
+        }
+    } else {
+        _btnDisable("proceedPayBtn", btnText, false);
+        _showCustomConfirm({
+            title: "USER ERROR",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+        });
+    }
+    }).catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _proceedEbookPaymentCallBack(formData)); // retry if needed
+        _btnDisable("proceedPayBtn", btnText, false);
+    });
+}
+
+////// CALL PAY WITH PAYSTACK ////////////////
+function _payWithPaystackForEbookDownload(data, paymentMethodId) {
+  var handler = PaystackPop.setup({
+    key: data.paymentKey,
+    email: data.emailAddress,
+    amount: data.amount * 100, //amt in kobo
+    ref: data.transactionId,
+    currency: data.currency, // Use GHS for Ghana Cedis or USD for US Dollars
+    channel: [paymentMethodId === "CC" ? "card" : "bank_transfer"],
+    metadata: {
+      custom_fields: [
+        {
+          display_name: data.fullName,
+          variable_name: "mobile_number",
+          value: data.phoneNumber,
+        },
+      ],
+    },
+    callback: function (response) {
+      _ebookDownloadPaymentAction(
+        "success",
+        data.transactionId,
+        data.examId,
+        data.ebookId
+      );
+    },
+    onClose: function () {
+      //update to cancelled.
+      _ebookDownloadPaymentAction(
+        "cancel",
+        data.transactionId,
+        data.examId,
+        data.ebookId
+      );
+      return false;
+    },
+  });
+  handler.openIframe();
+}
+
+function _ebookDownloadPaymentAction(action, transactionId, examId, ebookId) {
+  try {
+    _callRawEndPoints({
+      url: `user/ebooks/ebook-payment-${action}?transactionId=${transactionId}&examId=${examId}&ebookId=${ebookId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _userValidationCheck(response.response);
+
+        if (response.success) {
+            if(action === "success"){
+                const material = response.data?.material;
+                _alertClose();
+                _showCustomConfirm({
+                    callback: () => _finishDownloadEbook(material),
+                    title: "PAYMENT SUCCESSFUL",
+                    message: response.message,
+                    alertType: "success",
+                    trueActionBtnText: "ClICK TO DOWNLOAD",
+                });
+            }
+        } else {
+          _showCustomConfirm({
+            title: "OPERATION FAILED",
+            message: response.message,
+            alertType: "failed",
+            trueActionBtnText: "OK",
+          });
+          _btnDisable("proceedPayBtn", btnText, false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _ebookDownloadPaymentAction(action, transactionId, examId, ebookId)); // retry if needed
+        _btnDisable("proceedPayBtn", btnText, false);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() =>
+      _ebookDownloadPaymentAction(action, transactionId, examId, ebookId)
+    );
+    _btnDisable("proceedPayBtn", btnText, false);
+  }
+}
+////////////////////// END PAY WITH PAYSTACK /////////////////////////////

@@ -117,11 +117,10 @@
                 </div>
             </div>
 
-
             <div class="dashboard-statistics-wrapper">
                 <div class="left-contaioner">
                     <div class="chart-back-div">
-                        <div class="chart-div-notifications">
+                        <div class="chart-div-notifications top-border-radius">
                             <div class="text"><i class="bi-graph-up-arrow"></i> Showing Matrix for </div>
 
                             <div class="text text-right" onclick="select_search()">
@@ -129,14 +128,22 @@
                                 <div class="icon-div"><i class="bi-caret-down"></i></div>
 
                                 <div class="srch-select alert-srch-select">
-                                    <div id="srch-today" onclick="_getAlertReport('srch-today', 'view_today_search');">Today</div>
-                                    <div id="srch-week" onclick="_getAlertReport('srch-week', 'view_thisweek_search');">This Week</div>
-                                    <div id="srch-7" onclick="_getAlertReport('srch-7', 'view_7days_search');">Last 7 Days</div>
-                                    <div id="srch-month" onclick="_getAlertReport('srch-month', 'view_thismonth_search');">This Month</div>
-                                    <div id="srch-30" onclick="_getAlertReport('srch-30', 'view_30days_search');">Last 30 Days</div>
-                                    <div id="srch-90" onclick="_getAlertReport('srch-90', 'view_90days_search');">Last 90 Days</div>
-                                    <div id="srch-year" onclick="_getAlertReport('srch-year', 'view_thisyear_search');">This Year</div>
-                                    <div id="srch-1year" onclick="_getAlertReport('srch-1year', 'view_1year_search');">Last 1 Year</div>
+                                    <div id="srch-today" onclick="_fetchRevenueFiltering('srch-today', 'Today');">Today
+                                    </div>
+                                    <div id="srch-week" onclick="_fetchRevenueFiltering('srch-week', 'This Week');">This
+                                        Week</div>
+                                    <div id="srch-7" onclick="_fetchRevenueFiltering('srch-7', 'Last 7 Days');">Last 7 Days
+                                    </div>
+                                    <div id="srch-month" onclick="_fetchRevenueFiltering('srch-month', 'This Month');">This
+                                        Month</div>
+                                    <div id="srch-30" onclick="_fetchRevenueFiltering('srch-30', 'Last 30 Days');">Last 30 Days
+                                    </div>
+                                    <div id="srch-90" onclick="_fetchRevenueFiltering('srch-90', 'Last 90 Days');">Last 90 Days
+                                    </div>
+                                    <div id="srch-year" onclick="_fetchRevenueFiltering('srch-year', 'This Year');">This
+                                        Year</div>
+                                    <div id="srch-1year" onclick="_fetchRevenueFiltering('srch-1year', 'Last 1 Year');">Last 1
+                                        Year</div>
                                     <div onclick="srch_custom('Custom Search')">Custom Search</div>
                                 </div>
                             </div>
@@ -145,15 +152,21 @@
                                 <div class="custom-srch-div">
                                     <div class="custom-srch-div-in">
                                         <div class="text_field_container dash_field_container">
-                                            <input class="text_field bar_cust_text_field" type="text" id="datepickers-from" placeholder="" />
-                                            <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From</div>
+                                            <input class="text_field bar_cust_text_field" type="text" id="datepickers-from"
+                                                placeholder="" />
+                                            <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From
+                                            </div>
+                                            <div class="issueText" id="issue_from"></div>
                                         </div>
 
                                         <div class="text_field_container dash_field_container">
-                                            <input class="text_field bar_cust_text_field" type="text" id="datepickers-to" placeholder="" />
-                                            <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To</div>
+                                            <input class="text_field bar_cust_text_field" type="text" id="datepickers-to"
+                                                placeholder="" />
+                                            <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To </div>
+                                            <div class="issueText" id="issue_to"></div>
                                         </div>
-                                        <button type="button" class="btn">Apply</button>
+                                        <button type="button" class="btn" id="applyCustomSearchBtn"
+                                            onclick="_fetchCustomRevenueFiltering();">Apply</button>
                                     </div>
                                 </div>
                             </div>
@@ -177,57 +190,50 @@
                         </div>
 
                         <div class="trending-back-div">
-                            <div class="revenue-back-div">
-                                <div class="top-revenue">Revenue For<span>January 18 2025</span>-<span>February 17 2025</span></div>
-                                <div class="fund-back-div">
-                                    <div class="fund-div">
-                                        <h3><span>₦1,343,581.63</span>(SALES)</h3>
-                                    </div>-<div class="fund-div">
-                                        <h3><span>₦256,000.00</span>(WALLET)</h3>
-                                    </div>
+                            <div class="revenue-div">
+                                <p>Revenue from <span id="dateFrom">January 18 2025</span> - <span id="dateTo">February 17
+                                        2025</span></p>
+                                <div class="fund-div">
+                                    <h3>
+                                        <p id="sumCreditCardPayments"><s>N</s>1,000,000.29</p><span>Sales</span>
+                                    </h3>
+                                    <h3>
+                                        <p id="sumBankTransferPayments"><s>N</s> 345,000.34</p><span>Wallet</span>
+                                    </h3>
                                 </div>
                             </div>
 
-                            <div id="chartContainer" style="width:100%; height:300px; margin:auto;"></div>
+                            <div id="chartContainer" style="width:100%; height:400px; margin:auto;"></div>
                             <script>
                                 $(document).ready(function() {
+
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         animationEnabled: true,
                                         theme: "light1",
-                                        title: {
-                                            text: ""
-                                        },
                                         axisX: {
-                                            valueFormatString: "DD MMM",
-                                            crosshair: {
-                                                enabled: true,
-                                                snapToDataPoint: true
-                                            }
+                                            interval: 1,
+                                            intervalType: "day",
+                                            valueFormatString: "DD MMM"
                                         },
                                         axisY: {
-                                            title: "",
-                                            includeZero: true,
-                                            crosshair: {
-                                                enabled: true
-                                            }
+                                            suffix: "₦",
+                                            includeZero: true
                                         },
                                         toolTip: {
                                             shared: true
                                         },
                                         legend: {
-                                            cursor: "pointer",
-                                            verticalAlign: "bottom",
-                                            horizontalAlign: "left",
-                                            dockInsidePlotArea: true,
-                                            itemclick: toogleDataSeries
+                                            reversed: true,
+                                            verticalAlign: "top",
+                                            horizontalAlign: "left"
                                         },
                                         data: [{
-                                                type: "line",
-                                                showInLegend: true,
+                                                type: "stackedColumn",
                                                 name: "Sales",
-                                                markerType: "square",
+                                                showInLegend: true,
                                                 xValueFormatString: "DD MMM, YYYY",
-                                                color: "#29BA00",
+                                                yValueFormatString: "₦#,##0",
+                                                color: "#9d043c",
                                                 dataPoints: [{
                                                         x: new Date(2025, 0, 1),
                                                         y: 250000
@@ -287,14 +293,16 @@
                                                     {
                                                         x: new Date(2025, 0, 15),
                                                         y: 270000
-                                                    },
+                                                    }
                                                 ]
                                             },
                                             {
-                                                type: "line",
-                                                showInLegend: true,
+                                                type: "stackedColumn",
                                                 name: "Wallet",
-                                                lineDashType: "dash",
+                                                showInLegend: true,
+                                                xValueFormatString: "DD MMM, YYYY",
+                                                yValueFormatString: "₦#,##0",
+                                                color: "#f7a025",
                                                 dataPoints: [{
                                                         x: new Date(2025, 0, 1),
                                                         y: 180000
@@ -354,12 +362,10 @@
                                                     {
                                                         x: new Date(2025, 0, 15),
                                                         y: 50000
-                                                    },
-
+                                                    }
                                                 ]
                                             }
                                         ]
-
                                     });
                                     chart.render();
 
@@ -416,11 +422,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            _fetchDashboardStatistics();
-         });
-    </script>
 <?php } ?>
 
 <?php if ($page == 'logoutConfirmForm') { ?>

@@ -55,11 +55,10 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="caption-notification">
             <p>
-                Hi 👋(<strong><span id="userFullName"></span></strong>), you are about to complete the purchase of the eBook
-                (<strong><span id="ebookTitle"></span></strong>) for
+                Hi, <strong><span id="userFullName"></span></strong><br/>
+                You are about to purchase <strong><span id="ebookTitle"></span></strong> for
                 (<strong><span id="sellingPrice"></span></strong>).
-                Once payment is confirmed, your download will begin immediately.
-                Please select a payment method below to proceed securely.
+                Kindly select a payment method below to proceed.
             </p>
 
         </div>
@@ -74,7 +73,7 @@
                 </script>
             </div>
             <div class="btn-div">
-                <button class="btn" id="loadWalletBtn" onclick="">PROCEED TO PAYMENT</button>
+                <button class="btn" id="proceedPayBtn" onclick="_proceedToEbookPayment();">PROCEED TO PAYMENT</button>
             </div>
         </div>
     </div>

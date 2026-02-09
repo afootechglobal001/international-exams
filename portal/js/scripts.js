@@ -1,3 +1,8 @@
+function _nextUserLoginPage(props) {
+  const { page = "" } = props;
+  _getPage({ page: page, url: portalAuthMiddlewareUrl });
+}
+
 $(document).ready(function () {
   $("#viewLogin input, #viewLogin").on("keydown", function (e) {
     if (e.key === "Enter") {

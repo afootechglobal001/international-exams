@@ -113,6 +113,24 @@ main .form-div .form-box .form-box-content .btn-div .btn:hover {
 main .form-div .form-box .form-box-content .btn-div a {
   color: var(--link-color);
 }
+
+main .form-div .form-box .form-box-content .span {
+  cursor: pointer;
+  color: var(--link-color);
+  transition: all 0.2s ease-in 0.2s;
+}
+
+main .form-div .form-box .form-box-content .span:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+main .form-div .form-box .form-box-content .span span {
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: all 0.2s ease-in 0.2s;
+}
+
 main .form-div .form-box .form-box-content .btn-div a:hover {
   text-decoration: underline;
 }

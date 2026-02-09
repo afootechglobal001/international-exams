@@ -56,6 +56,8 @@ function _getSelectEbookExam(fieldId) {
 }
 
 function _createEbook(){
+	let useEachEbookSession = JSON.parse(sessionStorage.getItem("useEachEbookSession") || "{}");
+	const isEditMode = !!useEachEbookSession;
 	try {
 		////////get all needed values////////////
 		let issueCount = 0;
@@ -72,11 +74,14 @@ function _createEbook(){
 		issueCount += _validateEmptyValue("publishId", "EXAM");
 		issueCount += _validateEmptyValue("ebookTitle", "E-BOOK TITLE");
 		issueCount += _validateEmptyValue("sellingPrice", "SELLING PRICE");
-		issueCount += _validateEmptyValue("regPix", "E-BOOK COVER IMAGE");
-		issueCount += _validateEmptyValue("material", "E-BOOK MATERIAL");
 		issueCount += _validateEmptyValue("ebookSize", "E-BOOK SIZE");
 		issueCount += _validateEmptyValue("ebookPages", "NUMBER OF PAGES");
 		issueCount += _validateEmptyValue("statusId", "STATUS");
+
+		if (!isEditMode) {
+			issueCount += _validateEmptyValue("regPix", "E-BOOK COVER IMAGE");
+			issueCount += _validateEmptyValue("material", "E-BOOK MATERIAL");
+		}
 
 		if (issueCount > 0) return;
 
@@ -108,9 +113,15 @@ function _createEbook(){
 }
 
 function _createEbookCallback(formData) {
+	let useEachEbookSession = JSON.parse(sessionStorage.getItem("useEachEbookSession") || "{}");
+	let examId = useEachEbookSession?.examData?.examId;
+	let ebookId = useEachEbookSession?.ebookData?.[0]?.ebookId;
+
 	///// get btn text/////
 	$("#submitBtn").hide();
     $("#progress-alert").fadeIn(3000);
+
+	let callUrl= ebookId ? `admin/ebook/update-ebook?examId=${examId}&ebookId=${ebookId}` : `admin/ebook/create-ebook`;
 	
 	//// call endpoint //////
 	_callFileEndPoints({
@@ -127,7 +138,7 @@ function _createEbookCallback(formData) {
             }, false);
             return xhr;
         },
-		url: `admin/ebook/create-ebook`,
+		url: callUrl,
 		formData,
 		accessKey: true,
 	})
@@ -136,9 +147,11 @@ function _createEbookCallback(formData) {
 		if (response.success) {
             const message = response.message;
 			const newRegPix = response.regPix;
-            const newMaterial = response.material;
+            const oldRegPix = response.oldRegPix;
+			const newMaterial = response.material;
+            const oldMaterial = response.oldMaterial;
 
-            _uploadEbookPixAndMaterial(newRegPix, newMaterial, message);
+            _uploadEbookPixAndMaterial(newRegPix,  oldRegPix, newMaterial, oldMaterial, message);
 		} else {
 			$("#submitBtn").fadeIn();
 			$("#progress-alert").hide();
@@ -159,7 +172,7 @@ function _createEbookCallback(formData) {
     });
 }
 
-function _uploadEbookPixAndMaterial(newRegPix, newMaterial, message) {
+function _uploadEbookPixAndMaterial(newRegPix,  oldRegPix, newMaterial, oldMaterial, message) {
     const uploadedPixFile = $("#regPix").prop("files")[0];
 	const uploadedMaterialFile = $("#material").prop("files")[0];
 
@@ -168,10 +181,12 @@ function _uploadEbookPixAndMaterial(newRegPix, newMaterial, message) {
 
 	///// append new pix files /////
     formData.append("newRegPix", newRegPix);
+	formData.append("oldRegPix", oldRegPix);
     formData.append("regPix", uploadedPixFile);
 
 	//// append new material files /////
 	formData.append("newMaterial", newMaterial);
+	formData.append("oldMaterial", oldMaterial);
 	formData.append("material", uploadedMaterialFile);
 
     _callFileEndPoints({
@@ -193,7 +208,7 @@ function _uploadEbookPixAndMaterial(newRegPix, newMaterial, message) {
 	})
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadEbookPixAndMaterial(newRegPix, newMaterial, message));
+		_callAjaxError(() => _uploadEbookPixAndMaterial(newRegPix,  oldRegPix, newMaterial, oldMaterial, message));
     });
 }
 
@@ -244,26 +259,27 @@ function _initFetchEbookData(data) {
      const eBookContent = dataInfo.map((ebook) => {
 		return`
         <div class="book-div" id="ebookId_${ebook.ebookId}">
-          <div class="image-div">
-		  <div class="delete-icon" title="Delete E-Book" id="deleteBtn_${ebook.ebookId}" onclick="_deleteEbook('${ebook.examId}','${ebook.ebookId}');"><i class="bi-trash"></i></div>
-            <img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examData?.examAbbr} Cover">
-          </div>
-          <div class="icon-div">
-            <img src="${examLogoPixPath}/${exam?.examData?.examLogo}" alt="${exam.examData?.examAbbr} Exam"/>
-          </div>
-          <div class="text-div">
-            <div class="details">
-              <h3>${exam.examData?.examAbbr}</h3>
-              <p>${ebook.ebookTitle}</p>
-              <div class="book-sum">
-                <p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
-                <p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
-              </div>
-            </div>
-			<div class="book-sum">
-				<span><strong>${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</strong></span>
+			<div class="image-div">
+				<div class="status-div ${ebook.statusName}">${ebook.statusName}</div>
+				<img src="${eBookPixPath}/${ebook.regPix}" alt="${exam.examData?.examAbbr} Cover">
 			</div>
-          </div>
+			<div class="icon-div">
+				<img src="${examLogoPixPath}/${exam?.examData?.examLogo}" alt="${exam.examData?.examAbbr} Exam"/>
+			</div>
+			<div class="text-div">
+				<div class="details">
+					<h3>${exam.examData?.examAbbr}</h3>
+					<p>${ebook.ebookTitle}</p>
+					<div class="book-sum">
+						<p><i class="bi bi-journal-text"></i> <strong>${ebook.ebookPages} Pages</strong></p>
+						<p><i class="bi bi-floppy"></i> <strong>${ebook.ebookSize}</strong></p>
+					</div>
+				</div>
+				<div class="book-sum">
+					<button class="btn" onclick="_fetchEachEbook('${exam.examData?.examId}', '${ebook.ebookId}')">Edit</button>
+					<span><strong>${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</strong></span>
+				</div>
+			</div>
         </div>
      `;
     }).join("");
@@ -300,87 +316,34 @@ function _filterEbooks(value) {
   });
 }
 
-function _deleteEbook(examId, ebookId) {
-	_showCustomConfirm({
-		callback: () => {
-			_deleteEbookCallback(examId, ebookId);
-		},
-		title: "Are you sure?",
-		message: 'Are you sure you want to delete this e-book? This action is irreversible.',
-		alertType: "warning",
-		falseActionBtn: true,
-	});
-}
-
-function _deleteEbookCallback(examId, ebookId){
+function _fetchEachEbook(examId, ebookId) {
+    $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
 	try {
-		///// get btn text/////
-		const btnText = $(`#deleteBtn_${ebookId}`).html();
-		_btnDisable(`deleteBtn_${ebookId}`, btnText, true);
-
 		//// call endpoint //////
 		_callFetchEndPoints({
-			url: `admin/ebook/delete-ebook?examId=${examId}&ebookId=${ebookId}`,
-			accessKey: true,	
+			url: `admin/ebook/fetch-ebook?examId=${examId}&ebookId=${ebookId}`,
+			accessKey: true,
 		})
 		.then((response) => {
-			_staffValidationCheck(response.response);
-			if (response.success) {
-				const message = response.message;
-				const oldRegPix = response.oldRegPix;
-				const oldMaterial = response.oldMaterial;
-
-				_unlinkEbookPixAndMaterial(oldRegPix, oldMaterial, ebookId, message);
-				_btnDisable(`deleteBtn_${ebookId}`, btnText, false);
+            _staffValidationCheck(response.response);
+			if (response.success && response.data?.length > 0) {
+    			sessionStorage.setItem("useEachEbookSession", JSON.stringify(response.data[0]));
+                _getForm({page: 'eBookReg', url: adminPortalLocalUrl});
 			} else {
-				_btnDisable(`deleteBtn_${ebookId}`, btnText, false);
 				_showCustomConfirm({
-					title: "Error!",
+					title: "FETCH EBOOK ERROR",
 					message: response.message,
-					alertType: "danger",
+					alertType: "warning",
 					trueActionBtnText: "OK",
 				});
-			}
-		})
+			} 
+		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _deleteEbookCallback(examId, ebookId)); // retry if needed
-			_btnDisable(`deleteBtn_${ebookId}`, btnText, false);
-      	});
+			_callAjaxError(() => _fetchEachEbook(examId, ebookId)); // retry if needed
+		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _deleteEbookCallback(examId, ebookId));
-		_btnDisable(`deleteBtn_${ebookId}`, btnText, false);
-	}
-}
-
-
-function _unlinkEbookPixAndMaterial(oldRegPix, oldMaterial, ebookId, message) {
-    const formData = new FormData();
-    formData.append("action", "unlinkEbookPixAndMaterial");
-    formData.append("oldRegPix", oldRegPix);
-	formData.append("oldMaterial", oldMaterial);
-
-    _callFileEndPoints({
-		url: adminPortalLocalUrl,
-		formData,
-		expectJson: false,
-	})
-	.then(() => {
-		_showCustomConfirm({
-            callback: () => {
-              	$("#ebookId_" + ebookId).fadeOut(300, function () {
-				$(this).remove();
-				});
-            },
-            title: 'Success!',
-            message: message,
-            alertType: 'success',
-            trueActionBtnText: 'OK, Thanks.',
-        });
-	})
-    .catch((error) => {
-		console.error("Error:", error);
-		_callAjaxError(() => _unlinkEbookPixAndMaterial(oldRegPix, oldMaterial, ebookId, message));
-    });
+		_callCatchError(() => _fetchEachEbook(examId, ebookId));
+  	}
 }

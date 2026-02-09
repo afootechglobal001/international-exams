@@ -161,7 +161,7 @@
                     </table>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 <?php } ?>
 
@@ -203,8 +203,8 @@
                 <div class="div-in">
                     <ul>
                         <li class="active" title="Dashboard" id="studentDashboard" onclick="_getActiveStudentPage({divid:'studentDashboard', page: 'studentDashboard', url: adminPortalLocalUrl});"><i class="bi-speedometer2"></i> Dashboard</li>
-                        <li title="Payment History" id="paymentHistory" onclick="_getActiveStudentPage({divid:'paymentHistory', page: 'paymentHistory', url: adminPortalLocalUrl});"><i class="bi-clock"></i> Payment History</li>
-                        <li title="Wallet History" id="walletHistory" onclick="_getActiveStudentPage({divid:'walletHistory', page: 'walletHistory', url: adminPortalLocalUrl});"><i class="bi-credit-card"></i> Wallet History</li>
+                        <li title="Registered Exams" id="registeredExams" onclick="_getActiveStudentPage({divid:'registeredExams', page: 'registeredExams', url: adminPortalLocalUrl});"><i class="bi-journal"></i> Registered Exams</li>
+                        <li title="Transactions" id="Transactions" onclick="_getActiveStudentPage({divid:'Transactions', page: 'Transactions', url: adminPortalLocalUrl});"><i class="bi-credit-card"></i> Transactions</li>
                         <li title="Student Profile" id="studentProfileDetails" onclick="_getActiveStudentPage({divid:'studentProfileDetails', page: 'studentProfileDetails', url: adminPortalLocalUrl});"><i class="bi-person-bounding-box"></i> Student Profile</li>
                     </ul>
                 </div>
@@ -227,109 +227,186 @@
 
 <!-- For Student Modal Pages -->
 <?php if ($page == 'studentDashboard') { ?>
-    <div class="user-dashboard-list-wrapper">
-        <div class="dashboard-list-div">
-            <div class="inner-div">
-                <div class="top-container">
-                    <div class="top-title">
-                        <h3>WALLET BALANCE</h3>
-                    </div>
+    <section class="statistics-back-div">
+        <div class="statistics-div" id="branch">
+            <div class="statistics-inner-div completed">
+                <div class="statistics-text">
+                    <p>TOTAL WALLET BALANCE</p>
+                    <span>Statistics of total wallet balance</span>
+                    <h2><b id="currencySymbol">--</b> <b id="walletBalance">0.00</b></h2>
                 </div>
+                <div class="statistics-icon completed"><i class="bi-check-circle"></i></div>
+            </div>
+        </div>
+    </section>
 
-                <div class="wallet-details-wrapper">
-                    <div class="wallet-details">
-                        <h3>NGN 640,000.00</h3>
-                    </div>
+    <div class="main-content-div student-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-journal"></i>
+                    <p>Registered Exams</p>
                 </div>
+            </div>
 
-                <div class="top-container">
-                    <div class="top-title">
-                        <h3>WALLET ACTIVITIES</h3>
+            <div class="inner-table-content">
+                <div class="exams-back-div" id="">
+                    <div class="exam-div country-exam-div">
+                        <div class="exam-image">
+                            <img src="<?php echo $websiteUrl ?>/uploaded_files/examLogo/EXAM00220250820092008_202509020116_gmat-exam-nigeria.jpg" alt="GMAT Exam" />
+                        </div>
+
+                        <div class="top-div">
+                            <div class="exam-status ACTIVE">ACTIVE</div>
+                        </div>
+
+                        <div class="exam-info">
+                            <h3>GMAT</h3>
+                            <p>Graduate Management Admission Test</p>
+                            <div class="exam-time">
+                                <p><i class="bi bi-calendar"></i> <strong>2025-05-05</strong></p>
+                            </div>
+                        </div>
+                        <button class="btn" title="View Details" onclick="">
+                            <i class="bi bi-eye"></i> View Details
+                        </button>
                     </div>
-                </div>
 
-                <div class="table-div animated fadeIn">
-                    <table class="table" cellspacing="0" style="width:100%" id="fetchAllHosting">
-                        <thead>
-                            <tr class="tb-col">
-                                <th>Sn</th>
-                                <th>Date</th>
-                                <th>Trans ID</th>
-                                <th>Balance Before</th>
-                                <th>(₦)Amount Loaded</th>
-                                <th>Balance After</th>
-                                <th>Trans Type</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+                    <div class="exam-div country-exam-div">
+                        <div class="exam-image">
+                            <img src="<?php echo $websiteUrl ?>/uploaded_files/examLogo/EXAM00220250820092008_202509020116_gmat-exam-nigeria.jpg" alt="GMAT Exam" />
+                        </div>
 
-                        <tbody>
-                            <tr class="tb-row">
-                                <td>1</td>
-                                <td>2025-02-12 17:03:46</td>
-                                <td>TRC23220250213</td>
-                                <td><span>NGN 10,000.00</span></td>
-                                <td>NGN 5,000.00</td>
-                                <td><span>NGN 15,000.00</span></td>
-                                <td>CREDIT</td>
-                                <td>
-                                    <div class="status-div SUCCESS">SUCCESS</div>
-                                </td>
-                            </tr>
+                        <div class="top-div">
+                            <div class="exam-status ACTIVE">ACTIVE</div>
+                        </div>
 
-                            <tr class="tb-row">
-                                <td>2</td>
-                                <td>2025-02-12 17:03:46</td>
-                                <td>TRC23220250233</td>
-                                <td><span>NGN 0.00</span></td>
-                                <td><span class="CANCELLED">NGN 5,000.00</span></td>
-                                <td><span>NGN 0.00</span></td>
-                                <td>CREDIT</td>
-                                <td>
-                                    <div class="status-div CANCELLED">CANCELLED</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div class="exam-info">
+                            <h3>GMAT</h3>
+                            <p>Graduate Management Admission Test</p>
+                            <div class="exam-time">
+                                <p><i class="bi bi-calendar"></i> <strong>2025-05-05</strong></p>
+                            </div>
+                        </div>
+                        <button class="btn" title="View Details" onclick="">
+                            <i class="bi bi-eye"></i> View Details
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+<?php } ?>
 
-        <div class="dashboard-list-div">
-            <div class="inner-div">
-                <div class="top-container">
-                    <div class="top-title">
-                        <h3>RECENT PAYMENT HISTORY</h3>
+<?php if ($page == 'registeredExams') { ?>
+    <div class="main-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-journal"></i>
+                    <p>Registered Exams</p>
+                </div>
+            </div>
+
+            <div class="inner-table-content">
+                <div class="exams-back-div" id="">
+                    <div class="exam-div country-exam-div">
+                        <div class="exam-image">
+                            <img src="<?php echo $websiteUrl ?>/uploaded_files/examLogo/EXAM00220250820092008_202509020116_gmat-exam-nigeria.jpg" alt="GMAT Exam" />
+                        </div>
+
+                        <div class="top-div">
+                            <div class="exam-status ACTIVE">ACTIVE</div>
+                        </div>
+
+                        <div class="exam-info">
+                            <h3>GMAT</h3>
+                            <p>Graduate Management Admission Test</p>
+                            <div class="exam-time">
+                                <p><i class="bi bi-calendar"></i> <strong>2025-05-05</strong></p>
+                            </div>
+                        </div>
+                        <button class="btn" title="View Details" onclick="">
+                            <i class="bi bi-eye"></i> View Details
+                        </button>
+                    </div>
+
+                    <div class="exam-div country-exam-div">
+                        <div class="exam-image">
+                            <img src="<?php echo $websiteUrl ?>/uploaded_files/examLogo/EXAM00220250820092008_202509020116_gmat-exam-nigeria.jpg" alt="GMAT Exam" />
+                        </div>
+
+                        <div class="top-div">
+                            <div class="exam-status ACTIVE">ACTIVE</div>
+                        </div>
+
+                        <div class="exam-info">
+                            <h3>GMAT</h3>
+                            <p>Graduate Management Admission Test</p>
+                            <div class="exam-time">
+                                <p><i class="bi bi-calendar"></i> <strong>2025-05-05</strong></p>
+                            </div>
+                        </div>
+                        <button class="btn" title="View Details" onclick="">
+                            <i class="bi bi-eye"></i> View Details
+                        </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
-                <div class="table-div animated fadeIn">
-                    <table class="table" cellspacing="0" style="width:100%" id="fetchAllHosting">
+<?php if ($page == 'Transactions') { ?>
+    <section class="statistics-back-div">
+        <div class="statistics-div" id="branch">
+            <div class="statistics-inner-div completed">
+                <div class="statistics-text">
+                    <p>TOTAL WALLET BALANCE</p>
+                    <span>Statistics of total wallet balance</span>
+                    <h2><b id="currencySymbol">--</b> <b id="walletBalance">0.00</b></h2>
+                </div>
+                <div class="statistics-icon completed"><i class="bi-check-circle"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content-div student-content-div" data-aos="fade-in" data-aos-duration="1500">
+        <div class="tables-content-div">
+            <div class="content-title">
+                <div class="title">
+                    <i class="bi bi-credit-card"></i>
+                    <p>Transaction History</p>
+                </div>
+            </div>
+
+            <div class="inner-table-content">
+                <div class="table-div">
+                    <table class="table" cellspacing="0" style="width:100%" id="searchTransactionHistory">
                         <thead>
                             <tr class="tb-col">
-                                <th>Sn</th>
+                                <th>sn</th>
                                 <th>Date</th>
-                                <th>Trans ID</th>
-                                <th>(₦)Amount</th>
-                                <th>References</th>
-                                <th>Payment Purpose</th>
-                                <th>Payment Method</th>
-                                <th>Payment Status</th>
+                                <th>Transaction ID</th>
+                                <th>Amount</th>
+                                <th>Transaction Type</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                                <th>View</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             <tr class="tb-row">
                                 <td>1</td>
                                 <td>2025-02-14 17:03:46</td>
                                 <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
                                 <td><span>₦60,000.00</span></td>
-                                <td>REF200001000</td>
-                                <td>EXAM</td>
-                                <td>DEBIT/CREDIT CARD</td>
+                                <td>CREDIT</td>
+                                <td>CREDIT CARD</td>
                                 <td>
                                     <div class="status-div SUCCESS">SUCCESS</div>
                                 </td>
+                                <td><button class="btn view-btn" title="CLICK TO VIEW DETAILS" onclick="">VIEW</button></td>
                             </tr>
 
                             <tr class="tb-row">
@@ -337,12 +414,12 @@
                                 <td>2025-02-14 17:03:46</td>
                                 <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
                                 <td><span>₦60,000.00</span></td>
-                                <td>REF200001000</td>
-                                <td>VIDEO SUBSCRIPTION</td>
-                                <td>DEBIT/CREDIT CARD</td>
+                                <td>CREDIT</td>
+                                <td>CREDIT CARD</td>
                                 <td>
                                     <div class="status-div SUCCESS">SUCCESS</div>
                                 </td>
+                                <td><button class="btn view-btn" title="CLICK TO VIEW DETAILS" onclick="">VIEW</button></td>
                             </tr>
 
                             <tr class="tb-row">
@@ -350,27 +427,30 @@
                                 <td>2025-02-14 17:03:46</td>
                                 <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
                                 <td><span>₦60,000.00</span></td>
-                                <td>REF200001000</td>
-                                <td>EXAM</td>
-                                <td>DEBIT/CREDIT CARD</td>
+                                <td>CREDIT</td>
+                                <td>CREDIT CARD</td>
                                 <td>
                                     <div class="status-div SUCCESS">SUCCESS</div>
                                 </td>
+                                <td><button class="btn view-btn" title="CLICK TO VIEW DETAILS" onclick="">VIEW</button></td>
                             </tr>
                             <tr class="tb-row">
                                 <td>4</td>
                                 <td>2025-02-14 17:03:46</td>
                                 <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
                                 <td><span>₦60,000.00</span></td>
-                                <td>REF200001000</td>
-                                <td>VIDEO SUBSCRIPTION</td>
-                                <td>DEBIT/CREDIT CARD</td>
+                                <td>CREDIT</td>
+                                <td>CREDIT CARD</td>
                                 <td>
                                     <div class="status-div SUCCESS">SUCCESS</div>
                                 </td>
+                                <td><button class="btn view-btn" title="CLICK TO VIEW DETAILS" onclick="">VIEW</button></td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- Pagination -->
+                    <div id="transactionPaginationControls" class="pagination-div"></div>
                 </div>
             </div>
         </div>
@@ -391,6 +471,14 @@
                 </script>
             </div>
 
+            <div class="text_field_container col-1" id="lastName_container">
+                <script>
+                    textField({
+                        id: 'lastName',
+                        title: 'Last Name'
+                    });
+                </script>
+            </div>
 
             <div class="text_field_container col-1" id="phoneNumber_container">
                 <script>
@@ -402,7 +490,17 @@
                 </script>
             </div>
 
-            <div class="text_field_container col-1" id="address_container">
+            <div class="text_field_container col-1" id="emailAddress_container">
+                <script>
+                    textField({
+                        id: 'emailAddress',
+                        title: 'Email Address',
+                        type: 'email'
+                    });
+                </script>
+            </div>
+
+            <div class="text_field_container col-2" id="address_container">
                 <script>
                     selectField({
                         id: 'address',
@@ -462,231 +560,5 @@
         <div class="btn-div">
             <button class="btn" type="button" title="UPDATE PROFILE" id="update_btn" onclick=""> UPDATE PROFILE <i class="bi-check"></i></button>
         </div>
-    </div>
-<?php } ?>
-
-<?php if ($page == 'paymentHistory') { ?>
-    <div class="chart-div-notifications user-details-notf">
-        <div class="text"><i class="bi-graph-up-arrow"></i> Showing Order History for </div>
-
-        <div class="text text-right" onclick="select_search()">
-            <span id="srch-text">Last 30 Days</span>
-            <div class="icon-div"><i class="bi-caret-down"></i></div>
-
-            <div class="srch-select alert-srch-select">
-                <div id="srch-today" onclick="_getAlertReport('srch-today', 'view_today_search');">Today</div>
-                <div id="srch-week" onclick="_getAlertReport('srch-week', 'view_thisweek_search');">This Week</div>
-                <div id="srch-7" onclick="_getAlertReport('srch-7', 'view_7days_search');">Last 7 Days</div>
-                <div id="srch-month" onclick="_getAlertReport('srch-month', 'view_thismonth_search');">This Month</div>
-                <div id="srch-30" onclick="_getAlertReport('srch-30', 'view_30days_search');">Last 30 Days</div>
-                <div id="srch-90" onclick="_getAlertReport('srch-90', 'view_90days_search');">Last 90 Days</div>
-                <div id="srch-year" onclick="_getAlertReport('srch-year', 'view_thisyear_search');">This Year</div>
-                <div id="srch-1year" onclick="_getAlertReport('srch-1year', 'view_1year_search');">Last 1 Year</div>
-                <div onclick="srch_custom('Custom Search')">Custom Search</div>
-            </div>
-        </div>
-
-        <div class="text">
-            <div class="custom-srch-div">
-                <div class="custom-srch-div-in">
-                    <div class="text_field_container dash_field_container">
-                        <input class="text_field dash_text_field bar_cust_text_field" type="text" id="datepickers-from" placeholder="" />
-                        <div class="placeholder dash_placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From</div>
-                    </div>
-
-                    <div class="text_field_container dash_field_container">
-                        <input class="text_field dash_text_field bar_cust_text_field" type="text" id="datepickers-to" placeholder="" />
-                        <div class="placeholder dash_placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To</div>
-                    </div>
-                    <button type="button" class="btn">Apply</button>
-                </div>
-            </div>
-        </div>
-
-
-        <script language="javascript">
-            $('#datepickers-from').datetimepicker({
-                lang: 'en',
-                timepicker: false,
-                format: 'Y-m-d',
-                formatDate: 'Y-M-d',
-            });
-
-            $('#datepickers-to').datetimepicker({
-                lang: 'en',
-                timepicker: false,
-                format: 'Y-m-d',
-                formatDate: 'Y-M-d',
-            });
-        </script>
-    </div>
-
-    <div class="table-div pages-table-div animated fadeIn">
-        <table class="table" cellspacing="0" style="width:100%" id="fetchAllHosting">
-            <thead>
-                <tr class="tb-col">
-                    <th>Sn</th>
-                    <th>Date</th>
-                    <th>Trans ID</th>
-                    <th>(₦)Amount</th>
-                    <th>References</th>
-                    <th>Payment Purpose</th>
-                    <th>Payment Method</th>
-                    <th>Payment Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr class="tb-row">
-                    <td>1</td>
-                    <td>2025-02-14 17:03:46</td>
-                    <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
-                    <td><span>₦60,000.00</span></td>
-                    <td>REF200001000</td>
-                    <td>EXAM</td>
-                    <td>DEBIT/CREDIT CARD</td>
-                    <td>
-                        <div class="status-div SUCCESS">SUCCESS</div>
-                    </td>
-                </tr>
-
-                <tr class="tb-row">
-                    <td>2</td>
-                    <td>2025-02-14 17:03:46</td>
-                    <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
-                    <td><span>₦60,000.00</span></td>
-                    <td>REF200001000</td>
-                    <td>VIDEO SUBSCRIPTION</td>
-                    <td>DEBIT/CREDIT CARD</td>
-                    <td>
-                        <div class="status-div SUCCESS">SUCCESS</div>
-                    </td>
-                </tr>
-
-                <tr class="tb-row">
-                    <td>3</td>
-                    <td>2025-02-14 17:03:46</td>
-                    <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
-                    <td><span>₦60,000.00</span></td>
-                    <td>REF200001000</td>
-                    <td>EXAM</td>
-                    <td>DEBIT/CREDIT CARD</td>
-                    <td>
-                        <div class="status-div SUCCESS">SUCCESS</div>
-                    </td>
-                </tr>
-                <tr class="tb-row">
-                    <td>4</td>
-                    <td>2025-02-14 17:03:46</td>
-                    <td><span title="Click to view payment details" onclick="">TANS00964620250203090426</span></td>
-                    <td><span>₦60,000.00</span></td>
-                    <td>REF200001000</td>
-                    <td>VIDEO SUBSCRIPTION</td>
-                    <td>DEBIT/CREDIT CARD</td>
-                    <td>
-                        <div class="status-div SUCCESS">SUCCESS</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-<?php } ?>
-
-<?php if ($page == 'walletHistory') { ?>
-    <div class="chart-div-notifications user-details-notf">
-        <div class="text"><i class="bi-graph-up-arrow"></i> Showing Wallet History for </div>
-
-        <div class="text text-right" onclick="select_search()">
-            <span id="srch-text">Last 30 Days</span>
-            <div class="icon-div"><i class="bi-caret-down"></i></div>
-
-            <div class="srch-select alert-srch-select">
-                <div id="srch-today" onclick="_getAlertReport('srch-today', 'view_today_search');">Today</div>
-                <div id="srch-week" onclick="_getAlertReport('srch-week', 'view_thisweek_search');">This Week</div>
-                <div id="srch-7" onclick="_getAlertReport('srch-7', 'view_7days_search');">Last 7 Days</div>
-                <div id="srch-month" onclick="_getAlertReport('srch-month', 'view_thismonth_search');">This Month</div>
-                <div id="srch-30" onclick="_getAlertReport('srch-30', 'view_30days_search');">Last 30 Days</div>
-                <div id="srch-90" onclick="_getAlertReport('srch-90', 'view_90days_search');">Last 90 Days</div>
-                <div id="srch-year" onclick="_getAlertReport('srch-year', 'view_thisyear_search');">This Year</div>
-                <div id="srch-1year" onclick="_getAlertReport('srch-1year', 'view_1year_search');">Last 1 Year</div>
-                <div onclick="srch_custom('Custom Search')">Custom Search</div>
-            </div>
-        </div>
-
-        <div class="text">
-            <div class="custom-srch-div">
-                <div class="custom-srch-div-in">
-                    <div class="text_field_container dash_field_container">
-                        <input class="text_field dash_text_field bar_cust_text_field" type="text" id="datepickers-from" placeholder="" />
-                        <div class="placeholder dash_placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From</div>
-                    </div>
-
-                    <div class="text_field_container dash_field_container">
-                        <input class="text_field dash_text_field bar_cust_text_field" type="text" id="datepickers-to" placeholder="" />
-                        <div class="placeholder dash_placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To</div>
-                    </div>
-                    <button type="button" class="btn">Apply</button>
-                </div>
-            </div>
-        </div>
-
-
-        <script language="javascript">
-            $('#datepickers-from').datetimepicker({
-                lang: 'en',
-                timepicker: false,
-                format: 'Y-m-d',
-                formatDate: 'Y-M-d',
-            });
-
-            $('#datepickers-to').datetimepicker({
-                lang: 'en',
-                timepicker: false,
-                format: 'Y-m-d',
-                formatDate: 'Y-M-d',
-            });
-        </script>
-    </div>
-
-    <div class="table-div pages-table-div animated fadeIn">
-        <table class="table" cellspacing="0" style="width:100%" id="">
-            <thead>
-                <tr class="tb-col">
-                    <th>Date</th>
-                    <th>Trans ID</th>
-                    <th>Balance Before</th>
-                    <th>(₦)Amount Loaded</th>
-                    <th>Balance After</th>
-                    <th>Trans Type</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr class="tb-row">
-                    <td>2025-02-12 17:03:46</td>
-                    <td>TRC23220250213</td>
-                    <td><span>NGN 10,000.00</span></td>
-                    <td>NGN 5,000.00</td>
-                    <td><span>NGN 15,000.00</span></td>
-                    <td>CREDIT</td>
-                    <td>
-                        <div class="status-div SUCCESS">SUCCESS</div>
-                    </td>
-                </tr>
-
-                <tr class="tb-row">
-                    <td>2025-02-12 17:03:46</td>
-                    <td>TRC23220250233</td>
-                    <td><span>NGN 0.00</span></td>
-                    <td><span class="CANCELLED">NGN 5,000.00</span></td>
-                    <td><span>NGN 0.00</span></td>
-                    <td>CREDIT</td>
-                    <td>
-                        <div class="status-div CANCELLED">CANCELLED</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 <?php } ?>

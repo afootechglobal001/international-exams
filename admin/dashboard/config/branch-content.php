@@ -37,7 +37,8 @@
                 </div>
             </div>
         </div>
-    <?php } ?>
+    </div>
+<?php } ?>
 
 <?php if ($page == 'branchCountry') { ?>
     <script>
@@ -132,283 +133,301 @@
 <?php if ($page == 'countryBranchDashboard') { ?>
     <div class="modal-dashboard-statistics-wrapper">
         <div class="left-dashbaord-container">
-            <div class="statistics-chart-back-div box-shadow">
-                <div class="modal-statistics-back-div">
-                    <div class="statistics-div left-border font-size" title="Branches" onclick="">
-                        <h2>5</h2>
-                        <span><i class="bi-diagram-3"></i> Branches</span>
-                    </div>
-
-                    <div class="statistics-div font-size" title="Student" onclick="">
-                        <h2>10</h2>
-                        <span><i class="bi-mortarboard font-size"></i> Student </span>
-                    </div>
-
-                    <div class="statistics-div left-border border-radius font-size" title="Class" onclick="">
-                        <h2>8</h2>
-                        <span><i class="bi-people-fill"></i> Class</span>
-                    </div>
-
-                    <div class="statistics-div right-border font-size" title="Subject" onclick="">
-                        <h2>100</h2>
-                        <span><i class="bi-journals"></i> Subject</span>
+            <div class="statistics-back-div">
+                <div class="statistics-div" id="branch" title="Branches" onclick="_getActivePage({page:'viewBranch', divid:'branch'});">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Branches</p>
+                            <span>Statistics of Branches</span>
+                            <h2 id="totalActiveCountryCount">0</h2>
+                        </div>
+                        <div class="statistics-icon pending"><i class="bi-diagram-3"></i></div>
                     </div>
                 </div>
 
-                <div class="chart-back-div">
-                    <div class="chart-div-notifications no-border-top">
-                        <div class="text"><i class="bi-graph-up-arrow"></i> Showing Matrix for </div>
-
-                        <div class="text text-right" onclick="select_search()">
-                            <span id="srch-text">Last 30 Days</span>
-                            <div class="icon-div"><i class="bi-caret-down"></i></div>
-
-                            <div class="srch-select alert-srch-select">
-                                <div id="srch-today" onclick="_getAlertReport('srch-today', 'view_today_search');">Today</div>
-                                <div id="srch-week" onclick="_getAlertReport('srch-week', 'view_thisweek_search');">This Week</div>
-                                <div id="srch-7" onclick="_getAlertReport('srch-7', 'view_7days_search');">Last 7 Days</div>
-                                <div id="srch-month" onclick="_getAlertReport('srch-month', 'view_thismonth_search');">This Month</div>
-                                <div id="srch-30" onclick="_getAlertReport('srch-30', 'view_30days_search');">Last 30 Days</div>
-                                <div id="srch-90" onclick="_getAlertReport('srch-90', 'view_90days_search');">Last 90 Days</div>
-                                <div id="srch-year" onclick="_getAlertReport('srch-year', 'view_thisyear_search');">This Year</div>
-                                <div id="srch-1year" onclick="_getAlertReport('srch-1year', 'view_1year_search');">Last 1 Year</div>
-                                <div onclick="srch_custom('Custom Search')">Custom Search</div>
-                            </div>
+                <div class="statistics-div" id="students" title="Students">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Students</p>
+                            <span>Statistics of Students</span>
+                            <h2 id="">30</h2>
                         </div>
+                        <div class="statistics-icon completed"><i class="bi-people"></i></div>
+                    </div>
+                </div>
 
-                        <div class="text">
-                            <div class="custom-srch-div">
-                                <div class="custom-srch-div-in">
-                                    <div class="text_field_container dash_field_container">
-                                        <input class="text_field bar_cust_text_field" type="text" id="datepickers-from" placeholder="" />
-                                        <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From</div>
-                                    </div>
-
-                                    <div class="text_field_container dash_field_container">
-                                        <input class="text_field bar_cust_text_field" type="text" id="datepickers-to" placeholder="" />
-                                        <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To</div>
-                                    </div>
-                                    <button type="button" class="btn">Apply</button>
-                                </div>
-                            </div>
+                <div class="statistics-div" onclick="_getActivePage({page:'faqCategory', divid:'publish'});" id="faq" title="FAQ">
+                    <div class="statistics-inner-div">
+                        <div class="statistics-text">
+                            <p>Exam Locations</p>
+                            <span>Statistics of Exam Locations</span>
+                            <h2 id="totalActiveFaqCount">0</h2>
                         </div>
+                        <div class="statistics-icon completed"><i class="bi-patch-question"></i></div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="chart-back-div">
+                <div class="chart-div-notifications top-border-radius">
+                    <div class="text"><i class="bi-graph-up-arrow"></i> Showing Matrix for </div>
 
-                        <script language="javascript">
-                            $('#datepickers-from').datetimepicker({
-                                lang: 'en',
-                                timepicker: false,
-                                format: 'Y-m-d',
-                                formatDate: 'Y-M-d',
-                            });
+                    <div class="text text-right" onclick="select_search()">
+                        <span id="srch-text">Last 30 Days</span>
+                        <div class="icon-div"><i class="bi-caret-down"></i></div>
 
-                            $('#datepickers-to').datetimepicker({
-                                lang: 'en',
-                                timepicker: false,
-                                format: 'Y-m-d',
-                                formatDate: 'Y-M-d',
-                            });
-                        </script>
+                        <div class="srch-select alert-srch-select">
+                            <div id="srch-today" onclick="_fetchRevenueFiltering('srch-today', 'Today');">Today
+                            </div>
+                            <div id="srch-week" onclick="_fetchRevenueFiltering('srch-week', 'This Week');">This
+                                Week</div>
+                            <div id="srch-7" onclick="_fetchRevenueFiltering('srch-7', 'Last 7 Days');">Last 7 Days
+                            </div>
+                            <div id="srch-month" onclick="_fetchRevenueFiltering('srch-month', 'This Month');">This
+                                Month</div>
+                            <div id="srch-30" onclick="_fetchRevenueFiltering('srch-30', 'Last 30 Days');">Last 30 Days
+                            </div>
+                            <div id="srch-90" onclick="_fetchRevenueFiltering('srch-90', 'Last 90 Days');">Last 90 Days
+                            </div>
+                            <div id="srch-year" onclick="_fetchRevenueFiltering('srch-year', 'This Year');">This
+                                Year</div>
+                            <div id="srch-1year" onclick="_fetchRevenueFiltering('srch-1year', 'Last 1 Year');">Last 1
+                                Year</div>
+                            <div onclick="srch_custom('Custom Search')">Custom Search</div>
+                        </div>
                     </div>
 
-                    <div class="trending-back-div">
-                        <div class="revenue-back-div">
-                            <div class="top-revenue">Revenue For<span>January 18 2025</span>-<span>February 17 2025</span></div>
-                            <div class="fund-back-div">
-                                <div class="fund-div">
-                                    <h3><span>₦1,343,581.63</span>(SALES)</h3>
-                                </div>-<div class="fund-div">
-                                    <h3><span>₦256,000.00</span>(WALLET)</h3>
+                    <div class="text">
+                        <div class="custom-srch-div">
+                            <div class="custom-srch-div-in">
+                                <div class="text_field_container dash_field_container">
+                                    <input class="text_field bar_cust_text_field" type="text" id="datepickers-from"
+                                        placeholder="" />
+                                    <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From
+                                    </div>
+                                    <div class="issueText" id="issue_from"></div>
                                 </div>
+
+                                <div class="text_field_container dash_field_container">
+                                    <input class="text_field bar_cust_text_field" type="text" id="datepickers-to"
+                                        placeholder="" />
+                                    <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To </div>
+                                    <div class="issueText" id="issue_to"></div>
+                                </div>
+                                <button type="button" class="btn" id="applyCustomSearchBtn"
+                                    onclick="_fetchCustomRevenueFiltering();">Apply</button>
                             </div>
                         </div>
+                    </div>
 
-                        <div id="chartContainer" style="width:100%; height:300px; margin:auto;"></div>
-                        <script>
-                            $(document).ready(function() {
-                                var chart = new CanvasJS.Chart("chartContainer", {
-                                    animationEnabled: true,
-                                    theme: "light1",
-                                    title: {
-                                        text: ""
-                                    },
-                                    axisX: {
-                                        valueFormatString: "DD MMM",
-                                        crosshair: {
-                                            enabled: true,
-                                            snapToDataPoint: true
-                                        }
-                                    },
-                                    axisY: {
-                                        title: "",
-                                        includeZero: true,
-                                        crosshair: {
-                                            enabled: true
-                                        }
-                                    },
-                                    toolTip: {
-                                        shared: true
-                                    },
-                                    legend: {
-                                        cursor: "pointer",
-                                        verticalAlign: "bottom",
-                                        horizontalAlign: "left",
-                                        dockInsidePlotArea: true,
-                                        itemclick: toogleDataSeries
-                                    },
-                                    data: [{
-                                            type: "line",
-                                            showInLegend: true,
-                                            name: "Sales",
-                                            markerType: "square",
-                                            xValueFormatString: "DD MMM, YYYY",
-                                            color: "#29BA00",
-                                            dataPoints: [{
-                                                    x: new Date(2025, 0, 1),
-                                                    y: 250000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 2),
-                                                    y: 180000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 3),
-                                                    y: 100000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 4),
-                                                    y: 300000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 5),
-                                                    y: 120000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 6),
-                                                    y: 150000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 7),
-                                                    y: 275000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 8),
-                                                    y: 160000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 9),
-                                                    y: 350000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 10),
-                                                    y: 380000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 11),
-                                                    y: 0
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 12),
-                                                    y: 100000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 13),
-                                                    y: 0
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 14),
-                                                    y: 180000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 15),
-                                                    y: 270000
-                                                },
-                                            ]
-                                        },
-                                        {
-                                            type: "line",
-                                            showInLegend: true,
-                                            name: "Wallet",
-                                            lineDashType: "dash",
-                                            dataPoints: [{
-                                                    x: new Date(2025, 0, 1),
-                                                    y: 180000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 2),
-                                                    y: 50000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 3),
-                                                    y: 80000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 4),
-                                                    y: 0
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 5),
-                                                    y: 150000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 6),
-                                                    y: 40000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 7),
-                                                    y: 300000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 8),
-                                                    y: 200000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 9),
-                                                    y: 0
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 10),
-                                                    y: 120000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 11),
-                                                    y: 90000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 12),
-                                                    y: 200000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 13),
-                                                    y: 0
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 14),
-                                                    y: 280000
-                                                },
-                                                {
-                                                    x: new Date(2025, 0, 15),
-                                                    y: 50000
-                                                },
 
-                                            ]
-                                        }
-                                    ]
+                    <script language="javascript">
+                        $('#datepickers-from').datetimepicker({
+                            lang: 'en',
+                            timepicker: false,
+                            format: 'Y-m-d',
+                            formatDate: 'Y-M-d',
+                        });
 
-                                });
-                                chart.render();
+                        $('#datepickers-to').datetimepicker({
+                            lang: 'en',
+                            timepicker: false,
+                            format: 'Y-m-d',
+                            formatDate: 'Y-M-d',
+                        });
+                    </script>
+                </div>
 
-                                function toogleDataSeries(e) {
-                                    if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                                        e.dataSeries.visible = false;
-                                    } else {
-                                        e.dataSeries.visible = true;
+                <div class="trending-back-div">
+                    <div class="revenue-div">
+                        <p>Revenue from <span id="dateFrom">January 18 2025</span> - <span id="dateTo">February 17
+                                2025</span></p>
+                        <div class="fund-div">
+                            <h3>
+                                <p id="sumCreditCardPayments"><s>N</s>1,000,000.29</p><span>Sales</span>
+                            </h3>
+                            <h3>
+                                <p id="sumBankTransferPayments"><s>N</s> 345,000.34</p><span>Wallet</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div id="chartContainer" style="width:100%; height:400px; margin:auto;"></div>
+                    <script>
+                        $(document).ready(function() {
+
+                            var chart = new CanvasJS.Chart("chartContainer", {
+                                animationEnabled: true,
+                                theme: "light1",
+                                axisX: {
+                                    interval: 1,
+                                    intervalType: "day",
+                                    valueFormatString: "DD MMM"
+                                },
+                                axisY: {
+                                    suffix: "₦",
+                                    includeZero: true
+                                },
+                                toolTip: {
+                                    shared: true
+                                },
+                                legend: {
+                                    reversed: true,
+                                    verticalAlign: "top",
+                                    horizontalAlign: "left"
+                                },
+                                data: [{
+                                        type: "stackedColumn",
+                                        name: "Sales",
+                                        showInLegend: true,
+                                        xValueFormatString: "DD MMM, YYYY",
+                                        yValueFormatString: "₦#,##0",
+                                        color: "#9d043c",
+                                        dataPoints: [{
+                                                x: new Date(2025, 0, 1),
+                                                y: 250000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 2),
+                                                y: 180000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 3),
+                                                y: 100000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 4),
+                                                y: 300000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 5),
+                                                y: 120000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 6),
+                                                y: 150000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 7),
+                                                y: 275000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 8),
+                                                y: 160000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 9),
+                                                y: 350000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 10),
+                                                y: 380000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 11),
+                                                y: 0
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 12),
+                                                y: 100000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 13),
+                                                y: 0
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 14),
+                                                y: 180000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 15),
+                                                y: 270000
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        type: "stackedColumn",
+                                        name: "Wallet",
+                                        showInLegend: true,
+                                        xValueFormatString: "DD MMM, YYYY",
+                                        yValueFormatString: "₦#,##0",
+                                        color: "#f7a025",
+                                        dataPoints: [{
+                                                x: new Date(2025, 0, 1),
+                                                y: 180000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 2),
+                                                y: 50000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 3),
+                                                y: 80000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 4),
+                                                y: 0
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 5),
+                                                y: 150000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 6),
+                                                y: 40000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 7),
+                                                y: 300000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 8),
+                                                y: 200000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 9),
+                                                y: 0
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 10),
+                                                y: 120000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 11),
+                                                y: 90000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 12),
+                                                y: 200000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 13),
+                                                y: 0
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 14),
+                                                y: 280000
+                                            },
+                                            {
+                                                x: new Date(2025, 0, 15),
+                                                y: 50000
+                                            }
+                                        ]
                                     }
-                                    chart.render();
+                                ]
+                            });
+                            chart.render();
+
+                            function toogleDataSeries(e) {
+                                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                    e.dataSeries.visible = false;
+                                } else {
+                                    e.dataSeries.visible = true;
                                 }
-                            })
-                        </script>
-                    </div>
+                                chart.render();
+                            }
+                        })
+                    </script>
                 </div>
             </div>
         </div>
@@ -503,10 +522,12 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to create a new branch for 
+                <p>You are about to create a new branch for
                     (<strong id="branchCountryName">
-                        <script> $("#branchCountryName").html(getEachCountrySession?.countryName);</script>
-                    </strong>). 
+                        <script>
+                            $("#branchCountryName").html(getEachCountrySession?.countryName);
+                        </script>
+                    </strong>).
                     Please complete the form below with accurate details to successfully add and register the branch under this country.
                 </p>
             </div>
@@ -599,68 +620,68 @@
     <script>
         getEachCountrySession = JSON.parse(sessionStorage.getItem("getEachCountrySession"));
     </script>
-  
+
     <div class="user-in branch-user-in">
         <div class="title">BRANCH SMTP INFORMATIONS</div>
 
         <div class="profile-segment-div">
             <div class="text_field_container col-1" id="smtpHost_container">
                 <script>
-                textField({
-                    id: 'smtpHost',
-                    title: 'SMTP HOST',
-                    value: getEachCountrySession?.smtpHost ?? ''
-                });
+                    textField({
+                        id: 'smtpHost',
+                        title: 'SMTP HOST',
+                        value: getEachCountrySession?.smtpHost ?? ''
+                    });
                 </script>
             </div>
 
             <div class="text_field_container col-1" id="smtpUsername_container">
                 <script>
-                textField({
-                    id: 'smtpUsername',
-                    title: 'SMTP USERNAME',
-                    value: getEachCountrySession?.smtpUsername ?? ''
-                });
+                    textField({
+                        id: 'smtpUsername',
+                        title: 'SMTP USERNAME',
+                        value: getEachCountrySession?.smtpUsername ?? ''
+                    });
                 </script>
             </div>
 
             <div class="text_field_container col-1" id="smtpPassword_container">
                 <script>
-                textField({
-                    id: 'smtpPassword',
-                    title: 'SMTP PASSWORD',
-                    type: 'password',
-                    value: getEachCountrySession?.smtpPassword ?? ''
-                });
+                    textField({
+                        id: 'smtpPassword',
+                        title: 'SMTP PASSWORD',
+                        type: 'password',
+                        value: getEachCountrySession?.smtpPassword ?? ''
+                    });
                 </script>
             </div>
 
             <div class="text_field_container col-1" id="smtpPort_container">
                 <script>
-                textField({
-                    id: 'smtpPort',
-                    title: 'SMTP PORT',
-                    type: 'number',
-                    value: getEachCountrySession?.smtpPort ?? ''
-                });
+                    textField({
+                        id: 'smtpPort',
+                        title: 'SMTP PORT',
+                        type: 'number',
+                        value: getEachCountrySession?.smtpPort ?? ''
+                    });
                 </script>
             </div>
 
             <div class="text_field_container col-2" id="supportEmail_container">
                 <script>
-                textField({
-                    id: 'supportEmail',
-                    title: 'SUPPORT EMAIL',
-                    type: 'email',
-                    value: getEachCountrySession?.supportEmail ?? ''
-                });
+                    textField({
+                        id: 'supportEmail',
+                        title: 'SUPPORT EMAIL',
+                        type: 'email',
+                        value: getEachCountrySession?.supportEmail ?? ''
+                    });
                 </script>
             </div>
         </div>
 
         <div class="btn-div">
-        <button class="btn" title="UPDATE PROFILE" id="updateBtn" onclick="_updateCountrySettings();"> UPDATE PROFILE <i
-                class="bi-check"></i></button>
+            <button class="btn" title="UPDATE PROFILE" id="updateBtn" onclick="_updateCountrySettings();"> UPDATE PROFILE <i
+                    class="bi-check"></i></button>
         </div>
     </div>
 <?php } ?>
@@ -862,7 +883,9 @@
 
             <div class="inner-table-content">
                 <div class="exams-back-div" id="pageContent">
-                    <script>fetchCountryExamData();</script>
+                    <script>
+                        fetchCountryExamData();
+                    </script>
                 </div>
             </div>
         </div>
@@ -886,10 +909,12 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to add a new exam pricing for 
+                <p>You are about to add a new exam pricing for
                     (<strong id="branchPricingCountryName">
-                        <script> $("#branchPricingCountryName").html(getEachCountrySession?.countryName);</script>
-                    </strong>). 
+                        <script>
+                            $("#branchPricingCountryName").html(getEachCountrySession?.countryName);
+                        </script>
+                    </strong>).
                     Please complete the form below with accurate details to successfully add exam pricing under this country.
                 </p>
             </div>
@@ -914,7 +939,7 @@
                                 _getSelectExams('publishId');
                             </script>
                         </div>
-                         
+
                         <div class="main-content-div form-main-content form-exam-content" id="examPreviewContainer" data-aos="fade-in" data-aos-duration="1500" style="display:none;">
                             <div class="tables-content-div form-content-div">
                                 <div class="content-title">
@@ -926,8 +951,8 @@
 
                                 <div class="inner-table-content" id="pageContent2"></div>
                             </div>
-                        </div>  
-                        
+                        </div>
+
                         <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
                             <div class="tables-content-div form-content-div">
                                 <div class="content-title">
@@ -1009,17 +1034,20 @@
 
             <div class="inner-table-content">
                 <div class="pages-toggle-back-div" id="pageContent">
-                    <script>fetchExamLocationData();</script></div>
+                    <script>
+                        fetchExamLocationData();
+                    </script>
+                </div>
             </div>
         </div>
     </div>
 <?php } ?>
 
 <?php if ($page == 'examLocationReg') { ?>
-    <script> 
+    <script>
         getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));
-        $('#pageTitle').html(getEachExamLocationSession?.locationId ? 'UPDATE EXAM LOCATION':'CREATE NEW EXAM LOCATION');
-        $('#subTitle, #subTitle2, #subTitle3').html(getEachExamLocationSession?.locationId ? 'update this exam location':'create new exam location');
+        $('#pageTitle').html(getEachExamLocationSession?.locationId ? 'UPDATE EXAM LOCATION' : 'CREATE NEW EXAM LOCATION');
+        $('#subTitle, #subTitle2, #subTitle3').html(getEachExamLocationSession?.locationId ? 'update this exam location' : 'create new exam location');
     </script>
 
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
@@ -1038,8 +1066,12 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to <span id="subTitle"></span> for (<strong id="formBranchCountryName"> <script> $("#formBranchCountryName").html(getEachCountrySession?.countryName);</script> </strong>).
-                 Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
+                <p>You are about to <span id="subTitle"></span> for (<strong id="formBranchCountryName">
+                        <script>
+                            $("#formBranchCountryName").html(getEachCountrySession?.countryName);
+                        </script>
+                    </strong>).
+                    Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
 
@@ -1064,7 +1096,7 @@
                                 _getSelectExams('publishId');
                             </script>
                         </div>
-                         
+
                         <div class="text_field_container" id="locationName_container">
                             <script>
                                 textField({
@@ -1099,11 +1131,13 @@
 <?php } ?>
 
 <?php if ($page == 'examCenterReg') { ?>
-    <script> getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));</script>
-    <script> 
+    <script>
+        getEachExamLocationSession = JSON.parse(sessionStorage.getItem("getEachExamLocationSession"));
+    </script>
+    <script>
         getEachExamCenterSession = JSON.parse(sessionStorage.getItem("getEachExamCenterSession"));
-        $('#pageTitle').html(getEachExamCenterSession?.locationId ? 'UPDATE EXAM CENTRE':'CREATE NEW EXAM CENTRE');
-        $('#subTitle, #subTitle2').html(getEachExamCenterSession?.locationId ? 'update this exam centre':'create new exam centre');
+        $('#pageTitle').html(getEachExamCenterSession?.locationId ? 'UPDATE EXAM CENTRE' : 'CREATE NEW EXAM CENTRE');
+        $('#subTitle, #subTitle2').html(getEachExamCenterSession?.locationId ? 'update this exam centre' : 'create new exam centre');
     </script>
 
 
@@ -1123,8 +1157,12 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to <span id="subTitle"></span> for 
-                    (<strong id="branchLocationCountryName"> <script> $("#branchLocationCountryName").html(getEachExamLocationSession?.locationName);</script> </strong>).
+                <p>You are about to <span id="subTitle"></span> for
+                    (<strong id="branchLocationCountryName">
+                        <script>
+                            $("#branchLocationCountryName").html(getEachExamLocationSession?.locationName);
+                        </script>
+                    </strong>).
                     Please complete the form below with accurate details to successfully <span id="subTitle2"></span> under this exam location.
                 </p>
             </div>
@@ -1178,7 +1216,7 @@
 
                             <div class="segmentList">
                                 <script>
-                                    $(document).ready(function () {
+                                    $(document).ready(function() {
                                         let examDates = (getEachExamCenterSession?.examDateData) || [];
 
                                         if (examDates.length > 0) {
@@ -1191,7 +1229,7 @@
                                     });
                                 </script>
                             </div>
-                            
+
                             <div>
                                 <button type="button" class="btn" onClick="addSegmentation()"><i class="bi-plus"></i> Add date segment</button>
                             </div>

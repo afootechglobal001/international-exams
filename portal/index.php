@@ -16,46 +16,15 @@
 
         <div class="form-div animated fadeIn">
             <div class="form-box">
-                <div class="form-box-content" id="viewLogin">
-                    <div class="logo-div">
-                        <a href="<?php echo $websiteUrl ?>" title="Home">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"
-                                alt="International Exam Logo" /></a>
-                    </div>
-                    <h1>👋 Hi, Welcome Back!</h1>
-                    <div class="alert alert-success">
-                        Kindly, provide your <span>Email Address</span> and <span>Password</span> to Login.
-                    </div>
-                    <div class="text_field_container" id="emailAddress_container">
-                        <script>
-                        textField({
-                            id: 'emailAddress',
-                            title: 'Enter Your Email Address',
-                            type: 'email'
-                        });
-                        </script>
-                    </div>
-
-                    <div class="text_field_container" id="password_container">
-                        <script>
-                        textField({
-                            id: 'password',
-                            title: 'Enter Your Password',
-                            type: 'password'
-                        });
-                        </script>
-                    </div>
-                    <div class="btn-div">
-                        <button class="btn" id="submitBtn" title="Click to log In" onclick="_userLogin()">
-                            Log In <i class="bi bi-check"></i>
-                        </button>
-                        <a href="#" title="Recover your password">Forgot Password?</a>
-                    </div>
+                <div id="page-content">
+                    <?php $page='login';?>
+                    <?php include $websitePath.'/portal/config/page-content.php';?>
                 </div>
+                
                 <div class="signup-message">
                     <p>
                         Don’t have an account?
-                        <a href="<?php echo $websiteUrl?>/portal/sign-up" title="Create an account">Sign-Up</a>
+                        <a href="<?php echo $websiteUrl ?>/portal/sign-up" title="Create an account">Sign-Up</a>
                     </p>
                     <p>
                         By logging in to this portal, you agree to our<br />

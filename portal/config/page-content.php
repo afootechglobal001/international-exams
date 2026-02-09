@@ -1,34 +1,68 @@
-<?php if ($page == 'signupOtp') { ?>
-<div class="caption-div animated fadeIn">
-    <div class="caption-title-div">
-        <div class="title-div">
-            <div class="icon-div"><i class="bi bi-shield-lock-fill"></i></div>
-            <h3>OTP</h3>
+<?php if ($page == 'login') { ?>
+    <div class="form-box-content" id="viewLogin">
+        <div class="logo-div">
+            <a href="<?php echo $websiteUrl ?>" title="Home">
+                <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"
+                    alt="International Exam Logo" /></a>
         </div>
-        <div class="btn-div">
-            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
-                <i class="bi bi-x-lg"></i> Close
-            </button>
+        <h1>👋 Hi, Welcome Back!</h1>
+        <div class="alert alert-success">
+            Kindly, provide your <span>Email Address</span> and <span>Password</span> to Login.
         </div>
-    </div>
-    <!-- /////////// Title ////////////////////////////// -->
-    <div class="caption-notification">
-        <p>Hi, an OTP have been sent to your email address <strong>(<?php echo $id ?>)</strong>. Kindly enter the OTP to
-            proceed</p>
-    </div>
-    <div class="caption-body">
-        <div class="text_field_container" id="otp_container">
+        <div class="text_field_container" id="emailAddress_container">
             <script>
-            textField({
-                id: 'otp',
-                title: 'Enter OTP here',
-            });
+                textField({
+                    id: 'emailAddress',
+                    title: 'Enter Your Email Address',
+                    type: 'email'
+                });
+            </script>
+        </div>
+
+        <div class="text_field_container" id="password_container">
+            <script>
+                textField({
+                    id: 'password',
+                    title: 'Enter Your Password',
+                    type: 'password'
+                });
             </script>
         </div>
         <div class="btn-div">
-            <button class="btn" id="proceedBtn" onclick="_verifyUserEmail();">PROCEED <i
-                    class="bi bi-arrow-right"></i></button>
+            <button class="btn" id="submitBtn" title="Click to log In" onclick="_userLogin()">
+                Log In <i class="bi bi-check"></i>
+            </button>
+            <div class="span" onclick="_nextUserLoginPage({page: 'forgetPassword'});">Forgot Password?</div>
         </div>
     </div>
-</div>
+<?php } ?>
+
+<?php if ($page == 'forgetPassword') { ?>
+    <div class="form-box-content" id="viewLogin">
+        <div class="logo-div">
+            <a href="<?php echo $websiteUrl ?>" title="Home">
+                <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"
+                    alt="International Exam Logo" /></a>
+        </div>
+        <h1>Reset Password!</h1>
+        <div class="alert alert-success">
+            Kindly, provide your <span>Email Address</span> to reset your password.
+        </div>
+        <div class="text_field_container" id="email_container">
+            <script>
+                textField({
+                    id: 'email',
+                    title: 'Enter Your Email Address',
+                    type: 'email'
+                });
+            </script>
+        </div>
+
+        <div class="btn-div">
+            <button class="btn" id="proceedBtn" title="Click to Proceed" onclick="window.location.href='<?php echo $websiteUrl ?>/portal/reset-password'">
+                PROCEED<i class="bi-arrow-right"></i>
+            </button>
+            <div class="span" onclick="_nextUserLoginPage({page: 'login'});">Existing User? <span>LOG-IN</span></div>
+        </div>
+    </div>
 <?php } ?>

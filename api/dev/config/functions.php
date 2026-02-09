@@ -101,6 +101,21 @@ function _getPublishDetails($conn,$publishId, $pageCategoryId){
 		return json_encode([$response]);
 }
 
+function _getEbookDetails($conn,$ebookId, $examId){
+    $query=mysqli_query($conn,"SELECT * FROM EXAM_EBOOK_TAB WHERE ebookId='$ebookId' AND examId='$examId'")or die (mysqli_error($conn));
+    $fetchQuery=mysqli_fetch_array($query);
+        $response = [
+            "ebookId" => $fetchQuery['ebookId'],
+            "examId" => $fetchQuery['examId'],
+            "ebookTitle" => $fetchQuery['ebookTitle'],
+            "sellingPrice" => $fetchQuery['sellingPrice'],
+            "ebookSize" => $fetchQuery['ebookSize'],
+            "ebookPages" => $fetchQuery['ebookPages'],
+            "material" => $fetchQuery['material'],
+            "regPix" => $fetchQuery['regPix']
+        ];
+        return json_encode([$response]);
+}
 
 function _checkPageSession($conn, $pageCategoryId, $publishId, $pageSession){
 	$viewCount = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM PAGE_VIEWS_TAB WHERE pageCategoryId='$pageCategoryId' AND publishId='$publishId' AND pageSession='$pageSession'"));

@@ -15,14 +15,16 @@
                 <input type="text" id="searchContent" onkeyup="_filterEbooks(this.value);" placeholder="Search E-book Here...">
                 <i class="bi bi-filetype-pdf"></i>
             </div>
-            <button class="btn" title="ADD NEW E-BOOK" onclick="_getForm({page: 'eBookReg', url: adminPortalLocalUrl});">
+            <button class="btn" title="ADD NEW E-BOOK" onclick="sessionStorage.removeItem('useEachEbookSession'); _getForm({page: 'eBookReg', url: adminPortalLocalUrl});">
                 <i class="bi-plus-square"></i> ADD NEW E-BOOK
             </button>
         </div>
     </div>
 
     <div class="fetch-ebooks" id="pageContent">
-        <script>_fetchEbookData();</script>
+        <script>
+            _fetchEbookData();
+        </script>
 
         <div class="content-loading-div">
             <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
@@ -31,6 +33,11 @@
 <?php } ?>
 
 <?php if ($page == 'eBookReg') { ?>
+    <script>
+        useEachEbookSession = JSON.parse(sessionStorage.getItem("useEachEbookSession"));
+        $('#pageTitle').html(useEachEbookSession?.ebookData?.[0]?.ebookId ? 'UPDATE E-BOOK' : 'UPLOAD NEW E-BOOK');
+        $('#subTitle, #subTitle2').html(useEachEbookSession?.ebookData[0]?.ebookId ? 'update this e-book' : 'upload new e-book');
+    </script>
     <div class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
         <div class="form-title-div">
             <div class="title-div">
@@ -47,7 +54,7 @@
         <!-- /////////// Title ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to upload e-book. Please complete the form below with accurate details to successfully upload the e-book.</p>
+                <p>You are about to <span id="subTitle"></span>. Please complete the form below with accurate details to successfully <span id="subTitle2"></span>.</p>
             </div>
 
             <div class="main-content-div">
@@ -55,7 +62,7 @@
                     <div class="content-title">
                         <div class="title">
                             <i class="bi bi-book-half"></i>
-                            <p>E-book Registration</p>
+                            <p>E-book</p>
                         </div>
                     </div>
 
@@ -65,6 +72,8 @@
                                 selectField({
                                     id: 'publishId',
                                     title: 'Select Exam',
+                                    fieldValue: useEachEbookSession?.examData?.examId ?? '',
+                                    fieldLabel: useEachEbookSession?.examData?.examAbbr ?? ''
                                 });
                                 _getSelectEbookExam('publishId');
                             </script>
@@ -75,6 +84,7 @@
                                 textField({
                                     id: 'ebookTitle',
                                     title: 'E-book Title',
+                                    value: useEachEbookSession?.ebookData[0]?.ebookTitle ?? ''
                                 });
                             </script>
                         </div>
@@ -84,6 +94,7 @@
                                 textField({
                                     id: 'sellingPrice',
                                     title: 'Selling Price',
+                                    value: useEachEbookSession?.ebookData[0]?.sellingPrice ?? ''
                                 });
                             </script>
                         </div>
@@ -94,6 +105,15 @@
                                 <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
                                 <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="ebookPixPreview.UpdatePreview(this);" />
                             </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    const ebookPix = useEachEbookSession?.ebookData[0]?.regPix;
+                                    const ebookPixUrl = ebookPix ? eBookPixPath + "/" + ebookPix : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+
+                                    $("#ebookPixPreview").attr("src", ebookPixUrl).attr("alt", useEachEbookSession?.ebookData[0]?.ebookTitle);
+                                });
+                            </script>
                         </label>
 
                         <div class="form-title">E-BOOK MATERIAL (PDF): <span>*</span></div>
@@ -115,7 +135,7 @@
                             <input type="hidden" name="ebookSize" id="ebookSize">
                             <input type="hidden" name="ebookPages" id="ebookPages">
                         </div>
-                    
+
                         <script>
                             $(document).ready(function() {
                                 let $pdfDisplay = $('#pdfDisplay');
@@ -182,6 +202,27 @@
                                     $pdfInput[0].files = e.originalEvent.dataTransfer.files;
                                     showPdf(file);
                                 });
+
+
+                                // If editing existing ebook, show current PDF
+                                let ebook = useEachEbookSession?.ebookData[0];
+                                const existingPdf = ebook.material;
+                                if (existingPdf) {
+                                    let existingPdfUrl = ebookMaterialPath + "/" + existingPdf;
+                                    $pdfDisplay.removeClass('background-display').addClass('embed-display');
+                                    $pdfEmbed.show().attr('src', existingPdfUrl);
+                                    $('#pdfBackground').hide();
+
+                                    // Optional info
+                                    $('#file-list').html(`
+                                        File size: ${ebook.ebookSize}<br>
+                                        File Pages: ${ebook.ebookPages}
+                                    `);
+
+                                    // Populate hidden fields
+                                    $('#ebookSize').val(ebook.ebookSize);
+                                    $('#ebookPages').val(ebook.ebookPages);
+                                }
                             });
                         </script>
 
@@ -190,18 +231,20 @@
                                 selectField({
                                     id: 'statusId',
                                     title: 'Select Status',
+                                    fieldValue: useEachEbookSession?.ebookData[0]?.statusId ?? '',
+                                    fieldLabel: useEachEbookSession?.ebookData[0]?.statusName ?? ''
                                 });
                                 _getSelectStatusId('statusId', '1,2');
                             </script>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="alert alert-success" id="progress-alert">
                     <span>UPLOADING IN PROGRESS...</span><br>
                     Please DO NOT close this panel as the process takes some time.
                     <div class="ajax-progress">0%</div>
-                </div> 
+                </div>
 
                 <div class="btn-div">
                     <button class="btn" title="SUBMIT" id="submitBtn" onclick="_createEbook();"> <i class="bi-check"></i> SUBMIT </button>

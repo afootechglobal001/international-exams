@@ -181,21 +181,39 @@ switch ($action){
 
 	case 'uploadEbookPixAndMaterial':
 		///// Ebook Picture /////
-		$newRegPix = $_POST['newRegPix'] ?? '';
+		$oldRegPix = $_POST['oldRegPix'] ?? '';
 		$regPixDir = "../../../uploaded_files/ebookPicture/";
 
-		if (!empty($newRegPix) && isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+		// Check if a new file is uploaded
+		if (isset($_FILES['regPix']) && $_FILES['regPix']['error'] === UPLOAD_ERR_OK) {
+			$newRegPix = $_POST['newRegPix'] ?? $_FILES['regPix']['name']; // fallback to uploaded filename
+
+			// Delete old picture if it exists
+			if (!empty($oldRegPix) && file_exists($regPixDir . $oldRegPix)) {
+				unlink($regPixDir . $oldRegPix);
+			}
+
+			// Move uploaded file
 			move_uploaded_file($_FILES['regPix']['tmp_name'], $regPixDir . $newRegPix);
 		}
 
 		////// Ebook Material ///////
-		$newMaterial = $_POST['newMaterial'] ?? '';
+		$oldMaterial = $_POST['oldMaterial'] ?? '';
 		$materialDir = "../../../uploaded_files/ebookMaterial/";
 
-		if (!empty($newMaterial) && isset($_FILES['material']) && $_FILES['material']['error'] === UPLOAD_ERR_OK) {
+		// Check if a new file is uploaded
+		if (isset($_FILES['material']) && $_FILES['material']['error'] === UPLOAD_ERR_OK) {
+			$newMaterial = $_POST['newMaterial'] ?? $_FILES['material']['name']; // fallback to uploaded filename
+
+			// Delete old material if it exists
+			if (!empty($oldMaterial) && file_exists($materialDir . $oldMaterial)) {
+				unlink($materialDir . $oldMaterial);
+			}
+
+			// Move uploaded file
 			move_uploaded_file($_FILES['material']['tmp_name'], $materialDir . $newMaterial);
 		}
-    break;
+	break;
 
 	case 'unlinkEbookPixAndMaterial':
 		///// Ebook Picture /////

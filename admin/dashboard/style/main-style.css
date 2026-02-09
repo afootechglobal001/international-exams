@@ -3665,21 +3665,30 @@ main {
   transform: scale(1.1);
 }
 
-.book-back-div .book-div .delete-icon{
-  	position:absolute;
-	height:12px;
-	width:12px;
+.book-back-div .book-div .status-div{
+	position:absolute;
+	padding:5px 10px;
 	margin:10px;
-	padding:10px;
-	font-size: 13px;
-	border-radius:100%;
-	background:#F00;
-	color:var(--white-color);
-	cursor:pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 5;
+	height:15px;
+	top: 10px;
+	color: var(--white-color);
+	font-size:10px;
+	font-family:body-font;
+	background: var(--active-color);
+	border-radius:5px;
+	z-index: 2;
+}
+
+.book-back-div .book-div .ACTIVE{
+	color: var(--white-color);
+	background: var(--active-color);
+	border: none;
+}
+
+.book-back-div .book-div .SUSPENDED{
+	color: var(--white-color);
+	background: var(--sub-body-color);
+	border: none;
 }
 
 .book-back-div .book-div .icon-div {
@@ -3724,24 +3733,31 @@ main {
   line-height: 20px;
   color: var(--body-color);
 }
-.book-back-div .book-div .text-div .details .book-sum {
+.book-back-div .book-div .text-div .book-sum {
   display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
   font-size: 12px;
 }
-.book-back-div .book-div .text-div .details .book-sum p {
+.book-back-div .book-div .text-div .book-sum p {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
-.book-back-div .book-div .text-div .details .book-sum p i {
+.book-back-div .book-div .text-div .book-sum p i {
   color: var(--primary-color);
 }
 
-.book-back-div .book-div .text-div .btn {
+.book-back-div .book-div .text-div .book-sum span {
+  font-size: 15px;
+}
+
+.book-back-div .book-div .text-div .book-sum .btn {
   border: none;
-  height: 40px;
+  height: 35px;
   font-size: 13px;
   display: flex;
   justify-content: center;
@@ -3751,7 +3767,7 @@ main {
   border-radius: 20px;
   font-family: sub-title-font;
   align-self: self-start;
-  padding: 0px 15px;
+  padding: 0px 20px;
   color: var(--white-color);
   background: linear-gradient(
     90deg,
@@ -3764,7 +3780,7 @@ main {
   white-space: nowrap;
 }
 
-.book-back-div .book-div .text-div .btn:hover {
+.book-back-div .book-div .text-div .book-sum .btn:hover {
   background-size: 200% 100%;
   background-position: right;
   transform: scale(1.05); /* subtle hover grow */

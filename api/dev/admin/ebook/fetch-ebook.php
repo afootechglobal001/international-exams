@@ -16,8 +16,15 @@
 ?>
 
 <?php
+    $examId  = $_GET['examId'] ?? '';
+    $ebookId = $_GET['ebookId'] ?? '';
+
+    if (!empty($examId)){
+        $examIds = "WHERE examId='$examId'";
+    }
+
     //////////////////declaration of variables//////////////////////////////////////
-    $select = "SELECT DISTINCT (examId) AS examId FROM EXAM_EBOOK_TAB ORDER BY examAbbr ASC";
+    $select = "SELECT DISTINCT (examId) AS examId FROM EXAM_EBOOK_TAB $examIds ORDER BY examAbbr ASC";
     $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
     $allRecordCount=mysqli_num_rows($query);
     if($allRecordCount==0){///start if 1
@@ -45,12 +52,30 @@
         
         /////////////////// Fetch ebook per exam /////////
         $ebookData=array();
+        if (!empty($ebookId)) {
+            $ebookIds = "AND ebookId='$ebookId'";
+        }
         $getEbookQuery = mysqli_query($conn, "SELECT
-        ebookId, ebookTitle, regPix, ebookSize, ebookPages, sellingPrice
-        FROM EXAM_EBOOK_TAB WHERE examId='$examId'") or die(mysqli_error($conn));
+        a.ebookId, 
+        a.ebookTitle, 
+        a.regPix, 
+        a.material, 
+        a.ebookSize, 
+        a.ebookPages, 
+        a.sellingPrice,
+        a.statusId,
+        b.statusName
+        FROM EXAM_EBOOK_TAB a
+        JOIN SETUP_STATUS_TAB b ON a.statusId = b.statusId
+        WHERE a.examId='$examId' $ebookIds") or die(mysqli_error($conn));
 
         while ($getEbookFetch = mysqli_fetch_assoc($getEbookQuery)) {
             $ebookData[] = $getEbookFetch;
+        }
+
+        // skip exams without the ebook when ebookId is passed
+        if ($ebookId != '' && empty($ebookData)) {
+            continue;
         }
         $fetchQuery['ebookData']= $ebookData;
         $response['data'][] = $fetchQuery;

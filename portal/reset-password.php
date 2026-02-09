@@ -14,13 +14,13 @@
     <main>
         <script>
             $(document).ready(function() {
-                let userProceedLoginSession = JSON.parse(localStorage.getItem("userProceedLoginSession"));
-                if (!userProceedLoginSession) {
+                let useResetPasswordSession = JSON.parse(localStorage.getItem("useResetPasswordSession"));
+                if (!useResetPasswordSession) {
                     window.location.href = portalUrl;
                 }
 
-                $("#userFullname").html(userProceedLoginSession?.displayData?.fullName);
-                $("#email").html(userProceedLoginSession?.displayData?.email);
+                $("#userFullname").html(useResetPasswordSession?.fullName);
+                $("#email").html(useResetPasswordSession?.emailAddress);
             });
         </script>
 
@@ -65,10 +65,10 @@
                         </script>
                     </div>
 
-                    <div class="text_field_container" id="cNewPassword_container">
+                    <div class="text_field_container" id="cnewPassword_container">
                         <script>
                             textField({
-                                id: 'cNewPassword',
+                                id: 'cnewPassword',
                                 title: 'Confirm New Password',
                                 type: 'password'
                             });
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="btn-div verify-btn-div">
-                        <button class="btn" id="submitBtn" title="Click to log In" onclick="_userSignUp();">
+                        <button class="btn" id="submitBtn" title="Click to log In" onclick="_completeResetPassword();">
                             Reset <i class="bi bi-arrow-right-circle"></i>
                         </button>
                     </div>

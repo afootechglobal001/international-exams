@@ -237,6 +237,7 @@ function _userSignUpCallback(formData) {
     });
 }
 
+/// User Login ///
 function _userLogin() {
   try {
     //////get all needed values////
@@ -287,4 +288,159 @@ function _userLogin() {
     _callCatchError(() => _userLogin());
     _btnDisable("submitBtn", btnText, false);
   }
+}
+
+
+/// Proceed To Reset Password ///
+function _proceedResetPassword() {
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const emailAddress = $("#emailAddress").val();
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      emailAddress,
+    };
+    ////// confirm action
+    _showCustomConfirm({
+      callback: () => {
+        _proceedResetPasswordCallback(formData);
+      },
+      title: "Are you sure?",
+      message: "Will proceed to send OTP to your email address.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _proceedResetPassword());
+  }
+}
+
+/// Proceed To Reset Password  Callback ///
+function _proceedResetPasswordCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#proceedBtn").html();
+  _btnDisable("proceedBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/reset-password-verification`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+        const data = response.data;
+        localStorage.setItem("useResetPasswordSession", JSON.stringify(data));
+        _showLoader("OTP Sent Successfully!. Please wait...");
+          window.location.href = userResetPasswordUrl;
+        _btnDisable("proceedBtn", btnText, false);
+      } else {
+        _btnDisable("proceedBtn", btnText, false);
+        _hideLoader();
+        _showCustomConfirm({
+          title: "Invalid Email Address",
+          message: response.message,
+          alertType: "error",
+          trueActionBtnText: "OK",
+          closeOnOverlayClick: true,
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _proceedResetPasswordCallback(formData)); // retry if needed
+      _btnDisable("proceedBtn", btnText, false);
+      _hideLoader();
+    });
+}
+
+/// Complete Proceed Password ///
+function _completeResetPassword() {
+  let useResetPasswordSession = JSON.parse(
+    localStorage.getItem("useResetPasswordSession")
+  );
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const otp = $("#otp").val();
+    const newPassword = $("#newPassword").val();
+    const cnewPassword = $("#cnewPassword").val();
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("otp", "OTP");
+    issueCount += _validateEmptyValue("newPassword", "CREATE NEW PASSWORD");
+    issueCount += _validateEmptyValue("cnewPassword", "CONFIRM NEW PASSWORD");
+
+    if (newPassword && cnewPassword) {
+      if (newPassword !== cnewPassword) {
+        $('#newPassword, #cnewPassword').addClass('issue');
+        $('#issue_cnewPassword, #issue_cnewPassword').html('USER ERROR! Passwords do not match');
+        issueCount++;
+      }
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      userId: useResetPasswordSession?.userId,
+      otp,
+      newPassword,
+      cnewPassword,
+    };
+
+    _completeResetPasswordCallback(formData);
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _completeResetPassword());
+  }
+}
+
+/// Complete Reset Pssword Callback ///
+function _completeResetPasswordCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#submitBtn").html();
+  _btnDisable("submitBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/reset-password`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+          _showCustomConfirm({
+            callback: () => {
+              window.location.href = portalUrl;
+            },
+            title: "Success!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+        _btnDisable("submitBtn", btnText, false);
+      } else {
+        _btnDisable("submitBtn", btnText, false);
+        _showCustomConfirm({
+          title: "Invalid OTP",
+          message: response.message,
+          alertType: "error",
+          trueActionBtnText: "OK",
+          closeOnOverlayClick: true,
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _completeResetPasswordCallback(formData)); // retry if needed
+      _btnDisable("submitBtn", btnText, false);
+    });
 }

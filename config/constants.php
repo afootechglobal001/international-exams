@@ -81,6 +81,7 @@ var ictCoursePixPath = websiteUrl + '/uploaded_files/IctCourses'; /// For Pages 
 var videoPixPath = websiteUrl + '/uploaded_files/video-images'; /// For video pix Path
 var videoPath = websiteUrl + '/uploaded_files/videos'; /// For videos Path
 var userOtpVerificationUrl = websiteUrl + '/portal/verify'; /// For User OTP Verification Url //
+var userResetPasswordUrl = websiteUrl + '/portal/reset-password'; /// For User Reset Password OTP Verification Url //
 
 var pageCategory = {
     examCategory: 'examCategory',

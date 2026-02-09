@@ -48,10 +48,10 @@
         <div class="alert alert-success">
             Kindly, provide your <span>Email Address</span> to reset your password.
         </div>
-        <div class="text_field_container" id="email_container">
+        <div class="text_field_container" id="emailAddress_container">
             <script>
                 textField({
-                    id: 'email',
+                    id: 'emailAddress',
                     title: 'Enter Your Email Address',
                     type: 'email'
                 });
@@ -59,7 +59,7 @@
         </div>
 
         <div class="btn-div">
-            <button class="btn" id="proceedBtn" title="Click to Proceed" onclick="window.location.href='<?php echo $websiteUrl ?>/portal/reset-password'">
+            <button class="btn" id="proceedBtn" title="Click to Proceed" onclick="_proceedResetPassword();">
                 PROCEED<i class="bi-arrow-right"></i>
             </button>
             <div class="span" onclick="_nextUserLoginPage({page: 'login'});">Existing User? <span>LOG-IN</span></div>

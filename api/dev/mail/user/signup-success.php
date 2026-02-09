@@ -47,18 +47,18 @@ try {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $sendTo=$emailAddress;
 $recieverName=$fullName;
-$subject="SignUp OTP -- $otp";
+$subject="User Signup Success -- $fullName";
 
 $message='
 <div style="width:90%; margin:auto; height:auto;">
   <img src="cid:mail_header" width="100%">
     <div style="padding:15px; font-size:16px;">
-      <p>Dear <b>'.$fullName.'</b>,</p>
-      <p>Thank you for registering with International Exam Application. To complete your registration, please use the following One-Time Password (OTP):</p>
-      <h2 style="color:#333; text-align:center; background:#f4f4f4; padding:10px 0;">'.$otp.'</h2>
-      <p>This OTP is valid for the next 15 minutes. If you did not initiate this registration, please ignore this email or contact our support team immediately.</p>
-      <p>For any inquiries or technical assistance, please contact our support team at ' . $supportEmail . '.</p>
-      <p>Thank you,<br>International Exam Application Team</p>
+        <p>Dear <b>'.$fullName.'</b>,</p>
+        <p>Email: <b>'.$emailAddress.'</b>,</p>
+        <p>Phone Number: <b>'.$phoneNumber.'</b>,</p>
+        <p>Congratulations! Your registration with International Exam Application was successful. We are excited to have you on board and look forward to providing you with an exceptional experience.</p>
+        <p>If you have any questions or need assistance, please do not hesitate to contact our support team at ' . $supportEmail . '.</p>
+        <p>Thank you for choosing International Exam Application!</p>
     </div>
     <div style="min-height:30px; background:#333; text-align:left; color:#FFF; line-height:20px; padding:20px 10px 20px 50px;">
       &copy; All Right Reserved. <br>' . $senderName . '

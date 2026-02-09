@@ -44,21 +44,17 @@ try {
     $mail->addReplyTo($supportEmail, $senderName); // Reply-to address
     
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$sendTo=$emailAddress;
-$recieverName=$fullName;
-$subject="SignUp OTP -- $otp";
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $message='
 <div style="width:90%; margin:auto; height:auto;">
   <img src="cid:mail_header" width="100%">
     <div style="padding:15px; font-size:16px;">
-      <p>Dear <b>'.$fullName.'</b>,</p>
-      <p>Thank you for registering with International Exam Application. To complete your registration, please use the following One-Time Password (OTP):</p>
-      <h2 style="color:#333; text-align:center; background:#f4f4f4; padding:10px 0;">'.$otp.'</h2>
-      <p>This OTP is valid for the next 15 minutes. If you did not initiate this registration, please ignore this email or contact our support team immediately.</p>
-      <p>For any inquiries or technical assistance, please contact our support team at ' . $supportEmail . '.</p>
-      <p>Thank you,<br>International Exam Application Team</p>
+        <p>Dear <b>'.$fullName.'</b>,</p>
+        <p>Email: <b>'.$emailAddress.'</b>,</p>
+        <p>Phone Number: <b>'.$phoneNumber.'</b>,</p>
+        
+        <p>'.$alertDetail.'</p>
     </div>
     <div style="min-height:30px; background:#333; text-align:left; color:#FFF; line-height:20px; padding:20px 10px 20px 50px;">
       &copy; All Right Reserved. <br>' . $senderName . '
@@ -72,7 +68,7 @@ $message='
     $mail->AltBody = strip_tags($message);  // Fallback for non-HTML clients
     
     /// copy this emails
-    $mail->addAddress($sendTo, $recieverName);  // Recipient email and name
+    // $mail->addAddress($sendTo, $recieverName);  // Recipient email and name
     $mail->addAddress($supportEmail, $senderName);  // Support email
     //$mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
 

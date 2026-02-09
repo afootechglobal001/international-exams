@@ -47,24 +47,21 @@ try {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $sendTo=$emailAddress;
 $recieverName=$fullName;
-$subject="SignUp OTP -- $otp";
+$subject="Reset Password OTP -- $otp";
 
 $message='
 <div style="width:90%; margin:auto; height:auto;">
   <img src="cid:mail_header" width="100%">
     <div style="padding:15px; font-size:16px;">
       <p>Dear <b>'.$fullName.'</b>,</p>
-      <p>Thank you for registering with International Exam Application. To complete your registration, please use the following One-Time Password (OTP):</p>
+      <p>We received a request to reset your password for your account on International Exam Application. To proceed with resetting your password, please use the following One-Time Password (OTP):</p>
       <h2 style="color:#333; text-align:center; background:#f4f4f4; padding:10px 0;">'.$otp.'</h2>
-      <p>This OTP is valid for the next 15 minutes. If you did not initiate this registration, please ignore this email or contact our support team immediately.</p>
-      <p>For any inquiries or technical assistance, please contact our support team at ' . $supportEmail . '.</p>
+      <p>This OTP is valid for the next 15 minutes. If you did not request a password reset, please ignore this email or contact our support team immediately.</p>
       <p>Thank you,<br>International Exam Application Team</p>
-    </div>
     <div style="min-height:30px; background:#333; text-align:left; color:#FFF; line-height:20px; padding:20px 10px 20px 50px;">
       &copy; All Right Reserved. <br>' . $senderName . '
     </div>
 </div>';
-
 
 
     $mail->Subject = $subject;

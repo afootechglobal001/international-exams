@@ -31,7 +31,14 @@
             'message'=> "Your Exam has been successfully registered.",
         ];
     /// sent alert
-    $alertDetail = "User with ID $loginUserId and Name $loginUserFullname registered for an exam with ID $examRegistrationId.";
+    $alertDetail = "User with ID $loginUserId and Name $loginUserFullname successfully registered for $examAbbr exam with Registration ID $examRegistrationId. Payment choice: paystack.";
+     ///// send email
+    $subject="Payment Successful. Exam Registration ID $examRegistrationId.";
+    $fullName=$loginUserFullname;
+    $emailAddress=$loginUserEmail;
+    $phoneNumber=$loginUserPhoneNumber;
+    $countryId=$loginUserCountryId;
+    require_once '../../mail/user/admin-notification-email.php';
 end:
 //////////////////////////////////////////////////////////////////////////////////////////////
 $callclass->_alertSequenceAndUpdate($conn,$loginUserCountryId,$loginUserId,$loginUserFullname,$alertDetail,$ipAddress,$systemName);

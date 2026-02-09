@@ -22,6 +22,7 @@
     $row=mysqli_fetch_array($query);
     $firstName=$row['firstName'];
     $lastName=$row['lastName'];
+    $fullName="$firstName $lastName";
     $emailAddress=$row['emailAddress'];
     $phoneNumber=$row['phoneNumber'];
     $countryId=$row['countryId'];
@@ -56,7 +57,7 @@
     
     /// delete the record
     mysqli_query($conn,"DELETE FROM `USER_SIGNUP_VERIFIER_TAB` WHERE emailAddress='$emailAddress'")or die (mysqli_error($conn));
-
+    require_once '../../mail/user/signup-success.php';
     $response = [
         'response' => 200,
         'success'  => true,

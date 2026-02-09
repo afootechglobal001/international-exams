@@ -17,6 +17,7 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
+    $paymentChoice=trim($data['paymentChoice']) ? $data['paymentChoice'] : "payNow"; /// can be payNow or payLater
     $examRegistrationId=trim($_GET['examRegistrationId']);
     $countryId=trim($loginUserCountryId);
     $studentId=trim($loginUserId);
@@ -28,6 +29,7 @@
     $firstName=trim(strtoupper($data['firstName']));
     $middleName=trim(strtoupper($data['middleName']));
     $lastName=trim(strtoupper($data['lastName']));
+    $fullName="$firstName $middleName $lastName";
     $dob=trim(($data['dob']));
     $emailAddress=trim(($data['emailAddress']));
     $phoneNumber=trim(($data['phoneNumber']));
@@ -100,6 +102,7 @@
             (`examRegistrationId`, `nameOfInstitution`, `institutionCode`, `institutionLocation`, `programId`, `courseOfStudy`) VALUES 
             ('$examRegistrationId', '$nameOfInstitution', '$institutionCode', '$institutionLocation', '$programId', '$courseOfStudy')")or die (mysqli_error($conn));
 		}
+        
         ///// get exam fee for payment processing
         $select = "SELECT * FROM BRANCH_EXAM_PRICING_TAB WHERE countryId='$countryId' AND examId='$examId'";
         $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
@@ -108,7 +111,27 @@
         $currency=$fetchQuery['currency'];
         $examAbbr=$fetchQuery['examAbbr'];
 
-    
+        if ($paymentChoice=='payNow') {
+            goto proceedToPayment;
+        }else{
+            $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Payment choice is Pay Later.";
+            ///// send email
+            $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Later.";
+            require_once '../../mail/user/admin-notification-email.php';
+            $response = [
+                'response' => 200,
+                'success' => true,
+                'message' => "EXAM REGISTRATION LOG SUCCESSFUL.",
+                'data' => [
+                    'examRegistrationId' => $examRegistrationId
+                ]
+            ];
+            goto end;
+        }
+        
+//////////////////////////////////////////////////////////////////////////////////////////////
+proceedToPayment:
+       
         $countId='TRANS';
         $sequence=$callclass->_getSequenceCount($conn, $countId);
         $array = json_decode($sequence, true);
@@ -132,7 +155,6 @@
         (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
         ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
             $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
-
         }elseif($paymentMethodId=='BT'){
             $paymentKey=$dbPaymentKey;
             $statusId=3; /// PENDING
@@ -140,6 +162,7 @@
             (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
             ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', $balanceBefore, '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
             $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
+            
         }elseif($paymentMethodId=='WLT'){
             if ($loginUserWalletBalance < $amount) {
                 $response = [
@@ -161,7 +184,11 @@
             mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='$statusId' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
             
         $alertDetail = "User with ID $studentId and Name $loginUserFullname successfully paid $currency $amount from wallet for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment.";
+        ///// send email
+        $subject="$examAbbr exam registration successful for $fullName. Registration ID $examRegistrationId. Payment successful from wallet.";
+        require_once '../../mail/user/admin-notification-email.php';
         }
+        
         
         $response = [
             'response' => 200,
@@ -179,8 +206,12 @@
                 'paymentMethodId' => $paymentMethodId
             ]
         ];
-        $callclass->_alertSequenceAndUpdate($conn,$loginUserCountryId,$loginUserId,$loginUserFullname,$alertDetail,$ipAddress,$systemName);
+
+        
+//////////////////////////////////////////////////////////////////////////////////////////////
 end:
+        $callclass->_alertSequenceAndUpdate($conn,$loginUserCountryId,$loginUserId,$loginUserFullname,$alertDetail,$ipAddress,$systemName);
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 echo json_encode($response);
 ?>

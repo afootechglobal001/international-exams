@@ -339,7 +339,7 @@ function _getExamLocationCentreDates(fieldId, centreId) {
   }
 }
 
-function _registerExam() {
+function _registerExam(paymentChoice) {
   try {
     //////get all needed values////
     const examId = $("#examId").val().trim();
@@ -356,6 +356,7 @@ function _registerExam() {
     const residentialAddress = $("#residentialAddress").val().trim();
     const genderId = $("#genderId").val().trim();
     const paymentMethodId = $("#paymentMethodId").val().trim();
+
     ///// empty field validation//////////
     let issueCount = 0;
     issueCount += _validateEmptyValue("examId", "EXAM");
@@ -448,6 +449,7 @@ function _registerExam() {
       genderId,
       schoolsOfInterestSegment,
       paymentMethodId,
+      paymentChoice,
     };
     ////// confirm action
     _showCustomConfirm({
@@ -466,63 +468,80 @@ function _registerExam() {
 }
 
 function _proceedExamRegistrationLog(formData) {
-  let useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession")) || {};
-  let callUrl="";
-  if (useEachExamRegistrationSession?.examRegistrationId) {
-    callUrl = `user/exam/exam-registration?examRegistrationId=${useEachExamRegistrationSession?.examRegistrationId}`;
-  } else {
-    callUrl = "user/exam/exam-registration";
-  }
+    let useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession")) || {};
+    let callUrl="";
+    if (useEachExamRegistrationSession?.examRegistrationId) {
+        callUrl = `user/exam/exam-registration?examRegistrationId=${useEachExamRegistrationSession?.examRegistrationId}`;
+    } else {
+        callUrl = "user/exam/exam-registration";
+    }
 
-  //// call endpoint
-  const btnText = $("#submitBtn").html();
-  _btnDisable("submitBtn", btnText, true);
-  _callRawEndPoints({
-    url: callUrl,
-    formData,
-    accessKey: true,
-  })
+    //// call endpoint
+    const btnText = $("#submitBtn").html();
+    _btnDisable("submitBtn", btnText, true);
+    _callRawEndPoints({
+        url: callUrl,
+        formData,
+        accessKey: true,
+    })
     .then((response) => {
-      if (response.success) {
-        const data = response.data;
-        if (
-          formData.paymentMethodId === "CC" ||
-          formData.paymentMethodId === "BT"
-        ) {
-          _payWithPaystackExamRegistration(data, formData.paymentMethodId);
-        } else if (formData.paymentMethodId === "WLT") {
-          _alertClose();
-          _showCustomConfirm({
-            callback: () => _getActivePage({ page: "exam", divid: "exam" }),
-            title: "PAYMENT SUCCESSFUL",
-            message: response.message,
-            alertType: "success",
-            trueActionBtnText: "OK",
-          });
+        if (response.success) {
+            const data = response.data;
+            if (formData.paymentChoice === "payNow") {
+                if (formData.paymentMethodId === "CC" || formData.paymentMethodId === "BT") {
+                    _payWithPaystackExamRegistration(data, formData.paymentMethodId);
+                } else if (formData.paymentMethodId === "WLT") {
+                    _alertClose();
+                    _showCustomConfirm({
+                        callback: () => _getActivePage({ page: "exam", divid: "exam" }),
+                        title: "PAYMENT SUCCESSFUL",
+                        message: response.message,
+                        alertType: "success",
+                        trueActionBtnText: "OK",
+                    });
+                } else {
+                    _btnDisable("submitBtn", btnText, false);
+                    _showCustomConfirm({
+                        title: "USER ERROR",
+                        message:
+                        "The selected payment method is not recognized. Please try again.",
+                        alertType: "warning",
+                        trueActionBtnText: "OK",
+                    });
+                }    
+            } else if (formData.paymentChoice === "payLater") {
+                _alertClose();
+                _showCustomConfirm({
+                    callback: () => _getActivePage({ page: "exam", divid: "exam" }),
+                    title: "Exam Saved for Later",
+                    message: response.message,
+                    alertType: "success",
+                    trueActionBtnText: "OK",
+                });
+            } else {
+                _btnDisable("submitBtn", btnText, false);
+                _showCustomConfirm({
+                    title: "USER ERROR",
+                    message:
+                    "Payment choice is not recognized. Please try again.",
+                    alertType: "warning",
+                    trueActionBtnText: "OK",
+                });
+            }
         } else {
-          _btnDisable("submitBtn", btnText, false);
-          _showCustomConfirm({
-            title: "USER ERROR",
-            message:
-              "The selected payment method is not recognized. Please try again.",
-            alertType: "warning",
-            trueActionBtnText: "OK",
-          });
+            _btnDisable("submitBtn", btnText, false);
+            _showCustomConfirm({
+                title: "USER ERROR",
+                message: response.message,
+                alertType: "warning",
+                trueActionBtnText: "OK",
+            });
         }
-      } else {
-        _btnDisable("submitBtn", btnText, false);
-        _showCustomConfirm({
-          title: "USER ERROR",
-          message: response.message,
-          alertType: "warning",
-          trueActionBtnText: "OK",
-        });
-      }
     })
     .catch((error) => {
-      console.error("Error:", error);
-      _callAjaxError(() => _proceedExamRegistrationLog(formData)); // retry if needed
-      _btnDisable("submitBtn", btnText, false);
+        console.error("Error:", error);
+        _callAjaxError(() => _proceedExamRegistrationLog(formData)); // retry if needed
+        _btnDisable("submitBtn", btnText, false);
     });
 }
 

@@ -67,37 +67,30 @@
     <section class="other-pages-main-section">
         <section class="body-div net-bg-br">
             <div class="body-div-in">
-                <div class="inner-body-div-in">
-                    <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
-                        <div class="left-div">
-                            <div class="top-title">
-                                <h2>PAYMENT & PRICING</h2>
-                            </div>
-                            <h3>Flexible & Transparent Plans for Your <span>#Exams</span></h3>
-                        </div>
 
-                        <div class="btn-div">
-                            <a href="#"><button class="btn" title="Register now">Register For Exam <i class="bi-chevron-right"></i></button></a>
-                        </div>
-                    </div>
-
-                    <div class="our-exam-back-div pricing-back-div" id="pageContent">
-                        <script>
-                            _fetchPaymentPricingData();
-                        </script>
-
-                        <div class="content-loading-div">
-                            <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="body-div net-bg-tr">
-            <div class="body-div-in">
                 <div class="page-back-div">
                     <div class="left-div">
+                        <div class="inner-body-div-in">
+                            <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
+                                <div class="left-div">
+                                    <div class="top-title">
+                                        <h2>PAYMENT & PRICING</h2>
+                                    </div>
+                                    <h3>Flexible & Transparent Plans for Your <span>#Exams</span></h3>
+                                </div>
+                            </div>
+
+                            <div class="our-exam-back-div pricing-back-div pg-back-div" id="pageContent">
+                                <script>
+                                    _fetchPaymentPricingData();
+                                </script>
+
+                                <div class="content-loading-div">
+                                    <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="page-list-back-div table-page-list-back-div">
                             <div class="main-content-div other-main-content" data-aos="fade-in" data-aos-duration="1500">
                                 <div class="tables-content-div">
@@ -139,7 +132,7 @@
 
                             <div class="btn-div">
                                 <a href="<?php echo $websiteUrl ?>/exam-registration" title="CLICK HERE TO MAKE PAYMENT ONLINE">
-                                <button class="btn">CLICK HERE TO MAKE PAYMENT ONLINE<i class="bi bi-check-circle"></i></button></a>
+                                    <button class="btn">CLICK HERE TO MAKE PAYMENT ONLINE<i class="bi bi-check-circle"></i></button></a>
                             </div>
 
                             <div class="main-content-div other-main-content" data-aos="fade-in" data-aos-duration="1500">
@@ -177,7 +170,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>   
+                        </div>
                     </div>
 
                     <div class="right-div sticky-div">
@@ -219,7 +212,9 @@
                             </div>
                         </div>
                     </div>
-                    <script>_fetchAccountDetails();</script>
+                    <script>
+                        _fetchAccountDetails();
+                    </script>
                 </div>
             </div>
         </section>

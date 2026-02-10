@@ -57,9 +57,9 @@
 
 
 <?php if ($page == 'examForm') { ?>
-    <script> 
+    <script>
         useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession"));
-        $('#formTitle').html(useEachExamRegistrationSession?.examRegistrationId ? 'UPDATE EXAM REGISTRATION':'EXAM REGISTRATION');
+        $('#formTitle').html(useEachExamRegistrationSession?.examRegistrationId ? 'UPDATE EXAM REGISTRATION' : 'EXAM REGISTRATION');
     </script>
     <!-- /////////// Title ////////////////////////////// -->
     <section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
@@ -269,8 +269,50 @@
                     </script>
                 </div>
 
+                <div class="form-note">
+                    <p><span onclick="_addMoreSchoolsOfInterest();">CLICK HERE</span> to add more schools of interest</p>
+                </div>
+
+                <!-- Profile Picture -->
+                <div class="content-div">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-passport"></i>
+                            <p>Upload Profile Picture</p>
+                        </div>
+                    </div>
+
+                    <div class="form-text">
+                        <label>
+                            <div class="pix-div">
+                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="profilePixPreview.UpdatePreview(this);" />
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- International Passport -->
+                <div class="content-div">
+                    <div class="content-title">
+                        <div class="title">
+                            <i class="bi bi-passport"></i>
+                            <p>Upload International Passport</p>
+                        </div>
+                    </div>
+
+                    <div class="form-text">
+                        <label>
+                            <div class="pix-div">
+                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="profilePixPreview.UpdatePreview(this);" />
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
                 <script>
-                    $(document).ready(function () {
+                    $(document).ready(function() {
                         const dataInfo = useEachExamRegistrationSession?.statusData;
                         if (dataInfo) {
                             const statusId = dataInfo.statusId;
@@ -284,10 +326,6 @@
                 </script>
 
                 <div id="paymentWrapper">
-                    <div class="form-note">
-                        <p><span onclick="_addMoreSchoolsOfInterest();">CLICK HERE</span> to add more schools of interest</p>
-                    </div>
-
                     <!-- Payment Information -->
                     <div class="content-div">
                         <div class="content-title">
@@ -309,10 +347,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="btn-div" style="flex-direction: column; gap: 5px;" id="submitBtn">
-                        <button class="btn" title="PROCEED TO PAYMENT" onclick="_registerExam();"> <i
-                                class="bi-credit-card-2-back"></i> PROCEED TO PAYMENT </button>
+                    <div class="btn-div" id="submitBtn">
+                        <button class="btn" title="PAY NOW" onclick="_registerExam('payNow');"> <i
+                                class="bi-credit-card-2-back"></i> PAY NOW </button>
 
+                        <button class="btn" title="PAY LATER" onclick="_registerExam('payLater');"> <i
+                                class="bi-credit-card-2-back"></i> PAY LATER </button>
                     </div>
                 </div>
             </div>

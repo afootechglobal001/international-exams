@@ -1313,10 +1313,13 @@ header .main-header .main-header-inner .link-div nav ul li li:hover .inner-expan
   gap: 40px 15px;
   align-items: flex-start;
 }
+.pg-back-div {
+  margin-bottom: 30px;
+}
 
 .pricing-back-div .pricing-div {
-  width: 32%;
-  min-width: 250px;
+  width: 48.5%;
+  min-width: 270px;
   border-radius: 10px;
 }
 

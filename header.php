@@ -19,7 +19,6 @@
                     <i class="bi-envelope"></i>
                     <div>
                         <span>customer@internationalexam.com</span><br/>
-                        <span>registra.edugradeservices@gmail.com</span>
                     </div>
                 </a>
                 <span class="hide-time"> |</span>

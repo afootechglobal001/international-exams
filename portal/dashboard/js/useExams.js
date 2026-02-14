@@ -1,6 +1,8 @@
 let schoolCounter = 0; // keeps track of how many schools have been added
 function _addMoreSchoolsOfInterest() {
-  useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession"));
+  useEachExamRegistrationSession = JSON.parse(
+    sessionStorage.getItem("useEachExamRegistrationSession"),
+  );
   schoolCounter++;
 
   // Get the container
@@ -41,32 +43,44 @@ function _addMoreSchoolsOfInterest() {
   textField({
     id: `nameOfInstitution_${schoolCounter}`,
     title: "Name Of Institution",
-    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.nameOfInstitution ?? ''
+    value:
+      useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]
+        ?.nameOfInstitution ?? "",
   });
 
   textField({
     id: `institutionCode_${schoolCounter}`,
     title: "Institutional Code",
-    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.institutionCode ?? ''
+    value:
+      useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]
+        ?.institutionCode ?? "",
   });
 
   textField({
     id: `institutionLocation_${schoolCounter}`,
     title: "Institution Location",
-    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.institutionLocation ?? ''
+    value:
+      useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]
+        ?.institutionLocation ?? "",
   });
 
   selectField({
     id: `programId_${schoolCounter}`,
     title: "Program of Study",
-    fieldValue: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.programData?.programId ?? '',
-    fieldLabel: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.programData?.programName ?? ''
+    fieldValue:
+      useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]
+        ?.programData?.programId ?? "",
+    fieldLabel:
+      useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]
+        ?.programData?.programName ?? "",
   });
   _getSelectProgram(`programId_${schoolCounter}`);
   textField({
     id: `courseOfStudy_${schoolCounter}`,
     title: "Course of Study",
-    value: useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]?.courseOfStudy ?? ''
+    value:
+      useEachExamRegistrationSession?.schoolsOfInterest?.[schoolCounter - 1]
+        ?.courseOfStudy ?? "",
   });
 }
 
@@ -132,7 +146,7 @@ function _getcountryExamPricing(examId) {
     .html(
       '<div class="ajax-loader other-pages-ajax-loader"><img src="' +
         websiteUrl +
-        '/all-images/images/spinner.gif" alt="Loading"/></div>'
+        '/all-images/images/spinner.gif" alt="Loading"/></div>',
     )
     .fadeIn("fast");
 
@@ -370,7 +384,7 @@ function _registerExam() {
     issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
     issueCount += _validateEmptyValue(
       "residentialAddress",
-      "RESIDENTIAL ADDRESS"
+      "RESIDENTIAL ADDRESS",
     );
     issueCount += _validateEmptyValue("genderId", "GENDER");
     issueCount += _validateEmptyValue("paymentMethodId", "PAYMENT METHOD");
@@ -466,8 +480,9 @@ function _registerExam() {
 }
 
 function _proceedExamRegistrationLog(formData) {
-  let useEachExamRegistrationSession = JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession")) || {};
-  let callUrl="";
+  let useEachExamRegistrationSession =
+    JSON.parse(sessionStorage.getItem("useEachExamRegistrationSession")) || {};
+  let callUrl = "";
   if (useEachExamRegistrationSession?.examRegistrationId) {
     callUrl = `user/exam/exam-registration?examRegistrationId=${useEachExamRegistrationSession?.examRegistrationId}`;
   } else {
@@ -534,7 +549,7 @@ function _payWithPaystackExamRegistration(data, paymentMethodId) {
     amount: data.amount * 100, //amt in kobo
     ref: data.transactionId,
     currency: data.currency, // Use GHS for Ghana Cedis or USD for US Dollars
-    channel: [paymentMethodId === "CC" ? "card" : "bank_transfer"],
+    channel: paymentMethodId === "CC" ? ["card"] : ["bank_transfer"],
     metadata: {
       custom_fields: [
         {
@@ -548,7 +563,7 @@ function _payWithPaystackExamRegistration(data, paymentMethodId) {
       _examRegistrationPaymentAction(
         "success",
         data.transactionId,
-        data.examRegistrationId
+        data.examRegistrationId,
       );
     },
     onClose: function () {
@@ -556,7 +571,7 @@ function _payWithPaystackExamRegistration(data, paymentMethodId) {
       _examRegistrationPaymentAction(
         "cancel",
         data.transactionId,
-        data.examRegistrationId
+        data.examRegistrationId,
       );
       return false;
     },
@@ -567,7 +582,7 @@ function _payWithPaystackExamRegistration(data, paymentMethodId) {
 function _examRegistrationPaymentAction(
   action,
   transactionId,
-  examRegistrationId
+  examRegistrationId,
 ) {
   try {
     _callRawEndPoints({
@@ -605,13 +620,12 @@ function _examRegistrationPaymentAction(
   } catch (error) {
     console.error("Error:", error);
     _callCatchError(() =>
-      _examRegistrationPaymentAction(action, transactionId, examRegistrationId)
+      _examRegistrationPaymentAction(action, transactionId, examRegistrationId),
     );
     _btnDisable("submitBtn", btnText, false);
   }
 }
 ////////////////////// END PAY WITH PAYSTACK /////////////////////////////
-
 
 function _fetchRegisteredExams() {
   try {
@@ -645,7 +659,8 @@ function _fetchRegisteredExams() {
 
 function renderExamsData(data) {
   return data
-    .map(item => `
+    .map(
+      (item) => `
       <div class="exam-div">
           <div class="exam-image">
               <img src="${examLogoPixPath}/${item.examData?.examLogo}" alt="${item.examData?.examAbbr} Exam"/>
@@ -661,8 +676,9 @@ function renderExamsData(data) {
           <button class="btn" title="View Details" onclick="_fetchExamRegistrationDetails('${item.examRegistrationId}');">
             <i class="bi bi-eye"></i> View Details
           </button>
-      </div>`
-    ).join("");
+      </div>`,
+    )
+    .join("");
 }
 
 function _initFetchRegisteredExamsData(data) {
@@ -671,7 +687,7 @@ function _initFetchRegisteredExamsData(data) {
     renderExamsData,
     "examPaginationControls",
     "fetchRegisteredExamsContent",
-    10 // items per page
+    10, // items per page
   );
   __paginatorHandlers["fetchRegisteredExamsContent"] = paginator;
   paginator.renderPage();
@@ -687,33 +703,42 @@ function _filtersExams(value) {
 }
 
 function _fetchExamRegistrationDetails(examRegistrationId) {
-    $("#get-form-more-div").css({'display': 'flex','justify-content': 'center','align-items': 'center'}) .fadeIn(500);
-	try {
-		//// call endpoint //////
-		_callFetchEndPoints({
-			url: `user/exam/fetch-exam?examRegistrationId=${examRegistrationId}`,
-			accessKey: true,
-		})
-		.then((response) => {
-            _userValidationCheck(response.response);
-			if (response.success && response.data?.length > 0) {
-    			sessionStorage.setItem("useEachExamRegistrationSession", JSON.stringify(response.data[0]));
-          _getForm({page: 'examForm', url: portalOperationMiddlewareUrl});
-			} else {
-				_showCustomConfirm({
-					title: "FETCH EXAM REGISTRATION ERROR",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-			} 
-		 })
-		.catch((error) => {
-			console.error("Error:", error);
-			_callAjaxError(() => _fetchExamRegistrationDetails(examRegistrationId)); // retry if needed
-		});
-	} catch (error) {
-		console.error("Error:", error);
-		_callCatchError(() => _fetchExamRegistrationDetails(examRegistrationId));
-  	}
+  $("#get-form-more-div")
+    .css({
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center",
+    })
+    .fadeIn(500);
+  try {
+    //// call endpoint //////
+    _callFetchEndPoints({
+      url: `user/exam/fetch-exam?examRegistrationId=${examRegistrationId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _userValidationCheck(response.response);
+        if (response.success && response.data?.length > 0) {
+          sessionStorage.setItem(
+            "useEachExamRegistrationSession",
+            JSON.stringify(response.data[0]),
+          );
+          _getForm({ page: "examForm", url: portalOperationMiddlewareUrl });
+        } else {
+          _showCustomConfirm({
+            title: "FETCH EXAM REGISTRATION ERROR",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _fetchExamRegistrationDetails(examRegistrationId)); // retry if needed
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _fetchExamRegistrationDetails(examRegistrationId));
+  }
 }

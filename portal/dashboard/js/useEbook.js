@@ -26,23 +26,24 @@ function _fetchAllEbookData() {
 }
 
 function _initFetchEbookData(data) {
-    const content = data.map((exam) => {
-        const dataInfo = exam.ebookData || [];
-        if (dataInfo.length === 0) return '';
+  const content = data
+    .map((exam) => {
+      const dataInfo = exam.ebookData || [];
+      if (dataInfo.length === 0) return "";
 
-        const eBookContent = dataInfo.map((ebook) => {
+      const eBookContent = dataInfo
+        .map((ebook) => {
+          const isFree = exam.isDownloadable === true;
 
-            const isFree = exam.isDownloadable === true;
-
-            const btnContainer = isFree
-                ? `
+          const btnContainer = isFree
+            ? `
                     <button class="btn" title="Download"
                         id="downloadBtn_${ebook.ebookId}"
                         onclick="_downloadEbook('${exam?.examData?.examId}', '${ebook.ebookId}')">
                         <i class="bi bi-cloud-download"></i> Download Now!
                     </button>
                   `
-                : `
+            : `
                     <button class="btn" title="Pay To Download"
                         id="downloadBtn_${ebook.ebookId}"
                         onclick="_downloadEbook('${exam?.examData?.examId}', '${ebook.ebookId}');">
@@ -50,11 +51,11 @@ function _initFetchEbookData(data) {
                     </button>
                   `;
 
-            const priceText = isFree
-                ? `<span class="price-value free">It’s Free</span>`
-                : `<span class="price-value">${'<s>N</s>' + thousandSeparator(ebook.sellingPrice)}</span>`;
+          const priceText = isFree
+            ? `<span class="price-value free">It’s Free</span>`
+            : `<span class="price-value">${"<s>N</s>" + thousandSeparator(ebook.sellingPrice)}</span>`;
 
-            return `
+          return `
                 <div class="book-div">
                     <div class="image-div">
                         <img src="${eBookPixPath}/${ebook.regpix}" alt="${exam?.examData?.examAbbr} Cover">
@@ -82,9 +83,10 @@ function _initFetchEbookData(data) {
                     </div>
                 </div>
             `;
-        }).join("");
+        })
+        .join("");
 
-        return `
+      return `
             <section class="main-content-div">
                 <section class="content-div">
                     <div class="content-title">
@@ -100,9 +102,10 @@ function _initFetchEbookData(data) {
                 </section>
             </section>
         `;
-    }).join("");
+    })
+    .join("");
 
-    $('#pageContent').html(content);
+  $("#pageContent").html(content);
 }
 
 function _filtersEbooks(value) {
@@ -115,60 +118,66 @@ function _filtersEbooks(value) {
 }
 
 function _downloadEbook(examId, ebookId) {
-    ///// get btn text/////
-	const btnText = $(`#downloadBtn_${ebookId}`).html();
-	_btnDisable(`downloadBtn_${ebookId}`, btnText, true);
-    try {
-        _callFetchEndPoints({
-            url: `user/ebooks/download-ebook?examId=${examId}&ebookId=${ebookId}`,
-            accessKey: true,
-        })
-            .then((response) => {
-                _userValidationCheck(response.response);
-                if (response.success) {
-                    const isDownloadable = response.isDownloadable;
-                    const material = response.material;
+  ///// get btn text/////
+  const btnText = $(`#downloadBtn_${ebookId}`).html();
+  _btnDisable(`downloadBtn_${ebookId}`, btnText, true);
+  try {
+    _callFetchEndPoints({
+      url: `user/ebooks/download-ebook?examId=${examId}&ebookId=${ebookId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _userValidationCheck(response.response);
+        if (response.success) {
+          const isDownloadable = response.isDownloadable;
+          const material = response.material;
 
-                    if (isDownloadable===true) {
-                        _finishDownloadEbook(material);
-                        _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
-                    } else {
-                        sessionStorage.setItem("useProceedEbookDownloadSession", JSON.stringify(response.data));
-                        _getForm({page: 'proceedEbookForm', url: portalOperationMiddlewareUrl});
-                        _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
-                    }
-                } else {
-                    _showCustomConfirm({
-                        title: "Download E-Book Error",
-                        message: response.message,
-                        alertType: "warning",
-                        trueActionBtnText: "OK",
-                    });
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                 _alertClose();
-                _callAjaxError(() => _downloadEbook(examId, ebookId)); // retry if needed
-                _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+          if (isDownloadable === true) {
+            _finishDownloadEbook(material);
+            _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+          } else {
+            sessionStorage.setItem(
+              "useProceedEbookDownloadSession",
+              JSON.stringify(response.data),
+            );
+            _getForm({
+              page: "proceedEbookForm",
+              url: portalOperationMiddlewareUrl,
             });
-    } catch (error) {
+            _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+          }
+        } else {
+          _showCustomConfirm({
+            title: "Download E-Book Error",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+        }
+      })
+      .catch((error) => {
         console.error("Error:", error);
-         _alertClose();
+        _alertClose();
         _callAjaxError(() => _downloadEbook(examId, ebookId)); // retry if needed
-         _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
-    }
+        _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _alertClose();
+    _callAjaxError(() => _downloadEbook(examId, ebookId)); // retry if needed
+    _btnDisable(`downloadBtn_${ebookId}`, btnText, false);
+  }
 }
 
 function _finishDownloadEbook(material) {
   const url = `${ebookMaterialPath}/${material}`;
 
   // open new tab
-  const tab = window.open(url, '_blank');
+  const tab = window.open(url, "_blank");
 
   // force download after tab opens
   setTimeout(() => {
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
     a.download = material;
     a.click();
@@ -188,7 +197,7 @@ function _proceedToEbookPayment() {
 
     // Gather form data
     const formData = {
-        paymentMethodId,
+      paymentMethodId,
     };
 
     ////// confirm action
@@ -209,55 +218,61 @@ function _proceedToEbookPayment() {
 
 ///// proceed to ebook payment callback ////
 function _proceedEbookPaymentCallBack(formData) {
-    let useProceedEbookDownloadSession = JSON.parse(sessionStorage.getItem("useProceedEbookDownloadSession")) || {};
-    //// call endpoint
-    const btnText = $("#proceedPayBtn").html();
-    _btnDisable("proceedPayBtn", btnText, true);
-    _callRawEndPoints({
-        url: `/user/ebooks/proceed-to-ebook-payment?examId=${useProceedEbookDownloadSession?.examId}&ebookId=${useProceedEbookDownloadSession?.ebookId}`,
-        formData,
-        accessKey: true,
-    })
+  let useProceedEbookDownloadSession =
+    JSON.parse(sessionStorage.getItem("useProceedEbookDownloadSession")) || {};
+  //// call endpoint
+  const btnText = $("#proceedPayBtn").html();
+  _btnDisable("proceedPayBtn", btnText, true);
+  _callRawEndPoints({
+    url: `/user/ebooks/proceed-to-ebook-payment?examId=${useProceedEbookDownloadSession?.examId}&ebookId=${useProceedEbookDownloadSession?.ebookId}`,
+    formData,
+    accessKey: true,
+  })
     .then((response) => {
-    if (response.success) {
+      if (response.success) {
         if (
           formData.paymentMethodId === "CC" ||
           formData.paymentMethodId === "BT"
         ) {
-          _payWithPaystackForEbookDownload(response.data, formData.paymentMethodId);
+          _payWithPaystackForEbookDownload(
+            response.data,
+            formData.paymentMethodId,
+          );
           _btnDisable("proceedPayBtn", btnText, false);
         } else if (formData.paymentMethodId === "WLT") {
-            const material = response.data?.material;
-            _alertClose();
-            _showCustomConfirm({
-                callback: () => _finishDownloadEbook(material),
-                title: "PAYMENT SUCCESSFUL",
-                message: response.message,
-                alertType: "success",
-                trueActionBtnText: "ClICK TO DOWNLOAD",
-            });
-        } else {
-            _btnDisable("proceedPayBtn", btnText, false);
-            _showCustomConfirm({
-                title: "USER ERROR",
-                message:"The selected payment method is not recognized. Please try again.",
-                alertType: "warning",
-                trueActionBtnText: "OK",
-            });
-        }
-    } else {
-        _btnDisable("proceedPayBtn", btnText, false);
-        _showCustomConfirm({
-            title: "USER ERROR",
+          const material = response.data?.material;
+          _alertClose();
+          _showCustomConfirm({
+            callback: () => _finishDownloadEbook(material),
+            title: "PAYMENT SUCCESSFUL",
             message: response.message,
+            alertType: "success",
+            trueActionBtnText: "ClICK TO DOWNLOAD",
+          });
+        } else {
+          _btnDisable("proceedPayBtn", btnText, false);
+          _showCustomConfirm({
+            title: "USER ERROR",
+            message:
+              "The selected payment method is not recognized. Please try again.",
             alertType: "warning",
             trueActionBtnText: "OK",
-        });
-    }
-    }).catch((error) => {
-        console.error("Error:", error);
-        _callAjaxError(() => _proceedEbookPaymentCallBack(formData)); // retry if needed
+          });
+        }
+      } else {
         _btnDisable("proceedPayBtn", btnText, false);
+        _showCustomConfirm({
+          title: "USER ERROR",
+          message: response.message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _proceedEbookPaymentCallBack(formData)); // retry if needed
+      _btnDisable("proceedPayBtn", btnText, false);
     });
 }
 
@@ -269,7 +284,7 @@ function _payWithPaystackForEbookDownload(data, paymentMethodId) {
     amount: data.amount * 100, //amt in kobo
     ref: data.transactionId,
     currency: data.currency, // Use GHS for Ghana Cedis or USD for US Dollars
-    channel: [paymentMethodId === "CC" ? "card" : "bank_transfer"],
+    channel: paymentMethodId === "CC" ? ["card"] : ["bank_transfer"],
     metadata: {
       custom_fields: [
         {
@@ -284,7 +299,7 @@ function _payWithPaystackForEbookDownload(data, paymentMethodId) {
         "success",
         data.transactionId,
         data.examId,
-        data.ebookId
+        data.ebookId,
       );
     },
     onClose: function () {
@@ -293,7 +308,7 @@ function _payWithPaystackForEbookDownload(data, paymentMethodId) {
         "cancel",
         data.transactionId,
         data.examId,
-        data.ebookId
+        data.ebookId,
       );
       return false;
     },
@@ -311,17 +326,17 @@ function _ebookDownloadPaymentAction(action, transactionId, examId, ebookId) {
         _userValidationCheck(response.response);
 
         if (response.success) {
-            if(action === "success"){
-                const material = response.data?.material;
-                _alertClose();
-                _showCustomConfirm({
-                    callback: () => _finishDownloadEbook(material),
-                    title: "PAYMENT SUCCESSFUL",
-                    message: response.message,
-                    alertType: "success",
-                    trueActionBtnText: "ClICK TO DOWNLOAD",
-                });
-            }
+          if (action === "success") {
+            const material = response.data?.material;
+            _alertClose();
+            _showCustomConfirm({
+              callback: () => _finishDownloadEbook(material),
+              title: "PAYMENT SUCCESSFUL",
+              message: response.message,
+              alertType: "success",
+              trueActionBtnText: "ClICK TO DOWNLOAD",
+            });
+          }
         } else {
           _showCustomConfirm({
             title: "OPERATION FAILED",
@@ -334,13 +349,15 @@ function _ebookDownloadPaymentAction(action, transactionId, examId, ebookId) {
       })
       .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError(() => _ebookDownloadPaymentAction(action, transactionId, examId, ebookId)); // retry if needed
+        _callAjaxError(() =>
+          _ebookDownloadPaymentAction(action, transactionId, examId, ebookId),
+        ); // retry if needed
         _btnDisable("proceedPayBtn", btnText, false);
       });
   } catch (error) {
     console.error("Error:", error);
     _callCatchError(() =>
-      _ebookDownloadPaymentAction(action, transactionId, examId, ebookId)
+      _ebookDownloadPaymentAction(action, transactionId, examId, ebookId),
     );
     _btnDisable("proceedPayBtn", btnText, false);
   }

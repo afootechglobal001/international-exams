@@ -353,7 +353,7 @@ function _getExamLocationCentreDates(fieldId, centreId) {
   }
 }
 
-function _registerExam(paymentChoice) {
+function _registerExam() {
   try {
     //////get all needed values////
     const examId = $("#examId").val().trim();
@@ -370,7 +370,6 @@ function _registerExam(paymentChoice) {
     const residentialAddress = $("#residentialAddress").val().trim();
     const genderId = $("#genderId").val().trim();
     const paymentMethodId = $("#paymentMethodId").val().trim();
-
     ///// empty field validation//////////
     let issueCount = 0;
     issueCount += _validateEmptyValue("examId", "EXAM");
@@ -463,7 +462,6 @@ function _registerExam(paymentChoice) {
       genderId,
       schoolsOfInterestSegment,
       paymentMethodId,
-      paymentChoice,
     };
     ////// confirm action
     _showCustomConfirm({
@@ -502,36 +500,16 @@ function _proceedExamRegistrationLog(formData) {
     .then((response) => {
       if (response.success) {
         const data = response.data;
-        if (formData.paymentChoice === "payNow") {
-          if (
-            formData.paymentMethodId === "CC" ||
-            formData.paymentMethodId === "BT"
-          ) {
-            _payWithPaystackExamRegistration(data, formData.paymentMethodId);
-          } else if (formData.paymentMethodId === "WLT") {
-            _alertClose();
-            _showCustomConfirm({
-              callback: () => _getActivePage({ page: "exam", divid: "exam" }),
-              title: "PAYMENT SUCCESSFUL",
-              message: response.message,
-              alertType: "success",
-              trueActionBtnText: "OK",
-            });
-          } else {
-            _btnDisable("submitBtn", btnText, false);
-            _showCustomConfirm({
-              title: "USER ERROR",
-              message:
-                "The selected payment method is not recognized. Please try again.",
-              alertType: "warning",
-              trueActionBtnText: "OK",
-            });
-          }
-        } else if (formData.paymentChoice === "payLater") {
+        if (
+          formData.paymentMethodId === "CC" ||
+          formData.paymentMethodId === "BT"
+        ) {
+          _payWithPaystackExamRegistration(data, formData.paymentMethodId);
+        } else if (formData.paymentMethodId === "WLT") {
           _alertClose();
           _showCustomConfirm({
             callback: () => _getActivePage({ page: "exam", divid: "exam" }),
-            title: "Exam Saved for Later",
+            title: "PAYMENT SUCCESSFUL",
             message: response.message,
             alertType: "success",
             trueActionBtnText: "OK",
@@ -540,7 +518,8 @@ function _proceedExamRegistrationLog(formData) {
           _btnDisable("submitBtn", btnText, false);
           _showCustomConfirm({
             title: "USER ERROR",
-            message: "Payment choice is not recognized. Please try again.",
+            message:
+              "The selected payment method is not recognized. Please try again.",
             alertType: "warning",
             trueActionBtnText: "OK",
           });
@@ -564,39 +543,73 @@ function _proceedExamRegistrationLog(formData) {
 
 ////// CALL PAY WITH PAYSTACK ////////////////
 function _payWithPaystackExamRegistration(data, paymentMethodId) {
-  var handler = PaystackPop.setup({
-    key: data.paymentKey,
-    email: data.emailAddress,
-    amount: data.amount * 100, //amt in kobo
-    ref: data.transactionId,
-    currency: data.currency, // Use GHS for Ghana Cedis or USD for US Dollars
-    channel: paymentMethodId === "CC" ? ["card"] : ["bank_transfer"],
+  const {
+    paymentKey,
+    emailAddress,
+    amount,
+    transactionId,
+    currency,
+    fullName,
+    phoneNumber,
+    examRegistrationId,
+  } = data;
+
+  // Create the base options
+  const options = {
+    key: paymentKey,
+    email: emailAddress,
+    amount: amount * 100, // amount in kobo
+    ref: transactionId,
+    currency: currency || "NGN",
+
+    channels: paymentMethodId === "CC" ? ["card"] : ["bank_transfer"],
+
     metadata: {
       custom_fields: [
         {
-          display_name: data.fullName,
+          display_name: fullName,
           variable_name: "mobile_number",
-          value: data.phoneNumber,
+          value: phoneNumber,
         },
       ],
     },
-    callback: function (response) {
+
+    callback: function () {
+      // show processing loader
+      $("#get-more-div-secondary")
+        .css({
+          display: "flex",
+          "justify-content": "center",
+          "align-items": "center",
+        })
+        .html(
+          `<div class="alert-loading-div">
+              <div class="icon">
+                <img src="${websiteUrl}/images/loading.gif" width="20px" alt="Loading"/>
+              </div>
+              <div class="text"><p>PROCESSING...</p></div>
+           </div>`,
+        )
+        .fadeIn(500);
+
       _examRegistrationPaymentAction(
         "success",
-        data.transactionId,
-        data.examRegistrationId,
+        transactionId,
+        examRegistrationId,
       );
     },
+
     onClose: function () {
-      //update to cancelled.
       _examRegistrationPaymentAction(
         "cancel",
-        data.transactionId,
-        data.examRegistrationId,
+        transactionId,
+        examRegistrationId,
       );
       return false;
     },
-  });
+  };
+
+  const handler = PaystackPop.setup(options);
   handler.openIframe();
 }
 

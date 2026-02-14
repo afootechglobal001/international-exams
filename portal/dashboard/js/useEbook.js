@@ -278,41 +278,66 @@ function _proceedEbookPaymentCallBack(formData) {
 
 ////// CALL PAY WITH PAYSTACK ////////////////
 function _payWithPaystackForEbookDownload(data, paymentMethodId) {
-  var handler = PaystackPop.setup({
-    key: data.paymentKey,
-    email: data.emailAddress,
-    amount: data.amount * 100, //amt in kobo
-    ref: data.transactionId,
-    currency: data.currency, // Use GHS for Ghana Cedis or USD for US Dollars
-    channel: paymentMethodId === "CC" ? ["card"] : ["bank_transfer"],
+  const {
+    paymentKey,
+    emailAddress,
+    amount,
+    transactionId,
+    currency,
+    fullName,
+    phoneNumber,
+    examId,
+    ebookId,
+  } = data;
+
+  // Create the base options
+  const options = {
+    key: paymentKey,
+    email: emailAddress,
+    amount: amount * 100, // amount in kobo
+    ref: transactionId,
+    currency: currency || "NGN",
+
+    channels: paymentMethodId === "CC" ? ["card"] : ["bank_transfer"],
+
     metadata: {
       custom_fields: [
         {
-          display_name: data.fullName,
+          display_name: fullName,
           variable_name: "mobile_number",
-          value: data.phoneNumber,
+          value: phoneNumber,
         },
       ],
     },
-    callback: function (response) {
-      _ebookDownloadPaymentAction(
-        "success",
-        data.transactionId,
-        data.examId,
-        data.ebookId,
-      );
+
+    callback: function () {
+      // show processing loader (same pattern as your base function)
+      $("#get-more-div-secondary")
+        .css({
+          display: "flex",
+          "justify-content": "center",
+          "align-items": "center",
+        })
+        .html(
+          `<div class="alert-loading-div">
+              <div class="icon">
+                <img src="${websiteUrl}/images/loading.gif" width="20px" alt="Loading"/>
+              </div>
+              <div class="text"><p>PROCESSING...</p></div>
+           </div>`,
+        )
+        .fadeIn(500);
+
+      _ebookDownloadPaymentAction("success", transactionId, examId, ebookId);
     },
+
     onClose: function () {
-      //update to cancelled.
-      _ebookDownloadPaymentAction(
-        "cancel",
-        data.transactionId,
-        data.examId,
-        data.ebookId,
-      );
+      _ebookDownloadPaymentAction("cancel", transactionId, examId, ebookId);
       return false;
     },
-  });
+  };
+
+  const handler = PaystackPop.setup(options);
   handler.openIframe();
 }
 

@@ -93,6 +93,42 @@ function _deleteSchool(schoolId) {
   }
 }
 
+$(function () {
+	passportPhotographPreview = {
+	UpdatePreview: function (obj) {
+		if (!window.FileReader) {
+		// Handle browsers that don't support FileReader
+		console.error("FileReader is not supported.");
+		} else {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			$('#passportPhotographPreview').prop("src", e.target.result);
+		};
+		reader.readAsDataURL(obj.files[0]);
+		}
+	},
+	};
+});
+
+$(function () {
+	internationalPassportPreview = {
+	UpdatePreview: function (obj) {
+		if (!window.FileReader) {
+		// Handle browsers that don't support FileReader
+		console.error("FileReader is not supported.");
+		} else {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+			$('#internationalPassportPreview').prop("src", e.target.result);
+		};
+		reader.readAsDataURL(obj.files[0]);
+		}
+	},
+	};
+});
+
 function _getCountryExams(fieldId) {
   let $searchList = $("#searchList_" + fieldId);
   $searchList.html("<li>Loading data...</li>");
@@ -353,7 +389,7 @@ function _getExamLocationCentreDates(fieldId, centreId) {
   }
 }
 
-function _registerExam() {
+function _registerExam(paymentChoice) {
   try {
     //////get all needed values////
     const examId = $("#examId").val().trim();
@@ -447,31 +483,32 @@ function _registerExam() {
 
     // Gather form data
     const formData = {
-      examId,
-      locationId,
-      centreId,
-      examDate,
-      altDate,
-      firstName,
-      middleName,
-      lastName,
-      dob,
-      emailAddress,
-      phoneNumber,
-      residentialAddress,
-      genderId,
-      schoolsOfInterestSegment,
-      paymentMethodId,
+        examId,
+        locationId,
+        centreId,
+        examDate,
+        altDate,
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        emailAddress,
+        phoneNumber,
+        residentialAddress,
+        genderId,
+        schoolsOfInterestSegment,
+        paymentMethodId,
+        paymentChoice,
     };
     ////// confirm action
     _showCustomConfirm({
       callback: () => {
         _proceedExamRegistrationLog(formData);
       },
-      title: "Are you sure?",
-      message: "Confirm you want to register for the exam.",
-      alertType: "warning",
-      falseActionBtn: true,
+        title: "Are you sure?",
+        message: "Confirm you want to register for the exam.",
+        alertType: "warning",
+        falseActionBtn: true,
     });
   } catch (error) {
     console.error("Error:", error);
@@ -498,46 +535,122 @@ function _proceedExamRegistrationLog(formData) {
     accessKey: true,
   })
     .then((response) => {
-      if (response.success) {
-        const data = response.data;
-        if (
-          formData.paymentMethodId === "CC" ||
-          formData.paymentMethodId === "BT"
-        ) {
-          _payWithPaystackExamRegistration(data, formData.paymentMethodId);
-        } else if (formData.paymentMethodId === "WLT") {
-          _alertClose();
-          _showCustomConfirm({
-            callback: () => _getActivePage({ page: "exam", divid: "exam" }),
-            title: "PAYMENT SUCCESSFUL",
-            message: response.message,
-            alertType: "success",
-            trueActionBtnText: "OK",
-          });
+        if (response.success) {
+            _uploadExamFiles(response);
         } else {
-          _btnDisable("submitBtn", btnText, false);
-          _showCustomConfirm({
+            _btnDisable("submitBtn", btnText, false);
+            _showCustomConfirm({
             title: "USER ERROR",
-            message:
-              "The selected payment method is not recognized. Please try again.",
+            message: response.message,
             alertType: "warning",
             trueActionBtnText: "OK",
-          });
+            });
         }
-      } else {
-        _btnDisable("submitBtn", btnText, false);
-        _showCustomConfirm({
-          title: "USER ERROR",
-          message: response.message,
-          alertType: "warning",
-          trueActionBtnText: "OK",
-        });
-      }
     })
     .catch((error) => {
       console.error("Error:", error);
       _callAjaxError(() => _proceedExamRegistrationLog(formData)); // retry if needed
       _btnDisable("submitBtn", btnText, false);
+    });
+}
+
+function _uploadExamFiles(examRegistrationResponse){
+    const data = examRegistrationResponse.data;
+
+    const passportPhotograph = $("#passportPhotograph").prop("files")[0];
+    const internationalPassport = $("#internationalPassport").prop("files")[0];
+
+    /////Gather form data////
+    const formData = new FormData();
+    
+    formData.append("passportPhotograph", passportPhotograph);
+    formData.append("internationalPassport", internationalPassport);
+
+    //// call endpoint //////
+	_callFileEndPoints({
+		url:  `user/exam/upload-exam-files?examRegistrationId=${data.examRegistrationId}`,
+		formData,
+		accessKey: true,
+	})
+    .then((response) => {
+		if (response.success) {
+			const fileUploadResponse = response.data;
+
+            if (fileUploadResponse.files.newPassportPhotograph=="" && fileUploadResponse.files.newInternationalPassport=="") {
+                _checkForPayment(examRegistrationResponse);
+            } else {
+                _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse, formData);
+            }
+		} else {
+			_showCustomConfirm({
+				title: "USER ERROR",
+				message: response.message,
+				alertType: "warning",
+				trueActionBtnText: "OK",
+			});
+		}
+    })
+    .catch((error) => {
+		console.error("Error:", error);
+		_callAjaxError(() => _uploadExamFiles(data)); // retry if needed
+    });
+}
+
+
+function _checkForPayment(response) {
+      const data = response.data;
+    if (data.paymentChoice === "payNow") {
+        if (data.paymentMethodId === "CC" || data.paymentMethodId === "BT") {
+            _payWithPaystackExamRegistration(data, data.paymentMethodId);
+        } else if (data.paymentMethodId === "WLT") {
+            _alertClose();
+            _showCustomConfirm({
+                callback: () => _getActivePage({ page: "exam", divid: "exam" }),
+                title: "PAYMENT SUCCESSFUL",
+                message: response.message,
+                alertType: "success",
+                trueActionBtnText: "OK",
+            });
+        } else {
+            _btnDisable("submitBtn", btnText, false);
+            _showCustomConfirm({
+                title: "USER ERROR",
+                message:
+                "The selected payment method is not recognized. Please try again.",
+                alertType: "warning",
+                trueActionBtnText: "OK",
+            });
+        }
+    } else {
+        _alertClose();
+        _showCustomConfirm({
+            callback: () => _getActivePage({ page: "exam", divid: "exam" }),
+            title: "Exam Saved for Later",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "OK",
+        });
+    }
+}
+
+function _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse, formData) {
+    formData.append("action", "uploadExamFiles");
+    formData.append("oldPassportPhotograph", examRegistrationResponse.data.files.oldPassportPhotograph);
+    formData.append("oldInternationalPassport", examRegistrationResponse.data.files.oldInternationalPassport);
+    formData.append("newPassportPhotograph", fileUploadResponse.files.newPassportPhotograph);
+    formData.append("newInternationalPassport", fileUploadResponse.files.newInternationalPassport);
+
+    _callFileEndPoints({
+		url: portalOperationMiddlewareUrl,
+		formData,
+		expectJson: false,
+	})
+	.then(() => {
+		_checkForPayment(examRegistrationResponse);
+	})
+    .catch((error) => {
+		console.error("Error:", error);
+		_callAjaxError(() => _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse, formData));
     });
 }
 
@@ -576,7 +689,7 @@ function _payWithPaystackExamRegistration(data, paymentMethodId) {
 
     callback: function () {
       // show processing loader
-      $("#get-more-div-secondary")
+      $("#get-form-more-div")
         .css({
           display: "flex",
           "justify-content": "center",
@@ -585,7 +698,7 @@ function _payWithPaystackExamRegistration(data, paymentMethodId) {
         .html(
           `<div class="alert-loading-div">
               <div class="icon">
-                <img src="${websiteUrl}/images/loading.gif" width="20px" alt="Loading"/>
+                <img src="${websiteUrl}/all-images/images/loading.gif" width="20px" alt="Loading"/>
               </div>
               <div class="text"><p>PROCESSING...</p></div>
            </div>`,

@@ -24,6 +24,27 @@ switch ($action){
 		require_once('exam-content.php');
 		require_once('transaction-content.php');
 		require_once('settings-content.php');
-	break;	
+	break;
+
+	case 'uploadExamFiles':
+		$oldPassportPhotograph = $_POST['oldPassportPhotograph'] ?? '';
+		$oldInternationalPassport = $_POST['oldInternationalPassport'] ?? '';
+		$newPassportPhotograph = $_POST['newPassportPhotograph'] ?? '';
+		$newInternationalPassport = $_POST['newInternationalPassport'] ?? '';
+		
+		$uploadPassportPhotographDir = "../../../uploaded_files/passportPhotograph/";
+
+		if (!empty($newPassportPhotograph) && isset($_FILES['passportPhotograph']) && $_FILES['passportPhotograph']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['passportPhotograph']['tmp_name'], $uploadPassportPhotographDir . $newPassportPhotograph);
+			unlink($uploadPassportPhotographDir . $oldPassportPhotograph);
+		}
+
+		$uploadInternationalPassportDir = "../../../uploaded_files/internationalPassport/";
+
+		if (!empty($newInternationalPassport) && isset($_FILES['internationalPassport']) && $_FILES['internationalPassport']['error'] === UPLOAD_ERR_OK) {
+			move_uploaded_file($_FILES['internationalPassport']['tmp_name'], $uploadInternationalPassportDir . $newInternationalPassport);
+			unlink($uploadInternationalPassportDir . $oldInternationalPassport);
+		}
+    break;
 }
 ?>

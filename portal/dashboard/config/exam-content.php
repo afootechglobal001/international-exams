@@ -278,15 +278,15 @@
                     <div class="content-title">
                         <div class="title">
                             <i class="bi bi-passport"></i>
-                            <p>Upload Profile Picture</p>
+                            <p>Upload Passport Photograph</p>
                         </div>
                     </div>
 
                     <div class="form-text">
                         <label>
                             <div class="pix-div">
-                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="profilePixPreview.UpdatePreview(this);" />
+                                <img id="passportPhotographPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="passportPhotograph" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="passportPhotographPreview.UpdatePreview(this);" />
                             </div>
                         </label>
                     </div>
@@ -304,8 +304,8 @@
                     <div class="form-text">
                         <label>
                             <div class="pix-div">
-                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="profilePixPreview.UpdatePreview(this);" />
+                                <img id="internationalPassportPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="internationalPassport" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="internationalPassportPreview.UpdatePreview(this);" />
                             </div>
                         </label>
                     </div>
@@ -322,6 +322,14 @@
                                 $("#paymentWrapper").show();
                             }
                         }
+
+                        const passportInfo = useEachExamRegistrationSession ?? '';
+
+                        const passportPhotographUrl = passportInfo.passportPhotograph ? passportPhotographPath + "/" + passportInfo.passportPhotograph : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                        $("#passportPhotographPreview").attr("src", passportPhotographUrl).attr("alt", useEachExamRegistrationSession?.lastName + " Passport");
+
+                        const internationalPassportUrl = passportInfo.internationalPassport ? internationalPassportPath + "/" + passportInfo.internationalPassport : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                        $("#internationalPassportPreview").attr("src", internationalPassportUrl).attr("alt", useEachExamRegistrationSession?.lastName + "International Passport");
                     });
                 </script>
 
@@ -348,11 +356,11 @@
                         </div>
                     </div>
                     <div class="btn-div" id="submitBtn">
+                        <button class="btn pay-later" title="PAY LATER" onclick="_registerExam('payLater');"> <i
+                                class="bi-credit-card-2-back"></i> PAY LATER </button>
+
                         <button class="btn" title="PAY NOW" onclick="_registerExam('payNow');"> <i
                                 class="bi-credit-card-2-back"></i> PAY NOW </button>
-
-                        <button class="btn" title="PAY LATER" onclick="_registerExam('payLater');"> <i
-                                class="bi-credit-card-2-back"></i> PAY LATER </button>
                     </div>
                 </div>
             </div>

@@ -276,15 +276,17 @@
                 <!-- Profile Picture -->
                 <div class="content-div">
                     <div class="content-title">
-                        <div class="title">
-                            <i class="bi bi-passport"></i>
-                            <p>Upload Passport Photograph</p>
-                        </div>
+                        <label for="passportPhotograph" style="cursor:pointer;" title="Click To Upload Passport Photograph">
+                            <div class="title">
+                                <i class="bi bi-passport"></i>
+                                <p>Click To Upload Passport Photograph</p>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="form-text">
-                        <label>
-                            <div class="pix-div">
+                        <label for="passportPhotograph">
+                            <div class="pix-div" title="Click To Upload Passport Photograph">
                                 <img id="passportPhotographPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
                                 <input type="file" id="passportPhotograph" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="passportPhotographPreview.UpdatePreview(this);" />
                             </div>
@@ -295,16 +297,18 @@
                 <!-- International Passport -->
                 <div class="content-div">
                     <div class="content-title">
-                        <div class="title">
-                            <i class="bi bi-passport"></i>
-                            <p>Upload International Passport</p>
-                        </div>
+                        <label for="internationalPassport" style="cursor:pointer;" title="Click To Upload International Passport">
+                            <div class="title">
+                                <i class="bi bi-passport"></i>
+                                <p>Click To Upload International Passport</p>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="form-text">
-                        <label>
-                            <div class="pix-div">
-                                <img id="internationalPassportPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                        <label for="internationalPassport">
+                            <div class="pix-div int-pass-pix-div" title="Click To Upload International Passport">
+                                <img id="internationalPassportPreview" src="<?php echo $websiteUrl ?>/uploaded_files/internationalPassport/default.jpeg" alt="Default Image">
                                 <input type="file" id="internationalPassport" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="internationalPassportPreview.UpdatePreview(this);" />
                             </div>
                         </label>
@@ -328,7 +332,7 @@
                         const passportPhotographUrl = passportInfo.passportPhotograph ? passportPhotographPath + "/" + passportInfo.passportPhotograph : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
                         $("#passportPhotographPreview").attr("src", passportPhotographUrl).attr("alt", useEachExamRegistrationSession?.lastName + " Passport");
 
-                        const internationalPassportUrl = passportInfo.internationalPassport ? internationalPassportPath + "/" + passportInfo.internationalPassport : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                        const internationalPassportUrl = passportInfo.internationalPassport ? internationalPassportPath + "/" + passportInfo.internationalPassport : "<?php echo $websiteUrl ?>/uploaded_files/internationalPassport/default.jpeg";
                         $("#internationalPassportPreview").attr("src", internationalPassportUrl).attr("alt", useEachExamRegistrationSession?.lastName + "International Passport");
                     });
                 </script>

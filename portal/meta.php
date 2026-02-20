@@ -22,10 +22,10 @@
 <script src="<?php echo $websiteUrl?>/portal/js/scripts.js?v=<?php echo $codeVersion?>"></script>
 <script src="<?php echo $websiteUrl?>/admin/dashboard/js/useCountry.js?v=<?php echo $codeVersion?>"></script>
 <script>
-let userLoginData = JSON.parse(sessionStorage.getItem("userLoginData"));
+let userLoginData = JSON.parse(localStorage.getItem("userLoginData"));
 if (userLoginData) {
     window.parent.location.href = portalDashboardUrl;
 } else {
-    sessionStorage.clear();
+    localStorage.clear();
 }
 </script>

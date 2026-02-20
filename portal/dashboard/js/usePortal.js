@@ -16,7 +16,7 @@ function _getActivePageLink(divid) {
 }
 
 function _logOut() {
-  sessionStorage.clear();
+  localStorage.clear();
   window.parent.location.href = portalUrl;
 }
 

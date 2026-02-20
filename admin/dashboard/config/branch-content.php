@@ -107,7 +107,7 @@
                         <li title="Branches" id="branchesPage" onclick="_getActiveBranchPage({divid: 'branchesPage', page: 'branchesPage', url: adminPortalLocalUrl});"><i class="bi-diagram-3"></i> Branches</li>
                         <li id="examPricingPage" title="Exam Pricing" onclick="_getActiveBranchPage({divid: 'examPricingPage', page: 'examPricingPage', url: adminPortalLocalUrl});"><i class="bi-credit-card-fill"></i> Exam Pricing</li>
                         <li id="examLocationPage" title="Exam Location" onclick="_getActiveBranchPage({divid: 'examLocationPage', page: 'examLocationPage', url: adminPortalLocalUrl});"><i class="bi-geo-alt"></i> Exam Location</li>
-                        <li id="examPricing" title="Exam Pricing"><i class="bi-person-vcard"></i> Agent</li>
+                        <!-- <li id="examPricing" title="Exam Pricing"><i class="bi-person-vcard"></i> Agent</li> -->
                         <li id="branchCountryStudent" title="Branch Students" onclick="_getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});"><i class="bi-mortarboard"></i> Students</li>
                         <li id="branchCountrySettings" title="Settings" onclick="_getActiveBranchPage({divid: 'branchCountrySettings', page: 'branchCountrySettings', url: adminPortalLocalUrl});"><i class="bi-gear-wide-connected"></i> Settings</li>
                     </ul>

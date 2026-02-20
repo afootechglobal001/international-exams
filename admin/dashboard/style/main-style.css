@@ -1126,7 +1126,10 @@ main {
   font-style: italic;
   font-size: 11px;
 }
-
+.form-container .fullName-div {
+  display: flex;
+  gap: 20px;
+}
 
 /* User Form Style*/
 .user-profile-div{

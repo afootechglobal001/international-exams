@@ -172,8 +172,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="text-div">
                             <h2>Lowest Test Registration Fee</h2>
-                            <p>We offer subsidized test fee when you registered for any of our international programmes during our promo period. we are currently running a promo for TOEFl, IELTS, PTE, SAT, ACT, GMAT and GRE test.
-                            </p>
+                            <p>Take advantage of our subsidized test registration fees when you enroll in any of our international programs during the promo period. We’re currently offering discounts on <strong>TOEFL, IELTS, PTE, SAT, ACT, GMAT, and GRE </strong> exams.</p>
 
                             <div class="btn-div">
                                 <a href="<?php echo $websiteUrl ?>/portal/sign-up">
@@ -189,7 +188,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="text-div">
                             <h2>Physical and Online Lectures</h2>
-                            <p>Unlock premium exam preparation with our affordable paid lectures for international exams (TOEFL, GRE, GMAT, PTE, and IELTS). Access expert-led online and physical classes in our modern facilities. Join from anywhere globally for the ultimate learning experience!</p>
+                            <p>Enhance your exam preparation with our affordable, high-quality lectures for international tests—including <strong>TOEFL, GRE, GMAT, PTE, and IELTS</strong>. Join expert-led sessions either online or in person at our modern facilities. Learn from anywhere in the world for a truly premium learning experience!</p>
                             <div class="btn-div">
                                 <a href="<?php echo $websiteUrl ?>/portal/sign-up">
                                     <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>
@@ -204,7 +203,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="text-div">
                             <h2>FREE E-books</h2>
-                            <p>Get the 2020 updated version of the textbook (released a few weeks ago), with CD ROM free, once you register for any international exam(s).. This will be available for download after registration.</p>
+                            <p>Receive the <strong>2020 updated edition</strong> of our comprehensive textbook (with a free CD-ROM) when you register for any international exam. The e-book will be available for <strong> free download</strong> immediately after registration.</p>
                             <div class="btn-div">
                                 <a href="<?php echo $websiteUrl ?>/portal/sign-up">
                                     <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>
@@ -219,7 +218,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
 
                         <div class="text-div">
                             <h2>Free Study Packs</h2>
-                            <p>Simplify your Exam Preparation with video Lessons and Series of Practice Test. You will have access to over 120 Video Lesson after you register with us.</p>
+                            <p>Boost your preparation with free study packs that include engaging <strong>video lessons</strong> and <strong>practice</strong>  tests. Gain unlimited access to over <strong>120</strong>  expert-led tutorial <strong>videos</strong> once you register. </p>
                             <div class="btn-div">
                                 <a href="<?php echo $websiteUrl ?>/portal/sign-up">
                                     <button class="btn" title="Register now">Register now <i class="bi-arrow-right"></i></button></a>

@@ -82,6 +82,8 @@ var videoPixPath = websiteUrl + '/uploaded_files/video-images'; /// For video pi
 var videoPath = websiteUrl + '/uploaded_files/videos'; /// For videos Path
 var userOtpVerificationUrl = websiteUrl + '/portal/verify'; /// For User OTP Verification Url //
 var userResetPasswordUrl = websiteUrl + '/portal/reset-password'; /// For User Reset Password OTP Verification Url //
+var passportPhotographPath = websiteUrl + '/uploaded_files/passportPhotograph'; /// For Passport Photograph Path //
+var internationalPassportPath = websiteUrl + '/uploaded_files/internationalPassport'; /// For international Passport Path //
 
 var pageCategory = {
     examCategory: 'examCategory',

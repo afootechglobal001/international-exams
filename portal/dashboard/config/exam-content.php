@@ -276,17 +276,19 @@
                 <!-- Profile Picture -->
                 <div class="content-div">
                     <div class="content-title">
-                        <div class="title">
-                            <i class="bi bi-passport"></i>
-                            <p>Upload Profile Picture</p>
-                        </div>
+                        <label for="passportPhotograph" style="cursor:pointer;" title="Click To Upload Passport Photograph">
+                            <div class="title">
+                                <i class="bi bi-passport"></i>
+                                <p>Click To Upload Passport Photograph</p>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="form-text">
-                        <label>
-                            <div class="pix-div">
-                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="profilePixPreview.UpdatePreview(this);" />
+                        <label for="passportPhotograph">
+                            <div class="pix-div" title="Click To Upload Passport Photograph">
+                                <img id="passportPhotographPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
+                                <input type="file" id="passportPhotograph" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="passportPhotographPreview.UpdatePreview(this);" />
                             </div>
                         </label>
                     </div>
@@ -295,17 +297,19 @@
                 <!-- International Passport -->
                 <div class="content-div">
                     <div class="content-title">
-                        <div class="title">
-                            <i class="bi bi-passport"></i>
-                            <p>Upload International Passport</p>
-                        </div>
+                        <label for="internationalPassport" style="cursor:pointer;" title="Click To Upload International Passport">
+                            <div class="title">
+                                <i class="bi bi-passport"></i>
+                                <p>Click To Upload International Passport</p>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="form-text">
-                        <label>
-                            <div class="pix-div">
-                                <img id="ebookPixPreview" src="<?php echo $websiteUrl ?>/all-images/images/sample.jpg" alt="Default Image">
-                                <input type="file" id="regPix" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="profilePixPreview.UpdatePreview(this);" />
+                        <label for="internationalPassport">
+                            <div class="pix-div int-pass-pix-div" title="Click To Upload International Passport">
+                                <img id="internationalPassportPreview" src="<?php echo $websiteUrl ?>/uploaded_files/internationalPassport/default.jpeg" alt="Default Image">
+                                <input type="file" id="internationalPassport" style="display:none" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp, .svg, .avif" onchange="internationalPassportPreview.UpdatePreview(this);" />
                             </div>
                         </label>
                     </div>
@@ -322,6 +326,14 @@
                                 $("#paymentWrapper").show();
                             }
                         }
+
+                        const passportInfo = useEachExamRegistrationSession ?? '';
+
+                        const passportPhotographUrl = passportInfo.passportPhotograph ? passportPhotographPath + "/" + passportInfo.passportPhotograph : "<?php echo $websiteUrl ?>/all-images/images/sample.jpg";
+                        $("#passportPhotographPreview").attr("src", passportPhotographUrl).attr("alt", useEachExamRegistrationSession?.lastName + " Passport");
+
+                        const internationalPassportUrl = passportInfo.internationalPassport ? internationalPassportPath + "/" + passportInfo.internationalPassport : "<?php echo $websiteUrl ?>/uploaded_files/internationalPassport/default.jpeg";
+                        $("#internationalPassportPreview").attr("src", internationalPassportUrl).attr("alt", useEachExamRegistrationSession?.lastName + "International Passport");
                     });
                 </script>
 
@@ -348,11 +360,11 @@
                         </div>
                     </div>
                     <div class="btn-div" id="submitBtn">
+                        <button class="btn pay-later" title="PAY LATER" onclick="_registerExam('payLater');"> <i
+                                class="bi-credit-card-2-back"></i> PAY LATER </button>
+
                         <button class="btn" title="PAY NOW" onclick="_registerExam('payNow');"> <i
                                 class="bi-credit-card-2-back"></i> PAY NOW </button>
-
-                        <button class="btn" title="PAY LATER" onclick="_registerExam('payLater');"> <i
-                                class="bi-credit-card-2-back"></i> PAY LATER </button>
                     </div>
                 </div>
             </div>

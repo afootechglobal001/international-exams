@@ -36,7 +36,7 @@
     $newPassword=md5($data['newPassword']);
     $cnewPassword=md5($data['cnewPassword']);
 
-     if ($newPassword!=$cnewPassword){ /// start if 4
+    if ($newPassword!=$cnewPassword){ /// start if 4
         $response = [
             'response'=> 103,
             'success'=> false,

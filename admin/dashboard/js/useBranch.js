@@ -1714,3 +1714,134 @@ function _fetchEachExamCenter(centreId) {
     });
   }
 }
+
+
+function _fetchBranchStudentData() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  try {
+    _callFetchEndPoints({
+      url: `admin/branch/user/fetch-user?countryId=${getEachCountrySession?.countryId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _staffValidationCheck(response.response);
+        if (response.success && response.data?.length > 0) {
+          _initFetchBranchStudentData(response.data);
+        } else {
+          $("#fetchBranchStudentContent").html(`
+            <tr>
+              <td colspan="8">
+                <div class="false-notification-div">
+                  <p>${response.message}</p>
+                  <div>
+                    <button class="btn" title="REGISTER NEW STUDENT" onclick="_getForm({page: 'adminStudentRegForm', layer:2, url: adminPortalLocalUrl});">
+                        <i class="bi bi-plus-square"></i> REGISTER NEW STUDENT
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>`);
+          $("#fetchBranchStudentContentPaginationControls").html("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _fetchBranchStudentData());
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _fetchBranchStudentData());
+  }
+}
+
+function _renderFetchBranchStudentData(data, start) {
+  return data
+    .map(
+      (item, i) => `
+      <tr class="tb-row">
+        <td>${start + i + 1}</td>
+        <td class="clickable-td" title="Click to login into student portal" onclick="_loginOnBehalfOfUser('${item.userId}');">
+            <div class="text-back-div">
+                <div class="image-div">
+                    <img src="${websiteUrl}/all-images/images/avatar.jpg" alt="${item.firstName} ${item.lastName}" />
+                </div>
+
+                <div class="text-div">
+                    <div class="first-class">${item.firstName} ${item.lastName} </div>
+                    <div class="second-class">${item.userId}</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="text-div">
+                <div>${item.emailAddress}</div>
+                <div>${item.phoneNumber}</div>
+            </div>
+        </td>
+        <td>${item.lastLoginDate}</td>
+        <td>
+            <div class="status-div ${item.statusName}">${item.statusName}</div>
+        </td>
+        <td><button class="btn view-btn" title="Click to login into student portal" onclick="_loginOnBehalfOfUser('${item.userId}');">VIEW</button></td>
+    </tr>`
+    )
+    .join("");
+}
+
+function _initFetchBranchStudentData(data) {
+  const paginator = new Paginator(
+    data,
+    _renderFetchBranchStudentData,
+    "fetchBranchStudentContentPaginationControls",
+    "fetchBranchStudentContent",
+    10
+  );
+  __paginatorHandlers["fetchBranchStudentContent"] = paginator;
+  paginator.renderPage();
+}
+
+
+function _loginOnBehalfOfUser(userId) {
+  $("#get-more-div-secondary")
+  .css({
+    display: "flex",
+    "justify-content": "center",
+    "align-items": "center",
+  })
+  .fadeIn(500);
+
+  try {
+    _callFetchEndPoints({
+      url: `admin/branch/user/login?userId=${userId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _staffValidationCheck(response.response);
+        if (response.success) {
+          localStorage.setItem("userLoginData", JSON.stringify(response.data));
+          window.open(portalDashboardUrl, "_blank");
+          _alertClose(2);
+        } else {
+          _showCustomConfirm({
+            title: "USER ERROR",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+          _alertClose(2);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _loginOnBehalfOfUser(userId));
+        _alertClose(2);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _loginOnBehalfOfUser(userId));
+    _alertClose(2);
+  }
+}

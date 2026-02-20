@@ -18,7 +18,7 @@
 
 <script src="<?php echo $websiteUrl?>/js/jquery-v3.6.1.min.js"></script>
 <script>
-let userLoginData = JSON.parse(sessionStorage.getItem("userLoginData"));
+let userLoginData = JSON.parse(localStorage.getItem("userLoginData"));
 const loginUserId = userLoginData.userId;
 const loginAccessKey = userLoginData.accessKey;
 const loginCountryData = userLoginData.countryData;

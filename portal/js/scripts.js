@@ -206,7 +206,7 @@ function _userSignUpCallback(formData) {
     .then((response) => {
       if (response.success) {
         const data = response.data;
-          sessionStorage.setItem("userLoginData", JSON.stringify(data));
+          localStorage.setItem("userLoginData", JSON.stringify(data));
           _showCustomConfirm({
             callback: () => {
               window.location.href = portalDashboardUrl;
@@ -266,7 +266,7 @@ function _userLogin() {
       .then((response) => {
         if (response.success) {
           const data = response.data;
-          sessionStorage.setItem("userLoginData", JSON.stringify(data));
+          localStorage.setItem("userLoginData", JSON.stringify(data));
           window.location.href = portalDashboardUrl;
         } else {
           _showCustomConfirm({

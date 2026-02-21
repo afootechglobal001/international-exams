@@ -1,5 +1,5 @@
 <?php include '../../../config/constants.php';?>
-<script src="<?php echo $websiteUrl?>/portal/dashboard/js/session_validation.js"></script>
+<script src="<?php echo $websiteUrl?>/portal/dashboard/js/session_validation.js?v=<?php echo $codeVersion?>"></script>
 <?php
 $action=$_POST['action'];
 

@@ -107,7 +107,7 @@ function _logUserEmail(isResend = false) {
     });
   } catch (error) {
     console.error("Error:", error);
-    _callCatchError(() => _logUserEmail());
+    _callCatchError(() => _logUserEmail(isResend = false));
   }
 }
 
@@ -155,7 +155,7 @@ function _proceedLog(formData, isResend) {
     })
     .catch((error) => {
       console.error("Error:", error);
-      _callAjaxError(() => _logUserEmail()); // retry if needed
+      _callAjaxError(() => _proceedLog(formData, isResend)); // retry if needed
       if (!isResend) {
         _btnDisable("submitBtn", btnText, false);
       } else {

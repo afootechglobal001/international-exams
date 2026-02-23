@@ -57,7 +57,7 @@ $message = '
 
     <div style="padding:30px; color:#333;">
 
-        <h2 style="color:#0a58ca; margin-top:0;">New Testimony Submitted</h2>
+        <h2 style="color:#9d043c; margin-top:0;">New Testimony Submitted</h2>
 
         <p>Hello <strong>'.$senderName.'</strong>,</p>
 
@@ -82,7 +82,7 @@ $message = '
 
         <p style="margin-top:20px; font-weight:bold;">User Testimony:</p>
 
-        <div style="background:#f9fafb; border-left:4px solid #0a58ca; padding:15px; border-radius:5px; line-height:1.6;">
+        <div style="background:#f9fafb; border-left:4px solid #9d043c; padding:15px; border-radius:5px; line-height:1.6;">
             '.$testimony.'
         </div>
 
@@ -96,7 +96,7 @@ $message = '
         </p>
     </div>
 
-    <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+    <div style="background:#9d043c; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
         &copy; '.date("Y").' '.$appName.'. All Rights Reserved.
     </div>
 

@@ -47,7 +47,7 @@ try {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $sendTo=$smtpUsername;
     $recieverName=$fullName;	
-    $subject="$recieverName Review";
+    $mailSubject="$subject";
 
 $message = '
 <div style="width:100%; background:#f4f6f8; padding:30px 0; font-family:Arial, Helvetica, sans-serif;">
@@ -58,7 +58,7 @@ $message = '
 
         <div style="padding:30px; color:#333;">
 
-            <h2 style="color:#0a58ca; margin-top:0;">New Contact Message Received</h2>
+            <h2 style="color:#9d043c; margin-top:0;">New Contact Message Received</h2>
 
             <p>Hello <strong>'.$senderName.'</strong>,</p>
 
@@ -76,24 +76,24 @@ $message = '
                 </tr>
                 <tr style="background:#f9fafb;">
                     <td style="border:1px solid #eee;"><strong>Phone Number</strong></td>
-                    <td style="border:1px solid #eee;">'.$mobileNumber.'</td>
+                    <td style="border:1px solid #eee;">'.$phoneNumber.'</td>
                 </tr>
                 <tr>
                     <td style="border:1px solid #eee;"><strong>Subject</strong></td>
-                    <td style="border:1px solid #eee;">'.$subject.'</td>
+                    <td style="border:1px solid #eee;">'.$mailSubject.'</td>
                 </tr>
             </table>
 
             <p style="margin-top:20px; font-weight:bold;">Message:</p>
 
             <div
-                style="background:#f9fafb; border-left:4px solid #0a58ca; padding:15px; border-radius:5px; line-height:1.6;">
+                style="background:#f9fafb; border-left:4px solid #9d043c; padding:15px; border-radius:5px; line-height:1.6;">
                 '.$message.'
             </div>
 
             <div style="margin-top:30px; text-align:center;">
                 <a href="mailto:'.$email.'"
-                    style="background:#0a58ca; color:#ffffff; padding:12px 22px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">
+                    style="background:#9d043c; color:#ffffff; padding:12px 22px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">
                     Reply to Sender
                 </a>
             </div>
@@ -103,13 +103,9 @@ $message = '
                 <strong>'.$appName.' Notification System</strong>
             </p>
 
-            <div style="margin-top:25px; text-align:center;">
-                <img src="cid:logo" width="140" style="background:#fff; padding:6px; border-radius:6px;">
-            </div>
-
         </div>
 
-        <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+        <div style="background:#9d043c; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
             &copy; '.date("Y").' '.$appName.'. All Rights Reserved.
         </div>
 

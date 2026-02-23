@@ -8,7 +8,7 @@
 <head>
     <?php include 'meta.php' ?>
     <title>Contact Us | International Exams – TOEFL | GRE | GMAT | SAT | ACT | PTE | IELTS in Nigeria</title>
-    
+
     <meta name="keywords"
         content="Contact International Exams, Contact EduGrade Services, exam registration help Nigeria, TOEFL support Nigeria, GRE support Nigeria, GMAT support Nigeria, SAT registration help, ACT exam support, IELTS support Nigeria, PTE registration Nigeria, international exam enquiry, study abroad support Nigeria" />
     <meta name="description"
@@ -59,7 +59,7 @@
                             international study opportunities, our team is ready to assist you every step of the way.
                         </p>
 
-                        <?php $callclass->_pagesButtons($websiteUrl);?>
+                        <?php $callclass->_pagesButtons($websiteUrl); ?>
                     </div>
 
                     <div class="image-div">
@@ -70,55 +70,57 @@
             </div>
         </div>
     </div>
-    
+
     <section class="other-pages-main-section">
         <section class="contact-hash-bg">
             <div class="bottom-body-div">
                 <div class="contact-div animated zoomIn">
                     <div class="div-in inner-contact">
-                        <div class="icon img-div"><img src="all-images/images/email.png" alt="<?php echo $thename?> Email Address"/></div>
-                        
+                        <div class="icon img-div"><img src="all-images/images/email.png" alt="<?php echo $thename ?> Email Address" /></div>
+
                         <div class="text">
                             <h2>MAIL US</h2>
                             <p id="ContactSmtpUsername">Loading...</p>
-                        </div>                 
+                        </div>
                     </div>
                 </div>
 
                 <div class="contact-div animated zoomIn">
                     <div class="div-in inner-contact">
-                        <div class="icon img-div"><img src="all-images/images/phone.png" alt="<?php echo $thename?> Phone Number"/></div>
-                        
+                        <div class="icon img-div"><img src="all-images/images/phone.png" alt="<?php echo $thename ?> Phone Number" /></div>
+
                         <div class="text">
                             <h2>CALL US</h2>
                             <p id="ContactPhoneNumber">Loading...</p>
-                        </div>                  
+                        </div>
                     </div>
                 </div>
 
                 <div class="contact-div animated zoomIn">
                     <div class="div-in inner-contact">
-                    <div class="icon img-div"><img src="all-images/images/location.png" alt="<?php echo $thename?> Office Address"/></div>
+                        <div class="icon img-div"><img src="all-images/images/location.png" alt="<?php echo $thename ?> Office Address" /></div>
 
                         <div class="text">
-                            <h2>LOCATION</h2> 
+                            <h2>LOCATION</h2>
                             <p id="contactCountryName">Loading...</p>
-                        </div>                  
+                        </div>
                     </div>
                 </div>
             </div>
-            <script>_fetchContactPageInfo();</script>
+            <script>
+                _fetchContactPageInfo();
+            </script>
         </section>
 
         <section class="map-body-div">
-            <div class="map-back-div"> 
-                <iframe 
+            <div class="map-back-div">
+                <iframe
                     class="google-map"
-                    allowfullscreen="" 
+                    allowfullscreen=""
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4034940.068370041!2d6.036170923120529!3d9.029865847390298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0baf7da48d0d%3A0x99a8fe4168c50bc8!2sNigeria!5e0!3m2!1sen!2sng!4v1758000308844!5m2!1sen!2sng">
                 </iframe>
             </div>
-        </section> 
+        </section>
 
         <section class="body-div">
             <div class="body-div-in">
@@ -144,6 +146,19 @@
                                 </script>
                             </div>
 
+                            <div class="text_field_container" id="inquiryPhoneNumber_container">
+                                <script>
+                                    textField({
+                                        id: 'inquiryPhoneNumber',
+                                        title: 'Enter Your Phone Number',
+                                        type: 'tel',
+                                        onKeyPressFunction: 'isNumberCheck(event);'
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="div-in right-div-in">
                             <div class="text_field_container" id="subject_container">
                                 <script>
                                     textField({
@@ -151,10 +166,8 @@
                                         title: 'Subject'
                                     });
                                 </script>
-                            </div>       
-                        </div>
+                            </div>
 
-                        <div class="div-in right-div-in">
                             <div class="text_area_container" id="message_container">
                                 <script>
                                     textField({
@@ -164,8 +177,8 @@
                                     });
                                 </script>
                             </div>
-                
-                            <button class="btn" id="submitBtn" onclick="_sendContactEmail();">Send Mail <i class="bi-send-check"></i></button>
+
+                            <button class="btn" id="submitBtn" title="Send Mail" onclick="_sendContactEmail();">Send Mail <i class="bi-send-check"></i></button>
                         </div>
                     </div>
                 </div>

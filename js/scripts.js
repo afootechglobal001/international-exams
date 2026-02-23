@@ -339,3 +339,85 @@ function _initFetchPagePaymentPricingData(data) {
 
   $("#fetchPagesPaymentPricing").html(content);
 }
+
+
+function _sendContactEmail(){
+	try {
+		////////get all needed values////////////
+		let issueCount = 0;
+		const fullName = $('#fullName').val().trim();
+		const email = $('#email').val().trim();
+    const phoneNumber = $('#inquiryPhoneNumber').val().trim();
+    const subject = $('#subject').val().trim();
+    const message = $('#message').val().trim();
+		
+		///// empty field validation//////////
+		issueCount += _validateEmptyValue("fullName", "FULL NAME");
+		issueCount += _validateEmptyValue("email", "EMAIL ADDRESS");
+    issueCount += _validateEmail("email", email);
+    issueCount += _validateEmptyValue("inquiryPhoneNumber", "PHONE NUMBER");
+		issueCount += _validateEmptyValue("subject", "SUBJECT");
+    issueCount += _validateEmptyValue("message", " MESSAGE");
+
+		if (issueCount > 0) return;
+
+		/////Gather form data////
+		const formData = {
+      fullName,
+      email,
+      phoneNumber,
+      subject,
+      message,
+    };
+
+		_sendContactEmailCallback(formData);
+	} catch (error) {
+		console.error("Error:", error);
+		_callCatchError(() => _sendContactEmail());
+	}
+}
+
+function _sendContactEmailCallback(formData) {
+  // Get countryId from localStorage
+  const countryId = JSON.parse(localStorage.getItem("websiteCountryId"));
+
+	///// get btn text/////
+	const btnText = $("#submitBtn").html();
+	_btnDisable("submitBtn", btnText, true);
+	
+	//// call endpoint //////
+	 _callRawEndPoints({
+		url: `site/contact/send-contact-mail?countryId=${countryId}`,
+		formData,
+	})
+    .then((response) => {
+		if (response.success) {
+      _showCustomConfirm({
+          title: "Message Sent!",
+          message: response.message,
+          alertType: "success",
+          trueActionBtnText: "Okay, Thanks",
+      });
+      _alertClose();
+      _clearValues();
+			_btnDisable("submitBtn", btnText, false);
+		} else {
+			_btnDisable("submitBtn", btnText, false);
+			_showCustomConfirm({
+				title: "MESSAGE ERROR",
+				message: response.message,
+				alertType: "warning",
+				trueActionBtnText: "OK",
+			});
+		}
+    })
+    .catch((error) => {
+		console.error("Error:", error);
+		_callAjaxError(() => _sendContactEmailCallback(formData)); // retry if needed
+		_btnDisable("submitBtn", btnText, false);
+    });
+}
+
+function _clearValues() {
+  $('#fullName, #email, #inquiryPhoneNumber, #subject, #message').val('');
+}

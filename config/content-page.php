@@ -1,4 +1,4 @@
-<?php if($page=='testimonialForm'){ ?>
+<?php if ($page == 'testimonialForm') { ?>
     <div class="slide-form-div">
         <div class="form-title-div">
             <div class="title-div">
@@ -15,9 +15,10 @@
         <!-- /////////// Info ////////////////////////////// -->
         <div class="container-back-div">
             <div class="form-notification">
-                <p>You are about to <span id="subTitle">share your experience</span>.  
-                Please complete the form below with accurate details to successfully  
-                <span id="subTitle2">submit your review</span>.</p>
+                <p>You are about to <span id="subTitle">share your experience</span>.
+                    Please complete the form below with accurate details to successfully
+                    <span id="subTitle2">submit your review</span>.
+                </p>
             </div>
 
             <div class="main-content-div">
@@ -81,7 +82,7 @@
     </div>
 <?php } ?>
 
-<?php if($page=='makeEnquiryForm'){ ?>
+<?php if ($page == 'makeEnquiryForm') { ?>
     <div class="slide-form-div">
         <div class="form-title-div">
             <div class="title-div">
@@ -120,30 +121,40 @@
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="emailAddress_container">
+                        <div class="text_field_container" id="email_container">
                             <script>
                                 textField({
-                                    id: 'emailAddress',
+                                    id: 'email',
                                     title: 'Enter Your Email Address',
                                     type: 'email',
                                 });
                             </script>
                         </div>
 
-                        <div class="text_field_container" id="mobileNumber_container">
+                        <div class="text_field_container" id="inquiryPhoneNumber_container">
                             <script>
                                 textField({
-                                    id: 'mobileNumber',
+                                    id: 'inquiryPhoneNumber',
                                     title: 'Enter Your Phone Number',
                                     type: 'tel',
+                                    onKeyPressFunction: 'isNumberCheck(event);'
                                 });
                             </script>
                         </div>
 
-                        <div class="text_area_container" id="testimony_container">
+                        <div class="text_field_container" id="subject_container">
                             <script>
                                 textField({
-                                    id: 'testimony',
+                                    id: 'subject',
+                                    title: 'Subject'
+                                });
+                            </script>
+                        </div>
+
+                        <div class="text_area_container" id="message_container">
+                            <script>
+                                textField({
+                                    id: 'message',
                                     title: 'Please provide details of your enquiry here...',
                                     type: 'textarea'
                                 });
@@ -153,7 +164,7 @@
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="Send Testimony" id="submitBtn" onclick="_diplaySuccess();">
+                    <button class="btn" title="Send Inquiry" id="submitBtn" onclick="_sendContactEmail();">
                         <i class="bi-send-check"></i> Send
                     </button>
                 </div>

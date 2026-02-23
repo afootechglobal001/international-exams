@@ -26,6 +26,6 @@ let userLoginData = JSON.parse(localStorage.getItem("userLoginData"));
 if (userLoginData) {
     window.parent.location.href = portalDashboardUrl;
 } else {
-    localStorage.clear();
+    localStorage.removeItem("userLoginData");
 }
 </script>

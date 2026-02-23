@@ -28,6 +28,16 @@
     $countryId=$row['countryId'];
     $userTypeId=$row['userTypeId'];
     $password=$row['password'];
+
+    //// get country details
+    $query=mysqli_query($conn,"SELECT * FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
+    $row=mysqli_fetch_array($query);
+    $countryName=$row['countryName'];
+
+    ///// get user type details
+    $query=mysqli_query($conn,"SELECT * FROM SETUP_USER_TYPE_TAB WHERE userTypeId='$userTypeId'") or die (mysqli_error($conn));
+    $row=mysqli_fetch_array($query);
+    $userTypeName=$row['userTypeName'];
     
     /////check if the email exist in the user table
     $query=mysqli_query($conn,"SELECT * FROM USERS_TAB WHERE emailAddress='$emailAddress'") or die (mysqli_error($conn));

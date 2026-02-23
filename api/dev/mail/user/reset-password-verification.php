@@ -47,21 +47,65 @@ try {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $sendTo=$emailAddress;
 $recieverName=$fullName;
-$subject="Reset Password OTP -- $otp";
+$subject="Email Verification OTP -- $otp";
 
-$message='
-<div style="width:90%; margin:auto; height:auto;">
-  <img src="cid:mail_header" width="100%">
-    <div style="padding:15px; font-size:16px;">
-      <p>Dear <b>'.$fullName.'</b>,</p>
-      <p>We received a request to reset your password for your account on International Exam Application. To proceed with resetting your password, please use the following One-Time Password (OTP):</p>
-      <h2 style="color:#333; text-align:center; background:#f4f4f4; padding:10px 0;">'.$otp.'</h2>
-      <p>This OTP is valid for the next 15 minutes. If you did not request a password reset, please ignore this email or contact our support team immediately.</p>
-      <p>Thank you,<br>International Exam Application Team</p>
-    <div style="min-height:30px; background:#333; text-align:left; color:#FFF; line-height:20px; padding:20px 10px 20px 50px;">
-      &copy; All Right Reserved. <br>' . $senderName . '
+$message = '
+<div style="width:100%; background:#f4f6f8; padding:30px 0; font-family:Arial, Helvetica, sans-serif;">
+  <div style="max-width:600px; margin:auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+
+    <img src="cid:mail_header" width="100%" style="display:block;">
+
+    <div style="padding:30px; color:#333333;">
+
+        <h2 style="color:#0a58ca; margin-top:0;">Email Verification Required</h2>
+
+        <p>Dear <strong>'.$fullName.'</strong>,</p>
+
+        <p>We received a request to verify your email address for your <strong>International Exam Portal</strong> account.</p>
+
+        <p>Please use the One-Time Password (OTP) below to complete your verification:</p>
+
+        <div style="text-align:center; margin:30px 0;">
+            <div style="
+                display:inline-block;
+                font-size:32px;
+                letter-spacing:6px;
+                font-weight:bold;
+                color:#0a58ca;
+                background:#f1f5ff;
+                padding:15px 30px;
+                border-radius:8px;
+                border:1px dashed #0a58ca;">
+                '.$otp.'
+            </div>
+        </div>
+
+        <p style="text-align:center; font-weight:bold; color:#555;">
+            This code expires in 15 minutes
+        </p>
+
+        <p>If you did not request this verification, please ignore this email or contact our support team immediately.</p>
+
+        <p style="margin-top:30px;">
+            Need help? Contact us at 
+            <a href="mailto:'.$supportEmail.'" style="color:#0a58ca;">'.$supportEmail.'</a>
+        </p>
+
+        <p style="margin-top:30px;">
+            Best regards,<br>
+            <strong>'.$senderName.'</strong><br>
+            International Exam Portal
+        </p>
+
     </div>
-</div>';
+
+    <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+        &copy; '.date("Y").' '.$senderName.'. All Rights Reserved.
+    </div>
+
+  </div>
+</div>
+';
 
 
     $mail->Subject = $subject;
@@ -70,7 +114,7 @@ $message='
     
     /// copy this emails
     $mail->addAddress($sendTo, $recieverName);  // Recipient email and name
-    $mail->addAddress($supportEmail, $senderName);  // Support email
+    // $mail->addAddress($supportEmail, $senderName);  // Support email
     //$mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
 
     // Attach images

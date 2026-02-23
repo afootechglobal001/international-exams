@@ -49,21 +49,79 @@ $sendTo=$emailAddress;
 $recieverName=$fullName;
 $subject="User Signup Success -- $fullName";
 
-$message='
-<div style="width:90%; margin:auto; height:auto;">
-  <img src="cid:mail_header" width="100%">
-    <div style="padding:15px; font-size:16px;">
-        <p>Dear <b>'.$fullName.'</b>,</p>
-        <p>Email: <b>'.$emailAddress.'</b>,</p>
-        <p>Phone Number: <b>'.$phoneNumber.'</b>,</p>
-        <p>Congratulations! Your registration with International Exam Application was successful. We are excited to have you on board and look forward to providing you with an exceptional experience.</p>
-        <p>If you have any questions or need assistance, please do not hesitate to contact our support team at ' . $supportEmail . '.</p>
-        <p>Thank you for choosing International Exam Application!</p>
+$message = '
+<div style="width:100%; background:#f4f6f8; padding:30px 0; font-family:Arial, Helvetica, sans-serif;">
+  <div style="max-width:600px; margin:auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.08);">
+    
+    <img src="cid:mail_header" width="100%" style="display:block;">
+
+    <div style="padding:30px; color:#333333;">
+
+        <h2 style="color:#0a58ca; margin-top:0;">Welcome, '.$fullName.' 🎉</h2>
+
+        <p>We are pleased to inform you that your registration on the <strong>International Exam Portal</strong> was successful.</p>
+
+        <p style="margin-top:25px; font-weight:bold;">Your Account Details:</p>
+
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
+            <tr style="background:#f9fafb;">
+                <td style="border:1px solid #eee;"><strong>Full Name</strong></td>
+                <td style="border:1px solid #eee;">'.$fullName.'</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #eee;"><strong>Email Address</strong></td>
+                <td style="border:1px solid #eee;">'.$emailAddress.'</td>
+            </tr>
+            <tr style="background:#f9fafb;">
+                <td style="border:1px solid #eee;"><strong>Phone Number</strong></td>
+                <td style="border:1px solid #eee;">'.$phoneNumber.'</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #eee;"><strong>Country</strong></td>
+                <td style="border:1px solid #eee;">'.$countryName.'</td>
+            </tr>
+            <tr style="background:#f9fafb;">
+                <td style="border:1px solid #eee;"><strong>User Type</strong></td>
+                <td style="border:1px solid #eee;">'.$userTypeName.'</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #eee;"><strong>Registration Date</strong></td>
+                <td style="border:1px solid #eee;">'.$currentDate.'</td>
+            </tr>
+        </table>
+
+        <p style="margin-top:25px;">
+            You can now log in to your dashboard and begin your application process.
+        </p>
+
+        <div style="text-align:center; margin:30px 0;">
+            <a href="https://www.internationalexam.com/new/portal/login" 
+               style="background:#0a58ca; color:#ffffff; padding:14px 25px; 
+               text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">
+               Login to Your Dashboard
+            </a>
+        </div>
+
+        <p>If you did not create this account, please contact our support team immediately at 
+        <a href="mailto:'.$supportEmail.'" style="color:#0a58ca;">'.$supportEmail.'</a>.</p>
+
+        <p>We look forward to supporting you throughout your exam journey.</p>
+
+        <p style="margin-top:30px;">
+            Best Regards,<br>
+            <strong>'.$senderName.'</strong><br>
+            International Exam Portal
+        </p>
+
     </div>
-    <div style="min-height:30px; background:#333; text-align:left; color:#FFF; line-height:20px; padding:20px 10px 20px 50px;">
-      &copy; All Right Reserved. <br>' . $senderName . '
+
+    <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+        &copy; '.date("Y").' '.$senderName.'. All Rights Reserved.
     </div>
-</div>';
+
+  </div>
+</div>
+';
 
 
 

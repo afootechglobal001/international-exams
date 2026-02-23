@@ -1,4 +1,3 @@
-
 <?php
 $array = $callclass->_get_setup_backend_settings_detail_for_country($conn, $countryId);
 $fetch = json_decode($array, true);
@@ -50,30 +49,60 @@ try {
     $recieverName=$fullName;	
     $subject="$recieverName Review";
 
-    $message='
-    <div style="width:90%; margin:auto; height:auto;">
-    <img src="cid:mail_header" width="100%">
-    <div style="padding:15px; font-family:16px;">
-        <p>Hi <strong>'.$senderName.'</strong>,</p>
+$message = '
+<div style="width:100%; background:#f4f6f8; padding:30px 0; font-family:Arial, Helvetica, sans-serif;">
+  <div style="max-width:600px; margin:auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.08);">
 
-        <p>
-            A new testimony has been submitted and is awaiting your review. Below are the details:
+    <img src="cid:mail_header" width="100%" style="display:block;">
+
+    <div style="padding:30px; color:#333;">
+
+        <h2 style="color:#0a58ca; margin-top:0;">New Testimony Submitted</h2>
+
+        <p>Hello <strong>'.$senderName.'</strong>,</p>
+
+        <p>A new user testimony has been submitted and is awaiting your review and approval.</p>
+
+        <p style="margin-top:25px; font-weight:bold;">Submission Details:</p>
+
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
+            <tr style="background:#f9fafb;">
+                <td style="border:1px solid #eee;"><strong>Full Name</strong></td>
+                <td style="border:1px solid #eee;">'.$fullName.'</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #eee;"><strong>Email Address</strong></td>
+                <td style="border:1px solid #eee;">'.$emailAddress.'</td>
+            </tr>
+            <tr style="background:#f9fafb;">
+                <td style="border:1px solid #eee;"><strong>Phone Number</strong></td>
+                <td style="border:1px solid #eee;">'.$mobileNumber.'</td>
+            </tr>
+        </table>
+
+        <p style="margin-top:20px; font-weight:bold;">User Testimony:</p>
+
+        <div style="background:#f9fafb; border-left:4px solid #0a58ca; padding:15px; border-radius:5px; line-height:1.6;">
+            '.$testimony.'
+        </div>
+
+        <p style="margin-top:25px;">
+            Please log in to the admin dashboard to review and approve this testimony before it becomes visible to the public.
         </p>
 
-        <p>
-            <strong>Full Name:</strong> '.$fullName.' <br>
-            <strong>Email Address:</strong> '.$emailAddress.' <br>
-            <strong>Phone Number:</strong> '.$mobileNumber.' <br>
-            <strong>Testimony:</strong> '.$testimony.'
+        <p style="margin-top:30px;">
+            Regards,<br>
+            <strong>'.$appName.' Notification System</strong>
         </p>
-        <p><strong>EDUGRADE SERVICES</strong>, we deliver high-quality education and training, equipping students with knowledge, skills, and strong moral values to excel and thrive in their academic journey and beyond. <br/> 
-        <strong>Be Inspired,</strong><br/> 
-            <img src="cid:logo" width="150px" style="padding:5px; background:#fff; border-radius:4px; margin-top:10px;"></p>
-        </div>
-        <div style="min-height:30px;background:#333;text-align:left;color:#FFF;line-height:20px;padding:20px 10px 20px 50px;">
-            &copy; All Right Reserve.<br>' . $appName . '
-        </div>
-    </div>';
+    </div>
+
+    <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+        &copy; '.date("Y").' '.$appName.'. All Rights Reserved.
+    </div>
+
+  </div>
+</div>
+';
 
 
     $mail->Subject = $subject;
@@ -81,7 +110,6 @@ try {
     $mail->AltBody = strip_tags($message);  // Fallback for non-HTML clients
     
     /// copy this emails
-    $mail->addAddress($smtpUsername, $fullName);  // Recipient email and name
     $mail->addAddress($supportEmail, $senderName);  // Support email
     $mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
 

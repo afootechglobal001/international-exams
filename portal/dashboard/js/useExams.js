@@ -167,12 +167,6 @@ function _getCountryExams(fieldId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -209,12 +203,6 @@ function _getcountryExamPricing(examId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -282,12 +270,6 @@ function _getExamLocations(fieldId, examId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -328,12 +310,6 @@ function _getExamLocationCentres(fieldId, locationId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -380,12 +356,6 @@ function _getExamLocationCentreDates(fieldId, centreId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -796,11 +766,9 @@ function _fetchRegisteredExams() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        _callCatchError(() => _fetchRegisteredExams());
       });
   } catch (error) {
     console.error("Error:", error);
-    _callCatchError(() => _fetchRegisteredExams());
   }
 }
 
@@ -882,10 +850,8 @@ function _fetchExamRegistrationDetails(examRegistrationId) {
       })
       .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError(() => _fetchExamRegistrationDetails(examRegistrationId)); // retry if needed
       });
   } catch (error) {
     console.error("Error:", error);
-    _callCatchError(() => _fetchExamRegistrationDetails(examRegistrationId));
   }
 }

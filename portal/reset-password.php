@@ -19,8 +19,8 @@
                     window.location.href = portalUrl;
                 }
 
-                $("#userFullname").html(useResetPasswordSession?.fullName);
-                $("#email").html(useResetPasswordSession?.emailAddress);
+                $("#userFullname").html(useResetPasswordSession?.displayResetData?.fullName);
+                $("#email").html(useResetPasswordSession?.displayResetData?.emailAddress);
             });
         </script>
 
@@ -81,11 +81,20 @@
                         </button>
                     </div>
 
-                    <div class="bottom-div"></div>
+                    <div class="bottom-div">
+                        <div>
+                            <button class="resendOtpBtn" id="resendOtpBtn" onclick="_proceedResetPassword(true);"><strong>Resend OTP</strong></button>
+                            <div id="resendCountdown"></div>
+                        </div>
+                        <button class="back-btn" title="Go back to login" onclick="window.location.href='<?php echo $websiteUrl ?>/portal'"><i class="bi bi-arrow-left-circle"></i> Go Back</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+    <script>
+        _counDownOtp(180);
+    </script>
 </body>
 
 <?php include 'bottom-scripts.php' ?>

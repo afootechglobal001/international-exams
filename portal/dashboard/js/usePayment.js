@@ -166,11 +166,9 @@ function _fetchTransactionHistory() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        _callAjaxError(() => _logOut());
       });
   } catch (error) {
     console.error("Error:", error);
-    _callCatchError(() => _fetchTransactionHistory());
   }
 }
 
@@ -244,10 +242,8 @@ function _fetchEachTransactionHistory(transactionId) {
 		 })
 		.catch((error) => {
 			console.error("Error:", error);
-			_callAjaxError(() => _fetchEachTransactionHistory(transactionId)); // retry if needed
 		});
 	} catch (error) {
 		console.error("Error:", error);
-		_callCatchError(() => _fetchEachTransactionHistory(transactionId));
   	}
 }

@@ -64,7 +64,7 @@
                     <div class="bottom-div">
                         <div>
                             <button class="resendOtpBtn" id="resendOtpBtn" onclick="_logUserEmail(true);"><strong>Resend OTP</strong></button>
-                            <div id="resendCountdown">Resend in <strong id="timer">30</strong> Sec</div>
+                            <div id="resendCountdown"></div>
                         </div>
                         <button class="back-btn" onclick="window.location.href='<?php echo $websiteUrl ?>/portal'"><i class="bi bi-arrow-left-circle"></i> Go Back</button>
                     </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <script>
-            _counDownOtp(30)
+            _counDownOtp(180);
         </script>
     </main>
 </body>

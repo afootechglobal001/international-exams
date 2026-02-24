@@ -22,16 +22,34 @@ $(document).ready(function () {
 function _counDownOtp(timer) {
   $("#resendOtpBtn").hide();
   $("#resendCountdown").fadeIn(500);
+
   const countdown = setInterval(() => {
     if (timer > 0) {
-      timer = timer - 1;
-      $("#timer").html(timer);
+      timer--;
+
+      let minutes = Math.floor(timer / 60);
+      let seconds = timer % 60;
+
+      if (timer >= 60) {
+        // Show MM:SS when 1 min or more
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        $("#resendCountdown").html(
+          'Resend in <strong id="timer">' + minutes + ":" + seconds + '</strong> min'
+        );
+      } else {
+        // Show seconds only when below 1 minute
+        $("#resendCountdown").html(
+          'Resend in <strong id="timer">' + seconds + '</strong> sec'
+        );
+      }
+
     } else {
+      clearInterval(countdown);
       $("#resendCountdown").hide();
       $("#resendOtpBtn").fadeIn(500);
-      clearInterval(countdown);
     }
   }, 1000);
+
   return () => clearInterval(countdown);
 }
 
@@ -115,8 +133,8 @@ function _proceedLog(formData, isResend) {
   //// call endpoint
    let btnText = "";
   if (!isResend) {
-    const btnText = $("#submitBtn").html();
-    _btnDisable("submitBtn", btnText, true);
+    btnText = $("#signUpBtn").html();
+    _btnDisable("signUpBtn", btnText, true);
   } else {
     _showLoader("Resending OTP... Please wait...");
   }
@@ -129,7 +147,7 @@ function _proceedLog(formData, isResend) {
       if (response.success) {
         const data = response.data;
          if (!isResend) {
-            _btnDisable("submitBtn", btnText, false);
+            _btnDisable("signUpBtn", btnText, false);
             localStorage.setItem(
               "userProceedLoginSession",
               JSON.stringify({
@@ -141,23 +159,25 @@ function _proceedLog(formData, isResend) {
               window.location.href = userOtpVerificationUrl;
           } else {
             _hideLoader();
-            _counDownOtp(30);
+            _counDownOtp(180);
           }
       } else {
-        _btnDisable("submitBtn", btnText, false);
-        _showCustomConfirm({
-          title: "Invalid Credentials!",
-          message: response.message,
-          alertType: "warning",
-          trueActionBtnText: "OK",
-        });
+        if (!isResend) {
+          _btnDisable("signUpBtn", btnText, false);
+          _showCustomConfirm({
+            title: "Account Exists!",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+      }
       }
     })
     .catch((error) => {
       console.error("Error:", error);
       _callAjaxError(() => _proceedLog(formData, isResend)); // retry if needed
       if (!isResend) {
-        _btnDisable("submitBtn", btnText, false);
+        _btnDisable("signUpBtn", btnText, false);
       } else {
         _hideLoader();
       }
@@ -269,13 +289,13 @@ function _userLogin() {
           localStorage.setItem("userLoginData", JSON.stringify(data));
           window.location.href = portalDashboardUrl;
         } else {
+          _btnDisable("submitBtn", btnText, false);
           _showCustomConfirm({
-            title: "USER ERROR",
+            title: "Invalid Credentials",
             message: response.message,
             alertType: "warning",
             trueActionBtnText: "OK",
           });
-          _btnDisable("submitBtn", btnText, false);
         }
       })
       .catch((error) => {
@@ -292,14 +312,25 @@ function _userLogin() {
 
 
 /// Proceed To Reset Password ///
-function _proceedResetPassword() {
+function _proceedResetPassword(isResendOtp = false) {
+  let useResetPasswordSession = JSON.parse(
+    localStorage.getItem("useResetPasswordSession")
+  );
+
   try {
     ////////get all needed values////////////
     let issueCount = 0;
-    const emailAddress = $("#emailAddress").val();
+    let emailAddress = $("#emailAddress").val()?.trim();
 
-    ///// empty field validation//////////
-    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    // Use session values when resending ///
+    if (isResendOtp) {
+      emailAddress = useResetPasswordSession?.resetData?.emailAddress;
+    }
+
+    if (!isResendOtp) {
+      ///// empty field validation//////////
+      issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    }
 
     if (issueCount > 0) return;
 
@@ -310,7 +341,7 @@ function _proceedResetPassword() {
     ////// confirm action
     _showCustomConfirm({
       callback: () => {
-        _proceedResetPasswordCallback(formData);
+        _proceedResetPasswordCallback(formData, isResendOtp);
       },
       title: "Are you sure?",
       message: "Will proceed to send OTP to your email address.",
@@ -320,15 +351,20 @@ function _proceedResetPassword() {
 
   } catch (error) {
     console.error("Error:", error);
-    _callCatchError(() => _proceedResetPassword());
+    _callCatchError(() => _proceedResetPassword(isResendOtp = false));
   }
 }
 
 /// Proceed To Reset Password  Callback ///
-function _proceedResetPasswordCallback(formData) {
+function _proceedResetPasswordCallback(formData, isResendOtp) {
   ///// get btn text/////
-  const btnText = $("#proceedBtn").html();
-  _btnDisable("proceedBtn", btnText, true);
+  let btnText = "";
+  if (!isResendOtp) {
+    btnText = $("#proceedBtn").html();
+    _btnDisable("proceedBtn", btnText, true);
+  } else {
+    _showLoader("Resending OTP... Please wait...");
+  }
 
   //// call endpoint //////
   _callRawEndPoints({
@@ -338,27 +374,43 @@ function _proceedResetPasswordCallback(formData) {
     .then((response) => {
       if (response.success) {
         const data = response.data;
-        localStorage.setItem("useResetPasswordSession", JSON.stringify(data));
-        _showLoader("OTP Sent Successfully!. Please wait...");
+        if (!isResendOtp) {
+          _btnDisable("proceedBtn", btnText, false);
+          localStorage.setItem(
+            "useResetPasswordSession",
+            JSON.stringify({
+              resetData: formData,   // for resend
+              displayResetData: data // for UI (fullName, email)
+            })
+          );
+          _showLoader("OTP Sent Successfully!. Please wait...");
           window.location.href = userResetPasswordUrl;
-        _btnDisable("proceedBtn", btnText, false);
+        } else {
+          _hideLoader();
+          _counDownOtp(180);
+        }
       } else {
-        _btnDisable("proceedBtn", btnText, false);
-        _hideLoader();
-        _showCustomConfirm({
-          title: "Invalid Email Address",
-          message: response.message,
-          alertType: "error",
-          trueActionBtnText: "OK",
-          closeOnOverlayClick: true,
-        });
+        if (!isResendOtp) {
+          _btnDisable("proceedBtn", btnText, false);
+          _hideLoader();
+          _showCustomConfirm({
+            title: "Invalid Email Address",
+            message: response.message,
+            alertType: "error",
+            trueActionBtnText: "OK",
+            closeOnOverlayClick: true,
+          });
+        }
       }
     })
     .catch((error) => {
       console.error("Error:", error);
-      _callAjaxError(() => _proceedResetPasswordCallback(formData)); // retry if needed
-      _btnDisable("proceedBtn", btnText, false);
-      _hideLoader();
+      _callAjaxError(() => _proceedResetPasswordCallback(formData, isResendOtp)); // retry if needed
+      if (!isResendOtp) {
+        _btnDisable("proceedBtn", btnText, false);
+      } else {
+        _hideLoader();
+      }
     });
 }
 
@@ -391,7 +443,7 @@ function _completeResetPassword() {
 
     // Gather form data
     const formData = {
-      userId: useResetPasswordSession?.userId,
+      userId: useResetPasswordSession?.displayResetData?.userId,
       otp,
       newPassword,
       cnewPassword,

@@ -117,8 +117,7 @@ $message = '
     
     /// copy this emails
     $mail->addAddress($sendTo, $recieverName);  // Recipient email and name
-    // $mail->addAddress($supportEmail, $senderName);  // Support email
-    //$mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
+    $mail->addAddress("afootechglobal@gmail.com", "AfooTECH Global");  // Additional recipient
 
     // Attach images
     $mail->addEmbeddedImage('../../mail/img/mail_header.jpg', 'mail_header');

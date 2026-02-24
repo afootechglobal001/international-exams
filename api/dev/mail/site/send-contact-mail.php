@@ -95,7 +95,7 @@ $message = '
                 <a href="mailto:'.$email.'"
                     style="background:#9d043c; color:#ffffff; padding:12px 22px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">
                     Reply to Sender
-                </a>
+                </a>l
             </div>
 
             <p style="margin-top:30px;">

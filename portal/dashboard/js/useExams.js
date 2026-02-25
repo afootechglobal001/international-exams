@@ -732,6 +732,9 @@ function _examRegistrationPaymentAction(
             alertType: action === "success" ? "success" : "info",
             trueActionBtnText: "OK",
           });
+          if (action==="success") {
+            _sendExamRegistrationSuccessEmail(examRegistrationId);
+          }
         } else {
           _showCustomConfirm({
             title: "OPERATION FAILED",

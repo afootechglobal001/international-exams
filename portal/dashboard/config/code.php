@@ -31,19 +31,39 @@ switch ($action){
 		$oldInternationalPassport = $_POST['oldInternationalPassport'] ?? '';
 		$newPassportPhotograph = $_POST['newPassportPhotograph'] ?? '';
 		$newInternationalPassport = $_POST['newInternationalPassport'] ?? '';
-		
+		$passportPhotograph = $_POST['passportPhotograph'] ?? '';
+		$internationalPassport = $_POST['internationalPassport'] ?? '';
+
+		///// For Passport Photograph ////
+		if (!empty($passportPhotograph)) {
+    		$passportPhotograph = preg_replace('#^data:image/\w+;base64,#i', '', $passportPhotograph);
+			$passportPhotograph = str_replace(' ', '+', $passportPhotograph);
+			$passportPhotograph = base64_decode($passportPhotograph);
+		}
+
 		$uploadPassportPhotographDir = "../../../uploaded_files/passportPhotograph/";
 
-		if (!empty($newPassportPhotograph) && isset($_FILES['passportPhotograph']) && $_FILES['passportPhotograph']['error'] === UPLOAD_ERR_OK) {
-			move_uploaded_file($_FILES['passportPhotograph']['tmp_name'], $uploadPassportPhotographDir . $newPassportPhotograph);
-			unlink($uploadPassportPhotographDir . $oldPassportPhotograph);
+		if(!empty($newPassportPhotograph)){
+			if($newPassportPhotograph!=$oldPassportPhotograph){
+				unlink($uploadPassportPhotographDir . $oldPassportPhotograph);
+				file_put_contents($uploadPassportPhotographDir . $newPassportPhotograph, $passportPhotograph);
+			}
+		}
+
+		///// For International Photograph ////
+		if (!empty($internationalPassport)) {
+			$internationalPassport = preg_replace('#^data:image/\w+;base64,#i', '', $internationalPassport);
+			$internationalPassport = str_replace(' ', '+', $internationalPassport);
+			$internationalPassport = base64_decode($internationalPassport);
 		}
 
 		$uploadInternationalPassportDir = "../../../uploaded_files/internationalPassport/";
 
-		if (!empty($newInternationalPassport) && isset($_FILES['internationalPassport']) && $_FILES['internationalPassport']['error'] === UPLOAD_ERR_OK) {
-			move_uploaded_file($_FILES['internationalPassport']['tmp_name'], $uploadInternationalPassportDir . $newInternationalPassport);
-			unlink($uploadInternationalPassportDir . $oldInternationalPassport);
+		if(!empty($newInternationalPassport)){
+			if($newInternationalPassport!=$oldInternationalPassport){
+				unlink($uploadInternationalPassportDir . $oldInternationalPassport);
+				file_put_contents($uploadInternationalPassportDir . $newInternationalPassport, $internationalPassport);
+			}
 		}
     break;
 }

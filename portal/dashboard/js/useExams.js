@@ -526,31 +526,27 @@ function _proceedExamRegistrationLog(formData) {
 
 function _uploadExamFiles(examRegistrationResponse){
     const data = examRegistrationResponse.data;
+    const oldPassportPhotograph = data.files.oldPassportPhotograph;
+    const oldInternationalPassport = data.files.oldInternationalPassport;
 
     const passportPhotograph = $("#passportPhotograph").prop("files")[0];
     const internationalPassport = $("#internationalPassport").prop("files")[0];
 
     /////Gather form data////
     const formData = new FormData();
-    
     formData.append("passportPhotograph", passportPhotograph);
     formData.append("internationalPassport", internationalPassport);
 
     //// call endpoint //////
 	_callFileEndPoints({
-		url:  `user/exam/upload-exam-files?examRegistrationId=${data.examRegistrationId}`,
+		url:  `user/exam/upload-exam-files?examRegistrationId=${data.examRegistrationId}&oldPassportPhotograph=${oldPassportPhotograph}&oldInternationalPassport=${oldInternationalPassport}`,
 		formData,
 		accessKey: true,
 	})
     .then((response) => {
 		if (response.success) {
 			const fileUploadResponse = response.data;
-
-            if (fileUploadResponse.files.newPassportPhotograph=="" && fileUploadResponse.files.newInternationalPassport=="") {
-                _checkForPayment(examRegistrationResponse);
-            } else {
-                _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse, formData);
-            }
+        _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse);
 		} else {
 			_showCustomConfirm({
 				title: "USER ERROR",
@@ -562,10 +558,36 @@ function _uploadExamFiles(examRegistrationResponse){
     })
     .catch((error) => {
 		console.error("Error:", error);
-		_callAjaxError(() => _uploadExamFiles(data)); // retry if needed
+		_callAjaxError(() => _uploadExamFiles(examRegistrationResponse)); // retry if needed
     });
 }
 
+function _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse) {
+    var passportPhotograph = document.getElementById("passportPhotographPreview").src;
+    var internationalPassport = document.getElementById("internationalPassportPreview").src;
+
+    const formData = new FormData();
+    formData.append("action", "uploadExamFiles");
+    formData.append("passportPhotograph", passportPhotograph);
+    formData.append("internationalPassport", internationalPassport);
+    formData.append("oldPassportPhotograph", examRegistrationResponse.data.files.oldPassportPhotograph);
+    formData.append("oldInternationalPassport", examRegistrationResponse.data.files.oldInternationalPassport);
+    formData.append("newPassportPhotograph", fileUploadResponse.files.newPassportPhotograph);
+    formData.append("newInternationalPassport", fileUploadResponse.files.newInternationalPassport);
+
+    _callFileEndPoints({
+        url: portalOperationMiddlewareUrl,
+        formData,
+        expectJson: false,
+    })
+    .then(() => {
+        _checkForPayment(examRegistrationResponse);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse));
+    });
+}
 
 function _checkForPayment(response) {
       const data = response.data;
@@ -581,6 +603,7 @@ function _checkForPayment(response) {
                 alertType: "success",
                 trueActionBtnText: "OK",
             });
+          _sendExamRegistrationSuccessEmail(data.examRegistrationId);
         } else {
             _btnDisable("submitBtn", btnText, false);
             _showCustomConfirm({
@@ -600,29 +623,19 @@ function _checkForPayment(response) {
             alertType: "success",
             trueActionBtnText: "OK",
         });
+        _sendExamRegistrationSuccessEmail(data.examRegistrationId);
     }
 }
 
-function _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse, formData) {
-    formData.append("action", "uploadExamFiles");
-    formData.append("oldPassportPhotograph", examRegistrationResponse.data.files.oldPassportPhotograph);
-    formData.append("oldInternationalPassport", examRegistrationResponse.data.files.oldInternationalPassport);
-    formData.append("newPassportPhotograph", fileUploadResponse.files.newPassportPhotograph);
-    formData.append("newInternationalPassport", fileUploadResponse.files.newInternationalPassport);
-
-    _callFileEndPoints({
-		url: portalOperationMiddlewareUrl,
-		formData,
-		expectJson: false,
+function _sendExamRegistrationSuccessEmail(examRegistrationId) {
+  //// call endpoint //////
+	_callFileEndPoints({
+		url:  `user/exam/send-exam-registration-success-email?examRegistrationId=${examRegistrationId}`,
+		accessKey: true,
 	})
-	.then(() => {
-		_checkForPayment(examRegistrationResponse);
-	})
-    .catch((error) => {
-		console.error("Error:", error);
-		_callAjaxError(() => _uploadExamLocalFiles(examRegistrationResponse, fileUploadResponse, formData));
-    });
 }
+
+
 
 ////// CALL PAY WITH PAYSTACK ////////////////
 function _payWithPaystackExamRegistration(data, paymentMethodId) {
@@ -719,6 +732,9 @@ function _examRegistrationPaymentAction(
             alertType: action === "success" ? "success" : "info",
             trueActionBtnText: "OK",
           });
+          if (action==="success") {
+            _sendExamRegistrationSuccessEmail(examRegistrationId);
+          }
         } else {
           _showCustomConfirm({
             title: "OPERATION FAILED",

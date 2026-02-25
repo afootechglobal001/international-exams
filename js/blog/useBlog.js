@@ -249,7 +249,7 @@ function _initFetchPageRelatedBlogData(data) {
         </div>
 
 		<div class="cont-div">
-			<h3>${item.regTitle.substr(0, 90)}...</h3> 
+			<h3>${item.regTitle.substr(0, 55)}...</h3> 
 			<div class="comment"><i class="bi-clock"></i> <span> ${formatExamDate(item.updatedTime)} </span> </div>
 		</div>
 	</div></a>`).join("");

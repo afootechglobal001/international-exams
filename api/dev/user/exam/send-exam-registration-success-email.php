@@ -55,15 +55,53 @@
     $examAbbr=$fetchQuery['examData']['examAbbr'];
     $paymentChoice=$fetchQuery['paymentChoice'];
 
+
+    //// get schools of interest
+    $schools=[];
+    $getSchoolsQuery=mysqli_query($conn,"SELECT nameOfInstitution, institutionCode, institutionLocation, programId, courseOfStudy FROM STUDENT_SCHOOL_OF_INTEREST_TAB WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+    while($getSchoolsFetch=mysqli_fetch_assoc($getSchoolsQuery)){
+        $schools[]=$getSchoolsFetch;
+    }
+
+    //// get exam amount
+    $getExamAmountQuery=mysqli_query($conn,"SELECT currency, amount FROM BRANCH_EXAM_PRICING_TAB WHERE examId='$examId' AND countryId='$countryId'")or die (mysqli_error($conn));
+    $getExamAmountFetch=mysqli_fetch_assoc($getExamAmountQuery);
+    $fetchQuery['examAmountData']=$getExamAmountFetch;
+
+    ////get bank details
+    $getBankDetailsQuery=mysqli_query($conn,"SELECT bankName, accountName, accountNumber FROM COUNTRY_TAB WHERE countryId='$countryId'")or die (mysqli_error($conn));
+    $getBankDetailsFetch=mysqli_fetch_assoc($getBankDetailsQuery);
+    $fetchQuery['bankDetailsData']=$getBankDetailsFetch;
+
     if($paymentChoice=="payLater"){
         $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Later.";
         require_once '../../mail/user/exam-registration-pay-later-email.php';
     }
-    // if($paymentChoice=="payNow") && ($fetchQuery['statusData']['statusName']!="Payment Completed"){
-    //      $updateStatus=mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='3' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
-    //     $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Now.";
-    //     require_once '../../mail/user/exam-registration-pay-now-email.php';
-    // }
+
+    if($paymentChoice=="payNow"){
+        ///// get transaction details
+        $getTransactionDetailsQuery=mysqli_query($conn,"SELECT * FROM TRANSACTION_TAB WHERE referenceId='$examRegistrationId'")or die (mysqli_error($conn));
+        $getTransactionDetailsFetch=mysqli_fetch_assoc($getTransactionDetailsQuery);
+        $fetchQuery['transactionData']=$getTransactionDetailsFetch;
+
+        $paymentMethodId=$getTransactionDetailsFetch['paymentMethodId'];
+        $statusId=$getTransactionDetailsFetch['statusId'];
+
+        /// get payment method details
+        $getPaymentMethodQuery=mysqli_query($conn,"SELECT paymentMethodId, paymentMethodName FROM SETUP_PAYMENT_METHOD_TAB WHERE paymentMethodId='$paymentMethodId'")or die (mysqli_error($conn));
+        $getPaymentMethodFetch=mysqli_fetch_assoc($getPaymentMethodQuery); 
+        $fetchQuery['paymentMethodData']=$getPaymentMethodFetch;
+
+
+        /// get payment status details
+        $getPaymentStatusQuery=mysqli_query($conn,"SELECT statusId, statusName FROM SETUP_STATUS_TAB WHERE statusId='$statusId'")or die (mysqli_error($conn));
+        $getPaymentStatusFetch=mysqli_fetch_assoc($getPaymentStatusQuery);
+        $fetchQuery['paymentStatusData']=$getPaymentStatusFetch;
+        
+        
+        $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Online.";
+        require_once '../../mail/user/exam-registration-pay-now-email.php';
+    }
     $response = [
         'response' => 200,
         'success' => true,

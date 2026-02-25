@@ -20,21 +20,26 @@
     $examRegistrationId=trim($_GET['examRegistrationId']);
     $passportPhotograph=$_FILES['passportPhotograph']['name'];
     $internationalPassport=$_FILES['internationalPassport']['name'];
+    $oldPassportPhotograph=trim($_GET['oldPassportPhotograph']);
+    $oldInternationalPassport=trim($_GET['oldInternationalPassport']);
 
     //////////////////check for empty fields//////////////////////////////////////
-    $newPassportPhotograph = '';
-    $newInternationalPassport = '';
     if (!empty($passportPhotograph)) { /// start if 3
         $newPassportPhotograph=$examRegistrationId.uniqid().'.jpg';
-        ///// update record
-        mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET passportPhotograph='$newPassportPhotograph' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+    }else{
+        $newPassportPhotograph=$oldPassportPhotograph;
     }
     if (!empty($internationalPassport)) { /// start if 4
         $newInternationalPassport=$examRegistrationId.uniqid().'.jpg';
-        ///// update record
-        mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET internationalPassport='$newInternationalPassport' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+    }else{
+        $newInternationalPassport=$oldInternationalPassport;
     }
+    ///// update record
+    mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET passportPhotograph='$newPassportPhotograph' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
 
+    ///// update record
+    mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET internationalPassport='$newInternationalPassport' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+   
     $response = [
         'response' => 200,
         'success' => true,

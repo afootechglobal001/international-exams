@@ -145,8 +145,8 @@
                 $statusId=3; /// PENDING
 
                 mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
-                (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
-                ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+                (`countryId`, `transactionId`, `referenceId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+                ('$countryId', '$transactionId', '$examRegistrationId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
                 $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
             
             }elseif($paymentMethodId=='BT'){
@@ -154,8 +154,8 @@
                 $paymentKey=$dbPaymentKey;
                 $statusId=3; /// PENDING
                 mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
-                (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
-                ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', $balanceBefore, '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+                (`countryId`, `transactionId`, `referenceId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+                ('$countryId', '$transactionId', '$examRegistrationId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', $balanceBefore, '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
                 $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
                 
             }elseif($paymentMethodId=='WLT'){
@@ -172,17 +172,14 @@
                 $statusId=1; /// APPROVED
                 $balanceAfter=$balanceBefore - $amount; /// since payment is from wallet
                 mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
-                (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
-                ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+                (`countryId`, `transactionId`, `referenceId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+                ('$countryId', '$transactionId', '$examRegistrationId', '$studentId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
                 /// update user wallet balance
                 mysqli_query($conn,"UPDATE USERS_TAB SET walletBalance='$balanceAfter' WHERE userId='$studentId'")or die (mysqli_error($conn));
                 //// update exam registration status to approved
                 mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='$statusId' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
                 
                 $alertDetail = "User with ID $studentId and Name $loginUserFullname successfully paid $currency $amount from wallet for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment.";
-                ///// send email
-                // $subject="$examAbbr exam registration successful for $fullName. Registration ID $examRegistrationId. Payment successful from wallet.";
-                // require_once '../../mail/user/admin-notification-email.php';
             }
             
             

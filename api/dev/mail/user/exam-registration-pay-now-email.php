@@ -181,28 +181,24 @@ $message = '
             <h3 style="color:#9d043c; margin-top:30px;">Payment Details</h3>
             <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
                 <tr style="background:#f9fafb;">
-                    <td style="border:1px solid #eee;"><strong>Payment Choice</strong></td>
-                    <td style="border:1px solid #eee;">'.$fetchQuery['paymentChoice'].'</td>
+                    <td style="border:1px solid #eee;"><strong>Transaction ID</strong></td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['transactionData']['transactionId'].'</td>
                 </tr>
                 <tr style="background:#f9fafb;">
                     <td style="border:1px solid #eee;"><strong>Amount</strong></td>
-                    <td style="border:1px solid #eee;">'.$fetchQuery['examAmountData']['currency'].' '.$fetchQuery['examAmountData']['amount'].'</td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['transactionData']['currency'].' '.$fetchQuery['transactionData']['amount'].'</td>
                 </tr>
                 <tr style="background:#f9fafb;">
-                    <td style="border:1px solid #eee;"><strong>Bank Name</strong></td>
-                    <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['bankName'].'</td>
-                </tr>
-                <tr style="background:#f9fafb;">
-                    <td style="border:1px solid #eee;"><strong>Account Name</strong></td>
-                    <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['accountName'].'</td>
-                </tr>
-                <tr style="background:#f9fafb;">
-                    <td style="border:1px solid #eee;"><strong>Account Number</strong></td>
-                    <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['accountNumber'].'</td>
+                    <td style="border:1px solid #eee;"><strong>Payment Method</strong></td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['paymentMethodData']['paymentMethodName'].'</td>
                 </tr>
                 <tr style="background:#f9fafb;">
                     <td style="border:1px solid #eee;"><strong>Payment Status</strong></td>
-                    <td style="border:1px solid #eee;">PENDING</td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['paymentStatusData']['statusName'].'</td>
+                </tr>
+                <tr style="background:#f9fafb;">
+                    <td style="border:1px solid #eee;"><strong>Payment Date</strong></td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['transactionData']['updatedTime'].'</td>
                 </tr>
             </table>
             

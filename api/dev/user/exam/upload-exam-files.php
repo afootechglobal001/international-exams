@@ -17,7 +17,9 @@
 
 <?php
     //////////////////declaration of variables//////////////////////////////////////
+    $paymentChoice=trim($data['paymentChoice']) ? $data['paymentChoice'] : "payNow"; /// can be payNow or payLater
     $examRegistrationId=trim($_GET['examRegistrationId']);
+    $countryId=trim($loginUserCountryId);
     $passportPhotograph=$_FILES['passportPhotograph']['name'];
     $internationalPassport=$_FILES['internationalPassport']['name'];
 
@@ -37,7 +39,49 @@
         mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET internationalPassport='$newInternationalPassport' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
     }
 
-    
+
+    $select="SELECT * FROM STUDENT_EXAMS_REGISTRATION_TAB WHERE studentId='$loginUserId' AND examRegistrationId='$examRegistrationId'";
+    $query=mysqli_query($conn, $select);
+    $fetchQuery=mysqli_fetch_assoc($query);
+
+    $examId=$fetchQuery['examId'];
+    $locationId=$fetchQuery['locationId'];
+    $centreId=$fetchQuery['centreId'];
+    $genderId=$fetchQuery['genderId'];
+    $statusId=$fetchQuery['statusId'];
+    ///// fetch exam details
+    $getExamQuery=mysqli_query($conn,"SELECT regTitle AS examName, examAbbr FROM PUBLISH_TAB WHERE publishId='$examId'")or die (mysqli_error($conn));
+    $getExamFetch=mysqli_fetch_assoc($getExamQuery);
+    $fetchQuery['examData']=$getExamFetch;
+    /////////////////// for  $locationId
+    $getLocationQuery = mysqli_query($conn, "SELECT locationId, locationName FROM EXAM_LOCATION_TAB WHERE examId='$examId' AND locationId='$locationId'");
+    $getLocationFetch = mysqli_fetch_assoc($getLocationQuery);
+    $fetchQuery['locationData']= $getLocationFetch;
+        /////////////////// for  $centreId
+    $getCentreQuery = mysqli_query($conn, "SELECT centreId, centreName FROM EXAM_CENTRE_TAB WHERE locationId='$locationId' AND centreId='$centreId'");
+    $getCentreFetch = mysqli_fetch_assoc($getCentreQuery);
+    $fetchQuery['centreData']= $getCentreFetch;
+        /////////////////// for  $genderId
+    $getGenderQuery = mysqli_query($conn, "SELECT genderId, genderName FROM SETUP_GENDER_TAB WHERE genderId='$genderId'");
+    $getGenderFetch = mysqli_fetch_assoc($getGenderQuery);
+    $fetchQuery['genderData']= $getGenderFetch;
+    /////////////////// for  $statusId
+    $getStatusQuery = mysqli_query($conn, "SELECT * FROM SETUP_STATUS_TAB WHERE statusId='$statusId'")or die (mysqli_error($conn));
+    $getStatusFetch = mysqli_fetch_assoc($getStatusQuery);
+    $fetchQuery['statusData']= $getStatusFetch;
+
+
+
+
+    if($paymentChoice=="payLater"){
+        $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Later.";
+        require_once '../../mail/user/exam-registration-pay-later-email.php';
+    }
+    if($paymentChoice=="payNow") && ($fetchQuery['statusData']['statusName']!="Payment Completed"){
+         $updateStatus=mysqli_query($conn,"UPDATE STUDENT_EXAMS_REGISTRATION_TAB SET statusId='3' WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+        $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Now.";
+        require_once '../../mail/user/exam-registration-pay-now-email.php';
+    }
     $response = [
         'response' => 200,
         'success' => true,

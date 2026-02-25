@@ -25,7 +25,7 @@
     $locationId=trim(($data['locationId']));
     $centreId=trim(($data['centreId']));
     $examDate=trim(($data['examDate']));
-    $altExamDate=trim(($data['altExamDate']));
+    $altExamDate=trim(($data['altDate']));
     $firstName=trim(strtoupper($data['firstName']));
     $middleName=trim(strtoupper($data['middleName']));
     $lastName=trim(strtoupper($data['lastName']));
@@ -199,8 +199,6 @@
         }else{
             $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Payment choice is Pay Later.";
             ///// send email
-            $subject="$examAbbr exam registration for $fullName. Registration ID $examRegistrationId. Payment Choice: Pay Later.";
-            require_once '../../mail/user/admin-notification-email.php';
             $response = [
                 'response' => 200,
                 'success' => true,

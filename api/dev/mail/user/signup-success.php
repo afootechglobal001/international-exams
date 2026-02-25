@@ -57,7 +57,7 @@ $message = '
 
     <div style="padding:30px; color:#333333;">
 
-        <h2 style="color:#0a58ca; margin-top:0;">Welcome, '.$fullName.' 🎉</h2>
+        <h2 style="color:#9d043c; margin-top:0;">Welcome, '.$fullName.' 🎉</h2>
 
         <p>We are pleased to inform you that your registration on the <strong>International Exam Portal</strong> was successful.</p>
 
@@ -95,15 +95,15 @@ $message = '
         </p>
 
         <div style="text-align:center; margin:30px 0;">
-            <a href="https://www.internationalexam.com/new/portal/login" 
-               style="background:#0a58ca; color:#ffffff; padding:14px 25px; 
+            <a href="'.$websiteUrl.'/portal/login" 
+               style="background:#9d043c; color:#ffffff; padding:14px 25px; 
                text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">
                Login to Your Dashboard
             </a>
         </div>
 
         <p>If you did not create this account, please contact our support team immediately at 
-        <a href="mailto:'.$supportEmail.'" style="color:#0a58ca;">'.$supportEmail.'</a>.</p>
+        <a href="mailto:'.$supportEmail.'" style="color:#9d043c;">'.$supportEmail.'</a>.</p>
 
         <p>We look forward to supporting you throughout your exam journey.</p>
 
@@ -115,7 +115,7 @@ $message = '
 
     </div>
 
-    <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+    <div style="background:#9d043c; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
         &copy; '.date("Y").' '.$senderName.'. All Rights Reserved.
     </div>
 

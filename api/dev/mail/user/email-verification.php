@@ -57,7 +57,7 @@ $message = '
 
     <div style="padding:30px; color:#333333;">
 
-        <h2 style="color:#0a58ca; margin-top:0;">Complete Your Registration</h2>
+        <h2 style="color:#9d043c; margin-top:0;">Complete Your Registration</h2>
 
         <p>Dear <strong>'.$fullName.'</strong>,</p>
 
@@ -71,11 +71,11 @@ $message = '
                 font-size:32px;
                 letter-spacing:6px;
                 font-weight:bold;
-                color:#0a58ca;
+                color:#9d043c;
                 background:#f1f5ff;
                 padding:15px 30px;
                 border-radius:8px;
-                border:1px dashed #0a58ca;">
+                border:1px dashed #9d043c;">
                 '.$otp.'
             </div>
         </div>
@@ -90,7 +90,7 @@ $message = '
 
         <p style="margin-top:30px;">
             Need assistance? Contact us at 
-            <a href="mailto:'.$supportEmail.'" style="color:#0a58ca;">'.$supportEmail.'</a>
+            <a href="mailto:'.$supportEmail.'" style="color:#9d043c;">'.$supportEmail.'</a>
         </p>
 
         <p style="margin-top:30px;">
@@ -101,7 +101,7 @@ $message = '
 
     </div>
 
-    <div style="background:#0a58ca; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
+    <div style="background:#9d043c; color:#ffffff; text-align:center; padding:15px; font-size:13px;">
         &copy; '.date("Y").' '.$senderName.'. All Rights Reserved.
     </div>
 

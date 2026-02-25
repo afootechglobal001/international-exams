@@ -60,15 +60,26 @@
         ];
         goto end;
     }
+    if (!in_array($paymentChoice, ['payNow', 'payLater'])) {
+        $response = [
+            'response' => 103,
+            'success' => false,
+            'message' => 'INVALID PAYMENT CHOICE! Please select a valid payment choice and try again.'
+        ];
+        goto end;
+    }
     
     if ($paymentChoice=='payNow' && !in_array($paymentMethodId, ['CC', 'BT', 'WLT'])) {
         $response = [
-            'response' => 103,
+            'response' => 105,
             'success' => false,
             'message' => 'INVALID PAYMENT METHOD! Please select a valid payment method and try again.'
         ];
         goto end;
     }
+
+    $oldPassportPhotograph='';
+    $oldInternationalPassport='';
 
     if($examRegistrationId!=""){
           ///// get old record for update
@@ -89,8 +100,8 @@
         $examRegistrationId=$countId.$no.date("Ymdhis");
         
         mysqli_query($conn,"INSERT INTO `STUDENT_EXAMS_REGISTRATION_TAB`
-        (`examRegistrationId`, `countryId`, `studentId`, `examId`, `locationId`, `centreId`, `examDate`, `altExamDate`, `firstName`, `middleName`, `lastName`, `dob`, `emailAddress`, `phoneNumber`, `residentialAddress`, `genderId`, `statusId`, `createdTime`) VALUES
-        ('$examRegistrationId', '$countryId', '$studentId', '$examId', '$locationId', '$centreId', '$examDate', '$altExamDate', '$firstName', '$middleName', '$lastName', '$dob', '$emailAddress', '$phoneNumber', '$residentialAddress', '$genderId', 3, NOW())")or die (mysqli_error($conn));
+        (`examRegistrationId`, `countryId`, `studentId`, `examId`, `locationId`, `centreId`, `examDate`, `altExamDate`, `firstName`, `middleName`, `lastName`, `dob`, `emailAddress`, `phoneNumber`, `residentialAddress`, `genderId`, `statusId`, `createdTime`, `paymentChoice`) VALUES
+        ('$examRegistrationId', '$countryId', '$studentId', '$examId', '$locationId', '$centreId', '$examDate', '$altExamDate', '$firstName', '$middleName', '$lastName', '$dob', '$emailAddress', '$phoneNumber', '$residentialAddress', '$genderId', 3, NOW(), '$paymentChoice')")or die (mysqli_error($conn));
 
         foreach ($schoolsOfInterestSegment as $schoolsOfInterest) {
 			$nameOfInstitution = strtoupper($schoolsOfInterest['nameOfInstitution']);
@@ -170,8 +181,8 @@
                 
                 $alertDetail = "User with ID $studentId and Name $loginUserFullname successfully paid $currency $amount from wallet for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment.";
                 ///// send email
-                $subject="$examAbbr exam registration successful for $fullName. Registration ID $examRegistrationId. Payment successful from wallet.";
-                require_once '../../mail/user/admin-notification-email.php';
+                // $subject="$examAbbr exam registration successful for $fullName. Registration ID $examRegistrationId. Payment successful from wallet.";
+                // require_once '../../mail/user/admin-notification-email.php';
             }
             
             

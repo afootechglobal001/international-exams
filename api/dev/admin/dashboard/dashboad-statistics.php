@@ -18,7 +18,7 @@
 <?php
 
 	$query=mysqli_query($conn,"SELECT
-	(SELECT COUNT(*) FROM STAFF_TAB WHERE statusId=1) AS totalActiveStaffCount,
+	(SELECT COUNT(*) FROM STAFF_TAB WHERE statusId=1 AND roleId!=3) AS totalActiveStaffCount,
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='galleryCategory' AND statusId=1) AS totalActiveGalleryCount,
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='examCategory' AND parentPublishId IS NULL OR parentPublishId = '' AND statusId=1) AS totalActiveExamCount,
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='studyAbroadCategory' AND statusId=1) AS totalActiveStudyAbroadCount,
@@ -27,7 +27,8 @@
 	(SELECT COUNT(*) FROM PUBLISH_TAB WHERE pageCategoryId='ictCourseCategory' AND statusId=1) AS totalActiveIctCourseCount,
 	(SELECT COUNT(*) FROM COUNTRY_TAB WHERE statusId=1) AS totalActiveCountryCount,
 	(SELECT COUNT(*) FROM BRANCH_COUNTRY_TAB WHERE statusId=1) AS totalActiveBranchCount,
-	(SELECT COUNT(*) FROM TESTIMONY_TAB WHERE statusId=1) AS totalActiveTestimonyCount");
+	(SELECT COUNT(*) FROM TESTIMONY_TAB WHERE statusId=1) AS totalActiveTestimonyCount,
+	(SELECT COUNT(*) FROM USERS_TAB WHERE statusId=1) AS totalActiveCustomerCount");
 
 	$response = [
 		'response'=> 200,

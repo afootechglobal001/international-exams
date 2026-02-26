@@ -95,7 +95,7 @@ $message = '
         </p>
 
         <div style="text-align:center; margin:30px 0;">
-            <a href="'.$websiteUrl.'/portal/login" 
+            <a href="'.$websiteUrl.'/portal/" 
                style="background:#9d043c; color:#ffffff; padding:14px 25px; 
                text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">
                Login to Your Dashboard

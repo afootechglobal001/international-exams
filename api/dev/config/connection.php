@@ -10,11 +10,6 @@ $_HOST_NAME = "131.153.147.106";
 $_DB_USERNAME ="intern77_afootech";
 $_DB_PASSWORD ="Password@12345.";
 
-////////////for local connect  
-// $_HOST_NAME = "localhost";  
-// $_DB_USERNAME ="root";
-// $_DB_PASSWORD ="";
-
 $conn = mysqli_connect($_HOST_NAME, $_DB_USERNAME, $_DB_PASSWORD)or die("Unable to connect to MySQL1");
 mysqli_select_db($conn,"intern77_revamped_db");
 mysqli_set_charset($conn, "utf8mb4");

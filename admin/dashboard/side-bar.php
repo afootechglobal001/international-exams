@@ -101,9 +101,6 @@
         <div class="link" title="Product Report" onclick="">- Income Report <div class="num" id="">0</div></div>
         <div class="hidden" id="_product_report"><i class="bi-boxes"></i> Income Report</div>
 
-        <div class="link" title="Sales Report" onclick="">- Expenses Report <div class="num" id="">0</div></div>
-        <div class="hidden" id="_sales_report"><i class="bi-boxes"></i> Expenses Report</div>
-
         <div class="link" title="Wallet Report" onclick="">- Wallet Report <div class="num" id="">0</div></div>
         <div class="hidden" id="_wallet_report"><i class="bi-credit-card"></i> Wallet Report</div>
     </div>

@@ -234,10 +234,10 @@ function _fetchDashboardStatistics() {
 					const totalActiveStudyAbroadCount = data.totalActiveStudyAbroadCount;
 					const totalActiveBlogCount = data.totalActiveBlogCount;
 					const totalActiveFaqCount = data.totalActiveFaqCount;
-					const totalActiveCountryCount = data.totalActiveCountryCount;
 					const totalActiveBranchCount = data.totalActiveBranchCount;
           const totalActiveTestimonyCount = data.totalActiveTestimonyCount;
           const totalActiveIctCourseCount = data.totalActiveIctCourseCount;
+          const totalActiveCustomerCount = data.totalActiveCustomerCount;
 
 					$('#totalActiveStaffCount').html(totalActiveStaffCount);
 					$('#totalActiveGalleryCount, #sideGalleryCount').html(totalActiveGalleryCount);
@@ -245,10 +245,11 @@ function _fetchDashboardStatistics() {
 					$('#totalActiveStudyAbroadCount, #sideStudyAbroadCount').html(totalActiveStudyAbroadCount);
 					$('#totalActiveBlogCount, #sideBlogCount').html(totalActiveBlogCount);
 					$('#totalActiveFaqCount, #sideFaqCount').html(totalActiveFaqCount);
-          $('#totalActiveCountryCount').html(totalActiveCountryCount);
+          $('#totalActiveBranchCount').html(totalActiveBranchCount);
 					$('#totalActiveBranchCount').html(totalActiveBranchCount);
 					$('#totalActiveTestimonyCount, #sideTestimonyCount').html(totalActiveTestimonyCount);
           $('#totalActiveIctCourseCount').html(totalActiveIctCourseCount);
+          $('#totalActiveCustomerCount').html(totalActiveCustomerCount);
 				}
 			})
 			.catch((error) => {
@@ -268,4 +269,222 @@ function thousandSeparator(val) {
   });
   //   return formatter.format(val);
   return isNaN(parseFloat(formatter.format(val))) ? "-" : formatter.format(val);
+}
+
+
+
+///// Dashbaord Custom Revenue Filtering ////////
+function _fetchRevenueFiltering(filterWith, text) {
+  $("#srch-text").html(text);
+  $(".custom-srch-div").fadeOut(500);
+  let dateFrom;
+  const dateTo = new Date().toISOString().split("T")[0];
+  if (filterWith === "srch-today") {
+    dateFrom = new Date().toISOString().split("T")[0];
+  } else if (filterWith === "srch-week") {
+    const currentDate = new Date();
+    const firstDayOfWeek = new Date(
+      currentDate.setDate(currentDate.getDate() - currentDate.getDay())
+    )
+      .toISOString()
+      .split("T")[0];
+    dateFrom = firstDayOfWeek;
+  } else if (filterWith === "srch-7") {
+    /// for last 7 days
+    const currentDate = new Date();
+    const pastDate = new Date(currentDate.setDate(currentDate.getDate() - 6))
+      .toISOString()
+      .split("T")[0];
+    dateFrom = pastDate;
+  } else if (filterWith === "srch-30") {
+    /// for last 30 days
+    const currentDate = new Date();
+    const pastDate = new Date(currentDate.setDate(currentDate.getDate() - 29))
+      .toISOString()
+      .split("T")[0];
+    dateFrom = pastDate;
+  } else if (filterWith === "srch-90") {
+    /// for last 90 days
+    const currentDate = new Date();
+    const pastDate = new Date(currentDate.setDate(currentDate.getDate() - 89))
+      .toISOString()
+      .split("T")[0];
+    dateFrom = pastDate;
+  } else if (filterWith === "srch-month") {
+    const currentDate = new Date();
+    const firstDayOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      2
+    )
+      .toISOString()
+      .split("T")[0];
+    dateFrom = firstDayOfMonth;
+  } else if (filterWith === "srch-year") {
+    const currentDate = new Date();
+    const firstDayOfYear = new Date(currentDate.getFullYear(), 0, 2)
+      .toISOString()
+      .split("T")[0];
+    dateFrom = firstDayOfYear;
+  } else if (filterWith === "srch-1year") {
+    /// for last 1 year
+    const currentDate = new Date();
+    const pastDate = new Date(
+      currentDate.setFullYear(currentDate.getFullYear() - 1)
+    )
+      .toISOString()
+      .split("T")[0];
+    dateFrom = pastDate;
+  }
+
+  _revenueFiltering(dateFrom, dateTo);
+}
+function _fetchCustomRevenueFiltering() {
+  let issueCount = 0;
+
+  const dateFrom = $("#datepickers-from").val();
+  const dateTo = $("#datepickers-to").val();
+
+  $("#datepickers-from, #datepickers-to").removeClass("issue");
+  $("#issue_from, #issue_to").html("");
+
+  if (!dateFrom) {
+    $("#issue_from").html("Kindly Provide Start Date To Continue");
+    issueCount++;
+  }
+
+  if (!dateTo) {
+    $("#issue_to").html("Kindly Provide End Date To Continue");
+    issueCount++;
+  }
+
+  if (issueCount > 0) {
+    return;
+  }
+
+  _revenueFiltering(dateFrom, dateTo);
+}
+
+function _revenueFiltering(dateFrom, dateTo) {
+  $("#get-form-more-div")
+    .css({
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center",
+    })
+    .fadeIn(500);
+  $.ajax({
+    type: "GET",
+    url: `${endPoint}/admin/dashboard/fetch-dashboard-revenue?dateFrom=${dateFrom}&dateTo=${dateTo}`,
+    dataType: "json",
+    cache: false,
+    headers: getAuthHeaders(true),
+    success: function (info) {
+      if (info.success) {
+
+        // Update custom date from and date to///
+        $("#dateFrom").html(info.dateFrom);
+        $("#dateTo").html(info.dateTo);
+
+        // Update dashboard Income
+        $("#totalIncome").html(
+          "<s>N</s>" + thousandSeperator(info.totalIncome)
+        );
+        $("#totalWalletBalance").html(
+          "<s>N</s>" + thousandSeperator(info.totalWalletBalance)
+        );
+
+        const incomeDataPoints = [];
+        const walletDataPoints = [];
+        // Update dashboard revenue bar Chart ///
+        if (info.incomeData && info.incomeData.length > 0) {
+          for (let i = 0; i < info.incomeData.length; i++) {
+            const fetchedData = info.incomeData[i];
+            const payDate = new Date(fetchedData.payDate);
+            const incomeAmount = parseFloat(fetchedData.incomeAmount);
+
+            incomeDataPoints.push({
+              x: payDate,
+              y: incomeAmount,
+            });
+          }
+        }
+
+        if (info.walletData && info.walletData.length > 0) {
+          for (let i = 0; i < info.walletData.length; i++) {
+            const fetchedData = info.walletData[i];
+            const payDate = new Date(fetchedData.payDate);
+            console.log(payDate);
+            const walletAmount = parseFloat(fetchedData.walletAmount);
+
+            walletDataPoints.push({
+              x: payDate,
+              y: walletAmount,
+            });
+          }
+        }
+
+          var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light1",
+            axisX: {
+            valueFormatString: "DD MMM",
+            crosshair: {
+              enabled: true,
+              snapToDataPoint: true,
+            },
+          },
+            axisY: {
+                suffix: "₦",
+                includeZero: true
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                reversed: true,
+                verticalAlign: "top",
+                horizontalAlign: "left"
+            },
+            data: [{
+              type: "stackedColumn",
+              name: "Income",
+              showInLegend: true,
+              xValueFormatString: "DD MMM, YYYY",
+              yValueFormatString: "₦#,##0",
+              color: "#9d043c",
+              dataPoints: incomeDataPoints
+            },
+            {
+              type: "stackedColumn",
+              name: "Wallet",
+              showInLegend: true,
+              xValueFormatString: "DD MMM, YYYY",
+              yValueFormatString: "₦#,##0",
+              color: "#f7a025",
+              dataPoints: walletDataPoints
+            }
+        ]
+    });
+       chart.render();
+        function toogleDataSeries(e) {
+          if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+              e.dataSeries.visible = false;
+          } else {
+              e.dataSeries.visible = true;
+          }
+            chart.render();
+        }
+      } else {
+        const response = info.response;
+        if (response < 100) {
+          _logOut();
+        }
+      }
+    },
+    error: function (err) {
+      console.error(err);
+    },
+  });
+  $("#get-form-more-div").fadeOut(500);
 }

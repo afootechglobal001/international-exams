@@ -34,7 +34,7 @@
                         <div class="statistics-text">
                             <p>Branches</p>
                             <span>Statistics of Branches</span>
-                            <h2 id="totalActiveCountryCount">0</h2>
+                            <h2 id="totalActiveBranchCount">0</h2>
                         </div>
                         <div class="statistics-icon pending"><i class="bi-diagram-3"></i></div>
                     </div>
@@ -51,12 +51,12 @@
                     </div>
                 </div>
 
-                <div class="statistics-div" id="students" title="Students">
+                <div class="statistics-div" id="students" title="Customers">
                     <div class="statistics-inner-div">
                         <div class="statistics-text">
-                            <p>Students</p>
-                            <span>Statistics of Students</span>
-                            <h2 id="">30</h2>
+                            <p>Customers</p>
+                            <span>Statistics of Customers</span>
+                            <h2 id="totalActiveCustomerCount">30</h2>
                         </div>
                         <div class="statistics-icon completed"><i class="bi-people"></i></div>
                     </div>
@@ -191,14 +191,13 @@
 
                         <div class="trending-back-div">
                             <div class="revenue-div">
-                                <p>Revenue from <span id="dateFrom">January 18 2025</span> - <span id="dateTo">February 17
-                                        2025</span></p>
+                                <p>Revenue from <span id="dateFrom">Loading...</span> - <span id="dateTo">Loading...</span></p>
                                 <div class="fund-div">
                                     <h3>
-                                        <p id="sumCreditCardPayments"><s>N</s>1,000,000.29</p><span>Sales</span>
+                                        <p id="totalIncome"><s>N</s> Loading...</p><span>Income</span>
                                     </h3>
                                     <h3>
-                                        <p id="sumBankTransferPayments"><s>N</s> 345,000.34</p><span>Wallet</span>
+                                        <p id="totalWalletBalance"><s>N</s> Loading...</p><span>Wallet</span>
                                     </h3>
                                 </div>
                             </div>
@@ -229,71 +228,72 @@
                                         },
                                         data: [{
                                                 type: "stackedColumn",
-                                                name: "Sales",
+                                                name: "Income",
                                                 showInLegend: true,
                                                 xValueFormatString: "DD MMM, YYYY",
                                                 yValueFormatString: "₦#,##0",
                                                 color: "#9d043c",
-                                                dataPoints: [{
-                                                        x: new Date(2025, 0, 1),
-                                                        y: 250000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 2),
-                                                        y: 180000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 3),
-                                                        y: 100000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 4),
-                                                        y: 300000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 5),
-                                                        y: 120000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 6),
-                                                        y: 150000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 7),
-                                                        y: 275000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 8),
-                                                        y: 160000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 9),
-                                                        y: 350000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 10),
-                                                        y: 380000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 11),
-                                                        y: 0
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 12),
-                                                        y: 100000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 13),
-                                                        y: 0
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 14),
-                                                        y: 180000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 15),
-                                                        y: 270000
-                                                    }
+                                                dataPoints: [
+                                                    // {
+                                                    //     x: new Date(2025, 0, 1),
+                                                    //     y: 250000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 2),
+                                                    //     y: 180000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 3),
+                                                    //     y: 100000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 4),
+                                                    //     y: 300000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 5),
+                                                    //     y: 120000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 6),
+                                                    //     y: 150000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 7),
+                                                    //     y: 275000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 8),
+                                                    //     y: 160000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 9),
+                                                    //     y: 350000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 10),
+                                                    //     y: 380000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 11),
+                                                    //     y: 0
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 12),
+                                                    //     y: 100000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 13),
+                                                    //     y: 0
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 14),
+                                                    //     y: 180000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 15),
+                                                    //     y: 270000
+                                                    // }
                                                 ]
                                             },
                                             {
@@ -303,66 +303,67 @@
                                                 xValueFormatString: "DD MMM, YYYY",
                                                 yValueFormatString: "₦#,##0",
                                                 color: "#f7a025",
-                                                dataPoints: [{
-                                                        x: new Date(2025, 0, 1),
-                                                        y: 180000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 2),
-                                                        y: 50000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 3),
-                                                        y: 80000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 4),
-                                                        y: 0
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 5),
-                                                        y: 150000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 6),
-                                                        y: 40000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 7),
-                                                        y: 300000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 8),
-                                                        y: 200000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 9),
-                                                        y: 0
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 10),
-                                                        y: 120000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 11),
-                                                        y: 90000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 12),
-                                                        y: 200000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 13),
-                                                        y: 0
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 14),
-                                                        y: 280000
-                                                    },
-                                                    {
-                                                        x: new Date(2025, 0, 15),
-                                                        y: 50000
-                                                    }
+                                                dataPoints: [
+                                                    // {
+                                                    //     x: new Date(2025, 0, 1),
+                                                    //     y: 180000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 2),
+                                                    //     y: 50000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 3),
+                                                    //     y: 80000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 4),
+                                                    //     y: 0
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 5),
+                                                    //     y: 150000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 6),
+                                                    //     y: 40000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 7),
+                                                    //     y: 300000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 8),
+                                                    //     y: 200000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 9),
+                                                    //     y: 0
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 10),
+                                                    //     y: 120000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 11),
+                                                    //     y: 90000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 12),
+                                                    //     y: 200000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 13),
+                                                    //     y: 0
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 14),
+                                                    //     y: 280000
+                                                    // },
+                                                    // {
+                                                    //     x: new Date(2025, 0, 15),
+                                                    //     y: 50000
+                                                    // }
                                                 ]
                                             }
                                         ]
@@ -425,6 +426,7 @@
     <script>
         $(document).ready(function() {
             _fetchDashboardStatistics();
+            _fetchRevenueFiltering('srch-30', 'Last 30 Days');
         });
     </script>
 <?php } ?>

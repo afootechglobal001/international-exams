@@ -86,13 +86,6 @@ function _fetchTestimonyData() {
 			if (response.success && response.data?.length > 0) {
                 _initFetchTestimonyData(response.data);
 			} else {
-				_showCustomConfirm({
-					title: "TESTIMONY ERROR",
-					message: response.message,
-					alertType: "warning",
-					trueActionBtnText: "OK",
-				});
-
 				$('#pageContent').html(`
 					<div class="false-notification-div">
 						<p>${response.message}</p>

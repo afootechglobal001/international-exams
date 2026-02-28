@@ -82,7 +82,7 @@
                             <div class="top-title">
                                 <h2>FREE E-BOOK</h2>
                             </div>
-                            <h3>Get Your Free E-book: Step-by-Step Guide to Studying <span>#Abroad</span></h3>
+                            <h3>Get Your Free E-book: Step-by-Step Guide to Studying <span>Abroad</span></h3>
                         </div>
                     </div>
 

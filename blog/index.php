@@ -110,7 +110,7 @@
                             <div class="top-title">
                                 <h2>LATEST INSIGHTS</h2>
                             </div>
-                            <h3>Our Latest News And <span>#Articles</span></h3>
+                            <h3>Related News And <span>Articles</span></h3>
                         </div>
                     </div>
 

@@ -18,13 +18,13 @@
                 <a href="#" class="hide-time" title="Mail Us">
                     <i class="bi-envelope"></i>
                     <div>
-                        <span>customer@internationalexam.com</span><br/>
+                        <span>customer@internationalexam.com</span><br />
                     </div>
                 </a>
                 <span class="hide-time"> |</span>
-    
 
-                <a href="#" title=" Call Us">
+
+                <a href="tel:0703-841-1794" title="Call Customer Care">
                     <i class="bi-telephone"></i>
                     <span id="phoneNumber">Loading...</span>
                 </a>
@@ -49,11 +49,13 @@
             </div>
 
             <div class="social-icon-div">
+                <a href="tel:0703-841-1794" title="Call Customer Care">
+                    <i class="bi-telephone-outbound-fill" title="Call Customer Care"></i></a>
                 <a href="https://api.whatsapp.com/send?text=Greetings! I'd like to make an enquiry on the services you offer.&phone=+2347038411794" target="_blank" title="Whatsapp">
-                <i class="bi-whatsapp" title="Whatsapp"></i></a>
-                <a href="#" title="" href="#"><i class="bi-facebook" title="facebook"></i></a>
+                    <i class="bi-whatsapp" title="Whatsapp"></i></a>
+                <!-- <a href="#" title="" href="#"><i class="bi-facebook" title="facebook"></i></a>
                 <a href="#" title="" href="#"><i class="bi-twitter" title="twitter/X"></i></a>
-                <a href="#" title="" href="#"><i class="bi-instagram" title="instagram"></i></a>
+                <a href="#" title="" href="#"><i class="bi-instagram" title="instagram"></i></a> -->
             </div>
         </div>
         <script>

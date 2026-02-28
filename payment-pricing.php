@@ -76,7 +76,7 @@
                                     <div class="top-title">
                                         <h2>PAYMENT & PRICING</h2>
                                     </div>
-                                    <h3>Flexible & Transparent Plans for Your <span>#Exams</span></h3>
+                                    <h3>Flexible & Transparent Plans for Your <span>Exams</span></h3>
                                 </div>
                             </div>
 

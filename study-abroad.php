@@ -86,7 +86,7 @@
                             <div class="top-title">
                                 <h2>STUDY ABROAD</h2>
                             </div>
-                            <h3>Achieve Your Dreams: Study in Top Universities <span>#Abroad</span></h3>
+                            <h3>Achieve Your Dreams: Study in Top Universities <span>Abroad</span></h3>
                         </div>
 
                         <div class="btn-div">

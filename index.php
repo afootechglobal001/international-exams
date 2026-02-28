@@ -261,7 +261,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                                 alt="About Us icon" />
                         </div>
 
-                        <h2>Multiple Awards,<span class="text"> #We are the Best in Africa</span></h2>
+                        <h2>Multiple Awards,<span class="text"> We are the Best in Africa</span></h2>
                         <p>We can vouch in Registration and Preparation of students for major standardized examinations
                             such as TOEFL, PTE, IELTS, SAT I & II, GRE, GMAT, LSAT, MCAT, USMLE and other related
                             services. Register Now and Have access to the Complete Video Course on your exam FREE.</p>
@@ -297,7 +297,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                 <div class="inner-body-div-in">
                     <div class="title-div" data-aos="fade-in" data-aos-duration="1200">
                         <div class="left-div">
-                            <h3>Our <span>#Exams</span></h3>
+                            <h3>Our <span>Exams</span></h3>
                         </div>
 
                         <div class="btn-div">
@@ -337,7 +337,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                     <div class="right-container" data-aos="fade-up" data-aos-duration="1200">
                         <div class="faq-title">
                             <div><span class="top-title">FAQ</span></div>
-                            <h2>Frequently Asked <span>#Questions</span></h2>
+                            <h2>Frequently Asked <span>Questions</span></h2>
                         </div>
 
                         <div class="faq-toggle-back" id="indexFaqContent">
@@ -367,7 +367,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                         </div>
 
                         <div class="text-div">
-                            <h2>What Our Students Say <span>#About Us</span></h2>
+                            <h2>What Our Students Say <span>About Us</span></h2>
                             <p>Students from <?php echo $getwebsiteCountryName; ?>, across Africa share how EDUGRADE
                                 SERVICES has supported their
                                 success in international exams through expert guidance, timely assistance, and a
@@ -432,7 +432,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                             <div class="top-title">
                                 <h2>LATEST INSIGHTS</h2>
                             </div>
-                            <h3>Our Latest News And <span>#Articles</span></h3>
+                            <h3>Our Latest News And <span>Articles</span></h3>
                         </div>
 
                         <div class="btn-div">

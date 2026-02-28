@@ -219,7 +219,7 @@
                         </div>
 
                         <div class="text-div">
-                            <h2>What Our Students Say <span>#About Us</span></h2>
+                            <h2>What Our Students Say <span>About Us</span></h2>
                             <p>Students from <?php echo $getwebsiteCountryName; ?>, across Africa share how EDUGRADE
                                 SERVICES has supported their success in international exams through expert guidance,
                                 timely assistance, and a seamless registration process.</p>

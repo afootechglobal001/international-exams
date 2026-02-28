@@ -90,7 +90,7 @@ Best place to register ACT exam in <?php echo $getwebsiteCountryName; ?>, where 
                             <div class="top-title">
                                 <h2>INTERNATIONAL EXAMS</h2>
                             </div>
-                            <h3>Our <span>#Exams</span></h3>
+                            <h3>Our <span>Exams</span></h3>
                         </div>
 
                         <div class="btn-div">

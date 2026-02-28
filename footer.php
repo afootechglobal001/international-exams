@@ -17,10 +17,13 @@
 
                 <p>EDUGRADE SERVICES - A special Educational Consultancy Service Agency, which set up centres in almost the states in <?php echo $getwebsiteCountryName; ?> and other countries like GHANA, KENYA, ETHIOPIA, UGANDA and many more. </p>
                 <div class="icon-div">
-                    <a href="" title="YouTube">
-                        <li><i class="bi-youtube"></i></li>
+                    <a href="tel:0703-841-1794" title="Call Customer Care">
+                        <li><i class="bi-telephone-outbound"></i></li>
                     </a>
-                    <a href="https://web.facebook.com" target="_blank" title="Facebook">
+                    <!-- <a href="" title="YouTube">
+                        <li><i class="bi-youtube"></i></li>
+                    </a> -->
+                    <!-- <a href="https://web.facebook.com" target="_blank" title="Facebook">
                         <li><i class="bi-facebook"></i></li>
                     </a>
                     <a href="https://twitter.com" target="_blank" title="Twitter">
@@ -28,8 +31,8 @@
                     </a>
                     <a href="https://www.instagram.com" target="_blank" title="Instagram">
                         <li><i class="bi-instagram"></i></li>
-                    </a>
-                    <a href="https://api.whatsapp.com/send?text=Hello AfooTECH Global&amp;phone=+234 812 700 0262" target="_blank" title="Whatsapp">
+                    </a> -->
+                    <a href="https://api.whatsapp.com/send?text=Greetings! I'd like to make an enquiry on the services you offer.&phone=+2347038411794" target="_blank" title="Whatsapp">
                         <li><i class="bi-whatsapp"></i></li>
                     </a>
                 </div>

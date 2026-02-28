@@ -49,7 +49,8 @@
             </div>
 
             <div class="social-icon-div">
-                <a href="#" title="" href="#"><i class="bi-whatsapp" title="Whatsapp"></i></a>
+                <a href="https://api.whatsapp.com/send?text=Greetings! I'd like to make an enquiry on the services you offer.&phone=+2347038411794" target="_blank" title="Whatsapp">
+                <i class="bi-whatsapp" title="Whatsapp"></i></a>
                 <a href="#" title="" href="#"><i class="bi-facebook" title="facebook"></i></a>
                 <a href="#" title="" href="#"><i class="bi-twitter" title="twitter/X"></i></a>
                 <a href="#" title="" href="#"><i class="bi-instagram" title="instagram"></i></a>

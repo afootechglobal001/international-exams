@@ -2,44 +2,44 @@
 <?php if (!$checkBasicSecurity) {goto end;}?>
 <?php
 //////////////////declaration of variables//////////////////////////////////////
-    $firstName=trim($data['firstName']);
-    $lastName=trim($data['lastName']);
-    $emailAddress=trim($data['emailAddress']);
-    $phoneNumber=trim($data['phoneNumber']);
-    $countryId=trim($data['countryId']);
-    $userTypeId=trim($data['userTypeId']);
-    $password=trim($data['password']);
-    $cpassword=trim($data['cpassword']);
-//////////////////////////////////////////////////////////////////////////////////////////////
-    $fullName="$firstName $lastName";
-//////////////////check for empty fields//////////////////////////////////////
-    validateEmptyField($firstName, 'FIRST NAME');
-    validateEmptyField($lastName, 'LAST NAME');
+	$emailAddress=trim($data['emailAddress']);
+    $otp =trim($data['otp']);
+    //////////////////check for empty fields//////////////////////////////////////
     validateEmptyField($emailAddress, 'EMAIL');
-    validateEmptyField($phoneNumber, 'PHONE NUMBER');
-    validateEmptyField($countryId, 'COUNTRY');
-    validateEmptyField($userTypeId, 'USER TYPE');
-    validateEmptyField($password, 'PASSWORD');
-    validateEmptyField($cpassword, 'CONFIRM PASSWORD');
-    
-    
-    if(!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)){
+    validateEmptyField($otp, 'OTP');
+
+    $query=mysqli_query($conn,"SELECT * FROM USER_SIGNUP_VERIFIER_TAB WHERE emailAddress='$emailAddress' AND `otp`='$otp'") or die (mysqli_error($conn));
+    $countUser=mysqli_num_rows($query);
+    if ($countUser==0){ /// start if 2
         $response = [
-            'response'=> 102,
+            'response'=> 103,
             'success'=> false,
-            'message'=> "INVALID EMAIL ADDRESS! Enter a valid email address and try again",
-        ]; 
-        goto end;
-	}
-    if($password!=$cpassword){
-        $response = [
-            'response'=> 102,
-            'success'=> false,
-            'message'=> "Password not matched. please check and try again.",
-        ]; 
+            'message'=> "OTP is not correct. Please check and try again.",
+        ];
         goto end;
     }
+    ////// get all user details from the otp table
+    $row=mysqli_fetch_array($query);
+    $firstName=$row['firstName'];
+    $lastName=$row['lastName'];
+    $fullName="$firstName $lastName";
+    $emailAddress=$row['emailAddress'];
+    $phoneNumber=$row['phoneNumber'];
+    $countryId=$row['countryId'];
+    $userTypeId=$row['userTypeId'];
+    $password=$row['password'];
+
+    //// get country details
+    $query=mysqli_query($conn,"SELECT * FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
+    $row=mysqli_fetch_array($query);
+    $countryName=$row['countryName'];
+
+    ///// get user type details
+    $query=mysqli_query($conn,"SELECT * FROM SETUP_USER_TYPE_TAB WHERE userTypeId='$userTypeId'") or die (mysqli_error($conn));
+    $row=mysqli_fetch_array($query);
+    $userTypeName=$row['userTypeName'];
     
+    /////check if the email exist in the user table
     $query=mysqli_query($conn,"SELECT * FROM USERS_TAB WHERE emailAddress='$emailAddress'") or die (mysqli_error($conn));
     $countUser=mysqli_num_rows($query);
     if ($countUser>0){ /// start if 2
@@ -50,17 +50,7 @@
         ];
         goto end;
     }
-   ////////////////////////////////////////////////////////////////////////////////////////////// 
-   //// get country details
-    $query=mysqli_query($conn,"SELECT * FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
-    $row=mysqli_fetch_array($query);
-    $countryName=$row['countryName'];
-
-    ///// get user type details
-    $query=mysqli_query($conn,"SELECT * FROM SETUP_USER_TYPE_TAB WHERE userTypeId='$userTypeId'") or die (mysqli_error($conn));
-    $row=mysqli_fetch_array($query);
-    $userTypeName=$row['userTypeName'];
-
+    
     ///////////////////////geting sequence//////////////////////////
     $countId='USER';
     $sequence=$callclass->_getSequenceCount($conn, $countId);
@@ -70,13 +60,13 @@
     
     $password=md5($password);
     $accessKey=trim(md5($userId.date("Ymdhis")));
-    $otp = rand(111111,999999);
     
     mysqli_query($conn,"INSERT INTO `USERS_TAB`
     (`userId`, `accessKey`, `otp`,  `firstName`, `lastName`, `emailAddress`, `phoneNumber`, `countryId`, `userTypeId`, `password`, `statusId`, `lastLoginDate`, `createdTime`) VALUES  
     ('$userId', '$accessKey', '$otp', '$firstName', '$lastName', '$emailAddress', '$phoneNumber', '$countryId', '$userTypeId', '$password', 1, NOW(), NOW())")or die (mysqli_error($conn));
     
-
+    /// delete the record
+    mysqli_query($conn,"DELETE FROM `USER_SIGNUP_VERIFIER_TAB` WHERE emailAddress='$emailAddress'")or die (mysqli_error($conn));
     require_once '../../mail/user/signup-success.php';
     $response = [
         'response' => 200,

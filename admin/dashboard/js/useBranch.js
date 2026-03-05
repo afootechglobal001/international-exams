@@ -985,7 +985,7 @@ function _addExamPricingCallback(form) {
         });
       } else {
         _showCustomConfirm({
-          title: "Add Exam Pricing Error",
+          title: "Exam Already Exists",
           message: message,
           alertType: "warning",
           trueActionBtnText: "OK",

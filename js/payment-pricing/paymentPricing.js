@@ -168,15 +168,24 @@ function _fetchAccountDetails() {
       .then((response) => {
         if (response.success && response.data) {
           const data = response.data[0];
-          ////// Handle Account Details //////
+          ////// Naira Account Details //////
           const accountName = data?.accountData?.accountName;
           const accountNumber = data?.accountData?.accountNumber;
           const bankName = data?.accountData?.bankName;
+
+           ////// Dollar Account Details //////
+          const dollarAccountName = data?.accountData?.dollarAccountName;
+          const dollarAccountNumber = data?.accountData?.dollarAccountNumber;
+          const dollarAccountBank = data?.accountData?.dollarAccountBank;
           
 
           $("#accountName").html(accountName);
           $("#accountNumber").html(accountNumber);
           $("#bankName").html(bankName);
+
+          $("#dollarAccountName").html(dollarAccountName);
+          $("#dollarAccountNumber").html(dollarAccountNumber);
+          $("#dollarAccountBank").html(dollarAccountBank);
         }
       })
       .catch((error) => {

@@ -189,6 +189,15 @@ $message = '
                     <td style="border:1px solid #eee;">'.$fetchQuery['examAmountData']['currency'].' '.$fetchQuery['examAmountData']['amount'].'</td>
                 </tr>
                 <tr style="background:#f9fafb;">
+                    <td style="border:1px solid #eee;"><strong>Payment Status</strong></td>
+                    <td style="border:1px solid #eee;">PENDING</td>
+                </tr>
+            </table>
+
+            <!-- ================= BANK DETAILS ================= -->
+            <h3 style="color:#9d043c; margin-top:30px;">Bank Detail (Naira)</h3>
+            <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
+                <tr style="background:#f9fafb;">
                     <td style="border:1px solid #eee;"><strong>Bank Name</strong></td>
                     <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['bankName'].'</td>
                 </tr>
@@ -200,9 +209,22 @@ $message = '
                     <td style="border:1px solid #eee;"><strong>Account Number</strong></td>
                     <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['accountNumber'].'</td>
                 </tr>
+            </table>
+
+            <!-- ================= BANK DETAILS ================= -->
+            <h3 style="color:#9d043c; margin-top:30px;">Bank Detail (Dollar)</h3>
+            <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse; font-size:14px;">
                 <tr style="background:#f9fafb;">
-                    <td style="border:1px solid #eee;"><strong>Payment Status</strong></td>
-                    <td style="border:1px solid #eee;">PENDING</td>
+                    <td style="border:1px solid #eee;"><strong>Bank Name</strong></td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['dollarBankName'].'</td>
+                </tr>
+                <tr style="background:#f9fafb;">
+                    <td style="border:1px solid #eee;"><strong>Account Name</strong></td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['dollarAccountName'].'</td>
+                </tr>
+                <tr style="background:#f9fafb;">
+                    <td style="border:1px solid #eee;"><strong>Account Number</strong></td>
+                    <td style="border:1px solid #eee;">'.$fetchQuery['bankDetailsData']['dollarAccountNumber'].'</td>
                 </tr>
             </table>
             

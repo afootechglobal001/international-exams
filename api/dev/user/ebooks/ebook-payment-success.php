@@ -37,6 +37,27 @@
         ];
         goto end;
      }
+      ///// get transaction details
+    $getTransactionDetailsQuery=mysqli_query($conn,"SELECT * FROM TRANSACTION_TAB WHERE transactionId='$transactionId'")or die (mysqli_error($conn));
+    $getTransactionDetailsFetch=mysqli_fetch_assoc($getTransactionDetailsQuery);
+    $fetchQuery['transactionData']=$getTransactionDetailsFetch;
+
+    $paymentMethodId=$getTransactionDetailsFetch['paymentMethodId'];
+    $statusId=$getTransactionDetailsFetch['statusId'];
+
+    /// get payment method details
+    $getPaymentMethodQuery=mysqli_query($conn,"SELECT paymentMethodId, paymentMethodName FROM SETUP_PAYMENT_METHOD_TAB WHERE paymentMethodId='$paymentMethodId'")or die (mysqli_error($conn));
+    $getPaymentMethodFetch=mysqli_fetch_assoc($getPaymentMethodQuery); 
+    $fetchQuery['paymentMethodData']=$getPaymentMethodFetch;
+
+
+    /// get payment status details
+    $getPaymentStatusQuery=mysqli_query($conn,"SELECT statusId, statusName FROM SETUP_STATUS_TAB WHERE statusId='$statusId'")or die (mysqli_error($conn));
+    $getPaymentStatusFetch=mysqli_fetch_assoc($getPaymentStatusQuery);
+    $fetchQuery['paymentStatusData']=$getPaymentStatusFetch;
+
+    //// send mail
+    require_once '../../mail/user/exam-registration-pay-now-email.php';
      $response = [
             'response'=> 200,
             'success'=> true,

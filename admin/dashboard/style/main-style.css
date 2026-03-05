@@ -20,7 +20,7 @@ main {
   width: calc(100% - 40px);
   padding: 0px 20px;
   min-height: 120px;
-  background: rgba(250, 245, 229, 0.5);
+  background: #faf5e580;
   display: flex;
   align-items: center;
   justify-content: space-between;

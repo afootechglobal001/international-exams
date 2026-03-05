@@ -69,7 +69,7 @@
     $fetchQuery['examAmountData']=$getExamAmountFetch;
 
     ////get bank details
-    $getBankDetailsQuery=mysqli_query($conn,"SELECT bankName, accountName, accountNumber FROM COUNTRY_TAB WHERE countryId='$countryId'")or die (mysqli_error($conn));
+    $getBankDetailsQuery=mysqli_query($conn,"SELECT bankName, accountName, accountNumber, dollarBankName, dollarAccountName, dollarAccountNumber FROM COUNTRY_TAB WHERE countryId='$countryId'")or die (mysqli_error($conn));
     $getBankDetailsFetch=mysqli_fetch_assoc($getBankDetailsQuery);
     $fetchQuery['bankDetailsData']=$getBankDetailsFetch;
 

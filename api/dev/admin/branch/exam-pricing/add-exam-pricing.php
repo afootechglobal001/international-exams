@@ -18,7 +18,7 @@
 <?php
     //////////////////declaration of variables//////////////////////////////////////
     $countryId =trim($_GET['countryId']);
-    $currency=trim($_GET['currency']);
+    $currency=trim($data['currency']);
     $examId=trim($data['examId']);
     $amount=trim($data['amount']);
     $physicalLectureAmount=trim($data['physicalLectureAmount']);

@@ -953,23 +953,14 @@
                             </div>
                         </div>
 
-                        <div class="main-content-div form-main-content" data-aos="fade-in" data-aos-duration="1500">
-                            <div class="tables-content-div form-content-div">
-                                <div class="content-title">
-                                    <div class="title">
-                                        <i class="bi bi-cash-stack"></i>
-                                        <p>Currency</p>
-                                    </div>
-                                </div>
-
-                                <div class="inner-table-content">
-                                    <span id="currency">
-                                        <script>
-                                            $("#currency").html(getEachCountrySession?.currency);
-                                        </script>
-                                    </span>
-                                </div>
-                            </div>
+                        <div class="text_field_container" id="currency_container">
+                            <script>
+                                selectField({
+                                    id: 'currency',
+                                    title: 'Select Currency'
+                                });
+                                _getSelectCurrency('currency');
+                            </script>
                         </div>
 
                         <div class="text_field_container" id="amount_container">

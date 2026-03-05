@@ -38,7 +38,7 @@
 <?php } ?>
 
 <?php if ($page == 'forgetPassword') { ?>
-    <div class="form-box-content" id="viewLogin">
+    <div class="form-box-content">
         <div class="logo-div">
             <a href="<?php echo $websiteUrl ?>" title="Home">
                 <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"

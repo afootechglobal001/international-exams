@@ -749,12 +749,6 @@ function _getSelectExams(fieldId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -819,12 +813,52 @@ function _getSelectFetchExam(publishId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
+  }
+}
+
+function _getSelectCurrency(fieldId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/preset-data/fetch-currency`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        if (success === true) {
+          $("#searchList_" + fieldId).html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].currency;
+            const value = data[i].currency;
+            $("#searchList_" + fieldId).append(
+              "<li onclick=\"_clickOption('searchList_" +
+                fieldId +
+                "', '" +
+                id +
+                "', '" +
+                value +
+                "');\">" +
+                value +
+                "</li>"
+            );
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
     });
+  } catch (error) {
+    console.error("Error: ", error);
   }
 }
 
@@ -833,11 +867,12 @@ function _addExamPricing() {
     let issueCount = 0;
     const examId = $("#publishId").val();
     const amount = $("#amount").val();
+    const currency = $("#currency").val();
     const physicalLectureAmount = $("#physicalLectureAmount").val();
     const onlineLectureAmount = $("#onlineLectureAmount").val();
 
-    $("#publishId, #amount, #physicalLectureAmount, #onlineLectureAmount").removeClass("issue");
-    $("#issue_publishId, #issue_amount, #issue_physicalLectureAmount, #issue_onlineLectureAmount").html("");
+    $("#publishId, #amount, #currency, #physicalLectureAmount, #onlineLectureAmount").removeClass("issue");
+    $("#issue_publishId, #issue_amount, #issue_currency, #issue_physicalLectureAmount, #issue_onlineLectureAmount").html("");
 
     if (!examId) {
       $("#publishId").addClass("issue");
@@ -849,6 +884,14 @@ function _addExamPricing() {
       $("#amount").addClass("issue");
       $("#issue_amount").html(
         "USER ERROR! Kindly Provide exam pricing to continue"
+      );
+      issueCount++;
+    }
+
+    if (!currency) {
+      $("#currency").addClass("issue");
+      $("#issue_currency").html(
+        "USER ERROR! Kindly Select currency to continue"
       );
       issueCount++;
     }
@@ -871,7 +914,7 @@ function _addExamPricing() {
 
     if (issueCount > 0) return;
 
-    const form = { examId, amount, physicalLectureAmount, onlineLectureAmount };
+    const form = { examId, amount, currency, physicalLectureAmount, onlineLectureAmount };
     _showCustomConfirm({
       callback: () => {
         _addExamPricingCallback(form);
@@ -909,13 +952,14 @@ function _addExamPricingCallback(form) {
   const formData = {
     examId: form.examId,
     amount: form.amount,
+    currency: form.currency,
     physicalLectureAmount: form.physicalLectureAmount,
     onlineLectureAmount: form.onlineLectureAmount,
   };
 
   $.ajax({
     type: "POST",
-    url: `${endPoint}/admin/branch/exam-pricing/add-exam-pricing?countryId=${getEachCountrySession?.countryId}&currency=${getEachCountrySession?.currency}`,
+    url: `${endPoint}/admin/branch/exam-pricing/add-exam-pricing?countryId=${getEachCountrySession?.countryId}`,
     data: JSON.stringify(formData),
     dataType: "json",
     cache: false,

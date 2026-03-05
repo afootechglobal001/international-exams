@@ -175,7 +175,7 @@
 
                     <div class="right-div sticky-div">
                         <div class="div-in">
-                            <h3>COMPANY ACCOUNT DETAILS</h3>
+                            <h3>NAIRA ACCOUNT DETAILS(<s>N</s>)</h3>
 
                             <div class="pricing-back-div">
                                 <div class="title">
@@ -186,15 +186,40 @@
 
                             <div class="pricing-back-div">
                                 <div class="title">
+                                    ACCOUNT NAME
+                                    <div><span id="accountName">Loading...</span></div>
+                                </div>
+                            </div>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
                                     BANK NAME
                                     <div><span id="bankName">Loading...</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="div-in">
+                            <h3>DOLLAR ACCOUNT DETAILS($)</h3>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    ACCOUNT NUMBER
+                                    <div><span id="dollarAccountNumber">Loading...</span></div>
                                 </div>
                             </div>
 
                             <div class="pricing-back-div">
                                 <div class="title">
                                     ACCOUNT NAME
-                                    <div><span id="accountName">Loading...</span></div>
+                                    <div><span id="dollarAccountName">Loading...</span></div>
+                                </div>
+                            </div>
+
+                            <div class="pricing-back-div">
+                                <div class="title">
+                                    BANK NAME
+                                    <div><span id="dollarAccountBank">Loading...</span></div>
                                 </div>
                             </div>
                         </div>

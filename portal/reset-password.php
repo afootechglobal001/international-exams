@@ -28,7 +28,7 @@
 
         <div class="form-div animated fadeIn">
             <div class="form-box">
-                <div class="form-box-content" id="viewOtp">
+                <div class="form-box-content">
                     <div class="logo-div">
                         <a href="<?php echo $websiteUrl ?>" title="Home">
                             <img src="<?php echo $websiteUrl ?>/all-images/images/logo.png"

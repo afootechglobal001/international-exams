@@ -1889,3 +1889,100 @@ function _loginOnBehalfOfUser(userId) {
     _alertClose(2);
   }
 }
+
+
+/// User Regitsration ///
+function _userRegistration() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const firstName = $("#firstName").val()?.trim();
+    const lastName = $("#lastName").val()?.trim();
+    const emailAddress = $("#emailAddress").val()?.trim();
+    const phoneNumber = $("#phoneNumber").val()?.trim();
+    const userTypeId = $("#userTypeId").val()?.trim();
+    const password = $("#createPassword").val()?.trim();
+    const cpassword = $("#confirmPassword").val()?.trim();
+    let countryId = getEachCountrySession?.countryId
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("firstName", "FIRST NAME");
+    issueCount += _validateEmptyValue("lastName", "LAST NAME");
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
+    issueCount += _validateEmptyValue("userTypeId", "USER TYPE");
+    issueCount += _validateEmptyValue("createPassword", "PASSWORD");
+    issueCount += _validateEmptyValue("confirmPassword", "CONFIRM PASSWORD");
+    issueCount += _validateEmail("emailAddress", emailAddress);
+    issueCount += _validateNumber("phoneNumber", phoneNumber);
+    if (password != cpassword) {
+      $("#confirmPassword").addClass("issue");
+      $("#issue_confirmPassword").html("PASSWORD NOT MATCHED!");
+      issueCount += 1;
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      countryId,
+      userTypeId,
+      password,
+      cpassword,
+    };
+
+    _userRegistrationCallback(formData);
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _userRegistration());
+  }
+}
+
+/// Proceed To Sign Up Callback ///
+function _userRegistrationCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#submitBtn").html();
+  _btnDisable("submitBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/signup`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+          _showCustomConfirm({
+            callback: () => {
+              _alertClose(2);
+              _getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});
+            },
+            title: "User Registration Successful!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+        _btnDisable("submitBtn", btnText, false);
+      } else {
+        _btnDisable("submitBtn", btnText, false);
+        _showCustomConfirm({
+          title: "Account Exists!",
+          message: response.message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _userRegistrationCallback(formData)); // retry if needed
+      _btnDisable("submitBtn", btnText, false);
+    });
+}

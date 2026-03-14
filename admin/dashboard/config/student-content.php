@@ -115,6 +115,7 @@
                                 textField({
                                     id: 'phoneNumber',
                                     title: 'Phone Number',
+                                    type: 'tel'
                                 });
                             </script>
                         </div>
@@ -152,7 +153,7 @@
                 </div>
 
                 <div class="btn-div">
-                    <button class="btn" title="SUBMIT" id="submitBtn" onclick=""> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="btn" title="SUBMIT" id="submitBtn" onclick="_userRegistration();"> <i class="bi-check"></i> SUBMIT </button>
                 </div>
             </div>
         </div>

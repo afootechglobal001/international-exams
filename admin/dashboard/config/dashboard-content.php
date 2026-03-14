@@ -56,7 +56,7 @@
                         <div class="statistics-text">
                             <p>Customers</p>
                             <span>Statistics of Customers</span>
-                            <h2 id="totalActiveCustomerCount">30</h2>
+                            <h2 id="totalActiveCustomerCount">0</h2>
                         </div>
                         <div class="statistics-icon completed"><i class="bi-people"></i></div>
                     </div>

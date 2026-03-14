@@ -103,7 +103,7 @@
                         </script>
                     </div>
                     <div class="btn-div">
-                        <button class="btn" id="signUpBtn" title="Click to sign up" onclick="_logUserEmail()">
+                        <button class="btn" id="signUpBtn" title="Click to sign up" onclick="_userSignUp()">
                             Sign-Up <i class="bi bi-check"></i>
                         </button>
                     </div>

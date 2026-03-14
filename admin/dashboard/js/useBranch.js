@@ -749,12 +749,6 @@ function _getSelectExams(fieldId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
-    });
   }
 }
 
@@ -819,12 +813,52 @@ function _getSelectFetchExam(publishId) {
     });
   } catch (error) {
     console.error("Error: ", error);
-    _showCustomConfirm({
-      title: "Unexpected Error",
-      message: "An unexpected error occurred! Please try again.",
-      alertType: "error",
-      trueActionBtnText: "OK, Retry",
+  }
+}
+
+function _getSelectCurrency(fieldId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/preset-data/fetch-currency`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        if (success === true) {
+          $("#searchList_" + fieldId).html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].currency;
+            const value = data[i].currency;
+            $("#searchList_" + fieldId).append(
+              "<li onclick=\"_clickOption('searchList_" +
+                fieldId +
+                "', '" +
+                id +
+                "', '" +
+                value +
+                "');\">" +
+                value +
+                "</li>"
+            );
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
     });
+  } catch (error) {
+    console.error("Error: ", error);
   }
 }
 
@@ -833,11 +867,12 @@ function _addExamPricing() {
     let issueCount = 0;
     const examId = $("#publishId").val();
     const amount = $("#amount").val();
+    const currency = $("#currency").val();
     const physicalLectureAmount = $("#physicalLectureAmount").val();
     const onlineLectureAmount = $("#onlineLectureAmount").val();
 
-    $("#publishId, #amount, #physicalLectureAmount, #onlineLectureAmount").removeClass("issue");
-    $("#issue_publishId, #issue_amount, #issue_physicalLectureAmount, #issue_onlineLectureAmount").html("");
+    $("#publishId, #amount, #currency, #physicalLectureAmount, #onlineLectureAmount").removeClass("issue");
+    $("#issue_publishId, #issue_amount, #issue_currency, #issue_physicalLectureAmount, #issue_onlineLectureAmount").html("");
 
     if (!examId) {
       $("#publishId").addClass("issue");
@@ -849,6 +884,14 @@ function _addExamPricing() {
       $("#amount").addClass("issue");
       $("#issue_amount").html(
         "USER ERROR! Kindly Provide exam pricing to continue"
+      );
+      issueCount++;
+    }
+
+    if (!currency) {
+      $("#currency").addClass("issue");
+      $("#issue_currency").html(
+        "USER ERROR! Kindly Select currency to continue"
       );
       issueCount++;
     }
@@ -871,7 +914,7 @@ function _addExamPricing() {
 
     if (issueCount > 0) return;
 
-    const form = { examId, amount, physicalLectureAmount, onlineLectureAmount };
+    const form = { examId, amount, currency, physicalLectureAmount, onlineLectureAmount };
     _showCustomConfirm({
       callback: () => {
         _addExamPricingCallback(form);
@@ -909,13 +952,14 @@ function _addExamPricingCallback(form) {
   const formData = {
     examId: form.examId,
     amount: form.amount,
+    currency: form.currency,
     physicalLectureAmount: form.physicalLectureAmount,
     onlineLectureAmount: form.onlineLectureAmount,
   };
 
   $.ajax({
     type: "POST",
-    url: `${endPoint}/admin/branch/exam-pricing/add-exam-pricing?countryId=${getEachCountrySession?.countryId}&currency=${getEachCountrySession?.currency}`,
+    url: `${endPoint}/admin/branch/exam-pricing/add-exam-pricing?countryId=${getEachCountrySession?.countryId}`,
     data: JSON.stringify(formData),
     dataType: "json",
     cache: false,
@@ -941,7 +985,7 @@ function _addExamPricingCallback(form) {
         });
       } else {
         _showCustomConfirm({
-          title: "Add Exam Pricing Error",
+          title: "Exam Already Exists",
           message: message,
           alertType: "warning",
           trueActionBtnText: "OK",
@@ -1844,4 +1888,101 @@ function _loginOnBehalfOfUser(userId) {
     _callCatchError(() => _loginOnBehalfOfUser(userId));
     _alertClose(2);
   }
+}
+
+
+/// User Regitsration ///
+function _userRegistration() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const firstName = $("#firstName").val()?.trim();
+    const lastName = $("#lastName").val()?.trim();
+    const emailAddress = $("#emailAddress").val()?.trim();
+    const phoneNumber = $("#phoneNumber").val()?.trim();
+    const userTypeId = $("#userTypeId").val()?.trim();
+    const password = $("#createPassword").val()?.trim();
+    const cpassword = $("#confirmPassword").val()?.trim();
+    let countryId = getEachCountrySession?.countryId
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("firstName", "FIRST NAME");
+    issueCount += _validateEmptyValue("lastName", "LAST NAME");
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
+    issueCount += _validateEmptyValue("userTypeId", "USER TYPE");
+    issueCount += _validateEmptyValue("createPassword", "PASSWORD");
+    issueCount += _validateEmptyValue("confirmPassword", "CONFIRM PASSWORD");
+    issueCount += _validateEmail("emailAddress", emailAddress);
+    issueCount += _validateNumber("phoneNumber", phoneNumber);
+    if (password != cpassword) {
+      $("#confirmPassword").addClass("issue");
+      $("#issue_confirmPassword").html("PASSWORD NOT MATCHED!");
+      issueCount += 1;
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      countryId,
+      userTypeId,
+      password,
+      cpassword,
+    };
+
+    _userRegistrationCallback(formData);
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _userRegistration());
+  }
+}
+
+/// Proceed To Sign Up Callback ///
+function _userRegistrationCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#submitBtn").html();
+  _btnDisable("submitBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/signup`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+          _showCustomConfirm({
+            callback: () => {
+              _alertClose(2);
+              _getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});
+            },
+            title: "User Registration Successful!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+        _btnDisable("submitBtn", btnText, false);
+      } else {
+        _btnDisable("submitBtn", btnText, false);
+        _showCustomConfirm({
+          title: "Account Exists!",
+          message: response.message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _userRegistrationCallback(formData)); // retry if needed
+      _btnDisable("submitBtn", btnText, false);
+    });
 }

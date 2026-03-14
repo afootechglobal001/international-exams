@@ -56,8 +56,8 @@
 
         
         mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
-        (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES 
-        ('$countryId', '$transactionId', '$userId', '$transactionTypeId', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+        (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `reasonForPayment`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES 
+        ('$countryId', '$transactionId', '$userId', '$transactionTypeId', 'Wallet', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
 
         $response = [
             'response' => 200,

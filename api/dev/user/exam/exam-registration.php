@@ -90,6 +90,8 @@
         /// delete existing record for update
         mysqli_query($conn,"DELETE FROM STUDENT_EXAMS_REGISTRATION_TAB WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
         mysqli_query($conn,"DELETE FROM STUDENT_SCHOOL_OF_INTEREST_TAB WHERE examRegistrationId='$examRegistrationId'")or die (mysqli_error($conn));
+        mysqli_query($conn,"DELETE FROM TRANSACTION_TAB WHERE referenceId='$examRegistrationId'")or die (mysqli_error($conn));
+
     }
 
     ///////////////////////geting sequence//////////////////////////
@@ -124,16 +126,17 @@
         $currency=$fetchQuery['currency'];
         $examAbbr=$fetchQuery['examAbbr'];
 
+         $countId='TRANS';
+        $sequence=$callclass->_getSequenceCount($conn, $countId);
+        $array = json_decode($sequence, true);
+        $no= $array[0]['no'];
+        $transactionId=$countId.$no.date("Ymdhis");
+        
+        $transactionTypeId='PMT'; /// PAYMENT
+        $balanceBefore=$loginUserWalletBalance;
+        $balanceAfter=$balanceBefore; /// since payment is pending
+
         if ($paymentChoice=='payNow') {
-            $countId='TRANS';
-            $sequence=$callclass->_getSequenceCount($conn, $countId);
-            $array = json_decode($sequence, true);
-            $no= $array[0]['no'];
-            $transactionId=$countId.$no.date("Ymdhis");
-            
-            $transactionTypeId='PMT'; /// PAYMENT
-            $balanceBefore=$loginUserWalletBalance;
-            $balanceAfter=$balanceBefore; /// since payment is pending
 
             ///get country paymentKey
             $query=mysqli_query($conn,"SELECT paymentKey FROM COUNTRY_TAB WHERE countryId='$countryId'") or die (mysqli_error($conn));
@@ -155,7 +158,7 @@
                 $statusId=3; /// PENDING
                 mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
                 (`countryId`, `transactionId`, `referenceId`, `userId`, `transactionTypeId`, `reasonForPayment`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
-                ('$countryId', '$transactionId', '$examRegistrationId', '$studentId', '$transactionTypeId', 'ExamRegistration', '$paymentMethodId', '$emailAddress', '$currency', $balanceBefore, '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+                ('$countryId', '$transactionId', '$examRegistrationId', '$studentId', '$transactionTypeId', 'ExamRegistration', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
                 $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Transaction ID $transactionId generated for payment of $currency $amount.";
                 
             }elseif($paymentMethodId=='WLT'){
@@ -205,6 +208,13 @@
                 ]
             ];
         }else{
+
+            $paymentKey="PAY_LATER";
+            $statusId=3; /// PENDING
+            mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
+            (`countryId`, `transactionId`, `referenceId`, `userId`, `transactionTypeId`, `reasonForPayment`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+            ('$countryId', '$transactionId', '$examRegistrationId', '$studentId', '$transactionTypeId', 'ExamRegistration', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+                
             $alertDetail = "User with ID $studentId and Name $loginUserFullname attempt to register for $examAbbr exam with Registration ID $examRegistrationId. Payment choice is Pay Later.";
             ///// send email
             $response = [

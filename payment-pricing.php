@@ -6,16 +6,22 @@
 
 <head>
     <?php include 'meta.php' ?>
-    <title><?php echo $appName ?> | Exam Registration & Payment Plans for TOEFL, GRE, GMAT, SAT, ACT, PTE, IELTS in Nigeria</title>
-    <meta name="keywords" content="<?php echo $appName ?>, TOEFL registration in Nigeria, GRE registration Nigeria, GMAT registration Nigeria, SAT registration Nigeria, ACT exam Nigeria, PTE Nigeria, IELTS Nigeria, exam registration Nigeria, EduGrade Services, study abroad exams, international exam registration, international exams Nigeria, affordable exam payment plans, TOEFL payment plan Nigeria, GRE payment plan Nigeria, GMAT payment plan Nigeria, SAT payment plan Nigeria, ACT payment plan Nigeria, IELTS payment plan Nigeria, PTE payment plan Nigeria, flexible exam payments, pay in installments Nigeria, best exam registration center, study abroad consultants, international examination pricing" />
-    <meta name="description" content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with flexible payment plans. <?php echo $appName ?> offers trusted support, fast processing, and affordable installment options for your international exam success." />
-    <meta property="og:title" content="<?php echo $appName ?> | Exam Registration & Payment Plans for TOEFL, GRE, GMAT, SAT, ACT, PTE, IELTS in Nigeria" />
+    <title><?php echo $appName ?> | Exam Registration & Payment Plans for TOEFL, GRE, GMAT, SAT, ACT, PTE, IELTS in
+        Nigeria</title>
+    <meta name="keywords"
+        content="<?php echo $appName ?>, TOEFL registration in Nigeria, GRE registration Nigeria, GMAT registration Nigeria, SAT registration Nigeria, ACT exam Nigeria, PTE Nigeria, IELTS Nigeria, exam registration Nigeria, EduGrade Services, study abroad exams, international exam registration, international exams Nigeria, affordable exam payment plans, TOEFL payment plan Nigeria, GRE payment plan Nigeria, GMAT payment plan Nigeria, SAT payment plan Nigeria, ACT payment plan Nigeria, IELTS payment plan Nigeria, PTE payment plan Nigeria, flexible exam payments, pay in installments Nigeria, best exam registration center, study abroad consultants, international examination pricing" />
+    <meta name="description"
+        content="Register for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with flexible payment plans. <?php echo $appName ?> offers trusted support, fast processing, and affordable installment options for your international exam success." />
+    <meta property="og:title"
+        content="<?php echo $appName ?> | Exam Registration & Payment Plans for TOEFL, GRE, GMAT, SAT, ACT, PTE, IELTS in Nigeria" />
     <meta property="og:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
-    <meta property="og:description" content="Secure your exam registration with flexible payment plans for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS in Nigeria. Trusted support, fast processing, and installment options available." />
+    <meta property="og:description"
+        content="Secure your exam registration with flexible payment plans for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS in Nigeria. Trusted support, fast processing, and installment options available." />
     <meta name="twitter:title" content="<?php echo $appName ?> | Exam Registration & Payment Plans in Nigeria" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="<?php echo $websiteUrl ?>/all-images/plugin-pix/edugrade.jpg" />
-    <meta name="twitter:description" content="Register and pay for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with <?php echo $appName ?>. Enjoy affordable payment plans and expert guidance." />
+    <meta name="twitter:description"
+        content="Register and pay for TOEFL, GRE, GMAT, SAT, ACT, PTE, and IELTS exams in Nigeria with <?php echo $appName ?>. Enjoy affordable payment plans and expert guidance." />
 </head>
 
 
@@ -46,9 +52,12 @@
                     <div class="text-content-div" data-aos="fade-in" data-aos-duration="900">
                         <h1>Exams & Lectures Payment</h1>
                         <p>
-                            At EDUGRADE SERVICES, we provide transparent and flexible payment options for our consultancy services.
-                            Our pricing is designed to be affordable while covering the full process — from application guidance
-                            to securing admission and visa support. Explore our plans and choose the one that best fits your
+                            At EDUGRADE SERVICES, we provide transparent and flexible payment options for our
+                            consultancy services.
+                            Our pricing is designed to be affordable while covering the full process — from application
+                            guidance
+                            to securing admission and visa support. Explore our plans and choose the one that best fits
+                            your
                             study abroad journey.
                         </p>
 
@@ -82,7 +91,7 @@
 
                             <div class="our-exam-back-div pricing-back-div pg-back-div" id="pageContent">
                                 <script>
-                                    _fetchPaymentPricingData();
+                                _fetchPaymentPricingData();
                                 </script>
 
                                 <div class="content-loading-div">
@@ -92,7 +101,8 @@
                         </div>
 
                         <div class="page-list-back-div table-page-list-back-div">
-                            <div class="main-content-div other-main-content" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="main-content-div other-main-content" data-aos="fade-in"
+                                data-aos-duration="1500">
                                 <div class="tables-content-div">
                                     <div class="content-title">
                                         <div class="title">
@@ -114,12 +124,13 @@
 
                                                 <tbody id="fetchTablePaymentPricingData">
                                                     <script>
-                                                        _fetchTablePaymentPricingData();
+                                                    _fetchTablePaymentPricingData();
                                                     </script>
                                                     <tr>
                                                         <td colspan="8">
                                                             <div class="content-loading-div">
-                                                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif"
+                                                                    alt="Loading" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -131,11 +142,14 @@
                             </div>
 
                             <div class="btn-div">
-                                <a href="<?php echo $websiteUrl ?>/exam-registration" title="CLICK HERE TO MAKE PAYMENT ONLINE">
-                                    <button class="btn">CLICK HERE TO MAKE PAYMENT ONLINE<i class="bi bi-check-circle"></i></button></a>
+                                <a href="<?php echo $websiteUrl ?>/exam-registration"
+                                    title="CLICK HERE TO MAKE PAYMENT ONLINE">
+                                    <button class="btn">CLICK HERE TO MAKE PAYMENT ONLINE<i
+                                            class="bi bi-check-circle"></i></button></a>
                             </div>
 
-                            <div class="main-content-div other-main-content" data-aos="fade-in" data-aos-duration="1500">
+                            <div class="main-content-div other-main-content" data-aos="fade-in"
+                                data-aos-duration="1500">
                                 <div class="tables-content-div">
                                     <div class="content-title">
                                         <div class="title">
@@ -160,7 +174,8 @@
                                                     <tr>
                                                         <td colspan="8">
                                                             <div class="content-loading-div">
-                                                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif" alt="Loading" />
+                                                                <img src="<?php echo $websiteUrl ?>/all-images/images/spinner.gif"
+                                                                    alt="Loading" />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -180,7 +195,7 @@
                             <div class="pricing-back-div">
                                 <div class="title">
                                     ACCOUNT NUMBER
-                                    <div><span id="accountNumber">Loading...</span></div>
+                                    <div><span id="#accountNumber">Loading...</span></div>
                                 </div>
                             </div>
 
@@ -213,7 +228,7 @@
                         </div>
                     </div>
                     <script>
-                        _fetchAccountDetails();
+                    _fetchAccountDetails();
                     </script>
                 </div>
             </div>

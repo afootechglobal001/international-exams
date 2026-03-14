@@ -57,7 +57,7 @@
         // Fetch Account Details
         $accountData = array();
         $getAccountQuery = mysqli_query($conn,
-            "SELECT countryId, accountName, accountNumber, bankName
+            "SELECT countryId, accountName, accountNumber, bankName, dollarAccountName, dollarAccountNumber, dollarAccountBank
             FROM COUNTRY_TAB 
             WHERE countryId = '$countryId'"
         );

@@ -82,8 +82,8 @@
         $statusId=1; /// APPROVED
         $balanceAfter=$balanceBefore - $amount; /// since payment is from wallet
         mysqli_query($conn,"INSERT INTO `TRANSACTION_TAB`
-        (`countryId`, `transactionId`, `userId`, `transactionTypeId`, `reasonForPayment`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
-        ('$countryId', '$transactionId', '$studentId', '$transactionTypeId', 'Ebook', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
+        (`countryId`, `transactionId`, `referenceId`, `userId`, `transactionTypeId`, `reasonForPayment`, `paymentMethodId`, `emailAddress`, `currency`, `balanceBefore`, `amount`, `balanceAfter`, `paymentKey`, `statusId`, `createdTime`) VALUES
+        ('$countryId', '$transactionId', '$ebookId', '$studentId', '$transactionTypeId', 'Ebook', '$paymentMethodId', '$emailAddress', '$currency', '$balanceBefore', '$amount', '$balanceAfter', '$paymentKey', '$statusId', NOW())")or die (mysqli_error($conn));
         /// update user wallet balance
         mysqli_query($conn,"UPDATE USERS_TAB SET walletBalance='$balanceAfter' WHERE userId='$studentId'")or die (mysqli_error($conn));
               

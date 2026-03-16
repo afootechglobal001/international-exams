@@ -1,0 +1,29 @@
+<?php include '../config/constants.php'; ?>
+<?php $ref = $_GET['ref']; ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <?php include 'meta.php' ?>
+    <title><?php echo $appName ?> | Admin Portal</title>
+</head>
+
+<body>
+    <?php include 'alert.php' ?>
+    <section class="login-div">
+
+        <div class="page-container">
+            <div class="login-card-div">
+                <div class="logo-div">
+                    <img src="images/logo.png" alt="International Exams Logo" title="International Exams Logo">
+                </div>
+
+                <div id="page-content">
+                    <script>_verifyLink('<?php echo $ref?>');</script>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

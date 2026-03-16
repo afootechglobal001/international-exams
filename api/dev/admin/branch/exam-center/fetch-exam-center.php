@@ -1,0 +1,78 @@
+<?php require_once '../../../config/connection.php';?>
+<?php require_once '../../../config/staff-session-check.php';?>
+
+<?php
+    if (!$checkBasicSecurity){/// start if 1
+        goto end;
+    }
+    if(!$checkSession){
+        $response=[
+            'response' => 99,
+            'success' => false,
+            'message' => "SESSION EXPIRED! Please LogIn Again.",
+        ];
+        goto end;
+    }
+?>
+
+<?php
+    //////////////////declaration of variables//////////////////////////////////////
+    $q = $_GET['q'];
+    $locationId = $_GET['locationId'];
+    $centreId = $_GET['centreId'];
+    $statusId = $_GET['statusId'];
+
+    if (!empty($centreId)) {
+        $centreIds = "AND a.centreId ='$centreId'";
+    }
+
+    if (!empty($statusId)) {
+        $statusIds = "AND a.statusId IN ($statusId)";
+    }
+
+    if (!empty($locationId)) {
+        $locationIds = "AND a.locationId='$locationId'";
+    }
+
+    // Securely escape $q
+    $q = mysqli_real_escape_string($conn, $q);
+    $select = "SELECT a.*, b.locationName, c.statusName 
+    FROM EXAM_CENTRE_TAB a 
+    JOIN EXAM_LOCATION_TAB b ON a.locationId=b.locationId
+    JOIN SETUP_STATUS_TAB c ON a.statusId = c.statusId 
+    WHERE (a.centreName LIKE '%$q%' OR a.centreNumber LIKE '%$q%' OR a.centreAddress LIKE '%$q%') $centreIds $statusIds $locationIds
+    ORDER BY a.centreName ASC";
+
+    $query=mysqli_query($conn,$select)or die (mysqli_error($conn));
+    $allRecordCount=mysqli_num_rows($query);
+    if($allRecordCount==0){///start if 1
+        $response['response']=200;
+        $response['success']=false;
+        $response['message']="No Record found";
+        goto end;
+    }
+
+    $response=[
+        'response' => 200,
+        'success' => true,
+        'message' => "EXAM CENTRE FETCH SUCCESSFULLY!",
+        'allRecordCount' => $allRecordCount,
+        'data' => array() // Initialize the data array
+    ];
+
+    while ($fetchQuery = mysqli_fetch_assoc($query)) {
+        $centreId=$fetchQuery['centreId'];
+
+        /////////////////// fetch exam date////////////
+        $examDateData=array();
+        $getExamDateQuery = mysqli_query($conn, "SELECT * FROM EXAM_CENTRE_DATE WHERE centreId='$centreId'");
+        while ($getExamDateFetch = mysqli_fetch_assoc($getExamDateQuery)) {
+            $examDateData[] = $getExamDateFetch;
+        }
+        $fetchQuery['examDateData']= $examDateData;
+
+        $response['data'][] = $fetchQuery;
+    }
+end:
+echo json_encode($response);
+?>

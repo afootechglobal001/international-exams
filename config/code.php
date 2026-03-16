@@ -5,6 +5,8 @@ switch ($action){
 
 	case 'get_form':
 		$page=$_POST['page'];
-		require_once 'content-page.php';
-	break;
+		$id=$_POST['id'];
+		$modalLayer=$_POST['modalLayer'];
+		require_once('content-page.php');
+	break;	
 }?>

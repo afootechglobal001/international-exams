@@ -1,0 +1,1988 @@
+function _getActiveBranchPage(props) {
+  const { page = "", divid = "", pageContainer = "getBranchDetails" } = props;
+  _getBranchPagesActiveLink(divid);
+  if (page) {
+    _getPage({
+      page: page,
+      pageContainer: pageContainer,
+      url: adminPortalLocalUrl,
+    });
+  }
+}
+function _getBranchPagesActiveLink(divid) {
+  $(
+    "#countryBranchDashboard, #branchesPage, #branchCountryStudent, #examPricingPage, #examLocationPage, #branchCountrySettings"
+  ).removeClass("active");
+  $("#" + divid).addClass("active");
+}
+
+///////////////////BRANCH FUNCTIONS/////////////
+function _getSelectBranchManagerId(fieldId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/staff/fetch-staff?statusId=1`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+        $searchList.empty();
+
+        if (success === true) {
+          for (let i = 0; i < data.length; i++) {
+            const managerFirstName = data[i].firstName;
+            const managerLastName = data[i].lastName;
+            const id = data[i].staffId;
+            const value = managerFirstName + " " + managerLastName;
+            $("#searchList_" + fieldId).append(
+              "<li onclick=\"_clickOption('searchList_" +
+                fieldId +
+                "', '" +
+                id +
+                "', '" +
+                value +
+                "');\">" +
+                value +
+                "</li>"
+            );
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+function _fetchCountryBranchData() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+  $("#pageContent")
+    .html(
+      '<div class="ajax-loader pages-ajax-loader"><img src="' +
+        websiteUrl +
+        '/all-images/images/spinner.gif" alt="Loading"/></div>'
+    )
+    .fadeIn("fast");
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/branch/fetch-branch?countryId=${getEachCountrySession.countryId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const fetch = info.data;
+
+        let content = "";
+        let no = 0;
+
+        content = `
+				<thead>
+					<tr class="tb-col">
+						<th>sn</th>
+						<th>Name</th>
+						<th>Phone Number</th>
+						<th>Address</th>
+						<th>Branch Manager</th>
+						<th>Number of staff</th>
+						<th>Date of Reg.</th>
+						<th>Status</th>
+						<th>View</th>
+					</tr>
+				</thead>`;
+
+        if (info.success) {
+          for (let i = 0; i < fetch.length; i++) {
+            no++;
+            const branchId = fetch[i].branchId;
+            const branchName = fetch[i].branchName;
+            const email = fetch[i].email;
+            const phoneNumber = fetch[i].phoneNumber;
+            const address = fetch[i].address;
+            const managerName = fetch[i].managerName;
+            const statusName = fetch[i].statusName;
+            const totalNumberOfStaff = fetch[i].totalNumberOfStaff;
+            const createdTime = fetch[i].createdTime;
+
+            content += `
+						<tbody>
+							<tr class="tb-row">
+							<td>${no}</td>
+							<td class="clickable-td" title="Click to view ${branchName} PROFILE" onclick="_fetchEachCountryBranch('${branchId}');">${branchName}<br /><span>${email}</span></td>
+							<td>${phoneNumber}</td>
+							<td>${address}</td>
+							<td>${managerName}</td>
+							<td>${totalNumberOfStaff}</td>
+							<td>${createdTime}</td>
+							<td>
+								<div class="status-div ${statusName}">${statusName}</div>
+							</td>
+							<td><button class="btn view-btn" title="CLICK TO VIEW ${branchName} PROFILE" onclick="_fetchEachCountryBranch('${branchId}');">VIEW</button></td>
+							</tr>
+						</tbody>`;
+          }
+          $("#pageContent").html(content);
+        } else {
+          _showCustomConfirm({
+            title: "Fetch Branch Error",
+            message: info.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+
+          $("#pageContent").html(`
+					<tbody>
+						<tr>
+							<td colspan="11">
+								<div class="false-notification-div">
+					 				<p>${info.message}</p>
+									<div>
+										<button class="btn" onclick="_getForm({page: 'branchReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW BRANCH</button>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>`);
+
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+      error: function (textStatus, errorThrown) {
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _showCustomConfirm({
+          title: "Connection Error!",
+          message: "An error occurred while fetching data! Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+
+        $("#pageContent").html(`
+				<tbody>
+					<tr>
+						<td colspan="11">
+							<div class="false-notification-div">
+								<p>An error occurred while fetching data! Please try again.</p>
+							</div>
+						</td>
+					</tr>
+				</tbody>`);
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+function _fetchEachCountryBranch(branchId) {
+  $("#get-more-div-secondary")
+    .css({
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center",
+    })
+    .fadeIn(500);
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/branch/fetch-branch?branchId=${branchId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        if (info.success && info.data.length > 0) {
+          sessionStorage.setItem(
+            "getEachBranchSession",
+            JSON.stringify(info.data[0])
+          );
+          _getForm({
+            page: "branchCountryProfile",
+            layer: 2,
+            url: adminPortalLocalUrl,
+          });
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+      error: function (textStatus, errorThrown) {
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _alertClose(2);
+        _showCustomConfirm({
+          title: "Connection Error!",
+          message: "An error occurred while fetching data! Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+      },
+    });
+  } catch (error) {
+    _alertClose(2);
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+function _createCountryBranch() {
+  try {
+    let issueCount = 0;
+    const branchName = $("#branchName").val();
+    const email = $("#email").val();
+    const phoneNumber = $("#phoneNumber").val();
+    const address = $("#address").val();
+    const managerId = $("#staffId").val();
+    const statusId = $("#statusId").val();
+
+    $(
+      "#branchName, #email, #phoneNumber, #address, #staffId, #statusId"
+    ).removeClass("issue");
+    $(
+      "#issue_branchName, #issue_email, #issue_phoneNumber, #issue_address, #issue_staffId, #issue_statusId"
+    ).html("");
+
+    if (!branchName) {
+      $("#branchName").addClass("issue");
+      $("#issue_branchName").html(
+        "USER ERROR! Kindly Provide branch name to continue"
+      );
+      issueCount++;
+    }
+
+    if (
+      !email ||
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)
+    ) {
+      $("#email").addClass("issue");
+      $("#issue_email").html(
+        "USER ERROR! Kindly Provide a valid email address to continue"
+      );
+      issueCount++;
+    }
+
+    if (!phoneNumber) {
+      $("#phoneNumber").addClass("issue");
+      $("#issue_phoneNumber").html(
+        "USER ERROR! Kindly Provide mobile number to continue"
+      );
+      issueCount++;
+    }
+
+    if (!address) {
+      $("#address").addClass("issue");
+      $("#issue_address").html(
+        "USER ERROR! Kindly Provide full address to continue"
+      );
+      issueCount++;
+    }
+
+    if (!managerId) {
+      $("#staffId").addClass("issue");
+      $("#issue_staffId").html(
+        "USER ERROR! Kindly Select Branch Manager to continue"
+      );
+      issueCount++;
+    }
+
+    if (!statusId) {
+      $("#statusId").addClass("issue");
+      $("#issue_statusId").html("USER ERROR! Kindly Select status to continue");
+      issueCount++;
+    }
+
+    if (issueCount > 0) return;
+
+    const form = {
+      branchName,
+      email,
+      phoneNumber,
+      address,
+      managerId,
+      statusId,
+    };
+    _showCustomConfirm({
+      callback: () => {
+        _createCountryBranchCallback(form);
+      },
+      title: "Are you sure?",
+      message:
+        "Are you sure you want to create a new branch? This action is irreversible.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    $("#submitBtn").prop("disabled", false);
+  }
+}
+
+function _createCountryBranchCallback(form) {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  const btnText = $("#submitBtn").html();
+  $("#submitBtn").html(
+    '<img src="' +
+      websiteUrl +
+      '/all-images/images/loading.gif" width="12px" alt="Loading"/>'
+  );
+  $("#submitBtn").prop("disabled", true);
+
+  const formData = {
+    branchName: form.branchName,
+    email: form.email,
+    phoneNumber: form.phoneNumber,
+    address: form.address,
+    managerId: form.managerId,
+    statusId: form.statusId,
+  };
+
+  $.ajax({
+    type: "POST",
+    url: `${endPoint}/admin/branch/create-branch?countryId=${getEachCountrySession?.countryId}`,
+    data: JSON.stringify(formData),
+    dataType: "json",
+    cache: false,
+    headers: getAuthHeaders(true),
+    success: function (info) {
+      const success = info.success;
+      const message = info.message;
+
+      if (success === true) {
+        _showCustomConfirm({
+          callback: () => {
+            _getActiveBranchPage({
+              divid: "branchesPage",
+              page: "branchesPage",
+              url: adminPortalLocalUrl,
+            });
+            _alertClose(2);
+          },
+          title: "Success!",
+          message: message,
+          alertType: "success",
+          trueActionBtnText: "OK, Thanks.",
+        });
+      } else {
+        _showCustomConfirm({
+          title: "Create Branch Error",
+          message: message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+    error: function (error) {
+      _showCustomConfirm({
+        title: "Unexpected Error",
+        message: "An unexpected error occurred! Please try again.",
+        alertType: "error",
+        trueActionBtnText: "OK, Retry",
+      });
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+  });
+}
+
+function _updateCountryBranch() {
+  try {
+    let issueCount = 0;
+    const branchName = $("#updateBranchName").val();
+    const email = $("#updateEmail").val();
+    const phoneNumber = $("#updateBranchPhoneNumber").val();
+    const address = $("#updateBranchAddress").val();
+    const managerId = $("#updateManagerId").val();
+    const statusId = $("#updateStatusId").val();
+
+    $(
+      "#updateBranchName, #updateEmail, #updateBranchPhoneNumber, #updateBranchAddress, #updateManagerId, #updateStatusId"
+    ).removeClass("issue");
+    $(
+      "#issue_updateBranchName, #issue_updateEmail, #issue_updateBranchPhoneNumber, #issue_updateBranchAddress, #issue_updateManagerId, #issue_updateStatusId"
+    ).html("");
+
+    if (!branchName) {
+      $("#updateBranchName").addClass("issue");
+      $("#issue_updateBranchName").html(
+        "USER ERROR! Kindly Provide branch name to continue"
+      );
+      issueCount++;
+    }
+
+    if (
+      !email ||
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)
+    ) {
+      $("#updateEmail").addClass("issue");
+      $("#issue_updateEmail").html(
+        "USER ERROR! Kindly Provide a valid email address to continue"
+      );
+      issueCount++;
+    }
+
+    if (!phoneNumber) {
+      $("#updateBranchPhoneNumber").addClass("issue");
+      $("#issue_updateBranchPhoneNumber").html(
+        "USER ERROR! Kindly Provide mobile number to continue"
+      );
+      issueCount++;
+    }
+
+    if (!address) {
+      $("#updateBranchAddress").addClass("issue");
+      $("#issue_updateBranchAddress").html(
+        "USER ERROR! Kindly Provide full address to continue"
+      );
+      issueCount++;
+    }
+
+    if (!managerId) {
+      $("#updateManagerId").addClass("issue");
+      $("#issue_updateManagerId").html(
+        "USER ERROR! Kindly Select Branch Manager to continue"
+      );
+      issueCount++;
+    }
+
+    if (!statusId) {
+      $("#updateStatusId").addClass("issue");
+      $("#issue_updateStatusId").html(
+        "USER ERROR! Kindly Select status to continue"
+      );
+      issueCount++;
+    }
+
+    if (issueCount > 0) return;
+    const form = {
+      branchName,
+      email,
+      phoneNumber,
+      address,
+      managerId,
+      statusId,
+    };
+    _showCustomConfirm({
+      callback: () => {
+        _updateCountryBranchCallback(form);
+      },
+      title: "Are you sure?",
+      message:
+        "You are about to update this branch. This action is irreversible.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    $("#updateBtn").prop("disabled", false);
+  }
+}
+
+function _updateCountryBranchCallback(form) {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+  let getEachBranchSession = JSON.parse(
+    sessionStorage.getItem("getEachBranchSession")
+  );
+
+  const btnText = $("#updateBtn").html();
+  $("#updateBtn").html(
+    '<img src="' +
+      websiteUrl +
+      '/all-images/images/loading.gif" width="12px" alt="Loading"/>'
+  );
+  $("#updateBtn").prop("disabled", true);
+
+  const formData = {
+    branchName: form.branchName,
+    email: form.email,
+    phoneNumber: form.phoneNumber,
+    address: form.address,
+    managerId: form.managerId,
+    statusId: form.statusId,
+  };
+
+  $.ajax({
+    type: "POST",
+    url: `${endPoint}/admin/branch/update-branch?countryId=${getEachCountrySession?.countryId}&branchId=${getEachBranchSession?.branchId}`,
+    data: JSON.stringify(formData),
+    dataType: "json",
+    cache: false,
+    headers: getAuthHeaders(true),
+    success: function (info) {
+      const success = info.success;
+      const message = info.message;
+
+      if (success === true) {
+        _showCustomConfirm({
+          callback: () => {
+            _fetchEachCountryBranch(getEachBranchSession?.branchId);
+            _getActiveBranchPage({
+              divid: "branchesPage",
+              page: "branchesPage",
+              url: adminPortalLocalUrl,
+            });
+          },
+          title: "Success!",
+          message: message,
+          alertType: "success",
+          trueActionBtnText: "OK, Thanks.",
+        });
+      } else {
+        _showCustomConfirm({
+          title: "Update Branch Error",
+          message: message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+      $("#updateBtn").html(btnText).prop("disabled", false);
+    },
+    error: function (error) {
+      _showCustomConfirm({
+        title: "Unexpected Error",
+        message: "An unexpected error occurred! Please try again.",
+        alertType: "error",
+        trueActionBtnText: "OK, Retry",
+      });
+      $("#updateBtn").html(btnText).prop("disabled", false);
+    },
+  });
+}
+
+
+///////////////////ADD EXAM PRICING FUNCTIONS/////////////
+function fetchCountryExamData() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+  $("#pageContent")
+    .html(
+      '<div class="ajax-loader pages-ajax-loader"><img src="' +
+        websiteUrl +
+        '/all-images/images/spinner.gif" alt="Loading"/></div>'
+    )
+    .fadeIn("fast");
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/branch/exam-pricing/fetch-exam-pricing?countryId=${getEachCountrySession?.countryId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const fetch = info.data;
+
+        let content = "";
+        let no = 0;
+
+        if (info.success) {
+          for (let i = 0; i < fetch.length; i++) {
+            no++;
+            const examInfo = fetch[i];
+            const examId = examInfo.examId;
+            const examAbbr = examInfo.examAbbr;
+            const regTitle = examInfo.regTitle;
+            const examLogo = examInfo.examLogo;
+            const currency = examInfo.currency;
+            const amount = thousandSeperator(examInfo.amount);
+            const formattedDate = formatDate(examInfo.createdTime);
+
+            content += `
+                <div class="exam-div country-exam-div" id="examId_${examId}">
+                    <div class="exam-image">
+                        <img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
+                    </div>
+
+                    <div class="top-div">
+                        <button class="delete-btn" id="deleteBtn_${examId}" title="DELETE" onclick="_deleteExam('${examId}');">DELETE</button>
+                    </div>
+
+                    <div class="exam-info">
+                        <h3>${examAbbr}</h3>
+                        <p>${regTitle}</p>
+                        <div class="exam-time">
+                            <p><i class="bi bi-calendar"></i> Updated on: <strong>${formattedDate}</strong></p>
+                        </div>
+                    </div>
+                    <div class="price">${currency} ${amount}</div>
+                </div>
+            `;
+          }
+          $("#pageContent").html(content);
+        } else {
+          _showCustomConfirm({
+            title: "Fetch Exam Error",
+            message: info.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+
+            $("#pageContent").html(`
+                <div class="false-notification-div">
+                    <p>${info.message}</p>
+                    <div>
+                        <button class="btn" title="ADD NEW EXAM PRICING" onclick="_getForm({page: 'examPricingReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM</button>
+                    </div>
+                </div>
+            `);
+
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+      error: function (textStatus, errorThrown) {
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _showCustomConfirm({
+          title: "Connection Error!",
+          message: "An error occurred while fetching data! Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+
+        $("#pageContent").html(`
+            <div class="false-notification-div">
+                <p>An error occurred while fetching data! Please try again.</p>
+            </div>
+        `);
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error!",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+function _getSelectExams(fieldId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/publish/exams/fetch-exam?pageCategoryId=${pageCategory.examCategory}&statusId=1`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        if (success === true) {
+          $("#searchList_" + fieldId).html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].publishId;
+            const value = data[i].examAbbr;
+            $("#searchList_" + fieldId).append(
+              "<li onclick=\"_clickOption('searchList_" +
+                fieldId +
+                "', '" +
+                id +
+                "', '" +
+                value +
+                "'); _getSelectFetchExam('" +
+                id +
+                "');\">" +
+                value +
+                "</li>"
+            );
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+}
+
+function _getSelectFetchExam(publishId) {
+  $("#examPreviewContainer").show();
+  $("#pageContent2")
+    .html(
+      '<div class="ajax-loader other-pages-ajax-loader"><img src="' +
+        websiteUrl +
+        '/all-images/images/spinner.gif" alt="Loading"/></div>'
+    )
+    .fadeIn("fast");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/publish/exams/fetch-exam?pageCategoryId=${pageCategory.examCategory}&publishId=${publishId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        let content = "";
+
+        if (success === true) {
+          for (let i = 0; i < data.length; i++) {
+            const examInfo = data[i];
+            const regTitle = examInfo.regTitle;
+            const examAbbr = examInfo.examAbbr;
+            const examLogo = examInfo.examLogo;
+            const statusName = examInfo.statusName;
+
+            content += `
+                <div class="exams-back-div">
+                    <div class="exam-div form-exam-div">
+                        <div class="exam-image">
+                          <img src="${examLogoPixPath}/${examLogo}" alt="${regTitle}">
+                        </div>
+
+                        <div class="top-div">
+                            <div class="exam-status ${statusName}">${statusName}</div>
+                        </div>
+
+                        <div class="exam-info">
+                            <h3>${examAbbr}</h3>
+                            <p>${regTitle}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+          }
+          $("#pageContent2").html(content);
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+}
+
+function _getSelectCurrency(fieldId) {
+  let $searchList = $("#searchList_" + fieldId);
+  $searchList.html("<li>Loading data...</li>");
+
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/preset-data/fetch-currency`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const data = info.data;
+        const success = info.success;
+
+        if (success === true) {
+          $("#searchList_" + fieldId).html("");
+
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i].currency;
+            const value = data[i].currency;
+            $("#searchList_" + fieldId).append(
+              "<li onclick=\"_clickOption('searchList_" +
+                fieldId +
+                "', '" +
+                id +
+                "', '" +
+                value +
+                "');\">" +
+                value +
+                "</li>"
+            );
+          }
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+}
+
+function _addExamPricing() {
+  try {
+    let issueCount = 0;
+    const examId = $("#publishId").val();
+    const amount = $("#amount").val();
+    const currency = $("#currency").val();
+    const physicalLectureAmount = $("#physicalLectureAmount").val();
+    const onlineLectureAmount = $("#onlineLectureAmount").val();
+
+    $("#publishId, #amount, #currency, #physicalLectureAmount, #onlineLectureAmount").removeClass("issue");
+    $("#issue_publishId, #issue_amount, #issue_currency, #issue_physicalLectureAmount, #issue_onlineLectureAmount").html("");
+
+    if (!examId) {
+      $("#publishId").addClass("issue");
+      $("#issue_publishId").html("USER ERROR! Kindly Select exam to continue");
+      issueCount++;
+    }
+
+    if (!amount) {
+      $("#amount").addClass("issue");
+      $("#issue_amount").html(
+        "USER ERROR! Kindly Provide exam pricing to continue"
+      );
+      issueCount++;
+    }
+
+    if (!currency) {
+      $("#currency").addClass("issue");
+      $("#issue_currency").html(
+        "USER ERROR! Kindly Select currency to continue"
+      );
+      issueCount++;
+    }
+
+    if (!physicalLectureAmount) {
+      $("#physicalLectureAmount").addClass("issue");
+      $("#issue_physicalLectureAmount").html(
+        "USER ERROR! Kindly Provide Physical Lecture Price to continue"
+      );
+      issueCount++;
+    }
+
+    if (!onlineLectureAmount) {
+      $("#onlineLectureAmount").addClass("issue");
+      $("#issue_onlineLectureAmount").html(
+        "USER ERROR! Kindly Provide Physical Lecture Price to continue"
+      );
+      issueCount++;
+    }
+
+    if (issueCount > 0) return;
+
+    const form = { examId, amount, currency, physicalLectureAmount, onlineLectureAmount };
+    _showCustomConfirm({
+      callback: () => {
+        _addExamPricingCallback(form);
+      },
+      title: "Are you sure?",
+      message:
+        "Are you sure you want to add a new exam pricing? This action is irreversible.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    $("#submitBtn").prop("disabled", false);
+  }
+}
+
+function _addExamPricingCallback(form) {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  const btnText = $("#submitBtn").html();
+  $("#submitBtn").html(
+    '<img src="' +
+      websiteUrl +
+      '/all-images/images/loading.gif" width="12px" alt="Loading"/>'
+  );
+  $("#submitBtn").prop("disabled", true);
+
+  const formData = {
+    examId: form.examId,
+    amount: form.amount,
+    currency: form.currency,
+    physicalLectureAmount: form.physicalLectureAmount,
+    onlineLectureAmount: form.onlineLectureAmount,
+  };
+
+  $.ajax({
+    type: "POST",
+    url: `${endPoint}/admin/branch/exam-pricing/add-exam-pricing?countryId=${getEachCountrySession?.countryId}`,
+    data: JSON.stringify(formData),
+    dataType: "json",
+    cache: false,
+    headers: getAuthHeaders(true),
+    success: function (info) {
+      const success = info.success;
+      const message = info.message;
+
+      if (success === true) {
+        _showCustomConfirm({
+          callback: () => {
+            _getActiveBranchPage({
+              divid: "examPricingPage",
+              page: "examPricingPage",
+              url: adminPortalLocalUrl,
+            });
+            _alertClose(2);
+          },
+          title: "Success!",
+          message: message,
+          alertType: "success",
+          trueActionBtnText: "OK, Thanks.",
+        });
+      } else {
+        _showCustomConfirm({
+          title: "Exam Already Exists",
+          message: message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+    error: function (error) {
+      _showCustomConfirm({
+        title: "Unexpected Error",
+        message: "An unexpected error occurred! Please try again.",
+        alertType: "error",
+        trueActionBtnText: "OK, Retry",
+      });
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+  });
+}
+
+function _deleteExam(examId) {
+  try {
+    _showCustomConfirm({
+      callback: () => {
+        _deleteExamCallBack(examId);
+      },
+      title: "Are you sure?",
+      message:
+        "Are you sure to delete this exam pricing? This action is irreversible.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred. Please try again",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    btn.html(btnText).prop("disabled", false);
+  }
+}
+
+function _deleteExamCallBack(examId) {
+  try {
+    const btn = $("#deleteBtn_" + examId);
+    const btnText = btn.html();
+    btn
+      .html(
+        '<img src="' +
+          websiteUrl +
+          '/all-images/images/loading.gif" width="12px" alt="Loading"/>'
+      )
+      .prop("disabled", true);
+
+    $.ajax({
+      type: "POST",
+      url: `${endPoint}/admin/branch/exam-pricing/delete-exam-pricing?countryId=${getEachCountrySession?.countryId}&examId=${examId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        if (info.success) {
+          $("#examId_" + examId).fadeOut(300, function () {
+            $(this).remove();
+          });
+
+          _showCustomConfirm({
+            title: "Success!",
+            message: info.message,
+            alertType: "success",
+            trueActionBtnText: "OK, Thanks.",
+          });
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          } else {
+            _showCustomConfirm({
+              title: "Delete Exam Error",
+              message: info.message,
+              alertType: "warning",
+              trueActionBtnText: "OK",
+            });
+          }
+        }
+        btn.html(btnText).prop("disabled", false);
+      },
+      error: function (textStatus, errorThrown) {
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _showCustomConfirm({
+          title: "Unexpected Error",
+          message:
+            "An error occurred while deleting the exam. Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+        btn.html(btnText).prop("disabled", false);
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred. Please try again",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    btn.html(btnText).prop("disabled", false);
+  }
+}
+
+
+///////////////////EXAM LOCATION FUNCTIONS/////////////
+function createAndUpdateExamLocation() {
+  try {
+    let issueCount = 0;
+    const examId = $("#publishId").val();
+    const locationName = $("#locationName").val();
+    const statusId = $("#statusId").val();
+
+    $("#publishId, #locationName, #statusId").removeClass("issue");
+    $("#issue_publishId, #issue_locationName, #issue_statusId").html("");
+
+    if (!examId) {
+      $("#publishId").addClass("issue");
+      $("#issue_publishId").html("USER ERROR! Kindly Select exam to continue");
+      issueCount++;
+    }
+
+    if (!locationName) {
+      $("#locationName").addClass("issue");
+      $("#issue_locationName").html(
+        "USER ERROR! Kindly Provide mobile number to continue"
+      );
+      issueCount++;
+    }
+
+    if (!statusId) {
+      $("#statusId").addClass("issue");
+      $("#issue_statusId").html("USER ERROR! Kindly Select status to continue");
+      issueCount++;
+    }
+
+    if (issueCount > 0) return;
+
+    const form = { examId, locationName, statusId };
+    _showCustomConfirm({
+      callback: () => {
+        _createAndUpdateExamLocationCallback(form);
+      },
+      title: "Are you sure?",
+      message:
+        "Are you sure you want to create a new exam location? This action is irreversible.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    $("#submitBtn").prop("disabled", false);
+  }
+}
+
+function _createAndUpdateExamLocationCallback(form) {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  let getEachExamLocationSession = JSON.parse(
+    sessionStorage.getItem("getEachExamLocationSession")
+  );
+
+  const btnText = $("#submitBtn").html();
+  $("#submitBtn").html(
+    '<img src="' +
+      websiteUrl +
+      '/all-images/images/loading.gif" width="12px" alt="Loading"/>'
+  );
+  $("#submitBtn").prop("disabled", true);
+
+  const formData = {
+    examId: form.examId,
+    locationName: form.locationName,
+    statusId: form.statusId,
+  };
+
+  let callUrl = getEachExamLocationSession?.locationId
+    ? `${endPoint}/admin/branch/exam-location/update-exam-location?locationId=${getEachExamLocationSession?.locationId}&countryId=${getEachCountrySession?.countryId}`
+    : `${endPoint}/admin/branch/exam-location/create-exam-location?countryId=${getEachCountrySession?.countryId}`;
+
+  $.ajax({
+    type: "POST",
+    url: callUrl,
+    data: JSON.stringify(formData),
+    dataType: "json",
+    cache: false,
+    headers: getAuthHeaders(true),
+    success: function (info) {
+      const success = info.success;
+      const message = info.message;
+
+      if (success === true) {
+        _showCustomConfirm({
+          callback: () => {
+            _getActiveBranchPage({
+              divid: "examLocationPage",
+              page: "examLocationPage",
+              url: adminPortalLocalUrl,
+            });
+            _alertClose(2);
+          },
+          title: "Success!",
+          message: message,
+          alertType: "success",
+          trueActionBtnText: "OK, Thanks.",
+        });
+      } else {
+        _showCustomConfirm({
+          title: "Create Exam Location Error",
+          message: message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+    error: function (error) {
+      _showCustomConfirm({
+        title: "Unexpected Error",
+        message: "An unexpected error occurred! Please try again.",
+        alertType: "error",
+        trueActionBtnText: "OK, Retry",
+      });
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+  });
+}
+
+function fetchExamLocationData() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  $("#pageContent")
+    .html(
+      '<div class="ajax-loader pages-ajax-loader"><img src="' +
+        websiteUrl +
+        '/all-images/images/spinner.gif" alt="Loading"/></div>'
+    )
+    .fadeIn("fast");
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/branch/exam-location/fetch-exam-location?countryId=${getEachCountrySession?.countryId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        const fetch = info.data;
+
+        let content = "";
+        let no = 0;
+
+        if (info.success) {
+          for (let i = 0; i < fetch.length; i++) {
+            no++;
+            const locationInfo = fetch[i];
+            const locationId = locationInfo.locationId;
+            const locationName = locationInfo.locationName;
+            const centerData = locationInfo.centerData;
+
+            content += `
+                <div class="pages-toggle-div">
+                    <div class="pages-toggle-title" onclick="_useCollapse('view${no}');" title="Click to view exam centers">
+                        <div class="title-back-div">
+                            <h3>${locationName}</h3>
+                            <button class="btn" title="Click to edit exam location" onclick="event.stopPropagation(); _fetchEachExamLocation('${locationId}');"><i class="bi-pencil-square"></i></button>
+                        </div>
+                        <div class="expand-div" id="view${no}num">&nbsp;<i class="bi-chevron-down"></i>&nbsp;</div> 
+                    </div>
+
+                    <div class="toggle-expand-div" id="view${no}answer" style="display: none;">  
+                        <div class="main-content-div form-main-content">
+                            <div class="tables-content-div">
+                                <div class="content-title">
+                                    <div class="title">
+                                        <i class="bi bi-geo-alt"></i>
+                                        <p>Exam Center</p>
+                                    </div>
+
+                                    <div>
+                                        <button class="btn" title="ADD NEW CENTER" 
+                                            onclick="sessionStorage.removeItem('getEachExamCenterSession'); _openExamCenterForm(${JSON.stringify(locationInfo).replace(/"/g, "&quot;")});">
+                                            <i class="bi bi-plus-square"></i> ADD NEW CENTER
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <div class="inner-table-content">
+                                    <div class="table-div animated fadeIn" id="tableFetch">
+                                        <table class="table" cellspacing="0" style="width:100%">
+                                            <thead>
+                                                <tr class="tb-col">
+                                                    <th>sn</th>
+                                                    <th>Centre Name</th>
+                                                    <th>Centre Address</th>
+                                                    <th>Exam Date</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>`;
+
+                                            if (centerData.length > 0) {
+                                                let sn = 0;
+                                                for (let k = 0; k < centerData.length; k++) {
+                                                    sn++;
+                                                    const centreInfo = centerData[k];
+                                                    const centreId = centreInfo.centreId;
+                                                    const centreName = centreInfo.centreName;
+                                                    const centreNumber = centreInfo.centreNumber;
+                                                    const centreAddress = centreInfo.centreAddress;
+                                                    const statusName = centreInfo.statusName;
+                                                    const examDateData = centreInfo.examDateData;
+
+                                                    const examDateValue =
+                                                    examDateData.length > 0
+                                                    ? examDateData
+                                                        .map((item) => {
+                                                        const date = new Date(item.examDate);
+                                                        return (
+                                                            date.toLocaleDateString("en-US", {
+                                                            weekday: "long", // Saturday
+                                                            year: "numeric", // 2025
+                                                            month: "long", // May
+                                                            day: "2-digit", // 03
+                                                            }) + "."
+                                                        );
+                                                        })
+                                                        .join(", ")
+                                                    : "";
+
+                                                    content += `
+                                                    <tr class="tb-row">
+                                                        <td>${sn}</td>
+                                                        <td class="clickable-td">${centreName}<br/><span>${centreId}</span></td>
+                                                        <td>${centreAddress}<br/><span>${centreNumber}</span></td>
+                                                        <td>${examDateValue}</td>
+                                                        <td><div class="status-div ${statusName}">${statusName}</div></td>
+                                                        <td><button class="btn view-btn" onclick="_fetchEachExamCenter('${centreId}');">VIEW</button></td>
+                                                    </tr>`;
+                                                }
+                                            } else {
+                                                content += `
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="11">
+                                                                <div class="false-notification-div">
+                                                                    <p>NO RECORD FOUND!!</p>
+                                                                    <div>
+                                                                        <button class="btn" title="ADD NEW CENTRE" 
+                                                                            onclick="sessionStorage.removeItem('getEachExamCenterSession'); _openExamCenterForm(${JSON.stringify(locationInfo).replace(/"/g, "&quot;")});">
+                                                                            <i class="bi bi-plus-square"></i> ADD NEW CENTRE
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>`;
+                                            }
+                                            content += `</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>`;
+            }
+            $("#pageContent").html(content);
+            } else {
+            _showCustomConfirm({
+                title: "Exam Location Error",
+                message: info.message,
+                alertType: "warning",
+                trueActionBtnText: "OK",
+            });
+
+          $("#pageContent").html(`
+                <div class="false-notification-div">
+                    <p>${info.message}</p>
+                    <div>
+                        <button class="btn" title="ADD NEW EXAM LOCATION" onclick="sessionStorage.removeItem('getEachExamLocationSession'); _getForm({page: 'examLocationReg', layer:2, url: adminPortalLocalUrl});"><i class="bi-plus-square"></i> ADD NEW EXAM LOCATION</button>
+                    </div>
+                </div>
+            `);
+
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+      error: function (textStatus, errorThrown) {
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _showCustomConfirm({
+          title: "Connection Error!",
+          message: "An error occurred while fetching data! Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+
+        $("#pageContent").html(`
+            <div class="false-notification-div">
+                <p>An error occurred while fetching data! Please try again.</p>
+            </div>
+        `);
+      },
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error!",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+function _fetchEachExamLocation(locationId) {
+   let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  $("#get-more-div-secondary")
+    .css({
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center",
+    })
+    .fadeIn(500);
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/branch/exam-location/fetch-exam-location?locationId=${locationId}&countryId=${getEachCountrySession?.countryId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        if (info.success && info.data.length > 0) {
+          sessionStorage.setItem(
+            "getEachExamLocationSession",
+            JSON.stringify(info.data[0])
+          );
+          _getForm({
+            page: "examLocationReg",
+            layer: 2,
+            url: adminPortalLocalUrl,
+          });
+        } else {
+            _alertClose(2);
+           _showCustomConfirm({
+                title: "Exam Location Error",
+                message: info.message,
+                alertType: "warning",
+                trueActionBtnText: "OK",
+            });
+
+            const response = info.response;
+            if (response < 100) {
+              _logOut();
+            }
+        }
+      },
+      error: function (textStatus, errorThrown) {
+        _alertClose();
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _showCustomConfirm({
+          title: "Connection Error!",
+          message: "An error occurred while fetching data! Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+      },
+    });
+  } catch (error) {
+    _alertClose();
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+
+///////////////////EXAM CENTER FUNCTIONS/////////////
+let segmentationCounter = 0; // global counter
+function addSegmentation(value = "") {
+  const fieldId = Date.now() + "_" + ++segmentationCounter; // unique every time
+
+  const template = `
+		<div class="segmentBody">
+      <div class="text-field-container-back-div">
+			  <div class="text_field_container full-width" id="${fieldId}_examDate_container"></div>
+        <div class="delete-icon" onclick="_deleteField(this)" title="Click to delete field" style="display:none;"><i class="bi bi-trash"></i></div>
+      </div>
+		</div>
+	`;
+
+  $(".segmentList").append(template);
+
+  textField({
+    id: `${fieldId}_examDate`,
+    title: "Exam Date",
+    type: "date",
+    value: value,
+  });
+
+  const segmentCount = $(".segmentList .segmentBody").length;
+  if (segmentCount > 1) {
+    $(".segmentList .segmentBody:last .delete-icon").show();
+  }
+}
+
+function _deleteField(el) {
+  if ($(".segmentList .segmentBody").length > 1) {
+    $(el).closest(".segmentBody").fadeOut(300, function () {
+      $(this).remove();
+    });
+  }
+}
+
+function _openExamCenterForm(locationInfo) {
+  sessionStorage.removeItem("getEachExamLocationSession");
+  sessionStorage.setItem("getEachExamLocationSession",JSON.stringify(locationInfo));
+  _getForm({ page: "examCenterReg", layer: 2, url: adminPortalLocalUrl });
+}
+
+function _createExamCenter() {
+  try {
+    let issueCount = 0;
+    const centreName = $("#centreName").val();
+    const centreNumber = $("#centreNumber").val();
+    const centreAddress = $("#centreAddress").val();
+    const statusId = $("#statusId").val();
+
+    const dateSegment = [];
+    $(".segmentBody input").each(function () {
+      dateSegment.push({ examDate: $(this).val() });
+    });
+
+    $("#centreName, #centreNumber, #centreAddress, #statusId").removeClass(
+      "issue"
+    );
+    $(".segmentBody input").removeClass("issue");
+    $(
+      "#issue_centreName, #issue_centreNumber, #issue_centreAddress, #issue_examDate, #issue_statusId"
+    ).html("");
+
+    let atLeastOneFilled = dateSegment.some(
+      (d) => d.examDate && d.examDate.trim() !== ""
+    );
+    if (!atLeastOneFilled) {
+      $(".segmentBody input").addClass("issue");
+      $("#issue_examDate").html(
+        "USER ERROR! Kindly enter at least one date to continue!"
+      );
+      issueCount++;
+    }
+
+    if (!centreName) {
+      $("#centreName").addClass("issue");
+      $("#issue_centreName").html(
+        "USER ERROR! Kindly provide exam centre to continue"
+      );
+      issueCount++;
+    }
+
+    if (!centreNumber) {
+      $("#centreNumber").addClass("issue");
+      $("#issue_centreNumber").html(
+        "USER ERROR! Kindly Provide centre number to continue"
+      );
+      issueCount++;
+    }
+
+    if (!centreAddress) {
+      $("#centreAddress").addClass("issue");
+      $("#issue_centreAddress").html(
+        "USER ERROR! Kindly Provide centre address to continue"
+      );
+      issueCount++;
+    }
+
+    if (!statusId) {
+      $("#statusId").addClass("issue");
+      $("#issue_statusId").html("USER ERROR! Kindly Select status to continue");
+      issueCount++;
+    }
+
+    if (issueCount > 0) return;
+
+    const form = {
+      centreName,
+      centreNumber,
+      centreAddress,
+      dateSegment,
+      statusId,
+    };
+    _showCustomConfirm({
+      callback: () => {
+        _createExamCenterCallback(form);
+      },
+      title: "Are you sure?",
+      message:
+        "Are you sure you want to create a new exam center? This action is irreversible.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+  } catch (error) {
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+    $("#submitBtn").prop("disabled", false);
+  }
+}
+
+function _createExamCenterCallback(form) {
+  let getEachExamLocationSession = JSON.parse(
+    sessionStorage.getItem("getEachExamLocationSession")
+  );
+  let getEachExamCenterSession = JSON.parse(
+    sessionStorage.getItem("getEachExamCenterSession")
+  );
+
+  const btnText = $("#submitBtn").html();
+  $("#submitBtn").html(
+    '<img src="' +
+      websiteUrl +
+      '/all-images/images/loading.gif" width="12px" alt="Loading"/>'
+  );
+  $("#submitBtn").prop("disabled", true);
+
+  const formData = {
+    centreName: form.centreName,
+    centreNumber: form.centreNumber,
+    centreAddress: form.centreAddress,
+    dateSegment: form.dateSegment,
+    statusId: form.statusId,
+  };
+
+  let callUrl = getEachExamCenterSession?.centreId
+    ? `${endPoint}/admin/branch/exam-center/update-exam-center?locationId=${getEachExamLocationSession?.locationId}&centreId=${getEachExamCenterSession?.centreId}`
+    : `${endPoint}/admin/branch/exam-center/create-exam-center?locationId=${getEachExamLocationSession?.locationId}`;
+
+  $.ajax({
+    type: "POST",
+    url: callUrl,
+    data: JSON.stringify(formData),
+    dataType: "json",
+    cache: false,
+    headers: getAuthHeaders(true),
+    success: function (info) {
+      const success = info.success;
+      const message = info.message;
+
+      if (success === true) {
+        _showCustomConfirm({
+          callback: () => {
+            _getActiveBranchPage({
+              divid: "examLocationPage",
+              page: "examLocationPage",
+              url: adminPortalLocalUrl,
+            });
+            _alertClose(2);
+          },
+          title: "Success!",
+          message: message,
+          alertType: "success",
+          trueActionBtnText: "OK, Thanks.",
+        });
+      } else {
+        _showCustomConfirm({
+          title: "Create Exam Center Error",
+          message: message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+    error: function (error) {
+      _showCustomConfirm({
+        title: "Unexpected Error",
+        message: "An unexpected error occurred! Please try again.",
+        alertType: "error",
+        trueActionBtnText: "OK, Retry",
+      });
+      $("#submitBtn").html(btnText).prop("disabled", false);
+    },
+  });
+}
+
+function _fetchEachExamCenter(centreId) {
+  $("#get-more-div-secondary")
+    .css({
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center",
+    })
+    .fadeIn(500);
+  try {
+    $.ajax({
+      type: "GET",
+      url: `${endPoint}/admin/branch/exam-center/fetch-exam-center?centreId=${centreId}`,
+      dataType: "json",
+      cache: false,
+      headers: getAuthHeaders(true),
+      success: function (info) {
+        if (info.success && info.data.length > 0) {
+          const centerData = info.data[0];
+          sessionStorage.setItem("getEachExamCenterSession", JSON.stringify(centerData));
+
+          const locationInfo = {
+            locationId: centerData.locationId,
+            locationName: centerData.locationName,
+          };
+
+          _openExamCenterForm(locationInfo);
+        } else {
+          const response = info.response;
+          if (response < 100) {
+            _logOut();
+          }
+        }
+      },
+      error: function (textStatus, errorThrown) {
+        _alertClose();
+        console.error("AJAX Error: ", textStatus, errorThrown);
+        _showCustomConfirm({
+          title: "Connection Error!",
+          message: "An error occurred while fetching data! Please try again.",
+          alertType: "error",
+          trueActionBtnText: "OK, Retry",
+        });
+      },
+    });
+  } catch (error) {
+    _alertClose();
+    console.error("Error: ", error);
+    _showCustomConfirm({
+      title: "Unexpected Error",
+      message: "An unexpected error occurred! Please try again.",
+      alertType: "error",
+      trueActionBtnText: "OK, Retry",
+    });
+  }
+}
+
+
+function _fetchBranchStudentData() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  try {
+    _callFetchEndPoints({
+      url: `admin/branch/user/fetch-user?countryId=${getEachCountrySession?.countryId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _staffValidationCheck(response.response);
+        if (response.success && response.data?.length > 0) {
+          _initFetchBranchStudentData(response.data);
+        } else {
+          $("#fetchBranchStudentContent").html(`
+            <tr>
+              <td colspan="8">
+                <div class="false-notification-div">
+                  <p>${response.message}</p>
+                  <div>
+                    <button class="btn" title="REGISTER NEW STUDENT" onclick="_getForm({page: 'adminStudentRegForm', layer:2, url: adminPortalLocalUrl});">
+                        <i class="bi bi-plus-square"></i> REGISTER NEW STUDENT
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>`);
+          $("#fetchBranchStudentContentPaginationControls").html("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _fetchBranchStudentData());
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _fetchBranchStudentData());
+  }
+}
+
+function _renderFetchBranchStudentData(data, start) {
+  return data
+    .map(
+      (item, i) => `
+      <tr class="tb-row">
+        <td>${start + i + 1}</td>
+        <td class="clickable-td" title="Click to login into student portal" onclick="_loginOnBehalfOfUser('${item.userId}');">
+            <div class="text-back-div">
+                <div class="image-div">
+                    <img src="${websiteUrl}/all-images/images/avatar.jpg" alt="${item.firstName} ${item.lastName}" />
+                </div>
+
+                <div class="text-div">
+                    <div class="first-class">${item.firstName} ${item.lastName} </div>
+                    <div class="second-class">${item.userId}</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="text-div">
+                <div>${item.emailAddress}</div>
+                <div>${item.phoneNumber}</div>
+            </div>
+        </td>
+        <td>${item.lastLoginDate}</td>
+        <td>
+            <div class="status-div ${item.statusName}">${item.statusName}</div>
+        </td>
+        <td><button class="btn view-btn" title="Click to login into student portal" onclick="_loginOnBehalfOfUser('${item.userId}');">VIEW</button></td>
+    </tr>`
+    )
+    .join("");
+}
+
+function _initFetchBranchStudentData(data) {
+  const paginator = new Paginator(
+    data,
+    _renderFetchBranchStudentData,
+    "fetchBranchStudentContentPaginationControls",
+    "fetchBranchStudentContent",
+    10
+  );
+  __paginatorHandlers["fetchBranchStudentContent"] = paginator;
+  paginator.renderPage();
+}
+
+
+function _loginOnBehalfOfUser(userId) {
+  $("#get-more-div-secondary")
+  .css({
+    display: "flex",
+    "justify-content": "center",
+    "align-items": "center",
+  })
+  .fadeIn(500);
+
+  try {
+    _callFetchEndPoints({
+      url: `admin/branch/user/login?userId=${userId}`,
+      accessKey: true,
+    })
+      .then((response) => {
+        _staffValidationCheck(response.response);
+        if (response.success) {
+          localStorage.setItem("userLoginData", JSON.stringify(response.data));
+          window.open(portalDashboardUrl, "_blank");
+          _alertClose(2);
+        } else {
+          _showCustomConfirm({
+            title: "USER ERROR",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+          _alertClose(2);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _loginOnBehalfOfUser(userId));
+        _alertClose(2);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _loginOnBehalfOfUser(userId));
+    _alertClose(2);
+  }
+}
+
+
+/// User Regitsration ///
+function _userRegistration() {
+  let getEachCountrySession = JSON.parse(
+    sessionStorage.getItem("getEachCountrySession")
+  );
+
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const firstName = $("#firstName").val()?.trim();
+    const lastName = $("#lastName").val()?.trim();
+    const emailAddress = $("#emailAddress").val()?.trim();
+    const phoneNumber = $("#phoneNumber").val()?.trim();
+    const userTypeId = $("#userTypeId").val()?.trim();
+    const password = $("#createPassword").val()?.trim();
+    const cpassword = $("#confirmPassword").val()?.trim();
+    let countryId = getEachCountrySession?.countryId
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("firstName", "FIRST NAME");
+    issueCount += _validateEmptyValue("lastName", "LAST NAME");
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
+    issueCount += _validateEmptyValue("userTypeId", "USER TYPE");
+    issueCount += _validateEmptyValue("createPassword", "PASSWORD");
+    issueCount += _validateEmptyValue("confirmPassword", "CONFIRM PASSWORD");
+    issueCount += _validateEmail("emailAddress", emailAddress);
+    issueCount += _validateNumber("phoneNumber", phoneNumber);
+    if (password != cpassword) {
+      $("#confirmPassword").addClass("issue");
+      $("#issue_confirmPassword").html("PASSWORD NOT MATCHED!");
+      issueCount += 1;
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      countryId,
+      userTypeId,
+      password,
+      cpassword,
+    };
+
+    _userRegistrationCallback(formData);
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _userRegistration());
+  }
+}
+
+/// Proceed To Sign Up Callback ///
+function _userRegistrationCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#submitBtn").html();
+  _btnDisable("submitBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/signup`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+          _showCustomConfirm({
+            callback: () => {
+              _alertClose(2);
+              _getActiveBranchPage({divid: 'branchCountryStudent', page: 'branchCountryStudent', url: adminPortalLocalUrl});
+            },
+            title: "User Registration Successful!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+        _btnDisable("submitBtn", btnText, false);
+      } else {
+        _btnDisable("submitBtn", btnText, false);
+        _showCustomConfirm({
+          title: "Account Exists!",
+          message: response.message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _userRegistrationCallback(formData)); // retry if needed
+      _btnDisable("submitBtn", btnText, false);
+    });
+}

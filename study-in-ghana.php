@@ -1,0 +1,7 @@
+<?php $publishId='STUDYABR00920250912061904';?>
+<?php $pageUrl='study-in-ghana';?>
+<?php $pageTitle='Study in GHANA';?>
+<?php $seoKeywords='study in ghana from nigeria, study in ghana from kenya, ghana university admission, ghana student visa for nigerians, ghana student visa for kenyans, admission processing for ghana, universities in ghana for africans, international exams for ghana, IELTS for ghana universities, TOEFL for ghana admission, SAT for ghana universities, GRE for ghana, apply to ghana universities, study abroad in ghana, top universities in ghana, ghana scholarships for africans, ghana education consultants, study in accra, undergraduate studies in ghana, masters in ghana for africans, west africa university admissions';?>
+<?php $seoDescription='Start your academic journey in Ghana from Nigeria, Ghana, or Kenya with our expert admission processing and exam registration services. We help students apply to top universities in Ghana, register for international exams (IELTS, TOEFL, SAT, GRE), and provide full visa support where needed.';?>
+<?php $pageSeoPix='STUDYABR00920250912061904_202509240201_STUDYABR00920250912061904_202509120619_download (1).jpeg';?>
+<?php include 'studyAbroadCategory_details.php';?>

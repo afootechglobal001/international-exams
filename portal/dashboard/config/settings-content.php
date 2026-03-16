@@ -1,0 +1,161 @@
+<?php if ($page == 'resetPassword') { ?>
+<!-- /////////// Title ////////////////////////////// -->
+<section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+    <div class="form-title-div">
+        <div class="title-div">
+            <div class="icon-div"><i class="bi bi-shield-shaded"></i></div>
+            <h3>RESET PASSWORD</h3>
+        </div>
+        <div class="btn-div">
+            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                <i class="bi bi-x-lg"></i> Close
+            </button>
+        </div>
+    </div>
+    <!-- /////////// Title ////////////////////////////// -->
+    <div class="container-back-div">
+        <div class="form-notification">
+            <p>Secure your account by creating a new password. Follow the steps to update your login details and regain
+                access to your exam portal.</p>
+        </div>
+
+
+        <div class="form-container">
+            <div class="content-div">
+                <div class="content-title">
+                    <div class="title">
+                        <i class="bi bi-shield-shaded"></i>
+                        <p>Reset your password here</p>
+                    </div>
+                </div>
+
+                <div class="form-text">
+                    <div class="text_field_container" id="oldPassword_container">
+                        <script>
+                        textField({
+                            id: 'oldPassword',
+                            title: 'Enter Your Old Password',
+                            type: 'password'
+                        });
+                        </script>
+                    </div>
+
+                    <div class="form-note">
+                        <p>At least 8 charaters required including upper & lower cases
+                            and special characters and numbers.</p>
+                    </div>
+
+                    <div class="text_field_container" id="newPassword_container">
+                        <script>
+                        textField({
+                            id: 'newPassword',
+                            title: 'Create New Password',
+                            type: 'password'
+                        });
+                        </script>
+                    </div>
+
+                    <div class="text_field_container" id="cnewPassword_container">
+                        <script>
+                        textField({
+                            id: 'cnewPassword',
+                            title: 'Confirm New Password',
+                            type: 'password'
+                        });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn" title="CHANGE PASSWORD" id="submitBtn" onclick="_changePassword();"> <i
+                        class="bi-check"></i> CHANGE PASSWORD </button>
+            </div>
+        </div>
+</section>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php if ($page == 'notifications') { ?>
+<!-- /////////// Title ////////////////////////////// -->
+<section class="slide-form-div" data-aos="fade-left" data-aos-duration="900">
+    <div class="form-title-div">
+        <div class="title-div">
+            <div class="icon-div"><i class="bi bi-bell-fill"></i></div>
+            <h3>SYSTEM ALERT</h3>
+        </div>
+        <div class="btn-div">
+            <button class="btn" title="Close" onclick="_alertClose(<?php echo $modalLayer ?>);">
+                <i class="bi bi-x-lg"></i> Close
+            </button>
+        </div>
+    </div>
+    <!-- /////////// Title ////////////////////////////// -->
+    <div class="container-back-div">
+        <div class="form-notification">
+            <p>Stay informed! Important updates about your exam schedules, payments, and portal activities will appear
+                here in real time.</p>
+        </div>
+
+        <!--  ////////////////////////////////////////////////////////////////////////////////-->
+        <div class="form-container">
+            <div class="content-div">
+                <div class="content-title">
+                    <div class="title">
+                        <i class="bi bi-bell-fill"></i>
+                        <p>Login notification</p>
+                    </div>
+                </div>
+
+                <div class="form-text">
+                    <p>You have successfully signed in to your exam portal. For your security, make sure to log out
+                        after
+                        each session, especially on shared devices.</p>
+                    <span>00-00-00 00:00:00</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php if ($page == 'logoutConfirmForm') { ?>
+<div class="caption-success-div animated zoomIn">
+    <div class="caption-body">
+        <div class="logout-caption">
+            <div class="img"><img src="<?php echo $websiteUrl ?>/all-images/images/warning.gif" /></div>
+            <h2>Are you sure to log-out?</h2>
+            <p>Please, confirm your log-out action.</p>
+        </div>
+        <div class="btn-div">
+            <button class="btn false-btn" onclick="_alertClose(<?php echo $modalLayer ?>);">NO</button>
+            <button class="btn" onclick="_logOut();">YES</button>
+        </div>
+    </div>
+</div>
+<?php } ?>

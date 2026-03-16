@@ -8,7 +8,7 @@ switch ($action){
 
 	case 'get_page':
 		$page=$_POST['page'];
-		$ids=$_POST['ids'];
+		$id=$_POST['id'];
 		require_once('dashboard-content.php');
 		require_once('branch-content.php');
 		require_once('staff-content.php');
@@ -20,13 +20,13 @@ switch ($action){
 		require_once('faq-content.php');
 		require_once('testimony-content.php');
 		require_once('settings-content.php');
-		require_once('system-alert-content.php');
 		require_once('pages-content.php');
 		require_once('page-details.php');
 		require_once('ebook-content.php');
 		require_once('exam-related-links-content.php');
 		require_once('ict-courses-content.php');
 		require_once('video-content.php');
+		require_once('account-report/account-report-content.php');
 	break;
 
 	case 'get_form':
@@ -45,13 +45,13 @@ switch ($action){
 		require_once('faq-content.php');
 		require_once('testimony-content.php');
 		require_once('settings-content.php');
-		require_once('system-alert-content.php');
 		require_once('pages-content.php');
 		require_once('page-details.php');
 		require_once('ebook-content.php');
 		require_once('exam-related-links-content.php');
 		require_once('ict-courses-content.php');
 		require_once('video-content.php');
+		require_once('account-report/account-report-content.php');
 	break;	
 
 	case 'uploadStaffPix':

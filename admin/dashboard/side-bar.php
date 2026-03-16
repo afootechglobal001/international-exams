@@ -43,7 +43,7 @@
         `);
 
         document.write(`
-            <div class="nav-div" title="Report" onclick="_getActivePage({nav:'reports', divid:'reports'});" id="${navId}-reports">
+            <div class="nav-div" title="Report" onclick="_getActivePage({page:'incomeReport', divid:'reports'});" id="${navId}-reports">
                 <div class="icon"><i class="bi-graph-up-arrow"></i> Report</div> 
             </div>
         `);
@@ -95,14 +95,6 @@
 
         <div class="link" title="ICT Courses" onclick="_getActivePage({page:'ictCourses', divid:'publish'});">- ICT Courses<div class="num" id="totalActiveIctCourseCount">0</div></div>
         <div class="hidden" id="_publishIctCourses"><i class="bi-pc-display"></i> ICT Courses</div>
-    </div>
-
-    <div class="nav-div animated fadeInLeft" id="link-reports">
-        <div class="link" title="Product Report" onclick="">- Income Report <div class="num" id="">0</div></div>
-        <div class="hidden" id="_product_report"><i class="bi-boxes"></i> Income Report</div>
-
-        <div class="link" title="Wallet Report" onclick="">- Wallet Report <div class="num" id="">0</div></div>
-        <div class="hidden" id="_wallet_report"><i class="bi-credit-card"></i> Wallet Report</div>
     </div>
 
     <div class="nav-back-container" onclick="_closeNav();"></div>

@@ -1,28 +1,19 @@
 <?php require_once '../../config/connection.php';?>
-<?php require_once '../../config/user-session-check.php';?>
 
 <?php
     if (!$checkBasicSecurity){/// start if 1
-        goto end;
-    }
-    if(!$checkSession){
-        $response=[
-            'response' => 99,
-            'success' => false,
-            'message' => "SESSION EXPIRED! Please LogIn Again.",
-        ];
         goto end;
     }
 ?>
 
 <?php
 //////////////////declaration of variables//////////////////////////////////////
-    $countryId=trim($loginUserCountryId);
     $examRegistrationId=trim($_GET['examRegistrationId']);
    
     $select="SELECT * FROM STUDENT_EXAMS_REGISTRATION_TAB WHERE studentId='$loginUserId' AND examRegistrationId='$examRegistrationId'";
     $query=mysqli_query($conn, $select);
     $fetchQuery=mysqli_fetch_assoc($query);
+    $countryId=$fetchQuery['countryId'];
     $fullName=$fetchQuery['firstName'].' '.$fetchQuery['middleName'].' '.$fetchQuery['lastName'];
 
     $examId=$fetchQuery['examId'];

@@ -22,11 +22,6 @@
                     <div class="icon-div" onclick="_getActivePage({page:'settings', divid:'settings'});" title="System Settings">
                         <i class="bi-gear"></i>
                     </div>
-                        
-                    <div class="icon-div bell_notification" onclick="_getActivePage({page:'systemAlert', divid:'systemAlert'});" title="System Alert">
-                        <i class="bi-bell"></i>
-                        <div>20</div>
-                    </div>
                 </div>
 
                 <div class="right-icon-div no-border" title="Click To View Profile" onclick="_toggleProfileDiv()">

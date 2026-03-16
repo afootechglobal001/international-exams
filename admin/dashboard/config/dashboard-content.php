@@ -104,320 +104,271 @@
                         </div>
                         <div class="statistics-icon pending"><i class="bi-people"></i></div>
                     </div>
-                </div>
-
-                <div class="statistics-div round" id="activities" title="All Activities" onclick="_getActivePage({page:'viewStudents', divid:'students'});">
-                    <div class="statistics-inner-div text-centre">
-                        <div class="statistics-text">
-                            <p>View All Activities</p>
-                            <span>View system notifications and activities</span>
-                        </div>
-                        <div class="statistics-icon completed"><i class="bi-arrow-up-right"></i></div>
-                    </div>
-                </div>
+                </div>        
             </div>
 
             <div class="dashboard-statistics-wrapper">
-                <div class="left-contaioner">
-                    <div class="chart-back-div">
-                        <div class="chart-div-notifications top-border-radius">
-                            <div class="text"><i class="bi-graph-up-arrow"></i> Showing Matrix for </div>
+                <div class="chart-back-div">
+                    <div class="chart-div-notifications top-border-radius">
+                        <div class="text"><i class="bi-graph-up-arrow"></i> Showing Matrix for </div>
 
-                            <div class="text text-right" onclick="select_search()">
-                                <span id="srch-text">Last 30 Days</span>
-                                <div class="icon-div"><i class="bi-caret-down"></i></div>
+                        <div class="text text-right" onclick="select_search()">
+                            <span id="srch-text">Last 30 Days</span>
+                            <div class="icon-div"><i class="bi-caret-down"></i></div>
 
-                                <div class="srch-select alert-srch-select">
-                                    <div id="srch-today" onclick="_fetchRevenueFiltering('srch-today', 'Today');">Today
-                                    </div>
-                                    <div id="srch-week" onclick="_fetchRevenueFiltering('srch-week', 'This Week');">This
-                                        Week</div>
-                                    <div id="srch-7" onclick="_fetchRevenueFiltering('srch-7', 'Last 7 Days');">Last 7 Days
-                                    </div>
-                                    <div id="srch-month" onclick="_fetchRevenueFiltering('srch-month', 'This Month');">This
-                                        Month</div>
-                                    <div id="srch-30" onclick="_fetchRevenueFiltering('srch-30', 'Last 30 Days');">Last 30 Days
-                                    </div>
-                                    <div id="srch-90" onclick="_fetchRevenueFiltering('srch-90', 'Last 90 Days');">Last 90 Days
-                                    </div>
-                                    <div id="srch-year" onclick="_fetchRevenueFiltering('srch-year', 'This Year');">This
-                                        Year</div>
-                                    <div id="srch-1year" onclick="_fetchRevenueFiltering('srch-1year', 'Last 1 Year');">Last 1
-                                        Year</div>
-                                    <div onclick="srch_custom('Custom Search')">Custom Search</div>
+                            <div class="srch-select alert-srch-select">
+                                <div id="srch-today" onclick="_fetchRevenueFiltering('srch-today', 'Today');">Today
                                 </div>
-                            </div>
-
-                            <div class="text">
-                                <div class="custom-srch-div">
-                                    <div class="custom-srch-div-in">
-                                        <div class="text_field_container dash_field_container">
-                                            <input class="text_field bar_cust_text_field" type="text" id="datepickers-from"
-                                                placeholder="" />
-                                            <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From
-                                            </div>
-                                            <div class="issueText" id="issue_from"></div>
-                                        </div>
-
-                                        <div class="text_field_container dash_field_container">
-                                            <input class="text_field bar_cust_text_field" type="text" id="datepickers-to"
-                                                placeholder="" />
-                                            <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To </div>
-                                            <div class="issueText" id="issue_to"></div>
-                                        </div>
-                                        <button type="button" class="btn" id="applyCustomSearchBtn"
-                                            onclick="_fetchCustomRevenueFiltering();">Apply</button>
-                                    </div>
+                                <div id="srch-week" onclick="_fetchRevenueFiltering('srch-week', 'This Week');">This
+                                    Week</div>
+                                <div id="srch-7" onclick="_fetchRevenueFiltering('srch-7', 'Last 7 Days');">Last 7 Days
                                 </div>
+                                <div id="srch-month" onclick="_fetchRevenueFiltering('srch-month', 'This Month');">This
+                                    Month</div>
+                                <div id="srch-30" onclick="_fetchRevenueFiltering('srch-30', 'Last 30 Days');">Last 30 Days
+                                </div>
+                                <div id="srch-90" onclick="_fetchRevenueFiltering('srch-90', 'Last 90 Days');">Last 90 Days
+                                </div>
+                                <div id="srch-year" onclick="_fetchRevenueFiltering('srch-year', 'This Year');">This
+                                    Year</div>
+                                <div id="srch-1year" onclick="_fetchRevenueFiltering('srch-1year', 'Last 1 Year');">Last 1
+                                    Year</div>
+                                <div onclick="srch_custom('Custom Search')">Custom Search</div>
                             </div>
-
-
-                            <script language="javascript">
-                                $('#datepickers-from').datetimepicker({
-                                    lang: 'en',
-                                    timepicker: false,
-                                    format: 'Y-m-d',
-                                    formatDate: 'Y-M-d',
-                                });
-
-                                $('#datepickers-to').datetimepicker({
-                                    lang: 'en',
-                                    timepicker: false,
-                                    format: 'Y-m-d',
-                                    formatDate: 'Y-M-d',
-                                });
-                            </script>
                         </div>
 
-                        <div class="trending-back-div">
-                            <div class="revenue-div">
-                                <p>Revenue from <span id="dateFrom">Loading...</span> - <span id="dateTo">Loading...</span></p>
-                                <div class="fund-div">
-                                    <h3>
-                                        <p id="totalIncome"><s>N</s> Loading...</p><span>Income</span>
-                                    </h3>
-                                    <h3>
-                                        <p id="totalWalletBalance"><s>N</s> Loading...</p><span>Wallet</span>
-                                    </h3>
+                        <div class="text">
+                            <div class="custom-srch-div">
+                                <div class="custom-srch-div-in">
+                                    <div class="text_field_container dash_field_container">
+                                        <input class="text_field bar_cust_text_field" type="text" id="datepickers-from"
+                                            placeholder="" />
+                                        <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> From
+                                        </div>
+                                        <div class="issueText" id="issue_from"></div>
+                                    </div>
+
+                                    <div class="text_field_container dash_field_container">
+                                        <input class="text_field bar_cust_text_field" type="text" id="datepickers-to"
+                                            placeholder="" />
+                                        <div class="placeholder bar_cust_placeholder"><i class="bi-calendar3"></i> To </div>
+                                        <div class="issueText" id="issue_to"></div>
+                                    </div>
+                                    <button type="button" class="btn" id="applyCustomSearchBtn"
+                                        onclick="_fetchCustomRevenueFiltering();">Apply</button>
                                 </div>
                             </div>
-
-                            <div id="chartContainer" style="width:100%; height:400px; margin:auto;"></div>
-                            <script>
-                                $(document).ready(function() {
-
-                                    var chart = new CanvasJS.Chart("chartContainer", {
-                                        animationEnabled: true,
-                                        theme: "light1",
-                                        axisX: {
-                                            interval: 1,
-                                            intervalType: "day",
-                                            valueFormatString: "DD MMM"
-                                        },
-                                        axisY: {
-                                            suffix: "₦",
-                                            includeZero: true
-                                        },
-                                        toolTip: {
-                                            shared: true
-                                        },
-                                        legend: {
-                                            reversed: true,
-                                            verticalAlign: "top",
-                                            horizontalAlign: "left"
-                                        },
-                                        data: [{
-                                                type: "stackedColumn",
-                                                name: "Income",
-                                                showInLegend: true,
-                                                xValueFormatString: "DD MMM, YYYY",
-                                                yValueFormatString: "₦#,##0",
-                                                color: "#9d043c",
-                                                dataPoints: [
-                                                    // {
-                                                    //     x: new Date(2025, 0, 1),
-                                                    //     y: 250000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 2),
-                                                    //     y: 180000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 3),
-                                                    //     y: 100000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 4),
-                                                    //     y: 300000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 5),
-                                                    //     y: 120000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 6),
-                                                    //     y: 150000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 7),
-                                                    //     y: 275000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 8),
-                                                    //     y: 160000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 9),
-                                                    //     y: 350000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 10),
-                                                    //     y: 380000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 11),
-                                                    //     y: 0
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 12),
-                                                    //     y: 100000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 13),
-                                                    //     y: 0
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 14),
-                                                    //     y: 180000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 15),
-                                                    //     y: 270000
-                                                    // }
-                                                ]
-                                            },
-                                            {
-                                                type: "stackedColumn",
-                                                name: "Wallet",
-                                                showInLegend: true,
-                                                xValueFormatString: "DD MMM, YYYY",
-                                                yValueFormatString: "₦#,##0",
-                                                color: "#f7a025",
-                                                dataPoints: [
-                                                    // {
-                                                    //     x: new Date(2025, 0, 1),
-                                                    //     y: 180000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 2),
-                                                    //     y: 50000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 3),
-                                                    //     y: 80000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 4),
-                                                    //     y: 0
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 5),
-                                                    //     y: 150000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 6),
-                                                    //     y: 40000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 7),
-                                                    //     y: 300000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 8),
-                                                    //     y: 200000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 9),
-                                                    //     y: 0
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 10),
-                                                    //     y: 120000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 11),
-                                                    //     y: 90000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 12),
-                                                    //     y: 200000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 13),
-                                                    //     y: 0
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 14),
-                                                    //     y: 280000
-                                                    // },
-                                                    // {
-                                                    //     x: new Date(2025, 0, 15),
-                                                    //     y: 50000
-                                                    // }
-                                                ]
-                                            }
-                                        ]
-                                    });
-                                    chart.render();
-
-                                    function toogleDataSeries(e) {
-                                        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                                            e.dataSeries.visible = false;
-                                        } else {
-                                            e.dataSeries.visible = true;
-                                        }
-                                        chart.render();
-                                    }
-                                })
-                            </script>
                         </div>
+
+
+                        <script language="javascript">
+                            $('#datepickers-from').datetimepicker({
+                                lang: 'en',
+                                timepicker: false,
+                                format: 'Y-m-d',
+                                formatDate: 'Y-M-d',
+                            });
+
+                            $('#datepickers-to').datetimepicker({
+                                lang: 'en',
+                                timepicker: false,
+                                format: 'Y-m-d',
+                                formatDate: 'Y-M-d',
+                            });
+                        </script>
                     </div>
-                </div>
 
-                <div class="right-container">
-                    <div class="matrix-div">
-                        <div class="inner-div">
-                            <div class="title">
-                                <h3>Recent Activities</h3>
-                                <span title="Click to view all activities" onclick="_getActivePage({page:'systemAlert', divid:'systemAlert'});">View All</span>
-                            </div>
-
-                            <div class="main-alert-div dash-alert-back-div" id="">
-                                <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onclick="_getForm({page: 'alertRead', url: adminPortalLocalUrl});">
-                                    <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
-                                    <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
-                                    <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
-                                </div>
-
-                                <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
-                                    <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
-                                    <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
-                                    <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
-                                </div>
-
-                                <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
-                                    <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
-                                    <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
-                                    <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
-                                </div>
-
-                                <div class="system-alert dash-system-alert" id="<?php echo $alert_id; ?>" onClick="_get_form_with_id('alert-read')">
-                                    <div class="alert-name"><i class="bi-person"></i> Afolabi Taiwo <span id="<?php echo $alert_id; ?>viewed"><i class="bi-check"></i></span></div>
-                                    <div class="alert-text">Success Alert: EMMANUEL SAMUEL profile was updated successfully...</div>
-                                    <div class="alert-time"><i class="bi-clock"></i> <span>2023-07-09 15:31:34</span></div>
-                                </div>
+                    <div class="trending-back-div">
+                        <div class="revenue-div">
+                            <p>Revenue from <span id="dateFrom">Loading...</span> - <span id="dateTo">Loading...</span></p>
+                            <div class="fund-div">
+                                <h3>
+                                    <p id="totalIncome"><s>N</s> Loading...</p><span>Income</span>
+                                </h3>
+                                <h3>
+                                    <p id="totalWalletBalance"><s>N</s> Loading...</p><span>Wallet</span>
+                                </h3>
                             </div>
                         </div>
+
+                        <div id="chartContainer" style="width:100%; height:400px; margin:auto;"></div>
+                        <script>
+                            $(document).ready(function() {
+
+                                var chart = new CanvasJS.Chart("chartContainer", {
+                                    animationEnabled: true,
+                                    theme: "light1",
+                                    axisX: {
+                                        interval: 1,
+                                        intervalType: "day",
+                                        valueFormatString: "DD MMM"
+                                    },
+                                    axisY: {
+                                        suffix: "₦",
+                                        includeZero: true
+                                    },
+                                    toolTip: {
+                                        shared: true
+                                    },
+                                    legend: {
+                                        reversed: true,
+                                        verticalAlign: "top",
+                                        horizontalAlign: "left"
+                                    },
+                                    data: [{
+                                            type: "stackedColumn",
+                                            name: "Income",
+                                            showInLegend: true,
+                                            xValueFormatString: "DD MMM, YYYY",
+                                            yValueFormatString: "₦#,##0",
+                                            color: "#9d043c",
+                                            dataPoints: [
+                                                // {
+                                                //     x: new Date(2025, 0, 1),
+                                                //     y: 250000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 2),
+                                                //     y: 180000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 3),
+                                                //     y: 100000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 4),
+                                                //     y: 300000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 5),
+                                                //     y: 120000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 6),
+                                                //     y: 150000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 7),
+                                                //     y: 275000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 8),
+                                                //     y: 160000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 9),
+                                                //     y: 350000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 10),
+                                                //     y: 380000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 11),
+                                                //     y: 0
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 12),
+                                                //     y: 100000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 13),
+                                                //     y: 0
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 14),
+                                                //     y: 180000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 15),
+                                                //     y: 270000
+                                                // }
+                                            ]
+                                        },
+                                        {
+                                            type: "stackedColumn",
+                                            name: "Wallet",
+                                            showInLegend: true,
+                                            xValueFormatString: "DD MMM, YYYY",
+                                            yValueFormatString: "₦#,##0",
+                                            color: "#f7a025",
+                                            dataPoints: [
+                                                // {
+                                                //     x: new Date(2025, 0, 1),
+                                                //     y: 180000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 2),
+                                                //     y: 50000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 3),
+                                                //     y: 80000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 4),
+                                                //     y: 0
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 5),
+                                                //     y: 150000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 6),
+                                                //     y: 40000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 7),
+                                                //     y: 300000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 8),
+                                                //     y: 200000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 9),
+                                                //     y: 0
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 10),
+                                                //     y: 120000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 11),
+                                                //     y: 90000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 12),
+                                                //     y: 200000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 13),
+                                                //     y: 0
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 14),
+                                                //     y: 280000
+                                                // },
+                                                // {
+                                                //     x: new Date(2025, 0, 15),
+                                                //     y: 50000
+                                                // }
+                                            ]
+                                        }
+                                    ]
+                                });
+                                chart.render();
+
+                                function toogleDataSeries(e) {
+                                    if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                        e.dataSeries.visible = false;
+                                    } else {
+                                        e.dataSeries.visible = true;
+                                    }
+                                    chart.render();
+                                }
+                            })
+                        </script>
                     </div>
                 </div>
             </div>

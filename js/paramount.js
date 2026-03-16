@@ -4,6 +4,7 @@ function _getPage(options) {
     action = "get_page", /// compulsory
     url = "", /// compulsory
     pageContainer = "page-content", /// compulsory
+    id='',
   } = options;
 
   $("#" + pageContainer)
@@ -20,7 +21,7 @@ function _getPage(options) {
       "align-items": "center",
     })
     .fadeIn(500);
-  const dataString = "action=" + action + "&page=" + page;
+  const dataString = "action=" + action + "&page=" + page + "&id=" + id;
   $.ajax({
     type: "POST",
     url: url,

@@ -414,7 +414,6 @@ function _revenueFiltering(dateFrom, dateTo) {
           for (let i = 0; i < info.walletData.length; i++) {
             const fetchedData = info.walletData[i];
             const payDate = new Date(fetchedData.payDate);
-            console.log(payDate);
             const walletAmount = parseFloat(fetchedData.walletAmount);
 
             walletDataPoints.push({

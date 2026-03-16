@@ -3783,6 +3783,133 @@
               "name": "account-reports",
               "item": [
                 {
+                  "name": "payment",
+                  "item": [
+                    {
+                      "name": "exam-payment-cancel",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{accessToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "apiKey",
+                            "value": "{{apiKey}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "userOsBrowser",
+                            "value": "{{userOsBrowser}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "userIpAddress",
+                            "value": "{{userIpAddress}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "userDeviceId",
+                            "value": "{{userDeviceId}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/admin/account-reports/payment/exam-payment-cancel?transactionId=TRANS03920260207061642&examRegistrationId=ER01920260207061640",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "admin",
+                            "account-reports",
+                            "payment",
+                            "exam-payment-cancel"
+                          ],
+                          "query": [
+                            {
+                              "key": "transactionId",
+                              "value": "TRANS03920260207061642"
+                            },
+                            {
+                              "key": "examRegistrationId",
+                              "value": "ER01920260207061640"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "exam-payment-success",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{accessToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "apiKey",
+                            "value": "{{apiKey}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "userOsBrowser",
+                            "value": "{{userOsBrowser}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "userIpAddress",
+                            "value": "{{userIpAddress}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "userDeviceId",
+                            "value": "{{userDeviceId}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/admin/account-reports/payment/exam-payment-success?transactionId=TRANS03920260207061642&examRegistrationId=ER01920260207061640",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "admin",
+                            "account-reports",
+                            "payment",
+                            "exam-payment-success"
+                          ],
+                          "query": [
+                            {
+                              "key": "transactionId",
+                              "value": "TRANS03920260207061642"
+                            },
+                            {
+                              "key": "examRegistrationId",
+                              "value": "ER01920260207061640"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
                   "name": "fetch-revenue-by-date-range",
                   "request": {
                     "auth": {
@@ -3819,9 +3946,9 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{baseUrl}}/admin/account-reports/fetch-revenue-by-date-range?dateFrom=2026-02-01&dateTo=2026-03-14&currency=NGN",
+                      "raw": "{{devBaseUr}}/admin/account-reports/fetch-revenue-by-date-range?dateFrom=2026-02-01&dateTo=2026-03-14&currency=NGN",
                       "host": [
-                        "{{baseUrl}}"
+                        "{{devBaseUr}}"
                       ],
                       "path": [
                         "admin",
@@ -3883,9 +4010,9 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{baseUrl}}/admin/account-reports/fetch-revenue-by-date?date=2026-03-14&currency=NGN&statusId=4",
+                      "raw": "{{devBaseUr}}/admin/account-reports/fetch-revenue-by-date?date=2026-03-14&currency=NGN&statusId=4",
                       "host": [
-                        "{{baseUrl}}"
+                        "{{devBaseUr}}"
                       ],
                       "path": [
                         "admin",
@@ -3948,9 +4075,9 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{baseUrl}}/admin/account-reports/fetch-revenue-by-id?transactionId=TRANS07420260216080259&currency=NGN",
+                      "raw": "{{devBaseUr}}/admin/account-reports/fetch-revenue-by-id?transactionId=TRANS07420260216080259&currency=NGN",
                       "host": [
-                        "{{baseUrl}}"
+                        "{{devBaseUr}}"
                       ],
                       "path": [
                         "admin",
@@ -4272,9 +4399,9 @@
                   }
                 },
                 "url": {
-                  "raw": "{{baseUrl}}/preset-data/fetch-currency",
+                  "raw": "{{devBaseUrl}}/preset-data/fetch-currency",
                   "host": [
-                    "{{baseUrl}}"
+                    "{{devBaseUrl}}"
                   ],
                   "path": [
                     "preset-data",

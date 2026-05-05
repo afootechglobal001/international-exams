@@ -1,0 +1,7 @@
+<?php $publishId='STUDYABR00820250912060936';?>
+<?php $pageUrl='study-in-china';?>
+<?php $pageTitle='Study in CHINA';?>
+<?php $seoKeywords='study in china from nigeria, study in china from ghana, study in china from kenya, china student visa nigeria, china student visa ghana, china student visa kenya, admission processing for china, chinese universities admission, study abroad china, international exams for china, HSK exam for chinese universities, IELTS for china, TOEFL for china admission, SAT for china, china scholarships for africans, apply to chinese universities, mbbs in china for africans, study engineering in china, china education consultants nigeria, china university application ghana, study in beijing from africa, study in shanghai from nigeria';?>
+<?php $seoDescription='Study in China from Nigeria, Ghana, or Kenya with expert admission and visa support. We help students register for international exams (HSK, IELTS, TOEFL, SAT), process university applications, and guide you through Chinese student visa procedures for top universities and scholarship opportunities.';?>
+<?php $pageSeoPix='STUDYABR00820250912060936_202509240200_STUDYABR00720250829063102_202508290631_study-in-china.jpg';?>
+<?php include 'studyAbroadCategory_details.php';?>

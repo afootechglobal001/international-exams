@@ -1,0 +1,381 @@
+function _nextUserLoginPage(props) {
+  const { page = "" } = props;
+  _getPage({ page: page, url: portalAuthMiddlewareUrl });
+}
+
+$(document).ready(function () {
+  $("#viewLogin input").on("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      _userLogin(false);
+    }
+  });
+});
+
+function _counDownOtp(timer) {
+  $("#resendOtpBtn").hide();
+  $("#resendCountdown").fadeIn(500);
+
+  const countdown = setInterval(() => {
+    if (timer > 0) {
+      timer--;
+
+      let minutes = Math.floor(timer / 60);
+      let seconds = timer % 60;
+
+      if (timer >= 60) {
+        // Show MM:SS when 1 min or more
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        $("#resendCountdown").html(
+          'Resend in <strong id="timer">' + minutes + ":" + seconds + '</strong> min'
+        );
+      } else {
+        // Show seconds only when below 1 minute
+        $("#resendCountdown").html(
+          'Resend in <strong id="timer">' + seconds + '</strong> sec'
+        );
+      }
+
+    } else {
+      clearInterval(countdown);
+      $("#resendCountdown").hide();
+      $("#resendOtpBtn").fadeIn(500);
+    }
+  }, 1000);
+
+  return () => clearInterval(countdown);
+}
+
+/// Proceed To Sign Up ///
+function _userSignUp() {
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const firstName = $("#firstName").val()?.trim();
+    const lastName = $("#lastName").val()?.trim();
+    const emailAddress = $("#emailAddress").val()?.trim();
+    const phoneNumber = $("#phoneNumber").val()?.trim();
+    const countryId = $("#countryId").val()?.trim();
+    const userTypeId = $("#userTypeId").val()?.trim();
+    const password = $("#createPassword").val()?.trim();
+    const cpassword = $("#confirmPassword").val()?.trim();
+
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("firstName", "FIRST NAME");
+    issueCount += _validateEmptyValue("lastName", "LAST NAME");
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    issueCount += _validateEmptyValue("phoneNumber", "PHONE NUMBER");
+    issueCount += _validateEmptyValue("countryId", "COUNTRY");
+    issueCount += _validateEmptyValue("userTypeId", "USER TYPE");
+    issueCount += _validateEmptyValue("createPassword", "PASSWORD");
+    issueCount += _validateEmptyValue("confirmPassword", "PASSWORD");
+    issueCount += _validateEmail("emailAddress", emailAddress);
+    issueCount += _validateNumber("phoneNumber", phoneNumber);
+    if (password != cpassword) {
+      $("#confirmPassword").addClass("issue");
+      $("#issue_confirmPassword").html("PASSWORD NOT MATCHED!");
+      issueCount += 1;
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      firstName,
+      lastName,
+      emailAddress,
+      phoneNumber,
+      countryId,
+      userTypeId,
+      password,
+      cpassword,
+    };
+
+    _userSignUpCallback(formData);
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _userSignUp());
+  }
+}
+
+/// Proceed To Sign Up Callback ///
+function _userSignUpCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#signUpBtn").html();
+  _btnDisable("signUpBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/signup`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+        const data = response.data;
+          localStorage.setItem("userLoginData", JSON.stringify(data));
+          _showCustomConfirm({
+            callback: () => {
+              window.location.href = portalDashboardUrl;
+            },
+            title: "SignUp Successful!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+        _btnDisable("signUpBtn", btnText, false);
+      } else {
+        _btnDisable("signUpBtn", btnText, false);
+        _showCustomConfirm({
+          title: "Account Exists!",
+          message: response.message,
+          alertType: "warning",
+          trueActionBtnText: "OK",
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _userSignUpCallback(formData)); // retry if needed
+      _btnDisable("signUpBtn", btnText, false);
+    });
+}
+
+/// User Login ///
+function _userLogin() {
+  try {
+    //////get all needed values////
+    const emailAddress = $("#emailAddress").val().trim();
+    const password = $("#password").val().trim();
+    ///// empty field validation//////////
+    let issueCount = 0;
+    issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    issueCount += _validateEmptyValue("password", "PASSWORD");
+    issueCount += _validateEmail("emailAddress", emailAddress);
+
+    if (issueCount > 0) return;
+    // Gather form data
+    const formData = {
+      emailAddress: emailAddress,
+      password: password,
+    };
+
+    const btnText = $("#submitBtn").html();
+    _btnDisable("submitBtn", btnText, true);
+
+    _callRawEndPoints({
+      url: "user/auth/login",
+      formData,
+    })
+      .then((response) => {
+        if (response.success) {
+          const data = response.data;
+          localStorage.setItem("userLoginData", JSON.stringify(data));
+          window.location.href = portalDashboardUrl;
+        } else {
+          _btnDisable("submitBtn", btnText, false);
+          _showCustomConfirm({
+            title: "Invalid Credentials",
+            message: response.message,
+            alertType: "warning",
+            trueActionBtnText: "OK",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        _callAjaxError(() => _userLogin()); // retry if needed
+        _btnDisable("submitBtn", btnText, false);
+      });
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _userLogin());
+    _btnDisable("submitBtn", btnText, false);
+  }
+}
+
+/// Proceed To Reset Password ///
+function _proceedResetPassword(isResendOtp = false) {
+  let useResetPasswordSession = JSON.parse(
+    localStorage.getItem("useResetPasswordSession")
+  );
+
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    let emailAddress = $("#emailAddress").val()?.trim();
+
+    // Use session values when resending ///
+    if (isResendOtp) {
+      emailAddress = useResetPasswordSession?.resetData?.emailAddress;
+    }
+
+    if (!isResendOtp) {
+      ///// empty field validation//////////
+      issueCount += _validateEmptyValue("emailAddress", "EMAIL ADDRESS");
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      emailAddress,
+    };
+    ////// confirm action
+    _showCustomConfirm({
+      callback: () => {
+        _proceedResetPasswordCallback(formData, isResendOtp);
+      },
+      title: "Are you sure?",
+      message: "Will proceed to send OTP to your email address.",
+      alertType: "warning",
+      falseActionBtn: true,
+    });
+
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _proceedResetPassword(isResendOtp = false));
+  }
+}
+
+/// Proceed To Reset Password  Callback ///
+function _proceedResetPasswordCallback(formData, isResendOtp) {
+  ///// get btn text/////
+  let btnText = "";
+  if (!isResendOtp) {
+    btnText = $("#proceedBtn").html();
+    _btnDisable("proceedBtn", btnText, true);
+  } else {
+    _showLoader("Resending OTP... Please wait...");
+  }
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/reset-password-verification`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+        const data = response.data;
+        if (!isResendOtp) {
+          _btnDisable("proceedBtn", btnText, false);
+          localStorage.setItem(
+            "useResetPasswordSession",
+            JSON.stringify({
+              resetData: formData,   // for resend
+              displayResetData: data // for UI (fullName, email)
+            })
+          );
+          _showLoader("OTP Sent Successfully!. Please wait...");
+          window.location.href = userResetPasswordUrl;
+        } else {
+          _hideLoader();
+          _counDownOtp(180);
+        }
+      } else {
+        if (!isResendOtp) {
+          _btnDisable("proceedBtn", btnText, false);
+          _hideLoader();
+          _showCustomConfirm({
+            title: "Invalid Email Address",
+            message: response.message,
+            alertType: "error",
+            trueActionBtnText: "OK",
+            closeOnOverlayClick: true,
+          });
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _proceedResetPasswordCallback(formData, isResendOtp)); // retry if needed
+      if (!isResendOtp) {
+        _btnDisable("proceedBtn", btnText, false);
+      } else {
+        _hideLoader();
+      }
+    });
+}
+
+/// Complete Proceed Password ///
+function _completeResetPassword() {
+  let useResetPasswordSession = JSON.parse(
+    localStorage.getItem("useResetPasswordSession")
+  );
+  try {
+    ////////get all needed values////////////
+    let issueCount = 0;
+    const otp = $("#otp").val();
+    const newPassword = $("#newPassword").val();
+    const cnewPassword = $("#cnewPassword").val();
+
+    ///// empty field validation//////////
+    issueCount += _validateEmptyValue("otp", "OTP");
+    issueCount += _validateEmptyValue("newPassword", "CREATE NEW PASSWORD");
+    issueCount += _validateEmptyValue("cnewPassword", "CONFIRM NEW PASSWORD");
+
+    if (newPassword && cnewPassword) {
+      if (newPassword !== cnewPassword) {
+        $('#newPassword, #cnewPassword').addClass('issue');
+        $('#issue_cnewPassword, #issue_cnewPassword').html('USER ERROR! Passwords do not match');
+        issueCount++;
+      }
+    }
+
+    if (issueCount > 0) return;
+
+    // Gather form data
+    const formData = {
+      userId: useResetPasswordSession?.displayResetData?.userId,
+      otp,
+      newPassword,
+      cnewPassword,
+    };
+
+    _completeResetPasswordCallback(formData);
+  } catch (error) {
+    console.error("Error:", error);
+    _callCatchError(() => _completeResetPassword());
+  }
+}
+
+/// Complete Reset Pssword Callback ///
+function _completeResetPasswordCallback(formData) {
+  ///// get btn text/////
+  const btnText = $("#submitBtn").html();
+  _btnDisable("submitBtn", btnText, true);
+
+  //// call endpoint //////
+  _callRawEndPoints({
+    url: `user/auth/reset-password`,
+    formData,
+  })
+    .then((response) => {
+      if (response.success) {
+          _showCustomConfirm({
+            callback: () => {
+              window.location.href = portalUrl;
+            },
+            title: "Success!",
+            message: response.message,
+            alertType: "success",
+            trueActionBtnText: "Okay, Thanks",
+          });
+        _btnDisable("submitBtn", btnText, false);
+      } else {
+        _btnDisable("submitBtn", btnText, false);
+        _showCustomConfirm({
+          title: "Invalid OTP",
+          message: response.message,
+          alertType: "error",
+          trueActionBtnText: "OK",
+          closeOnOverlayClick: true,
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      _callAjaxError(() => _completeResetPasswordCallback(formData)); // retry if needed
+      _btnDisable("submitBtn", btnText, false);
+    });
+}

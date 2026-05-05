@@ -1,3 +1,239 @@
 @charset "utf-8";
 /* CSS Document */
+/* Developed by Mike Candy @ 03-07-2025 */
 
+/* General reset */
+.login-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../../all-images/images/bg.jpg) center no-repeat;
+  background-size: cover;
+}
+
+.page-container {
+  width: 70%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page-container .login-card-div {
+  position: relative;
+  width: 400px;
+  min-height: 300px;
+  padding: 60px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.page-container .login-card-div .logo-div {
+  position: absolute;
+  top: -30px;
+  left: 8%;
+  width: 190px;
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+  border-radius: 5px;
+}
+
+.page-container .login-card-div .logo-div img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+#page-content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-container .login-card-div .form-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.page-container .login-card-div .form-section h1 {
+  font-size: 30x;
+  font-family: sub-title-font;
+  color: #000;
+}
+
+.page-container .login-card-div .form-section h1 span {
+  font-family: sub-title-font;
+  font-size: 25px;
+  color: #555;
+}
+
+.page-container .login-card-div .form-section h1 span .underline {
+  border-bottom: 2px solid #9d043c;
+  padding-bottom: 5px;
+}
+
+.page-container .login-card-div .form-section .label-outer-div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.page-container .login-card-div .form-section .label-div {
+  font-family: body-font;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+  color: #333;
+}
+
+.page-container .login-card-div .form-section .label-div i {
+  color: #9d043c;
+  font-size: 14px;
+}
+
+.page-container .login-card-div .form-section .form-button-div {
+  display: flex;
+  align-items: center;
+}
+
+.page-container .login-card-div .form-section .form-button-div .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background: #9d043c;
+  color: #fff;
+  border: none;
+  font-family: body-font;
+  font-size: 15px;
+  cursor: pointer;
+  height: 50px;
+  padding: 0px 60px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in 0.2s;
+  -moz-transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+
+.page-container .login-card-div .form-section .form-button-div .btn:hover {
+  background: #a61748;
+}
+
+.form-alert {
+  margin: 0px;
+}
+
+.form-alert span:hover{
+  color: #9d043c;
+    transition: all 0.2s ease-in 0.2s;
+  -moz-transition: all 0.2s ease-in 0.2s;
+  -webkit-transition: all 0.2s ease-in 0.2s;
+  -ms-transition: all 0.2s ease-in 0.2s;
+  -o-transition: all 0.2s ease-in 0.2s;
+}
+
+
+.page-container .login-card-div .form-section .inner-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page-container .login-card-div .form-section .inner-form .top-div{
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	gap: 5px;
+}
+
+.page-container .login-card-div .form-section .inner-form .top-div .icon-div{
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	background: #73B13E;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page-container .login-card-div .form-section .inner-form .top-div .red-icon{
+	background: rgba(231, 77, 60, 0.943);
+}
+
+.page-container .login-card-div .form-section .inner-form .top-div .icon-div i{
+	font-size: 20px;
+	color: var(--white-color);
+}
+
+.page-container .login-card-div .form-section .inner-form .top-div h3{
+	padding: 0px;
+	margin: 0px;
+	font-size: 20px;
+	font-family: sub-title-font;
+    color: var(--sub-body-color);
+}
+
+.page-container .login-card-div .form-section .inner-form .notification{
+	font-size: 12px;
+	color: var(--sub-body-color);
+}
+
+.page-container .login-card-div .form-section .inner-form .notification .resend-btn{
+	border: none;
+    background: none;
+    font-family: sub-title-font;
+    color: var(--sub-body-color);
+    cursor: pointer;
+    transition:all 0.2s ease-in 02s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
+}
+
+.page-container .login-card-div .form-section .inner-form .notification .resend-btn:hover{
+	color: var(--primary-color);
+}
+
+
+.page-container .login-card-div .form-section .inner-form span i{
+	font-size: 10px;
+}
+
+.page-container .login-card-div .form-section .pswd_info{
+	font-size: 11px;
+	font-family: body-font;
+	color: var(--sub-body-color);
+}
+
+.page-container .login-card-div .form-section .link-btn-div{
+  align-items: flex-start;
+	flex-direction: column;
+  gap: 10px;
+}
+
+.link-form-alert{
+  color: var(--sub-body-color);
+}
+
+.link-form-alert span{
+  color: var(--primary-color);
+}

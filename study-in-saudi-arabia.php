@@ -1,0 +1,7 @@
+<?php $publishId='STUDYABR01120250912063532';?>
+<?php $pageUrl='study-in-saudi-arabia';?>
+<?php $pageTitle='Study in SAUDI ARABIA';?>
+<?php $seoKeywords='study in saudi arabia from nigeria, study in saudi arabia from ghana, study in saudi arabia from kenya, saudi arabia student visa nigeria, saudi arabia student visa ghana, saudi arabia student visa kenya, admission processing for saudi arabia, saudi universities for africans, international exams for saudi arabia, IELTS for saudi arabia, TOEFL for saudi universities, SAT for saudi arabia, apply to saudi universities, saudi arabia scholarships for africans, study abroad in saudi arabia, education consultants for saudi arabia, study in riyadh from africa, saudi university application nigeria, undergraduate studies in saudi arabia, masters in saudi arabia for africans';?>
+<?php $seoDescription='Begin your journey to study in Saudi Arabia from Nigeria, Ghana, or Kenya with expert support. We provide international exam registration (IELTS, TOEFL, SAT), university admission processing, scholarship application assistance, and full student visa guidance for top Saudi universities.';?>
+<?php $pageSeoPix='STUDYABR01120250912063532_202509240202_STUDYABR01120250912063532_202509120635_download (3).jpeg';?>
+<?php include 'studyAbroadCategory_details.php';?>
